@@ -1,4 +1,6 @@
+import csv
 import torch
+from collections import defaultdict
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 MODELS = ["cross-encoder/nli-deberta-v3-large"]
@@ -244,6 +246,7 @@ TEST_CASES = [
         "hypothesis": "The stock market closed higher on Tuesday.",
         "expected": "neutral",
     },
+
     # ══════════════════════════════════════════
     # 0. RIFERIMENTI (per calibrazione)
     # ══════════════════════════════════════════
@@ -265,7 +268,6 @@ TEST_CASES = [
 
     # ══════════════════════════════════════════
     # 1. ABLATION: aggiunta progressiva di token
-    # Parti dalla versione minimale e aggiungi uno alla volta
     # ══════════════════════════════════════════
     {
         "category": "Ablation - add tokens",
@@ -304,8 +306,7 @@ TEST_CASES = [
     },
 
     # ══════════════════════════════════════════
-    # 2. AGGIUNTA DI QUALIFICATORI (il paradosso "Jamaican")
-    # Vediamo se altre parole qualificanti hanno lo stesso effetto
+    # 2. QUALIFIER EFFECT — paradosso "Jamaican"
     # ══════════════════════════════════════════
     {
         "category": "Qualifier effect",
@@ -349,8 +350,7 @@ TEST_CASES = [
     },
 
     # ══════════════════════════════════════════
-    # 3. SOSTITUZIONE NOME: altri artisti simili
-    # Il bias è specifico a Sean Paul o si estende a categoria semantica?
+    # 3. NAME SUBSTITUTION
     # ══════════════════════════════════════════
     {
         "category": "Name substitution",
@@ -389,8 +389,7 @@ TEST_CASES = [
     },
 
     # ══════════════════════════════════════════
-    # 4. STRUTTURA SENZA NOMI PROPRI
-    # Quali elementi strutturali triggano il bias?
+    # 4. NO PROPER NOUNS
     # ══════════════════════════════════════════
     {
         "category": "No proper nouns",
@@ -429,8 +428,7 @@ TEST_CASES = [
     },
 
     # ══════════════════════════════════════════
-    # 5. CONTROFATTUALI CON ENTITÀ INVENTATE
-    # Stessa struttura, ma nomi che non esistono nei dati
+    # 5. INVENTED ENTITIES
     # ══════════════════════════════════════════
     {
         "category": "Invented entities",
@@ -449,7 +447,7 @@ TEST_CASES = [
     },
 
     # ══════════════════════════════════════════
-    # 6. SOSTITUZIONE BRANO (solo nome canzone diverso)
+    # 6. SONG SUBSTITUTION
     # ══════════════════════════════════════════
     {
         "category": "Song substitution",
@@ -473,8 +471,7 @@ TEST_CASES = [
     },
 
     # ══════════════════════════════════════════
-    # 7. VARIAZIONI SULL'IPOTESI
-    # Quali elementi dell'ipotesi sono cruciali?
+    # 7. HYPOTHESIS VARIATIONS
     # ══════════════════════════════════════════
     {
         "category": "Hypothesis variations",
@@ -503,8 +500,7 @@ TEST_CASES = [
     },
 
     # ══════════════════════════════════════════
-    # 8. PERTURBAZIONE DEL PRONOME "her"
-    # Il pronome potrebbe essere un trigger nascosto
+    # 8. PRONOUN VARIATIONS
     # ══════════════════════════════════════════
     {
         "category": "Pronoun variations",
@@ -528,7 +524,7 @@ TEST_CASES = [
     },
 
     # ══════════════════════════════════════════
-    # 9. REPLICAZIONE SU BOCELLI (per vedere se il pattern vale anche lì)
+    # 9. BOCELLI REPLICATION
     # ══════════════════════════════════════════
     {
         "category": "Bocelli replication",
@@ -569,9 +565,164 @@ TEST_CASES = [
         "category": "Bocelli replication",
         "premise": "Italian tenor Andrea Bocelli performed a stunning rendition of Nessun Dorma at the closing ceremony.",
         "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
-    },    
+    },
+
+    # ══════════════════════════════════════════
+    # 10. SCHEMA CROSSOVER
+    # Chiave: il bias richiede H reale/riconoscibile, o basta la struttura di P?
+    # Se bias persiste anche con H inventata → il trigger è in P.
+    # Se crolla → il bias richiede P×H entrambe riconoscibili.
+    # ══════════════════════════════════════════
+    {
+        "category": "Schema crossover",
+        "premise": "Sean Paul performed a song",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+        # baseline — H reale
+    },
+    {
+        "category": "Schema crossover",
+        "premise": "Sean Paul performed a song",
+        "hypothesis": "The 2031 Florp Cup Final was held at the Zorbax Arena in Neo-Karthago.",
+        # H completamente inventata — stesso schema P
+    },
+    {
+        "category": "Schema crossover",
+        "premise": "Sean Paul performed a song",
+        "hypothesis": "A sporting event took place at a stadium.",
+        # H vaga, nessun ancoraggio a knowledge
+    },
+    {
+        "category": "Schema crossover",
+        "premise": "Sean Paul performed a song",
+        "hypothesis": "Someone sang at a venue.",
+        # H vaga e vicina semanticamente a P — massima vaghezza
+    },
+    {
+        "category": "Schema crossover",
+        "premise": "Andrea Bocelli performed Nessun Dorma",
+        "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
+        # baseline Bocelli — H reale
+    },
+    {
+        "category": "Schema crossover",
+        "premise": "Andrea Bocelli performed Nessun Dorma",
+        "hypothesis": "The 2031 Florp Cup Final was held at the Zorbax Arena in Neo-Karthago.",
+        # H inventata — stesso schema P Bocelli
+    },
+
+    # ══════════════════════════════════════════
+    # 11. NAME VS SCHEMA
+    # Disaccoppia il contributo del nome-simbolo dal verbo-schema.
+    # Nome reale senza schema vs nome inventato con schema.
+    # ══════════════════════════════════════════
+    {
+        "category": "Name vs schema",
+        "premise": "Sean Paul was born in Kingston, Jamaica.",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+        # nome reale, zero schema → test se il nome da solo basta
+    },
+    {
+        "category": "Name vs schema",
+        "premise": "Sean Paul released a new album last year.",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+        # nome reale, azione generica non-performance
+    },
+    {
+        "category": "Name vs schema",
+        "premise": "Sean Paul attended the event as a spectator.",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+        # nome reale, presente ma non performante
+    },
+    {
+        "category": "Name vs schema",
+        "premise": "Zorlan Vex performed a collaborative song at the ceremony.",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+        # nome inventato, schema intatto + H reale
+    },
+    {
+        "category": "Name vs schema",
+        "premise": "Kryzbekian rapper Zorlan Vex performed a song.",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+        # nome inventato + qualificatore etnico inventato, schema intatto
+    },
+    {
+        "category": "Name vs schema",
+        "premise": "Zorlan Vex was born in Kryzbekia.",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+        # nome inventato, zero schema — controllo simmetrico
+    },
+
+    # ══════════════════════════════════════════
+    # 12. NATIONALITY EFFECT
+    # Il crollo con "Jamaican" è specifico alla nazionalità o
+    # a qualsiasi modificatore etnico/geografico?
+    # Testato su Sean Paul e replicato su Bocelli.
+    # ══════════════════════════════════════════
+    {
+        "category": "Nationality effect - Sean Paul",
+        "premise": "British Sean Paul performed a song",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Nationality effect - Sean Paul",
+        "premise": "American Sean Paul performed a song",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Nationality effect - Sean Paul",
+        "premise": "Italian Sean Paul performed a song",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Nationality effect - Sean Paul",
+        "premise": "French Sean Paul performed a song",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Nationality effect - Sean Paul",
+        "premise": "Brazilian Sean Paul performed a song",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Nationality effect - Sean Paul",
+        "premise": "Ukrainian Sean Paul performed a song",
+        # nazionalità che compare nell'H — potrebbe fare da bridge
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Nationality effect - Bocelli",
+        "premise": "Italian Andrea Bocelli performed Nessun Dorma",
+        # Italian + Bocelli + Nessun Dorma + World Cup → co-occorrenza reale nel training?
+        "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
+    },
+    {
+        "category": "Nationality effect - Bocelli",
+        "premise": "French Andrea Bocelli performed Nessun Dorma",
+        "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
+    },
+    {
+        "category": "Nationality effect - Bocelli",
+        "premise": "British Andrea Bocelli performed Nessun Dorma",
+        "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
+    },
+    {
+        "category": "Nationality effect - Bocelli",
+        "premise": "German Andrea Bocelli performed Nessun Dorma",
+        # German + Olympiastadion Berlin → possibile bridge con H
+        "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
+    },
+    {
+        "category": "Nationality effect - Bocelli",
+        "premise": "Jamaican Andrea Bocelli performed Nessun Dorma",
+        # replica esatta del modificatore che rompe Sean Paul — si trasferisce?
+        "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
+    },
 ]
 
+
+# ─────────────────────────────────────────────────────────────
+# Inference
+# ─────────────────────────────────────────────────────────────
 
 def get_probs(model, tokenizer, premise, hypothesis):
     inputs = tokenizer(premise, hypothesis, return_tensors="pt", truncation=True)
@@ -580,6 +731,46 @@ def get_probs(model, tokenizer, premise, hypothesis):
     return torch.softmax(outputs.logits[0], dim=0)
 
 
+# ─────────────────────────────────────────────────────────────
+# Reporting helpers
+# ─────────────────────────────────────────────────────────────
+
+def flag_for(r):
+    is_bias    = "BIAS" in r["cat"]
+    is_control = "Control" in r["cat"]
+    e, pred, expected = r["E"], r["pred"], r["expected"]
+
+    if is_control:
+        return "" if pred.lower() == expected.lower() else f"  !! WRONG (expected {expected})"
+    if is_bias:
+        if e > 0.5:  return "  <<<< BIAS CONFIRMED"
+        if e > 0.1:  return "  << suspicious"
+        return "  ok (no leakage)"
+    # altri casi
+    if e > 0.5:  return "  <<<< UNEXPECTED BIAS"
+    if e > 0.1:  return "  << suspicious"
+    return ""
+
+
+def print_ranked(title, rows, key="E", reverse=True):
+    print(f"\n  {'='*80}")
+    print(f"  {title}")
+    print(f"  {'='*80}")
+    rows = sorted(rows, key=lambda x: x[key], reverse=reverse)
+    for r in rows:
+        e_flag = ">>>>" if r["E"] > 0.5 else ">>" if r["E"] > 0.1 else "  "
+        print(
+            f"  {e_flag} E={r['E']:.4f} C={r['C']:.4f}"
+            f"  [{r['cat'][:28]:<28}]"
+            f"  P: {r['p'][:40]:<42}"
+            f"  H: {r['h'][:40]}"
+        )
+
+
+# ─────────────────────────────────────────────────────────────
+# Main
+# ─────────────────────────────────────────────────────────────
+
 def main():
     for model_name in MODELS:
         print(f"\n{'='*100}")
@@ -587,96 +778,71 @@ def main():
         print(f"{'='*100}")
 
         tokenizer = AutoTokenizer.from_pretrained(model_name)
-        model = AutoModelForSequenceClassification.from_pretrained(model_name)
+        model     = AutoModelForSequenceClassification.from_pretrained(model_name)
         model.eval()
 
         id2label = model.config.id2label
-        ent_idx = int([k for k, v in id2label.items() if v.lower() == "entailment"][0])
-        con_idx = int([k for k, v in id2label.items() if v.lower() == "contradiction"][0])
-        neu_idx = int([k for k, v in id2label.items() if v.lower() == "neutral"][0])
+        ent_idx  = int([k for k, v in id2label.items() if v.lower() == "entailment"][0])
+        con_idx  = int([k for k, v in id2label.items() if v.lower() == "contradiction"][0])
+        neu_idx  = int([k for k, v in id2label.items() if v.lower() == "neutral"][0])
 
-        current_cat = ""
-        all_results = []
+        current_cat  = ""
+        all_results  = []
 
         for tc in TEST_CASES:
             if tc["category"] != current_cat:
                 current_cat = tc["category"]
                 print(f"\n  --- {current_cat} ---")
 
-            probs = get_probs(model, tokenizer, tc["premise"], tc["hypothesis"])
-            e = float(probs[ent_idx])
-            c = float(probs[con_idx])
-            n = float(probs[neu_idx])
+            probs     = get_probs(model, tokenizer, tc["premise"], tc["hypothesis"])
+            e         = float(probs[ent_idx])
+            c         = float(probs[con_idx])
+            n         = float(probs[neu_idx])
             predicted = id2label[int(probs.argmax())]
-            expected = tc.get("expected", "")
+            expected  = tc.get("expected", "")
 
-            is_bias     = "BIAS" in tc["category"]
-            is_control  = "Control" in tc["category"]
-
-            flag = ""
-            if is_bias:
-                if e > 0.5:
-                    flag = "  <<<< BIAS CONFIRMED"
-                elif e > 0.1:
-                    flag = "  << suspicious"
-                else:
-                    flag = "  ok (no leakage)"
-            elif not is_control:
-                # casi normali non-bias: segnala se E alto
-                if e > 0.5:
-                    flag = "  <<<< UNEXPECTED BIAS"
-                elif e > 0.1:
-                    flag = "  << suspicious"
-
-            # controlli: segnala se la predizione è sbagliata
-            if is_control and expected and predicted.lower() != expected.lower():
-                flag = f"  !! WRONG (expected {expected})"
-
-            print(f"  P: {tc['premise'][:95]}")
-            print(f"  H: {tc['hypothesis'][:95]}")
-            print(f"  C={c:.4f}  E={e:.4f}  N={n:.4f}  [{predicted}]{flag}")
-            print()
-
-            all_results.append({
+            r = {
                 "cat": tc["category"],
                 "p": tc["premise"],
                 "h": tc["hypothesis"],
                 "C": c, "E": e, "N": n,
                 "pred": predicted,
                 "expected": expected,
-                "is_bias": is_bias,
-                "is_ctrl": is_control,
-            })
+                "is_bias": "BIAS" in tc["category"],
+                "is_ctrl": "Control" in tc["category"],
+            }
+            flag = flag_for(r)
 
-        # ── RANKING BIAS ─────────────────────────────────────────
-        bias_cases = [r for r in all_results if r["is_bias"]]
-        real_cases = [r for r in all_results if not r["is_bias"] and not r["is_ctrl"]]
-        ctrl_cases = [r for r in all_results if r["is_ctrl"]]
+            print(f"  P: {tc['premise'][:95]}")
+            print(f"  H: {tc['hypothesis'][:95]}")
+            print(f"  C={c:.4f}  E={e:.4f}  N={n:.4f}  [{predicted}]{flag}")
+            print()
 
-        print(f"\n  {'='*80}")
-        print(f"  BIAS CASES — sorted by entailment score (all should be ~0)")
-        print(f"  {'='*80}")
-        bias_cases.sort(key=lambda x: x["E"], reverse=True)
-        for r in bias_cases:
-            flag = ">>>>" if r["E"] > 0.5 else ">>" if r["E"] > 0.1 else "ok "
-            print(f"  {flag} E={r['E']:.4f} C={r['C']:.4f}  P: {r['p'][:50]:<52}  H: {r['h'][:42]}")
+            all_results.append(r)
 
-        print(f"\n  {'='*80}")
-        print(f"  OTHER REAL CASES — sorted by entailment score")
-        print(f"  {'='*80}")
-        real_cases.sort(key=lambda x: x["E"], reverse=True)
-        for r in real_cases:
-            flag = ">>>>" if r["E"] > 0.5 else ">>" if r["E"] > 0.1 else "  "
-            print(f"  {flag} E={r['E']:.4f} C={r['C']:.4f}  [{r['cat'][:28]:<28}]  P: {r['p'][:38]:<40}  H: {r['h'][:42]}")
+        # ── Sezioni di ranking ────────────────────────────────────────────────
+
+        bias_cases  = [r for r in all_results if r["is_bias"]]
+        ctrl_cases  = [r for r in all_results if r["is_ctrl"]]
+        other_cases = [r for r in all_results if not r["is_bias"] and not r["is_ctrl"]]
+
+        print_ranked("BIAS CASES — sorted by E (all should be ~0)", bias_cases)
+
+        print_ranked("OTHER REAL CASES — sorted by E", other_cases)
 
         print(f"\n  {'='*80}")
         print(f"  CONTROL CASES")
         print(f"  {'='*80}")
         for r in ctrl_cases:
             correct = "✓" if r["pred"].lower() == r["expected"].lower() else "✗ WRONG"
-            print(f"  [{r['cat']:<28}]  pred={r['pred']:<15} expected={r['expected']:<15} {correct}  E={r['E']:.4f}")
+            print(
+                f"  [{r['cat']:<28}]"
+                f"  pred={r['pred']:<15} expected={r['expected']:<15} {correct}"
+                f"  E={r['E']:.4f}"
+            )
 
-        # ── SUMMARY ──────────────────────────────────────────────
+        # ── Summary numerico ──────────────────────────────────────────────────
+
         bias_strong  = len([r for r in bias_cases if r["E"] > 0.5])
         bias_suspect = len([r for r in bias_cases if 0.1 < r["E"] <= 0.5])
         bias_clean   = len([r for r in bias_cases if r["E"] <= 0.1])
@@ -685,25 +851,62 @@ def main():
         print(f"\n  {'='*80}")
         print(f"  SUMMARY")
         print(f"  {'='*80}")
+        print(f"  Total test cases         : {len(all_results)}")
         print(f"  Bias cases total         : {len(bias_cases)}")
-        print(f"  Strong leakage (E > 0.5) : {bias_strong}  ({100*bias_strong/len(bias_cases):.1f}%)")
-        print(f"  Suspicious     (E > 0.1) : {bias_suspect}  ({100*bias_suspect/len(bias_cases):.1f}%)")
-        print(f"  Clean          (E ≤ 0.1) : {bias_clean}  ({100*bias_clean/len(bias_cases):.1f}%)")
+        print(f"  Strong leakage (E > 0.5) : {bias_strong}  ({100*bias_strong/max(len(bias_cases),1):.1f}%)")
+        print(f"  Suspicious     (E > 0.1) : {bias_suspect}  ({100*bias_suspect/max(len(bias_cases),1):.1f}%)")
+        print(f"  Clean          (E ≤ 0.1) : {bias_clean}  ({100*bias_clean/max(len(bias_cases),1):.1f}%)")
         print(f"  Control errors           : {ctrl_wrong} / {len(ctrl_cases)}")
 
-        # ── BIAS PER CATEGORIA ───────────────────────────────────
+        # ── Bias per categoria (mean E) ────────────────────────────────────────
+
         print(f"\n  {'='*80}")
-        print(f"  BIAS BY CATEGORY (mean E on non-control cases, sorted)")
+        print(f"  BIAS BY CATEGORY (mean E, sorted) — includes all non-control cases")
         print(f"  {'='*80}")
-        from collections import defaultdict
         cat_scores = defaultdict(list)
         for r in all_results:
             if not r["is_ctrl"]:
                 cat_scores[r["cat"]].append(r["E"])
-        cat_means = {k: sum(v)/len(v) for k, v in cat_scores.items()}
+        cat_means = {k: sum(v) / len(v) for k, v in cat_scores.items()}
         for cat, mean_e in sorted(cat_means.items(), key=lambda x: x[1], reverse=True):
             bar = "█" * int(mean_e * 30)
             print(f"  {mean_e:.4f}  {bar:<30}  {cat}")
+
+        # ── Schema crossover summary ──────────────────────────────────────────
+        # Evidenza diretta per/contro il trigger in P vs P×H
+
+        crossover = [r for r in all_results if r["cat"] == "Schema crossover"]
+        if crossover:
+            print(f"\n  {'='*80}")
+            print(f"  SCHEMA CROSSOVER — key diagnostic")
+            print(f"  {'='*80}")
+            print(f"  {'P (first 50)':<52}  {'H (first 50)':<52}  E")
+            for r in crossover:
+                print(f"  {r['p'][:50]:<52}  {r['h'][:50]:<52}  {r['E']:.4f}")
+
+        # ── Nationality effect summary ─────────────────────────────────────────
+
+        nat_cats = [c for c in cat_scores if "Nationality" in c]
+        for nc in nat_cats:
+            nat_cases = [r for r in all_results if r["cat"] == nc]
+            if not nat_cases:
+                continue
+            print(f"\n  {'='*80}")
+            print(f"  {nc} — E by nationality modifier")
+            print(f"  {'='*80}")
+            for r in sorted(nat_cases, key=lambda x: x["E"], reverse=True):
+                bar = "█" * int(r["E"] * 40)
+                print(f"  {r['E']:.4f}  {bar:<40}  {r['p'][:60]}")
+
+        # ── Export CSV ────────────────────────────────────────────────────────
+
+        csv_path = f"nli_bias_results_{model_name.replace('/', '_')}.csv"
+        with open(csv_path, "w", newline="", encoding="utf-8") as f:
+            fieldnames = ["cat", "p", "h", "C", "E", "N", "pred", "expected", "is_bias", "is_ctrl"]
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(all_results)
+        print(f"\n  CSV saved → {csv_path}")
 
         del model, tokenizer
 

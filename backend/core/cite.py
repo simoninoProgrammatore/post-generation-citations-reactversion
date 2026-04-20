@@ -18,8 +18,9 @@ def build_citation_map(matched_claims: list[dict]) -> dict:
 
     for mc in matched_claims:
         for passage in mc["supporting_passages"]:
-            pid = passage.get("id") or passage.get("title", "")
-            if pid not in citation_map:
+            # Usa title come chiave primaria, fallback a id
+            pid = passage.get("title") or passage.get("id", "")
+            if pid and pid not in citation_map:
                 citation_map[pid] = counter
                 counter += 1
 
@@ -96,13 +97,18 @@ def insert_citations(
 
 def build_reference_list(citation_map: dict, passages: list[dict]) -> list[dict]:
     references = []
-    pid_to_passage = {p.get("id", p.get("title", "")): p for p in passages}
+    
+    # Indice multiplo: sia per id che per title
+    pid_to_passage = {}
+    for p in passages:
+        pid_to_passage[p.get("id", "")] = p
+        pid_to_passage[p.get("title", "")] = p
 
     for pid, num in sorted(citation_map.items(), key=lambda x: x[1]):
         passage = pid_to_passage.get(pid, {})
         references.append({
             "citation_number": num,
-            "title": passage.get("title", ""),
+            "title": passage.get("title") or pid or "—",  # fallback a pid
             "text": passage.get("text", ""),
         })
 

@@ -1,8 +1,9 @@
 /**
  * Pipeline.jsx — Pipeline interattivo (6 step manuali)
+ * Supporta import da ALCE, ELI5, QAMPARI (normalizzazione automatica).
  */
 
-import { useState, useRef, useMemo } from 'react'
+import { useState, useRef } from 'react'
 import api from '../api'
 import { useAppData } from '../context/AppData'
 
@@ -27,6 +28,57 @@ function metricColor(key, v) {
     return v <= 0.2 ? 'var(--green)' : v <= 0.5 ? 'var(--amber)' : 'var(--red)'
   }
   return v >= 0.7 ? 'var(--green)' : v >= 0.4 ? 'var(--amber)' : 'var(--red)'
+}
+
+/** Normalizza un dataset in formato ALCE, ELI5 o QAMPARI in un array di esempi compatibili */
+function normalizeDataset(rawData) {
+  let examples = Array.isArray(rawData) ? rawData : [rawData]
+
+  return examples.map((ex, idx) => {
+    // 1. question
+    const question = ex.question || ex.query || ex.title || ex.id || `Esempio ${idx}`
+
+    // 2. passages / docs
+    let docs = []
+    if (Array.isArray(ex.docs)) {
+      docs = ex.docs.map(d => ({
+        title: d.title || '',
+        text: d.text || d.sentence || '',
+      }))
+    } else if (Array.isArray(ex.passages)) {
+      docs = ex.passages.map(p => {
+        if (typeof p === 'string') return { title: '', text: p }
+        return {
+          title: p.title || p.heading || '',
+          text: p.text || p.content || p.sentence || '',
+        }
+      })
+    } else if (ex.context && Array.isArray(ex.context.documents)) {
+      // Formato QAMPARI-like
+      docs = ex.context.documents.map(d => ({
+        title: d.title || '',
+        text: d.text || d.content || '',
+      }))
+    }
+
+    // 3. claims pre‑esistenti (es. ELI5)
+    const claims = Array.isArray(ex.claims) ? ex.claims : null
+
+    // 4. risposta pre‑generata
+    const raw_response = ex.answer || ex.response || ex.raw_response || null
+
+    // 5. eventuali matched pre‑calcolati
+    const matched_claims = ex.matched_claims || ex.matched || null
+
+    return {
+      question,
+      docs,
+      claims,
+      raw_response,
+      matched_claims,
+      _original: ex, // conserviamo l'originale per debug
+    }
+  })
 }
 
 export default function Pipeline() {
@@ -84,13 +136,12 @@ export default function Pipeline() {
     reader.onload = evt => {
       try {
         const parsed = JSON.parse(evt.target.result)
-        if (!Array.isArray(parsed)) throw new Error('Il file deve contenere una lista di esempi.')
-        if (parsed.length === 0) throw new Error('Il file è vuoto.')
-        setDataset(parsed)
+        const normalized = normalizeDataset(parsed)
+        if (normalized.length === 0) throw new Error('Il file non contiene esempi validi.')
+        setDataset(normalized)
         setDatasetName(file.name)
         setExampleIdx(0)
-        setResponse(null); setClaims(null); setMatched(null)
-        setCited(null); setReferences(null); setMetrics(null)
+        resetAfter('generate')
         setError(null)
       } catch (err) {
         setError(`Errore lettura file: ${err.message}`)
@@ -238,15 +289,15 @@ export default function Pipeline() {
         {!dataset ? (
           <div>
             <div className="form-group">
-              <label className="form-label">Carica dataset ALCE (.json)</label>
-              <input ref={fileRef} type="file" accept=".json" onChange={onFileUpload} style={{ display: 'none' }} />
+              <label className="form-label">Carica dataset (ALCE / ELI5 / QAMPARI)</label>
+              <input ref={fileRef} type="file" accept=".json,.jsonl" onChange={onFileUpload} style={{ display: 'none' }} />
               <button className="btn btn-primary" onClick={() => fileRef.current.click()}>
                 <Icon name="upload" size={14} strokeWidth={1.75} color="white" />
                 Seleziona file JSON
               </button>
             </div>
             <div style={{ fontSize: 12, color: 'var(--text-3)' }}>
-              Il file deve essere un array di esempi ALCE, ciascuno con i campi <code>question</code> e <code>docs</code>.
+              Supporta i formati ALCE (question + docs), ELI5 (question + claims + answer), QAMPARI (question + context.documents).
             </div>
           </div>
         ) : (
@@ -363,6 +414,9 @@ export default function Pipeline() {
     </div>
   )
 }
+
+// ── MatchedView, DebugView, CitedView (invariate rispetto alla versione precedente) ───
+// ... incolla qui il resto del codice invariato (MatchedView, DebugView, CitedView) ...
 
 // ── MatchedView ───────────────────────────────────────────────────────────
 
