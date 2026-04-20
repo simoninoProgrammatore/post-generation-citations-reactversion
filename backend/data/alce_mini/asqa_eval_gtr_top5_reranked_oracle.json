@@ -1,0 +1,759 @@
+[
+  {
+    "qa_pairs": [
+      {
+        "context": "No context provided",
+        "question": "Who has the highest goals in men's world international football?",
+        "short_answers": [
+          "Daei",
+          "Ali Daei"
+        ],
+        "wikipage": null
+      },
+      {
+        "context": "No context provided",
+        "question": "Who has the highest goals all-time in men's football?",
+        "short_answers": [
+          "Bican",
+          "Josef Bican"
+        ],
+        "wikipage": null
+      },
+      {
+        "context": "The first player to reach 100 international goals was Italian Elisabetta Vignotto. Abby Wambach scored 100 goals in 9 years, while Christine Sinclair reached the milestone in just under 10 years while Mia Hamm is the youngest player to score 100 international goals at the age of 26 years 185 days. Most played exclusively in the forward position, with Kristine Lilly and Michelle Akers having also played as midfielder. All players scored at a high average rate of more than one goal every three matches. International goals in this list should not include goals scored in penalty-shoot-out; see Penalty shootout (association football). Players who are currently active at international level are indicated in bold type background.",
+        "question": "Who has the highest goals in women's world international football?",
+        "short_answers": [
+          "Sinclair",
+          "Christine Sinclair"
+        ],
+        "wikipage": "List of women's footballers with 100 or more international goals ..."
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "International Federation of Football History & Statistics",
+        "url": "https://en.wikipedia.org/wiki/International%20Federation%20of%20Football%20History%20%26%20Statistics"
+      },
+      {
+        "title": "List of FIFA World Cup records and statistics",
+        "url": "https://en.wikipedia.org/wiki/List%20of%20FIFA%20World%20Cup%20records%20and%20statistics"
+      },
+      {
+        "title": "List of footballers with more than 50 international goals",
+        "url": "https://en.wikipedia.org/wiki/List%20of%20footballers%20with%20more%20than%2050%20international%20goals"
+      },
+      {
+        "title": "List of women's footballers with 100 or more international goals ...",
+        "url": "https://en.wikipedia.org/wiki/List%20of%20women%27s%20footballers%20with%20100%20or%20more%20international%20goals"
+      },
+      {
+        "title": "List of footballers with 500 or more goals",
+        "url": "https://en.wikipedia.org/wiki/List%20of%20footballers%20with%20500%20or%20more%20goals"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [],
+        "long_answer": "Ali Dael has the highest goals in men's world international football with 109 goals. Josef Bican has the highest goals all-time in men's football and Christine Sinclair has the highest goals in women's world international football."
+      },
+      {
+        "knowledge": [
+          {
+            "content": "Sinclair is the world's all-time leader for international goals scored for men or women with 187 goals, and is one of the most-capped active international footballer with 300 caps.",
+            "wikipage": "Christine Sinclair"
+          },
+          {
+            "content": "Along with Cristiano Ronaldo, he is the world's joint all-time leading goalscorer in the history of men's international football with 109 goals scored for Iran.",
+            "wikipage": "Ali Daei"
+          },
+          {
+            "content": "Ronaldo holds the records for most goals (134) and assists (42) in the Champions League, most goals in the European Championship (14), and is currently tied with Ali Daei for most international goals (109).",
+            "wikipage": "Cristiano Ronaldo"
+          },
+          {
+            "content": "FIFA, the international governing body of football, have never released a list detailing the highest goalscorers and do not keep official records;[6][7] in 2020, they recognised Bican, an Austrian-Czech dual international who played between the 1930s and the 1950s,[8] as the record scorer with an estimated 805 goals,[9][10] while CNN, the BBC, France 24, and O Jogo all acknowledge that Bican's tally of 805 includes goals scored for reserve teams and in unofficial international matches.",
+            "wikipage": "List of footballers with 500 or more goals"
+          }
+        ],
+        "long_answer": "The players with the highest all-time goals and highest men's and women's international football goals differ. The player with the highest all-time men's football goals is Josef Bican, who in 2020 was recognized by FIFA, the international governing body of football, as the record scorer with an estimated 805 goals. Christine Sinclair has the highest goals in women's international football with 187 and is the all-time leader for international goals scored for men or women. Cristiano Ronaldo and Ali Daei are currently tied for leading goalscorer in the history of men's international football with 109."
+      }
+    ],
+    "sample_id": "-7013890438520559398",
+    "question": "Who has the highest goals in world football?",
+    "docs": [
+      {
+        "id": "6669150",
+        "title": "Argentina–Brazil football rivalry",
+        "text": "\"Football Player of the Century\", by IFFHS International Federation of Football History and Statistics, 1999, \"South America Football Player of the Century\", by IFFHS International Federation of Football History and Statistics. Pelé's 1281 goals are recognized by FIFA as the highest total achieved by a professional footballer, although the Soccer Statistic Foundation (rssf) recognizes only 767 goals in official mode, occupying the third place after Josef Bican (805) and Romario (772). For his part, Maradona has been named the best soccer player in World Cup history both by The Times and FourFourTwo, publication that also rewarded him as the \"Best",
+        "score": 0.73388671875,
+        "summary": "Pelé holds the record for the highest total goals achieved by a professional footballer with 1281 goals, recognized by FIFA. However, the Soccer Statistic Foundation recognizes only 767 goals in official mode, with Josef Bican and Romario having higher counts. Maradona has been named the best soccer player in World Cup history.",
+        "extraction": "Pelé's 1281 goals are recognized by FIFA as the highest total achieved by a professional footballer.",
+        "answers_found": [
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "3986261",
+        "title": "Josef Bican",
+        "text": "for Christmas, but died less than 2 weeks before that, at the age of 88. Josef Bican Josef \"Pepi\" Bican (25 September 1913 – 12 December 2001) was a Czech-Austrian professional footballer who played as a striker. Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time. Having scored a record 600 league goals and at least 1468 goals overall, the International Federation of Football History & Statistics (IFFHS) awarded Bican the \"Golden Ball\" as the greatest goalscorer of the last century. He",
+        "score": 0.703125,
+        "summary": "Josef Bican is estimated to have scored at least 805 goals in all competitive matches, making him the most prolific scorer of all time according to the Rec.Sport.Soccer Statistics Foundation (RSSSF). He also holds the record for scoring 600 league goals and at least 1468 goals overall, and was awarded the \"Golden Ball\" by the International Federation of Football History & Statistics (IFFHS) as the greatest goalscorer of the last century.",
+        "extraction": "Josef Bican would be the answer to the question \"Who has the highest goals in world football?\" as the passage states that he is estimated to have scored at least 805 goals in all competitive matches, making him the most prolific scorer of all time.",
+        "answers_found": [
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "3986251",
+        "title": "Josef Bican",
+        "text": "Josef Bican Josef \"Pepi\" Bican (25 September 1913 – 12 December 2001) was a Czech-Austrian professional footballer who played as a striker. Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time. Having scored a record 600 league goals and at least 1468 goals overall, the International Federation of Football History & Statistics (IFFHS) awarded Bican the \"Golden Ball\" as the greatest goalscorer of the last century. He was a member of the Austrian \"Wunderteam\" of the 1930s and was the season's highest",
+        "score": 0.70166015625,
+        "summary": "Josef Bican is estimated to have scored at least 805 goals in all competitive matches, making him the most prolific scorer of all time, according to the Rec.Sport.Soccer Statistics Foundation.",
+        "extraction": "Josef Bican has the highest goals in world football, having scored at least 805 goals in all competitive matches, according to the Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates.",
+        "answers_found": [
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "9416170",
+        "title": "Godfrey Chitalu",
+        "text": "have beaten Gerd Müller's record of 85 goals in a year, the Football Association of Zambia claimed that the world record actually pertained to Godfrey Chitalu who had scored 116 goals (possibly 117) during the 1972 calendar year and 107 during the 1972 season. The difference of goals is due to first 9 goals being scored before the season officially started. The Football Association of Zambia presented the evidence to FIFA but a spokesperson responded that they would ratify neither Lionel Messi's nor Chitalu's records as they do not keep statistical track of domestic competitions. Nonetheless, it could constitute the",
+        "score": 0.7080078125,
+        "summary": "Godfrey Chitalu had scored 116 goals (possibly 117) during the 1972 calendar year and 107 during the 1972 season, surpassing Gerd Müller's record of 85 goals. However, FIFA did not officially ratify either Chitalu's or Lionel Messi's records as they do not keep statistical track of domestic competitions.",
+        "extraction": "Godfrey Chitalu has the highest goals in world football with 116 goals (possibly 117) during the 1972 calendar year and 107 during the 1972 season, according to the Football Association of Zambia.",
+        "answers_found": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "9416171",
+        "title": "Godfrey Chitalu",
+        "text": "highest official tally claimed by a national football association. Chitalu made his international debut on 29 June 1968 in a friendly match against Uganda in Lusaka which Zambia won 2–1. He scored his first goal in a 2–2 draw against the same team five days later. Chitalu played a prominent role during the World Cup qualification matches against Sudan with Zambia being eliminated on a strange rule which was peculiar to Africa and favoured the team that won the second leg. Despite the aggregate score being tied at 6–6 after Zambia won the first leg 4–2 and lost the return",
+        "score": 0.70556640625,
+        "summary": "Irrelevant.",
+        "extraction": "irrelevant.",
+        "answers_found": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "answer": "The players with the highest all-time goals and highest men's and women's international football goals differ. The player with the highest all-time men's football goals is Josef Bican, who in 2020 was recognized by FIFA, the international governing body of football, as the record scorer with an estimated 805 goals. Christine Sinclair has the highest goals in women's international football with 187 and is the all-time leader for international goals scored for men or women. Cristiano Ronaldo and Ali Daei are currently tied for leading goalscorer in the history of men's international football with 109."
+  },
+  {
+    "qa_pairs": [
+      {
+        "context": "Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which originally was released as \"The Sounds of Silence\". The song had earlier been released in an acoustic version on the album \"Wednesday Morning, 3 A.M.\", and later on the soundtrack to the movie \"The Graduate\". Without the knowledge of Paul Simon or Art Garfunkel, electric guitars, bass and drums were overdubbed by Columbia Records staff producer Tom Wilson on June 15, 1965. This new version was released as a single in September 1965, and opens the album.",
+        "question": "Who is the original artist of sound of silence, the song, released in 1964?",
+        "short_answers": [
+          "Simon & Garfunkel",
+          "Paul Simon and Art Garfunkel",
+          "Art Garfunkel",
+          "Paul Simon"
+        ],
+        "wikipage": "Sounds of Silence"
+      },
+      {
+        "context": "Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which originally was released as \"The Sounds of Silence\". The song had earlier been released in an acoustic version on the album \"Wednesday Morning, 3 A.M.\", and later on the soundtrack to the movie \"The Graduate\". Without the knowledge of Paul Simon or Art Garfunkel, electric guitars, bass and drums were overdubbed by Columbia Records staff producer Tom Wilson on June 15, 1965. This new version was released as a single in September 1965, and opens the album.",
+        "question": "Who is the original artist of sound of silence, the album?",
+        "short_answers": [
+          "Simon & Garfunkel",
+          "Paul Simon and Art Garfunkel",
+          "Art Garfunkel",
+          "Paul Simon"
+        ],
+        "wikipage": "Sounds of Silence"
+      },
+      {
+        "context": "\"Sound of Silence\" is a song performed by Australian recording artist Dami Im. Written by Anthony Egizii and David Musumeci of DNA Songs, it is best known as Australia's entry at the Eurovision Song Contest 2016 which was held in Stockholm, Sweden, where it finished 2nd, receiving a total of 511 points. The song also won the Marcel Bezençon Award in the composer category. The song was leaked on 10 March 2016, one day before its initial release date. It is Dami Im's fourth Australian top 20 hit and worldwide, it reached the top 40 in more than six countries after the Eurovision Song Contest 2016 Final.",
+        "question": "Who is the original artist of sound of silence, the song, released in 2016?",
+        "short_answers": [
+          "Dami Im"
+        ],
+        "wikipage": "Sound of Silence (Dami Im song)"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "The Sound of Silence",
+        "url": "https://en.wikipedia.org/wiki/The%20Sound%20of%20Silence"
+      },
+      {
+        "title": "Sounds of Silence",
+        "url": "https://en.wikipedia.org/wiki/Sounds%20of%20Silence"
+      },
+      {
+        "title": "Sound of Silence (Dami Im song)",
+        "url": "https://en.wikipedia.org/wiki/Sound%20of%20Silence%20%28Dami%20Im%20song%29"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Wednesday Morning, 3 A.M. was re-released in January 1966 (to capitalize on their newly found radio success because of the overdubbing of the song \"The Sound of Silence\" in June 1965, adding electric guitars, bass guitar and a drum kit), and reached No. 30 on the Billboard 200...The album was produced by Tom Wilson and engineered by Roy Halee between March 10–31, 1964.",
+            "wikipage": "Wednesday Morning, 3 A.M."
+          }
+        ],
+        "long_answer": " The original artist of the song sound of silence released in 1966 is Paul Simon and Art Garfunkel. The song had earlier been released in an acoustic version on the album \"Wednesday Morning, 3 A.M.\" which had been produced in 1964. In 2016, Australian recording artist Dami Im recorded a different song by the same name."
+      },
+      {
+        "knowledge": [
+          {
+            "content": "A studio audition led to the duo signing a record deal with Columbia Records, and the original acoustic version of the song was recorded in March 1964 at Columbia Studios in New York City and included on their debut album, Wednesday Morning, 3 A.M.. Released on October 19, 1964,[2] the album was a commercial failure and led to the duo disbanding; Simon returned to England, and Art Garfunkel to his studies at Columbia University.",
+            "wikipage": "The Sound of Silence"
+          }
+        ],
+        "long_answer": "There are several songs with the title \"Sound of Silence\". Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which was recorded in March 1964 and originally was released as \"The Sounds of Silence\". Another \"Sound of Silence\" is a song performed by Australian recording artist Dami Im, and is best known as Australia's entry at the Eurovision Song Contest 2016."
+      }
+    ],
+    "sample_id": "7089015503030534342",
+    "question": "Who is the original artist of sound of silence?",
+    "docs": [
+      {
+        "id": "2627084",
+        "title": "The Sound of Silence",
+        "text": "The Sound of Silence \"The Sound of Silence\", originally \"The Sounds of Silence\", is a song by the American music duo Simon & Garfunkel. The song was written by Paul Simon over a period of several months in 1963 and 1964. A studio audition led to the duo signing a record deal with Columbia Records, and the song was recorded in March 1964 at Columbia Studios in New York City for inclusion on their debut album, \"Wednesday Morning, 3 A.M.\". Released in October 1964, the album was a commercial failure and led to the duo breaking apart, with Paul Simon",
+        "score": 0.80078125,
+        "summary": "The original artist of \"The Sound of Silence\" is Simon & Garfunkel.",
+        "extraction": "\"The Sound of Silence\" is a song by the American music duo Simon & Garfunkel. The song was written by Paul Simon.",
+        "answers_found": [
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "10996254",
+        "title": "Sounds of Silence",
+        "text": "Sounds of Silence Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which originally was released as \"The Sounds of Silence\". The song had earlier been released in an acoustic version on the album \"Wednesday Morning, 3 A.M.\", and later on the soundtrack to the movie \"The Graduate\". Without the knowledge of Paul Simon or Art Garfunkel, electric guitars, bass and drums were overdubbed by Columbia Records staff producer Tom Wilson on",
+        "score": 0.78955078125,
+        "summary": "The document mentions that \"The Sound of Silence\" is a song by Simon & Garfunkel and was released in an acoustic version on the album \"Wednesday Morning, 3 A.M.\" before being overdubbed with electric guitars, bass, and drums. However, it does not state the original artist of the song.",
+        "extraction": "\"The original artist of Sound of Silence is Simon & Garfunkel.\"",
+        "answers_found": [
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "2627106",
+        "title": "The Sound of Silence",
+        "text": "downloadable content for the video game, \"Rock Band 4\". The Disturbed version was used in the episode \"Ian Garvey\" of \"The Blacklist\" in November 2017. Notes Bibliography The Sound of Silence \"The Sound of Silence\", originally \"The Sounds of Silence\", is a song by the American music duo Simon & Garfunkel. The song was written by Paul Simon over a period of several months in 1963 and 1964. A studio audition led to the duo signing a record deal with Columbia Records, and the song was recorded in March 1964 at Columbia Studios in New York City for inclusion on",
+        "score": 0.78466796875,
+        "summary": "\"The Sound of Silence\" is a song originally written by Paul Simon of the American music duo Simon & Garfunkel.",
+        "extraction": "\"The Sound of Silence\", originally \"The Sounds of Silence\", is a song by the American music duo Simon & Garfunkel.",
+        "answers_found": [
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "18865105",
+        "title": "Immortalized (Disturbed album)",
+        "text": "1964 song \"The Sound of Silence\" by Simon & Garfunkel, which marked Disturbed's highest ranked single on the \"Billboard\" Hot 100 at number 42 and has since become Disturbed's biggest song since \"Down with the Sickness\". In 2011, following the tour of their fifth studio album, \"Asylum\", Disturbed announced that they would go on a hiatus. During the hiatus, the band released a compilation album of previously recorded B-sides, \"The Lost Children\" (2011), and a box set of their five studio albums, \"The Collection\" (2012). In January 2014, band members David Draiman (vocals), Dan Donegan (guitar), Mike Wengren (drums) met",
+        "score": 0.7763671875,
+        "summary": "The document mentions the 1964 song \"The Sound of Silence\" by Simon & Garfunkel, but it is not clear who the original artist is.",
+        "extraction": "Simon & Garfunkel is the original artist of the song \"The Sound of Silence\".",
+        "answers_found": [
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "19380355",
+        "title": "Sound of Silence (Dami Im song)",
+        "text": "Sound of Silence (Dami Im song) \"Sound of Silence\" is a song performed by Australian recording artist Dami Im. Written by Anthony Egizii and David Musumeci of DNA Songs, it is best known as Australia's entry at the Eurovision Song Contest 2016 which was held in Stockholm, Sweden, where it finished 2nd, receiving a total of 511 points. The song also won the Marcel Bezençon Award in the composer category. The song was leaked on 10 March 2016, one day before its initial release date. It is Dami Im's fourth Australian top 20 hit and worldwide, it reached the top",
+        "score": 0.75537109375,
+        "summary": "Irrelevant.",
+        "extraction": "irrelevant",
+        "answers_found": [
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "answer": "There are several songs with the title \"Sound of Silence\". Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which was recorded in March 1964 and originally was released as \"The Sounds of Silence\". Another \"Sound of Silence\" is a song performed by Australian recording artist Dami Im, and is best known as Australia's entry at the Eurovision Song Contest 2016."
+  },
+  {
+    "qa_pairs": [
+      {
+        "context": "On January 9, 2007, Steve Jobs announced the first iPhone at the Macworld convention, receiving substantial media attention. Jobs announced that the first iPhone would be released later that year. On June 29, 2007, the first iPhone was released.",
+        "question": "When was the first apple i phone released?",
+        "short_answers": [
+          "June 29, 2007"
+        ],
+        "wikipage": "History of iPhone"
+      },
+      {
+        "context": "The history of the iPhone began with a request from Apple Inc. CEO Steve Jobs to the company's engineers, asking them to investigate the use of touchscreen devices and tablet computers (which later came to fruition with the iPad). Many have noted the device's similarities to Apple's previous touch-screen portable device, the Newton MessagePad. Like the MessagePad, the iPhone is nearly all screen. Its form factor is credited to Apple's Chief Design Officer, Jonathan Ive. The iPhone beta was created in 2004 to test the commands of the Apple team, and while technically may have first iPhone ever created, it was never released to the public, so this beta was not considered the true first iPhone. After some trial and error, the first iPhone was officially launched and made accessible to the public in 2007, and this iPhone and was advertised noticeably at the Macworld of that same year. In this first release, the iPhone was accessible in the US, UK, Canada, Germany, Norway, Sweden, Finland, France, Spain, Italy and South Africa.",
+        "question": "When was the first apple i phone for beta testing made?",
+        "short_answers": [
+          "2004"
+        ],
+        "wikipage": "History of iPhone"
+      },
+      {
+        "context": "On January 9, 2007, Steve Jobs announced the first iPhone at the Macworld convention, receiving substantial media attention. Jobs announced that the first iPhone would be released later that year. On June 29, 2007, the first iPhone was released.",
+        "question": "When was the first apple i phone 1 made?",
+        "short_answers": [
+          "June 29, 2007."
+        ],
+        "wikipage": "History of iPhone"
+      },
+      {
+        "context": "The history of the iPhone began with a request from Apple Inc. CEO Steve Jobs to the company's engineers, asking them to investigate the use of touchscreen devices and tablet computers (which later came to fruition with the iPad). Many have noted the device's similarities to Apple's previous touch-screen portable device, the Newton MessagePad. Like the MessagePad, the iPhone is nearly all screen. Its form factor is credited to Apple's Chief Design Officer, Jonathan Ive. The iPhone beta was created in 2004 to test the commands of the Apple team, and while technically may have first iPhone ever created, it was never released to the public, so this beta was not considered the true first iPhone. After some trial and error, the first iPhone was officially launched and made accessible to the public in 2007, and this iPhone and was advertised noticeably at the Macworld of that same year. In this first release, the iPhone was accessible in the US, UK, Canada, Germany, Norway, Sweden, Finland, France, Spain, Italy and South Africa.",
+        "question": "When was the first apple i phone beta made?",
+        "short_answers": [
+          "2004."
+        ],
+        "wikipage": "History of iPhone"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "iPhone (1st generation)",
+        "url": "https://en.wikipedia.org/wiki/iPhone%20%281st%20generation%29"
+      },
+      {
+        "title": "History of iPhone",
+        "url": "https://en.wikipedia.org/wiki/History%20of%20iPhone"
+      },
+      {
+        "title": "iPhone",
+        "url": "https://en.wikipedia.org/wiki/iPhone"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The iPhone was released in the United States on June 29, 2007 at the price of $499 for the 4 GB model and $599 for the 8 GB model, both requiring a 2-year contract.[12] ",
+            "wikipage": "IPhone (1st generation)"
+          }
+        ],
+        "long_answer": "The iPhone beta was created in 2004 to test the commands of the Apple team, and while technically may have been the first iPhone ever created, it was never released to the public, so this beta was not considered the true first iPhone. After some trial and error, the first iPhone was officially launched and made accessible to the public on June 29, 2007."
+      },
+      {
+        "knowledge": [
+          {
+            "content": "The iPhone beta was created in 2004 to test the device and its functions.",
+            "wikipage": "History of the iPhone Beta to production"
+          }
+        ],
+        "long_answer": "There were several Apple iPhones, including the Apple iPhone beta and the Apple iPhone. The first Apple iPhone for beta testing, the Apple iPhone beta, was made in 2004. The iPhone beta was made to test the device and its functions but was never released to the public. The first Apple iPhone 1 was made and the first Apple iPhone was released on June 29, 2007."
+      }
+    ],
+    "sample_id": "8793099883447006698",
+    "question": "When was the first apple i phone made?",
+    "docs": [
+      {
+        "id": "14664751",
+        "title": "IPhone (1st generation)",
+        "text": "IPhone (1st generation) The iPhone (colloquially known as the iPhone 2G after 2008) is the first smartphone model designed and marketed by Apple Inc. After years of rumors and speculation, it was officially announced on January 9, 2007, and was later released in the United States on June 29, 2007. It featured quad-band GSM cellular connectivity with GPRS and EDGE support for data transfer. Development of the iPhone dated back to 2005, when former Apple CEO Steve Jobs conceptualized the idea of a device that users could directly interface with the display. The design was expanded upon over the next",
+        "score": 0.7919921875,
+        "summary": "The first Apple iPhone was officially announced on January 9, 2007, and released in the United States on June 29, 2007.",
+        "extraction": "The iPhone (1st generation) was officially announced on January 9, 2007, and was later released in the United States on June 29, 2007. Therefore, the answer to the question \"When was the first Apple iPhone made?\" is June 29, 2007.",
+        "answers_found": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "11014067",
+        "title": "History of iPhone",
+        "text": "mobile phone to use iTunes. Jobs was unhappy with the ROKR, feeling that having to compromise with a non-Apple designer (Motorola) prevented Apple from designing the phone they wanted to make. In September 2006, Apple discontinued support for the ROKR, and released a version of iTunes that included references to an as-yet unknown mobile phone that could display pictures and video. On January 9, 2007, Steve Jobs announced iPhone at the Macworld convention, receiving substantial media attention. Jobs announced that the first iPhone would be released later that year. On June 29, 2007, the first iPhone was released. On June",
+        "score": 0.791015625,
+        "summary": "The first iPhone was released on June 29, 2007.",
+        "extraction": "The first iPhone was released on June 29, 2007.",
+        "answers_found": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "5946051",
+        "title": "History of Apple Inc.",
+        "text": "just a computer company anymore. At the same address, Jobs revealed a product that would revolutionize an industry in which Apple had never previously competed: the Apple iPhone. The iPhone combined Apple's first widescreen iPod with the world's first mobile device boasting visual voicemail, and an internet communicator able to run a fully functional version of Apple's web browser, Safari, on the then-named (later renamed iOS). The first version of the iPhone became publicly available on June 29, 2007 in selected countries/markets. It was another 12 months before the iPhone 3G became available on July 11, 2008. Apple announced the",
+        "score": 0.7666015625,
+        "summary": "The first Apple iPhone was publicly available on June 29, 2007.",
+        "extraction": "The first version of the iPhone became publicly available on June 29, 2007.",
+        "answers_found": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "9485436",
+        "title": "IPhone",
+        "text": "IPhone iPhone ( ) is a line of smartphones designed and marketed by Apple Inc. All generations of the iPhone use Apple's iOS mobile operating system software. The first-generation iPhone was released on June 29, 2007, and multiple new hardware iterations with new iOS releases have been released since. The user interface is built around the device's multi-touch screen, including a virtual keyboard. The iPhone has Wi-Fi and can connect to cellular networks. An iPhone can shoot video (though this was not a standard feature until the iPhone 3GS), take photos, play music, send and receive email, browse the web,",
+        "score": 0.75537109375,
+        "summary": "The first-generation iPhone was released on June 29, 2007.",
+        "extraction": "The first-generation iPhone was released on June 29, 2007.",
+        "answers_found": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "9485441",
+        "title": "IPhone",
+        "text": "of the iPhone have also garnered praise. The iPhone is one of the most widely used smartphones in the world, and its success has been credited with helping Apple become one of the world's most valuable publicly traded companies. Development of what was to become the iPhone began in 2004, when Apple started to gather a team of 1,000 employees (including Jonathan Ive, the designer behind the iMac and iPod) to work on the highly confidential \"Project Purple.\" Apple CEO Steve Jobs steered the original focus away from a tablet (which Apple eventually revisited in the form of the iPad)",
+        "score": 0.72802734375,
+        "answers_found": [
+          0,
+          1,
+          0,
+          1
+        ]
+      }
+    ],
+    "answer": "There were several Apple iPhones, including the Apple iPhone beta and the Apple iPhone. The first Apple iPhone for beta testing, the Apple iPhone beta, was made in 2004. The iPhone beta was made to test the device and its functions but was never released to the public. The first Apple iPhone 1 was made and the first Apple iPhone was released on June 29, 2007."
+  },
+  {
+    "qa_pairs": [
+      {
+        "context": "Richard Fish appeared as Bill briefly in the film adaptation of \"Harry Potter and the Prisoner of Azkaban\". Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), plays Bill Weasley in \"Harry Potter and the Deathly Hallows\" and the roller coaster ride \"Harry Potter and the Escape from Gringotts\" at The Wizarding World of Harry Potter – Diagon Alley in Universal Studios Florida.",
+        "question": "Who played  Bill weasley in Harry Potter and the Prisoner of Azkaban?",
+        "short_answers": [
+          "Richard Fish"
+        ],
+        "wikipage": "Order of the Phoenix (fictional organisation)"
+      },
+      {
+        "context": "No context provided",
+        "question": "Who played percy weasley in harry potter?",
+        "short_answers": [
+          "Chris Rankin"
+        ],
+        "wikipage": null
+      },
+      {
+        "context": "No context provided",
+        "question": "Who played fred weasley in harry potter?",
+        "short_answers": [
+          "James Phelps"
+        ],
+        "wikipage": null
+      },
+      {
+        "context": "Dozens of actors of the United Kingdom and Ireland voiced or portrayed characters appearing in the \"Harry Potter\" film series based on the book series by J. K. Rowling. In all the films, Daniel Radcliffe played Harry Potter, Rupert Grint played Ron Weasley and Emma Watson played Hermione Granger. When they were cast only Radcliffe had previously acted in a film. Complementing them on screen are such actors as Helena Bonham Carter, Jim Broadbent, John Cleese, Robbie Coltrane, Warwick Davis, Ralph Fiennes, Michael Gambon, Brendan Gleeson, Richard Griffiths, Richard Harris, John Hurt, Jason Isaacs, Miriam Margolyes, Helen McCrory, Gary Oldman, Alan Rickman, Fiona Shaw, Maggie Smith, Timothy Spall, Imelda Staunton, David Thewlis, Emma Thompson, and Julie Walters, among others. Thirteen actors have appeared as the same character in all eight films of the series.",
+        "question": "Who played ron weasley in harry potter?",
+        "short_answers": [
+          "Rupert Grint"
+        ],
+        "wikipage": "List of Harry Potter cast members"
+      },
+      {
+        "context": "No context provided",
+        "question": "Who played george weasley in harry potter?",
+        "short_answers": [
+          "Oliver Phelps"
+        ],
+        "wikipage": null
+      },
+      {
+        "context": "Richard Fish appeared as Bill briefly in the film adaptation of \"Harry Potter and the Prisoner of Azkaban\". Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), plays Bill Weasley in \"Harry Potter and the Deathly Hallows\" and the roller coaster ride \"Harry Potter and the Escape from Gringotts\" at The Wizarding World of Harry Potter – Diagon Alley in Universal Studios Florida.",
+        "question": "Who played  Bill weasley in harry potter (2001-2011)?",
+        "short_answers": [
+          "Domhnall Gleeson"
+        ],
+        "wikipage": "Order of the Phoenix (fictional organisation)"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "List of Harry Potter characters",
+        "url": "https://en.wikipedia.org/wiki/List%20of%20Harry%20Potter%20characters"
+      },
+      {
+        "title": "List of supporting Harry Potter characters",
+        "url": "https://en.wikipedia.org/wiki/List%20of%20supporting%20Harry%20Potter%20characters"
+      },
+      {
+        "title": "List of Harry Potter cast members",
+        "url": "https://en.wikipedia.org/wiki/List%20of%20Harry%20Potter%20cast%20members"
+      },
+      {
+        "title": "Order of the Phoenix (fictional organisation)",
+        "url": "https://en.wikipedia.org/wiki/Order%20of%20the%20Phoenix%20%28fictional%20organisation%29"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Dozens of actors of the United Kingdom and Ireland voiced or portrayed characters appearing in the \"Harry Potter\" film series based on the book series by J. K. Rowling. In all the films, Daniel Radcliffe played Harry Potter, Rupert Grint played Ron Weasley and Emma Watson played Hermione Granger. ",
+            "wikipage": "List of Harry Potter cast members"
+          },
+          {
+            "content": "James Andrew Eric Phelps and Oliver Martyn John Phelps (born 25 February 1986) are English actors. They are known for playing Fred and George Weasley in the Harry Potter film series from 2001 to 2011 and have continued to work together as a duo on other projects.",
+            "wikipage": "James and Oliver Phelps"
+          },
+          {
+            "content": "Christopher William Rankin (born 8 November 1983) is a New Zealand-born British actor who is best known for playing Percy Weasley in the Harry Potter film franchise.",
+            "wikipage": "Chris Rankin"
+          }
+        ],
+        "long_answer": "Rupert Grint played Ron Weasley in all the Harry Potter films.  Richard Fish appeared as Bill Weasley briefly in the film adaptation of \"Harry Potter and the Prisoner of Azkaban\". Domhnall Gleeson plays Bill Weasley in \"Harry Potter and the Deathly Hallows\" and the roller coaster ride \"Harry Potter and the Escape from Gringotts\" at The Wizarding World of Harry Potter – Diagon Alley in Universal Studios Florida. James Phelps and Oliver Phelps played Fred and George Weasley in the Harry Potter film series from 2001 to 2011. Chris Rankin plays Percy Weasley in the Harry Potter film franchise. "
+      },
+      {
+        "knowledge": [
+          {
+            "content": "Arthur Weasley is the patriarch of the Weasleys, a family of wizards who are considered \"blood traitors\" by Death Eaters for their interest in the Muggle world. He is married to Molly Weasley, with whom he has seven children, including Ron, Harry's best friend.",
+            "wikipage": "Order of the Phoenix (fictional organisation) Arthur Weasley"
+          },
+          {
+            "content": "The brothers were played by identical twins James and Oliver Phelps.[1]",
+            "wikipage": "Fred and George Weasley"
+          }
+        ],
+        "long_answer": "The Weasely family is a family of wizards including Molly and Arthur Weasely as well as their seven children. Richard Fish appeared as Bill briefly in the film adaptation of Harry Potter and the Prisoner of Azkaban. Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), played Bill Weasley in Harry Potter and the Deathly Hallows. Chris Rankin played Percy Weasely and Fred and George Weasely were played by identical twins James Phelps and Oliver Phelps. Rupert Grint played Ron Weasely."
+      }
+    ],
+    "sample_id": "-881464876144297194",
+    "question": "Who played the weasley brothers in harry potter?",
+    "docs": [
+      {
+        "id": "1884113",
+        "title": "Order of the Phoenix (fictional organisation)",
+        "text": "battle. Bill and Fleur later have three children: Victoire, Dominique and Louis. Richard Fish appeared as Bill briefly in the film adaptation of \"Harry Potter and the Prisoner of Azkaban\". Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), plays Bill Weasley in \"Harry Potter and the Deathly Hallows\" and the roller coaster ride \"Harry Potter and the Escape from Gringotts\" at The Wizarding World of Harry Potter – Diagon Alley in Universal Studios Florida. Charlie Weasley is the second son of Arthur and Molly Weasley and is described as having a build like that of",
+        "score": 0.6708984375,
+        "summary": "Domhnall Gleeson played Bill Weasley in \"Harry Potter and the Deathly Hallows\" and \"Harry Potter and the Escape from Gringotts\".",
+        "extraction": "Irrelevant.",
+        "answers_found": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "5621126",
+        "title": "James and Oliver Phelps",
+        "text": "James and Oliver Phelps James Andrew Eric and Oliver Martyn John Phelps (born 25 February 1986) are identical twin British actors, best known for playing Fred and George Weasley in the \"Harry Potter\" film series. James and Oliver were born in the Sutton Coldfield area of Birmingham, England on 25 February 1986. They are the only sons of Susan (née Spare) and Martyn Phelps. James is the younger of the two by 13 minutes. Growing up, they attended Little Sutton Primary School and the Arthur Terry Secondary School. As they spent an extensive amount of time shooting for Harry Potter,",
+        "score": 0.75244140625,
+        "summary": "James and Oliver Phelps played Fred and George Weasley in the \"Harry Potter\" film series.",
+        "extraction": "James and Oliver Phelps played the Weasley brothers in the \"Harry Potter\" film series.",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "5621133",
+        "title": "James and Oliver Phelps",
+        "text": "took part in a skydive for Cancer Research UK in Australia in memory of Harry Moseley, an 11-year-old boy who died on 8 October 2011 after a four-year battle with brain cancer. By December 2011, the amount pledged for their jump stood at £2,525. On 7 September 2013, the brothers went on Pointless Celebrities to win money for the charity in memory of Harry Moseley, and won £2,500. James and Oliver Phelps James Andrew Eric and Oliver Martyn John Phelps (born 25 February 1986) are identical twin British actors, best known for playing Fred and George Weasley in the \"Harry",
+        "score": 0.73828125,
+        "summary": "James and Oliver Phelps played the Weasley brothers in Harry Potter.",
+        "extraction": "James Andrew Eric and Oliver Martyn John Phelps played the Weasley brothers in \"Harry Potter\".",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "3604615",
+        "title": "Harry Potter fandom",
+        "text": "the books and films. The first show featured interviews with Stuart Craig, art director of the films, as well as Bonnie Wright, who plays Ginny Weasley. PotterCast has also interviewed Matthew Lewis (the actor who portrays Neville Longbottom), Evanna Lynch (Luna Lovegood), Jamie Waylett (Vincent Crabbe), Rupert Grint (Ron Weasley), Chris Columbus, Alfonso Cuarón, Mike Newell (directors of the first four films), Arthur A. Levine and Cheryl Klein (editors of the books at Scholastic), and the author of the book series, J. K. Rowling. The two sites are friendly rivals and have aired several combined episodes, which they call \"The",
+        "score": 0.66796875,
+        "summary": "Rupert Grint played Ron Weasley in the Harry Potter films.",
+        "extraction": "Rupert Grint played Ron Weasley in Harry Potter.",
+        "answers_found": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "1975945",
+        "title": "Ministry of Magic",
+        "text": "Minister for Magic and Voldemort puppet Pius Thicknesse in the Battle of Hogwarts. While dueling Thicknesse, Percy announces that he is resigning, the first joke he has made in many years, much to Fred's delight. While dueling alongside Percy, his brother Fred Weasley is killed in an explosion, and Percy clings to the corpse and shields it from further damage. In the last part of the battle, he and his father work together to defeat Thicknesse. His final appearance is in the book's epilogue, at King's Cross Station, talking loudly about broom regulations. Percy is portrayed by Chris Rankin in",
+        "score": 0.69580078125,
+        "summary": "Chris Rankin played Percy Weasley in Harry Potter, but the document does not mention who played Fred Weasley.",
+        "extraction": "Irrelevant. The passage does not provide any information about who played the Weasley brothers in Harry Potter.",
+        "answers_found": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "answer": "The Weasely family is a family of wizards including Molly and Arthur Weasely as well as their seven children. Richard Fish appeared as Bill briefly in the film adaptation of Harry Potter and the Prisoner of Azkaban. Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), played Bill Weasley in Harry Potter and the Deathly Hallows. Chris Rankin played Percy Weasely and Fred and George Weasely were played by identical twins James Phelps and Oliver Phelps. Rupert Grint played Ron Weasely."
+  },
+  {
+    "qa_pairs": [
+      {
+        "context": "No context provided",
+        "question": "How many state parks are there in virginia in 1936?",
+        "short_answers": [
+          "six"
+        ],
+        "wikipage": null
+      },
+      {
+        "context": "No context provided",
+        "question": "How many state parks are there in virginia in 2016?",
+        "short_answers": [
+          "38"
+        ],
+        "wikipage": null
+      },
+      {
+        "context": "No context provided",
+        "question": "How many state parks were there when the state park system formed in Virginia?",
+        "short_answers": [
+          "6"
+        ],
+        "wikipage": null
+      },
+      {
+        "context": "No context provided",
+        "question": "How many state parks were there in Virginia as of 2016?",
+        "short_answers": [
+          "38"
+        ],
+        "wikipage": null
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "List of Virginia state parks",
+        "url": "https://en.wikipedia.org/wiki/List%20of%20Virginia%20state%20parks"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Virginia opened its entire state park system on June 15, 1936 as a six-park system. ",
+            "wikipage": "List of Virginia state parks"
+          }
+        ],
+        "long_answer": "When the Virginia state park system was formed on June 15, 1936, there were only six state parks in the entire state. As of 2016, that number had gone up to 38 state parks. "
+      },
+      {
+        "knowledge": [
+          {
+            "content": "Natural Bridge State Park officially opened on September 24, 2016.",
+            "wikipage": "Natural Bridge (Virginia) Natural Bridge State Park"
+          },
+          {
+            "content": "Virginia opened its entire state park system on June 15, 1936 as a six-park system. The six original state parks were Seashore State Park (now First Landing State Park), Westmoreland State Park, Staunton River State Park, Douthat State Park, Fairy Stone State Park, and Hungry Mother State Park. The park system now oversees 43 parks.",
+            "wikipage": "List of Virginia state parks"
+          }
+        ],
+        "long_answer": "Virginia opened its entire state park system on June 15, 1936 as a six-park system. The six original state parks were Seashore State Park, now First Landing State Park, Westmoreland State Park, Staunton River State Park, Douthat State Park, Fairy Stone State Park, and Hungry Mother State Park. Natural Bridge State Park officially opened on September 24, 2016, making this 38 parks in VA. Today, the park system now oversees 43 parks."
+      }
+    ],
+    "sample_id": "1650309494326541834",
+    "question": "How many state parks are there in virginia?",
+    "docs": [
+      {
+        "id": "12057784",
+        "title": "Virginia Department of Conservation and Recreation",
+        "text": "Fairy Stone State Park, Staunton River State Park, Douthat State Park and Hungry Mother State Park. In these and other projects, the CCC employed 107,210 in Virginia at one time or another, including 64,762 young Virginians who planted 15.2 million trees, built 986 bridges, reduced fire hazards over 152,000 acres, strung 2,128 miles of telephone line and stocked 1.3 million fish. Virginia received the fifth largest state expenditure in the country, totaling $109 million during the agency's nine-year existence. The agency's name changed in 1938 to the Virginia Conservation Commission, which was led by N. Clarence Smith (1939-1942), and William",
+        "score": 0.72216796875,
+        "summary": "irrelevant",
+        "extraction": "There are four state parks in Virginia: Fairy Stone State Park, Staunton River State Park, Douthat State Park, and Hungry Mother State Park.",
+        "answers_found": [
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "id": "12057783",
+        "title": "Virginia Department of Conservation and Recreation",
+        "text": "Battlefield Park after being given to the National Park Service because during the Great Depression the Commonwealth lacked funds to develop and maintain those lands and structures. Carson also created a Division of History and Archaeology within the State Commission of Conservation and Development and started a historical marker program. Virginia's first six state parks were created in June 1936 despite the opposition of Virginia's Senators Carter Glass and Harry F. Byrd to many other aspects of President Franklin Delano Roosevelt's administration. The first state parks were: Westmoreland State Park, Seashore State Park (which later became First Landing State Park),",
+        "score": 0.76513671875,
+        "summary": "Virginia's first six state parks were created in June 1936, including Westmoreland State Park and Seashore State Park (later First Landing State Park).",
+        "extraction": "Virginia's first six state parks were created in June 1936.",
+        "answers_found": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "6768377",
+        "title": "National Register of Historic Places listings in Virginia",
+        "text": "National Register of Historic Places listings in Virginia Buildings, sites, districts, and objects in Virginia listed on the National Register of Historic Places: As of , there are 3,027 properties and districts listed on the National Register of Historic Places in all 95 Virginia counties and 37 of the 38 independent cities, including 120 National Historic Landmarks and National Historic Landmark Districts, four National Historical Parks, two National Monuments, two National Battlefield Parks, one National Memorial, one National Battlefield and one National Military Park. The following are approximate tallies of current listings by county and independent city. These counts are",
+        "score": 0.7080078125,
+        "summary": "Irrelevant.",
+        "extraction": "As of , there are 3,027 properties and districts listed on the National Register of Historic Places in all 95 Virginia counties and 37 of the 38 independent cities. However, this passage does not provide information on the number of state parks in Virginia, so the answer is \"irrelevant\".",
+        "answers_found": [
+          0,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "10941028",
+        "title": "Westmoreland State Park",
+        "text": "Westmoreland State Park Westmoreland State Park lies within Westmoreland County, Virginia. The park extends about one and a half miles along the Potomac River. The park covers 1,321 acres. The park's Horsehead Cliffs provide visitors with a panoramic view of the Potomac River. The park offers hiking, camping, cabins, fishing, boating and swimming. Westmoreland State Park is one of the six original state parks opened in June 1936. The park was built in the 1930s by the Civilian Conservation Corps (CCC). Most of the roads and trails found in the park were originally dug by hand. Located on the Northern",
+        "score": 0.6943359375,
+        "summary": "Westmoreland State Park is one of the six original state parks in Virginia, opened in June 1936. However, the document does not state the total number of state parks in Virginia.",
+        "extraction": "There is no useful span to extract from the passage as it does not provide information on the number of state parks in Virginia.",
+        "answers_found": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "9646195",
+        "title": "Douthat State Park",
+        "text": "Conservation Corps developed and constructed the majority of the modern-day park system between 1933 and 1942. Douthat State Park Douthat State Park is a state park located in the Allegheny Mountains in Virginia. It is in Bath County and Alleghany County. The park is total with a lake. Douthat State Park opened June 15, 1936. It was one of the original six state parks of Virginia. The Douthat Land Company, a group of businessmen, donated the first portion of land — . In 1933, the Virginia General Assembly allotted $50,000 for the purchase of land for state parks, and the",
+        "score": 0.6796875,
+        "answers_found": [
+          1,
+          0,
+          1,
+          0
+        ]
+      }
+    ],
+    "answer": "Virginia opened its entire state park system on June 15, 1936 as a six-park system. The six original state parks were Seashore State Park, now First Landing State Park, Westmoreland State Park, Staunton River State Park, Douthat State Park, Fairy Stone State Park, and Hungry Mother State Park. Natural Bridge State Park officially opened on September 24, 2016, making this 38 parks in VA. Today, the park system now oversees 43 parks."
+  }
+]

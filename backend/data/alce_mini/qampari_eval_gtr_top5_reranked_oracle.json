@@ -1,0 +1,1340 @@
+[
+  {
+    "id": "799__wikidata_simple__dev",
+    "question": "What manga was drawn by Ryoichi Ikegami?",
+    "answers": [
+      [
+        "Heat"
+      ],
+      [
+        "Mai, the Psychic Girl"
+      ],
+      [
+        "Wounded Man"
+      ],
+      [
+        "Sanctuary"
+      ],
+      [
+        "Crying Freeman"
+      ],
+      [
+        "Strain"
+      ]
+    ],
+    "docs": [
+      {
+        "id": "7329293",
+        "title": "History of manga",
+        "text": "criminal and espionage conspiracies to be overcome by the protagonist, such as in \"Crying Freeman\" by Kazuo Koike and Ryoichi Ikegami, \"City Hunter\" by Hojo Tsukasa, and the \"shōjo\" series \"From Eroica with Love\" by Yasuko Aoike, a long-running crime-espionage story combining adventure, action, and humor (and another example of how these themes occur across demographics). For manga critics Koji Aihara and Kentaro Takekuma, such battle stories endlessly repeat the same mindless themes of violence, which they sardonically label the \"Shonen Manga Plot Shish Kebob\", where fights follow fights like meat skewered on a stick. Other commentators suggest that fight",
+        "score": 0.69970703125,
+        "summary": "\"Crying Freeman\" was drawn by Ryoichi Ikegami.",
+        "extraction": "\"Crying Freeman\" was drawn by Ryoichi Ikegami.",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "10269810",
+        "title": "Shunji Igarashi",
+        "text": "heroic Mirai of Mebius was followed by diverse characters such as the young psychopath Otoya in the adult drama Watashitachi no Kyokasho, the naive otaku Shinji in the teenage comedy Hana-Kimi and the lively street musician Mitsuru in the late night suspense Shigeshoshi, allowing Igarashi to develop his acting through various genres and different character types. June 2007 marked Igarashi's theatre debut, guest-starring in the musical \"D-BOYS STAGE Volume 1: Kanbai Onrei\", a D-BOYS project featuring all group members, in the same manner of the 2006 drama/documentary series \"DD-BOYS\". In 2008 he will again guest star in \"D-BOYS STAGE Volume",
+        "score": 0.69189453125,
+        "answers_found": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "8377518",
+        "title": "Ryu Fujisaki",
+        "text": "Ryu Fujisaki He won prizes in 39th and the 40th Tezuka Awards. He made his professional manga debut with \"WORLDS\" in 1990. All of his works are published by Shueisha under their Shōnen Jump labels. He has also illustrated four light novels and released two comprehensive art books across his career. Fujisaki is best known for the series \"Hoshin Engi\", which was adapted into an anime series in 1999 and again in 2018 as well as several radio dramas and video games. He also adapted the novel \"Shiki written by \"Fuyumi Ono into a manga which in turn was adapted",
+        "score": 0.7294921875,
+        "summary": "Irrelevant.",
+        "extraction": "\"irrelevant\"",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "4326726",
+        "title": "Takeshi Obata",
+        "text": "he drew a manga adaptation of \"All You Need Is Kill\" with Ryōsuke Takeuchi, basing the character designs on Yoshitoshi ABe's original cover to the novel. He reunited with Nisio Isin for the one-shot \"RKD-EK9\", that ran in the December 2014 issue of \"Jump SQ.\". Obata followed this by working with Nobuaki Enoki to relaunch Enoki's \"Gakkyu Hotei: School Judgement\" digital one-shot as a serial in the first issue of \"Weekly Shōnen Jump\" for 2015. However, the magazine stopped publishing it after the year's 24th issue and the series finished in the digital \"Shōnen Jump+\" on May 27. It was",
+        "score": 0.71435546875,
+        "summary": "Irrelevant.",
+        "extraction": "Irrelevant.",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "18159411",
+        "title": "Megumi Igarashi",
+        "text": "Megumi Igarashi , who uses the pseudonym Rokudenashiko ( \"rokudenashi\" [\"reprobate\", \"bastard\", \"good-for-nothing\", \"ne'er-do-well\"] + diminutive feminine suffix \"-ko\" [usually translated as \"girl\" or \"little\"]), is a Japanese sculptor and manga artist who has received public attention for her work featuring female genitalia. She considers it her mission to demystify female genitalia in Japan where, according to her, they are \"overly hidden\" in comparison to phallic imagery. On her website, the artist described how, growing up, she had never seen other women's genitalia, didn't know what they should look like, and was therefore concerned that her own vulva was abnormal.",
+        "score": 0.71435546875,
+        "summary": "irrelevant.",
+        "extraction": "irrelevant",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "answer": "Heat, Mai, the Psychic Girl, Wounded Man, Sanctuary, Crying Freeman, Strain."
+  },
+  {
+    "id": "136__wikidata_intersection__dev",
+    "question": "Harmony Korine was both screenwriter and director of what movie?",
+    "answers": [
+      [
+        "Spring Breakers"
+      ],
+      [
+        "Trash Humpers"
+      ],
+      [
+        "Julien Donkey-Boy"
+      ],
+      [
+        "Mister Lonely"
+      ],
+      [
+        "The Beach Bum",
+        "Beach Bum"
+      ],
+      [
+        "Gummo"
+      ]
+    ],
+    "docs": [
+      {
+        "id": "3518783",
+        "title": "Harmony Korine",
+        "text": "Harmony Korine Harmony Korine (born January 4, 1973) is an American film director and screenwriter. He is best known for writing \"Kids\" and for writing and directing \"Spring Breakers\", \"Gummo\", \"Julien Donkey-Boy\" and \"Mister Lonely\". His film \"Trash Humpers\" premiered at Toronto International Film Festival and won the main prize, the DOX Award, at CPH:DOX in November 2009. His most recent film, \"Spring Breakers\", was released in 2013. Korine was born in Bolinas, California and raised in Nashville, Tennessee, to a Jewish family. He is the son of Eve and Sol Korine. His father was a tapdancer and produced documentaries",
+        "score": 0.81494140625,
+        "summary": "Harmony Korine was both the screenwriter and director of the movie \"Spring Breakers\".",
+        "extraction": "Harmony Korine was both the screenwriter and director of the movie \"Spring Breakers\".",
+        "answers_found": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "3518801",
+        "title": "Harmony Korine",
+        "text": "was shown at the Toronto International Film Festival before being released to the general public in March 2013. Korine has also published a number of books. In 1995 a screenplay for \"Kids\" was published by Grove Press, followed by a collection of the screenplays for \"Gummo\", \"Julien Donkey-Boy\", and \"Jokes\" in \"Collected Screenplays\", published by Faber and Faber in 2002. In 2008 the screenplay for \"Mister Lonely\" was released by Swiss publisher Nieves with photographs by Rachel Korine and Brent Stewart. The majority of these books differ substantially from the movies eventually produced. In 1998 Korine published a book entitled",
+        "score": 0.705078125,
+        "answers_found": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "13662124",
+        "title": "Trash Humpers",
+        "text": "to make his next film as fast as he could, analogous to the free-form immediacy of painter and canvas. As a self-proclaimed \"mistakist artist\", Korine encouraged spontaneity. Like \"Julien Donkey-Boy\", the script was merely a collection of written down ideas. Before filming, Korine shot lo-fi images of people in costumes late at night to help find his aesthetic. Filming lasted only a couple of weeks. \"Once everyone was in their character and their costume, and I had figured out the structure of it, the randomness, the anti-aesthetic, it was really the performers, the Trash Humpers, walking around at night, videotaping",
+        "score": 0.6865234375,
+        "answers_found": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "3518817",
+        "title": "Harmony Korine",
+        "text": "Babenco, \"Badlands\" and \"Days of Heaven\" by Terrence Malick, \"Fat City\" by John Huston, \"Stroszek\" by Werner Herzog, \"The Killing of a Chinese Bookie\" and \"A Woman Under the Influence\" by John Cassavetes, \"McCabe and Mrs. Miller\" by Robert Altman, \"Out of the Blue\" by Dennis Hopper and \"Hail Mary\" by Jean-Luc Godard. The opening song on British Progressive rock musician Steven Wilson's solo debut album \"Insurgentes\" is called \"Harmony Korine\". Harmony Korine Harmony Korine (born January 4, 1973) is an American film director and screenwriter. He is best known for writing \"Kids\" and for writing and directing \"Spring Breakers\",",
+        "score": 0.80615234375,
+        "summary": "Harmony Korine was both the screenwriter and director of the movie \"Spring Breakers\".",
+        "extraction": "Harmony Korine is best known for writing \"Kids\" and for writing and directing \"Spring Breakers\". Therefore, Harmony Korine was both screenwriter and director of \"Spring Breakers\".",
+        "answers_found": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "3518816",
+        "title": "Harmony Korine",
+        "text": "of \"Julien Donkey-Boy\", \"Korine, who at 25 is one of the most untamed new directors, belongs on the list with Godard, Cassavetes, Herzog, Warhol, Tarkovsky, Brakhage and others who smash conventional movies and reassemble the pieces... Harmony Korine is the real thing, an innovative and gifted filmmaker whose work forces us to see on his terms.\" In 1997, Korine's favorite writers were listed as James Thurber, S. J. Perelman, and Flannery O'Connor. Korine has noted British filmmaker Alan Clarke as an influence. In a 1999 \"Dazed and Confused\" magazine article, Korine listed his top ten films as: \"Pixote\" by Hector",
+        "score": 0.779296875,
+        "summary": "Harmony Korine directed and wrote the movie \"Julien Donkey-Boy\".",
+        "extraction": "\"Harmony Korine\" was the screenwriter and director of \"Julien Donkey-Boy\".",
+        "answers_found": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "answer": "Spring Breakers, Trash Humpers, Julien Donkey-Boy, Mister Lonely, The Beach Bum, Gummo."
+  },
+  {
+    "id": "248__wikidata_comp__dev",
+    "question": "Where did administrators of the UN Development Programme attend school?",
+    "answers": [
+      [
+        "University of Auckland"
+      ],
+      [
+        "Yale Law School"
+      ],
+      [
+        "Marlborough College"
+      ],
+      [
+        "Boston University School of Law"
+      ],
+      [
+        "University of California, Berkeley"
+      ]
+    ],
+    "docs": [
+      {
+        "id": "5654454",
+        "title": "United Nations International School of Hanoi",
+        "text": "United Nations International School of Hanoi The United Nations International School of Hanoi is an international school in Hanoi, Vietnam. It is a private, non-profit organization founded in 1988 with the support of the United Nations Development Programme in Vietnam (UNDP) with the aim of providing an education to the children of UN staff and others. It now caters to the children of diplomats, aid workers, businessmen, and other expatriates living and working in Hanoi. Classes range from pre-school to high school, and the IB Diploma is available to students in grade 11 and 12. As of May 2018, there",
+        "score": 0.7578125,
+        "summary": "Irrelevant.",
+        "extraction": "Irrelevant. The passage does not provide any information about where administrators of the UN Development Programme attended school.",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "5039216",
+        "title": "School of Diplomacy and International Relations",
+        "text": "“prepare the next generation of global leaders.” The School's founding was supported by the United Nations Association of the United States of America, with which it still enjoys a close relationship. Its close proximity to New York City has also historically allowed its students and faculty to participate in U.N.-sponsored functions. Consequently, students from the school often interact with U.N. diplomats. The alliance with UNA-USA has also afforded students opportunities to receive internships and employment with various organizations of the U.N. In June 2013, it was announced that John C. Whitehead asked for his name to be removed from the",
+        "score": 0.75,
+        "summary": "Irrelevant.",
+        "extraction": "Irrelevant. The passage does not provide any information about where administrators of the UN Development Programme attended school.",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "12960622",
+        "title": "UEA School of International Development",
+        "text": "UEA School of International Development The School of International Development (formerly The School of Development Studies) is a department at the University of East Anglia, Norwich, England. Situated within the Faculty of Social Sciences, the School of International Development has been ranked in the top three British development studies departments. The School of International Development (DEV) was founded in 1973 and along with the Overseas Development Group (ODG) has built a reputation as a centre of excellence for research, teaching and consultancy in international development, within the UK. In the 2008 Research Assessment Exercise (RAE), DEV was ranked in the",
+        "score": 0.748046875,
+        "summary": "The document is irrelevant to the question.",
+        "extraction": "irrelevant. The passage does not provide any information about administrators of the UN Development Programme attending school.",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "15498706",
+        "title": "Turin School of Development",
+        "text": "Turin School of Development The Turin School of Development (TSD) was founded in Turin in October 2009 as a joint venture between the International Training Center of the ILO, the Italian Ministry of Foreign Affairs, the University of Turin and related UN agencies. The first class of postgraduate students matriculated in the 2009-2010 academic year. The International Training Centre of the ILO, launched in October 1990, the postgraduate course on International Trade Law, in collaboration with the University Institute for European Studies (IUSE) and with the support of distinguished faculty from the University of Turin and other major European universities.",
+        "score": 0.744140625,
+        "summary": "Irrelevant.",
+        "extraction": "irrelevant",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "5506316",
+        "title": "Koç School",
+        "text": "Model United Nations Development Programme conference each year at its campus since 2001. is the first Model United Nations Development Programme conference in the world, whose establishment in 2001 was celebrated by the former UN General Secretary Kofi Annan. Each year \"MUN Delegates\" from many schools in Turkey and overseas participate in the conference. Each year more than 650 participants attend to the conference as delegates, chairs, advisors, admins and executive committee members. 2017's conference was the 17th session of MUNDP and the participant number exceeded 800 for the first time. Koç School Student Council is composed of students elected",
+        "score": 0.73974609375,
+        "summary": "Irrelevant.",
+        "extraction": "Irrelevant. The passage does not provide any information about where administrators of the UN Development Programme attended school.",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "answer": "University of Auckland, Yale Law School, Marlborough College, Boston University School of Law, University of California, Berkeley."
+  },
+  {
+    "id": "366__wikidata_comp__dev",
+    "question": "Who directed a film that had P. Balachandran as a screenwriter?",
+    "answers": [
+      [
+        "Kamal"
+      ],
+      [
+        "P. Balachandran"
+      ],
+      [
+        "T. K. Rajeev Kumar"
+      ],
+      [
+        "V. K. Prakash"
+      ],
+      [
+        "Rajeev Ravi"
+      ]
+    ],
+    "docs": [
+      {
+        "id": "15097804",
+        "title": "Ivan Megharoopan",
+        "text": "Ivan Megharoopan Ivan Megharoopan () is a 2012 Malayalam biographical film written and directed by P. Balachandran. The film is based on the life of Malayalam poet P. Kunhiraman Nair and is particularly based on his autobiography, \"Kaviyude Kalpadukal\". Prakash Bare, who is the producer of the film, also plays the protagonist K. P. Madhavan Nair. \"Ivan Megharoopan\" is P. Balachandran's debut film as a director. He has earlier written certain notable scripts including \"Ulladakkam\", \"Pavithram\" and \"Punaradhivasam\". Balachandran had discussed the story with filmmaker V. K. Prakash after writing \"Punradhivasam\" (which won the National Film Award for Best Feature",
+        "score": 0.75732421875,
+        "answers_found": [
+          0,
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "16710085",
+        "title": "P. Balachandran",
+        "text": "P. Balachandran P. Balachandran (born Padmanabhan Balachandran Nair on 2 February 1952) is an Indian writer, playwright, scenarist, director, and actor. He's known for his work in Malayalam literature and Malayalam cinema. Balachandran is best known for the play \"Paavam Usman\" for which he won the Kerala Sahitya Akademi Award and Kerala Professional Nataka Award in the year 1989. He has scripted many films including \"Ulladakkam\" (1991), \"Pavithram\" (1994), \"Agnidevan\" (1995), \"Punaradhivasam\" (2000), and \"Kammatti Paadam\" (2016). His directorial debut is \"Ivan Megharoopan\" (2012). He has also acted in a few films, the most notable being \"Trivandrum Lodge\" (2012). He",
+        "score": 0.8056640625,
+        "summary": "The film director who had P. Balachandran as a screenwriter is not mentioned in the document.",
+        "extraction": "The director who had P. Balachandran as a screenwriter is \"Ivan Megharoopan\" (2012), which was P. Balachandran's directorial debut.",
+        "answers_found": [
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "3497983",
+        "title": "K. Balachander",
+        "text": "in 1964 as a screenwriter and graduated to a director with \"Neerkumizhi\" (1965). In a career that spanned 50 years, he had contributed to nearly 100 feature films either as a screenwriter or director, thus becoming one of the most prolific filmmakers in the country. Known among his colleagues as a tough task master, he was credited with having nurtured numerous actors, notably Nagesh, Sujatha, Kamal Haasan, Rajinikanth, Chiranjeevi, Jayaprada, Sridevi, Jayasudha, Saritha, Renuka, Nassar, Prakash Raj, Ramesh Aravind and Vivek. In his film career, Balachander had won nine National Film Awards and 13 Filmfare Awards. He was honored with",
+        "score": 0.794921875,
+        "summary": "K. Balachander directed a film that had P. Balachandran as a screenwriter.",
+        "extraction": "P. Balachandran was a screenwriter for K. Balachander, who directed nearly 100 feature films in his career.",
+        "answers_found": [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "8246101",
+        "title": "Vettaiyaadu Vilaiyaadu (2006 film)",
+        "text": "script, but nothing materialised. Kamal Haasan had agreed to make a film for producer Kaja Mohideen of Roja Combines, and the pair discussed signing Menon to be the film's director, after they were impressed with his work in \"Kaakha Kaakha\" (2003). Menon first discussed the script of \"Pachaikili Muthucharam\" (2007) with Kamal Haasan, and the actor asked him to develop it into a script within forty days. However he later had second thoughts and asked Menon for a different script to collaborate on. Menon was keen to make a trilogy of cop films, much like Ram Gopal Varma's trilogy of",
+        "score": 0.77197265625,
+        "summary": "The document is irrelevant to the question.",
+        "extraction": "Gautham Menon directed a film that had P. Balachandran as a screenwriter, but the passage does not mention the name of the film. Hence, the answer is \"irrelevant\".",
+        "answers_found": [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "16710086",
+        "title": "P. Balachandran",
+        "text": "is born to Padmanabha Pillai and Saraswati Bhai born on 2 February 1952, in Sasthamkotta, Kerala. He is married to Sreelatha and the couple have two children, Sreekanth and Parvathy. P. Balachandran P. Balachandran (born Padmanabhan Balachandran Nair on 2 February 1952) is an Indian writer, playwright, scenarist, director, and actor. He's known for his work in Malayalam literature and Malayalam cinema. Balachandran is best known for the play \"Paavam Usman\" for which he won the Kerala Sahitya Akademi Award and Kerala Professional Nataka Award in the year 1989. He has scripted many films including \"Ulladakkam\" (1991), \"Pavithram\" (1994), \"Agnidevan\"",
+        "score": 0.77099609375,
+        "summary": "The document mentions P. Balachandran as a writer, playwright, scenarist, director, and actor in Malayalam literature and cinema. However, it does not mention who directed a film that had him as a screenwriter, therefore the answer is \"irrelevant\".",
+        "extraction": "\"P. Balachandran\" directed a film that had P. Balachandran as a screenwriter is irrelevant as the passage does not provide information about any film directed by P. Balachandran where he was also the screenwriter.",
+        "answers_found": [
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "answer": "Kamal, P. Balachandran, T. K. Rajeev Kumar, V. K. Prakash, Rajeev Ravi."
+  },
+  {
+    "id": "663__wikidata_simple__dev",
+    "question": "The Russian Empire has what ships registered to it?",
+    "answers": [
+      [
+        "Russian gunboat Sivuch"
+      ],
+      [
+        "Russian cruiser Admiral Kornilov"
+      ],
+      [
+        "Admiral Nakhimov"
+      ],
+      [
+        "Nezamozhnik"
+      ],
+      [
+        "Russian battleship Imperator Aleksandr III"
+      ],
+      [
+        "Russian battleship Sevastopol"
+      ],
+      [
+        "Russian battleship Evstafi"
+      ],
+      [
+        "Novik"
+      ],
+      [
+        "Pamiat Azova"
+      ],
+      [
+        "Derzhava"
+      ],
+      [
+        "Russian battleship Sissoi Veliky"
+      ],
+      [
+        "Russian ship of the line Azov"
+      ],
+      [
+        "Russian frigate General Admiral"
+      ],
+      [
+        "Kniaz Pozharsky"
+      ],
+      [
+        "ORP Komendant Piłsudski"
+      ],
+      [
+        "Russian monitor Veschun"
+      ],
+      [
+        "Soviet destroyer Shaumyan"
+      ],
+      [
+        "Russian monitor Russalka"
+      ],
+      [
+        "Soviet gunboat Krasnoye Znamya"
+      ],
+      [
+        "Russian monitor Novgorod"
+      ],
+      [
+        "Oryol"
+      ],
+      [
+        "Russian battleship Slava"
+      ],
+      [
+        "Russian frigate Pallada"
+      ],
+      [
+        "Russian frigate Alexander Nevsky"
+      ],
+      [
+        "Almaz"
+      ],
+      [
+        "Russian destroyer Gadzhibey"
+      ],
+      [
+        "Livadia"
+      ],
+      [
+        "Russian brig Mercury"
+      ],
+      [
+        "Chilean frigate O'Higgins"
+      ],
+      [
+        "Russian cruiser Pamiat Merkuria"
+      ],
+      [
+        "Russian monitor Lava"
+      ],
+      [
+        "Russian ship of the line Imperator Nikolai I"
+      ],
+      [
+        "Russian yacht Standart"
+      ],
+      [
+        "Russian cruiser Varyag"
+      ],
+      [
+        "Russian cruiser Izumrud"
+      ],
+      [
+        "Russian battleship Knyaz Suvorov"
+      ],
+      [
+        "Vostok"
+      ],
+      [
+        "Russian battleship Oslyabya"
+      ],
+      [
+        "Russian cruiser Minin"
+      ],
+      [
+        "Russian coast defense ship Admiral Seniavin"
+      ],
+      [
+        "Russian battleship Imperator Nikolai I"
+      ],
+      [
+        "Russian ship of the line Konstantin"
+      ],
+      [
+        "Russian frigate Diana"
+      ],
+      [
+        "Russian monitor Koldun"
+      ],
+      [
+        "Russian monitor Edinorog"
+      ],
+      [
+        "Russian monitor Latnik"
+      ],
+      [
+        "Kad'yak"
+      ],
+      [
+        "Russian yacht Livadia"
+      ],
+      [
+        "Russian battleship Poltava"
+      ],
+      [
+        "BAP Almirante Guise"
+      ],
+      [
+        "Russian battleship Peresvet"
+      ],
+      [
+        "Russian battleship Imperator Pavel I"
+      ],
+      [
+        "Russian destroyer Kerch"
+      ],
+      [
+        "Kalevala"
+      ],
+      [
+        "Russian cutter Opyt"
+      ],
+      [
+        "Russian ship Vsevolod"
+      ],
+      [
+        "Russian monitor Charodeika"
+      ],
+      [
+        "Russian battleship Petropavlovsk"
+      ],
+      [
+        "Ekaterina II"
+      ],
+      [
+        "Russian submarine Pochtovy"
+      ],
+      [
+        "Imperator Nikolai I"
+      ],
+      [
+        "Russian schooner Heda"
+      ],
+      [
+        "Andrey Pervozvanny"
+      ],
+      [
+        "Vladimir"
+      ],
+      [
+        "French corvette Corcyre"
+      ],
+      [
+        "Russian monitor Bronenosets"
+      ],
+      [
+        "Russian monitor Uragan"
+      ],
+      [
+        "Russian ship of the line Gangut"
+      ],
+      [
+        "Russian ship of the line Vola"
+      ],
+      [
+        "USS Peterhoff"
+      ],
+      [
+        "Russian coast defense ship General Admiral Graf Apraksin"
+      ],
+      [
+        "Russian battleship Andrei Pervozvanny"
+      ],
+      [
+        "Kaliakriya (ship, 1916)"
+      ],
+      [
+        "Russian ship of the line Tsesarevich"
+      ],
+      [
+        "Russian monitor Tifon"
+      ],
+      [
+        "Tsesarevich"
+      ],
+      [
+        "Russian cruiser Admiral Makarov"
+      ],
+      [
+        "Gerzog Edinburgski"
+      ],
+      [
+        "Russian cruiser Svetlana"
+      ],
+      [
+        "Russian ship of the line Rossiya"
+      ],
+      [
+        "Russian cruiser Pallada"
+      ],
+      [
+        "Russian coast defense ship Admiral Ushakov"
+      ],
+      [
+        "Russian cruiser Bayan"
+      ],
+      [
+        "Russian cruiser General-Admiral"
+      ],
+      [
+        "Siwutsch"
+      ],
+      [
+        "Zhemchug"
+      ],
+      [
+        "Russian armoured cruiser Vladimir Monomakh"
+      ],
+      [
+        "Karl Liebknecht"
+      ],
+      [
+        "Russian gunboat Korietz"
+      ],
+      [
+        "Russian cruiser Rurik"
+      ],
+      [
+        "Petr Veliky"
+      ],
+      [
+        "Russian frigate Shtandart"
+      ],
+      [
+        "Russian battleship Pobeda"
+      ],
+      [
+        "Dmitrii Donskoi"
+      ],
+      [
+        "Russian battleship Ioann Zlatoust"
+      ],
+      [
+        "Ne Tron Menia"
+      ],
+      [
+        "ORP General Haller"
+      ],
+      [
+        "Russian destroyer Fidonisy"
+      ],
+      [
+        "Russian ironclad Petropavlovsk"
+      ],
+      [
+        "Russian ironclad Sevastopol"
+      ],
+      [
+        "Russian monitor Perun"
+      ],
+      [
+        "Russian ship of the line Retvizan"
+      ],
+      [
+        "Imperator Aleksandr II"
+      ],
+      [
+        "Soviet destroyer Zheleznyakov"
+      ],
+      [
+        "Mirny"
+      ],
+      [
+        "Russian ship of the line Oryol"
+      ],
+      [
+        "Kreml"
+      ],
+      [
+        "Russian monitor Strelets"
+      ],
+      [
+        "Russian ship of the line Sinop"
+      ],
+      [
+        "Russian torpedo boat Ismail"
+      ]
+    ],
+    "docs": [
+      {
+        "id": "16901181",
+        "title": "Russian ship of the line Imperator Nikolai I (1860)",
+        "text": "Russian ship of the line Imperator Nikolai I (1860) Imperator Nikolai I () was a wooden-hulled, steam-powered, first-rate ship of the line built for the Imperial Russian Navy in the late 1850s. She served as a gunnery training ship and troopship with the Baltic Fleet for a number of years after her completion. The ship was stricken from the Navy List in 1874. The design of \"Imperator Nikolai I\" was based on that of the British first-rate ship of the line . The ship was long between perpendiculars, with a beam of and a maximum draft of . The ship",
+        "score": 0.740234375,
+        "summary": "The document provides information about a specific Russian ship called Imperator Nikolai I, which was built in 1860 and served as a gunnery training ship and troopship with the Baltic Fleet. It was eventually stricken from the Navy List in 1874. However, the document does not provide information about other ships registered to the Russian Empire, thus making it irrelevant to the question.",
+        "extraction": "Irrelevant.",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "16950307",
+        "title": "Russian ship of the line Tsesarevich (1857)",
+        "text": "were completed at Malta on 8 April 1859. \"Tsesarevich\" received her machinery the following year and she cruised the Baltic Sea in 1861. Her further activities, if any, are unknown and the ship was stricken on 26 January 1874. Russian ship of the line Tsesarevich (1857) Tsesarevich () was a wooden-hulled, steam-powered, first-rate ship of the line built for the Imperial Russian Navy in the mid-1850s. Intended to serve with the Black Sea Fleet, she was transferred to the Baltic Fleet before her engine was installed in accordance with the terms of the Treaty of Paris that ended the Crimean",
+        "score": 0.7333984375,
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "5154076",
+        "title": "Imperial Russian Navy",
+        "text": "built in Russia and others imported from abroad. From 1703-1723, the main naval base of the Baltic Fleet was located in Saint Petersburg and then in Kronstadt. Bases were also created in Reval (Tallinn) and in Vyborg after it was ceded by Sweden after Russo-Swedish War (1741-1743). Vladimirsky Prikaz was the first organization in charge of shipbuilding. Later on, these functions were transferred to the Admiralteyskiy Prikaz (admiralty in St. Petersburg). In 1745 the Russian Navy had 130 sailing vessels, including 36 ships of the line, 9 frigates, 3 \"shnyavas\" (\"шнява\" — a light two-mast ship used for reconnaissance and",
+        "score": 0.73681640625,
+        "summary": "The document mentions that the Imperial Russian Navy had ships built in Russia and imported from abroad, and that the navy had 130 sailing vessels including 36 ships of the line, 9 frigates, and 3 \"shnyavas\" in 1745. However, it does not provide information on which specific ships were registered to the Russian Empire.",
+        "extraction": "The Russian Navy had 130 sailing vessels, including 36 ships of the line, 9 frigates, and 3 \"shnyavas\".",
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "14196195",
+        "title": "Russian battleship Imperator Nikolai I (1916)",
+        "text": "Russian battleship Imperator Nikolai I (1916) Imperator Nikolai I (: \"Emperor Nicholas I\") was a Russian dreadnought built during World War I for service in the Black Sea. She was designed to counter multiple prospective Ottoman dreadnoughts which had been placed under order by the Ottoman government, since this raised the possibility that the Russian dreadnoughts being built for the Black Sea Fleet could be outclassed. The ship used the same main armament as the preceding , but was larger and more heavily armored. \"Imperator Nikolai I\" was launched in 1916, but construction was suspended on 24 October 1917. The",
+        "score": 0.7138671875,
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "7854527",
+        "title": "Russian battleship Imperator Aleksandr III",
+        "text": "no other combat during the war. Russian battleship Imperator Aleksandr III Imperator Aleksandr III (Emperor Alexander III) was the third, and last, ship of the dreadnoughts of the Imperial Russian Navy. She was begun before World War I, completed in 1917 and saw service with the Black Sea Fleet. She was renamed \" Volia\" or \"Volya\" (, \"Freedom\") before her completion and then \"General Alekseyev\" () in 1920. The ship did not take part in operations during World War I because her sister ships were given a higher priority for completion. She was delivered in 1917, but the disruptions of",
+        "score": 0.71337890625,
+        "answers_found": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "answer": "Russian gunboat Sivuch, Russian cruiser Admiral Kornilov, Admiral Nakhimov, Nezamozhnik, Russian battleship Imperator Aleksandr III, Russian battleship Sevastopol, Russian battleship Evstafi, Novik, Pamiat Azova, Derzhava, Russian battleship Sissoi Veliky, Russian ship of the line Azov, Russian frigate General Admiral, Kniaz Pozharsky, ORP Komendant Piłsudski, Russian monitor Veschun, Soviet destroyer Shaumyan, Russian monitor Russalka, Soviet gunboat Krasnoye Znamya, Russian monitor Novgorod, Oryol, Russian battleship Slava, Russian frigate Pallada, Russian frigate Alexander Nevsky, Almaz, Russian destroyer Gadzhibey, Livadia, Russian brig Mercury, Chilean frigate O'Higgins, Russian cruiser Pamiat Merkuria, Russian monitor Lava, Russian ship of the line Imperator Nikolai I, Russian yacht Standart, Russian cruiser Varyag, Russian cruiser Izumrud, Russian battleship Knyaz Suvorov, Vostok, Russian battleship Oslyabya, Russian cruiser Minin, Russian coast defense ship Admiral Seniavin, Russian battleship Imperator Nikolai I, Russian ship of the line Konstantin, Russian frigate Diana, Russian monitor Koldun, Russian monitor Edinorog, Russian monitor Latnik, Kad'yak, Russian yacht Livadia, Russian battleship Poltava, BAP Almirante Guise, Russian battleship Peresvet, Russian battleship Imperator Pavel I, Russian destroyer Kerch, Kalevala, Russian cutter Opyt, Russian ship Vsevolod, Russian monitor Charodeika, Russian battleship Petropavlovsk, Ekaterina II, Russian submarine Pochtovy, Imperator Nikolai I, Russian schooner Heda, Andrey Pervozvanny, Vladimir, French corvette Corcyre, Russian monitor Bronenosets, Russian monitor Uragan, Russian ship of the line Gangut, Russian ship of the line Vola, USS Peterhoff, Russian coast defense ship General Admiral Graf Apraksin, Russian battleship Andrei Pervozvanny, Kaliakriya (ship, 1916), Russian ship of the line Tsesarevich, Russian monitor Tifon, Tsesarevich, Russian cruiser Admiral Makarov, Gerzog Edinburgski, Russian cruiser Svetlana, Russian ship of the line Rossiya, Russian cruiser Pallada, Russian coast defense ship Admiral Ushakov, Russian cruiser Bayan, Russian cruiser General-Admiral, Siwutsch, Zhemchug, Russian armoured cruiser Vladimir Monomakh, Karl Liebknecht, Russian gunboat Korietz, Russian cruiser Rurik, Petr Veliky, Russian frigate Shtandart, Russian battleship Pobeda, Dmitrii Donskoi, Russian battleship Ioann Zlatoust, Ne Tron Menia, ORP General Haller, Russian destroyer Fidonisy, Russian ironclad Petropavlovsk, Russian ironclad Sevastopol, Russian monitor Perun, Russian ship of the line Retvizan, Imperator Aleksandr II, Soviet destroyer Zheleznyakov, Mirny, Russian ship of the line Oryol, Kreml, Russian monitor Strelets, Russian ship of the line Sinop, Russian torpedo boat Ismail."
+  }
+]
