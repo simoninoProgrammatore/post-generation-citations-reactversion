@@ -205,3 +205,25 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ── Node / Frontend ────────────────────────────────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+*.log
+npm-debug.log*
+
+# ── Ambiente ──────────────────────────────────────────────
+.env
+.env.local
+backend/.env
+
+# ── VS Code / editor ──────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+
+# ── Risultati esperimenti (opzionale, decidi tu) ──────────
+# Se vuoi tenere i risultati sotto versione, commenta
+# backend/results/
+# backend/cache/
