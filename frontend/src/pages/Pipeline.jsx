@@ -11,6 +11,7 @@ import EmptyState from '../components/EmptyState'
 import ScorePill from '../components/ScorePill'
 import MetricCard from '../components/MetricCard'
 import Icon from '../components/Icon'
+import { downloadJSON, timestampedFilename } from '../utils/download'
 
 const METRIC_INFO = {
   citation_precision:    { label: 'Citation Precision',     desc: '% di coppie (claim, passaggio) dove il passaggio supporta il claim via NLI.' },
@@ -153,6 +154,24 @@ export default function Pipeline() {
       matched_claims: matched, cited_response: cited, references, metrics,
     })
     alert('Risultato salvato! Visibile nella pagina Esplora.')
+  }
+
+  function downloadPipelineData() {
+    const payload = {
+      question: currentQuery,
+      raw_response: response,
+      claims,
+      matched_claims: matched,
+      cited_response: cited,
+      references,
+      metrics,
+      model,
+      retrieve_method: retrieveMethod,
+      threshold,
+      top_k: topK,
+      exported_at: new Date().toISOString(),
+    }
+    downloadJSON(payload, timestampedFilename('pipeline_result'))
   }
 
   return (
@@ -301,18 +320,18 @@ export default function Pipeline() {
       {/* Step 4 */}
       <StepCard num={4} title="Retrieve — Matching claims → passaggi" status={steps.retrieve}
         onRun={runRetrieve} running={running === 'retrieve'} runLabel="Retrieval">
-        {matched && <MatchedView matched={matched} />}
+        {matched && <MatchedView matched={matched} passages={currentPassages} retrieveMethod={retrieveMethod} />}
       </StepCard>
 
       {/* Step 5 */}
       <StepCard num={5} title="Cite — Risposta con citazioni" status={steps.cite}
         onRun={runCite} running={running === 'cite'} runLabel="Inserisci citazioni">
         {cited && (
-         <CitedView
+          <CitedView
             citedResponse={cited}
             references={references || []}
             matched={matched}
-  />
+          />
         )}
       </StepCard>
 
@@ -333,6 +352,10 @@ export default function Pipeline() {
                 <Icon name="download" size={13} color="white" strokeWidth={2} />
                 Salva in Esplora
               </button>
+              <button className="btn btn-secondary" onClick={downloadPipelineData}>
+                <Icon name="download" size={13} strokeWidth={1.75} />
+                Scarica dati
+              </button>
             </div>
           </>
         )}
@@ -343,9 +366,28 @@ export default function Pipeline() {
 
 // ── MatchedView ───────────────────────────────────────────────────────────
 
-function MatchedView({ matched }) {
+function MatchedView({ matched, passages, retrieveMethod }) {
   const [open, setOpen] = useState({})
+  const [debug, setDebug] = useState({})
+  const [debugging, setDebugging] = useState(null)
+
   const supported = matched.filter(m => (m.supporting_passages || []).length > 0).length
+
+  async function runDebug(claimText, claimIdx) {
+    setDebugging(claimIdx)
+    try {
+      const result = await api.pipeline.retrieveDebug({
+        claim: claimText,
+        passages,
+        method: retrieveMethod,
+        top_k: 4,
+      })
+      setDebug(d => ({ ...d, [claimIdx]: result }))
+    } catch (e) {
+      alert(`Errore debug: ${e.message}`)
+    }
+    setDebugging(null)
+  }
 
   return (
     <div>
@@ -354,7 +396,9 @@ function MatchedView({ matched }) {
           <span style={{ fontSize: 28, fontWeight: 800, color: 'var(--green)' }}>
             {supported}/{matched.length}
           </span>
-          <span style={{ fontSize: 12, color: 'var(--text-2)' }}>claims<br />supportati</span>
+          <span style={{ fontSize: 12, color: 'var(--text-2)' }}>
+            claims<br />supportati
+          </span>
         </div>
         <div style={{ flex: 1, height: 6, background: 'var(--border)', borderRadius: 3, overflow: 'hidden' }}>
           <div style={{
@@ -366,8 +410,9 @@ function MatchedView({ matched }) {
       </div>
 
       {matched.map((m, i) => {
-        const passages = m.supporting_passages || []
-        const has = passages.length > 0
+        const passages_m = m.supporting_passages || []
+        const has = passages_m.length > 0
+        const debugData = debug[i]
         return (
           <div key={i} className="expander" style={{ borderColor: has ? '#A7F3D0' : '#FECACA' }}>
             <div className="expander-header" onClick={() => setOpen(o => ({ ...o, [i]: !o[i] }))}>
@@ -379,14 +424,35 @@ function MatchedView({ matched }) {
               <span className="expander-header-title" style={{ color: 'var(--text)' }}>{m.claim}</span>
               {has && (
                 <span style={{ fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>
-                  {passages.length} fonte{passages.length > 1 ? 'i' : ''}
+                  {passages_m.length} fonte{passages_m.length > 1 ? 'i' : ''}
                 </span>
               )}
               <span className={`expander-chevron${open[i] ? ' open' : ''}`}>▼</span>
             </div>
             {open[i] && (
               <div className="expander-body">
-                {has ? passages.map((p, j) => (
+                <div style={{ marginBottom: 12, display: 'flex', gap: 8, alignItems: 'center' }}>
+                  <button
+                    className="btn btn-secondary"
+                    style={{ fontSize: 11, padding: '4px 10px' }}
+                    onClick={(e) => { e.stopPropagation(); runDebug(m.claim, i) }}
+                    disabled={debugging === i}
+                  >
+                    {debugging === i
+                      ? <><span className="spinner" style={{ width: 11, height: 11 }} /> Calcolo...</>
+                      : <><Icon name="search" size={11} strokeWidth={1.75} />
+                          {debugData ? 'Aggiorna debug' : 'Debug frasi (top-4)'}</>}
+                  </button>
+                  {debugData && (
+                    <span style={{ fontSize: 11, color: 'var(--text-3)' }}>
+                      Score {debugData.method.toUpperCase()} su ogni frase del passaggio
+                    </span>
+                  )}
+                </div>
+
+                {debugData && <DebugView data={debugData} />}
+
+                {has ? passages_m.map((p, j) => (
                   <div key={j} className="passage-card" style={{ marginBottom: 8 }}>
                     <div className="passage-header">
                       <span className="passage-title">{p.title || '—'}</span>
@@ -405,7 +471,7 @@ function MatchedView({ matched }) {
                     )}
                   </div>
                 )) : (
-                  <span style={{ color: 'var(--text-3)', fontSize: 13 }}>
+                  !debugData && <span style={{ color: 'var(--text-3)', fontSize: 13 }}>
                     Nessun passaggio di supporto trovato.
                   </span>
                 )}
@@ -418,8 +484,92 @@ function MatchedView({ matched }) {
   )
 }
 
+function DebugView({ data }) {
+  return (
+    <div style={{
+      marginBottom: 16, padding: 14,
+      background: '#F8FAFC', border: '1px dashed var(--border)',
+      borderRadius: 8,
+    }}>
+      <div style={{
+        fontSize: 10, fontWeight: 700, color: 'var(--text-3)',
+        textTransform: 'uppercase', letterSpacing: '0.7px', marginBottom: 12,
+      }}>
+        Debug — top-4 frasi per passaggio · metodo: {data.method}
+      </div>
+      {data.passages.map((p, pi) => (
+        <div key={pi} style={{ marginBottom: 14 }}>
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 6,
+            fontSize: 13, fontWeight: 600, color: 'var(--text)',
+            marginBottom: 6,
+          }}>
+            <Icon name="fileText" size={12} strokeWidth={1.75} color="var(--text-2)" />
+            {p.title || 'Passage'}
+          </div>
+          {p.sentences.length === 0 ? (
+            <div style={{ fontSize: 12, color: 'var(--text-3)', paddingLeft: 18 }}>
+              Nessuna frase.
+            </div>
+          ) : (
+            p.sentences.map((s, si) => {
+              const isBest = s.is_best
+              const score = s.score
+              const color = score >= 0.8 ? 'var(--green)' : score >= 0.5 ? 'var(--amber)' : 'var(--text-3)'
+              const pct = Math.max(0, Math.min(1, score)) * 100
+              return (
+                <div key={si} style={{
+                  display: 'flex', alignItems: 'flex-start', gap: 10,
+                  padding: '6px 10px', marginBottom: 4,
+                  background: isBest ? '#F0FDF4' : 'white',
+                  border: `1px solid ${isBest ? '#86EFAC' : 'var(--border-2)'}`,
+                  borderRadius: 6,
+                }}>
+                  <span style={{
+                    fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700,
+                    color, minWidth: 52,
+                    whiteSpace: 'nowrap',
+                  }}>
+                    [{score.toFixed(4)}]
+                  </span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{
+                      height: 3, background: 'var(--border-2)',
+                      borderRadius: 2, overflow: 'hidden', marginBottom: 4,
+                      width: 90,
+                    }}>
+                      <div style={{ height: '100%', width: `${pct}%`, background: color }} />
+                    </div>
+                    <span style={{
+                      fontSize: 12, color: isBest ? '#166534' : 'var(--text-2)',
+                      fontWeight: isBest ? 500 : 400,
+                      lineHeight: 1.5,
+                    }}>
+                      "{s.text}"
+                    </span>
+                  </div>
+                  {isBest && (
+                    <span style={{
+                      fontSize: 10, fontWeight: 700,
+                      background: '#DCFCE7', color: '#166534',
+                      padding: '2px 6px', borderRadius: 10,
+                      display: 'flex', alignItems: 'center', gap: 3,
+                      whiteSpace: 'nowrap', alignSelf: 'flex-start',
+                    }}>
+                      ★ BEST
+                    </span>
+                  )}
+                </div>
+              )
+            })
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
 
-// ── CitedView (interattivo, sostituisce la versione precedente) ──────────
+// ── CitedView (interattivo, invariato) ─────────────────────────────────────
 
 const STOPWORDS = new Set([
   'the', 'a', 'an', 'is', 'are', 'was', 'were', 'in', 'on', 'at', 'to',
@@ -441,12 +591,7 @@ function lexicalOverlap(claimText, sentText) {
   return hits / claimWords.size
 }
 
-/**
- * Divide la risposta citata in frasi + raccoglie i marker [N].
- * Restituisce: [{ text, citations: [1, 2, 3] }, ...]
- */
 function splitIntoSentences(citedResponse) {
-  // prima rimuovo i marker per trovare i confini di frase, poi li riattacco
   const regex = /([^.!?]+[.!?]+)((?:\s*\[\d+\])*)/g
   const sentences = []
   let m
@@ -459,10 +604,6 @@ function splitIntoSentences(citedResponse) {
   return sentences
 }
 
-/**
- * Per una frase, trova i claims associati (lexical overlap >= 0.5).
- * Ordinati per overlap decrescente.
- */
 function findAssociatedClaims(sentenceText, matchedClaims, threshold = 0.5) {
   const scored = []
   for (const mc of matchedClaims) {
@@ -473,15 +614,10 @@ function findAssociatedClaims(sentenceText, matchedClaims, threshold = 0.5) {
   return scored
 }
 
-/**
- * Evidenzia `extraction` dentro `passageText` usando [start, end].
- * Fallback: string match se gli indici non sono validi.
- */
 function highlightEvidence(passageText, extraction, start, end) {
   if (!passageText) return null
   if (!extraction) return <span>{passageText}</span>
 
-  // Prova span esatti
   if (
     typeof start === 'number' && start >= 0 &&
     typeof end === 'number' && end > start &&
@@ -502,7 +638,6 @@ function highlightEvidence(passageText, extraction, start, end) {
     )
   }
 
-  // Fallback: cerca l'extraction come sottostringa
   const idx = passageText.toLowerCase().indexOf(extraction.toLowerCase())
   if (idx >= 0) {
     return (
@@ -519,13 +654,12 @@ function highlightEvidence(passageText, extraction, start, end) {
     )
   }
 
-  // Nessun match: mostra il passage senza highlight
   return <span>{passageText}</span>
 }
 
 function CitedView({ citedResponse, references, matched }) {
-  const [activeSent, setActiveSent] = useState(null)   // indice della frase aperta
-  const [activeClaim, setActiveClaim] = useState(null) // indice del claim aperto dentro la frase
+  const [activeSent, setActiveSent] = useState(null)
+  const [activeClaim, setActiveClaim] = useState(null)
 
   const sentences = splitIntoSentences(citedResponse)
 
@@ -543,14 +677,12 @@ function CitedView({ citedResponse, references, matched }) {
     setActiveClaim(activeClaim === claimIdx ? null : claimIdx)
   }
 
-  // Claims associati alla frase attualmente aperta
   const associatedClaims = activeSent != null
     ? findAssociatedClaims(sentences[activeSent].text, matched || [])
     : []
 
   return (
     <div>
-      {/* ── Risposta citata (frasi cliccabili) ─────────────────────────── */}
       <div style={{
         background: 'white', border: '1px solid var(--border)',
         borderLeft: '3px solid var(--accent)', borderRadius: 8,
@@ -592,7 +724,6 @@ function CitedView({ citedResponse, references, matched }) {
         })}
       </div>
 
-      {/* ── Pannello claims associati (quando una frase è selezionata) ──── */}
       {activeSent != null && (
         <div style={{
           marginTop: 14,
@@ -611,7 +742,6 @@ function CitedView({ citedResponse, references, matched }) {
           </div>
 
           {activeClaim == null ? (
-            // Lista dei claims associati
             associatedClaims.length === 0 ? (
               <div style={{ fontSize: 13, color: 'var(--text-3)' }}>
                 Nessun claim associato (overlap lessicale &lt; 0.5).
@@ -658,7 +788,6 @@ function CitedView({ citedResponse, references, matched }) {
               </div>
             )
           ) : (
-            // Dettaglio di un singolo claim: passages con evidenza highlighted
             <div>
               <div
                 onClick={() => setActiveClaim(null)}
@@ -718,7 +847,6 @@ function CitedView({ citedResponse, references, matched }) {
         </div>
       )}
 
-      {/* ── Lista completa dei riferimenti (sempre in fondo) ────────────── */}
       {references.length > 0 && (
         <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
           <strong style={{ color: 'var(--text)', fontSize: 13 }}>Riferimenti</strong>

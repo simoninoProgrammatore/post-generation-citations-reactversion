@@ -47,6 +47,10 @@ export function AppDataProvider({ children }) {
     setData(d => ({ ...d, pipelineResults: [...d.pipelineResults, withMeta] }))
   }
 
+  function setPipelineResults(results) {
+  setData(d => ({ ...d, pipelineResults: Array.isArray(results) ? results : [] }))
+}
+
   function addAttentionRecord(record) {
     setData(d => ({ ...d, attentionRecords: [record, ...d.attentionRecords] }))
   }
@@ -67,6 +71,7 @@ export function AppDataProvider({ children }) {
     <AppDataContext.Provider value={{
       ...data,
       addPipelineResult,
+      setPipelineResults,
       addAttentionRecord,
       setIgResult,
       setPatchResult,

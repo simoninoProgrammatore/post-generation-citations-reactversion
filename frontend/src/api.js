@@ -43,11 +43,12 @@ async function getJson(path) {
 
 // ── Pipeline ────────────────────────────────────────────────────────────
 export const pipeline = {
-  generate: (body)  => postJson('/pipeline/generate',  body),
-  decompose: (body) => postJson('/pipeline/decompose', body),
-  retrieve: (body)  => postJson('/pipeline/retrieve',  body),
-  cite: (body)      => postJson('/pipeline/cite',      body),
-  evaluate: (body)  => postJson('/pipeline/evaluate',  body),
+  generate:       (body) => postJson('/pipeline/generate',       body),
+  decompose:      (body) => postJson('/pipeline/decompose',      body),
+  retrieve:       (body) => postJson('/pipeline/retrieve',       body),
+  retrieveDebug:  (body) => postJson('/pipeline/retrieve/debug', body),
+  cite:           (body) => postJson('/pipeline/cite',           body),
+  evaluate:       (body) => postJson('/pipeline/evaluate',       body),
 }
 
 // ── NLI ─────────────────────────────────────────────────────────────────
@@ -57,8 +58,9 @@ export const nli = {
 
 // ── Interpretability ────────────────────────────────────────────────────
 export const interpret = {
-  ig:       (body) => postJson('/interpret/ig',       body),
-  patching: (body) => postJson('/interpret/patching', body),
+  ig:        (body) => postJson('/interpret/ig',        body),
+  patching:  (body) => postJson('/interpret/patching',  body),
+  attention: (body) => postJson('/interpret/attention', body),
 }
 
 // ── Dataset ─────────────────────────────────────────────────────────────
