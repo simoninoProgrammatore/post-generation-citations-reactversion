@@ -281,17 +281,17 @@ TEST_CASES = [
     },
     {
         "category": "Ablation - add tokens",
-        "premise": "Sean Paul performed a song",
+        "premise": "Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Ablation - add tokens",
-        "premise": "Sean Paul performed a collaborative song",
+        "premise": "Sean Paul perform collaborative song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Ablation - add tokens",
-        "premise": "Sean Paul performed a collaborative song at the ceremony",
+        "premise": "Sean Paul perform collaborative song at the ceremony",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
@@ -310,42 +310,42 @@ TEST_CASES = [
     # ══════════════════════════════════════════
     {
         "category": "Qualifier effect",
-        "premise": "Jamaican Sean Paul performed a song",
+        "premise": "Jamaican Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Qualifier effect",
-        "premise": "Rapper Sean Paul performed a song",
+        "premise": "Rapper Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Qualifier effect",
-        "premise": "Jamaican rapper Sean Paul performed a song",
+        "premise": "Jamaican rapper Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Qualifier effect",
-        "premise": "Musician Sean Paul performed a song",
+        "premise": "Musician Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Qualifier effect",
-        "premise": "Artist Sean Paul performed a song",
+        "premise": "Artist Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Qualifier effect",
-        "premise": "Famous Sean Paul performed a song",
+        "premise": "Famous Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Qualifier effect",
-        "premise": "Young Sean Paul performed a song",
+        "premise": "Young Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Qualifier effect",
-        "premise": "American Sean Paul performed a song",
+        "premise": "American Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
 
@@ -354,37 +354,37 @@ TEST_CASES = [
     # ══════════════════════════════════════════
     {
         "category": "Name substitution",
-        "premise": "Shaggy performed a song",
+        "premise": "Shaggy perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Name substitution",
-        "premise": "Beenie Man performed a song",
+        "premise": "Beenie Man perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Name substitution",
-        "premise": "Sean Kingston performed a song",
+        "premise": "Sean Kingston perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Name substitution",
-        "premise": "Drake performed a song",
+        "premise": "Drake perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Name substitution",
-        "premise": "Rihanna performed a song",
+        "premise": "Rihanna perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Name substitution",
-        "premise": "Dua Lipa performed a song",
+        "premise": "Dua Lipa perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Name substitution",
-        "premise": "Ed Sheeran performed a song",
+        "premise": "Ed Sheeran perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
 
@@ -528,22 +528,22 @@ TEST_CASES = [
     # ══════════════════════════════════════════
     {
         "category": "Bocelli replication",
-        "premise": "Bocelli performed song",
+        "premise": "Bocelli perform song",
         "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
     },
     {
         "category": "Bocelli replication",
-        "premise": "Italian Bocelli performed song",
+        "premise": "Italian Bocelli perform song",
         "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
     },
     {
         "category": "Bocelli replication",
-        "premise": "Tenor Bocelli performed song",
+        "premise": "Tenor Bocelli perform song",
         "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
     },
     {
         "category": "Bocelli replication",
-        "premise": "Italian tenor Bocelli performed song",
+        "premise": "Italian tenor Bocelli perform song",
         "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
     },
     {
@@ -575,25 +575,25 @@ TEST_CASES = [
     # ══════════════════════════════════════════
     {
         "category": "Schema crossover",
-        "premise": "Sean Paul performed a song",
+        "premise": "Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
         # baseline — H reale
     },
     {
         "category": "Schema crossover",
-        "premise": "Sean Paul performed a song",
+        "premise": "Sean Paul perform song",
         "hypothesis": "The 2031 Florp Cup Final was held at the Zorbax Arena in Neo-Karthago.",
         # H completamente inventata — stesso schema P
     },
     {
         "category": "Schema crossover",
-        "premise": "Sean Paul performed a song",
+        "premise": "Sean Paul perform song",
         "hypothesis": "A sporting event took place at a stadium.",
         # H vaga, nessun ancoraggio a knowledge
     },
     {
         "category": "Schema crossover",
-        "premise": "Sean Paul performed a song",
+        "premise": "Sean Paul perform song",
         "hypothesis": "Someone sang at a venue.",
         # H vaga e vicina semanticamente a P — massima vaghezza
     },
@@ -635,13 +635,13 @@ TEST_CASES = [
     },
     {
         "category": "Name vs schema",
-        "premise": "Zorlan Vex performed a collaborative song at the ceremony.",
+        "premise": "Zorlan Vex perform collaborative song at the ceremony.",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
         # nome inventato, schema intatto + H reale
     },
     {
         "category": "Name vs schema",
-        "premise": "Kryzbekian rapper Zorlan Vex performed a song.",
+        "premise": "Kryzbekian rapper Zorlan Vex perform song.",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
         # nome inventato + qualificatore etnico inventato, schema intatto
     },
@@ -660,32 +660,32 @@ TEST_CASES = [
     # ══════════════════════════════════════════
     {
         "category": "Nationality effect - Sean Paul",
-        "premise": "British Sean Paul performed a song",
+        "premise": "British Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Nationality effect - Sean Paul",
-        "premise": "American Sean Paul performed a song",
+        "premise": "American Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Nationality effect - Sean Paul",
-        "premise": "Italian Sean Paul performed a song",
+        "premise": "Italian Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Nationality effect - Sean Paul",
-        "premise": "French Sean Paul performed a song",
+        "premise": "French Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Nationality effect - Sean Paul",
-        "premise": "Brazilian Sean Paul performed a song",
+        "premise": "Brazilian Sean Paul perform song",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
     {
         "category": "Nationality effect - Sean Paul",
-        "premise": "Ukrainian Sean Paul performed a song",
+        "premise": "Ukrainian Sean Paul perform song",
         # nazionalità che compare nell'H — potrebbe fare da bridge
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
@@ -717,6 +717,7 @@ TEST_CASES = [
         # replica esatta del modificatore che rompe Sean Paul — si trasferisce?
         "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
     },
+
     # ══════════════════════════════════════════
     # 13. REGISTER / GRAMMATICALITY
     # Stesso contenuto semantico, forma sintattica variata.
@@ -751,6 +752,16 @@ TEST_CASES = [
     {
         "category": "Register effect",
         "premise": "Sean Paul's song performance",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Register effect",
+        "premise": "perform song",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Register effect",
+        "premise": "perform",
         "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
     },
 ]
