@@ -717,6 +717,42 @@ TEST_CASES = [
         # replica esatta del modificatore che rompe Sean Paul — si trasferisce?
         "hypothesis": "The 2006 FIFA World Cup Final was played at the Olympiastadion in Berlin, Germany.",
     },
+    # ══════════════════════════════════════════
+    # 13. REGISTER / GRAMMATICALITY
+    # Stesso contenuto semantico, forma sintattica variata.
+    # H costante. Testa se il bias correla con registro
+    # caption-like vs dichiarativa ben formata.
+    # ══════════════════════════════════════════
+    {
+        "category": "Register effect",
+        "premise": "Sean Paul performed a song.",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Register effect",
+        "premise": "Sean Paul performs song",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Register effect",
+        "premise": "Sean Paul performing song",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Register effect",
+        "premise": "Sean Paul: performance",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Register effect",
+        "premise": "sean paul perform song",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
+    {
+        "category": "Register effect",
+        "premise": "Sean Paul's song performance",
+        "hypothesis": "The 2018 Champions League Final was held at the NSC Olimpiyski Stadium in Kyiv, Ukraine.",
+    },
 ]
 
 
