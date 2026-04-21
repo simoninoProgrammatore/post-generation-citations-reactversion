@@ -40,7 +40,7 @@ Findings of EMNLP 2023. Usa LLM come valutatori di attribuzione, alternativa al 
 
 ---
 
-## 2 — Dataset e benchmark
+## 2 — Dataset e benchmark (//TODO cambiare questa parte in ALCE)
 
 ### [core] Petroni et al. (2021) — *KILT: a Benchmark for Knowledge Intensive Language Tasks*
 NAACL 2021. **Dataset principale della tesi**. 11 dataset su 5 task (fact checking, entity linking, slot filling, open QA, dialogue) ancorati allo stesso snapshot Wikipedia (1 agosto 2019). Formato JSON Lines con campo `provenance` (wikipedia_id + paragrafo + range di caratteri) per ogni output. Usato nella tesi per oracle-retrieval evaluation delle citazioni: si saltano le fasi di retrieval e si misura solo la qualità della citazione data la provenance gold.
@@ -164,7 +164,7 @@ Riferimenti citati nella vecchia lista che richiedono verifica prima di essere i
 
 ---
 
-## Struttura di citazione suggerita per la tesi
+## Struttura di citazione per la tesi
 
 Per orientarsi nel mapping bibliografia → capitoli:
 
