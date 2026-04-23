@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 from core import pipeline_runners
 from core import evaluate as core_evaluate
+from core import nuggets_evaluate as core_nuggets          # ← NUOVO
 from models.schemas import (
     GenerateRequest, GenerateResponse,
     DecomposeRequest, DecomposeResponse,
@@ -17,12 +18,57 @@ from models.schemas import (
 router = APIRouter(prefix="/api/pipeline", tags=["pipeline"])
 
 
+# ── Schemas locali ─────────────────────────────────────────────────────────────
+
 class RetrieveDebugRequest(BaseModel):
     claim: str
     passages: list[Passage]
     method: str = "nli"  # "nli" | "similarity" | "llm"
     top_k: int = 4
 
+
+class NuggetItem(BaseModel):
+    nugget_id: str
+    text: str
+    keywords: list[str] = []
+    golden_passage_title: str | None = None
+    golden_evidence: str | None = None
+    required: bool = True
+
+
+class NuggetPerResult(BaseModel):
+    nugget_id: str
+    nugget_text: str
+    required: bool
+    keywords: list[str]
+    golden_passage_title: str | None
+    golden_evidence: str | None
+    covered: bool
+    cited: bool
+    n_covering_claims: int
+    best_covering_claim: str | None
+    best_evidence_passage_title: str | None
+    best_evidence_passage_text: str | None
+
+
+class EvaluateNuggetsRequest(BaseModel):
+    matched_claims: list[dict]   # stessa struttura di MatchedClaim serializzato
+    nuggets: list[NuggetItem]
+    use_nli: bool = False
+    required_only: bool = False
+
+
+class EvaluateNuggetsResponse(BaseModel):
+    nugget_precision: float
+    nugget_recall: float
+    nugget_coverage: float
+    n_nuggets: int
+    n_covered: int
+    n_cited: int
+    per_nugget: list[NuggetPerResult]
+
+
+# ── Endpoints ─────────────────────────────────────────────────────────────────
 
 @router.post("/retrieve/debug")
 async def retrieve_debug(req: RetrieveDebugRequest):
@@ -81,7 +127,10 @@ async def retrieve_debug(req: RetrieveDebugRequest):
             matches = match_with_llm(req.claim, passages_dict, threshold=0.0, top_k=len(passages_dict))
             out = []
             for p in passages_dict:
-                matched = next((m for m in matches if m.get("id") == p.get("id") or m.get("title") == p.get("title")), None)
+                matched = next(
+                    (m for m in matches if m.get("id") == p.get("id") or m.get("title") == p.get("title")),
+                    None,
+                )
                 if matched and matched.get("best_sentence"):
                     out.append({
                         "title": p.get("title", ""),
@@ -165,5 +214,28 @@ async def evaluate(req: EvaluateRequest):
             unsupported_ratio=core_evaluate.unsupported_claim_ratio(matched_dict),
             avg_entailment_score=core_evaluate.average_entailment_score(matched_dict),
         )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/evaluate-nuggets", response_model=EvaluateNuggetsResponse)
+async def evaluate_nuggets(req: EvaluateNuggetsRequest):
+    """
+    Calcola Nugget Precision, Nugget Recall e Nugget Coverage.
+
+    Verifica se i nuggets del dataset sono:
+      - coperti da almeno un claim generato (coverage)
+      - citati con un passaggio di supporto che contiene evidenza (precision/recall)
+    """
+    try:
+        nuggets_dict = [n.model_dump() for n in req.nuggets]
+
+        result = core_nuggets.compute_nugget_metrics(
+            nuggets=nuggets_dict,
+            matched_claims=req.matched_claims,
+            use_nli=req.use_nli,
+            required_only=req.required_only,
+        )
+        return EvaluateNuggetsResponse(**result)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
