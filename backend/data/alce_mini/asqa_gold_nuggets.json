@@ -199,30 +199,6 @@
         "required": true,
         "golden_passage_title": "Josef Bican",
         "golden_evidence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Ali Daei holds the record for the highest goals in men's international football.",
-        "keywords": [
-          "Daei",
-          "Ali Daei"
-        ],
-        "golden_passage_idx": null,
-        "required": true,
-        "golden_passage_title": null,
-        "golden_evidence": null
-      },
-      {
-        "nugget_id": "n2",
-        "text": "Christine Sinclair holds the record for the highest goals in women's international football.",
-        "keywords": [
-          "Sinclair",
-          "Christine Sinclair"
-        ],
-        "golden_passage_idx": null,
-        "required": false,
-        "golden_passage_title": null,
-        "golden_evidence": null
       }
     ]
   },
@@ -1302,6 +1278,2592 @@
         "required": true,
         "golden_passage_title": "Penicillin",
         "golden_evidence": "1928"
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_001",
+    "question": "Who invented the telephone and when?",
+    "answer": "The telephone was invented by Alexander Graham Bell, who was awarded the first patent for the telephone on March 7, 1876. However, Antonio Meucci had developed an early voice communication device before Bell and filed a caveat in 1871. Elisha Gray also independently developed a telephone design around the same time as Bell.",
+    "qa_pairs": [
+      {
+        "context": "Alexander Graham Bell was awarded the first patent for the electric telephone by the United States Patent and Trademark Office in March 1876. Bell's patent was filed on February 14, 1876, and was officially granted on March 7, 1876.",
+        "question": "Who was awarded the first patent for the telephone?",
+        "short_answers": [
+          "Alexander Graham Bell",
+          "Bell"
+        ],
+        "wikipage": "Alexander Graham Bell"
+      },
+      {
+        "context": "Antonio Meucci, an Italian inventor, developed a voice communication device in the early 1850s. Unable to renew his caveat after 1874 due to financial hardship, Meucci had filed a caveat in 1871 describing his invention, years before Bell's patent.",
+        "question": "Who developed an early voice communication device before Bell?",
+        "short_answers": [
+          "Antonio Meucci",
+          "Meucci"
+        ],
+        "wikipage": "Antonio Meucci"
+      },
+      {
+        "context": "Elisha Gray filed a patent caveat for a telephone design on February 14, 1876, the same day Bell filed his patent application. The U.S. Patent Office awarded the patent to Bell after a lengthy legal dispute.",
+        "question": "Who else independently developed a telephone design at the same time as Bell?",
+        "short_answers": [
+          "Elisha Gray",
+          "Gray"
+        ],
+        "wikipage": "Elisha Gray"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Alexander Graham Bell",
+        "url": "https://en.wikipedia.org/wiki/Alexander_Graham_Bell"
+      },
+      {
+        "title": "Antonio Meucci",
+        "url": "https://en.wikipedia.org/wiki/Antonio_Meucci"
+      },
+      {
+        "title": "Elisha Gray",
+        "url": "https://en.wikipedia.org/wiki/Elisha_Gray"
+      },
+      {
+        "title": "Invention of the telephone",
+        "url": "https://en.wikipedia.org/wiki/Invention_of_the_telephone"
+      },
+      {
+        "title": "Telephone",
+        "url": "https://en.wikipedia.org/wiki/Telephone"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Alexander Graham Bell was awarded the first patent for the electric telephone by the United States Patent and Trademark Office on March 7, 1876.",
+            "wikipage": "Alexander Graham Bell"
+          }
+        ],
+        "long_answer": "Alexander Graham Bell was awarded the first patent for the telephone on March 7, 1876. However, Antonio Meucci had developed a voice communication device before Bell and filed a caveat in 1871. Elisha Gray also independently developed a telephone design on the same day Bell filed his patent."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc001_1",
+        "title": "Alexander Graham Bell",
+        "text": "Alexander Graham Bell (March 3, 1847 – August 2, 1922) was a Scottish-American inventor and scientist who is credited with patenting the first practical telephone. Bell filed his patent application on February 14, 1876, and was officially awarded US Patent 174,465 on March 7, 1876. The patent described 'the method of, and apparatus for, transmitting vocal or other sounds telegraphically.' Bell's laboratory notebook entry for March 10, 1876 records the first successful bi-directional transmission of clear speech using his telephone, when he spoke to his assistant Thomas Watson: 'Mr. Watson—Come here—I want to see you.'",
+        "score": 0.85,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Bell filed his patent application on February 14, 1876, and was officially awarded US Patent 174,465 on March 7, 1876.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Conferma direttamente Bell come inventore del telefono e la data del brevetto (7 marzo 1876).",
+        "answers_found": [1, 0, 0],
+        "extraction": "Alexander Graham Bell was awarded the first patent for the telephone on March 7, 1876.",
+        "summary": "Alexander Graham Bell patented the telephone on March 7, 1876, and the first successful voice transmission occurred on March 10, 1876."
+      },
+      {
+        "id": "doc001_2",
+        "title": "Antonio Meucci",
+        "text": "Antonio Santi Giuseppe Meucci (13 April 1808 – 18 October 1889) was an Italian inventor and activist. Born in Florence, he developed a form of voice communication device in 1849, and later, in 1871, filed a caveat (a temporary patent) for a 'sound telegraph'. Unable to pay the $10 fee to renew the caveat, it was allowed to lapse after 1874. In 2002, the United States Congress passed a resolution honoring Meucci's contributions to the invention of the telephone and recognizing that his work preceded that of Alexander Graham Bell.",
+        "score": 0.79,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "he developed a form of voice communication device in 1849, and later, in 1871, filed a caveat (a temporary patent) for a 'sound telegraph'.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Identifica Meucci come precursore di Bell, con caveat del 1871.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Antonio Meucci developed a voice communication device in 1849 and filed a caveat in 1871, preceding Bell's patent.",
+        "summary": "Antonio Meucci developed a voice communication device before Bell and filed a caveat in 1871, but could not afford to renew it."
+      },
+      {
+        "id": "doc001_3",
+        "title": "Elisha Gray",
+        "text": "Elisha Gray (August 2, 1835 – January 21, 1901) was an American electrical engineer who co-founded the Western Electric Manufacturing Company. On February 14, 1876, Gray filed a patent caveat for a telephone design at the U.S. Patent Office, the same day Alexander Graham Bell filed his patent application. After a lengthy legal dispute, the patent was awarded to Bell. Gray later claimed that a Patent Office official had given Bell's application priority. Gray and Bell's competing claims resulted in one of the most complex patent disputes in history.",
+        "score": 0.76,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "On February 14, 1876, Gray filed a patent caveat for a telephone design at the U.S. Patent Office, the same day Alexander Graham Bell filed his patent application.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma Gray come co-inventore indipendente, con il caveat depositato lo stesso giorno di Bell.",
+        "answers_found": [0, 0, 1],
+        "extraction": "Elisha Gray filed a telephone patent caveat on the same day as Bell, February 14, 1876.",
+        "summary": "Elisha Gray independently developed a telephone design and filed a patent caveat on the same day as Bell, leading to a major legal dispute."
+      },
+      {
+        "id": "doc001_4",
+        "title": "Invention of the telephone",
+        "text": "The invention of the telephone is credited to multiple inventors. Alexander Graham Bell was the first to be granted a patent for the electric telephone in 1876. The historical and technical details surrounding the invention are complex and controversial. The question of who deserves credit for the telephone has been a subject of intense dispute among historians and engineers. Beyond Bell, Gray, and Meucci, German inventor Johann Philipp Reis had also constructed a device capable of transmitting sounds electrically as early as 1861, though his device could not transmit clear speech.",
+        "score": 0.74,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Alexander Graham Bell was the first to be granted a patent for the electric telephone in 1876.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Documento di contesto che conferma Bell come primo brevettato e menziona la complessità storica dell'invenzione.",
+        "answers_found": [1, 0, 0],
+        "extraction": "Bell was the first to receive a patent for the telephone in 1876, though the invention involved multiple competing inventors.",
+        "summary": "The telephone's invention is disputed among Bell, Gray, Meucci, and Reis, but Bell received the first patent in 1876."
+      },
+      {
+        "id": "doc001_5",
+        "title": "Telephone",
+        "text": "A telephone is a telecommunications device that permits two or more users to conduct a conversation when they are too far apart to be heard directly. The telephone was invented in the 1870s, based on earlier work by many inventors and scientists. The first patent for the telephone was granted to Alexander Graham Bell on March 7, 1876. The telephone rapidly became indispensable to businesses, government, and households; by 1880 there were 47,900 telephones in the United States, rising to over 6 million by 1907.",
+        "score": 0.72,
+        "is_gold": false,
+        "support_level": "partial",
+        "evidence_sentence": "The first patent for the telephone was granted to Alexander Graham Bell on March 7, 1876.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Documento di supporto parziale, conferma Bell e la data del brevetto ma non aggiunge informazioni nuove.",
+        "answers_found": [1, 0, 0],
+        "extraction": "The first patent for the telephone was granted to Alexander Graham Bell on March 7, 1876.",
+        "summary": "The telephone was invented in the 1870s, with Alexander Graham Bell receiving the first patent on March 7, 1876."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 2,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Alexander Graham Bell was awarded the first patent for the telephone on March 7, 1876.",
+        "keywords": ["Bell", "Alexander Graham Bell", "March 7, 1876", "1876"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Alexander Graham Bell",
+        "golden_evidence": "Bell filed his patent application on February 14, 1876, and was officially awarded US Patent 174,465 on March 7, 1876."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Antonio Meucci developed an earlier voice communication device and filed a caveat in 1871, before Bell's patent.",
+        "keywords": ["Meucci", "Antonio Meucci", "1871"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Antonio Meucci",
+        "golden_evidence": "he developed a form of voice communication device in 1849, and later, in 1871, filed a caveat (a temporary patent) for a 'sound telegraph'."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Elisha Gray independently filed a telephone patent caveat on the same day as Bell, February 14, 1876.",
+        "keywords": ["Elisha Gray", "Gray", "February 14, 1876"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Elisha Gray",
+        "golden_evidence": "On February 14, 1876, Gray filed a patent caveat for a telephone design at the U.S. Patent Office, the same day Alexander Graham Bell filed his patent application."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_002",
+    "question": "Who wrote Romeo and Juliet and what is it about?",
+    "answer": "Romeo and Juliet was written by William Shakespeare, believed to have been written around 1594–1596. It is a tragedy about two young star-crossed lovers, Romeo Montague and Juliet Capulet, whose families are engaged in a long-running feud in Verona, Italy. Their secret marriage and desperate attempts to be together ultimately end in both their deaths, which reconciles the feuding families.",
+    "qa_pairs": [
+      {
+        "context": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families. It was among Shakespeare's most popular plays during his lifetime and along with Hamlet, is one of his most frequently performed plays.",
+        "question": "Who wrote Romeo and Juliet?",
+        "short_answers": [
+          "William Shakespeare",
+          "Shakespeare"
+        ],
+        "wikipage": "Romeo and Juliet"
+      },
+      {
+        "context": "The play is set in Verona, Italy, where two families, the Montagues and the Capulets, are feuding with each other. Romeo, a Montague, and Juliet, a Capulet, fall in love at a party and secretly marry. Romeo is banished from Verona after killing Juliet's cousin Tybalt. Their attempt to escape together fails, and both die tragically.",
+        "question": "What is Romeo and Juliet about?",
+        "short_answers": [
+          "two star-crossed lovers",
+          "feuding families",
+          "Montagues and Capulets"
+        ],
+        "wikipage": "Romeo and Juliet"
+      },
+      {
+        "context": "Shakespeare is believed to have written Romeo and Juliet between 1594 and 1596. The earliest printed version of the play, known as the First Quarto (Q1), was published in 1597.",
+        "question": "When was Romeo and Juliet written?",
+        "short_answers": [
+          "1594–1596",
+          "around 1595"
+        ],
+        "wikipage": "Romeo and Juliet"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Romeo and Juliet",
+        "url": "https://en.wikipedia.org/wiki/Romeo_and_Juliet"
+      },
+      {
+        "title": "William Shakespeare",
+        "url": "https://en.wikipedia.org/wiki/William_Shakespeare"
+      },
+      {
+        "title": "Montague family",
+        "url": "https://en.wikipedia.org/wiki/Montague_family"
+      },
+      {
+        "title": "Capulet family",
+        "url": "https://en.wikipedia.org/wiki/Capulet_family"
+      },
+      {
+        "title": "Globe Theatre",
+        "url": "https://en.wikipedia.org/wiki/Globe_Theatre"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career, believed to have been composed between 1594 and 1596.",
+            "wikipage": "Romeo and Juliet"
+          }
+        ],
+        "long_answer": "Romeo and Juliet was written by William Shakespeare, believed around 1594–1596. It is a tragedy set in Verona, Italy, about two young lovers from feuding families—the Montagues and the Capulets—whose deaths ultimately reconcile their families."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc002_1",
+        "title": "Romeo and Juliet",
+        "text": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families. It was among Shakespeare's most popular plays during his lifetime and, along with Hamlet, is one of his most frequently performed plays. Shakespeare is believed to have written the play between 1594 and 1596. The earliest surviving printed version, the First Quarto (Q1), was published in 1597. The story is based on an Italian tale translated into verse as The Tragicall Historye of Romeus and Juliet by Arthur Brooke in 1562.",
+        "score": 0.88,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families.",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale che risponde a tutte le sub-questions: autore, trama, e periodo di composizione.",
+        "answers_found": [1, 1, 1],
+        "extraction": "Romeo and Juliet was written by William Shakespeare around 1594–1596 and is about two star-crossed lovers from feuding families.",
+        "summary": "Romeo and Juliet is a Shakespeare tragedy about star-crossed lovers from the Montague and Capulet families in Verona, written between 1594 and 1596."
+      },
+      {
+        "id": "doc002_2",
+        "title": "William Shakespeare",
+        "text": "William Shakespeare (bapt. 26 April 1564 – 23 April 1616) was an English playwright, poet and actor. He is widely regarded as the greatest writer in the English language and the world's greatest dramatist. He is often called England's national poet and the 'Bard of Avon'. His extant works, including collaborations, consist of some 39 plays, 154 sonnets and a few longer poems. Romeo and Juliet is one of his early tragedies and is considered one of his most famous works. His plays have been translated into every major language and are performed more often than those of any other playwright.",
+        "score": 0.81,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Romeo and Juliet is one of his early tragedies and is considered one of his most famous works.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Conferma Shakespeare come autore e il ruolo di Romeo e Giulietta nella sua opera.",
+        "answers_found": [1, 0, 0],
+        "extraction": "William Shakespeare wrote Romeo and Juliet, one of his early and most famous tragedies.",
+        "summary": "William Shakespeare, English playwright born in 1564, wrote Romeo and Juliet as one of his early tragedies."
+      },
+      {
+        "id": "doc002_3",
+        "title": "Montague family",
+        "text": "The Montagues are one of the two feuding families in Shakespeare's Romeo and Juliet. The other family is the Capulets. The patriarch of the family is Lord Montague. Romeo is the son of Lord and Lady Montague. The feud between the Montagues and the Capulets has been going on for some time before the play begins; the exact cause is never explained by Shakespeare. Romeo's friends include Benvolio, who is Romeo's cousin, and Mercutio, the Prince's kinsman.",
+        "score": 0.75,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "The Montagues are one of the two feuding families in Shakespeare's Romeo and Juliet. The other family is the Capulets.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Supporto parziale per la sub-question sulla trama, descrive le famiglie in conflitto.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The Montagues and Capulets are the two feuding families in Romeo and Juliet.",
+        "summary": "The Montagues are one of the two feuding families in Romeo and Juliet, with Romeo being Lord Montague's son."
+      },
+      {
+        "id": "doc002_4",
+        "title": "Capulet family",
+        "text": "The Capulets are a fictional family appearing in William Shakespeare's Romeo and Juliet. They are the enemies of the Montague family. Juliet is the daughter of Lord and Lady Capulet. The family includes Tybalt, Juliet's cousin and a skilled swordsman who kills Mercutio and is later killed by Romeo. The ancient grudge between the Capulets and Montagues is at the heart of the tragedy, as Juliet's secret marriage to Romeo triggers a chain of events that leads to the deaths of both protagonists.",
+        "score": 0.74,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "The ancient grudge between the Capulets and Montagues is at the heart of the tragedy, as Juliet's secret marriage to Romeo triggers a chain of events that leads to the deaths of both protagonists.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Descrive il conflitto tra le famiglie e la morte dei protagonisti, supporto per la sub-question sulla trama.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The feud between the Capulets and Montagues leads to the deaths of Romeo and Juliet.",
+        "summary": "The Capulets are the Montagues' enemies in Romeo and Juliet; their feud leads to the deaths of Romeo and Juliet."
+      },
+      {
+        "id": "doc002_5",
+        "title": "Globe Theatre",
+        "text": "The Globe Theatre was a theatre in London associated with William Shakespeare. It was built in 1599 by Shakespeare's playing company, the Lord Chamberlain's Men, on land in Southwark. Many of Shakespeare's plays, including Romeo and Juliet, Hamlet, Othello, and King Lear, were performed there. The Globe was destroyed by a fire in 1613 when a theatrical cannon misfired during a performance of Henry VIII. A new Globe was built in 1614, and a modern reconstruction of the original, named 'Shakespeare's Globe', opened in 1997.",
+        "score": 0.65,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla del Globe Theatre e lo collega a Shakespeare ma non risponde direttamente a nessuna delle sub-questions.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "The Globe Theatre was built in 1599 for Shakespeare's company and hosted many of his plays, but this is not directly relevant to who wrote Romeo and Juliet or its content."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 1,
+      "n_partial_support": 3,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Romeo and Juliet was written by William Shakespeare.",
+        "keywords": ["Shakespeare", "William Shakespeare"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Romeo and Juliet",
+        "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Shakespeare is believed to have written Romeo and Juliet between 1594 and 1596.",
+        "keywords": ["1594", "1596", "1594–1596"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Romeo and Juliet",
+        "golden_evidence": "Shakespeare is believed to have written the play between 1594 and 1596."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The play is about two star-crossed lovers from feuding families, the Montagues and the Capulets, set in Verona, Italy.",
+        "keywords": ["Montague", "Capulet", "Verona", "star-crossed lovers"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Romeo and Juliet",
+        "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_003",
+    "question": "What is the speed of light and who measured it first?",
+    "answer": "The speed of light in a vacuum is exactly 299,792,458 metres per second (approximately 300,000 km/s or 186,000 miles per second). The first quantitative measurement of the speed of light was made by Danish astronomer Ole Rømer in 1676 using observations of Jupiter's moon Io. James Bradley provided a more accurate measurement in 1728. The exact value was fixed by definition in 1983 when the metre was redefined.",
+    "qa_pairs": [
+      {
+        "context": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second. This exact value was established by the 17th General Conference on Weights and Measures in 1983.",
+        "question": "What is the speed of light?",
+        "short_answers": [
+          "299,792,458 metres per second",
+          "approximately 300,000 km/s"
+        ],
+        "wikipage": "Speed of light"
+      },
+      {
+        "context": "Ole Rømer first demonstrated in 1676 that light travels at a finite speed by studying the apparent motion of Jupiter's moon Io. By timing occultations of Io, he estimated the speed of light as approximately 220,000 km/s—considerably less than the true value, but the first quantitative measurement.",
+        "question": "Who first measured the speed of light?",
+        "short_answers": [
+          "Ole Rømer",
+          "Rømer"
+        ],
+        "wikipage": "Ole Rømer"
+      },
+      {
+        "context": "In 1728, English astronomer James Bradley measured the speed of light by observing stellar aberration, obtaining a value of about 301,000 km/s—much closer to the true value than Rømer's estimate.",
+        "question": "Who provided the second major measurement of the speed of light?",
+        "short_answers": [
+          "James Bradley",
+          "Bradley"
+        ],
+        "wikipage": "James Bradley"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Speed of light",
+        "url": "https://en.wikipedia.org/wiki/Speed_of_light"
+      },
+      {
+        "title": "Ole Rømer",
+        "url": "https://en.wikipedia.org/wiki/Ole_R%C3%B8mer"
+      },
+      {
+        "title": "James Bradley",
+        "url": "https://en.wikipedia.org/wiki/James_Bradley"
+      },
+      {
+        "title": "Fizeau–Foucault apparatus",
+        "url": "https://en.wikipedia.org/wiki/Fizeau%E2%80%93Foucault_apparatus"
+      },
+      {
+        "title": "Metre",
+        "url": "https://en.wikipedia.org/wiki/Metre"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The speed of light in vacuum is exactly 299,792,458 metres per second. Ole Rømer was the first to demonstrate that light travels at a finite speed in 1676.",
+            "wikipage": "Speed of light"
+          }
+        ],
+        "long_answer": "The speed of light in vacuum is exactly 299,792,458 metres per second. Ole Rømer first measured it in 1676 using observations of Jupiter's moon Io. James Bradley obtained a more accurate value in 1728. The exact value was fixed in 1983."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc003_1",
+        "title": "Speed of light",
+        "text": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second (approximately 300,000 km/s or 186,000 mi/s). According to the special theory of relativity, c is the upper limit for the speed at which conventional matter, energy, or any signal carrying information can travel through space. In 1983, the metre was redefined in the International System of Units (SI) as the distance travelled by light in vacuum in 1/299,792,458 of a second, making the speed of light in vacuum exact by definition.",
+        "score": 0.90,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Documento principale, fornisce il valore esatto della velocità della luce.",
+        "answers_found": [1, 0, 0],
+        "extraction": "The speed of light in vacuum is exactly 299,792,458 metres per second.",
+        "summary": "The speed of light in vacuum is exactly 299,792,458 m/s, fixed by definition since 1983."
+      },
+      {
+        "id": "doc003_2",
+        "title": "Ole Rømer",
+        "text": "Ole Christensen Rømer (25 September 1644 – 19 September 1710) was a Danish astronomer who made the first quantitative measurements of the speed of light. In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding. He correctly attributed this difference to the varying time it takes light to travel from Jupiter to Earth. His estimate of the speed of light was approximately 220,000 km/s, which, although lower than the actual value, was a groundbreaking achievement in physics.",
+        "score": 0.86,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma Rømer come primo misuratore della velocità della luce nel 1676, usando Io.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Ole Rømer made the first quantitative measurement of the speed of light in 1676 using observations of Jupiter's moon Io.",
+        "summary": "Ole Rømer first measured the speed of light in 1676 by observing Jupiter's moon Io, estimating approximately 220,000 km/s."
+      },
+      {
+        "id": "doc003_3",
+        "title": "James Bradley",
+        "text": "James Bradley FRS (1693 – 13 July 1762) was an English astronomer and served as Astronomer Royal from 1742. In 1728, Bradley discovered stellar aberration, the apparent shift in the positions of stars due to Earth's orbital velocity. By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate. Bradley's measurement remained the most accurate for over a century and established the approximate value of c well before modern precision methods.",
+        "score": 0.78,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma Bradley come il secondo grande misuratore della velocità della luce nel 1728.",
+        "answers_found": [0, 0, 1],
+        "extraction": "James Bradley measured the speed of light in 1728 as approximately 301,000 km/s using stellar aberration.",
+        "summary": "James Bradley measured the speed of light in 1728 via stellar aberration, obtaining approximately 301,000 km/s."
+      },
+      {
+        "id": "doc003_4",
+        "title": "Fizeau–Foucault apparatus",
+        "text": "The Fizeau–Foucault apparatus is an instrument used to measure the speed of light. Hippolyte Fizeau first measured the terrestrial speed of light in 1849 using a rotating toothed wheel, obtaining a value of approximately 313,300 km/s. Léon Foucault improved on this in 1862 using a rotating mirror, obtaining 298,000 km/s—very close to the modern value. Albert Michelson later achieved extremely precise measurements using improved rotating mirror methods between 1877 and 1931.",
+        "score": 0.72,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla di misurazioni successive della velocità della luce (Fizeau, Foucault, Michelson) ma non risponde alle sub-questions principali.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "Later measurements by Fizeau (1849) and Foucault (1862) improved on Rømer and Bradley's estimates, but this document is not relevant to who first measured the speed of light."
+      },
+      {
+        "id": "doc003_5",
+        "title": "Metre",
+        "text": "The metre is the fundamental unit of length in the International System of Units (SI). Since 1983, the metre has been defined as the length of the path travelled by light in vacuum during a time interval of exactly 1/299,792,458 of a second. This definition fixes the speed of light to exactly 299,792,458 metres per second. Previously, the metre had been defined in terms of a physical artefact—a platinum-iridium bar kept at the International Bureau of Weights and Measures in Sèvres, France.",
+        "score": 0.68,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Since 1983, the metre has been defined as the length of the path travelled by light in vacuum during a time interval of exactly 1/299,792,458 of a second.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Documento di supporto parziale: conferma il valore esatto della velocità della luce attraverso la definizione del metro dal 1983.",
+        "answers_found": [1, 0, 0],
+        "extraction": "Since 1983, the metre is defined via the speed of light, fixing it at exactly 299,792,458 m/s.",
+        "summary": "Since 1983, the metre is defined by the speed of light, fixing c at exactly 299,792,458 m/s."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The speed of light in vacuum is exactly 299,792,458 metres per second.",
+        "keywords": ["299,792,458", "speed of light", "c"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Speed of light",
+        "golden_evidence": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Ole Rømer made the first quantitative measurement of the speed of light in 1676 using observations of Jupiter's moon Io.",
+        "keywords": ["Rømer", "Ole Rømer", "1676", "Io"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Ole Rømer",
+        "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "James Bradley provided a more accurate measurement of the speed of light in 1728 using stellar aberration, obtaining approximately 301,000 km/s.",
+        "keywords": ["James Bradley", "Bradley", "1728", "stellar aberration"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "James Bradley",
+        "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_004",
+    "question": "Who painted the Sistine Chapel ceiling and how long did it take?",
+    "answer": "The ceiling of the Sistine Chapel was painted by Michelangelo. He worked on the project from 1508 to 1512, a period of approximately four years. Pope Julius II commissioned the work. The ceiling depicts scenes from the Book of Genesis, including the famous 'Creation of Adam'. Michelangelo painted the ceiling largely by himself, working on scaffolding of his own design.",
+    "qa_pairs": [
+      {
+        "context": "Michelangelo was commissioned to paint the Sistine Chapel ceiling by Pope Julius II in 1508. The project took four years to complete, from 1508 to 1512, and covers over 500 square metres of ceiling.",
+        "question": "Who painted the Sistine Chapel ceiling?",
+        "short_answers": [
+          "Michelangelo"
+        ],
+        "wikipage": "Sistine Chapel ceiling"
+      },
+      {
+        "context": "The Sistine Chapel ceiling was painted between 1508 and 1512. Michelangelo began painting in May 1508 and the ceiling was unveiled on 31 October 1512 on the eve of All Saints' Day.",
+        "question": "How long did it take Michelangelo to paint the Sistine Chapel ceiling?",
+        "short_answers": [
+          "four years",
+          "1508 to 1512"
+        ],
+        "wikipage": "Sistine Chapel ceiling"
+      },
+      {
+        "context": "The central panels of the ceiling depict nine scenes from the Book of Genesis, including the Creation of Adam, the most famous image on the ceiling, which shows God giving life to Adam by reaching out to touch his finger.",
+        "question": "What does the Sistine Chapel ceiling depict?",
+        "short_answers": [
+          "scenes from the Book of Genesis",
+          "Creation of Adam"
+        ],
+        "wikipage": "Sistine Chapel ceiling"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Sistine Chapel ceiling",
+        "url": "https://en.wikipedia.org/wiki/Sistine_Chapel_ceiling"
+      },
+      {
+        "title": "Michelangelo",
+        "url": "https://en.wikipedia.org/wiki/Michelangelo"
+      },
+      {
+        "title": "Pope Julius II",
+        "url": "https://en.wikipedia.org/wiki/Pope_Julius_II"
+      },
+      {
+        "title": "Creation of Adam",
+        "url": "https://en.wikipedia.org/wiki/Creation_of_Adam"
+      },
+      {
+        "title": "Sistine Chapel",
+        "url": "https://en.wikipedia.org/wiki/Sistine_Chapel"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Michelangelo painted the Sistine Chapel ceiling between 1508 and 1512 under commission from Pope Julius II.",
+            "wikipage": "Sistine Chapel ceiling"
+          }
+        ],
+        "long_answer": "The Sistine Chapel ceiling was painted by Michelangelo between 1508 and 1512—a period of approximately four years—commissioned by Pope Julius II. The ceiling depicts nine scenes from the Book of Genesis, most famously the Creation of Adam."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc004_1",
+        "title": "Sistine Chapel ceiling",
+        "text": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most renowned works of High Renaissance art. Pope Julius II commissioned Michelangelo in 1508, initially to paint the twelve Apostles on the triangular pendentives; Michelangelo persuaded Julius to allow a more complex design. The ceiling is approximately 40 metres long and 14 metres wide, covering over 500 square metres. Michelangelo painted the ceiling by himself without assistance, though he did employ assistants for minor tasks. He began painting in May 1508, and the ceiling was unveiled on 31 October 1512.",
+        "score": 0.92,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most renowned works of High Renaissance art.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Documento principale: conferma Michelangelo come pittore e il periodo 1508-1512.",
+        "answers_found": [1, 1, 0],
+        "extraction": "Michelangelo painted the Sistine Chapel ceiling between 1508 and 1512 under commission from Pope Julius II.",
+        "summary": "Michelangelo painted the Sistine Chapel ceiling from 1508 to 1512, commissioned by Pope Julius II."
+      },
+      {
+        "id": "doc004_2",
+        "title": "Michelangelo",
+        "text": "Michelangelo di Lodovico Buonarroti Simoni (6 March 1475 – 18 February 1564), known as Michelangelo, was an Italian Renaissance sculptor, painter, architect and poet. His most famous works include the Pietà and David (sculptures), the ceiling and The Last Judgment of the Sistine Chapel (paintings), and St. Peter's Basilica (architecture). The painting of the Sistine Chapel ceiling is considered one of the seminal works of High Renaissance art and took Michelangelo four years to complete. Michelangelo initially resisted the commission, stating he was a sculptor, not a painter.",
+        "score": 0.84,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The painting of the Sistine Chapel ceiling is considered one of the seminal works of High Renaissance art and took Michelangelo four years to complete.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Conferma Michelangelo come autore e la durata di quattro anni del lavoro.",
+        "answers_found": [1, 1, 0],
+        "extraction": "Michelangelo painted the Sistine Chapel ceiling, a work that took four years to complete.",
+        "summary": "Michelangelo painted the Sistine Chapel ceiling, which took four years and is considered a seminal work of High Renaissance art."
+      },
+      {
+        "id": "doc004_3",
+        "title": "Creation of Adam",
+        "text": "The Creation of Adam is a fresco painting by Michelangelo, which forms part of the Sistine Chapel ceiling. It is believed to have been painted around 1512, as part of the last section of the ceiling to be completed. The work illustrates the Biblical creation narrative from the Book of Genesis, in which God the Father breathes life into Adam, the first man. God reaches out his right index finger toward Adam's left hand. This image of the near-touching hands of God and Adam has become one of the most iconic paintings in Western art history.",
+        "score": 0.79,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "The Creation of Adam is a fresco painting by Michelangelo, which forms part of the Sistine Chapel ceiling.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Risponde alla sub-question sul contenuto del soffitto, descrivendo la Creazione di Adamo.",
+        "answers_found": [0, 0, 1],
+        "extraction": "The Creation of Adam by Michelangelo depicts God giving life to Adam and is part of the Sistine Chapel ceiling.",
+        "summary": "The Creation of Adam is the most iconic part of the Sistine Chapel ceiling, showing God giving life to Adam."
+      },
+      {
+        "id": "doc004_4",
+        "title": "Pope Julius II",
+        "text": "Pope Julius II (5 December 1443 – 21 February 1513), born Giuliano della Rovere, was Pope from 1503 to his death in 1513. He is best remembered for commissioning the rebuilding of St. Peter's Basilica and for his patronage of artists including Michelangelo and Raphael. In 1508, Julius commissioned Michelangelo to paint the ceiling of the Sistine Chapel. Despite Michelangelo's initial reluctance—he considered himself primarily a sculptor—Julius insisted, and the result became one of the greatest works of Western art.",
+        "score": 0.77,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "In 1508, Julius commissioned Michelangelo to paint the ceiling of the Sistine Chapel.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Conferma la committenza di Giulio II e il ruolo di Michelangelo.",
+        "answers_found": [1, 0, 0],
+        "extraction": "Pope Julius II commissioned Michelangelo to paint the Sistine Chapel ceiling in 1508.",
+        "summary": "Pope Julius II commissioned Michelangelo to paint the Sistine Chapel ceiling in 1508, despite Michelangelo's initial reluctance."
+      },
+      {
+        "id": "doc004_5",
+        "title": "Sistine Chapel",
+        "text": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City. It is famous for its Renaissance frescoes, the most important of which are Michelangelo's ceiling painting and The Last Judgment on the altar wall. The chapel also contains several other important Renaissance paintings on the side walls, created by Botticelli, Ghirlandaio, Perugino, and Signorelli. The chapel is the site of papal conclaves, the processes by which a new pope is selected.",
+        "score": 0.70,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla della Cappella Sistina in generale ma non risponde alle sub-questions specifiche.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "The Sistine Chapel is in Vatican City and contains important Renaissance frescoes, but this document does not directly answer the sub-questions."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 2,
+      "n_partial_support": 2,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Sistine Chapel ceiling was painted by Michelangelo.",
+        "keywords": ["Michelangelo"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Sistine Chapel ceiling",
+        "golden_evidence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most renowned works of High Renaissance art."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Michelangelo painted the ceiling between 1508 and 1512, taking approximately four years.",
+        "keywords": ["1508", "1512", "four years"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Sistine Chapel ceiling",
+        "golden_evidence": "He began painting in May 1508, and the ceiling was unveiled on 31 October 1512."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Pope Julius II commissioned Michelangelo to paint the Sistine Chapel ceiling in 1508.",
+        "keywords": ["Pope Julius II", "Julius II", "commissioned"],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Pope Julius II",
+        "golden_evidence": "In 1508, Julius commissioned Michelangelo to paint the ceiling of the Sistine Chapel."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "The ceiling depicts scenes from the Book of Genesis, most famously the Creation of Adam.",
+        "keywords": ["Genesis", "Creation of Adam", "Book of Genesis"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Creation of Adam",
+        "golden_evidence": "The Creation of Adam is a fresco painting by Michelangelo, which forms part of the Sistine Chapel ceiling."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_005",
+    "question": "Who was Marie Curie and what did she discover?",
+    "answer": "Marie Curie (1867–1934) was a Polish-French physicist and chemist who conducted pioneering research on radioactivity. She discovered two elements: polonium (named after her native Poland) in July 1898 and radium in December 1898, both together with her husband Pierre Curie. She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the prize in two different sciences—Physics in 1903 and Chemistry in 1911.",
+    "qa_pairs": [
+      {
+        "context": "Marie Skłodowska Curie was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity. She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the prize in two different sciences.",
+        "question": "Who was Marie Curie?",
+        "short_answers": [
+          "a physicist and chemist",
+          "Polish-French scientist"
+        ],
+        "wikipage": "Marie Curie"
+      },
+      {
+        "context": "Marie and Pierre Curie discovered polonium in July 1898 and radium in December 1898. Polonium was named after Marie's native country, Poland.",
+        "question": "What elements did Marie Curie discover?",
+        "short_answers": [
+          "polonium and radium",
+          "polonium",
+          "radium"
+        ],
+        "wikipage": "Marie Curie"
+      },
+      {
+        "context": "Marie Curie received the Nobel Prize in Physics in 1903 (shared with Pierre Curie and Henri Becquerel) for research on radiation phenomena, and the Nobel Prize in Chemistry in 1911 for her services to the advancement of chemistry by the discovery of the elements radium and polonium.",
+        "question": "What Nobel Prizes did Marie Curie win?",
+        "short_answers": [
+          "Nobel Prize in Physics in 1903 and Nobel Prize in Chemistry in 1911"
+        ],
+        "wikipage": "Marie Curie"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Marie Curie",
+        "url": "https://en.wikipedia.org/wiki/Marie_Curie"
+      },
+      {
+        "title": "Polonium",
+        "url": "https://en.wikipedia.org/wiki/Polonium"
+      },
+      {
+        "title": "Radium",
+        "url": "https://en.wikipedia.org/wiki/Radium"
+      },
+      {
+        "title": "Pierre Curie",
+        "url": "https://en.wikipedia.org/wiki/Pierre_Curie"
+      },
+      {
+        "title": "Radioactivity",
+        "url": "https://en.wikipedia.org/wiki/Radioactivity"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Marie Curie was a physicist and chemist who discovered polonium and radium, and won the Nobel Prize in Physics in 1903 and Chemistry in 1911.",
+            "wikipage": "Marie Curie"
+          }
+        ],
+        "long_answer": "Marie Curie was a Polish-French physicist and chemist who conducted pioneering research on radioactivity. She discovered polonium in July 1898 and radium in December 1898, both with her husband Pierre Curie. She was the first woman and the only person to win the Nobel Prize in two different sciences—Physics in 1903 and Chemistry in 1911."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc005_1",
+        "title": "Marie Curie",
+        "text": "Marie Skłodowska Curie (7 November 1867 – 4 July 1934), known as Marie Curie, was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity. She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the prize in two different sciences (Physics in 1903 and Chemistry in 1911). She was also the first woman to become a professor at the University of Paris. Together with her husband Pierre Curie, she discovered the elements polonium (July 1898) and radium (December 1898).",
+        "score": 0.94,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Together with her husband Pierre Curie, she discovered the elements polonium (July 1898) and radium (December 1898).",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale che risponde a tutte le sub-questions: chi era, cosa scoprì, i Nobel vinti.",
+        "answers_found": [1, 1, 1],
+        "extraction": "Marie Curie was a Polish-French physicist who discovered polonium and radium with her husband Pierre Curie, and won Nobel Prizes in Physics (1903) and Chemistry (1911).",
+        "summary": "Marie Curie was a physicist and chemist who discovered polonium and radium with Pierre Curie and won two Nobel Prizes."
+      },
+      {
+        "id": "doc005_2",
+        "title": "Polonium",
+        "text": "Polonium is a chemical element with the symbol Po and atomic number 84. It was discovered in July 1898 by Marie Curie and Pierre Curie. The element was named after Marie Curie's homeland of Poland, then under Russian, Prussian, and Austrian partition at the time of discovery. It is a rare and highly radioactive metal with no stable isotopes, all of which are radioactive. Polonium was the first element discovered by Marie Curie during her investigations into the nature of uranium rays.",
+        "score": 0.83,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "It was discovered in July 1898 by Marie Curie and Pierre Curie. The element was named after Marie Curie's homeland of Poland.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma la scoperta del polonio da parte dei Curie nel luglio 1898 e l'origine del nome.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Polonium was discovered by Marie Curie and Pierre Curie in July 1898 and named after Marie's homeland Poland.",
+        "summary": "Polonium was discovered by Marie and Pierre Curie in July 1898 and named after Poland."
+      },
+      {
+        "id": "doc005_3",
+        "title": "Radium",
+        "text": "Radium is a chemical element with the symbol Ra and atomic number 88. It is the sixth element in group 2 of the periodic table, also known as the alkaline earth metals. Radium was discovered in 1898 by Marie Curie and Pierre Curie in a pitchblende sample from Bohemia in December 1898. Marie Curie's doctoral thesis on radioactive substances, which included the discovery of radium, earned her a doctorate in physics from the University of Paris in 1903—making her the first woman in France to receive a doctorate in physics.",
+        "score": 0.81,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Radium was discovered in 1898 by Marie Curie and Pierre Curie in a pitchblende sample from Bohemia in December 1898.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma la scoperta del radio nel dicembre 1898 da parte dei coniugi Curie.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Radium was discovered by Marie and Pierre Curie in December 1898.",
+        "summary": "Radium was discovered by Marie and Pierre Curie in December 1898, and the discovery contributed to Marie Curie's doctoral thesis."
+      },
+      {
+        "id": "doc005_4",
+        "title": "Pierre Curie",
+        "text": "Pierre Curie (15 May 1859 – 19 April 1906) was a French physicist, a pioneer in crystallography, magnetism, piezoelectricity, and radioactivity. In 1903, he received the Nobel Prize in Physics with his wife, Marie Curie, and Henri Becquerel, for their research on the radiation phenomena discovered by Becquerel. Together with Marie, he discovered polonium and radium. Pierre Curie died in a street accident in Paris in 1906 when he was fatally struck by a horse-drawn vehicle.",
+        "score": 0.77,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Together with Marie, he discovered polonium and radium.",
+        "supports_sub_questions": [1, 2],
+        "annotation_note": "Conferma il ruolo di Pierre Curie nella scoperta di polonio e radio, e il Nobel del 1903.",
+        "answers_found": [0, 1, 1],
+        "extraction": "Pierre Curie co-discovered polonium and radium with Marie Curie and shared the 1903 Nobel Prize in Physics.",
+        "summary": "Pierre Curie was Marie's husband and collaborator; they discovered polonium and radium together and shared the 1903 Nobel Prize in Physics."
+      },
+      {
+        "id": "doc005_5",
+        "title": "Radioactivity",
+        "text": "Radioactivity, also known as nuclear decay or radioactive decay, is the process by which an unstable atomic nucleus loses energy by radiation. The phenomenon was discovered in 1896 by the French scientist Henri Becquerel, while working on phosphorescence in uranium salts. Marie Curie coined the term 'radioactivity' while investigating uranium rays and later extended research to thorium. Her work established that radioactivity was an atomic property of the element rather than a product of a chemical reaction, challenging existing models of the atom.",
+        "score": 0.70,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla di radioattività e cita Becquerel come scopritore del fenomeno; non risponde alle sub-questions sulle scoperte di Curie.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "Radioactivity was discovered by Henri Becquerel in 1896; Marie Curie coined the term but this document does not address her specific discoveries of polonium and radium."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Marie Curie was a Polish-French physicist and chemist who conducted pioneering research on radioactivity.",
+        "keywords": ["Marie Curie", "physicist", "chemist", "radioactivity"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Marie Curie",
+        "golden_evidence": "Marie Skłodowska Curie (7 November 1867 – 4 July 1934), known as Marie Curie, was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Marie Curie and Pierre Curie discovered polonium in July 1898, named after Marie's homeland Poland.",
+        "keywords": ["polonium", "July 1898", "Poland"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Polonium",
+        "golden_evidence": "It was discovered in July 1898 by Marie Curie and Pierre Curie. The element was named after Marie Curie's homeland of Poland."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Marie Curie and Pierre Curie discovered radium in December 1898.",
+        "keywords": ["radium", "December 1898"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Radium",
+        "golden_evidence": "Radium was discovered in 1898 by Marie Curie and Pierre Curie in a pitchblende sample from Bohemia in December 1898."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Marie Curie was the first person to win the Nobel Prize twice, in Physics (1903) and Chemistry (1911).",
+        "keywords": ["Nobel Prize", "Physics", "1903", "Chemistry", "1911"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Marie Curie",
+        "golden_evidence": "She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the prize in two different sciences (Physics in 1903 and Chemistry in 1911)."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_006",
+    "question": "Who built the Eiffel Tower and why?",
+    "answer": "The Eiffel Tower was designed and built by Gustave Eiffel's engineering company. It was constructed between 1887 and 1889 as the entrance arch for the 1889 World's Fair (Exposition Universelle) held in Paris to celebrate the centennial of the French Revolution. The tower stands 330 metres tall and was the tallest man-made structure in the world for 41 years until the Chrysler Building surpassed it in 1930.",
+    "qa_pairs": [
+      {
+        "context": "The Eiffel Tower was designed by Gustave Eiffel and constructed between 1887 and 1889. It was built as the entrance arch for the 1889 World's Fair held in Paris.",
+        "question": "Who designed and built the Eiffel Tower?",
+        "short_answers": ["Gustave Eiffel", "Eiffel"],
+        "wikipage": "Eiffel Tower"
+      },
+      {
+        "context": "The Eiffel Tower was constructed as the entrance arch for the 1889 World's Fair (Exposition Universelle) in Paris, which celebrated the centennial of the French Revolution.",
+        "question": "Why was the Eiffel Tower built?",
+        "short_answers": ["for the 1889 World's Fair", "to celebrate the French Revolution centennial"],
+        "wikipage": "Eiffel Tower"
+      },
+      {
+        "context": "Upon its completion in 1889, the Eiffel Tower was the tallest man-made structure in the world at 300 metres (later extended to 330 metres). It held this record for 41 years until the completion of the Chrysler Building in New York City in 1930.",
+        "question": "How long was the Eiffel Tower the world's tallest structure?",
+        "short_answers": ["41 years", "until 1930"],
+        "wikipage": "Eiffel Tower"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Eiffel Tower",
+        "url": "https://en.wikipedia.org/wiki/Eiffel_Tower"
+      },
+      {
+        "title": "Gustave Eiffel",
+        "url": "https://en.wikipedia.org/wiki/Gustave_Eiffel"
+      },
+      {
+        "title": "Exposition Universelle (1889)",
+        "url": "https://en.wikipedia.org/wiki/Exposition_Universelle_(1889)"
+      },
+      {
+        "title": "Chrysler Building",
+        "url": "https://en.wikipedia.org/wiki/Chrysler_Building"
+      },
+      {
+        "title": "French Revolution",
+        "url": "https://en.wikipedia.org/wiki/French_Revolution"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The Eiffel Tower was designed by Gustave Eiffel and built between 1887 and 1889 for the 1889 World's Fair.",
+            "wikipage": "Eiffel Tower"
+          }
+        ],
+        "long_answer": "The Eiffel Tower was designed by Gustave Eiffel and built by his engineering company between 1887 and 1889 as the entrance arch for the 1889 World's Fair (Exposition Universelle) in Paris, celebrating the centennial of the French Revolution. It was the world's tallest structure for 41 years, until the Chrysler Building surpassed it in 1930."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc006_1",
+        "title": "Eiffel Tower",
+        "text": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair. The tower is 330 metres (1,083 ft) tall, about the same height as an 81-storey building, and the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930.",
+        "score": 0.91,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair.",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale: conferma Eiffel come progettista, la World's Fair come motivo, e il record di altezza per 41 anni.",
+        "answers_found": [1, 1, 1],
+        "extraction": "The Eiffel Tower was designed and built by Gustave Eiffel's company from 1887 to 1889 as the entrance arch for the 1889 World's Fair, and was the tallest man-made structure for 41 years.",
+        "summary": "The Eiffel Tower was built by Gustave Eiffel's company in 1887–1889 for the 1889 World's Fair, and held the record as the world's tallest structure for 41 years."
+      },
+      {
+        "id": "doc006_2",
+        "title": "Gustave Eiffel",
+        "text": "Alexandre Gustave Eiffel (15 December 1832 – 27 December 1923) was a French civil engineer. A graduate of École Centrale Paris, he is known for the iron lattice Eiffel Tower, built as the centrepiece of the 1889 World's Fair, as well as his contribution to building the Statue of Liberty. Eiffel's company, Compagnie des Établissements Eiffel, was responsible for constructing many bridges and viaducts across France during the late 19th century. The Eiffel Tower was initially criticised by prominent French artists and intellectuals as an eyesore, but later became a globally recognised symbol of France.",
+        "score": 0.84,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "he is known for the iron lattice Eiffel Tower, built as the centrepiece of the 1889 World's Fair",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Conferma Eiffel come ingegnere della torre e il contesto della World's Fair del 1889.",
+        "answers_found": [1, 1, 0],
+        "extraction": "Gustave Eiffel built the Eiffel Tower as the centrepiece of the 1889 World's Fair.",
+        "summary": "Gustave Eiffel was a French civil engineer who built the Eiffel Tower for the 1889 World's Fair."
+      },
+      {
+        "id": "doc006_3",
+        "title": "Exposition Universelle (1889)",
+        "text": "The Exposition Universelle of 1889 was a world's fair held in Paris, France, from 5 May to 31 October 1889. It was organized to celebrate the centennial of the French Revolution and to demonstrate France's industrial prowess. Forty-four nations participated. The most enduring legacy of the exposition was the Eiffel Tower, which served as the entrance arch and was at the time the tallest man-made structure ever built. The fair attracted over 32 million visitors.",
+        "score": 0.82,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "It was organized to celebrate the centennial of the French Revolution and to demonstrate France's industrial prowess.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma il motivo della costruzione: celebrare il centenario della Rivoluzione francese.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The 1889 World's Fair celebrated the centennial of the French Revolution; the Eiffel Tower was its entrance arch.",
+        "summary": "The 1889 Exposition Universelle celebrated the centennial of the French Revolution; the Eiffel Tower was built as its entrance arch."
+      },
+      {
+        "id": "doc006_4",
+        "title": "Chrysler Building",
+        "text": "The Chrysler Building is an Art Deco skyscraper in Midtown Manhattan, New York City. At 319 metres (1,047 ft) in height, it was the world's tallest building for 11 months before it was surpassed by the Empire State Building in 1931. When completed in 1930, it surpassed the Eiffel Tower as the tallest man-made structure in the world. The building was designed by architect William Van Alen for a project of Walter P. Chrysler, the founder of Chrysler Corporation.",
+        "score": 0.74,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "When completed in 1930, it surpassed the Eiffel Tower as the tallest man-made structure in the world.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma che il Chrysler Building superò la Tour Eiffel nel 1930, supportando la sub-question sui 41 anni di record.",
+        "answers_found": [0, 0, 1],
+        "extraction": "The Chrysler Building surpassed the Eiffel Tower as the tallest man-made structure when completed in 1930.",
+        "summary": "The Chrysler Building surpassed the Eiffel Tower as the world's tallest structure when it was completed in 1930."
+      },
+      {
+        "id": "doc006_5",
+        "title": "French Revolution",
+        "text": "The French Revolution (French: Révolution française) was a period of radical political and societal change in France that began with the Estates General of 1789 and ended with the formation of the French Consulate in November 1799. Many of its ideas are considered fundamental principles of liberal democracy. The storming of the Bastille on 14 July 1789 is regarded as the symbolic start of the Revolution. The centennial of the Revolution was celebrated with the 1889 World's Fair in Paris, for which the Eiffel Tower was built.",
+        "score": 0.68,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla della Rivoluzione francese in generale. Menziona la World's Fair solo marginalmente, non risponde direttamente alle sub-questions.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "The French Revolution began in 1789; the 1889 centennial was celebrated with the World's Fair, but this document does not directly answer the sub-questions about the Eiffel Tower."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Eiffel Tower was designed and built by Gustave Eiffel's company between 1887 and 1889.",
+        "keywords": ["Gustave Eiffel", "Eiffel", "1887", "1889"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Eiffel Tower",
+        "golden_evidence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The Eiffel Tower was built as the entrance arch for the 1889 World's Fair (Exposition Universelle) in Paris.",
+        "keywords": ["1889 World's Fair", "Exposition Universelle", "entrance arch"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Eiffel Tower",
+        "golden_evidence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The 1889 World's Fair celebrated the centennial of the French Revolution.",
+        "keywords": ["centennial", "French Revolution", "1789"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Exposition Universelle (1889)",
+        "golden_evidence": "It was organized to celebrate the centennial of the French Revolution and to demonstrate France's industrial prowess."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "The Eiffel Tower was the world's tallest man-made structure for 41 years, until the Chrysler Building surpassed it in 1930.",
+        "keywords": ["41 years", "1930", "Chrysler Building", "tallest"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Eiffel Tower",
+        "golden_evidence": "During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_007",
+    "question": "Who was the first person to walk on the Moon and when?",
+    "answer": "Neil Armstrong was the first person to walk on the Moon, on July 20, 1969, during the Apollo 11 mission. He was followed about 20 minutes later by fellow astronaut Buzz Aldrin. The third crew member, Michael Collins, remained in lunar orbit aboard the Command Module. Armstrong's famous words upon stepping onto the surface were: 'That's one small step for [a] man, one giant leap for mankind.'",
+    "qa_pairs": [
+      {
+        "context": "Apollo 11 was the American spaceflight that first landed humans on the Moon. Commander Neil Armstrong and lunar module pilot Buzz Aldrin landed the Apollo Lunar Module Eagle on July 20, 1969. Armstrong became the first person to step onto the lunar surface six hours and 39 minutes later.",
+        "question": "Who was the first person to walk on the Moon?",
+        "short_answers": ["Neil Armstrong", "Armstrong"],
+        "wikipage": "Apollo 11"
+      },
+      {
+        "context": "Apollo 11 landed on the Moon on July 20, 1969. Neil Armstrong stepped onto the lunar surface at 02:56 UTC on July 21, 1969, and Buzz Aldrin followed about 20 minutes later.",
+        "question": "When did the first Moon landing happen?",
+        "short_answers": ["July 20, 1969", "1969"],
+        "wikipage": "Apollo 11"
+      },
+      {
+        "context": "The Apollo 11 crew consisted of commander Neil Armstrong, command module pilot Michael Collins, and lunar module pilot Buzz Aldrin. Collins remained in lunar orbit in the Command Module Columbia while Armstrong and Aldrin descended to the surface.",
+        "question": "Who else was part of the Apollo 11 crew?",
+        "short_answers": ["Buzz Aldrin", "Michael Collins"],
+        "wikipage": "Apollo 11"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Apollo 11",
+        "url": "https://en.wikipedia.org/wiki/Apollo_11"
+      },
+      {
+        "title": "Neil Armstrong",
+        "url": "https://en.wikipedia.org/wiki/Neil_Armstrong"
+      },
+      {
+        "title": "Buzz Aldrin",
+        "url": "https://en.wikipedia.org/wiki/Buzz_Aldrin"
+      },
+      {
+        "title": "Michael Collins (astronaut)",
+        "url": "https://en.wikipedia.org/wiki/Michael_Collins_(astronaut)"
+      },
+      {
+        "title": "Moon landing",
+        "url": "https://en.wikipedia.org/wiki/Moon_landing"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Neil Armstrong was the first person to walk on the Moon on July 20, 1969, during the Apollo 11 mission.",
+            "wikipage": "Neil Armstrong"
+          }
+        ],
+        "long_answer": "Neil Armstrong was the first person to walk on the Moon on July 20, 1969, as part of the Apollo 11 mission. He was followed by Buzz Aldrin about 20 minutes later. The third crew member, Michael Collins, remained in lunar orbit."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc007_1",
+        "title": "Apollo 11",
+        "text": "Apollo 11 (July 16–24, 1969) was the American spaceflight that first landed humans on the Moon. Commander Neil Armstrong and lunar module pilot Buzz Aldrin formed the American crew that landed the Apollo Lunar Module Eagle on July 20, 1969, at 20:17 UTC. Armstrong became the first person to step onto the lunar surface six hours and 39 minutes later, on July 21 at 02:56 UTC; Aldrin joined him 19 minutes later. They spent about two and a quarter hours together outside the spacecraft, and collected 47.5 pounds (21.5 kg) of lunar material to bring back to Earth. Command module pilot Michael Collins flew the command module Columbia alone in lunar orbit while they were on the Moon's surface.",
+        "score": 0.93,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Armstrong became the first person to step onto the lunar surface six hours and 39 minutes later, on July 21 at 02:56 UTC; Aldrin joined him 19 minutes later.",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale: risponde a tutte le sub-questions su Armstrong, data, e resto del crew.",
+        "answers_found": [1, 1, 1],
+        "extraction": "Neil Armstrong became the first person to step onto the lunar surface on July 21, 1969; Buzz Aldrin joined him 19 minutes later; Michael Collins orbited above.",
+        "summary": "Apollo 11 landed on the Moon on July 20, 1969; Armstrong was first to walk on the surface, followed by Aldrin; Collins orbited above."
+      },
+      {
+        "id": "doc007_2",
+        "title": "Neil Armstrong",
+        "text": "Neil Alden Armstrong (August 5, 1930 – August 25, 2012) was an American astronaut and aeronautical engineer who became the first person to walk on the Moon. He was also a naval aviator, test pilot, and university professor. Armstrong was the commander of the Apollo 11 spaceflight, and on July 20, 1969, he and Buzz Aldrin became the first two humans to land on the Moon. Armstrong's first step onto the lunar surface was broadcast on live TV to a worldwide audience. He described the event as 'one small step for [a] man, one giant leap for mankind.'",
+        "score": 0.89,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Neil Alden Armstrong (August 5, 1930 – August 25, 2012) was an American astronaut and aeronautical engineer who became the first person to walk on the Moon.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Conferma Armstrong come primo uomo sulla Luna e la data del 20 luglio 1969.",
+        "answers_found": [1, 1, 0],
+        "extraction": "Neil Armstrong became the first person to walk on the Moon on July 20, 1969, as commander of Apollo 11.",
+        "summary": "Neil Armstrong was the first person to walk on the Moon on July 20, 1969."
+      },
+      {
+        "id": "doc007_3",
+        "title": "Buzz Aldrin",
+        "text": "Buzz Aldrin (born Edwin Eugene Aldrin Jr.; January 20, 1930) is an American former astronaut, engineer, and fighter pilot. He was the lunar module pilot on Apollo 11, the first crewed Moon landing mission in July 1969. As the second person to walk on the Moon, Aldrin joined commander Neil Armstrong on the lunar surface after Armstrong had stepped out of the Eagle lander. Together, Armstrong and Aldrin spent approximately two hours and fifteen minutes outside the Eagle, taking photographs and collecting samples.",
+        "score": 0.82,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "As the second person to walk on the Moon, Aldrin joined commander Neil Armstrong on the lunar surface after Armstrong had stepped out of the Eagle lander.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma Aldrin come secondo uomo sulla Luna e membro del crew di Apollo 11.",
+        "answers_found": [0, 0, 1],
+        "extraction": "Buzz Aldrin was the second person to walk on the Moon, joining Neil Armstrong on the lunar surface during Apollo 11.",
+        "summary": "Buzz Aldrin was the second person to walk on the Moon during Apollo 11."
+      },
+      {
+        "id": "doc007_4",
+        "title": "Michael Collins (astronaut)",
+        "text": "Michael Collins (October 31, 1930 – April 28, 2021) was an American astronaut who flew the Apollo 11 command module Columbia around the Moon while his crewmates Neil Armstrong and Buzz Aldrin made the first crewed lunar landing on July 20, 1969. Collins was selected as an astronaut by NASA in 1963. During the Apollo 11 mission, he orbited the Moon alone for nearly 22 hours while Armstrong and Aldrin were on the surface. Collins later recalled that he felt 'awareness, anticipation, satisfaction, confidence, almost exultation' during those solo hours.",
+        "score": 0.78,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Michael Collins flew the Apollo 11 command module Columbia around the Moon while his crewmates Neil Armstrong and Buzz Aldrin made the first crewed lunar landing on July 20, 1969.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma Collins come terzo membro del crew, rimasto in orbita durante lo sbarco.",
+        "answers_found": [0, 0, 1],
+        "extraction": "Michael Collins piloted the command module in lunar orbit while Armstrong and Aldrin landed on the Moon.",
+        "summary": "Michael Collins orbited the Moon alone while Armstrong and Aldrin landed on the lunar surface during Apollo 11."
+      },
+      {
+        "id": "doc007_5",
+        "title": "Moon landing",
+        "text": "A Moon landing is the arrival of a spacecraft on the surface of the Moon. This includes both crewed and uncrewed (robotic) missions. The first human Moon landing was Apollo 11 on July 20, 1969. The United States is the only country to have successfully conducted crewed missions to the Moon, with six successful crewed landings between 1969 and 1972. The Soviet Union competed with the United States in the Space Race but never achieved a crewed Moon landing. The last crewed Moon landing was Apollo 17 in December 1972.",
+        "score": 0.71,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: fornisce contesto generale sugli sbarchi lunari ma non risponde specificamente alle sub-questions su chi fu primo, la data esatta, o i membri del crew.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "This document gives general context about Moon landings but does not specifically identify Armstrong, Aldrin, or Collins."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Neil Armstrong was the first person to walk on the Moon.",
+        "keywords": ["Neil Armstrong", "Armstrong", "first person"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Neil Armstrong",
+        "golden_evidence": "Neil Alden Armstrong (August 5, 1930 – August 25, 2012) was an American astronaut and aeronautical engineer who became the first person to walk on the Moon."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Armstrong stepped onto the lunar surface on July 20, 1969, during the Apollo 11 mission.",
+        "keywords": ["July 20, 1969", "1969", "Apollo 11"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Apollo 11",
+        "golden_evidence": "Commander Neil Armstrong and lunar module pilot Buzz Aldrin formed the American crew that landed the Apollo Lunar Module Eagle on July 20, 1969, at 20:17 UTC."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Buzz Aldrin was the second person to walk on the Moon, joining Armstrong about 19 minutes later.",
+        "keywords": ["Buzz Aldrin", "Aldrin", "second person"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Buzz Aldrin",
+        "golden_evidence": "As the second person to walk on the Moon, Aldrin joined commander Neil Armstrong on the lunar surface after Armstrong had stepped out of the Eagle lander."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Michael Collins remained in lunar orbit aboard the Command Module during the Moon landing.",
+        "keywords": ["Michael Collins", "Collins", "command module", "lunar orbit"],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Michael Collins (astronaut)",
+        "golden_evidence": "Michael Collins flew the Apollo 11 command module Columbia around the Moon while his crewmates Neil Armstrong and Buzz Aldrin made the first crewed lunar landing on July 20, 1969."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_008",
+    "question": "What is the Great Wall of China and how long is it?",
+    "answer": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China to protect against nomadic invasions. The wall was built over many centuries by various dynasties. A 2012 archaeological survey by the State Administration of Cultural Heritage determined the total length of all sections to be 21,196 kilometres (13,171 miles). The most well-known and best-preserved section was built during the Ming dynasty (1368–1644).",
+    "qa_pairs": [
+      {
+        "context": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe.",
+        "question": "What is the Great Wall of China?",
+        "short_answers": ["a series of fortifications", "a defensive wall"],
+        "wikipage": "Great Wall of China"
+      },
+      {
+        "context": "A 2012 survey by China's State Administration of Cultural Heritage found the total length of all sections of the Great Wall of China to be 21,196 km (13,171 mi). However, the Ming dynasty walls, the most well-preserved, stretch for about 8,850 km (5,500 mi).",
+        "question": "How long is the Great Wall of China?",
+        "short_answers": ["21,196 kilometres", "13,171 miles"],
+        "wikipage": "Great Wall of China"
+      },
+      {
+        "context": "The most well-known section of the Great Wall was built by the Ming dynasty between 1368 and 1644. Much of what tourists visit today dates to this period, particularly sections near Beijing such as Badaling and Mutianyu.",
+        "question": "Which dynasty built the most famous section of the Great Wall?",
+        "short_answers": ["the Ming dynasty", "Ming dynasty"],
+        "wikipage": "Great Wall of China"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Great Wall of China",
+        "url": "https://en.wikipedia.org/wiki/Great_Wall_of_China"
+      },
+      {
+        "title": "Ming dynasty",
+        "url": "https://en.wikipedia.org/wiki/Ming_dynasty"
+      },
+      {
+        "title": "Qin Shi Huang",
+        "url": "https://en.wikipedia.org/wiki/Qin_Shi_Huang"
+      },
+      {
+        "title": "Badaling",
+        "url": "https://en.wikipedia.org/wiki/Badaling"
+      },
+      {
+        "title": "Han dynasty",
+        "url": "https://en.wikipedia.org/wiki/Han_dynasty"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The total length of all sections of the Great Wall of China is 21,196 km according to a 2012 survey.",
+            "wikipage": "Great Wall of China"
+          }
+        ],
+        "long_answer": "The Great Wall of China is a series of fortifications along the historical northern borders of China, built to protect against nomadic invasions. A 2012 survey found all sections total 21,196 km. The most famous and best-preserved sections were built by the Ming dynasty between 1368 and 1644."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc008_1",
+        "title": "Great Wall of China",
+        "text": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe. Several walls were built from as early as the 7th century BC, with selective stretches later joined together by Qin Shi Huang (220–206 BC), the first emperor of China. Little of the Qin wall remains. Later on, many successive dynasties built and maintained multiple stretches of border walls. The most well-known sections of the wall were built by the Ming dynasty (1368–1644). A 2012 survey found that the Ming walls measure 8,850 km (5,500 mi), while the total length of all walls across all dynasties measures 21,196 km (13,171 mi).",
+        "score": 0.92,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "A 2012 survey found that the Ming walls measure 8,850 km (5,500 mi), while the total length of all walls across all dynasties measures 21,196 km (13,171 mi).",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale: risponde a tutte le sub-questions su cosa è, lunghezza totale, e dinastia Ming.",
+        "answers_found": [1, 1, 1],
+        "extraction": "The Great Wall of China is a series of fortifications totalling 21,196 km, with the most famous sections built by the Ming dynasty.",
+        "summary": "The Great Wall of China totals 21,196 km across all dynasties; the most famous sections were built by the Ming dynasty."
+      },
+      {
+        "id": "doc008_2",
+        "title": "Ming dynasty",
+        "text": "The Ming dynasty (1368–1644) was the ruling dynasty of China for 276 years. It was the last imperial dynasty of China ruled by ethnic Han Chinese. During the Ming dynasty, the Great Wall of China was extensively rebuilt and extended to its current form. Most of the wall that tourists visit today, including the well-known sections at Badaling and Mutianyu near Beijing, dates from the Ming period. The Ming wall was constructed using fired bricks and stone rather than the earlier tamped earth, making it more durable.",
+        "score": 0.81,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "During the Ming dynasty, the Great Wall of China was extensively rebuilt and extended to its current form.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma la dinastia Ming come costruttrice della sezione più famosa e visitata della Grande Muraglia.",
+        "answers_found": [0, 0, 1],
+        "extraction": "The Ming dynasty (1368–1644) rebuilt and extended the Great Wall to its current, most-visited form.",
+        "summary": "The Ming dynasty rebuilt the Great Wall to its current form, including the Badaling and Mutianyu sections near Beijing."
+      },
+      {
+        "id": "doc008_3",
+        "title": "Qin Shi Huang",
+        "text": "Qin Shi Huang (259–210 BC) was the founder of the Qin dynasty and the first emperor of a unified China. He is credited with ordering the construction of the first version of the Great Wall of China, connecting and extending existing walls built by the Warring States. The original Qin walls, built largely of tamped earth and wood, were intended to protect the northern borders from Xiongnu invasions. Very little of the original Qin wall remains today, as it was built from perishable materials.",
+        "score": 0.76,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "He is credited with ordering the construction of the first version of the Great Wall of China, connecting and extending existing walls built by the Warring States.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Fornisce contesto storico sulle origini della Grande Muraglia con Qin Shi Huang.",
+        "answers_found": [1, 0, 0],
+        "extraction": "Qin Shi Huang ordered the construction of the first Great Wall, connecting earlier walls to protect the northern border.",
+        "summary": "Qin Shi Huang ordered the construction of the first Great Wall of China around 220 BC to protect against northern invasions."
+      },
+      {
+        "id": "doc008_4",
+        "title": "Badaling",
+        "text": "Badaling is a site north of Juyongguan Pass in Yanqing District, Beijing. It is the most-visited section of the Great Wall of China, receiving around 10 million tourists per year. The Badaling section was built during the Ming dynasty and stands at about 7.8 metres (26 feet) tall and 5 metres (16 feet) wide. It was the first section of the Great Wall to be opened to tourists in 1957. Numerous world leaders and heads of state have visited Badaling, including U.S. presidents Nixon, Reagan, and Clinton.",
+        "score": 0.70,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla di una sezione specifica della Grande Muraglia ma non risponde alle sub-questions su cosa sia o quanto sia lunga in totale.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "Badaling is the most visited section of the Great Wall, but this document does not address the total length or historical purpose of the wall."
+      },
+      {
+        "id": "doc008_5",
+        "title": "Han dynasty",
+        "text": "The Han dynasty (206 BC – 220 AD) was the second imperial dynasty of China. It followed the Qin dynasty and is considered a golden age of Chinese civilization. During the Han dynasty, the Great Wall was extended westward into Central Asia to protect the Silk Road trade routes. Emperor Wu of Han directed significant expansion of the wall, adding sections in what is now the Gansu province. The Han wall stretched further than the Ming wall, reaching into the Gobi Desert.",
+        "score": 0.69,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "During the Han dynasty, the Great Wall was extended westward into Central Asia to protect the Silk Road trade routes.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Fornisce ulteriore contesto storico sulla costruzione della muraglia, supporto parziale per la sub-question su cosa sia.",
+        "answers_found": [1, 0, 0],
+        "extraction": "The Han dynasty extended the Great Wall westward to protect Silk Road trade routes.",
+        "summary": "The Han dynasty extended the Great Wall westward into Central Asia to protect the Silk Road."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 2,
+      "n_partial_support": 2,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Great Wall of China is a series of fortifications built along China's northern borders to protect against nomadic invasions.",
+        "keywords": ["fortifications", "northern borders", "nomadic"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Great Wall of China",
+        "golden_evidence": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The total length of all sections of the Great Wall across all dynasties is 21,196 km (13,171 mi), according to a 2012 survey.",
+        "keywords": ["21,196 km", "21,196", "13,171 miles", "2012 survey"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Great Wall of China",
+        "golden_evidence": "A 2012 survey found that the Ming walls measure 8,850 km (5,500 mi), while the total length of all walls across all dynasties measures 21,196 km (13,171 mi)."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The most well-known and best-preserved sections of the Great Wall were built by the Ming dynasty between 1368 and 1644.",
+        "keywords": ["Ming dynasty", "Ming", "1368", "1644"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Ming dynasty",
+        "golden_evidence": "During the Ming dynasty, the Great Wall of China was extensively rebuilt and extended to its current form."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_009",
+    "question": "Who wrote the theory of evolution and when?",
+    "answer": "The theory of evolution by natural selection was primarily developed by Charles Darwin, who published it in his 1859 book 'On the Origin of Species'. Alfred Russel Wallace independently conceived a similar theory and co-presented it with Darwin in 1858. Darwin's theory proposed that species evolve over generations through natural selection, where individuals with favourable traits survive and reproduce more successfully.",
+    "qa_pairs": [
+      {
+        "context": "Charles Darwin published On the Origin of Species on 24 November 1859. The book introduced the scientific theory that populations evolve over generations through the process of natural selection.",
+        "question": "Who developed the theory of evolution by natural selection?",
+        "short_answers": ["Charles Darwin", "Darwin"],
+        "wikipage": "On the Origin of Species"
+      },
+      {
+        "context": "Alfred Russel Wallace independently conceived a theory of evolution by natural selection and sent a letter describing it to Darwin in 1858. Darwin and Wallace co-presented their papers at the Linnean Society of London on 1 July 1858.",
+        "question": "Who else independently developed a theory of evolution at the same time as Darwin?",
+        "short_answers": ["Alfred Russel Wallace", "Wallace"],
+        "wikipage": "Alfred Russel Wallace"
+      },
+      {
+        "context": "On the Origin of Species was published on 24 November 1859 by John Murray. The first edition of 1,250 copies sold out on the day of publication. The book's full title is 'On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life'.",
+        "question": "When was On the Origin of Species published?",
+        "short_answers": ["1859", "24 November 1859"],
+        "wikipage": "On the Origin of Species"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "On the Origin of Species",
+        "url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species"
+      },
+      {
+        "title": "Charles Darwin",
+        "url": "https://en.wikipedia.org/wiki/Charles_Darwin"
+      },
+      {
+        "title": "Alfred Russel Wallace",
+        "url": "https://en.wikipedia.org/wiki/Alfred_Russel_Wallace"
+      },
+      {
+        "title": "Natural selection",
+        "url": "https://en.wikipedia.org/wiki/Natural_selection"
+      },
+      {
+        "title": "Jean-Baptiste Lamarck",
+        "url": "https://en.wikipedia.org/wiki/Jean-Baptiste_Lamarck"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Charles Darwin published the theory of evolution by natural selection in On the Origin of Species in 1859.",
+            "wikipage": "On the Origin of Species"
+          }
+        ],
+        "long_answer": "The theory of evolution by natural selection was primarily developed by Charles Darwin, published in On the Origin of Species in 1859. Alfred Russel Wallace independently developed a similar theory and co-presented it with Darwin in 1858."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc009_1",
+        "title": "On the Origin of Species",
+        "text": "On the Origin of Species (or, more completely, On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life) is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859, by John Murray. The first edition of 1,250 copies sold out the same day. Darwin presents a body of evidence that the diversity of life arose by common descent through a branching pattern of evolution. His theory of natural selection was proposed as the mechanism.",
+        "score": 0.91,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "On the Origin of Species... is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859.",
+        "supports_sub_questions": [0, 2],
+        "annotation_note": "Documento principale: conferma Darwin come autore e la data di pubblicazione del 1859.",
+        "answers_found": [1, 0, 1],
+        "extraction": "On the Origin of Species was written by Charles Darwin and published on 24 November 1859.",
+        "summary": "On the Origin of Species by Charles Darwin, published 24 November 1859, is the foundation of evolutionary biology."
+      },
+      {
+        "id": "doc009_2",
+        "title": "Charles Darwin",
+        "text": "Charles Robert Darwin (12 February 1809 – 19 April 1882) was an English naturalist, geologist and biologist, best known for his contributions to the science of evolution. His proposition that all species of life have descended from common ancestors is now widely accepted and considered a fundamental concept in science. In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection. His 1859 book On the Origin of Species established evolutionary theory.",
+        "score": 0.86,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Conferma Darwin come autore della teoria e Wallace come co-presentatore.",
+        "answers_found": [1, 1, 0],
+        "extraction": "Charles Darwin introduced the theory of evolution by natural selection in a joint presentation with Alfred Russel Wallace.",
+        "summary": "Charles Darwin was the primary developer of the theory of evolution; he jointly presented it with Alfred Russel Wallace."
+      },
+      {
+        "id": "doc009_3",
+        "title": "Alfred Russel Wallace",
+        "text": "Alfred Russel Wallace (8 January 1823 – 7 November 1913) was a British naturalist, explorer, geographer, anthropologist, biologist and illustrator. He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings and prompted Darwin to write and publish On the Origin of Species. Darwin and Wallace co-presented their findings at the Linnean Society of London on 1 July 1858.",
+        "score": 0.83,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma Wallace come co-inventore indipendente della teoria dell'evoluzione nel 1858.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Alfred Russel Wallace independently conceived the theory of evolution through natural selection and co-presented it with Darwin in 1858.",
+        "summary": "Alfred Russel Wallace independently developed the theory of evolution and jointly presented it with Darwin at the Linnean Society in 1858."
+      },
+      {
+        "id": "doc009_4",
+        "title": "Natural selection",
+        "text": "Natural selection is the differential survival and reproduction of individuals due to differences in phenotype. It is a key mechanism of evolution, the change in the heritable characteristics of a population over time. Charles Darwin popularised the term 'natural selection' contrasting it with artificial selection. The concept was independently conceived by Darwin and Wallace. Natural selection acts on the phenotype, the characteristics of the organism which actually interact with the environment, but the genetic (heritable) basis of any phenotype that gives that phenotype a reproductive advantage will become more common in a population.",
+        "score": 0.77,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "The concept was independently conceived by Darwin and Wallace.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Conferma la co-concezione di Darwin e Wallace, supporto parziale.",
+        "answers_found": [1, 1, 0],
+        "extraction": "Natural selection was independently conceived by Darwin and Wallace.",
+        "summary": "Natural selection was independently conceived by both Charles Darwin and Alfred Russel Wallace."
+      },
+      {
+        "id": "doc009_5",
+        "title": "Jean-Baptiste Lamarck",
+        "text": "Jean-Baptiste Pierre Antoine de Monet, Chevalier de Lamarck (1 August 1744 – 18 December 1829) was a French naturalist and biologist. He is recognised as a pioneer of the idea that biological evolution occurs. His theory of 'soft inheritance' proposed that an organism could pass on characteristics acquired during its lifetime to its offspring. Lamarck published his theory of evolution in 1809, fifty years before Darwin's On the Origin of Species, but his mechanism—inheritance of acquired characteristics—was later shown to be incorrect.",
+        "score": 0.68,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla di Lamarck come precursore dell'idea di evoluzione, ma la sua teoria è diversa da quella di Darwin e non risponde alle sub-questions.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "Lamarck proposed an earlier theory of evolution in 1809 but with a different mechanism; this document is not relevant to Darwin's theory of natural selection."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The theory of evolution by natural selection was developed by Charles Darwin.",
+        "keywords": ["Charles Darwin", "Darwin", "natural selection"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Charles Darwin",
+        "golden_evidence": "In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Darwin published his theory in On the Origin of Species on 24 November 1859.",
+        "keywords": ["On the Origin of Species", "1859", "24 November 1859"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "On the Origin of Species",
+        "golden_evidence": "On the Origin of Species... is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Alfred Russel Wallace independently conceived a similar theory and co-presented it with Darwin at the Linnean Society in 1858.",
+        "keywords": ["Alfred Russel Wallace", "Wallace", "1858", "Linnean Society"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Alfred Russel Wallace",
+        "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_010",
+    "question": "What is the Titanic and when did it sink?",
+    "answer": "The RMS Titanic was a British ocean liner operated by the White Star Line. It sank in the North Atlantic Ocean on 15 April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City. Of the estimated 2,224 passengers and crew aboard, more than 1,500 died, making it one of the deadliest peacetime maritime disasters in history. The ship was designed by Thomas Andrews and built at the Harland and Wolff shipyard in Belfast.",
+    "qa_pairs": [
+      {
+        "context": "RMS Titanic was a British ocean liner owned and operated by the White Star Line. Built at the Harland and Wolff shipyard in Belfast, Northern Ireland, the Titanic was the largest ship afloat at the time of her maiden voyage.",
+        "question": "What was the Titanic?",
+        "short_answers": ["a British ocean liner", "an ocean liner"],
+        "wikipage": "Titanic"
+      },
+      {
+        "context": "At 11:40 pm (ship's time) on 14 April 1912, RMS Titanic struck an iceberg. The ship sank at 2:20 am on 15 April 1912. The Titanic was on its maiden voyage from Southampton, England, to New York City.",
+        "question": "When did the Titanic sink?",
+        "short_answers": ["15 April 1912", "April 1912"],
+        "wikipage": "Titanic"
+      },
+      {
+        "context": "Of the estimated 2,224 passengers and crew aboard, more than 1,500 died. The death toll was exacerbated by the lack of lifeboats, which could accommodate only 1,178 people.",
+        "question": "How many people died when the Titanic sank?",
+        "short_answers": ["more than 1,500", "over 1,500"],
+        "wikipage": "Titanic"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Titanic",
+        "url": "https://en.wikipedia.org/wiki/Titanic"
+      },
+      {
+        "title": "RMS Titanic",
+        "url": "https://en.wikipedia.org/wiki/RMS_Titanic"
+      },
+      {
+        "title": "White Star Line",
+        "url": "https://en.wikipedia.org/wiki/White_Star_Line"
+      },
+      {
+        "title": "Sinking of the RMS Titanic",
+        "url": "https://en.wikipedia.org/wiki/Sinking_of_the_RMS_Titanic"
+      },
+      {
+        "title": "Harland and Wolff",
+        "url": "https://en.wikipedia.org/wiki/Harland_and_Wolff"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "RMS Titanic was a British ocean liner that sank on 15 April 1912 after striking an iceberg, killing more than 1,500 people.",
+            "wikipage": "RMS Titanic"
+          }
+        ],
+        "long_answer": "The RMS Titanic was a British ocean liner operated by the White Star Line. It sank on 15 April 1912 in the North Atlantic after striking an iceberg during its maiden voyage. More than 1,500 of the estimated 2,224 people on board died."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc010_1",
+        "title": "RMS Titanic",
+        "text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line. Built at the Harland and Wolff shipyard in Belfast, designed by chief naval architect Thomas Andrews, and measuring 269 metres (882 ft) in length, she was the largest ocean liner in service at the time of her maiden voyage. On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board. Her sinking is considered one of the deadliest peacetime maritime disasters in history.",
+        "score": 0.94,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board.",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale: risponde a tutte le sub-questions su cosa era il Titanic, quando affondò, e quante persone morirono.",
+        "answers_found": [1, 1, 1],
+        "extraction": "RMS Titanic was a British ocean liner that sank on 15 April 1912 after striking an iceberg, killing more than 1,500 of the 2,224 people on board.",
+        "summary": "RMS Titanic was a British ocean liner that sank on 15 April 1912 after striking an iceberg, with more than 1,500 deaths."
+      },
+      {
+        "id": "doc010_2",
+        "title": "Sinking of the RMS Titanic",
+        "text": "The sinking of the RMS Titanic occurred on 15 April 1912 in the North Atlantic Ocean, four days into the ship's maiden voyage from Southampton to New York City. The Titanic struck an iceberg at 11:40 pm (ship's time) on 14 April 1912 and sank at 2:20 am on 15 April 1912. The ship broke apart and sank, with 1,517 people dying in one of the deadliest peacetime maritime disasters in history. The Titanic had insufficient lifeboats for all passengers and crew, due in part to outdated maritime safety regulations.",
+        "score": 0.88,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The Titanic struck an iceberg at 11:40 pm (ship's time) on 14 April 1912 and sank at 2:20 am on 15 April 1912.",
+        "supports_sub_questions": [1, 2],
+        "annotation_note": "Fornisce dettagli precisi sull'ora e le circostanze dell'affondamento.",
+        "answers_found": [0, 1, 1],
+        "extraction": "The Titanic struck an iceberg on 14 April 1912 and sank on 15 April 1912, killing 1,517 people.",
+        "summary": "The Titanic struck an iceberg on 14 April 1912 and sank the following day, killing 1,517 people."
+      },
+      {
+        "id": "doc010_3",
+        "title": "White Star Line",
+        "text": "The White Star Line was a prominent British shipping company. It was founded in 1845 and became one of the most important passenger shipping companies in the world. The company operated several famous ocean liners, including the Titanic, the Britannic, and the Olympic. The Titanic's sinking in 1912 was a severe blow to the company's reputation. White Star Line merged with its rival Cunard Line in 1934, forming the Cunard-White Star Line.",
+        "score": 0.75,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "The company operated several famous ocean liners, including the Titanic, the Britannic, and the Olympic.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Identifica la White Star Line come operatore del Titanic, supporto parziale per la prima sub-question.",
+        "answers_found": [1, 0, 0],
+        "extraction": "The Titanic was operated by the White Star Line.",
+        "summary": "White Star Line was a British shipping company that operated the Titanic."
+      },
+      {
+        "id": "doc010_4",
+        "title": "Harland and Wolff",
+        "text": "Harland and Wolff is a heavy industrial company based in Belfast, Northern Ireland, primarily known as a shipbuilder. It was founded in 1861 by Edward James Harland and Gustav Wilhelm Wolff. The company built many famous ships, including RMS Titanic, RMS Olympic, and RMS Britannic, all for the White Star Line. The Titanic was constructed in Belfast between 1909 and 1912 and was the largest ship ever built at the time of its launch. The shipyard employed over 15,000 workers at its peak.",
+        "score": 0.72,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "The Titanic was constructed in Belfast between 1909 and 1912 and was the largest ship ever built at the time of its launch.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Conferma il cantiere navale come costruttore del Titanic e il periodo di costruzione.",
+        "answers_found": [1, 0, 0],
+        "extraction": "The Titanic was built by Harland and Wolff in Belfast between 1909 and 1912.",
+        "summary": "Harland and Wolff built the Titanic in Belfast between 1909 and 1912 for the White Star Line."
+      },
+      {
+        "id": "doc010_5",
+        "title": "Titanic (1997 film)",
+        "text": "Titanic is a 1997 American epic romance and disaster film directed, written, co-produced, and co-edited by James Cameron. Incorporating both historical and fictional elements, it is based on accounts of the sinking of the RMS Titanic in 1912. Kate Winslet and Leonardo DiCaprio star as members of different social classes who fall in love aboard the ship. The film was the highest-grossing film of all time from 1998 to 2010, when it was overtaken by Cameron's Avatar.",
+        "score": 0.65,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla del film del 1997, non della nave reale. Non risponde a nessuna delle sub-questions.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "This document is about the 1997 film Titanic and is not relevant to questions about the actual ship."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 2,
+      "n_partial_support": 2,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line.",
+        "keywords": ["White Star Line", "ocean liner", "British"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "RMS Titanic",
+        "golden_evidence": "RMS Titanic was a British ocean liner owned and operated by the White Star Line."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The Titanic sank on 15 April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City.",
+        "keywords": ["15 April 1912", "1912", "iceberg", "maiden voyage"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "RMS Titanic",
+        "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "More than 1,500 of the estimated 2,224 people on board died when the Titanic sank.",
+        "keywords": ["1,500", "1500", "2,224", "deaths"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "RMS Titanic",
+        "golden_evidence": "she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_011",
+    "question": "Where is Mount Everest and how tall is it?",
+    "answer": "Mount Everest is located in the Mahalangur Himal sub-range of the Himalayas, on the border between Nepal and Tibet (China). It is the highest mountain on Earth above sea level, with a height of 8,848.86 metres (29,031.7 ft) as measured in a 2020 survey by China and Nepal. The first confirmed ascent was made by Edmund Hillary of New Zealand and Tenzing Norgay, a Sherpa from Nepal, on 29 May 1953.",
+    "qa_pairs": [
+      {
+        "context": "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point.",
+        "question": "Where is Mount Everest located?",
+        "short_answers": ["on the border between Nepal and Tibet", "in the Himalayas"],
+        "wikipage": "Mount Everest"
+      },
+      {
+        "context": "Mount Everest's summit is 8,848.86 metres (29,031.7 ft) above sea level. This height was established by a 2020 survey conducted jointly by China and Nepal.",
+        "question": "How tall is Mount Everest?",
+        "short_answers": ["8,848.86 metres", "29,031.7 feet"],
+        "wikipage": "Mount Everest"
+      },
+      {
+        "context": "The first confirmed ascent of Mount Everest was achieved on 29 May 1953 by Edmund Hillary of New Zealand and Tenzing Norgay, a Sherpa from Nepal, as part of the ninth British expedition to Everest.",
+        "question": "Who first climbed Mount Everest?",
+        "short_answers": ["Edmund Hillary and Tenzing Norgay"],
+        "wikipage": "Mount Everest"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Mount Everest",
+        "url": "https://en.wikipedia.org/wiki/Mount_Everest"
+      },
+      {
+        "title": "Edmund Hillary",
+        "url": "https://en.wikipedia.org/wiki/Edmund_Hillary"
+      },
+      {
+        "title": "Tenzing Norgay",
+        "url": "https://en.wikipedia.org/wiki/Tenzing_Norgay"
+      },
+      {
+        "title": "Himalayas",
+        "url": "https://en.wikipedia.org/wiki/Himalayas"
+      },
+      {
+        "title": "K2",
+        "url": "https://en.wikipedia.org/wiki/K2"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Mount Everest is the world's highest mountain, standing at 8,848.86 m, on the Nepal-Tibet border, first climbed by Hillary and Tenzing Norgay in 1953.",
+            "wikipage": "Mount Everest"
+          }
+        ],
+        "long_answer": "Mount Everest is located on the border between Nepal and Tibet (China) in the Himalayas. Its height is 8,848.86 metres as measured in 2020. It was first climbed by Edmund Hillary and Tenzing Norgay on 29 May 1953."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc011_1",
+        "title": "Mount Everest",
+        "text": "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point. Its elevation (snow height) of 8,848.86 m (29,031.7 ft) was most recently established in 2020 by the Chinese and Nepali authorities. Mount Everest attracts many climbers, including highly experienced mountaineers. The first confirmed ascent was accomplished on 29 May 1953 by Edmund Hillary of New Zealand and Tenzing Norgay, a Sherpa from Nepal.",
+        "score": 0.95,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Its elevation (snow height) of 8,848.86 m (29,031.7 ft) was most recently established in 2020 by the Chinese and Nepali authorities.",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale: risponde a tutte le sub-questions su posizione, altezza, e prima scalata.",
+        "answers_found": [1, 1, 1],
+        "extraction": "Mount Everest is 8,848.86 m tall, on the China-Nepal border, first climbed by Hillary and Tenzing Norgay on 29 May 1953.",
+        "summary": "Mount Everest is the world's highest mountain at 8,848.86 m, on the China-Nepal border, first climbed by Hillary and Tenzing Norgay in 1953."
+      },
+      {
+        "id": "doc011_2",
+        "title": "Edmund Hillary",
+        "text": "Sir Edmund Percival Hillary (20 July 1919 – 11 January 2008) was a New Zealand mountaineer, explorer, and philanthropist. On 29 May 1953, Hillary and Sherpa mountaineer Tenzing Norgay became the first climbers confirmed to have reached the summit of Mount Everest. They were part of the ninth British expedition to Everest, led by John Hunt. Hillary's ascent was made possible by the use of supplemental oxygen above 7,900 metres.",
+        "score": 0.87,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "On 29 May 1953, Hillary and Sherpa mountaineer Tenzing Norgay became the first climbers confirmed to have reached the summit of Mount Everest.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma Hillary e Tenzing Norgay come primi scalatori dell'Everest il 29 maggio 1953.",
+        "answers_found": [0, 0, 1],
+        "extraction": "Edmund Hillary and Tenzing Norgay were the first confirmed climbers to reach the summit of Mount Everest on 29 May 1953.",
+        "summary": "Edmund Hillary and Tenzing Norgay reached the summit of Everest on 29 May 1953."
+      },
+      {
+        "id": "doc011_3",
+        "title": "Tenzing Norgay",
+        "text": "Tenzing Norgay (29 May 1914 – 9 May 1986) was a Nepali-Indian Sherpa mountaineer. Along with New Zealand mountaineer Edmund Hillary, he was one of the first two individuals known to have reached the summit of Mount Everest, which they accomplished on 29 May 1953. Tenzing became one of the most celebrated individuals of the 20th century. Before the successful 1953 expedition, Tenzing had participated in six previous attempts to climb Everest.",
+        "score": 0.84,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Along with New Zealand mountaineer Edmund Hillary, he was one of the first two individuals known to have reached the summit of Mount Everest, which they accomplished on 29 May 1953.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma Tenzing Norgay come co-primo scalatore dell'Everest con Hillary.",
+        "answers_found": [0, 0, 1],
+        "extraction": "Tenzing Norgay and Edmund Hillary were the first to reach the summit of Mount Everest on 29 May 1953.",
+        "summary": "Tenzing Norgay was one of the first two people to summit Everest, along with Edmund Hillary, on 29 May 1953."
+      },
+      {
+        "id": "doc011_4",
+        "title": "Himalayas",
+        "text": "The Himalayas is a mountain range in Asia, separating the plains of the Indian subcontinent from the Tibetan Plateau. The range includes more than 50 mountains exceeding 7,200 metres (23,600 ft) in elevation, including ten of the fourteen 8,000-metre peaks. Mount Everest, at 8,848.86 metres, is the highest peak on Earth above sea level. K2, at 8,611 metres, is the second highest. The Himalayas extend across six countries: Bhutan, China, India, Nepal, Pakistan and Afghanistan.",
+        "score": 0.76,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Mount Everest, at 8,848.86 metres, is the highest peak on Earth above sea level.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Conferma altezza di Everest e il suo contesto geografico nell'Himalaya.",
+        "answers_found": [1, 1, 0],
+        "extraction": "Mount Everest, at 8,848.86 metres, is located in the Himalayas and is the highest peak on Earth.",
+        "summary": "The Himalayas contain Mount Everest, the world's highest peak at 8,848.86 m."
+      },
+      {
+        "id": "doc011_5",
+        "title": "K2",
+        "text": "K2 is the second-highest mountain on Earth after Mount Everest, at 8,611 metres (28,251 ft) above sea level. It is located on the border between Pakistan and China. K2 is known as one of the most difficult mountains in the world to climb, with a fatality rate nearly double that of Everest. Unlike Everest, K2 has never been climbed in winter. It was first climbed on 31 July 1954 by an Italian expedition led by Ardito Desio.",
+        "score": 0.66,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla di K2, la seconda montagna più alta. Non risponde alle sub-questions sull'Everest.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "K2 is the second-highest mountain on Earth, but this document does not answer any sub-questions about Mount Everest."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Mount Everest is located in the Mahalangur Himal sub-range of the Himalayas, on the border between Nepal and China (Tibet).",
+        "keywords": ["Nepal", "Tibet", "China", "Himalayas", "Mahalangur Himal"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Mount Everest",
+        "golden_evidence": "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Mount Everest's height is 8,848.86 metres (29,031.7 ft), established by a 2020 joint survey by China and Nepal.",
+        "keywords": ["8,848.86", "8848.86", "29,031.7", "2020"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Mount Everest",
+        "golden_evidence": "Its elevation (snow height) of 8,848.86 m (29,031.7 ft) was most recently established in 2020 by the Chinese and Nepali authorities."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Edmund Hillary and Tenzing Norgay made the first confirmed ascent of Mount Everest on 29 May 1953.",
+        "keywords": ["Edmund Hillary", "Hillary", "Tenzing Norgay", "29 May 1953", "1953"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Edmund Hillary",
+        "golden_evidence": "On 29 May 1953, Hillary and Sherpa mountaineer Tenzing Norgay became the first climbers confirmed to have reached the summit of Mount Everest."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_012",
+    "question": "Who wrote the Harry Potter books and how many are there?",
+    "answer": "The Harry Potter book series was written by British author J. K. Rowling. The series consists of seven novels, published between 1997 and 2007. The books follow the story of young wizard Harry Potter and his friends Hermione Granger and Ron Weasley as they attend Hogwarts School of Witchcraft and Wizardry. The series has sold more than 500 million copies worldwide, making it the best-selling book series in history.",
+    "qa_pairs": [
+      {
+        "context": "The Harry Potter series is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley.",
+        "question": "Who wrote the Harry Potter books?",
+        "short_answers": ["J. K. Rowling", "J.K. Rowling", "Rowling"],
+        "wikipage": "Harry Potter"
+      },
+      {
+        "context": "The Harry Potter series consists of seven novels. The first novel, Harry Potter and the Philosopher's Stone, was published on 26 June 1997. The seventh and final novel, Harry Potter and the Deathly Hallows, was published on 21 July 2007.",
+        "question": "How many Harry Potter books are there?",
+        "short_answers": ["seven", "7"],
+        "wikipage": "Harry Potter"
+      },
+      {
+        "context": "With more than 500 million copies sold worldwide, the Harry Potter series is the best-selling book series in history. The books have been translated into 80 languages.",
+        "question": "How many copies of the Harry Potter books have been sold?",
+        "short_answers": ["more than 500 million", "500 million"],
+        "wikipage": "Harry Potter"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Harry Potter",
+        "url": "https://en.wikipedia.org/wiki/Harry_Potter"
+      },
+      {
+        "title": "J. K. Rowling",
+        "url": "https://en.wikipedia.org/wiki/J._K._Rowling"
+      },
+      {
+        "title": "Harry Potter and the Philosopher's Stone",
+        "url": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone"
+      },
+      {
+        "title": "Harry Potter and the Deathly Hallows",
+        "url": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Deathly_Hallows"
+      },
+      {
+        "title": "Hogwarts",
+        "url": "https://en.wikipedia.org/wiki/Hogwarts"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The Harry Potter series consists of seven fantasy novels written by J. K. Rowling, published from 1997 to 2007.",
+            "wikipage": "Harry Potter"
+          }
+        ],
+        "long_answer": "The Harry Potter book series was written by British author J. K. Rowling. It consists of seven novels, the first published in 1997 and the last in 2007. The series has sold more than 500 million copies, making it the best-selling book series in history."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc012_1",
+        "title": "Harry Potter",
+        "text": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's conflict with Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic, and subjugate all wizards and Muggles (non-magical people). Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide.",
+        "score": 0.93,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling.",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale: risponde a tutte le sub-questions su autrice, numero di libri, e copie vendute.",
+        "answers_found": [1, 1, 1],
+        "extraction": "Harry Potter is a series of seven fantasy novels by J. K. Rowling, with more than 500 million copies sold worldwide.",
+        "summary": "Harry Potter is a seven-novel series by J. K. Rowling, with more than 500 million copies sold."
+      },
+      {
+        "id": "doc012_2",
+        "title": "J. K. Rowling",
+        "text": "Joanne Rowling (born 31 July 1965), better known by her pen name J. K. Rowling, is a British author, philanthropist, film producer, television producer and screenwriter. She is best known for writing the Harry Potter fantasy series, which has won multiple awards and sold more than 500 million copies. The Harry Potter books have been adapted into the highest-grossing film franchise in history. Rowling devised the idea for the Harry Potter series in 1990 while sitting on a delayed train from Manchester to London.",
+        "score": 0.85,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "She is best known for writing the Harry Potter fantasy series, which has won multiple awards and sold more than 500 million copies.",
+        "supports_sub_questions": [0, 2],
+        "annotation_note": "Conferma Rowling come autrice della serie Harry Potter e il dato delle 500 milioni di copie.",
+        "answers_found": [1, 0, 1],
+        "extraction": "J. K. Rowling wrote the Harry Potter series, which has sold more than 500 million copies.",
+        "summary": "J. K. Rowling is a British author best known for writing the Harry Potter series, which has sold over 500 million copies."
+      },
+      {
+        "id": "doc012_3",
+        "title": "Harry Potter and the Philosopher's Stone",
+        "text": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997 by Bloomsbury in the United Kingdom and Scholastic in the United States. The novel follows Harry Potter, an eleven-year-old orphan who discovers on his birthday that he is a wizard and has been accepted to Hogwarts School of Witchcraft and Wizardry.",
+        "score": 0.78,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Conferma Rowling come autrice e la data di pubblicazione del primo libro nel 1997.",
+        "answers_found": [1, 1, 0],
+        "extraction": "The first Harry Potter novel was written by J. K. Rowling and published on 26 June 1997.",
+        "summary": "Harry Potter and the Philosopher's Stone, published 26 June 1997, is the first of the seven Harry Potter novels by J. K. Rowling."
+      },
+      {
+        "id": "doc012_4",
+        "title": "Harry Potter and the Deathly Hallows",
+        "text": "Harry Potter and the Deathly Hallows is the seventh and final novel in the Harry Potter series by J. K. Rowling. It was published in the United Kingdom by Bloomsbury and in the United States by Scholastic on 21 July 2007. The book sold 11 million copies in the first 24 hours of its release in the United States and the United Kingdom, breaking sales records. In the UK, it broke all records for adult or children's books sold in a single day.",
+        "score": 0.76,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Harry Potter and the Deathly Hallows is the seventh and final novel in the Harry Potter series by J. K. Rowling.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma che ci sono sette libri nella serie (è il settimo e finale) e la data di pubblicazione del 2007.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The Deathly Hallows is the seventh and final Harry Potter novel, published in 2007.",
+        "summary": "Harry Potter and the Deathly Hallows is the seventh and final novel in the series, published on 21 July 2007."
+      },
+      {
+        "id": "doc012_5",
+        "title": "Hogwarts",
+        "text": "Hogwarts School of Witchcraft and Wizardry, often shortened to Hogwarts, is a fictional British boarding school of magic in the Harry Potter series by J. K. Rowling. The school is the primary setting for the first six books in the series. Hogwarts is described as a large castle in the Scottish Highlands. It accepts students at the age of eleven and educates them until the age of seventeen. Students are sorted into one of four houses: Gryffindor, Hufflepuff, Ravenclaw, and Slytherin.",
+        "score": 0.66,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: descrive Hogwarts come ambientazione della serie ma non risponde alle sub-questions su autrice, numero di libri, o copie vendute.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "Hogwarts is the fictional school in the Harry Potter series, but this document does not address who wrote the books, how many there are, or how many copies were sold."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 2,
+      "n_partial_support": 2,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Harry Potter series was written by British author J. K. Rowling.",
+        "keywords": ["J. K. Rowling", "J.K. Rowling", "Rowling"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Harry Potter",
+        "golden_evidence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The Harry Potter series consists of seven novels, published between 1997 and 2007.",
+        "keywords": ["seven", "7", "1997", "2007"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Harry Potter and the Philosopher's Stone",
+        "golden_evidence": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The Harry Potter series has sold more than 500 million copies worldwide, making it the best-selling book series in history.",
+        "keywords": ["500 million", "best-selling"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Harry Potter",
+        "golden_evidence": "Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_013",
+    "question": "What caused World War I and when did it start?",
+    "answer": "World War I began on 28 July 1914, when Austria-Hungary declared war on Serbia. The immediate trigger was the assassination of Archduke Franz Ferdinand of Austria-Hungary on 28 June 1914 in Sarajevo by Gavrilo Princip, a Bosnian Serb nationalist. The underlying causes included militarism, imperial rivalries, a complex system of alliances, and nationalist tensions across Europe. The war lasted until 11 November 1918.",
+    "qa_pairs": [
+      {
+        "context": "World War I began on 28 July 1914 when Austria-Hungary declared war on Serbia. Within weeks, the conflict had expanded to include all the major European powers due to the alliance system.",
+        "question": "When did World War I start?",
+        "short_answers": ["28 July 1914", "July 1914", "1914"],
+        "wikipage": "World War I"
+      },
+      {
+        "context": "The assassination of Archduke Franz Ferdinand of Austria-Hungary on 28 June 1914 in Sarajevo is considered the immediate trigger of World War I. He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with the Black Hand.",
+        "question": "What was the immediate cause of World War I?",
+        "short_answers": ["the assassination of Archduke Franz Ferdinand", "Franz Ferdinand's assassination"],
+        "wikipage": "Assassination of Archduke Franz Ferdinand"
+      },
+      {
+        "context": "The underlying causes of World War I are often summarized by the acronym MAIN: Militarism, Alliances, Imperialism, and Nationalism. The alliance system meant that a conflict between two nations could rapidly draw in many others.",
+        "question": "What were the underlying causes of World War I?",
+        "short_answers": ["militarism, alliances, imperialism, and nationalism", "MAIN"],
+        "wikipage": "Causes of World War I"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "World War I",
+        "url": "https://en.wikipedia.org/wiki/World_War_I"
+      },
+      {
+        "title": "Assassination of Archduke Franz Ferdinand",
+        "url": "https://en.wikipedia.org/wiki/Assassination_of_Archduke_Franz_Ferdinand"
+      },
+      {
+        "title": "Causes of World War I",
+        "url": "https://en.wikipedia.org/wiki/Causes_of_World_War_I"
+      },
+      {
+        "title": "Gavrilo Princip",
+        "url": "https://en.wikipedia.org/wiki/Gavrilo_Princip"
+      },
+      {
+        "title": "Franz Ferdinand, Archduke of Austria",
+        "url": "https://en.wikipedia.org/wiki/Franz_Ferdinand,_Archduke_of_Austria"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "World War I started on 28 July 1914 triggered by the assassination of Archduke Franz Ferdinand on 28 June 1914.",
+            "wikipage": "World War I"
+          }
+        ],
+        "long_answer": "World War I began on 28 July 1914, triggered by the assassination of Archduke Franz Ferdinand of Austria-Hungary in Sarajevo on 28 June 1914 by Gavrilo Princip. The underlying causes included militarism, alliances, imperialism, and nationalism."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc013_1",
+        "title": "World War I",
+        "text": "World War I or the First World War (28 July 1914 – 11 November 1918) was a global conflict that began in Europe. It was fought between two coalitions, the Allies and the Central Powers. Fighting occurred throughout Europe, the Middle East, Africa, the Pacific, and parts of Asia. The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary. More than 70 million military personnel, including 60 million Europeans, were mobilised in one of the largest wars in history.",
+        "score": 0.92,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Documento principale: conferma la data di inizio (28 luglio 1914) e il trigger (assassinio di Franz Ferdinand).",
+        "answers_found": [1, 1, 0],
+        "extraction": "World War I began on 28 July 1914 with Austria-Hungary's declaration of war on Serbia, following the assassination of Archduke Franz Ferdinand.",
+        "summary": "World War I began on 28 July 1914 triggered by the assassination of Franz Ferdinand."
+      },
+      {
+        "id": "doc013_2",
+        "title": "Assassination of Archduke Franz Ferdinand",
+        "text": "The assassination of Archduke Franz Ferdinand of Austria-Hungary occurred on 28 June 1914 in Sarajevo, Bosnia, then part of Austria-Hungary. He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand. The assassination set off a chain of diplomatic crises that escalated into World War I. Austria-Hungary issued an ultimatum to Serbia on 23 July 1914, and after Serbia's response was deemed unsatisfactory, declared war on 28 July 1914.",
+        "score": 0.88,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma l'assassinio di Franz Ferdinand da parte di Gavrilo Princip come causa immediata della guerra.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Archduke Franz Ferdinand was assassinated by Gavrilo Princip on 28 June 1914 in Sarajevo, triggering World War I.",
+        "summary": "The assassination of Archduke Franz Ferdinand by Gavrilo Princip on 28 June 1914 in Sarajevo set off the chain of events that led to World War I."
+      },
+      {
+        "id": "doc013_3",
+        "title": "Causes of World War I",
+        "text": "The causes of World War I include both the immediate trigger and the underlying long-term factors. The immediate cause was the assassination of Archduke Franz Ferdinand of Austria-Hungary on 28 June 1914. The long-term causes are often grouped under the acronym MAIN: Militarism (the arms race between European powers), Alliance systems (which meant that a conflict between two states could rapidly involve many others), Imperialism (competition over colonies), and Nationalism (especially in the Balkans, where ethnic groups sought independence from the Ottoman and Austro-Hungarian empires).",
+        "score": 0.85,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The long-term causes are often grouped under the acronym MAIN: Militarism, Alliance systems, Imperialism, and Nationalism.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Documento che risponde alla sub-question sulle cause di fondo della guerra con il modello MAIN.",
+        "answers_found": [0, 0, 1],
+        "extraction": "The underlying causes of WWI are summarized as MAIN: Militarism, Alliances, Imperialism, and Nationalism.",
+        "summary": "The underlying causes of WWI include Militarism, Alliance systems, Imperialism, and Nationalism (MAIN)."
+      },
+      {
+        "id": "doc013_4",
+        "title": "Gavrilo Princip",
+        "text": "Gavrilo Princip (25 July 1894 – 28 April 1918) was a Bosnian Serb nationalist and member of the organisation Young Bosnia. On 28 June 1914, he assassinated Archduke Franz Ferdinand of Austria-Hungary and his wife Sophie, Duchess of Hohenberg, in Sarajevo. The assassination is considered the immediate cause of World War I. Princip was arrested at the scene of the assassination. Due to his age at the time of the assassination (19 years, 11 months), he was below the age required for the death penalty under Austro-Hungarian law and was sentenced to 20 years in prison.",
+        "score": 0.81,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "On 28 June 1914, he assassinated Archduke Franz Ferdinand of Austria-Hungary and his wife Sophie, Duchess of Hohenberg, in Sarajevo.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma Princip come assassino di Franz Ferdinand e fornisce il suo background.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Gavrilo Princip assassinated Archduke Franz Ferdinand on 28 June 1914 in Sarajevo.",
+        "summary": "Gavrilo Princip was the Bosnian Serb nationalist who assassinated Archduke Franz Ferdinand on 28 June 1914."
+      },
+      {
+        "id": "doc013_5",
+        "title": "Franz Ferdinand, Archduke of Austria",
+        "text": "Archduke Franz Ferdinand Carl Ludwig Joseph Maria of Austria (18 December 1863 – 28 June 1914) was the heir presumptive to the Austro-Hungarian throne. His assassination in Sarajevo on 28 June 1914 by Bosnian Serb nationalist Gavrilo Princip initiated the chain of events that led to the outbreak of World War I. Franz Ferdinand was the nephew of Emperor Franz Joseph I of Austria and became heir to the throne after the suicide of Crown Prince Rudolf in 1889.",
+        "score": 0.78,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: fornisce background su Franz Ferdinand ma ripete informazioni già coperte dal doc 2, senza aggiungere elementi nuovi alle sub-questions.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "This document provides biographical background on Archduke Franz Ferdinand but does not add new information beyond what is covered in other documents."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "World War I began on 28 July 1914 when Austria-Hungary declared war on Serbia.",
+        "keywords": ["28 July 1914", "1914", "Austria-Hungary", "Serbia"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "World War I",
+        "golden_evidence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The immediate trigger of World War I was the assassination of Archduke Franz Ferdinand on 28 June 1914 in Sarajevo by Gavrilo Princip.",
+        "keywords": ["Franz Ferdinand", "Archduke Franz Ferdinand", "Gavrilo Princip", "Sarajevo", "28 June 1914"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
+        "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The underlying causes of World War I included militarism, alliance systems, imperialism, and nationalism (MAIN).",
+        "keywords": ["militarism", "alliances", "imperialism", "nationalism", "MAIN"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Causes of World War I",
+        "golden_evidence": "The long-term causes are often grouped under the acronym MAIN: Militarism, Alliance systems, Imperialism, and Nationalism."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_014",
+    "question": "Who was Leonardo da Vinci and what did he paint?",
+    "answer": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance, widely considered one of the greatest painters of all time. He is best known for two paintings: the Mona Lisa, widely regarded as the world's most famous portrait, and The Last Supper, the most reproduced religious painting. Da Vinci was also a sculptor, architect, musician, engineer, scientist, and inventor, keeping extensive notebooks filled with scientific drawings and observations that were centuries ahead of his time.",
+    "qa_pairs": [
+      {
+        "context": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance who is widely considered to be one of the greatest painters of all time. Born in Anchiano, Tuscany, he is also known for his work as a sculptor, architect, musician, mathematician, engineer, inventor, anatomist, geologist, cartographer, botanist, and writer.",
+        "question": "Who was Leonardo da Vinci?",
+        "short_answers": ["an Italian polymath", "a Renaissance painter and scientist"],
+        "wikipage": "Leonardo da Vinci"
+      },
+      {
+        "context": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci. It has been described as 'the best known, the most visited, the most written about, the most sung about, the most parodied work of art in the world.'",
+        "question": "What is Leonardo da Vinci's most famous painting?",
+        "short_answers": ["the Mona Lisa", "Mona Lisa"],
+        "wikipage": "Mona Lisa"
+      },
+      {
+        "context": "The Last Supper is a mural painting by Leonardo da Vinci, completed between 1495 and 1498. It depicts the scene from the Gospel of John in which Jesus announces that one of his apostles will betray him.",
+        "question": "What other famous painting did Leonardo da Vinci create?",
+        "short_answers": ["The Last Supper"],
+        "wikipage": "The Last Supper (Leonardo)"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Leonardo da Vinci",
+        "url": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci"
+      },
+      {
+        "title": "Mona Lisa",
+        "url": "https://en.wikipedia.org/wiki/Mona_Lisa"
+      },
+      {
+        "title": "The Last Supper (Leonardo)",
+        "url": "https://en.wikipedia.org/wiki/The_Last_Supper_(Leonardo)"
+      },
+      {
+        "title": "Vitruvian Man",
+        "url": "https://en.wikipedia.org/wiki/Vitruvian_Man"
+      },
+      {
+        "title": "Michelangelo",
+        "url": "https://en.wikipedia.org/wiki/Michelangelo"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Leonardo da Vinci was an Italian Renaissance polymath who painted the Mona Lisa and The Last Supper.",
+            "wikipage": "Leonardo da Vinci"
+          }
+        ],
+        "long_answer": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance and one of the greatest painters of all time. His most famous paintings are the Mona Lisa and The Last Supper. He was also a scientist, inventor, and engineer whose notebooks were centuries ahead of their time."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc014_1",
+        "title": "Leonardo da Vinci",
+        "text": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time. Born in Anchiano, in present-day Italy, he is also known for his work as a sculptor, architect, musician, mathematician, engineer, inventor, anatomist, and botanist. Among his famous works are the Mona Lisa, the most famous portrait in the world, The Last Supper, the most reproduced religious painting of all time, and the Vitruvian Man, a study of the proportions of the human body.",
+        "score": 0.93,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Among his famous works are the Mona Lisa, the most famous portrait in the world, The Last Supper, the most reproduced religious painting of all time.",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale: risponde a tutte le sub-questions su chi era Leonardo, la Mona Lisa, e L'Ultima Cena.",
+        "answers_found": [1, 1, 1],
+        "extraction": "Leonardo da Vinci was an Italian Renaissance polymath who painted the Mona Lisa and The Last Supper.",
+        "summary": "Leonardo da Vinci was an Italian Renaissance polymath known for the Mona Lisa and The Last Supper."
+      },
+      {
+        "id": "doc014_2",
+        "title": "Mona Lisa",
+        "text": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci. It is considered an archetypal masterpiece of the Italian Renaissance, and has been described as 'the best known, the most visited, the most written about, the most sung about, the most parodied work of art in the world.' The painting is believed to have been executed between 1503 and 1519. It is housed in the Louvre Museum in Paris, France, where it is the most visited work of art.",
+        "score": 0.87,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma la Mona Lisa come opera di Leonardo e il suo status di opera d'arte più famosa al mondo.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The Mona Lisa is a portrait painting by Leonardo da Vinci, considered the most visited work of art in the world.",
+        "summary": "The Mona Lisa, painted by Leonardo da Vinci between 1503 and 1519, is the most visited painting in the world, housed in the Louvre."
+      },
+      {
+        "id": "doc014_3",
+        "title": "The Last Supper (Leonardo)",
+        "text": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory (dining hall) of the Convent of Santa Maria delle Grazie in Milan, Italy. The work, which measures 4.6 metres (15 ft) × 8.8 metres (29 ft), was commissioned by Ludovico Sforza, Duke of Milan, and represents the scene of the Last Supper of Jesus with his apostles, as it is told in the Gospel of John 13:21. It was painted between approximately 1495 and 1498.",
+        "score": 0.83,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory of the Convent of Santa Maria delle Grazie in Milan, Italy.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma L'Ultima Cena come opera di Leonardo, dipinta tra il 1495 e il 1498.",
+        "answers_found": [0, 0, 1],
+        "extraction": "The Last Supper is a mural painting by Leonardo da Vinci, painted between approximately 1495 and 1498.",
+        "summary": "The Last Supper is a mural by Leonardo da Vinci, painted 1495–1498, housed in Milan."
+      },
+      {
+        "id": "doc014_4",
+        "title": "Vitruvian Man",
+        "text": "The Vitruvian Man is a drawing by the Italian Renaissance artist and scientist Leonardo da Vinci, dated to around 1490. It depicts a male figure in two superimposed positions with his arms and legs apart and inscribed in both a circle and a square. The drawing, which is in pen and ink on paper, depicts a study of the proportions of the human body as described by the ancient Roman architect Vitruvius. It is housed in the Gallerie dell'Accademia in Venice.",
+        "score": 0.74,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla del Vitruvian Man, un disegno di Leonardo, ma non risponde alle sub-questions sui dipinti principali o su chi era.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "The Vitruvian Man is a famous drawing by Leonardo but is not directly relevant to questions about his identity or most famous paintings."
+      },
+      {
+        "id": "doc014_5",
+        "title": "Michelangelo",
+        "text": "Michelangelo di Lodovico Buonarroti Simoni (6 March 1475 – 18 February 1564), known as Michelangelo, was an Italian Renaissance sculptor, painter, architect and poet. Along with Leonardo da Vinci and Raphael, he is considered to be one of the three titans of the High Renaissance. His most famous works include the Pietà, David, the ceiling of the Sistine Chapel, and The Last Judgment. Michelangelo was born 23 years after Leonardo da Vinci and outlived him by 45 years.",
+        "score": 0.67,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla di Michelangelo, contemporaneo di Leonardo, ma non risponde alle sub-questions su Leonardo da Vinci.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "This document is about Michelangelo, not Leonardo da Vinci, and does not answer any sub-questions."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 3,
+      "n_distractors": 2,
+      "n_full_support": 3,
+      "n_partial_support": 0,
+      "n_no_support": 2
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance, considered one of the greatest painters of all time.",
+        "keywords": ["Leonardo da Vinci", "1452", "1519", "polymath", "High Renaissance"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Leonardo da Vinci",
+        "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The Mona Lisa, painted by Leonardo da Vinci, is considered the most famous portrait in the world.",
+        "keywords": ["Mona Lisa", "portrait"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Mona Lisa",
+        "golden_evidence": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The Last Supper is a mural painting by Leonardo da Vinci, painted between approximately 1495 and 1498.",
+        "keywords": ["Last Supper", "The Last Supper", "1495", "1498"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "The Last Supper (Leonardo)",
+        "golden_evidence": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory of the Convent of Santa Maria delle Grazie in Milan, Italy."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_015",
+    "question": "What is DNA and who discovered its structure?",
+    "answer": "DNA (deoxyribonucleic acid) is a molecule that carries the genetic instructions used in the growth, development, functioning and reproduction of all known living organisms. The double helix structure of DNA was discovered in 1953 by James Watson and Francis Crick at the University of Cambridge, based in part on X-ray crystallography work by Rosalind Franklin and Raymond Gosling. Watson, Crick, and Maurice Wilkins were awarded the Nobel Prize in Physiology or Medicine in 1962.",
+    "qa_pairs": [
+      {
+        "context": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix. The polymer carries genetic instructions for the development, functioning, growth and reproduction of all known organisms and many viruses.",
+        "question": "What is DNA?",
+        "short_answers": ["a molecule carrying genetic instructions", "deoxyribonucleic acid"],
+        "wikipage": "DNA"
+      },
+      {
+        "context": "On 28 February 1953, James Watson and Francis Crick announced to the patrons of The Eagle pub in Cambridge that they had 'discovered the secret of life' with their double-helix model of DNA. Their model was published in the journal Nature on 25 April 1953.",
+        "question": "Who discovered the structure of DNA?",
+        "short_answers": ["James Watson and Francis Crick", "Watson and Crick"],
+        "wikipage": "Nucleic acid double helix"
+      },
+      {
+        "context": "Rosalind Franklin's X-ray diffraction images of DNA fibres, particularly Photo 51, were crucial in determining the double helix structure. James Watson saw Photo 51 without Franklin's knowledge, which contributed to Watson and Crick's model.",
+        "question": "Who else contributed to the discovery of DNA's structure?",
+        "short_answers": ["Rosalind Franklin", "Rosalind Franklin and Raymond Gosling"],
+        "wikipage": "Rosalind Franklin"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "DNA",
+        "url": "https://en.wikipedia.org/wiki/DNA"
+      },
+      {
+        "title": "James Watson",
+        "url": "https://en.wikipedia.org/wiki/James_Watson"
+      },
+      {
+        "title": "Francis Crick",
+        "url": "https://en.wikipedia.org/wiki/Francis_Crick"
+      },
+      {
+        "title": "Rosalind Franklin",
+        "url": "https://en.wikipedia.org/wiki/Rosalind_Franklin"
+      },
+      {
+        "title": "Nucleic acid double helix",
+        "url": "https://en.wikipedia.org/wiki/Nucleic_acid_double_helix"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The double helix structure of DNA was discovered in 1953 by James Watson and Francis Crick, with crucial contributions from Rosalind Franklin's X-ray crystallography.",
+            "wikipage": "DNA"
+          }
+        ],
+        "long_answer": "DNA (deoxyribonucleic acid) is a molecule that carries genetic instructions for all living organisms. Its double helix structure was discovered in 1953 by James Watson and Francis Crick, with crucial contributions from Rosalind Franklin's X-ray diffraction work. Watson, Crick, and Wilkins received the Nobel Prize in 1962."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc015_1",
+        "title": "DNA",
+        "text": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth and reproduction of all known organisms and many viruses. DNA and ribonucleic acid (RNA) are nucleic acids. The double helix model of DNA's structure was published by James Watson and Francis Crick in the journal Nature in April 1953. The discovery was based in part on key experimental data, particularly X-ray crystallography images produced by Rosalind Franklin, as well as the base-pairing rules developed by Erwin Chargaff.",
+        "score": 0.93,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The double helix model of DNA's structure was published by James Watson and Francis Crick in the journal Nature in April 1953.",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale: descrive cosa è il DNA e attribuisce la scoperta della doppia elica a Watson e Crick nel 1953, citando Franklin.",
+        "answers_found": [1, 1, 1],
+        "extraction": "DNA carries genetic instructions; its double helix structure was published by Watson and Crick in 1953, based partly on Franklin's X-ray crystallography.",
+        "summary": "DNA carries genetic instructions; Watson and Crick published its double helix structure in 1953, based partly on Franklin's work."
+      },
+      {
+        "id": "doc015_2",
+        "title": "James Watson",
+        "text": "James Dewey Watson (born April 6, 1928) is an American molecular biologist, geneticist and zoologist. In 1953, he co-authored with Francis Crick the academic paper proposing the double helix structure of the DNA molecule. Watson and Crick used experimental data from Rosalind Franklin's X-ray diffraction work and from Erwin Chargaff's base-pairing rules. Watson, Crick, and Maurice Wilkins were awarded the Nobel Prize in Physiology or Medicine in 1962 for their work on the structure of nucleic acids.",
+        "score": 0.87,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "In 1953, he co-authored with Francis Crick the academic paper proposing the double helix structure of the DNA molecule.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma Watson come co-scopritore della struttura del DNA nel 1953 e menziona il Nobel del 1962.",
+        "answers_found": [0, 1, 0],
+        "extraction": "James Watson co-authored the paper on DNA's double helix structure with Francis Crick in 1953.",
+        "summary": "James Watson co-discovered the double helix structure of DNA with Francis Crick in 1953, earning the Nobel Prize in 1962."
+      },
+      {
+        "id": "doc015_3",
+        "title": "Rosalind Franklin",
+        "text": "Rosalind Elsie Franklin (25 July 1920 – 16 April 1958) was a British chemist and X-ray crystallographer whose work was central to the understanding of the molecular structures of DNA. Her X-ray diffraction images of DNA, particularly Photo 51, were crucial in determining the double helix structure. James Watson saw Photo 51 without Franklin's knowledge through Maurice Wilkins, and this data played an important role in Watson and Crick's model. Franklin died of ovarian cancer in 1958, four years before Watson, Crick, and Wilkins were awarded the Nobel Prize.",
+        "score": 0.84,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial in determining the double helix structure.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma il ruolo cruciale di Rosalind Franklin attraverso la 'Foto 51' nella scoperta della struttura del DNA.",
+        "answers_found": [0, 0, 1],
+        "extraction": "Rosalind Franklin's X-ray diffraction images, particularly Photo 51, were crucial in determining the double helix structure of DNA.",
+        "summary": "Rosalind Franklin's Photo 51 X-ray image was crucial to Watson and Crick's discovery of DNA's double helix structure."
+      },
+      {
+        "id": "doc015_4",
+        "title": "Francis Crick",
+        "text": "Francis Harry Compton Crick (8 June 1916 – 28 July 2004) was a British molecular biologist, biophysicist, and neuroscientist. Together with James Watson, Crick is best known as one of the co-discoverers of the structure of the DNA double helix in 1953. He, Watson, and Maurice Wilkins were jointly awarded the Nobel Prize in Physiology or Medicine in 1962 for their discoveries concerning the molecular structure of nucleic acids and its significance for information transfer in living material.",
+        "score": 0.82,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Together with James Watson, Crick is best known as one of the co-discoverers of the structure of the DNA double helix in 1953.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma Crick come co-scopritore della doppia elica con Watson nel 1953 e il Nobel del 1962.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Francis Crick co-discovered the DNA double helix structure with James Watson in 1953 and shared the 1962 Nobel Prize.",
+        "summary": "Francis Crick co-discovered the DNA double helix with Watson in 1953, earning the Nobel Prize in 1962."
+      },
+      {
+        "id": "doc015_5",
+        "title": "Nucleic acid double helix",
+        "text": "A nucleic acid double helix is a structure formed by double-stranded molecules of nucleic acids such as DNA and RNA. The structure consists of two complementary strands running antiparallel to each other, coiled around a central axis. The double helix of DNA was first described by Watson and Crick in their landmark 1953 paper. The helix is right-handed, meaning the strands turn in a clockwise direction when viewed from above. The structure explains how DNA encodes genetic information and how it can be copied during cell division.",
+        "score": 0.73,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: descrive la struttura della doppia elica in termini tecnici ma non aggiunge informazioni nuove rispetto ai documenti precedenti sulle sub-questions.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "This document explains the technical structure of the DNA double helix but does not add new information relevant to the sub-questions."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "DNA (deoxyribonucleic acid) is a polymer that carries genetic instructions for the development and reproduction of all known living organisms.",
+        "keywords": ["DNA", "deoxyribonucleic acid", "genetic instructions", "double helix"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "DNA",
+        "golden_evidence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth and reproduction of all known organisms."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The double helix structure of DNA was discovered by James Watson and Francis Crick, published in Nature in April 1953.",
+        "keywords": ["Watson", "Crick", "James Watson", "Francis Crick", "1953", "double helix"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "James Watson",
+        "golden_evidence": "In 1953, he co-authored with Francis Crick the academic paper proposing the double helix structure of the DNA molecule."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Rosalind Franklin's X-ray diffraction images of DNA, particularly Photo 51, were crucial to Watson and Crick's discovery.",
+        "keywords": ["Rosalind Franklin", "Franklin", "Photo 51", "X-ray diffraction"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Rosalind Franklin",
+        "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial in determining the double helix structure."
       }
     ]
   }

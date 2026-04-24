@@ -12,6 +12,7 @@ import {
   Sparkles, Cpu, SlidersHorizontal, Tag, Layers,
   Download, Upload, Search, Filter, RefreshCw,
   Copy, Hash, FileText, Loader, Link2,
+  Zap, ZapOff,
 } from 'lucide-react'
 
 const REGISTRY = {
@@ -57,6 +58,8 @@ const REGISTRY = {
   hash: Hash,
   fileText: FileText,
   loader: Loader,
+  zap: Zap,
+  zapOff: ZapOff,
 }
 
 export default function Icon({ name, size = 16, strokeWidth = 1.75, color = 'currentColor', style = {} }) {
