@@ -333,6 +333,31 @@ def _add_split_metrics(per_nugget: list[dict], result: dict) -> dict:
 
     return result
 
+
+def _count_noise_usage(matched_claims: list[dict]) -> dict:
+    """
+    Count how many noise passages were used as supporting evidence.
+    Returns stats about noise passage usage across all claims.
+    """
+    total_supporting = 0
+    noise_supporting = 0
+    claims_with_noise = 0
+
+    for mc in matched_claims:
+        passages = mc.get("supporting_passages", [])
+        n_noise = sum(1 for p in passages if p.get("is_noise", False))
+        total_supporting += len(passages)
+        noise_supporting += n_noise
+        if n_noise > 0:
+            claims_with_noise += 1
+
+    return {
+        "total_supporting_passages": total_supporting,
+        "noise_supporting_passages": noise_supporting,
+        "claims_citing_noise": claims_with_noise,
+        "noise_ratio": round(noise_supporting / total_supporting, 4) if total_supporting > 0 else 0.0,
+    }
+
 def compute_nugget_metrics(
     nuggets: list[dict],
     matched_claims: list[dict],
@@ -464,6 +489,10 @@ def _compute_metrics_precomputed(
                 best_evidence_passage.get("best_sentence", "")
                 if best_evidence_passage else None
             ),
+            "cited_from_noise": (
+                best_evidence_passage.get("is_noise", False)
+                if best_evidence_passage else False
+            ),
         })
 
     n_covered = sum(1 for r in per_nugget if r["covered"])
@@ -474,7 +503,7 @@ def _compute_metrics_precomputed(
     nugget_recall    = n_cited / n_total   if n_total > 0  else 0.0
     nugget_coverage  = n_covered / n_total if n_total > 0  else 0.0
 
-    return _add_split_metrics(per_nugget, {
+    result = {
         "nugget_precision": round(nugget_precision, 4),
         "nugget_recall":    round(nugget_recall,    4),
         "nugget_coverage":  round(nugget_coverage,  4),
@@ -482,7 +511,10 @@ def _compute_metrics_precomputed(
         "n_covered":  n_covered,
         "n_cited":    n_cited,
         "per_nugget": per_nugget,
-    })
+        "noise_usage": _count_noise_usage(matched_claims),
+        "n_cited_from_noise": sum(1 for r in per_nugget if r.get("cited_from_noise", False)),
+    }
+    return _add_split_metrics(per_nugget, result)
 
 
 def _compute_metrics_full(
@@ -580,6 +612,10 @@ def _compute_metrics_full(
                 best_evidence_passage.get("best_sentence", "")
                 if best_evidence_passage else None
             ),
+            "cited_from_noise": (
+                best_evidence_passage.get("is_noise", False)
+                if best_evidence_passage else False
+            ),
         })
 
     n_covered = sum(1 for r in per_nugget if r["covered"])
@@ -590,7 +626,7 @@ def _compute_metrics_full(
     nugget_recall    = n_cited / n_total   if n_total > 0  else 0.0
     nugget_coverage  = n_covered / n_total if n_total > 0  else 0.0
 
-    return _add_split_metrics(per_nugget, {
+    result = {
         "nugget_precision": round(nugget_precision, 4),
         "nugget_recall":    round(nugget_recall,    4),
         "nugget_coverage":  round(nugget_coverage,  4),
@@ -598,7 +634,10 @@ def _compute_metrics_full(
         "n_covered":  n_covered,
         "n_cited":    n_cited,
         "per_nugget": per_nugget,
-    })
+        "noise_usage": _count_noise_usage(matched_claims),
+        "n_cited_from_noise": sum(1 for r in per_nugget if r.get("cited_from_noise", False)),
+    }
+    return _add_split_metrics(per_nugget, result)
 
 
 # ──────────────────────────────────────────────

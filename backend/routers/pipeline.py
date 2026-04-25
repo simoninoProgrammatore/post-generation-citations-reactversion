@@ -322,6 +322,9 @@ async def evaluate_example_endpoint(req: EvaluateExampleRequest):
     )
     logger.info(f"[evaluate-example] retrieve DONE — {len(matched)} matched")
 
+    # ── Noise citation stats ──
+    noise_stats = _compute_noise_stats(matched)
+
     # Evaluate
     logger.info(f"[evaluate-example] evaluate START — mode={req.eval_mode}")
     if req.eval_mode == "nugget":
@@ -331,6 +334,7 @@ async def evaluate_example_endpoint(req: EvaluateExampleRequest):
             use_nli=False,
             required_only=False,
         )
+        result["noise_stats"] = noise_stats
         logger.info(f"[evaluate-example] evaluate DONE — nugget_precision={result.get('nugget_precision')}")
         return {"question": query, "nugget_metrics": result}
     else:
@@ -341,6 +345,7 @@ async def evaluate_example_endpoint(req: EvaluateExampleRequest):
             "factual_precision_nli": core_evaluate.factual_precision_nli(matched),
             "unsupported_ratio":     core_evaluate.unsupported_claim_ratio(matched),
             "avg_entailment_score":  core_evaluate.average_entailment_score(matched),
+            "noise_stats":           noise_stats,
         }
         logger.info(f"[evaluate-example] evaluate DONE — citation_precision={metrics['citation_precision']:.3f}")
         return {"question": query, "metrics": metrics}
@@ -511,6 +516,21 @@ async def evaluate_dataset_endpoint(req: EvaluateDatasetRequest):
         global_metrics["total_optional"] = total_opt
         global_metrics["total_optional_cited"] = total_opt_cited
         global_metrics["total_optional_covered"] = total_opt_covered
+
+        # Noise usage aggregation
+        total_noise_passages = 0
+        total_claims_citing_noise = 0
+        total_cited_from_noise = 0
+        for ex in per_example:
+            nm = ex.get("nugget_metrics")
+            if nm:
+                nu = nm.get("noise_usage", {})
+                total_noise_passages += nu.get("noise_supporting_passages", 0)
+                total_claims_citing_noise += nu.get("claims_citing_noise", 0)
+                total_cited_from_noise += nm.get("n_cited_from_noise", 0)
+        global_metrics["total_noise_passages_used"] = total_noise_passages
+        global_metrics["total_claims_citing_noise"] = total_claims_citing_noise
+        global_metrics["total_nuggets_cited_from_noise"] = total_cited_from_noise
 
     runtime = round(time.time() - start_time, 1)
     return {

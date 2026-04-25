@@ -159,6 +159,7 @@ function NuggetAssociationTable({ perExample }) {
     if (filter === 'uncovered') return !r.covered
     if (filter === 'cited') return r.cited
     if (filter === 'uncited') return !r.cited
+    if (filter === 'noise') return r.cited_from_noise
     return true
   })
 
@@ -183,6 +184,7 @@ function NuggetAssociationTable({ perExample }) {
           ['uncovered', '✗ Non coperti'],
           ['cited', '✓ Citati'],
           ['uncited', '✗ Non citati'],
+          ['noise', '⚠ Da noise'],
         ].map(([val, label]) => (
           <button key={val}
             onClick={() => setFilter(val)}
@@ -201,6 +203,7 @@ function NuggetAssociationTable({ perExample }) {
               if (val === 'uncovered') return !r.covered
               if (val === 'cited') return r.cited
               if (val === 'uncited') return !r.cited
+              if (val === 'noise') return r.cited_from_noise
               return true
             }).length})` : ''}
           </button>
@@ -338,14 +341,26 @@ function NuggetAssociationTable({ perExample }) {
                     )}
                   </td>
                   <td style={tdStyle}>
-                    <span style={{
-                      display: 'inline-block', padding: '2px 8px', borderRadius: 10,
-                      fontSize: 10, fontWeight: 700,
-                      background: row.cited ? '#D1FAE5' : row.covered ? '#FEF3C7' : '#FEE2E2',
-                      color: row.cited ? '#065F46' : row.covered ? '#92400E' : '#991B1B',
-                    }}>
-                      {statusLabel}
-                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                      <span style={{
+                        display: 'inline-block', padding: '2px 8px', borderRadius: 10,
+                        fontSize: 10, fontWeight: 700,
+                        background: row.cited ? '#D1FAE5' : row.covered ? '#FEF3C7' : '#FEE2E2',
+                        color: row.cited ? '#065F46' : row.covered ? '#92400E' : '#991B1B',
+                      }}>
+                        {statusLabel}
+                      </span>
+                      {row.cited_from_noise && (
+                        <span style={{
+                          display: 'inline-block', padding: '2px 8px', borderRadius: 10,
+                          fontSize: 9, fontWeight: 700,
+                          background: '#FEF3C7', color: '#92400E',
+                          border: '1px solid #F59E0B',
+                        }}>
+                          ⚠ NOISE
+                        </span>
+                      )}
+                    </div>
                   </td>
                 </tr>
               )
@@ -468,6 +483,9 @@ function DatasetEvalResultsView({ results, onSave, onDownload }) {
               ['total_optional', 'Optional'],
               ['total_optional_covered', 'Opt. Coperti'],
               ['total_optional_cited', 'Opt. Citati'],
+              ['total_noise_passages_used', '⚠ Noise Usati'],
+              ['total_claims_citing_noise', '⚠ Claims con Noise'],
+              ['total_nuggets_cited_from_noise', '⚠ Nuggets da Noise'],
             ].map(([key, label]) => {
               const v = gm[key]
               if (typeof v !== 'number') return null
@@ -833,6 +851,20 @@ export default function EvaluateDataset() {
       globalMetrics.total_optional = totalOpt
       globalMetrics.total_optional_cited = totalOptCited
       globalMetrics.total_optional_covered = totalOptCovered
+
+      // Noise aggregation
+      let totalNoisePassages = 0, totalClaimsNoise = 0, totalNuggetsNoise = 0
+      for (const ex of perExample) {
+        const nm = ex.nugget_metrics
+        if (!nm) continue
+        const nu = nm.noise_usage || {}
+        totalNoisePassages += nu.noise_supporting_passages || 0
+        totalClaimsNoise += nu.claims_citing_noise || 0
+        totalNuggetsNoise += nm.n_cited_from_noise || 0
+      }
+      globalMetrics.total_noise_passages_used = totalNoisePassages
+      globalMetrics.total_claims_citing_noise = totalClaimsNoise
+      globalMetrics.total_nuggets_cited_from_noise = totalNuggetsNoise
     }
 
     setResults({
