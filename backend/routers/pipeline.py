@@ -78,6 +78,19 @@ class EvaluateDatasetRequest(BaseModel):
     noise_seed: int = 42
     pre_filter_k: int = 0
 
+class EvaluateExampleRequest(BaseModel):
+    example: dict
+    model: str = "claude-haiku-4-5-20251001"
+    retrieve_method: str = "nli"
+    threshold: float = 0.5
+    top_k: int = 3
+    eval_mode: str = "standard"
+    noise_enabled: bool = False
+    noise_pool: list[dict] = []
+    noise_seed: int = 42
+    example_idx: int = 0
+    pre_filter_k: int = 0    
+
 
 
 
@@ -256,6 +269,82 @@ async def evaluate_nuggets(req: EvaluateNuggetsRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
+@router.post("/evaluate-example")
+async def evaluate_example_endpoint(req: EvaluateExampleRequest):
+    """Esegue l'intera pipeline su un singolo esempio e restituisce le metriche."""
+    import random
+    import logging
+    logger = logging.getLogger(__name__)
+
+    example = req.example
+    query = example.get("question", "")
+    raw_passages = example.get("docs", [])
+
+    logger.info(f"[evaluate-example] START — question='{query[:60]}' passages={len(raw_passages)} noise_enabled={req.noise_enabled} noise_pool={len(req.noise_pool)}")
+
+    # Noise injection
+    if req.noise_enabled and raw_passages and req.noise_pool:
+        rng = random.Random(req.noise_seed + req.example_idx)
+        n_noise = min(max(1, len(raw_passages) // 2), len(req.noise_pool))
+        noise_docs = rng.sample(req.noise_pool, n_noise) if n_noise > 0 else []
+        passages = list(raw_passages) + [{**d, "is_noise": True} for d in noise_docs]
+        rng.shuffle(passages)
+    else:
+        passages = raw_passages
+
+    logger.info(f"[evaluate-example] passages totali dopo noise: {len(passages)}")
+
+    # Generate
+    logger.info(f"[evaluate-example] generate START")
+    response_text = pipeline_runners.run_generate(
+        query=query, model=req.model, passages=passages
+    )
+    if not isinstance(response_text, str):
+        response_text = response_text.get("response", "")
+    logger.info(f"[evaluate-example] generate DONE — risposta {len(response_text)} chars")
+
+    # Decompose
+    logger.info(f"[evaluate-example] decompose START")
+    claims = pipeline_runners.run_decompose(response_text, req.model)
+    logger.info(f"[evaluate-example] decompose DONE — {len(claims)} claims")
+
+    # Retrieve
+    nuggets = example.get("nuggets", []) if req.eval_mode == "nugget" else None
+    logger.info(f"[evaluate-example] retrieve START — method={req.retrieve_method} top_k={req.top_k} nuggets={len(nuggets) if nuggets else 0}")
+    matched, _ = pipeline_runners.run_retrieve(
+        claims=claims,
+        passages=passages,
+        method=req.retrieve_method,
+        threshold=req.threshold,
+        top_k=req.top_k,
+        nuggets=nuggets,
+        pre_filter_k=req.pre_filter_k,
+    )
+    logger.info(f"[evaluate-example] retrieve DONE — {len(matched)} matched")
+
+    # Evaluate
+    logger.info(f"[evaluate-example] evaluate START — mode={req.eval_mode}")
+    if req.eval_mode == "nugget":
+        result = core_nuggets.compute_nugget_metrics(
+            nuggets=nuggets or [],
+            matched_claims=matched,
+            use_nli=False,
+            required_only=False,
+        )
+        logger.info(f"[evaluate-example] evaluate DONE — nugget_precision={result.get('nugget_precision')}")
+        return {"question": query, "nugget_metrics": result}
+    else:
+        metrics = {
+            "citation_precision":    core_evaluate.citation_precision_nli(matched),
+            "citation_recall":       core_evaluate.citation_recall_nli(matched),
+            "factual_precision":     core_evaluate.factual_precision(matched),
+            "factual_precision_nli": core_evaluate.factual_precision_nli(matched),
+            "unsupported_ratio":     core_evaluate.unsupported_claim_ratio(matched),
+            "avg_entailment_score":  core_evaluate.average_entailment_score(matched),
+        }
+        logger.info(f"[evaluate-example] evaluate DONE — citation_precision={metrics['citation_precision']:.3f}")
+        return {"question": query, "metrics": metrics}
+
 # ── Endpoint corretto ───────────────────────────────────────────────
 @router.post("/evaluate-dataset")
 async def evaluate_dataset_endpoint(req: EvaluateDatasetRequest):

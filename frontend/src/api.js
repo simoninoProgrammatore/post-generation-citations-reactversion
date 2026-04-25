@@ -43,14 +43,15 @@ async function getJson(path) {
 
 // ── Pipeline ────────────────────────────────────────────────────────────
 export const pipeline = {
-  generate:        (body) => postJson('/pipeline/generate',         body),
-  decompose:       (body) => postJson('/pipeline/decompose',        body),
-  retrieve:        (body) => postJson('/pipeline/retrieve',         body),
-  retrieveDebug:   (body) => postJson('/pipeline/retrieve/debug',   body),
-  cite:            (body) => postJson('/pipeline/cite',             body),
-  evaluate:        (body) => postJson('/pipeline/evaluate',         body),
-  evaluateNuggets: (body) => postJson('/pipeline/evaluate-nuggets', body),
-  evaluateDataset: (body) => postJson('/pipeline/evaluate-dataset', body),
+  generate:        (body) => postJson('/pipeline/generate',          body),
+  decompose:       (body) => postJson('/pipeline/decompose',         body),
+  retrieve:        (body) => postJson('/pipeline/retrieve',          body),
+  retrieveDebug:   (body) => postJson('/pipeline/retrieve/debug',    body),
+  cite:            (body) => postJson('/pipeline/cite',              body),
+  evaluate:        (body) => postJson('/pipeline/evaluate',          body),
+  evaluateNuggets: (body) => postJson('/pipeline/evaluate-nuggets',  body),
+  evaluateDataset: (body) => postJson('/pipeline/evaluate-dataset',  body),
+  evaluateExample: (body) => postJson('/pipeline/evaluate-example',  body),
 }
 
 // ── NLI ─────────────────────────────────────────────────────────────────

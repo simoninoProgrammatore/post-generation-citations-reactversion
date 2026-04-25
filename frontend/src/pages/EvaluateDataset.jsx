@@ -403,33 +403,103 @@ export default function EvaluateDataset() {
     reader.readAsText(file)
   }
 
-  async function runEvaluation() {
+ async function runEvaluation() {
     if (!dataset || dataset.length === 0) return
     setRunning(true)
     setError(null)
     setResults(null)
     setProgress({ current: 0, total: dataset.length })
-    try {
-      const res = await api.pipeline.evaluateDataset({
-        dataset: dataset.map(ex => ({
+
+    // Costruisci il noise pool una volta sola (docs di tutti gli altri esempi)
+    const noisePool = noiseEnabled
+      ? dataset.flatMap((ex, i) =>
+          (ex.docs || []).map(doc => ({ ...doc, _source_idx: i }))
+        )
+      : []
+
+    const perExample = []
+
+    for (let idx = 0; idx < dataset.length; idx++) {
+      const ex = dataset[idx]
+      try {
+        const res = await api.pipeline.evaluateExample({
+          example: {
+            question: ex.question,
+            docs: ex.docs || [],
+            nuggets: ex.nuggets || null,
+          },
+          model,
+          retrieve_method: retrieveMethod,
+          threshold,
+          top_k: topK,
+          eval_mode: effectiveMode,
+          noise_enabled: noiseEnabled,
+          noise_pool: noisePool.filter(d => d._source_idx !== idx),
+          noise_seed: 42,
+          example_idx: idx,
+          pre_filter_k: preFilterK,
+        })
+        perExample.push(res)
+      } catch (e) {
+        perExample.push({
           question: ex.question,
-          docs: ex.docs || [],
-          nuggets: ex.nuggets || null,
-        })),
-        model,
-        retrieve_method: retrieveMethod,
-        threshold,
-        top_k: topK,
-        eval_mode: effectiveMode,
-        noise_enabled: noiseEnabled,
-        noise_seed: 42,
-        pre_filter_k: preFilterK,
-      })
-      setResults(res)
-      setProgress({ current: dataset.length, total: dataset.length })
-    } catch (e) {
-      setError(`Errore valutazione dataset: ${e.message}`)
+          error: e.message,
+        })
+      }
+      setProgress({ current: idx + 1, total: dataset.length })
     }
+
+    // Aggregazione metriche globali (speculare al backend)
+    const globalMetrics = {}
+
+    if (effectiveMode === 'standard') {
+      const keys = [
+        'citation_precision', 'citation_recall',
+        'factual_precision', 'factual_precision_nli',
+        'unsupported_ratio', 'avg_entailment_score',
+      ]
+      for (const k of keys) {
+        const vals = perExample
+          .filter(ex => ex.metrics?.[k] != null)
+          .map(ex => ex.metrics[k])
+        if (vals.length) globalMetrics[k] = vals.reduce((a, b) => a + b, 0) / vals.length
+      }
+    } else {
+      let totalNuggets = 0, totalCovered = 0, totalCited = 0
+      const precs = [], recalls = [], covs = []
+      for (const ex of perExample) {
+        const nm = ex.nugget_metrics
+        if (!nm) continue
+        precs.push(nm.nugget_precision ?? 0)
+        recalls.push(nm.nugget_recall ?? 0)
+        covs.push(nm.nugget_coverage ?? 0)
+        totalNuggets += nm.n_nuggets ?? 0
+        totalCovered += nm.n_covered ?? 0
+        totalCited   += nm.n_cited   ?? 0
+      }
+      if (precs.length) {
+        globalMetrics.avg_nugget_precision = precs.reduce((a, b) => a + b, 0) / precs.length
+        globalMetrics.avg_nugget_recall    = recalls.reduce((a, b) => a + b, 0) / recalls.length
+        globalMetrics.avg_nugget_coverage  = covs.reduce((a, b) => a + b, 0) / covs.length
+      }
+      if (totalNuggets > 0) {
+        globalMetrics.macro_nugget_precision = totalCovered > 0 ? totalCited / totalCovered : 0
+        globalMetrics.macro_nugget_recall    = totalCited / totalNuggets
+        globalMetrics.macro_nugget_coverage  = totalCovered / totalNuggets
+      }
+      globalMetrics.total_nuggets = totalNuggets
+      globalMetrics.total_cited   = totalCited
+      globalMetrics.total_covered = totalCovered
+    }
+
+    setResults({
+      global_metrics: globalMetrics,
+      per_example: perExample,
+      num_examples: dataset.length,
+      num_successful: perExample.filter(ex => !ex.error).length,
+      runtime_seconds: null,   // non calcolato lato frontend
+      eval_mode: effectiveMode,
+    })
     setRunning(false)
   }
 
