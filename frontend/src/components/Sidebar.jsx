@@ -10,6 +10,7 @@ const NAV = [
   { path: '/pipeline',  icon: 'pipeline',  label: 'Pipeline interattivo' },
   { path: '/explore',   icon: 'explore',   label: 'Esplora risultati' },
   { path: '/metrics',   icon: 'metrics',   label: 'Metriche' },
+  { path: '/dataset',   icon: 'database',  label: 'Valutazione Dataset'},
   { path: '/attention', icon: 'attention', label: 'Attention Analysis' },
   { path: '/interpret', icon: 'interpret', label: 'Interpretability' },
 ]
@@ -38,11 +39,14 @@ export default function Sidebar() {
             key={item.path}
             to={item.path}
             className={({ isActive }) => `sb-item${isActive ? ' active' : ''}`}
+            style={item.indent ? { paddingLeft: 28 } : undefined}
           >
             <span className="sb-item-icon">
-              <Icon name={item.icon} size={15} strokeWidth={1.6} />
+              <Icon name={item.icon} size={item.indent ? 13 : 15} strokeWidth={1.6} />
             </span>
-            <span style={{ flex: 1 }}>{item.label}</span>
+            <span style={{ flex: 1, fontSize: item.indent ? 12 : undefined }}>
+              {item.label}
+            </span>
           </NavLink>
         ))}
       </div>

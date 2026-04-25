@@ -8,6 +8,9 @@ import Explore from './pages/Explore'
 import Metrics from './pages/Metrics'
 import Attention from './pages/Attention'
 import Interpretability from './pages/Interpretability'
+import EvaluateDataset from './pages/EvaluateDataset'   // ← aggiungi
+
+// Dentro <Route path="/" element={<App />}>:
 
 import { AppDataProvider } from './context/AppData'
 import './index.css'
@@ -22,9 +25,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="pipeline"  element={<Pipeline />} />
             <Route path="explore"   element={<Explore />} />
             <Route path="metrics"   element={<Metrics />} />
+            <Route path="dataset"   element={<EvaluateDataset />} /> 
             <Route path="attention" element={<Attention />} />
             <Route path="interpret" element={<Interpretability />} />
-          </Route>
+                      </Route>
         </Routes>
       </BrowserRouter>
     </AppDataProvider>

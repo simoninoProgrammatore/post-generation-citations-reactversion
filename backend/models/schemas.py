@@ -50,12 +50,25 @@ class DecomposeResponse(BaseModel):
 # /api/pipeline/retrieve
 # ──────────────────────────────────────────────
 
+class NuggetInput(BaseModel):
+    """Nugget dal dataset gold, usato per il matching anticipato in retrieve."""
+    nugget_id: str = ""
+    text: str = ""
+    keywords: list[str] = []
+    required: bool = True
+    golden_passage_title: str | None = None
+    golden_evidence: str | None = None
+    golden_passage_idx: int | None = None
+
+
 class RetrieveRequest(BaseModel):
     claims: list[str]
     passages: list[Passage]
     method: Literal["nli", "similarity", "llm"] = "nli"
     threshold: float = Field(0.5, ge=0.0, le=1.0)
     top_k: int = Field(3, ge=1, le=10)
+    nuggets: list[NuggetInput] | None = None
+    pre_filter_k: int = Field(0, ge=0, le=50, description="Pre-filter top-K sentences with embedding reranker before NLI. 0 = disabled.")
 
 
 class SupportingPassage(BaseModel):
@@ -71,9 +84,22 @@ class SupportingPassage(BaseModel):
     summary: str = ""
 
 
+class MatchedNuggetInfo(BaseModel):
+    """Info del nugget associato a un claim, precompilato in retrieve."""
+    nugget_id: str
+    text: str
+    keywords: list[str] = []
+    required: bool = True
+    golden_passage_title: str | None = None
+    golden_evidence: str | None = None
+    match_score: float = 0.0           # keyword overlap + entailment
+    matched_keywords: list[str] = []   # keywords che hanno fatto match
+
+
 class MatchedClaim(BaseModel):
     claim: str
     supporting_passages: list[SupportingPassage]
+    matched_nugget: MatchedNuggetInfo | None = None
 
 
 class RetrieveResponse(BaseModel):

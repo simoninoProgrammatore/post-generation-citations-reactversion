@@ -13,6 +13,7 @@ const PAGE_TITLES = {
   '/explore':   'Esplora risultati',
   '/metrics':   'Metriche di valutazione',
   '/attention': 'Attention Analysis',
+  '/dataset':   'Valutazione Dataset',
   '/interpret': 'Interpretability',
 }
 

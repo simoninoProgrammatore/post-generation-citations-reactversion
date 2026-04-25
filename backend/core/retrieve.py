@@ -147,6 +147,59 @@ def _load_nli_model(model_name: str):
 
 
 # ──────────────────────────────────────────────
+# Embedding model for pre-filtering (reranker)
+# ──────────────────────────────────────────────
+
+@lru_cache(maxsize=1)
+def _load_reranker_embedding(model_name: str = "BAAI/bge-base-en-v1.5"):
+    from sentence_transformers import SentenceTransformer
+    return SentenceTransformer(model_name)
+
+
+def _pre_filter_sentences(
+    claim: str,
+    all_sentences: list[str],
+    pair_to_passage: list[int],
+    pair_to_span: list[tuple[str, int, int]],
+    pre_filter_k: int = 10,
+    model_name: str = "BAAI/bge-base-en-v1.5",
+) -> tuple[list[str], list[int], list[tuple[str, int, int]]]:
+    """
+    Pre-filter sentences using fast embedding cosine similarity.
+    Returns only the top-K most similar sentences (with their metadata).
+    
+    Uses BAAI/bge-base-en-v1.5: strong retrieval-oriented embeddings,
+    768-dim, ~110M params. Much faster than NLI cross-encoder but
+    accurate enough for candidate selection.
+    """
+    import numpy as np
+
+    if len(all_sentences) <= pre_filter_k:
+        # No need to filter if we already have fewer sentences
+        return all_sentences, pair_to_passage, pair_to_span
+
+    model = _load_reranker_embedding(model_name)
+
+    # Encode claim and all sentences in one batch
+    claim_emb = model.encode([claim], normalize_embeddings=True)
+    sent_embs = model.encode(all_sentences, normalize_embeddings=True)
+
+    # Cosine similarity (already normalized)
+    sims = (sent_embs @ claim_emb.T).flatten()
+
+    # Get top-K indices
+    top_indices = np.argsort(sims)[::-1][:pre_filter_k]
+    # Keep original order for stability
+    top_indices = sorted(top_indices)
+
+    filtered_sents = [all_sentences[i] for i in top_indices]
+    filtered_passages = [pair_to_passage[i] for i in top_indices]
+    filtered_spans = [pair_to_span[i] for i in top_indices]
+
+    return filtered_sents, filtered_passages, filtered_spans
+
+
+# ──────────────────────────────────────────────
 # NLI-based matching (sentence-level)
 # ──────────────────────────────────────────────
 
@@ -156,7 +209,9 @@ def match_with_nli(
     model_name: str = "cross-encoder/nli-deberta-v3-large",
     threshold: float = 0.5,
     top_k: int = 3,
-    return_all_scores: bool = False,   # ← nuovo parametro
+    return_all_scores: bool = False,
+    pre_filter_k: int = 0,              # 0 = no pre-filtering
+    reranker_model: str = "BAAI/bge-base-en-v1.5",
 ) -> list[dict] | tuple[list[dict], list[dict]]:
     if not passages:
         return []
@@ -165,7 +220,7 @@ def match_with_nli(
 
     model = _load_nli_model(model_name)
 
-    all_pairs = []
+    all_sents = []
     pair_to_passage = []
     pair_to_span = []  # (sentence_text, start, end)
 
@@ -174,12 +229,29 @@ def match_with_nli(
         if not spans:
             continue
         for sent, start, end in spans:
-            all_pairs.append((sent, claim))
+            all_sents.append(sent)
             pair_to_passage.append(p_idx)
             pair_to_span.append((sent, start, end))
 
-    if not all_pairs:
+    if not all_sents:
         return []
+
+    n_total = len(all_sents)
+
+    # ── Pre-filtering with embedding reranker ──
+    if pre_filter_k > 0 and n_total > pre_filter_k:
+        filtered_sents, filtered_passages, filtered_spans = _pre_filter_sentences(
+            claim, all_sents, pair_to_passage, pair_to_span,
+            pre_filter_k=pre_filter_k,
+            model_name=reranker_model,
+        )
+    else:
+        filtered_sents = all_sents
+        filtered_passages = pair_to_passage
+        filtered_spans = pair_to_span
+
+    # ── NLI on filtered sentences ──
+    all_pairs = [(sent, claim) for sent in filtered_sents]
 
     scores = model.predict(all_pairs)
     scores = np.array(scores)
@@ -189,14 +261,12 @@ def match_with_nli(
     exp = np.exp(scores - np.max(scores, axis=1, keepdims=True))
     probs = exp / exp.sum(axis=1, keepdims=True)
     entailment_scores = probs[:, 1]
-    
 
-    
     # Per ogni passaggio, traccia score migliore E span corrispondente
     passage_best: dict[int, tuple[float, str, int, int]] = {}
     for i, score in enumerate(entailment_scores):
-        p_idx = pair_to_passage[i]
-        sent, start, end = pair_to_span[i]
+        p_idx = filtered_passages[i]
+        sent, start, end = filtered_spans[i]
         if p_idx not in passage_best or score > passage_best[p_idx][0]:
             passage_best[p_idx] = (float(score), sent, start, end)
 
@@ -215,24 +285,44 @@ def match_with_nli(
     
     if return_all_scores:
         # Costruisci struttura debug per la UI
+        # Include ALL sentences (filtered get NLI scores, rest get 0)
         all_scores_by_passage: dict[int, list[dict]] = {}
+
+        # Sentences that went through NLI
+        filtered_set = set()
         for i, score in enumerate(entailment_scores):
-            p_idx = pair_to_passage[i]
-            sent, start, end = pair_to_span[i]
+            p_idx = filtered_passages[i]
+            sent, start, end = filtered_spans[i]
             best_score_for_passage = passage_best.get(p_idx, (0,))[0]
             all_scores_by_passage.setdefault(p_idx, []).append({
                 "text": sent,
                 "score": float(score),
                 "is_best": float(score) == best_score_for_passage,
+                "pre_filtered": True,
             })
+            filtered_set.add((p_idx, sent))
+
+        # Add non-filtered sentences with score 0 (if pre-filtering was active)
+        if pre_filter_k > 0 and n_total > pre_filter_k:
+            for i, sent in enumerate(all_sents):
+                p_idx = pair_to_passage[i]
+                if (p_idx, sent) not in filtered_set:
+                    all_scores_by_passage.setdefault(p_idx, []).append({
+                        "text": sent,
+                        "score": 0.0,
+                        "is_best": False,
+                        "pre_filtered": False,
+                    })
 
         sentence_scores = [
             {
                 "title": passages[p_idx].get("title", f"Passage {p_idx}"),
                 "sentences": sents,
+                "n_total_sentences": sum(1 for s in all_sents if pair_to_passage[all_sents.index(s)] == p_idx) if pre_filter_k > 0 else len(sents),
             }
             for p_idx, sents in all_scores_by_passage.items()
         ]
+
         return results[:top_k], sentence_scores
 
     return results[:top_k]

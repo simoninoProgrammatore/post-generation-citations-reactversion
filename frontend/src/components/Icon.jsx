@@ -13,9 +13,11 @@ import {
   Download, Upload, Search, Filter, RefreshCw,
   Copy, Hash, FileText, Loader, Link2,
   Zap, ZapOff,
+  Database,   // ← AGGIUNGI QUI
 } from 'lucide-react'
 
 const REGISTRY = {
+  
   // Nav (stesso naming del mockup)
   pipeline: LayoutGrid,
   explore: Compass,
@@ -60,6 +62,8 @@ const REGISTRY = {
   loader: Loader,
   zap: Zap,
   zapOff: ZapOff,
+  database: Database,  
+
 }
 
 export default function Icon({ name, size = 16, strokeWidth = 1.75, color = 'currentColor', style = {} }) {

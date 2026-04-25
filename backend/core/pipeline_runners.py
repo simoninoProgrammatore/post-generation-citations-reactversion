@@ -72,6 +72,8 @@ def run_retrieve(
     method: str,
     threshold: float,
     top_k: int,
+    nuggets: list[dict] | None = None,
+    pre_filter_k: int = 0,
 ) -> tuple[list[dict], list[dict]]:
     from core.retrieve import (
         match_with_nli, match_with_similarity, match_with_llm, extract_evidence
@@ -85,7 +87,8 @@ def run_retrieve(
 
         if method == "nli":
             matches, sentence_scores = match_with_nli(
-                claim, passages, threshold=threshold, top_k=top_k, return_all_scores=True
+                claim, passages, threshold=threshold, top_k=top_k,
+                return_all_scores=True, pre_filter_k=pre_filter_k,
             )
         elif method == "llm":
             matches = match_with_llm(claim, passages, threshold=threshold, top_k=top_k)
@@ -106,10 +109,75 @@ def run_retrieve(
             match["summary"] = ev["summary"]
 
         matches = [m for m in matches if m.get("extraction", "").strip()]
-        matched.append({"claim": claim, "supporting_passages": matches})
+
+        # ── Nugget matching (keyword-based, anticipato) ──
+        matched_nugget = None
+        if nuggets:
+            matched_nugget = _find_best_nugget(claim, nuggets, matches)
+
+        entry = {"claim": claim, "supporting_passages": matches}
+        if matched_nugget:
+            entry["matched_nugget"] = matched_nugget
+
+        matched.append(entry)
         debug_data.append({"claim": claim, "sentence_scores": sentence_scores})
 
     return matched, debug_data
+
+
+def _find_best_nugget(
+    claim: str,
+    nuggets: list[dict],
+    supporting_passages: list[dict],
+) -> dict | None:
+    """
+    Trova il nugget migliore per un claim usando keyword matching.
+    Se più nugget matchano, sceglie quello con più keyword overlap
+    e, a parità, con entailment score più alto dai passaggi.
+    """
+    import re
+
+    claim_lower = claim.lower()
+    best = None
+    best_score = -1.0
+
+    for nug in nuggets:
+        keywords = nug.get("keywords", [])
+        if not keywords:
+            continue
+
+        # Check which keywords match
+        matched_kws = [kw for kw in keywords if kw.lower() in claim_lower]
+        if not matched_kws:
+            continue
+
+        # Score: fraction of keywords matched + bonus for total chars matched
+        kw_fraction = len(matched_kws) / len(keywords)
+        char_coverage = sum(len(kw) for kw in matched_kws) / max(len(claim), 1)
+
+        # Entailment boost: best score from supporting passages
+        ent_boost = 0.0
+        if supporting_passages:
+            ent_boost = max(
+                (p.get("entailment_score", 0) or 0) for p in supporting_passages
+            ) * 0.1  # small weight
+
+        score = kw_fraction * 0.6 + char_coverage * 0.3 + ent_boost
+
+        if score > best_score:
+            best_score = score
+            best = {
+                "nugget_id": nug.get("nugget_id", ""),
+                "text": nug.get("text", ""),
+                "keywords": keywords,
+                "required": nug.get("required", True),
+                "golden_passage_title": nug.get("golden_passage_title"),
+                "golden_evidence": nug.get("golden_evidence"),
+                "match_score": round(score, 4),
+                "matched_keywords": matched_kws,
+            }
+
+    return best
 
 
 def run_cite(response: str, matched_claims: list[dict]) -> tuple[str, list[dict]]:

@@ -314,26 +314,14 @@ def compute_nugget_metrics(
     """
     Compute Nugget Precision and Nugget Recall for one example.
 
-    Uses semantic similarity (MiniLM) for nugget↔claim alignment
-    and for citation verification. NLI is optional and additive.
+    If matched_claims carry a precomputed 'matched_nugget' field (from
+    the retrieve step), the alignment is reused — skipping the expensive
+    semantic/keyword re-computation.  When multiple claims map to the
+    same nugget, the one with the highest match_score is chosen as the
+    best covering claim.
 
-    Args:
-        nuggets:             List of nugget dicts from the dataset.
-        matched_claims:      List of matched claim dicts from the pipeline.
-        use_nli:             Whether to use NLI as additional signal.
-        use_semantic:        Whether to use MiniLM semantic similarity (default True).
-        nli_model:           NLI model name (if use_nli=True).
-        semantic_threshold:  Cosine similarity threshold for coverage (default 0.80).
-        required_only:       If True, only evaluate on nuggets marked required=True.
-
-    Returns dict with:
-        nugget_precision    — of covered+cited nuggets / covered nuggets
-        nugget_recall       — of covered+cited nuggets / total (required) nuggets
-        nugget_coverage     — of nuggets covered by at least one claim / total nuggets
-        n_nuggets           — total nuggets evaluated
-        n_covered           — nuggets covered by at least one claim
-        n_cited             — covered nuggets with at least one valid citation
-        per_nugget          — per-nugget breakdown list
+    Falls back to the full keyword+semantic alignment when no
+    precomputed associations are found.
     """
     if required_only:
         nuggets = [n for n in nuggets if n.get("required", True)]
@@ -349,7 +337,131 @@ def compute_nugget_metrics(
             "per_nugget": [],
         }
 
-    # ── Step 1: Nugget ↔ Claim alignment (semantic batch) ──
+    # ── Check if precomputed nugget associations exist ──
+    has_precomputed = any(
+        mc.get("matched_nugget") is not None for mc in matched_claims
+    )
+
+    if has_precomputed:
+        return _compute_metrics_precomputed(nuggets, matched_claims,
+                                            use_nli, use_semantic, nli_model)
+
+    # ── Fallback: full keyword+semantic alignment ──
+    return _compute_metrics_full(nuggets, matched_claims,
+                                 use_nli, use_semantic, nli_model,
+                                 semantic_threshold)
+
+
+def _compute_metrics_precomputed(
+    nuggets: list[dict],
+    matched_claims: list[dict],
+    use_nli: bool,
+    use_semantic: bool,
+    nli_model: str,
+) -> dict:
+    """
+    Fast path: use matched_nugget from retrieve step.
+    For each nugget, find the best claim (highest match_score).
+    """
+    # Build nugget_id → [list of (claim_dict, match_score)] mapping
+    nugget_to_claims: dict[str, list[tuple[dict, float]]] = {}
+    for mc in matched_claims:
+        mn = mc.get("matched_nugget")
+        if mn is None:
+            continue
+        nid = mn.get("nugget_id", "")
+        score = mn.get("match_score", 0.0)
+        nugget_to_claims.setdefault(nid, []).append((mc, score))
+
+    # Sort each nugget's claims by score descending → best first
+    for nid in nugget_to_claims:
+        nugget_to_claims[nid].sort(key=lambda x: x[1], reverse=True)
+
+    per_nugget = []
+
+    for nug in nuggets:
+        nid = nug.get("nugget_id", "?")
+        candidates = nugget_to_claims.get(nid, [])
+        covered = len(candidates) > 0
+
+        # Best claim = highest match_score
+        best_mc = candidates[0][0] if candidates else None
+        best_match_score = candidates[0][1] if candidates else 0.0
+
+        # ── Citation verification (still needed) ──
+        cited = False
+        best_evidence_passage = None
+        best_covering_claim = None
+        cite_score = 0.0
+
+        # Check best claim first, then others
+        for mc, _ in candidates:
+            passages = mc.get("supporting_passages", [])
+            is_cited, best_p, score = nugget_cited_in_passages(
+                nug, passages,
+                use_nli=use_nli, use_semantic=use_semantic,
+                nli_model=nli_model,
+            )
+            if is_cited:
+                cited = True
+                best_evidence_passage = best_p
+                best_covering_claim = mc["claim"]
+                cite_score = score
+                break
+
+        per_nugget.append({
+            "nugget_id": nid,
+            "nugget_text": nug["text"],
+            "required": nug.get("required", True),
+            "keywords": nug.get("keywords", []),
+            "golden_passage_title": nug.get("golden_passage_title"),
+            "golden_evidence": nug.get("golden_evidence"),
+            "covered": covered,
+            "cited": cited,
+            "semantic_similarity": round(best_match_score, 4),
+            "cite_score": round(cite_score, 4),
+            "n_covering_claims": len(candidates),
+            "best_covering_claim": best_covering_claim or (best_mc["claim"] if best_mc else None),
+            "best_evidence_passage_title": (
+                best_evidence_passage.get("title") if best_evidence_passage else None
+            ),
+            "best_evidence_passage_text": (
+                best_evidence_passage.get("text", "")[:200]
+                if best_evidence_passage else None
+            ),
+        })
+
+    n_covered = sum(1 for r in per_nugget if r["covered"])
+    n_cited   = sum(1 for r in per_nugget if r["cited"])
+    n_total   = len(per_nugget)
+
+    nugget_precision = n_cited / n_covered if n_covered > 0 else 0.0
+    nugget_recall    = n_cited / n_total   if n_total > 0  else 0.0
+    nugget_coverage  = n_covered / n_total if n_total > 0  else 0.0
+
+    return {
+        "nugget_precision": round(nugget_precision, 4),
+        "nugget_recall":    round(nugget_recall,    4),
+        "nugget_coverage":  round(nugget_coverage,  4),
+        "n_nuggets":  n_total,
+        "n_covered":  n_covered,
+        "n_cited":    n_cited,
+        "per_nugget": per_nugget,
+    }
+
+
+def _compute_metrics_full(
+    nuggets: list[dict],
+    matched_claims: list[dict],
+    use_nli: bool,
+    use_semantic: bool,
+    nli_model: str,
+    semantic_threshold: float,
+) -> dict:
+    """
+    Original full path: keyword gate + semantic similarity alignment.
+    Used when matched_claims don't have precomputed nugget associations.
+    """
     claim_texts = [mc["claim"] for mc in matched_claims]
 
     if use_semantic:
@@ -362,14 +474,6 @@ def compute_nugget_metrics(
     per_nugget = []
 
     for nug_idx, nug in enumerate(nuggets):
-        # Find covering claims: combine keyword + semantic
-        covering_claim_indices = set()
-
-        # ── Step 1b: Per-claim coverage check ──
-        # Keyword match is a MANDATORY GATE: at least one nugget keyword
-        # must appear in the claim. Semantic similarity alone cannot promote
-        # a claim — it only confirms. This prevents "Armstrong walked on
-        # the Moon" from matching a nugget about "Aldrin, second person".
         covering_claim_indices = set()
 
         for mc_idx, mc in enumerate(matched_claims):
@@ -380,7 +484,6 @@ def compute_nugget_metrics(
             # Keyword gate passed — now optionally confirm with semantic
             if use_semantic and semantic_matches is not None:
                 sm = semantic_matches[nug_idx]
-                # Check if this claim is also semantically close
                 if mc_idx in sm["covering_claim_indices"]:
                     covering_claim_indices.add(mc_idx)
                 else:
@@ -398,7 +501,7 @@ def compute_nugget_metrics(
         if semantic_matches is not None:
             best_sim = semantic_matches[nug_idx]["best_similarity"]
 
-        # ── Step 2: Citation verification ──
+        # ── Citation verification ──
         cited = False
         best_evidence_passage = None
         best_covering_claim = None

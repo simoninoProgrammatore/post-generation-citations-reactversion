@@ -19,14 +19,6 @@ import { downloadJSON, timestampedFilename } from '../utils/download'
 
 // ── Metric definitions ────────────────────────────────────────────────────────
 
-const GLOBAL_METRIC_INFO = {
-  macro_nugget_precision: { label: 'Macro Nugget Precision', desc: 'Precisione calcolata su tutti i nugget del dataset (cited/covered).' },
-  macro_nugget_recall: { label: 'Macro Nugget Recall', desc: 'Recall calcolata su tutti i nugget del dataset (cited/total).' },
-  macro_nugget_coverage: { label: 'Macro Nugget Coverage', desc: 'Copertura su tutti i nugget del dataset (covered/total).' },
-  avg_nugget_precision: { label: 'Avg Nugget Precision', desc: 'Media delle precisioni per esempio.' },
-  avg_nugget_recall: { label: 'Avg Nugget Recall', desc: 'Media delle recall per esempio.' },
-}
-
 const METRIC_INFO_STANDARD = {
   citation_precision:    { label: 'Citation Precision',     desc: '% di coppie (claim, passaggio) dove il passaggio supporta il claim via NLI.' },
   citation_recall:       { label: 'Citation Recall',        desc: '% di claims con almeno un passaggio citato che fornisce supporto NLI.' },
@@ -113,7 +105,6 @@ function normalizeDataset(rawData) {
   return examples.map((ex, idx) => {
     const question = ex.question || ex.query || ex.title || ex.id || `Esempio ${idx}`
 
-    // Preserve docs with ALL original fields (is_gold, golden_passage_title, etc.)
     let docs = []
     if (Array.isArray(ex.docs)) {
       docs = ex.docs.map(d => ({ ...d, title: d.title || '', text: d.text || d.sentence || '' }))
@@ -129,7 +120,6 @@ function normalizeDataset(rawData) {
     const claims = Array.isArray(ex.claims) ? ex.claims : null
     const raw_response = ex.answer || ex.response || ex.raw_response || null
     const matched_claims = ex.matched_claims || ex.matched || null
-    // Preserve nuggets inline if present
     const nuggets = Array.isArray(ex.nuggets) ? ex.nuggets : null
 
     return { question, docs, claims, raw_response, matched_claims, nuggets, _original: ex }
@@ -149,7 +139,6 @@ function EvalModeToggle({ mode, onChange, hasNuggets }) {
       padding: 3,
       gap: 2,
     }}>
-      {/* Standard */}
       <button
         onClick={() => onChange('standard')}
         style={{
@@ -168,7 +157,6 @@ function EvalModeToggle({ mode, onChange, hasNuggets }) {
         Standard
       </button>
 
-      {/* Nugget */}
       <button
         onClick={() => onChange('nugget')}
         style={{
@@ -383,7 +371,6 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
                 borderRadius: 8,
                 overflow: 'hidden',
               }}>
-                {/* Header */}
                 <div
                   onClick={() => setExpanded(e => ({ ...e, [i]: !e[i] }))}
                   style={{
@@ -423,7 +410,6 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
                   </span>
                 </div>
 
-                {/* Expanded body */}
                 {expanded[i] && (
                   <div style={{ padding: '12px 16px', background: 'white' }}>
                     {nug.keywords?.length > 0 && (
@@ -514,123 +500,6 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
   )
 }
 
-// NEW: Global Dataset Evaluation Results View
-function DatasetEvalResultsView({ results, onSave, onDownload }) {
-  const gm = results.global_metrics || {}
-  const mode = results.eval_mode || 'standard'
-  
-  return (
-    <div>
-      {/* Summary header */}
-      <div style={{
-        padding: '16px 20px',
-        background: 'linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%)',
-        border: '1px solid #C7D2FE',
-        borderRadius: 10,
-        marginBottom: 20,
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-          <Icon name="barChart2" size={20} color="#4338CA" strokeWidth={2} />
-          <span style={{ fontSize: 16, fontWeight: 700, color: '#312E81' }}>
-            Valutazione Globale Dataset
-          </span>
-        </div>
-        <div style={{ fontSize: 12, color: '#4338CA', display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-          <span>{results.num_examples} esempi</span>
-          <span>{results.num_successful} completati con successo</span>
-          <span>{results.runtime_seconds}s runtime</span>
-          <span>Modalità: {mode === 'nugget' ? 'Nugget' : 'Standard'}</span>
-        </div>
-      </div>
-      
-      {/* Global metrics grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12, marginBottom: 20 }}>
-        {Object.entries(gm).map(([key, value]) => {
-          if (typeof value !== 'number') return null
-          const pct = Math.round(value * 100)
-          const color = key.includes('precision') || key.includes('recall') || key.includes('coverage')
-            ? (value >= 0.7 ? 'var(--green)' : value >= 0.4 ? 'var(--amber)' : 'var(--red)')
-            : 'var(--accent)'
-          
-          return (
-            <div key={key} style={{
-              background: 'white',
-              border: '1px solid var(--border)',
-              borderRadius: 8,
-              padding: '14px 16px',
-            }}>
-              <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 4 }}>
-                {key.replace(/_/g, ' ')}
-              </div>
-              <div style={{ fontSize: 28, fontWeight: 800, color, lineHeight: 1 }}>
-                {pct}%
-              </div>
-              <div style={{
-                height: 4, background: 'var(--border-2)', borderRadius: 2,
-                marginTop: 8, overflow: 'hidden',
-              }}>
-                <div style={{
-                  height: '100%', borderRadius: 2,
-                  width: `${Math.min(100, pct)}%`,
-                  background: color,
-                  transition: 'width 0.5s ease',
-                }} />
-              </div>
-            </div>
-          )
-        })}
-      </div>
-      
-      {/* Per-example summary table (collapsed by default) */}
-      <details style={{ marginTop: 16 }}>
-        <summary style={{
-          cursor: 'pointer', fontSize: 13, fontWeight: 600,
-          color: 'var(--text-2)', padding: '8px 0',
-        }}>
-          Dettaglio per esempio ({results.per_example?.length || 0})
-        </summary>
-        <div style={{ marginTop: 8 }}>
-          {(results.per_example || []).map((ex, i) => (
-            <div key={i} style={{
-              padding: '8px 12px', marginBottom: 4,
-              background: ex.error ? '#FEF2F2' : '#FAFAF9',
-              border: `1px solid ${ex.error ? '#FECACA' : 'var(--border-2)'}`,
-              borderRadius: 6,
-              fontSize: 12,
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--text-3)' }}>
-                  [{i}]
-                </span>
-                <span style={{ flex: 1, fontWeight: 500, color: 'var(--text)' }}>
-                  {ex.question?.slice(0, 80)}{(ex.question?.length > 80) ? '...' : ''}
-                </span>
-                {ex.error ? (
-                  <span style={{ color: '#DC2626', fontSize: 11 }}>❌ {ex.error}</span>
-                ) : (
-                  <span style={{ color: 'var(--green)', fontSize: 11 }}>✓ OK</span>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </details>
-      
-      {/* Actions */}
-      <div style={{ marginTop: 20, display: 'flex', gap: 12 }}>
-        <button className="btn btn-primary" onClick={onSave}>
-          <Icon name="download" size={13} color="white" strokeWidth={2} />
-          Salva in Esplora
-        </button>
-        <button className="btn btn-secondary" onClick={onDownload}>
-          <Icon name="download" size={13} strokeWidth={1.75} />
-          Scarica dati
-        </button>
-      </div>
-    </div>
-  )
-}
-
 // ── Main Pipeline component ───────────────────────────────────────────────────
 
 export default function Pipeline() {
@@ -641,6 +510,7 @@ export default function Pipeline() {
   const [retrieveMethod, setRetrieveMethod] = useState('nli')
   const [threshold, setThreshold] = useState(0.5)
   const [topK, setTopK] = useState(3)
+  const [preFilterK, setPreFilterK] = useState(0)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [noiseEnabled, setNoiseEnabled] = useState(false)
 
@@ -653,7 +523,7 @@ export default function Pipeline() {
   // Evaluation mode
   const [evalMode, setEvalMode] = useState('standard') // 'standard' | 'nugget'
 
-  // Nugget field validation error (shown inline in step 6)
+  // Nugget field validation error
   const [nuggetFieldError, setNuggetFieldError] = useState(null) // string[] | null
 
   // Pipeline state
@@ -667,12 +537,6 @@ export default function Pipeline() {
 
   const [running, setRunning] = useState(null)
   const [error, setError] = useState(null)
-
-  // Stato per la valutazione globale del dataset
-const [datasetEvalRunning, setDatasetEvalRunning] = useState(false)
-const [datasetEvalProgress, setDatasetEvalProgress] = useState({ current: 0, total: 0 })
-const [datasetEvalResults, setDatasetEvalResults] = useState(null)
-const [datasetEvalError, setDatasetEvalError] = useState(null)
 
   // Step status
   const steps = {
@@ -699,11 +563,9 @@ const [datasetEvalError, setDatasetEvalError] = useState(null)
   const noiseCount = currentPassages.filter(d => d.is_noise).length
   const origCount  = currentPassages.filter(d => !d.is_noise).length
 
-  // Nuggets come directly from the loaded dataset example
   const currentNuggets = currentExample?.nuggets || null
   const hasNuggets = !!currentNuggets
 
-  // When evalMode changes to nugget but no nugget data → effective mode is standard
   const effectiveMode = evalMode === 'nugget' && !hasNuggets ? 'standard' : evalMode
 
   function resetAfter(step) {
@@ -730,7 +592,6 @@ const [datasetEvalError, setDatasetEvalError] = useState(null)
         setExampleIdx(0)
         resetAfter('generate')
         setError(null)
-        // Auto-enable nugget mode if any example has nuggets inline
         if (normalized.some(ex => ex.nuggets)) {
           setEvalMode('nugget')
         }
@@ -745,19 +606,15 @@ const [datasetEvalError, setDatasetEvalError] = useState(null)
 
   function validateNuggetFields() {
     const missing = []
-
     if (!currentNuggets || currentNuggets.length === 0) {
       missing.push('nuggets (array vuoto o assente)')
     }
-
-    // Check that at least some docs have golden_passage_title or is_gold
     const docsHaveGolden = currentPassages.some(
       d => d.golden_passage_title || d.is_gold === true
     )
     if (!docsHaveGolden) {
       missing.push('docs[].golden_passage_title / docs[].is_gold')
     }
-
     return missing
   }
 
@@ -787,6 +644,8 @@ const [datasetEvalError, setDatasetEvalError] = useState(null)
       const res = await api.pipeline.retrieve({
         claims, passages: currentPassages,
         method: retrieveMethod, threshold, top_k: topK,
+        nuggets: currentNuggets || undefined,
+        pre_filter_k: preFilterK,
       })
       setMatched(res.matched)
     } catch (e) { setError(`Retrieve: ${e.message}`) }
@@ -811,18 +670,16 @@ const [datasetEvalError, setDatasetEvalError] = useState(null)
 
     try {
       if (effectiveMode === 'nugget') {
-        // Validate fields before calling API
         const missing = validateNuggetFields()
         if (missing.length > 0) {
           setNuggetFieldError(missing)
           setRunning(null)
           return
         }
-
         const res = await api.pipeline.evaluateNuggets({
           matched_claims: matched,
           nuggets: currentNuggets,
-          docs: currentPassages, // pass full docs with golden_passage_title / is_gold
+          docs: currentPassages,
         })
         setNuggetMetrics(res)
       } else {
@@ -834,39 +691,6 @@ const [datasetEvalError, setDatasetEvalError] = useState(null)
     }
     setRunning(null)
   }
-
-  // NEW: Run evaluation on the entire dataset
-async function runDatasetEvaluation() {
-  if (!dataset || dataset.length === 0) return
-  
-  setDatasetEvalRunning(true)
-  setDatasetEvalError(null)
-  setDatasetEvalResults(null)
-  setDatasetEvalProgress({ current: 0, total: dataset.length })
-  
-  try {
-    const res = await api.pipeline.evaluateDataset({
-      dataset: dataset.map(ex => ({
-        question: ex.question,
-        docs: ex.docs || [],
-        nuggets: ex.nuggets || null,
-        // Passiamo già i docs originali, non quelli con noise
-      })),
-      model,
-      retrieve_method: retrieveMethod,
-      threshold,
-      top_k: topK,
-      eval_mode: effectiveMode,
-      noise_enabled: noiseEnabled,
-      noise_seed: 42,
-    })
-    setDatasetEvalResults(res)
-    setDatasetEvalProgress({ current: dataset.length, total: dataset.length })
-  } catch (e) {
-    setDatasetEvalError(`Errore valutazione dataset: ${e.message}`)
-  }
-  setDatasetEvalRunning(false)
-}
 
   function saveToExplore() {
     addPipelineResult({
@@ -892,6 +716,7 @@ async function runDatasetEvaluation() {
       retrieve_method: retrieveMethod,
       threshold,
       top_k: topK,
+      pre_filter_k: preFilterK,
       exported_at: new Date().toISOString(),
     }
     downloadJSON(payload, timestampedFilename('pipeline_result'))
@@ -952,6 +777,17 @@ async function runDatasetEvaluation() {
                 <input type="range" min={1} max={5} step={1} value={topK}
                   onChange={e => setTopK(+e.target.value)}
                   style={{ width: '100%', accentColor: 'var(--accent)', marginTop: 8 }} />
+              </div>
+              <div className="form-group" style={{ marginBottom: 0 }}>
+                <label className="form-label">Pre-filter frasi (BGE) — {preFilterK === 0 ? 'Off' : `top ${preFilterK}`}</label>
+                <input type="range" min={0} max={30} step={5} value={preFilterK}
+                  onChange={e => setPreFilterK(+e.target.value)}
+                  style={{ width: '100%', accentColor: 'var(--accent)', marginTop: 8 }} />
+                <span style={{ fontSize: 10, color: 'var(--text-3)' }}>
+                  {preFilterK === 0
+                    ? 'NLI su tutte le frasi (più lento, più preciso)'
+                    : `Embedding pre-filter → top ${preFilterK} frasi → NLI (più veloce)`}
+                </span>
               </div>
             </div>
           </div>
@@ -1072,7 +908,7 @@ async function runDatasetEvaluation() {
       {/* Step 4 */}
       <StepCard num={4} title="Retrieve — Matching claims → passaggi" status={steps.retrieve}
         onRun={runRetrieve} running={running === 'retrieve'} runLabel="Retrieval">
-        {matched && <MatchedView matched={matched} passages={currentPassages} retrieveMethod={retrieveMethod} />}
+        {matched && <MatchedView matched={matched} passages={currentPassages} retrieveMethod={retrieveMethod} nuggets={currentNuggets} />}
       </StepCard>
 
       {/* Step 5 */}
@@ -1087,7 +923,7 @@ async function runDatasetEvaluation() {
         )}
       </StepCard>
 
-            {/* Step 6 — Evaluate (with mode toggle) */}
+      {/* Step 6 — Evaluate */}
       <StepCard
         num={6}
         title={
@@ -1096,7 +932,7 @@ async function runDatasetEvaluation() {
             {steps.evaluate !== 'locked' && (
               <EvalModeToggle
                 mode={evalMode}
-                onChange={mode => { setEvalMode(mode); setMetrics(null); setNuggetMetrics(null); setNuggetFieldError(null); setDatasetEvalResults(null) }}
+                onChange={mode => { setEvalMode(mode); setMetrics(null); setNuggetMetrics(null); setNuggetFieldError(null) }}
                 hasNuggets={hasNuggets}
               />
             )}
@@ -1110,125 +946,6 @@ async function runDatasetEvaluation() {
         {/* Inline field-missing error for nugget mode */}
         {nuggetFieldError && (
           <NuggetMissingFieldsError missingFields={nuggetFieldError} />
-        )}
-
-        {/* ============================================================ */}
-        {/* NEW: Dataset-wide evaluation button & results                */}
-        {/* ============================================================ */}
-        {dataset && dataset.length > 1 && (
-          <div style={{
-            marginBottom: 20,
-            padding: '16px 20px',
-            background: '#F5F3FF',
-            border: '2px dashed #C7D2FE',
-            borderRadius: 10,
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 14, fontWeight: 700, color: '#4338CA', marginBottom: 4 }}>
-                  Valuta tutto il dataset
-                </div>
-                <div style={{ fontSize: 12, color: '#6366F1' }}>
-                  Esegui l&apos;intera pipeline su tutti i {dataset.length} esempi e ottieni metriche globali
-                  di precision e recall aggregate.
-                </div>
-              </div>
-              <button
-                className="btn"
-                onClick={runDatasetEvaluation}
-                disabled={datasetEvalRunning}
-                style={{
-                  background: '#6366F1',
-                  color: 'white',
-                  border: 'none',
-                  padding: '10px 20px',
-                  fontWeight: 700,
-                  fontSize: 13,
-                  borderRadius: 8,
-                  cursor: datasetEvalRunning ? 'not-allowed' : 'pointer',
-                  opacity: datasetEvalRunning ? 0.7 : 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 8,
-                }}
-              >
-                {datasetEvalRunning ? (
-                  <>
-                    <span className="spinner" style={{ width: 14, height: 14, borderColor: 'white', borderTopColor: 'transparent' }} />
-                    Valutazione in corso...
-                  </>
-                ) : (
-                  <>
-                    <Icon name="play" size={14} color="white" strokeWidth={2} />
-                    Valuta tutto ({dataset.length} esempi)
-                  </>
-                )}
-              </button>
-            </div>
-            
-            {/* Progress bar */}
-            {datasetEvalRunning && datasetEvalProgress.total > 0 && (
-              <div style={{ marginTop: 12 }}>
-                <div style={{
-                  display: 'flex', justifyContent: 'space-between',
-                  fontSize: 11, color: '#6366F1', marginBottom: 4,
-                }}>
-                  <span>Progresso</span>
-                  <span>{datasetEvalProgress.current}/{datasetEvalProgress.total}</span>
-                </div>
-                <div style={{
-                  height: 6, background: '#E0E7FF',
-                  borderRadius: 3, overflow: 'hidden',
-                }}>
-                  <div style={{
-                    height: '100%',
-                    width: `${(datasetEvalProgress.current / datasetEvalProgress.total) * 100}%`,
-                    background: '#6366F1',
-                    borderRadius: 3,
-                    transition: 'width 0.3s ease',
-                  }} />
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-        
-        {/* Dataset evaluation error */}
-        {datasetEvalError && (
-          <div className="info-box info-box-red" style={{ marginBottom: 16 }}>
-            <Icon name="xCircle" size={15} strokeWidth={1.75} style={{ flexShrink: 0, marginTop: 1 }} />
-            <span>{datasetEvalError}</span>
-          </div>
-        )}
-        
-        {/* Dataset evaluation results */}
-        {datasetEvalResults && (
-          <DatasetEvalResultsView
-            results={datasetEvalResults}
-            onSave={() => {
-              addPipelineResult({
-                question: `[Dataset] ${datasetName}`,
-                dataset_eval_results: datasetEvalResults,
-              })
-              alert('Risultati globali salvati! Visibile nella pagina Esplora.')
-            }}
-            onDownload={() => {
-              downloadJSON(datasetEvalResults, timestampedFilename('dataset_eval'))
-            }}
-          />
-        )}
-
-        {/* Divider if we also have single-example results */}
-        {(metrics || nuggetMetrics) && datasetEvalResults && (
-          <div style={{
-            margin: '20px 0',
-            borderTop: '1px solid var(--border)',
-            paddingTop: 16,
-          }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 12 }}>
-              Risultati esempio corrente
-            </div>
-          </div>
         )}
 
         {/* Standard metrics */}
@@ -1269,12 +986,25 @@ async function runDatasetEvaluation() {
 
 // ── MatchedView ───────────────────────────────────────────────────────────────
 
-function MatchedView({ matched, passages, retrieveMethod }) {
+function MatchedView({ matched, passages, retrieveMethod, nuggets }) {
   const [open, setOpen] = useState({})
   const [debug, setDebug] = useState({})
   const [debugging, setDebugging] = useState(null)
 
   const supported = matched.filter(m => (m.supporting_passages || []).length > 0).length
+
+  function findMatchingNugget(claimObj) {
+    if (claimObj.matched_nugget) return claimObj.matched_nugget
+    const claimText = typeof claimObj === 'string' ? claimObj : claimObj.claim
+    if (!nuggets || !Array.isArray(nuggets) || !claimText) return null
+    const claimLower = claimText.toLowerCase()
+    for (const nugget of nuggets) {
+      const keywords = nugget.keywords || []
+      const hasMatch = keywords.some(kw => claimLower.includes(kw.toLowerCase()))
+      if (hasMatch) return nugget
+    }
+    return null
+  }
 
   async function runDebug(claimText, claimIdx) {
     setDebugging(claimIdx)
@@ -1287,6 +1017,8 @@ function MatchedView({ matched, passages, retrieveMethod }) {
     } catch (e) { alert(`Errore debug: ${e.message}`) }
     setDebugging(null)
   }
+
+  const hasNuggets = nuggets && Array.isArray(nuggets) && nuggets.length > 0
 
   return (
     <div>
@@ -1306,75 +1038,193 @@ function MatchedView({ matched, passages, retrieveMethod }) {
         </div>
       </div>
 
-      {matched.map((m, i) => {
-        const passages_m = m.supporting_passages || []
-        const has = passages_m.length > 0
-        const debugData = debug[i]
-        return (
-          <div key={i} className="expander" style={{ borderColor: has ? '#A7F3D0' : '#FECACA' }}>
-            <div className="expander-header" onClick={() => setOpen(o => ({ ...o, [i]: !o[i] }))}>
-              <span className={`badge ${has ? 'badge-green' : 'badge-red'}`}>
-                {has
-                  ? <Icon name="check" size={10} strokeWidth={2.5} />
-                  : <Icon name="x" size={10} strokeWidth={2.5} />}
-              </span>
-              <span className="expander-header-title" style={{ color: 'var(--text)' }}>{m.claim}</span>
-              {has && (
-                <span style={{ fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>
-                  {passages_m.length} fonte{passages_m.length > 1 ? 'i' : ''}
+      {hasNuggets && (
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 16, marginBottom: 14,
+          padding: '8px 14px', background: '#FFFBEB', border: '1px solid #FDE68A',
+          borderRadius: 8, fontSize: 12, color: '#92400E',
+        }}>
+          <span style={{ fontWeight: 600 }}>Nugget matching:</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+            <span style={{
+              display: 'inline-block', width: 10, height: 10, borderRadius: '50%',
+              background: 'linear-gradient(135deg, #F59E0B, #D97706)',
+              border: '1.5px solid #B45309',
+            }} />
+            Gold (required)
+          </span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+            <span style={{
+              display: 'inline-block', width: 10, height: 10, borderRadius: '50%',
+              background: 'linear-gradient(135deg, #D1D5DB, #9CA3AF)',
+              border: '1.5px solid #6B7280',
+            }} />
+            Silver (optional)
+          </span>
+        </div>
+      )}
+
+      {(() => {
+        const bestClaimPerNugget = {}
+        matched.forEach((m, i) => {
+          const nug = findMatchingNugget(m)
+          if (!nug) return
+          const nid = nug.nugget_id
+          const score = nug.match_score || 0
+          if (!bestClaimPerNugget[nid] || score > bestClaimPerNugget[nid].score) {
+            bestClaimPerNugget[nid] = { idx: i, score }
+          }
+        })
+        const bestIndices = new Set(Object.values(bestClaimPerNugget).map(v => v.idx))
+
+        return matched.map((m, i) => {
+          const passages_m = m.supporting_passages || []
+          const has = passages_m.length > 0
+          const debugData = debug[i]
+          const rawNugget = findMatchingNugget(m)
+          const matchedNugget = bestIndices.has(i) ? rawNugget : null
+          const isGold = matchedNugget && matchedNugget.required === true
+          const isSilver = matchedNugget && matchedNugget.required === false
+
+          const borderColor = isGold ? '#D97706' : isSilver ? '#9CA3AF' : (has ? '#A7F3D0' : '#FECACA')
+          const headerBg = isGold
+            ? 'linear-gradient(90deg, #FFFBEB 0%, transparent 100%)'
+            : isSilver
+              ? 'linear-gradient(90deg, #F3F4F6 0%, transparent 100%)'
+              : 'none'
+
+          return (
+            <div key={i} className="expander" style={{
+              borderColor,
+              borderWidth: matchedNugget ? '2px' : undefined,
+            }}>
+              <div className="expander-header" onClick={() => setOpen(o => ({ ...o, [i]: !o[i] }))}
+                style={{ background: headerBg }}>
+                {matchedNugget && (
+                  <span title={`Nugget: ${matchedNugget.text}\nKeywords: ${(matchedNugget.keywords || []).join(', ')}`}
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                      width: 20, height: 20, borderRadius: '50%', flexShrink: 0,
+                      background: isGold
+                        ? 'linear-gradient(135deg, #F59E0B, #D97706)'
+                        : 'linear-gradient(135deg, #D1D5DB, #9CA3AF)',
+                      border: `1.5px solid ${isGold ? '#B45309' : '#6B7280'}`,
+                      fontSize: 10, fontWeight: 800,
+                      color: isGold ? '#FFFBEB' : '#374151',
+                    }}>
+                    {isGold ? '★' : '☆'}
+                  </span>
+                )}
+                <span className={`badge ${has ? 'badge-green' : 'badge-red'}`}>
+                  {has
+                    ? <Icon name="check" size={10} strokeWidth={2.5} />
+                    : <Icon name="x" size={10} strokeWidth={2.5} />}
                 </span>
-              )}
-              <span className={`expander-chevron${open[i] ? ' open' : ''}`}>▼</span>
-            </div>
-            {open[i] && (
-              <div className="expander-body">
-                <div style={{ marginBottom: 12, display: 'flex', gap: 8, alignItems: 'center' }}>
-                  <button
-                    className="btn btn-secondary"
-                    style={{ fontSize: 11, padding: '4px 10px' }}
-                    onClick={(e) => { e.stopPropagation(); runDebug(m.claim, i) }}
-                    disabled={debugging === i}
-                  >
-                    {debugging === i
-                      ? <><span className="spinner" style={{ width: 11, height: 11 }} /> Calcolo...</>
-                      : <><Icon name="search" size={11} strokeWidth={1.75} />
-                          {debugData ? 'Aggiorna debug' : 'Debug frasi (top-4)'}</>}
-                  </button>
-                  {debugData && (
-                    <span style={{ fontSize: 11, color: 'var(--text-3)' }}>
-                      Score {debugData.method.toUpperCase()} su ogni frase del passaggio
+                <span className="expander-header-title" style={{ color: 'var(--text)' }}>{m.claim}</span>
+                {matchedNugget && (
+                  <span style={{
+                    fontSize: 10, fontWeight: 600, padding: '2px 8px', borderRadius: 10,
+                    background: isGold ? '#FEF3C7' : '#F3F4F6',
+                    color: isGold ? '#92400E' : '#6B7280',
+                    border: `1px solid ${isGold ? '#FDE68A' : '#D1D5DB'}`,
+                    whiteSpace: 'nowrap',
+                  }}>
+                    {matchedNugget.nugget_id}
+                  </span>
+                )}
+                {has && (
+                  <span style={{ fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>
+                    {passages_m.length} fonte{passages_m.length > 1 ? 'i' : ''}
+                  </span>
+                )}
+                <span className={`expander-chevron${open[i] ? ' open' : ''}`}>▼</span>
+              </div>
+              {open[i] && (
+                <div className="expander-body">
+                  {matchedNugget && (
+                    <div style={{
+                      marginBottom: 12, padding: '8px 12px', borderRadius: 8,
+                      background: isGold ? '#FFFBEB' : '#F9FAFB',
+                      border: `1px solid ${isGold ? '#FDE68A' : '#E5E7EB'}`,
+                      fontSize: 12,
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                        <span style={{ fontWeight: 700, color: isGold ? '#92400E' : '#6B7280' }}>
+                          {isGold ? '★' : '☆'} Nugget {matchedNugget.nugget_id}
+                        </span>
+                        <span style={{
+                          fontSize: 9, fontWeight: 600, padding: '1px 6px', borderRadius: 8,
+                          background: isGold ? '#FEF3C7' : '#F3F4F6',
+                          color: isGold ? '#B45309' : '#9CA3AF',
+                        }}>
+                          {isGold ? 'REQUIRED' : 'OPTIONAL'}
+                        </span>
+                      </div>
+                      <div style={{ color: 'var(--text-2)', lineHeight: 1.5 }}>
+                        {matchedNugget.text}
+                      </div>
+                      <div style={{ marginTop: 4, fontSize: 11, color: 'var(--text-3)' }}>
+                        Keywords: {(matchedNugget.keywords || []).map((kw, ki) => (
+                          <span key={ki} style={{
+                            display: 'inline-block', padding: '1px 6px', margin: '0 3px',
+                            background: m.claim.toLowerCase().includes(kw.toLowerCase()) ? (isGold ? '#FDE68A' : '#D1D5DB') : '#F3F4F6',
+                            borderRadius: 4, fontFamily: 'var(--mono)', fontSize: 10,
+                            fontWeight: m.claim.toLowerCase().includes(kw.toLowerCase()) ? 700 : 400,
+                          }}>
+                            {kw}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  <div style={{ marginBottom: 12, display: 'flex', gap: 8, alignItems: 'center' }}>
+                    <button
+                      className="btn btn-secondary"
+                      style={{ fontSize: 11, padding: '4px 10px' }}
+                      onClick={(e) => { e.stopPropagation(); runDebug(m.claim, i) }}
+                      disabled={debugging === i}
+                    >
+                      {debugging === i
+                        ? <><span className="spinner" style={{ width: 11, height: 11 }} /> Calcolo...</>
+                        : <><Icon name="search" size={11} strokeWidth={1.75} />
+                            {debugData ? 'Aggiorna debug' : 'Debug frasi (top-4)'}</>}
+                    </button>
+                    {debugData && (
+                      <span style={{ fontSize: 11, color: 'var(--text-3)' }}>
+                        Score {debugData.method.toUpperCase()} su ogni frase del passaggio
+                      </span>
+                    )}
+                  </div>
+                  {debugData && <DebugView data={debugData} />}
+                  {has ? passages_m.map((p, j) => (
+                    <div key={j} className="passage-card" style={{ marginBottom: 8 }}>
+                      <div className="passage-header">
+                        <span className="passage-title">{p.title || '—'}</span>
+                        {p.entailment_score != null && <ScorePill score={p.entailment_score} />}
+                      </div>
+                      <div className="passage-body">{p.text || ''}</div>
+                      {p.best_sentence && (
+                        <div style={{
+                          margin: '0 14px 10px', padding: '6px 10px',
+                          background: '#ECFDF5', borderRadius: 6,
+                          fontSize: 12, color: '#166534',
+                          borderLeft: '3px solid #86EFAC',
+                        }}>
+                          <strong>Evidenza:</strong> {p.best_sentence}
+                        </div>
+                      )}
+                    </div>
+                  )) : (
+                    !debugData && <span style={{ color: 'var(--text-3)', fontSize: 13 }}>
+                      Nessun passaggio di supporto trovato.
                     </span>
                   )}
                 </div>
-                {debugData && <DebugView data={debugData} />}
-                {has ? passages_m.map((p, j) => (
-                  <div key={j} className="passage-card" style={{ marginBottom: 8 }}>
-                    <div className="passage-header">
-                      <span className="passage-title">{p.title || '—'}</span>
-                      {p.entailment_score != null && <ScorePill score={p.entailment_score} />}
-                    </div>
-                    <div className="passage-body">{p.text || ''}</div>
-                    {p.best_sentence && (
-                      <div style={{
-                        margin: '0 14px 10px', padding: '6px 10px',
-                        background: '#ECFDF5', borderRadius: 6,
-                        fontSize: 12, color: '#166534',
-                        borderLeft: '3px solid #86EFAC',
-                      }}>
-                        <strong>Evidenza:</strong> {p.best_sentence}
-                      </div>
-                    )}
-                  </div>
-                )) : (
-                  !debugData && <span style={{ color: 'var(--text-3)', fontSize: 13 }}>
-                    Nessun passaggio di supporto trovato.
-                  </span>
-                )}
-              </div>
-            )}
-          </div>
-        )
-      })}
+              )}
+            </div>
+          )
+        })
+      })()}
     </div>
   )
 }

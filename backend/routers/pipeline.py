@@ -76,6 +76,7 @@ class EvaluateDatasetRequest(BaseModel):
     eval_mode: str = "standard"   # "standard" | "nugget"
     noise_enabled: bool = False
     noise_seed: int = 42
+    pre_filter_k: int = 0
 
 
 
@@ -190,12 +191,15 @@ async def retrieve(req: RetrieveRequest):
     """Match dei claims con i passages tramite NLI/similarity/LLM."""
     try:
         passages_dict = [p.model_dump() for p in req.passages]
+        nuggets_dict = [n.model_dump() for n in req.nuggets] if req.nuggets else None
         matched, debug = pipeline_runners.run_retrieve(
             claims=req.claims,
             passages=passages_dict,
             method=req.method,
             threshold=req.threshold,
             top_k=req.top_k,
+            nuggets=nuggets_dict,
+            pre_filter_k=req.pre_filter_k,
         )
         return RetrieveResponse(matched=matched, debug=debug)
     except Exception as e:
@@ -299,12 +303,15 @@ async def evaluate_dataset_endpoint(req: EvaluateDatasetRequest):
             claims = pipeline_runners.run_decompose(response_text, req.model)
 
             # Step 4 – Retrieve
+            nuggets = example.get("nuggets", []) if req.eval_mode == "nugget" else None
             matched, _ = pipeline_runners.run_retrieve(
                 claims=claims,
                 passages=passages,
                 method=req.retrieve_method,
                 threshold=req.threshold,
                 top_k=req.top_k,
+                nuggets=nuggets,
+                pre_filter_k=req.pre_filter_k,
             )
 
             # Step 5 – Cite (opzionale, non usato nelle metriche)
@@ -312,9 +319,9 @@ async def evaluate_dataset_endpoint(req: EvaluateDatasetRequest):
 
             # Step 6 – Evaluate
             if req.eval_mode == "nugget":
-                nuggets = example.get("nuggets", [])
+                eval_nuggets = nuggets or example.get("nuggets", [])
                 nugget_result = core_nuggets.compute_nugget_metrics(
-                    nuggets=nuggets,
+                    nuggets=eval_nuggets,
                     matched_claims=matched,
                     use_nli=False,
                     required_only=False,
@@ -395,4 +402,4 @@ async def evaluate_dataset_endpoint(req: EvaluateDatasetRequest):
         "num_successful": len([ex for ex in per_example if "error" not in ex]),
         "runtime_seconds": runtime,
         "eval_mode": req.eval_mode,
-    }    
+    }
