@@ -302,6 +302,37 @@ def nugget_cited_in_passages(
 # Main metrics
 # ──────────────────────────────────────────────
 
+def _add_split_metrics(per_nugget: list[dict], result: dict) -> dict:
+    """Enrich a metrics result dict with required/optional breakdowns.
+    Does NOT modify existing keys — only adds new ones."""
+    req  = [r for r in per_nugget if r.get("required", True)]
+    opt  = [r for r in per_nugget if not r.get("required", True)]
+
+    def _stats(items):
+        n = len(items)
+        nc = sum(1 for r in items if r["covered"])
+        ni = sum(1 for r in items if r["cited"])
+        return n, nc, ni
+
+    nr, nrc, nri = _stats(req)
+    no, noc, noi = _stats(opt)
+
+    result["n_required"]         = nr
+    result["n_required_covered"] = nrc
+    result["n_required_cited"]   = nri
+    result["required_precision"] = round(nri / nrc, 4) if nrc > 0 else 0.0
+    result["required_recall"]    = round(nri / nr,  4) if nr  > 0 else 0.0
+    result["required_coverage"]  = round(nrc / nr,  4) if nr  > 0 else 0.0
+
+    result["n_optional"]         = no
+    result["n_optional_covered"] = noc
+    result["n_optional_cited"]   = noi
+    result["optional_precision"] = round(noi / noc, 4) if noc > 0 else 0.0
+    result["optional_recall"]    = round(noi / no,  4) if no  > 0 else 0.0
+    result["optional_coverage"]  = round(noc / no,  4) if no  > 0 else 0.0
+
+    return result
+
 def compute_nugget_metrics(
     nuggets: list[dict],
     matched_claims: list[dict],
@@ -327,7 +358,7 @@ def compute_nugget_metrics(
         nuggets = [n for n in nuggets if n.get("required", True)]
 
     if not nuggets or not matched_claims:
-        return {
+        return _add_split_metrics([], {
             "nugget_precision": 0.0,
             "nugget_recall": 0.0,
             "nugget_coverage": 0.0,
@@ -335,7 +366,7 @@ def compute_nugget_metrics(
             "n_covered": 0,
             "n_cited": 0,
             "per_nugget": [],
-        }
+        })
 
     # ── Check if precomputed nugget associations exist ──
     has_precomputed = any(
@@ -429,6 +460,10 @@ def _compute_metrics_precomputed(
                 best_evidence_passage.get("text", "")[:200]
                 if best_evidence_passage else None
             ),
+            "best_evidence_sentence": (
+                best_evidence_passage.get("best_sentence", "")
+                if best_evidence_passage else None
+            ),
         })
 
     n_covered = sum(1 for r in per_nugget if r["covered"])
@@ -439,7 +474,7 @@ def _compute_metrics_precomputed(
     nugget_recall    = n_cited / n_total   if n_total > 0  else 0.0
     nugget_coverage  = n_covered / n_total if n_total > 0  else 0.0
 
-    return {
+    return _add_split_metrics(per_nugget, {
         "nugget_precision": round(nugget_precision, 4),
         "nugget_recall":    round(nugget_recall,    4),
         "nugget_coverage":  round(nugget_coverage,  4),
@@ -447,7 +482,7 @@ def _compute_metrics_precomputed(
         "n_covered":  n_covered,
         "n_cited":    n_cited,
         "per_nugget": per_nugget,
-    }
+    })
 
 
 def _compute_metrics_full(
@@ -541,6 +576,10 @@ def _compute_metrics_full(
                 best_evidence_passage.get("text", "")[:200]
                 if best_evidence_passage else None
             ),
+            "best_evidence_sentence": (
+                best_evidence_passage.get("best_sentence", "")
+                if best_evidence_passage else None
+            ),
         })
 
     n_covered = sum(1 for r in per_nugget if r["covered"])
@@ -551,7 +590,7 @@ def _compute_metrics_full(
     nugget_recall    = n_cited / n_total   if n_total > 0  else 0.0
     nugget_coverage  = n_covered / n_total if n_total > 0  else 0.0
 
-    return {
+    return _add_split_metrics(per_nugget, {
         "nugget_precision": round(nugget_precision, 4),
         "nugget_recall":    round(nugget_recall,    4),
         "nugget_coverage":  round(nugget_coverage,  4),
@@ -559,7 +598,7 @@ def _compute_metrics_full(
         "n_covered":  n_covered,
         "n_cited":    n_cited,
         "per_nugget": per_nugget,
-    }
+    })
 
 
 # ──────────────────────────────────────────────

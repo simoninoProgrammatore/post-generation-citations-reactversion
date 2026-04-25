@@ -461,27 +461,56 @@ async def evaluate_dataset_endpoint(req: EvaluateDatasetRequest):
         total_nuggets = 0
         total_covered = 0
         total_cited = 0
+        total_req = 0
+        total_req_covered = 0
+        total_req_cited = 0
+        total_opt = 0
+        total_opt_covered = 0
+        total_opt_cited = 0
         precs, recalls, covs = [], [], []
+        req_precs, req_recalls = [], []
         for ex in per_example:
             nm = ex.get("nugget_metrics")
             if nm:
                 precs.append(nm.get("nugget_precision", 0))
                 recalls.append(nm.get("nugget_recall", 0))
                 covs.append(nm.get("nugget_coverage", 0))
+                req_precs.append(nm.get("required_precision", 0))
+                req_recalls.append(nm.get("required_recall", 0))
                 total_nuggets += nm.get("n_nuggets", 0)
                 total_covered += nm.get("n_covered", 0)
                 total_cited += nm.get("n_cited", 0)
+                total_req += nm.get("n_required", 0)
+                total_req_covered += nm.get("n_required_covered", 0)
+                total_req_cited += nm.get("n_required_cited", 0)
+                total_opt += nm.get("n_optional", 0)
+                total_opt_covered += nm.get("n_optional_covered", 0)
+                total_opt_cited += nm.get("n_optional_cited", 0)
         if precs:
             global_metrics["avg_nugget_precision"] = sum(precs) / len(precs)
             global_metrics["avg_nugget_recall"] = sum(recalls) / len(recalls)
             global_metrics["avg_nugget_coverage"] = sum(covs) / len(covs)
+            global_metrics["avg_required_precision"] = sum(req_precs) / len(req_precs)
+            global_metrics["avg_required_recall"] = sum(req_recalls) / len(req_recalls)
         if total_nuggets > 0:
             global_metrics["macro_nugget_precision"] = total_cited / total_covered if total_covered > 0 else 0.0
             global_metrics["macro_nugget_recall"]   = total_cited / total_nuggets
             global_metrics["macro_nugget_coverage"] = total_covered / total_nuggets
+        if total_req > 0:
+            global_metrics["macro_required_precision"] = total_req_cited / total_req_covered if total_req_covered > 0 else 0.0
+            global_metrics["macro_required_recall"]   = total_req_cited / total_req
+        if total_opt > 0:
+            global_metrics["macro_optional_precision"] = total_opt_cited / total_opt_covered if total_opt_covered > 0 else 0.0
+            global_metrics["macro_optional_recall"]   = total_opt_cited / total_opt
         global_metrics["total_nuggets"] = total_nuggets
         global_metrics["total_cited"]   = total_cited
         global_metrics["total_covered"] = total_covered
+        global_metrics["total_required"] = total_req
+        global_metrics["total_required_cited"] = total_req_cited
+        global_metrics["total_required_covered"] = total_req_covered
+        global_metrics["total_optional"] = total_opt
+        global_metrics["total_optional_cited"] = total_opt_cited
+        global_metrics["total_optional_covered"] = total_opt_covered
 
     runtime = round(time.time() - start_time, 1)
     return {
