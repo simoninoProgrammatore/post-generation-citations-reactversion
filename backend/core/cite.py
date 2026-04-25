@@ -42,7 +42,7 @@ def insert_citations(
         claim_text = mc["claim"]
         nums = []
         for passage in mc["supporting_passages"]:
-            pid = passage.get("id") or passage.get("title", "")
+            pid = passage.get("title") or passage.get("id", "")
             if pid in citation_map:
                 nums.append(citation_map[pid])
         if nums:

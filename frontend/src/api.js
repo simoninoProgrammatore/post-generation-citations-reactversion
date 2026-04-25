@@ -49,7 +49,8 @@ export const pipeline = {
   retrieveDebug:   (body) => postJson('/pipeline/retrieve/debug',   body),
   cite:            (body) => postJson('/pipeline/cite',             body),
   evaluate:        (body) => postJson('/pipeline/evaluate',         body),
-  evaluateNuggets: (body) => postJson('/pipeline/evaluate-nuggets', body), // ← NUOVO
+  evaluateNuggets: (body) => postJson('/pipeline/evaluate-nuggets', body),
+  evaluateDataset: (body) => postJson('/pipeline/evaluate-dataset', body),
 }
 
 // ── NLI ─────────────────────────────────────────────────────────────────

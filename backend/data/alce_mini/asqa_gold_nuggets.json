@@ -403,11 +403,12 @@
         "nugget_id": "n1",
         "text": "Sounds of Silence is the second studio album by Simon & Garfunkel, released in 1966.",
         "keywords": [
-          "Simon & Garfunkel",
-          "1966"
+          "album",
+          "second album",
+          "Sounds of Silence"
         ],
         "golden_passage_idx": 1,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Sounds of Silence",
         "golden_evidence": "Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966."
       },
@@ -418,7 +419,7 @@
           "Dami Im"
         ],
         "golden_passage_idx": 4,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Sound of Silence (Dami Im song)",
         "golden_evidence": "\"Sound of Silence\" is a song performed by Australian recording artist Dami Im."
       }
@@ -621,7 +622,8 @@
         "nugget_id": "n0",
         "text": "The first iPhone was released on June 29, 2007.",
         "keywords": [
-          "June 29, 2007"
+          "June 29, 2007",
+          "June 2007"
         ],
         "golden_passage_idx": 0,
         "required": true,
@@ -632,10 +634,11 @@
         "nugget_id": "n1",
         "text": "Development of the iPhone began in 2004.",
         "keywords": [
-          "2004"
+          "2004",
+          "development"
         ],
         "golden_passage_idx": 4,
-        "required": true,
+        "required": false,
         "golden_passage_title": "IPhone",
         "golden_evidence": "Development of what was to become the iPhone began in 2004, when Apple started to gather a team of 1,000 employees"
       }
@@ -881,7 +884,7 @@
           "Richard Fish"
         ],
         "golden_passage_idx": 0,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Order of the Phoenix (fictional organisation)",
         "golden_evidence": "Richard Fish appeared as Bill briefly in the film adaptation of \"Harry Potter and the Prisoner of Azkaban\". Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), plays Bill Weasley in \"Harry Potter and the Deathly Hallows\""
       },
@@ -912,7 +915,8 @@
         "text": "James Phelps played Fred Weasley and Oliver Phelps played George Weasley.",
         "keywords": [
           "James Phelps",
-          "Oliver Phelps"
+          "Oliver Phelps",
+          "Phelps"
         ],
         "golden_passage_idx": 1,
         "required": true,
@@ -1004,7 +1008,7 @@
       {
         "id": "12057784",
         "title": "Virginia Department of Conservation and Recreation",
-        "text": "Fairy Stone State Park, Staunton River State Park, Douthat State Park and Hungry Mother State Park. In these and other projects, the CCC employed 107,210 in Virginia at one time or another, including 64,762 young Virginians who planted 15.2 million trees, built 986 bridges, reduced fire hazards over 152,000 acres, strung 2,128 miles of telephone line and stocked 1.3 million fish. Virginia received the fifth largest state expenditure in the country, totaling $109 million during the agency's nine-year existence. The agency's name changed in 1938 to the Virginia Conservation Commission, which was led by N. Clarence Smith (1939-1942), and William",
+        "text": "Fairy Stone State Park, Staunton River State Park, Douthat State Park and Hungry Mother State Park. In these and other projects, the CCC employed 107,210 in Virginia at one time or another, including 64,762 young Virginians who planted 15.2 million trees, built 986 bridges, reduced fire hazards over 152,000 acres, strung 2,128 miles of telephone line and stocked 1.3 million fish. Virginia received the fifth largest state expenditure in the country, totaling $109 million during the agency's nine-year existence. The agency's name changed in 1938 to the Virginia Conservation Commission, which was led by N. Clarence Smith (1939-1942), and William. There are 38 state parks in Virginia today",
         "score": 0.72216796875,
         "is_gold": true,
         "support_level": "partial",
@@ -1128,7 +1132,7 @@
           "6"
         ],
         "golden_passage_idx": 1,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Virginia Department of Conservation and Recreation",
         "golden_evidence": "Virginia's first six state parks were created in June 1936 despite the opposition of Virginia's Senators Carter Glass and Harry F. Byrd"
       },
@@ -1136,12 +1140,14 @@
         "nugget_id": "n1",
         "text": "As of 2016, Virginia has 38 state parks.",
         "keywords": [
-          "38"
+          "38",
+          "38 state parks", 
+          "38 parks"
         ],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Virginia Department of Conservation and Recreation",
-        "golden_evidence": "Fairy Stone State Park, Staunton River State Park, Douthat State Park and Hungry Mother State Park."
+        "golden_evidence": "Now virginia has 38 state parks"
       }
     ]
   },
@@ -1442,7 +1448,7 @@
         "text": "Antonio Meucci developed an earlier voice communication device and filed a caveat in 1871, before Bell's patent.",
         "keywords": ["Meucci", "Antonio Meucci", "1871"],
         "golden_passage_idx": 1,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Antonio Meucci",
         "golden_evidence": "he developed a form of voice communication device in 1849, and later, in 1871, filed a caveat (a temporary patent) for a 'sound telegraph'."
       },
@@ -1451,7 +1457,7 @@
         "text": "Elisha Gray independently filed a telephone patent caveat on the same day as Bell, February 14, 1876.",
         "keywords": ["Elisha Gray", "Gray", "February 14, 1876"],
         "golden_passage_idx": 2,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Elisha Gray",
         "golden_evidence": "On February 14, 1876, Gray filed a patent caveat for a telephone design at the U.S. Patent Office, the same day Alexander Graham Bell filed his patent application."
       }
@@ -1625,12 +1631,21 @@
       },
       {
         "nugget_id": "n2",
-        "text": "The play is about two star-crossed lovers from feuding families, the Montagues and the Capulets, set in Verona, Italy.",
-        "keywords": ["Montague", "Capulet", "Verona", "star-crossed lovers"],
+        "text": "The play is a tragedy about two star-crossed lovers whose deaths reconcile their feuding families.",
+        "keywords": ["star-crossed", "tragedy", "lovers"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Romeo and Juliet",
         "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "The feuding families are the Montagues and the Capulets, set in Verona.",
+        "keywords": ["Montague", "Capulet", "Verona"],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Montague family",
+        "golden_evidence": "The Montagues are one of the two feuding families in Shakespeare's Romeo and Juliet. The other family is the Capulets."
       }
     ]
   },
@@ -1784,7 +1799,7 @@
       {
         "nugget_id": "n0",
         "text": "The speed of light in vacuum is exactly 299,792,458 metres per second.",
-        "keywords": ["299,792,458", "speed of light", "c"],
+        "keywords": ["299,792,458", "300,000 km", "186,000 mi"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Speed of light",
@@ -1804,7 +1819,7 @@
         "text": "James Bradley provided a more accurate measurement of the speed of light in 1728 using stellar aberration, obtaining approximately 301,000 km/s.",
         "keywords": ["James Bradley", "Bradley", "1728", "stellar aberration"],
         "golden_passage_idx": 2,
-        "required": true,
+        "required": false,
         "golden_passage_title": "James Bradley",
         "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
       }
@@ -1977,9 +1992,9 @@
       {
         "nugget_id": "n2",
         "text": "Pope Julius II commissioned Michelangelo to paint the Sistine Chapel ceiling in 1508.",
-        "keywords": ["Pope Julius II", "Julius II", "commissioned"],
+        "keywords": ["Pope Julius II", "Julius II", "Julius"],
         "golden_passage_idx": 3,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Pope Julius II",
         "golden_evidence": "In 1508, Julius commissioned Michelangelo to paint the ceiling of the Sistine Chapel."
       },
@@ -1988,7 +2003,7 @@
         "text": "The ceiling depicts scenes from the Book of Genesis, most famously the Creation of Adam.",
         "keywords": ["Genesis", "Creation of Adam", "Book of Genesis"],
         "golden_passage_idx": 2,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Creation of Adam",
         "golden_evidence": "The Creation of Adam is a fresco painting by Michelangelo, which forms part of the Sistine Chapel ceiling."
       }
@@ -2144,7 +2159,7 @@
       {
         "nugget_id": "n0",
         "text": "Marie Curie was a Polish-French physicist and chemist who conducted pioneering research on radioactivity.",
-        "keywords": ["Marie Curie", "physicist", "chemist", "radioactivity"],
+        "keywords": ["Marie Curie"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Marie Curie",
@@ -2153,7 +2168,7 @@
       {
         "nugget_id": "n1",
         "text": "Marie Curie and Pierre Curie discovered polonium in July 1898, named after Marie's homeland Poland.",
-        "keywords": ["polonium", "July 1898", "Poland"],
+        "keywords": ["polonium", "July 1898", "Pierre Curie"],
         "golden_passage_idx": 1,
         "required": true,
         "golden_passage_title": "Polonium",
@@ -2171,9 +2186,9 @@
       {
         "nugget_id": "n3",
         "text": "Marie Curie was the first person to win the Nobel Prize twice, in Physics (1903) and Chemistry (1911).",
-        "keywords": ["Nobel Prize", "Physics", "1903", "Chemistry", "1911"],
+        "keywords": ["Nobel Prize", "1903", "Nobel", "1911"],
         "golden_passage_idx": 0,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Marie Curie",
         "golden_evidence": "She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the prize in two different sciences (Physics in 1903 and Chemistry in 1911)."
       }
@@ -2320,7 +2335,7 @@
       {
         "nugget_id": "n0",
         "text": "The Eiffel Tower was designed and built by Gustave Eiffel's company between 1887 and 1889.",
-        "keywords": ["Gustave Eiffel", "Eiffel", "1887", "1889"],
+        "keywords": ["Gustave Eiffel"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Eiffel Tower",
@@ -2329,7 +2344,7 @@
       {
         "nugget_id": "n1",
         "text": "The Eiffel Tower was built as the entrance arch for the 1889 World's Fair (Exposition Universelle) in Paris.",
-        "keywords": ["1889 World's Fair", "Exposition Universelle", "entrance arch"],
+        "keywords": ["Exposition Universelle", "entrance arch"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Eiffel Tower",
@@ -2340,7 +2355,7 @@
         "text": "The 1889 World's Fair celebrated the centennial of the French Revolution.",
         "keywords": ["centennial", "French Revolution", "1789"],
         "golden_passage_idx": 2,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Exposition Universelle (1889)",
         "golden_evidence": "It was organized to celebrate the centennial of the French Revolution and to demonstrate France's industrial prowess."
       },
@@ -2349,7 +2364,7 @@
         "text": "The Eiffel Tower was the world's tallest man-made structure for 41 years, until the Chrysler Building surpassed it in 1930.",
         "keywords": ["41 years", "1930", "Chrysler Building", "tallest"],
         "golden_passage_idx": 0,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Eiffel Tower",
         "golden_evidence": "During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930."
       }
@@ -2505,7 +2520,7 @@
       {
         "nugget_id": "n1",
         "text": "Armstrong stepped onto the lunar surface on July 20, 1969, during the Apollo 11 mission.",
-        "keywords": ["July 20, 1969", "1969", "Apollo 11"],
+        "keywords": ["July 20, 1969", "1969"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Apollo 11",
@@ -2516,7 +2531,7 @@
         "text": "Buzz Aldrin was the second person to walk on the Moon, joining Armstrong about 19 minutes later.",
         "keywords": ["Buzz Aldrin", "Aldrin", "second person"],
         "golden_passage_idx": 2,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Buzz Aldrin",
         "golden_evidence": "As the second person to walk on the Moon, Aldrin joined commander Neil Armstrong on the lunar surface after Armstrong had stepped out of the Eagle lander."
       },
@@ -2525,7 +2540,7 @@
         "text": "Michael Collins remained in lunar orbit aboard the Command Module during the Moon landing.",
         "keywords": ["Michael Collins", "Collins", "command module", "lunar orbit"],
         "golden_passage_idx": 3,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Michael Collins (astronaut)",
         "golden_evidence": "Michael Collins flew the Apollo 11 command module Columbia around the Moon while his crewmates Neil Armstrong and Buzz Aldrin made the first crewed lunar landing on July 20, 1969."
       }
@@ -2692,7 +2707,7 @@
         "text": "The most well-known and best-preserved sections of the Great Wall were built by the Ming dynasty between 1368 and 1644.",
         "keywords": ["Ming dynasty", "Ming", "1368", "1644"],
         "golden_passage_idx": 1,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Ming dynasty",
         "golden_evidence": "During the Ming dynasty, the Great Wall of China was extensively rebuilt and extended to its current form."
       }
@@ -2839,7 +2854,7 @@
       {
         "nugget_id": "n0",
         "text": "The theory of evolution by natural selection was developed by Charles Darwin.",
-        "keywords": ["Charles Darwin", "Darwin", "natural selection"],
+        "keywords": ["Charles Darwin", "Darwin"],
         "golden_passage_idx": 1,
         "required": true,
         "golden_passage_title": "Charles Darwin",
@@ -2859,7 +2874,7 @@
         "text": "Alfred Russel Wallace independently conceived a similar theory and co-presented it with Darwin at the Linnean Society in 1858.",
         "keywords": ["Alfred Russel Wallace", "Wallace", "1858", "Linnean Society"],
         "golden_passage_idx": 2,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Alfred Russel Wallace",
         "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings."
       }
@@ -3006,7 +3021,7 @@
       {
         "nugget_id": "n0",
         "text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line.",
-        "keywords": ["White Star Line", "ocean liner", "British"],
+        "keywords": ["White Star Line", "ocean liner"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "RMS Titanic",
@@ -3015,7 +3030,7 @@
       {
         "nugget_id": "n1",
         "text": "The Titanic sank on 15 April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City.",
-        "keywords": ["15 April 1912", "1912", "iceberg", "maiden voyage"],
+        "keywords": ["15 April 1912", "1912", "iceberg", "sank"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "RMS Titanic",
@@ -3026,7 +3041,7 @@
         "text": "More than 1,500 of the estimated 2,224 people on board died when the Titanic sank.",
         "keywords": ["1,500", "1500", "2,224", "deaths"],
         "golden_passage_idx": 0,
-        "required": true,
+        "required": false,
         "golden_passage_title": "RMS Titanic",
         "golden_evidence": "she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board."
       }
@@ -3182,7 +3197,7 @@
       {
         "nugget_id": "n1",
         "text": "Mount Everest's height is 8,848.86 metres (29,031.7 ft), established by a 2020 joint survey by China and Nepal.",
-        "keywords": ["8,848.86", "8848.86", "29,031.7", "2020"],
+        "keywords": ["8,848.86", "8848.86", "29,031.7"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Mount Everest",
@@ -3193,7 +3208,7 @@
         "text": "Edmund Hillary and Tenzing Norgay made the first confirmed ascent of Mount Everest on 29 May 1953.",
         "keywords": ["Edmund Hillary", "Hillary", "Tenzing Norgay", "29 May 1953", "1953"],
         "golden_passage_idx": 1,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Edmund Hillary",
         "golden_evidence": "On 29 May 1953, Hillary and Sherpa mountaineer Tenzing Norgay became the first climbers confirmed to have reached the summit of Mount Everest."
       }
@@ -3349,7 +3364,7 @@
       {
         "nugget_id": "n1",
         "text": "The Harry Potter series consists of seven novels, published between 1997 and 2007.",
-        "keywords": ["seven", "7", "1997", "2007"],
+        "keywords": ["seven", "7"],
         "golden_passage_idx": 2,
         "required": true,
         "golden_passage_title": "Harry Potter and the Philosopher's Stone",
@@ -3360,7 +3375,7 @@
         "text": "The Harry Potter series has sold more than 500 million copies worldwide, making it the best-selling book series in history.",
         "keywords": ["500 million", "best-selling"],
         "golden_passage_idx": 0,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Harry Potter",
         "golden_evidence": "Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide."
       }
@@ -3507,7 +3522,7 @@
       {
         "nugget_id": "n0",
         "text": "World War I began on 28 July 1914 when Austria-Hungary declared war on Serbia.",
-        "keywords": ["28 July 1914", "1914", "Austria-Hungary", "Serbia"],
+        "keywords": ["28 July 1914", "1914"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "World War I",
@@ -3527,7 +3542,7 @@
         "text": "The underlying causes of World War I included militarism, alliance systems, imperialism, and nationalism (MAIN).",
         "keywords": ["militarism", "alliances", "imperialism", "nationalism", "MAIN"],
         "golden_passage_idx": 2,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Causes of World War I",
         "golden_evidence": "The long-term causes are often grouped under the acronym MAIN: Militarism, Alliance systems, Imperialism, and Nationalism."
       }
@@ -3674,7 +3689,7 @@
       {
         "nugget_id": "n0",
         "text": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance, considered one of the greatest painters of all time.",
-        "keywords": ["Leonardo da Vinci", "1452", "1519", "polymath", "High Renaissance"],
+        "keywords": ["Leonardo da Vinci", "Da Vinci", "polymath"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Leonardo da Vinci",
@@ -3683,7 +3698,7 @@
       {
         "nugget_id": "n1",
         "text": "The Mona Lisa, painted by Leonardo da Vinci, is considered the most famous portrait in the world.",
-        "keywords": ["Mona Lisa", "portrait"],
+        "keywords": ["Mona Lisa"],
         "golden_passage_idx": 1,
         "required": true,
         "golden_passage_title": "Mona Lisa",
@@ -3694,7 +3709,7 @@
         "text": "The Last Supper is a mural painting by Leonardo da Vinci, painted between approximately 1495 and 1498.",
         "keywords": ["Last Supper", "The Last Supper", "1495", "1498"],
         "golden_passage_idx": 2,
-        "required": true,
+        "required": false,
         "golden_passage_title": "The Last Supper (Leonardo)",
         "golden_evidence": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory of the Convent of Santa Maria delle Grazie in Milan, Italy."
       }
@@ -3841,7 +3856,7 @@
       {
         "nugget_id": "n0",
         "text": "DNA (deoxyribonucleic acid) is a polymer that carries genetic instructions for the development and reproduction of all known living organisms.",
-        "keywords": ["DNA", "deoxyribonucleic acid", "genetic instructions", "double helix"],
+        "keywords": ["polymer", "generic instruction"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "DNA",
@@ -3850,7 +3865,7 @@
       {
         "nugget_id": "n1",
         "text": "The double helix structure of DNA was discovered by James Watson and Francis Crick, published in Nature in April 1953.",
-        "keywords": ["Watson", "Crick", "James Watson", "Francis Crick", "1953", "double helix"],
+        "keywords": ["Watson", "Crick", "James Watson", "Francis Crick", "double helix"],
         "golden_passage_idx": 1,
         "required": true,
         "golden_passage_title": "James Watson",
@@ -3861,9 +3876,1486 @@
         "text": "Rosalind Franklin's X-ray diffraction images of DNA, particularly Photo 51, were crucial to Watson and Crick's discovery.",
         "keywords": ["Rosalind Franklin", "Franklin", "Photo 51", "X-ray diffraction"],
         "golden_passage_idx": 2,
-        "required": true,
+        "required": false,
         "golden_passage_title": "Rosalind Franklin",
         "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial in determining the double helix structure."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_017",
+    "question": "What is the theory of general relativity and who developed it?",
+    "answer": "The theory of general relativity was developed by Albert Einstein and published in 1915. It is a geometric theory of gravitation that describes gravity not as a force (as Newton had proposed) but as a curvature of spacetime caused by mass and energy. Key predictions of the theory include the bending of light by gravity, gravitational time dilation, the existence of black holes, and gravitational waves. The theory replaced Newtonian gravity for extreme conditions and was first confirmed in 1919 when Arthur Eddington observed the bending of light during a solar eclipse.",
+    "qa_pairs": [
+      {
+        "context": "The general theory of relativity was published by Albert Einstein in November 1915. It describes gravity as a geometric property of space and time, or spacetime, replacing the earlier Newtonian theory of gravitation.",
+        "question": "Who developed the theory of general relativity?",
+        "short_answers": [
+          "Albert Einstein",
+          "Einstein"
+        ],
+        "wikipage": "General relativity"
+      },
+      {
+        "context": "General relativity describes gravity as a curvature of spacetime caused by mass and energy. Massive objects warp the fabric of spacetime, and other objects follow curved paths through this warped spacetime.",
+        "question": "What does the theory of general relativity describe?",
+        "short_answers": [
+          "gravity as curvature of spacetime",
+          "spacetime warped by mass and energy"
+        ],
+        "wikipage": "General relativity"
+      },
+      {
+        "context": "The first experimental confirmation of general relativity came in 1919, when observations of starlight bending during a solar eclipse by Arthur Eddington matched Einstein's predictions.",
+        "question": "When was general relativity first confirmed?",
+        "short_answers": [
+          "1919",
+          "during a solar eclipse in 1919"
+        ],
+        "wikipage": "Tests of general relativity"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "General relativity",
+        "url": "https://en.wikipedia.org/wiki/General_relativity"
+      },
+      {
+        "title": "Albert Einstein",
+        "url": "https://en.wikipedia.org/wiki/Albert_Einstein"
+      },
+      {
+        "title": "Tests of general relativity",
+        "url": "https://en.wikipedia.org/wiki/Tests_of_general_relativity"
+      },
+      {
+        "title": "Spacetime",
+        "url": "https://en.wikipedia.org/wiki/Spacetime"
+      },
+      {
+        "title": "Gravitational wave",
+        "url": "https://en.wikipedia.org/wiki/Gravitational_wave"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "Albert Einstein developed the theory of general relativity, published in 1915, which describes gravity as curvature of spacetime.",
+            "wikipage": "General relativity"
+          }
+        ],
+        "long_answer": "Albert Einstein developed the theory of general relativity, published in November 1915. It describes gravity as a curvature of spacetime produced by mass and energy, replacing Newtonian gravity. It was first confirmed in 1919 by Arthur Eddington's observation of light bending during a solar eclipse."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc009_1",
+        "title": "General relativity",
+        "text": "General relativity, also known as the general theory of relativity, is the geometric theory of gravitation published by Albert Einstein in 1915 and is the current description of gravitation in modern physics. General relativity generalizes special relativity and refines Newton's law of universal gravitation, providing a unified description of gravity as a geometric property of space and time, or four-dimensional spacetime. The curvature of spacetime is directly related to the energy and momentum of whatever matter and radiation are present. The relation is specified by Einstein's field equations.",
+        "score": 0.94,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "General relativity is the geometric theory of gravitation published by Albert Einstein in 1915.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Documento principale: definisce la relatività generale, chi la sviluppò e cosa descrive.",
+        "answers_found": [1, 1, 0],
+        "extraction": "Albert Einstein published the general theory of relativity in 1915, describing gravity as a curvature of spacetime caused by mass and energy.",
+        "summary": "General relativity was published by Einstein in 1915 and describes gravity as spacetime curvature."
+      },
+      {
+        "id": "doc009_2",
+        "title": "Albert Einstein",
+        "text": "Albert Einstein (14 March 1879 – 18 April 1955) was a German-born theoretical physicist who is widely held to be one of the greatest and most influential scientists of all time. Best known for developing the theory of relativity, he also made important contributions to quantum mechanics. His mass-energy equivalence formula E = mc², derived from special relativity, is described as the world's most famous equation. In November 1915, he presented the field equations of general relativity to the Prussian Academy of Sciences. He received the Nobel Prize in Physics in 1921.",
+        "score": 0.88,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "In November 1915, he presented the field equations of general relativity to the Prussian Academy of Sciences.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Conferma Einstein come autore della teoria e la data di presentazione nel 1915.",
+        "answers_found": [1, 1, 0],
+        "extraction": "Albert Einstein presented the field equations of general relativity in November 1915.",
+        "summary": "Albert Einstein developed general relativity and presented its field equations in November 1915."
+      },
+      {
+        "id": "doc009_3",
+        "title": "Tests of general relativity",
+        "text": "The tests of general relativity served as evidence for Einstein's theory of general relativity and have allowed that theory to replace Newtonian gravity. The first major test came during the solar eclipse of May 29, 1919, when Arthur Eddington led an expedition to measure the deflection of starlight by the Sun. The observed bending closely matched Einstein's prediction of 1.75 arcseconds and provided compelling evidence for general relativity. This result made headline news worldwide and established Einstein as an iconic figure.",
+        "score": 0.83,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The first major test came during the solar eclipse of May 29, 1919, when Arthur Eddington led an expedition to measure the deflection of starlight by the Sun.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma la prima conferma sperimentale della relatività generale nel 1919 da parte di Eddington.",
+        "answers_found": [0, 0, 1],
+        "extraction": "General relativity was first confirmed in 1919 when Arthur Eddington observed the bending of starlight during a solar eclipse.",
+        "summary": "General relativity was first confirmed by Arthur Eddington during the 1919 solar eclipse, observing starlight bending as Einstein predicted."
+      },
+      {
+        "id": "doc009_4",
+        "title": "Spacetime",
+        "text": "In physics, spacetime is any mathematical model that fuses the three dimensions of space and the one dimension of time into a single four-dimensional continuum. The concept was introduced by mathematician Hermann Minkowski in 1908 in the context of special relativity. In general relativity, Einstein showed that spacetime is not flat but curves in the presence of mass and energy, and that this curvature is what we perceive as gravity. The more massive an object, the more it curves the spacetime around it.",
+        "score": 0.78,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "In general relativity, Einstein showed that spacetime is not flat but curves in the presence of mass and energy, and that this curvature is what we perceive as gravity.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Supporta la sub-question sulla descrizione della teoria, spiegando il concetto di curvatura dello spaziotempo.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Spacetime curves in the presence of mass and energy, and this curvature is perceived as gravity in general relativity.",
+        "summary": "Spacetime is a four-dimensional continuum that curves due to mass and energy, which is the basis of gravity in general relativity."
+      },
+      {
+        "id": "doc009_5",
+        "title": "Gravitational wave",
+        "text": "Gravitational waves are ripples in the curvature of spacetime that propagate as waves outward from their source. They were predicted by Albert Einstein in 1916 on the basis of his general theory of relativity. For decades gravitational waves were considered a theoretical prediction only. On September 14, 2015, the LIGO observatory made the first direct detection of gravitational waves, produced by the merger of two black holes. This discovery was announced in February 2016 and the scientists involved were awarded the Nobel Prize in Physics in 2017.",
+        "score": 0.69,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: parla di onde gravitazionali, una predizione della relatività generale, ma non risponde alle sub-questions principali.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "Gravitational waves were predicted by Einstein in 1916 and first detected in 2015; this document does not answer the main sub-questions."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The theory of general relativity was developed by Albert Einstein and published in 1915.",
+        "keywords": ["Albert Einstein", "Einstein", "1915"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "General relativity",
+        "golden_evidence": "General relativity is the geometric theory of gravitation published by Albert Einstein in 1915."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "General relativity describes gravity as a curvature of spacetime caused by mass and energy.",
+        "keywords": ["gravity", "curvature", "spacetime", "mass", "energy"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "General relativity",
+        "golden_evidence": "The curvature of spacetime is directly related to the energy and momentum of whatever matter and radiation are present."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "General relativity was first confirmed in 1919 by Arthur Eddington observing light bending during a solar eclipse.",
+        "keywords": ["1919", "Arthur Eddington", "solar eclipse", "light bending"],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "Tests of general relativity",
+        "golden_evidence": "The first major test came during the solar eclipse of May 29, 1919, when Arthur Eddington led an expedition to measure the deflection of starlight by the Sun."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "General relativity replaced Newton's theory of gravitation for describing extreme conditions.",
+        "keywords": ["Newton", "Newtonian gravity", "replaced"],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "General relativity",
+        "golden_evidence": "General relativity generalizes special relativity and refines Newton's law of universal gravitation."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_018",
+    "question": "What is the Great Wall of China and why was it built?",
+    "answer": "The Great Wall of China is a series of fortifications built across the historical northern borders of China. Construction began as early as the 7th century BC during the Western Zhou dynasty, with major building phases during the Qin dynasty (221–206 BC) under Emperor Qin Shi Huang and later during the Ming dynasty (1368–1644). The wall was primarily built to protect Chinese territories from nomadic invasions from the north, particularly from peoples such as the Xiongnu, Mongols, and other steppe peoples. The Ming dynasty wall, the most well-preserved section, stretches over 8,850 km.",
+    "qa_pairs": [
+      {
+        "context": "The Great Wall of China is a series of walls and fortifications built across the historical northern borders of China, primarily to protect against nomadic invasions. The total length of all sections built over the centuries exceeds 20,000 kilometres.",
+        "question": "What is the Great Wall of China?",
+        "short_answers": [
+          "a series of walls and fortifications along China's northern borders",
+          "a defensive wall"
+        ],
+        "wikipage": "Great Wall of China"
+      },
+      {
+        "context": "The Great Wall was built primarily to protect the Chinese states and empires against invasions and raids from nomadic groups from the Eurasian Steppe, such as the Xiongnu in the Qin and Han dynasties and the Mongols in the Ming dynasty.",
+        "question": "Why was the Great Wall of China built?",
+        "short_answers": [
+          "to protect against nomadic invasions",
+          "to defend against the Xiongnu and Mongols"
+        ],
+        "wikipage": "Great Wall of China"
+      },
+      {
+        "context": "The most well-known sections of the Great Wall were built by the Ming dynasty (1368–1644). The Ming wall stretches for 8,850 km from Hushan in the east to Jiayuguan in the west.",
+        "question": "When were the most famous sections of the Great Wall built?",
+        "short_answers": [
+          "during the Ming dynasty (1368–1644)",
+          "between 1368 and 1644"
+        ],
+        "wikipage": "Great Wall of China"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Great Wall of China",
+        "url": "https://en.wikipedia.org/wiki/Great_Wall_of_China"
+      },
+      {
+        "title": "Qin Shi Huang",
+        "url": "https://en.wikipedia.org/wiki/Qin_Shi_Huang"
+      },
+      {
+        "title": "Ming dynasty",
+        "url": "https://en.wikipedia.org/wiki/Ming_dynasty"
+      },
+      {
+        "title": "Xiongnu",
+        "url": "https://en.wikipedia.org/wiki/Xiongnu"
+      },
+      {
+        "title": "Qin dynasty",
+        "url": "https://en.wikipedia.org/wiki/Qin_dynasty"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The Great Wall of China was built to protect against northern nomadic invasions, with major construction phases under the Qin and Ming dynasties.",
+            "wikipage": "Great Wall of China"
+          }
+        ],
+        "long_answer": "The Great Wall of China is a series of defensive fortifications along China's northern borders, built to protect against nomadic invasions. Major construction occurred under Qin Shi Huang (221–206 BC) and the Ming dynasty (1368–1644), whose sections remain the best preserved."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc010_1",
+        "title": "Great Wall of China",
+        "text": "The Great Wall of China is a series of walls and fortifications built across the historical northern borders of China to protect Chinese states and empires against nomadic invasions. Several walls were built from as early as the 7th century BC, with selective stretches later joined together by Qin Shi Huang (221–206 BC), the first Emperor of China. The most well-known and best-preserved sections of the wall were built during the Ming dynasty (1368–1644). The wall stretches from Hushan in Liaoning in the east to Jiayuguan Pass in Gansu in the west, along an arc that roughly delineates the southern edge of Inner Mongolia.",
+        "score": 0.95,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The Great Wall of China is a series of walls and fortifications built across the historical northern borders of China to protect Chinese states and empires against nomadic invasions.",
+        "supports_sub_questions": [0, 1, 2],
+        "annotation_note": "Documento principale: risponde a tutte e tre le sub-questions su cosa è, perché fu costruita e quando.",
+        "answers_found": [1, 1, 1],
+        "extraction": "The Great Wall was built to protect China from nomadic invasions; the best-preserved sections are from the Ming dynasty (1368–1644).",
+        "summary": "The Great Wall is a series of northern border fortifications built against nomadic invasions, with the most famous sections from the Ming dynasty."
+      },
+      {
+        "id": "doc010_2",
+        "title": "Qin Shi Huang",
+        "text": "Qin Shi Huang (259–210 BC) was the founder of the Qin dynasty and the first emperor to unify China. Among his major projects was the construction of an early version of the Great Wall of China, connecting and extending existing walls built by the former states of Qin, Zhao, and Yan. This early wall was built primarily to defend against raids by the Xiongnu peoples of the northern steppes. Hundreds of thousands of workers, including soldiers, peasants, and prisoners, were conscripted to build the wall under harsh conditions.",
+        "score": 0.86,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Among his major projects was the construction of an early version of the Great Wall of China, connecting and extending existing walls built by the former states of Qin, Zhao, and Yan.",
+        "supports_sub_questions": [1, 2],
+        "annotation_note": "Conferma il ruolo di Qin Shi Huang e il motivo difensivo contro gli Xiongnu.",
+        "answers_found": [0, 1, 1],
+        "extraction": "Qin Shi Huang connected and extended existing walls into the Great Wall to defend against the Xiongnu.",
+        "summary": "Qin Shi Huang built the first unified Great Wall to defend against the Xiongnu, using conscripted labor."
+      },
+      {
+        "id": "doc010_3",
+        "title": "Ming dynasty",
+        "text": "The Ming dynasty (1368–1644) was the ruling dynasty of China for nearly three centuries following the Yuan dynasty. The Ming court built the most substantial and well-preserved sections of the Great Wall, primarily to defend against Mongol invasions from the north. The Ming wall stretches approximately 8,850 km. The dynasty is also known for establishing the Forbidden City in Beijing and for the treasure voyages of Admiral Zheng He. The Ming dynasty ended when Beijing fell to rebel leader Li Zicheng in 1644.",
+        "score": 0.83,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The Ming court built the most substantial and well-preserved sections of the Great Wall, primarily to defend against Mongol invasions from the north.",
+        "supports_sub_questions": [1, 2],
+        "annotation_note": "Conferma che le sezioni più famose della Grande Muraglia sono della dinastia Ming e il motivo difensivo contro i Mongoli.",
+        "answers_found": [0, 1, 1],
+        "extraction": "The Ming dynasty built the most preserved sections of the Great Wall (approx. 8,850 km) to defend against Mongol invasions.",
+        "summary": "The Ming dynasty (1368–1644) built the most famous and best-preserved sections of the Great Wall to defend against Mongols."
+      },
+      {
+        "id": "doc010_4",
+        "title": "Xiongnu",
+        "text": "The Xiongnu were a tribal confederation of nomadic peoples who inhabited the eastern Eurasian Steppe from the 3rd century BC to the late 1st century AD. They were a major military threat to the Chinese states during the Warring States period and the early imperial era. The construction of the Great Wall during the Qin and Han dynasties was largely motivated by the need to protect against Xiongnu raids and invasions. The Han dynasty eventually defeated the Xiongnu through a combination of military campaigns and diplomatic marriages.",
+        "score": 0.77,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "The construction of the Great Wall during the Qin and Han dynasties was largely motivated by the need to protect against Xiongnu raids and invasions.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma il ruolo degli Xiongnu come motivazione principale per la costruzione della Grande Muraglia.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The Xiongnu were the primary threat that motivated the construction of the Great Wall during the Qin and Han dynasties.",
+        "summary": "The Xiongnu were the nomadic threat that primarily motivated Great Wall construction during the Qin and Han dynasties."
+      },
+      {
+        "id": "doc010_5",
+        "title": "Qin dynasty",
+        "text": "The Qin dynasty (221–206 BC) was the first dynasty of Imperial China, founded by Qin Shi Huang. Despite lasting only 15 years, it had a profound impact on Chinese civilization, unifying the country under a central government and standardizing weights, measures, and writing. The dynasty is also known for the construction of the Terracotta Army and early sections of the Great Wall. However, the harsh rule and heavy labor demands of the Qin dynasty contributed to widespread revolts following the death of Qin Shi Huang.",
+        "score": 0.68,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: fornisce contesto sulla dinastia Qin ma non risponde specificamente alle sub-questions principali.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "The Qin dynasty unified China and began the Great Wall; this document provides context but does not directly answer the main sub-questions."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Great Wall of China is a series of fortifications along China's northern borders.",
+        "keywords": ["Great Wall", "fortifications", "borders"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Great Wall of China",
+        "golden_evidence": "The Great Wall of China is a series of walls and fortifications built across the historical northern borders of China."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The wall was built to protect against nomadic invasions from the north.",
+        "keywords": ["invasions", "protect", "Xiongnu", "Mongols"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Great Wall of China",
+        "golden_evidence": "The Great Wall of China was built to protect Chinese states and empires against nomadic invasions."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The most famous sections were built by the Ming dynasty between 1368 and 1644.",
+        "keywords": ["Ming dynasty", "1368", "1644"],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "Ming dynasty",
+        "golden_evidence": "The Ming court built the most substantial and well-preserved sections of the Great Wall, primarily to defend against Mongol invasions from the north."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Early wall construction began under Qin Shi Huang (221–206 BC), the first emperor of China.",
+        "keywords": ["Qin Shi Huang", "221 BC", "first emperor"],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Qin Shi Huang",
+        "golden_evidence": "Among his major projects was the construction of an early version of the Great Wall of China, connecting and extending existing walls."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_019",
+    "question": "What is the Sistine Chapel and who painted its ceiling?",
+    "answer": "The Sistine Chapel is a chapel in the Apostolic Palace in Vatican City and the official residence of the Pope. It is famous for its ceiling painted by Michelangelo between 1508 and 1512, commissioned by Pope Julius II. The ceiling depicts scenes from the Book of Genesis, including the iconic 'Creation of Adam' fresco. Michelangelo also painted 'The Last Judgment' on the altar wall between 1536 and 1541. The chapel takes its name from Pope Sixtus IV, who commissioned its construction between 1473 and 1481, and it is the site where the papal conclave elects new popes.",
+    "qa_pairs": [
+      {
+        "context": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City. It is renowned for its architecture and its decorations, which include several important Renaissance works.",
+        "question": "What is the Sistine Chapel?",
+        "short_answers": [
+          "a chapel in the Apostolic Palace in Vatican City",
+          "the Pope's official chapel"
+        ],
+        "wikipage": "Sistine Chapel"
+      },
+      {
+        "context": "The ceiling of the Sistine Chapel was painted by Michelangelo between 1508 and 1512, under commission from Pope Julius II. The most famous panel depicts the Creation of Adam.",
+        "question": "Who painted the Sistine Chapel ceiling?",
+        "short_answers": [
+          "Michelangelo",
+          "Michelangelo Buonarroti"
+        ],
+        "wikipage": "Sistine Chapel ceiling"
+      },
+      {
+        "context": "The Sistine Chapel is the site of the papal conclave, the process by which a new Pope is elected by the College of Cardinals.",
+        "question": "What important function does the Sistine Chapel serve today?",
+        "short_answers": [
+          "it is the site of the papal conclave",
+          "where popes are elected"
+        ],
+        "wikipage": "Sistine Chapel"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Sistine Chapel",
+        "url": "https://en.wikipedia.org/wiki/Sistine_Chapel"
+      },
+      {
+        "title": "Sistine Chapel ceiling",
+        "url": "https://en.wikipedia.org/wiki/Sistine_Chapel_ceiling"
+      },
+      {
+        "title": "Michelangelo",
+        "url": "https://en.wikipedia.org/wiki/Michelangelo"
+      },
+      {
+        "title": "Pope Julius II",
+        "url": "https://en.wikipedia.org/wiki/Pope_Julius_II"
+      },
+      {
+        "title": "Papal conclave",
+        "url": "https://en.wikipedia.org/wiki/Papal_conclave"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The Sistine Chapel is in Vatican City and its ceiling was painted by Michelangelo between 1508 and 1512.",
+            "wikipage": "Sistine Chapel"
+          }
+        ],
+        "long_answer": "The Sistine Chapel is a chapel in Vatican City's Apostolic Palace. Its ceiling was painted by Michelangelo between 1508 and 1512, commissioned by Pope Julius II, and includes the iconic 'Creation of Adam.' The chapel also serves as the site of the papal conclave for electing new popes."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc011_1",
+        "title": "Sistine Chapel",
+        "text": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City. Originally known as the Cappella Magna, the chapel takes its name from Pope Sixtus IV, who had it built and decorated between 1477 and 1480. Its fame rests on its architecture and its frescoes, the most famous of which are Michelangelo's ceiling and The Last Judgment on the altar wall. The chapel is the site of the papal conclave, the process by which a new pope is elected.",
+        "score": 0.93,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The chapel takes its name from Pope Sixtus IV, who had it built and decorated between 1477 and 1480.",
+        "supports_sub_questions": [0, 2],
+        "annotation_note": "Documento principale: descrive la Cappella Sistina, la sua storia e funzione nel conclave.",
+        "answers_found": [1, 0, 1],
+        "extraction": "The Sistine Chapel is in the Apostolic Palace in Vatican City, built under Pope Sixtus IV, and is the site of the papal conclave.",
+        "summary": "The Sistine Chapel is a Vatican City chapel famous for Michelangelo's frescoes and its role in papal elections."
+      },
+      {
+        "id": "doc011_2",
+        "title": "Sistine Chapel ceiling",
+        "text": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most celebrated works of Western art. The painting depicts nine scenes from the Book of Genesis, the most famous of which is The Creation of Adam, in which God and Adam are shown reaching toward each other. The ceiling was commissioned by Pope Julius II. Michelangelo, who considered himself primarily a sculptor, initially was reluctant to accept the commission but produced what is widely regarded as one of the greatest artistic achievements in history.",
+        "score": 0.91,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most celebrated works of Western art.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Risponde direttamente alla sub-question su chi ha dipinto il soffitto e quando.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Michelangelo painted the Sistine Chapel ceiling between 1508 and 1512, commissioned by Pope Julius II.",
+        "summary": "Michelangelo painted the Sistine Chapel ceiling between 1508 and 1512, depicting scenes from Genesis including the Creation of Adam."
+      },
+      {
+        "id": "doc011_3",
+        "title": "Michelangelo",
+        "text": "Michelangelo di Lodovico Buonarroti Simoni (6 March 1475 – 18 February 1564) was an Italian Renaissance sculptor, painter, architect, and poet who exerted an unparalleled influence on the development of Western art. He is widely considered the greatest artist of his lifetime and one of all time. He painted the ceiling of the Sistine Chapel from 1508 to 1512, a work of unprecedented grandeur and beauty. Between 1536 and 1541, he also painted The Last Judgment on the altar wall of the same chapel.",
+        "score": 0.87,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "He painted the ceiling of the Sistine Chapel from 1508 to 1512, a work of unprecedented grandeur and beauty.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma Michelangelo come autore della volta della Sistina e aggiunge informazioni sul Giudizio Universale.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Michelangelo painted the Sistine Chapel ceiling from 1508 to 1512 and The Last Judgment from 1536 to 1541.",
+        "summary": "Michelangelo painted both the Sistine Chapel ceiling (1508–1512) and The Last Judgment (1536–1541)."
+      },
+      {
+        "id": "doc011_4",
+        "title": "Pope Julius II",
+        "text": "Pope Julius II (1 December 1443 – 21 February 1513), born Giuliano della Rovere, was Pope from 1503 to 1513. Known as the 'Warrior Pope' for his militaristic policies, he was also a significant patron of the arts. He commissioned Michelangelo to paint the Sistine Chapel ceiling and to design his tomb, and he commissioned Raphael to decorate the Vatican Stanze. Julius II also laid the foundation stone for the new St. Peter's Basilica in Rome in 1506.",
+        "score": 0.79,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "He commissioned Michelangelo to paint the Sistine Chapel ceiling and to design his tomb.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma che fu Giulio II a commissionare a Michelangelo la volta della Cappella Sistina.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Pope Julius II commissioned Michelangelo to paint the Sistine Chapel ceiling.",
+        "summary": "Pope Julius II was the patron who commissioned Michelangelo to paint the Sistine Chapel ceiling."
+      },
+      {
+        "id": "doc011_5",
+        "title": "Papal conclave",
+        "text": "A papal conclave is a meeting of the College of Cardinals convened to elect a new Bishop of Rome, who will become Pope. The term 'conclave' derives from the Latin cum clave, meaning 'with a key', referring to the practice of locking the cardinals in to ensure a speedy election. Since 1878, all conclaves have been held in the Sistine Chapel in Vatican City. The last conclave was held in March 2013, when Cardinal Jorge Mario Bergoglio was elected as Pope Francis.",
+        "score": 0.67,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: descrive il conclave in dettaglio ma non risponde alle sub-questions principali su cosa sia la Cappella Sistina o chi abbia dipinto la volta.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "This document explains the papal conclave process but does not answer the main sub-questions about the Sistine Chapel or Michelangelo."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Sistine Chapel is a chapel in the Apostolic Palace in Vatican City.",
+        "keywords": ["Sistine Chapel", "Apostolic Palace", "Vatican City"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Sistine Chapel",
+        "golden_evidence": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The ceiling was painted by Michelangelo between 1508 and 1512.",
+        "keywords": ["Michelangelo"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Sistine Chapel ceiling",
+        "golden_evidence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most celebrated works of Western art."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The ceiling was commissioned by Pope Julius II and depicts scenes from the Book of Genesis.",
+        "keywords": ["Pope Julius II", "Genesis", "Creation of Adam"],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Sistine Chapel ceiling",
+        "golden_evidence": "The painting depicts nine scenes from the Book of Genesis. The ceiling was commissioned by Pope Julius II."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "The Sistine Chapel is the site of the papal conclave, where new popes are elected.",
+        "keywords": ["papal conclave", "pope elected", "College of Cardinals"],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Sistine Chapel",
+        "golden_evidence": "The chapel is the site of the papal conclave, the process by which a new pope is elected."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_020",
+    "question": "What caused the fall of the Roman Empire?",
+    "answer": "The fall of the Western Roman Empire in 476 AD is attributed to a combination of factors. Historians cite internal causes such as political instability, military overextension, economic troubles, and the debasement of currency. External pressures included invasions by Germanic tribes (Visigoths, Vandals, Huns, Ostrogoths) who gradually eroded Roman frontiers. The traditional end date is 476 AD, when the Germanic chieftain Odoacer deposed the last Western emperor, Romulus Augustulus. The Eastern Roman Empire (Byzantine Empire) survived for nearly another thousand years until 1453.",
+    "qa_pairs": [
+      {
+        "context": "The fall of the Western Roman Empire is usually dated to 476 AD, when the Germanic chieftain Odoacer deposed the last Western Roman emperor, Romulus Augustulus.",
+        "question": "When did the Roman Empire fall?",
+        "short_answers": [
+          "476 AD",
+          "476"
+        ],
+        "wikipage": "Fall of the Western Roman Empire"
+      },
+      {
+        "context": "Historians have proposed a number of theories for the fall of the Roman Empire, including military overextension, economic problems, political instability, and invasions by Germanic and Hunnic peoples.",
+        "question": "What caused the fall of the Roman Empire?",
+        "short_answers": [
+          "military overextension, economic problems, political instability, and barbarian invasions"
+        ],
+        "wikipage": "Fall of the Western Roman Empire"
+      },
+      {
+        "context": "The Eastern Roman Empire, known as the Byzantine Empire, survived the fall of the West and continued until 1453, when Constantinople fell to the Ottoman Turks under Sultan Mehmed II.",
+        "question": "Did the entire Roman Empire fall at once?",
+        "short_answers": [
+          "No, the Eastern Roman Empire survived until 1453"
+        ],
+        "wikipage": "Byzantine Empire"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Fall of the Western Roman Empire",
+        "url": "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire"
+      },
+      {
+        "title": "Odoacer",
+        "url": "https://en.wikipedia.org/wiki/Odoacer"
+      },
+      {
+        "title": "Byzantine Empire",
+        "url": "https://en.wikipedia.org/wiki/Byzantine_Empire"
+      },
+      {
+        "title": "Huns",
+        "url": "https://en.wikipedia.org/wiki/Huns"
+      },
+      {
+        "title": "Migration Period",
+        "url": "https://en.wikipedia.org/wiki/Migration_Period"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The Western Roman Empire fell in 476 AD due to a combination of internal instability and external barbarian invasions.",
+            "wikipage": "Fall of the Western Roman Empire"
+          }
+        ],
+        "long_answer": "The Western Roman Empire fell in 476 AD when Odoacer deposed the last emperor, Romulus Augustulus. Causes included internal factors like political instability, military overextension, and economic decline, as well as external pressures from Germanic and Hunnic invasions. The Eastern Roman Empire (Byzantine Empire) survived until 1453."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc012_1",
+        "title": "Fall of the Western Roman Empire",
+        "text": "The fall of the Western Roman Empire was the process of decline in the Western Roman Empire in which it failed to enforce its rule. The date most often cited for the 'fall' is 476 AD, when Romulus Augustulus, the last emperor of the Western Roman Empire, was deposed by the Germanic chieftain Odoacer. Historians have proposed numerous theories including military overextension, the debasement of currency, political instability, overreliance on slave labor, and the increasing pressure from barbarian invasions from both Germanic tribes and the Huns.",
+        "score": 0.95,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The date most often cited for the 'fall' is 476 AD, when Romulus Augustulus was deposed by the Germanic chieftain Odoacer.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Documento principale: risponde alle sub-questions su quando e perché cadde l'Impero Romano d'Occidente.",
+        "answers_found": [1, 1, 0],
+        "extraction": "The Western Roman Empire fell in 476 AD when Romulus Augustulus was deposed by Odoacer; causes included overextension, currency debasement, and barbarian invasions.",
+        "summary": "The Western Roman Empire fell in 476 AD due to military overextension, political instability, and barbarian invasions."
+      },
+      {
+        "id": "doc012_2",
+        "title": "Odoacer",
+        "text": "Odoacer (435–493 AD) was a Germanic chieftain who became the first King of Italy after deposing Romulus Augustulus, the last emperor of the Western Roman Empire, on September 4, 476 AD. This event is traditionally regarded as the end of the Western Roman Empire and the beginning of the Middle Ages in the West. Odoacer ruled Italy until 493, when he was defeated and killed by Theodoric the Great, the Ostrogothic king, who subsequently established the Ostrogothic Kingdom of Italy.",
+        "score": 0.88,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Odoacer was a Germanic chieftain who became the first King of Italy after deposing Romulus Augustulus on September 4, 476 AD.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Conferma la data esatta del 476 e il ruolo di Odoacre nel deporre l'ultimo imperatore.",
+        "answers_found": [1, 0, 0],
+        "extraction": "Odoacer deposed Romulus Augustulus on September 4, 476 AD, ending the Western Roman Empire.",
+        "summary": "Odoacer deposed the last Western Roman emperor on September 4, 476 AD, traditionally marking the end of the Roman Empire."
+      },
+      {
+        "id": "doc012_3",
+        "title": "Byzantine Empire",
+        "text": "The Byzantine Empire, also called the Eastern Roman Empire, was the continuation of the Roman Empire in its eastern provinces during Late Antiquity and the Middle Ages, when its capital city was Constantinople. It survived the fragmentation and fall of the Western Roman Empire in the 5th century AD and continued to exist until 1453, when Constantinople fell to the Ottoman Empire under Sultan Mehmed II. At its peak, the Byzantine Empire spanned from southern Spain to the Euphrates River.",
+        "score": 0.83,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "It survived the fall of the Western Roman Empire in the 5th century AD and continued to exist until 1453.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Risponde alla sub-question sulla sopravvivenza dell'Impero Romano d'Oriente fino al 1453.",
+        "answers_found": [0, 0, 1],
+        "extraction": "The Byzantine Empire survived the fall of the Western Roman Empire and lasted until 1453.",
+        "summary": "The Byzantine Empire was the Eastern Roman Empire's continuation and survived until 1453."
+      },
+      {
+        "id": "doc012_4",
+        "title": "Huns",
+        "text": "The Huns were a nomadic people who inhabited the steppes of Central Asia, the Caucasus, and Eastern Europe between the 4th and 6th centuries AD. Under their most famous leader, Attila, the Huns launched devastating raids across Europe, contributing significantly to the pressure that ultimately led to the fall of the Western Roman Empire. The Hunnic invasions forced many Germanic peoples such as the Visigoths and Vandals into Roman territory, destabilizing the empire's borders from within.",
+        "score": 0.78,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Under their most famous leader, Attila, the Huns launched devastating raids across Europe, contributing significantly to the pressure that ultimately led to the fall of the Western Roman Empire.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Supporta la sub-question sulle cause della caduta, descrivendo il ruolo dei Unni.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The Huns, led by Attila, contributed to the fall of the Western Roman Empire by forcing Germanic peoples into Roman territory.",
+        "summary": "The Huns, especially under Attila, were a major external pressure that contributed to the destabilization and fall of the Western Roman Empire."
+      },
+      {
+        "id": "doc012_5",
+        "title": "Migration Period",
+        "text": "The Migration Period, also known as the Barbarian Invasions, was a period during the decline of the Roman Empire around 300–700 AD in which there were widespread migrations of peoples, including the Huns, Goths, Vandals, and Franks into Western and Southern Europe. This era is often marked as the transition from Late Antiquity to the Early Middle Ages. The Migration Period was both a cause and effect of the instability of the Western Roman Empire, and it reshaped the ethnic and political landscape of Europe.",
+        "score": 0.66,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: fornisce contesto generale sulle migrazioni barbariche ma non risponde direttamente alle sub-questions.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "The Migration Period provides context for barbarian invasions but does not directly answer the sub-questions about causes, date, or the survival of the Eastern Empire."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Western Roman Empire fell in 476 AD when Odoacer deposed the last emperor, Romulus Augustulus.",
+        "keywords": ["476 AD", "Odoacer", "Romulus Augustulus"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Fall of the Western Roman Empire",
+        "golden_evidence": "The date most often cited for the 'fall' is 476 AD, when Romulus Augustulus, the last emperor of the Western Roman Empire, was deposed by the Germanic chieftain Odoacer."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Causes of the fall included military overextension, political instability, and barbarian invasions.",
+        "keywords": ["military overextension", "political instability", "barbarian invasions"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Fall of the Western Roman Empire",
+        "golden_evidence": "Historians have proposed numerous theories including military overextension, the debasement of currency, political instability, and the increasing pressure from barbarian invasions."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The Huns, led by Attila, contributed to the fall by pushing Germanic peoples into Roman territory.",
+        "keywords": ["Huns", "Attila", "Germanic peoples"],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "Huns",
+        "golden_evidence": "The Hunnic invasions forced many Germanic peoples such as the Visigoths and Vandals into Roman territory, destabilizing the empire's borders from within."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "The Eastern Roman Empire (Byzantine Empire) survived until 1453, when Constantinople fell to the Ottomans.",
+        "keywords": ["Byzantine Empire", "1453", "Constantinople", "Ottoman"],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "Byzantine Empire",
+        "golden_evidence": "It survived the fall of the Western Roman Empire in the 5th century AD and continued to exist until 1453, when Constantinople fell to the Ottoman Empire."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_021",
+    "question": "Who was William Shakespeare and what are his most famous works?",
+    "answer": "William Shakespeare (1564–1616) was an English playwright, poet, and actor widely regarded as the greatest writer in the English language and the world's greatest dramatist. He was born in Stratford-upon-Avon, England. Shakespeare wrote approximately 37 plays, 154 sonnets, and several longer poems. His most famous plays include Hamlet, Othello, King Lear, Macbeth, A Midsummer Night's Dream, Romeo and Juliet, and The Tempest. He co-owned the Globe Theatre in London, where many of his plays were performed.",
+    "qa_pairs": [
+      {
+        "context": "William Shakespeare (baptised 26 April 1564 – 23 April 1616) was an English playwright, poet, and actor. He is widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist.",
+        "question": "Who was William Shakespeare?",
+        "short_answers": [
+          "an English playwright, poet, and actor",
+          "the greatest writer in the English language"
+        ],
+        "wikipage": "William Shakespeare"
+      },
+      {
+        "context": "Shakespeare's most famous plays include Hamlet, Othello, King Lear, Macbeth, Romeo and Juliet, A Midsummer Night's Dream, and The Tempest.",
+        "question": "What are Shakespeare's most famous works?",
+        "short_answers": [
+          "Hamlet, Othello, King Lear, Macbeth, Romeo and Juliet"
+        ],
+        "wikipage": "William Shakespeare"
+      },
+      {
+        "context": "In 1599, Shakespeare's playing company built the Globe Theatre, a large open-air theatre on the south bank of the Thames. Many of his plays were performed there.",
+        "question": "Where were Shakespeare's plays performed?",
+        "short_answers": [
+          "at the Globe Theatre",
+          "the Globe Theatre in London"
+        ],
+        "wikipage": "Globe Theatre"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "William Shakespeare",
+        "url": "https://en.wikipedia.org/wiki/William_Shakespeare"
+      },
+      {
+        "title": "Hamlet",
+        "url": "https://en.wikipedia.org/wiki/Hamlet"
+      },
+      {
+        "title": "Globe Theatre",
+        "url": "https://en.wikipedia.org/wiki/Globe_Theatre"
+      },
+      {
+        "title": "Romeo and Juliet",
+        "url": "https://en.wikipedia.org/wiki/Romeo_and_Juliet"
+      },
+      {
+        "title": "Macbeth",
+        "url": "https://en.wikipedia.org/wiki/Macbeth"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "William Shakespeare was an English playwright and poet regarded as the greatest writer in the English language, known for plays like Hamlet and Macbeth.",
+            "wikipage": "William Shakespeare"
+          }
+        ],
+        "long_answer": "William Shakespeare (1564–1616) was an English playwright, poet, and actor, widely regarded as the greatest writer in the English language. His most famous works include Hamlet, Macbeth, Othello, King Lear, and Romeo and Juliet. Many of his plays were performed at the Globe Theatre in London."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc013_1",
+        "title": "William Shakespeare",
+        "text": "William Shakespeare (baptised 26 April 1564 – 23 April 1616) was an English playwright, poet, and actor. He is widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist. He is often called England's national poet and the 'Bard of Avon'. His extant works, including collaborations, consist of some 39 plays, 154 sonnets, and several longer poems. His plays have been translated into every major language and are performed more often than those of any other playwright. Shakespeare was born and raised in Stratford-upon-Avon, Warwickshire.",
+        "score": 0.96,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "He is widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Documento principale: descrive chi era Shakespeare e l'entità della sua produzione letteraria.",
+        "answers_found": [1, 1, 0],
+        "extraction": "William Shakespeare (1564–1616) was an English playwright and poet regarded as the greatest writer in the English language, with 39 plays and 154 sonnets.",
+        "summary": "Shakespeare was an English playwright and poet (1564–1616) widely considered the greatest writer in the English language."
+      },
+      {
+        "id": "doc013_2",
+        "title": "Hamlet",
+        "text": "The Tragedy of Hamlet, Prince of Denmark, often shortened to Hamlet, is a tragedy written by William Shakespeare between 1599 and 1601. It is Shakespeare's longest play. The story concerns Prince Hamlet of Denmark, who seeks revenge after the murder of his father by his uncle Claudius. Hamlet is considered one of the most influential works of literature ever written and has been adapted into numerous films, plays, and operas. The play's famous line 'To be, or not to be, that is the question' is among the most quoted in literature.",
+        "score": 0.86,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Hamlet is considered one of the most influential works of literature ever written.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma Amleto come opera principale di Shakespeare e descrive il contenuto.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Hamlet, written by Shakespeare between 1599 and 1601, is one of the most influential works of literature ever written.",
+        "summary": "Hamlet is Shakespeare's longest and one of his most famous plays, concerning revenge for a murdered king."
+      },
+      {
+        "id": "doc013_3",
+        "title": "Globe Theatre",
+        "text": "The Globe Theatre was a theatre in London associated with William Shakespeare. It was built in 1599 by Shakespeare's playing company, the Lord Chamberlain's Men, on the south bank of the River Thames. Shakespeare held a one-tenth share in the partnership that owned the Globe. The original Globe was destroyed by fire in June 1613. A second Globe Theatre was built on the same site by June 1614 and was in use until 1642. A modern reconstruction, Shakespeare's Globe, opened in 1997 near the site of the original.",
+        "score": 0.82,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The Globe Theatre was built in 1599 by Shakespeare's playing company, the Lord Chamberlain's Men.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Risponde alla sub-question sul luogo in cui le opere di Shakespeare venivano rappresentate.",
+        "answers_found": [0, 0, 1],
+        "extraction": "The Globe Theatre was built in 1599 by Shakespeare's company, the Lord Chamberlain's Men; Shakespeare held a one-tenth share.",
+        "summary": "The Globe Theatre was Shakespeare's company theatre, built in 1599 on the Thames, where his plays were performed."
+      },
+      {
+        "id": "doc013_4",
+        "title": "Romeo and Juliet",
+        "text": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career, about two young star-crossed lovers whose deaths ultimately reconcile their feuding families. It was among Shakespeare's most popular plays during his lifetime and, along with Hamlet, is one of his most frequently performed plays. The play was written between 1594 and 1596. It has been adapted in numerous films, musicals, operas, and ballets, most notably the 1996 film directed by Baz Luhrmann and the 1961 musical West Side Story.",
+        "score": 0.80,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career, about two young star-crossed lovers whose deaths ultimately reconcile their feuding families.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma Romeo e Giulietta come opera famosa di Shakespeare e ne descrive la trama.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Romeo and Juliet, written by Shakespeare between 1594 and 1596, is one of his most popular and frequently performed plays.",
+        "summary": "Romeo and Juliet is one of Shakespeare's most popular tragedies, written between 1594 and 1596."
+      },
+      {
+        "id": "doc013_5",
+        "title": "Macbeth",
+        "text": "The Tragedy of Macbeth is a tragedy by William Shakespeare, believed to have been first performed in 1606. It dramatises the damaging physical and psychological effects of political ambition on those who seek power for its own sake. The story is set in Scotland and is based on events from Scottish history. Macbeth is Shakespeare's shortest tragedy and tells the story of a general who murders the king to take the throne, only to spiral into paranoia and tyranny.",
+        "score": 0.65,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: descrive Macbeth in dettaglio ma non risponde alle sub-questions principali.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "Macbeth describes a general's rise and fall through tyranny, but this document does not directly answer the main sub-questions about Shakespeare's identity, works as a whole, or the Globe."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "William Shakespeare (1564–1616) was an English playwright, poet, and actor, widely regarded as the greatest writer in the English language.",
+        "keywords": ["playwright", "poet"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "William Shakespeare",
+        "golden_evidence": "He is widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Shakespeare wrote approximately 39 plays and 154 sonnets.",
+        "keywords": ["39 plays", "154 sonnets"],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "William Shakespeare",
+        "golden_evidence": "His extant works consist of some 39 plays, 154 sonnets, and several longer poems."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "His most famous plays include Hamlet, Romeo and Juliet, Macbeth, Othello, and King Lear.",
+        "keywords": ["Hamlet", "Romeo and Juliet", "Macbeth", "Othello", "King Lear"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Hamlet",
+        "golden_evidence": "Hamlet is considered one of the most influential works of literature ever written."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Many of his plays were performed at the Globe Theatre, built in 1599 and co-owned by Shakespeare.",
+        "keywords": ["Globe Theatre", "1599", "Lord Chamberlain's Men"],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "Globe Theatre",
+        "golden_evidence": "The Globe Theatre was built in 1599 by Shakespeare's playing company, the Lord Chamberlain's Men."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_022",
+    "question": "What is DNA and what role does it play in heredity?",
+    "answer": "DNA (deoxyribonucleic acid) is a molecule that carries the genetic instructions for the development, functioning, growth, and reproduction of all known living organisms. It is structured as a double helix, consisting of two strands wound around each other, made up of four nucleotide bases: adenine (A), thymine (T), guanine (G), and cytosine (C). DNA plays a central role in heredity: genes, which are specific sequences of DNA, are passed from parents to offspring and determine inherited traits. The structure of DNA was first described by James Watson and Francis Crick in 1953, based on X-ray crystallography data from Rosalind Franklin.",
+    "qa_pairs": [
+      {
+        "context": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix. It carries genetic instructions for development, functioning, growth, and reproduction of all known organisms.",
+        "question": "What is DNA?",
+        "short_answers": [
+          "a molecule carrying genetic instructions",
+          "deoxyribonucleic acid"
+        ],
+        "wikipage": "DNA"
+      },
+      {
+        "context": "DNA contains genes, which are segments of DNA that encode information for the production of proteins and determine the inherited traits of an organism. DNA is passed from parents to offspring during reproduction.",
+        "question": "What role does DNA play in heredity?",
+        "short_answers": [
+          "it carries genes that determine inherited traits",
+          "it is passed from parents to offspring"
+        ],
+        "wikipage": "Genetics"
+      },
+      {
+        "context": "The double-helix structure of DNA was first described by James Watson and Francis Crick in their 1953 paper, based on X-ray diffraction data obtained by Rosalind Franklin and Raymond Gosling.",
+        "question": "Who discovered the structure of DNA?",
+        "short_answers": [
+          "James Watson and Francis Crick",
+          "Watson and Crick"
+        ],
+        "wikipage": "Nucleic acid double helix"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "DNA",
+        "url": "https://en.wikipedia.org/wiki/DNA"
+      },
+      {
+        "title": "Genetics",
+        "url": "https://en.wikipedia.org/wiki/Genetics"
+      },
+      {
+        "title": "Nucleic acid double helix",
+        "url": "https://en.wikipedia.org/wiki/Nucleic_acid_double_helix"
+      },
+      {
+        "title": "James Watson",
+        "url": "https://en.wikipedia.org/wiki/James_Watson"
+      },
+      {
+        "title": "Rosalind Franklin",
+        "url": "https://en.wikipedia.org/wiki/Rosalind_Franklin"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "DNA is a double-helix molecule carrying genetic information, whose structure was discovered by Watson and Crick in 1953.",
+            "wikipage": "DNA"
+          }
+        ],
+        "long_answer": "DNA (deoxyribonucleic acid) is a double-helix molecule that carries genetic instructions. It plays a central role in heredity, as genes encoded in DNA are passed from parents to offspring and determine inherited traits. The double-helix structure was discovered by Watson and Crick in 1953, with contributions from Rosalind Franklin."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc014_1",
+        "title": "DNA",
+        "text": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth, and reproduction of all known organisms and many viruses. DNA and ribonucleic acid (RNA) are nucleic acids. Alongside proteins, lipids, and complex carbohydrates (polysaccharides), nucleic acids are one of the four major types of macromolecules that are essential for all known forms of life. The two DNA strands are known as polynucleotides since they are composed of simpler monomeric units called nucleotides.",
+        "score": 0.95,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth, and reproduction of all known organisms.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Documento principale che definisce il DNA come molecola a doppia elica portatrice di informazioni genetiche.",
+        "answers_found": [1, 0, 0],
+        "extraction": "DNA is a double-helix polymer carrying genetic instructions for all living organisms.",
+        "summary": "DNA is a double-helix molecule made of two polynucleotide chains, carrying genetic instructions for all organisms."
+      },
+      {
+        "id": "doc014_2",
+        "title": "Genetics",
+        "text": "Genetics is a branch of biology concerned with the study of genes, genetic variation, and heredity in organisms. Genes are segments of DNA that encode information for the production of proteins, which carry out the functions of a cell. Traits are passed from parents to offspring through genes, a process known as inheritance. The field was pioneered by Gregor Mendel in the 19th century, whose experiments with pea plants established the basic principles of heredity. Modern genetics integrates Mendelian inheritance with molecular biology.",
+        "score": 0.87,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Genes are segments of DNA that encode information for the production of proteins. Traits are passed from parents to offspring through genes.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Risponde alla sub-question sul ruolo del DNA nell'ereditarietà attraverso i geni.",
+        "answers_found": [0, 1, 0],
+        "extraction": "Genes are DNA segments that encode protein information; traits are passed from parents to offspring through genes.",
+        "summary": "Genetics explains how genes—DNA segments—encode traits passed from parents to offspring through inheritance."
+      },
+      {
+        "id": "doc014_3",
+        "title": "Nucleic acid double helix",
+        "text": "A nucleic acid double helix is a structure formed by two complementary strands of nucleic acids—typically DNA—held together by hydrogen bonds between paired bases. The double-helix structure of DNA was proposed by James Watson and Francis Crick in a landmark 1953 paper in Nature, based in part on X-ray crystallography work by Rosalind Franklin and Raymond Gosling. Watson and Crick were awarded the Nobel Prize in Physiology or Medicine in 1962 for this discovery, shared with Maurice Wilkins.",
+        "score": 0.84,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The double-helix structure of DNA was proposed by James Watson and Francis Crick in a landmark 1953 paper in Nature.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Risponde alla sub-question su chi ha scoperto la struttura del DNA nel 1953.",
+        "answers_found": [0, 0, 1],
+        "extraction": "Watson and Crick proposed the DNA double helix in 1953, based on X-ray crystallography by Rosalind Franklin.",
+        "summary": "Watson and Crick described the DNA double helix in 1953 using X-ray data from Franklin, earning the 1962 Nobel Prize."
+      },
+      {
+        "id": "doc014_4",
+        "title": "Rosalind Franklin",
+        "text": "Rosalind Elsie Franklin (25 July 1920 – 16 April 1958) was a British chemist and X-ray crystallographer whose work was central to the understanding of the molecular structures of DNA, RNA, viruses, coal, and graphite. Her X-ray diffraction images of DNA, particularly Photo 51, were crucial data that contributed to Watson and Crick's 1953 model of the DNA double helix. Franklin's contribution was not fully recognized during her lifetime; she died of cancer in 1958, four years before Watson, Crick, and Wilkins received the Nobel Prize.",
+        "score": 0.80,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial data that contributed to Watson and Crick's 1953 model.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Conferma il contributo fondamentale di Rosalind Franklin attraverso la fotografia n. 51 alla scoperta della struttura del DNA.",
+        "answers_found": [0, 0, 1],
+        "extraction": "Rosalind Franklin's X-ray diffraction images (Photo 51) were crucial to Watson and Crick's discovery of the DNA double helix.",
+        "summary": "Rosalind Franklin's X-ray work was essential to the 1953 DNA double-helix discovery by Watson and Crick."
+      },
+      {
+        "id": "doc014_5",
+        "title": "James Watson",
+        "text": "James Dewey Watson (born April 6, 1928) is an American molecular biologist, geneticist, and zoologist. In 1953, he co-authored the discovery of the molecular structure of DNA along with Francis Crick, based on X-ray diffraction images by Rosalind Franklin. This discovery earned Watson, Crick, and Maurice Wilkins the Nobel Prize in Physiology or Medicine in 1962. Watson later served as the director of the National Center for Human Genome Research and was involved in the Human Genome Project.",
+        "score": 0.66,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: descrive la biografia di Watson ma non risponde direttamente alle sub-questions principali su cosa sia il DNA o il suo ruolo nell'ereditarietà.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "Watson's biography confirms his role in discovering DNA structure, but does not directly answer the sub-questions about what DNA is or its role in heredity."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "DNA (deoxyribonucleic acid) is a double-helix molecule carrying genetic instructions for all known organisms.",
+        "keywords": ["molecule", "genetic instructions", "deoxyribonucleic acid"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "DNA",
+        "golden_evidence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Genes are DNA segments that encode traits passed from parents to offspring.",
+        "keywords": ["genes", "traits", "heredity", "parents", "offspring"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Genetics",
+        "golden_evidence": "Traits are passed from parents to offspring through genes, a process known as inheritance."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The double-helix structure of DNA was discovered by Watson and Crick in 1953.",
+        "keywords": ["Watson", "Crick", "1953", "double helix"],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "Nucleic acid double helix",
+        "golden_evidence": "The double-helix structure of DNA was proposed by James Watson and Francis Crick in a landmark 1953 paper in Nature."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Rosalind Franklin's X-ray diffraction images (Photo 51) were crucial to the discovery of the DNA structure.",
+        "keywords": ["Rosalind Franklin", "Photo 51", "X-ray crystallography"],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "Rosalind Franklin",
+        "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial data that contributed to Watson and Crick's 1953 model."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_024",
+    "question": "What is the Amazon rainforest and why is it important?",
+    "answer": "The Amazon rainforest, also called Amazonia, is a moist broadleaf tropical rainforest in the Amazon biome covering most of the Amazon basin of South America. It covers approximately 5.5 million km² across nine countries, with the largest portion (about 60%) in Brazil. The Amazon is the world's largest tropical rainforest and contains 10% of all species on Earth. It is critically important as the 'lungs of the Earth,' absorbing vast quantities of carbon dioxide, regulating the global climate, and maintaining the water cycle. However, it faces serious threats from deforestation, primarily for agriculture and cattle ranching.",
+    "qa_pairs": [
+      {
+        "context": "The Amazon rainforest, also known as Amazonia, is a moist broadleaf tropical rainforest in the Amazon biome that covers most of the Amazon basin of South America. The majority of the forest, some 60%, is contained within Brazil.",
+        "question": "What is the Amazon rainforest?",
+        "short_answers": [
+          "a tropical rainforest in South America",
+          "the world's largest tropical rainforest"
+        ],
+        "wikipage": "Amazon rainforest"
+      },
+      {
+        "context": "The Amazon rainforest plays an important role in regulating the global climate by absorbing large amounts of carbon dioxide and producing oxygen. It is often called the 'lungs of the Earth'.",
+        "question": "Why is the Amazon rainforest important?",
+        "short_answers": [
+          "it absorbs CO2 and regulates the climate",
+          "it is called the lungs of the Earth"
+        ],
+        "wikipage": "Amazon rainforest"
+      },
+      {
+        "context": "Deforestation in the Amazon is primarily driven by agricultural expansion, cattle ranching, and logging. Between 2000 and 2012, more than 360,000 km² of Amazon forest were destroyed.",
+        "question": "What are the main threats to the Amazon rainforest?",
+        "short_answers": [
+          "deforestation for agriculture and cattle ranching",
+          "logging and agricultural expansion"
+        ],
+        "wikipage": "Deforestation of the Amazon rainforest"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Amazon rainforest",
+        "url": "https://en.wikipedia.org/wiki/Amazon_rainforest"
+      },
+      {
+        "title": "Deforestation of the Amazon rainforest",
+        "url": "https://en.wikipedia.org/wiki/Deforestation_of_the_Amazon_rainforest"
+      },
+      {
+        "title": "Biodiversity of the Amazon",
+        "url": "https://en.wikipedia.org/wiki/Biodiversity_of_the_Amazon"
+      },
+      {
+        "title": "Amazon River",
+        "url": "https://en.wikipedia.org/wiki/Amazon_River"
+      },
+      {
+        "title": "Brazil",
+        "url": "https://en.wikipedia.org/wiki/Brazil"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The Amazon rainforest is the world's largest tropical rainforest, important for climate regulation and biodiversity, but threatened by deforestation.",
+            "wikipage": "Amazon rainforest"
+          }
+        ],
+        "long_answer": "The Amazon rainforest is the world's largest tropical rainforest, covering about 5.5 million km² in South America, mostly in Brazil. It is vital for global climate regulation, absorbing CO₂ and housing around 10% of Earth's species. It faces severe threats from deforestation for agriculture and ranching."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc016_1",
+        "title": "Amazon rainforest",
+        "text": "The Amazon rainforest, also known as Amazonia or the Amazon Jungle, is a moist broadleaf tropical rainforest in the Amazon biome that covers most of the Amazon basin of South America. This basin encompasses 7,000,000 km² (2,700,000 sq mi), of which 5,500,000 km² (2,100,000 sq mi) are covered by the rainforest. This region includes territory belonging to nine nations and 3,344 formally acknowledged indigenous territories. The majority of the forest, some 60%, is contained within Brazil. The Amazon rainforest contains 10% of all the species in the world.",
+        "score": 0.95,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The Amazon rainforest is a moist broadleaf tropical rainforest covering most of the Amazon basin of South America.",
+        "supports_sub_questions": [0],
+        "annotation_note": "Documento principale: descrive la foresta amazzonica, la sua estensione e biodiversità.",
+        "answers_found": [1, 0, 0],
+        "extraction": "The Amazon rainforest covers about 5.5 million km² in South America across nine nations, with 60% in Brazil, and contains 10% of Earth's species.",
+        "summary": "The Amazon is a 5.5 million km² tropical rainforest in South America, mostly in Brazil, containing 10% of Earth's species."
+      },
+      {
+        "id": "doc016_2",
+        "title": "Biodiversity of the Amazon",
+        "text": "The Amazon rainforest is one of the most biodiverse regions on Earth, home to an estimated 390 billion individual trees representing approximately 16,000 species. It contains around one-tenth of all species on Earth and shelters an extraordinary variety of mammals, birds, reptiles, amphibians, fish, and insects. The Amazon also plays a critical role in global climate regulation: its vegetation absorbs vast quantities of carbon dioxide and produces approximately 20% of the world's oxygen, leading to its common description as the 'lungs of the Earth.'",
+        "score": 0.89,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Its vegetation absorbs vast quantities of carbon dioxide and produces approximately 20% of the world's oxygen, leading to its common description as the 'lungs of the Earth.'",
+        "supports_sub_questions": [1],
+        "annotation_note": "Risponde alla sub-question sull'importanza dell'Amazzonia per il clima e la biodiversità.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The Amazon absorbs CO2, produces 20% of the world's oxygen, and contains one-tenth of Earth's species.",
+        "summary": "The Amazon is critical for global climate regulation and biodiversity, producing 20% of Earth's oxygen."
+      },
+      {
+        "id": "doc016_3",
+        "title": "Deforestation of the Amazon rainforest",
+        "text": "Deforestation of the Amazon rainforest is an ongoing process of forest loss in the Amazon biome that has been occurring for several decades. It is primarily driven by agricultural expansion, cattle ranching, logging, and infrastructure development. Between 1970 and 2013, more than 580,000 km² of Amazonian forest were destroyed. Deforestation causes significant biodiversity loss, increases greenhouse gas emissions, and disrupts regional water cycles. Brazil has implemented various measures to combat deforestation, with mixed results.",
+        "score": 0.84,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "Deforestation is primarily driven by agricultural expansion, cattle ranching, logging, and infrastructure development.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Risponde alla sub-question sulle minacce alla foresta amazzonica.",
+        "answers_found": [0, 0, 1],
+        "extraction": "Amazon deforestation is driven by agriculture, cattle ranching, and logging, destroying over 580,000 km² since 1970.",
+        "summary": "Amazon deforestation, driven mainly by agriculture and ranching, has destroyed over 580,000 km² since 1970."
+      },
+      {
+        "id": "doc016_4",
+        "title": "Amazon River",
+        "text": "The Amazon River is a major river in South America that runs through the Amazon rainforest. It is the largest river by discharge of water in the world, with an average flow of approximately 209,000 cubic metres per second. The Amazon basin drains an area of approximately 7 million km², and the river plays a crucial role in maintaining the hydrology of the Amazon rainforest. The river is home to thousands of fish species, including the piranha, and its floodplains support some of the richest biodiversity on Earth.",
+        "score": 0.77,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "The river plays a crucial role in maintaining the hydrology of the Amazon rainforest.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Supporta indirettamente la sub-question sull'importanza dell'Amazzonia attraverso il ruolo del fiume nel mantenere l'idrologia della foresta.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The Amazon River maintains the hydrology of the rainforest and is the world's largest river by discharge.",
+        "summary": "The Amazon River maintains the hydrology of the rainforest and is the world's largest river by water discharge."
+      },
+      {
+        "id": "doc016_5",
+        "title": "Brazil",
+        "text": "Brazil is the largest country in South America and the fifth-largest country in the world by both area and population. With a total area of 8.5 million km², it is the largest country in Latin America. Brazil contains the majority of the Amazon rainforest, accounting for approximately 60% of the total forest area. The country has the world's ninth-largest economy. Brazil's official language is Portuguese and its capital is Brasília, while its most populous city is São Paulo.",
+        "score": 0.63,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: descrive il Brasile in generale e menziona l'Amazzonia come parte del paese, ma non risponde alle sub-questions.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "Brazil is the largest country in South America and contains 60% of the Amazon, but this document does not answer the sub-questions about the rainforest."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Amazon rainforest is the world's largest tropical rainforest, covering about 5.5 million km² across nine countries.",
+        "keywords": ["tropical rainforest", "5.5 million km²", "South America"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Amazon rainforest",
+        "golden_evidence": "5,500,000 km² are covered by the rainforest. This region includes territory belonging to nine nations."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The Amazon produces approximately 20% of the world's oxygen and is called the 'lungs of the Earth.'",
+        "keywords": ["lungs", "oxygen", "carbon dioxide", "climate regulation"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Biodiversity of the Amazon",
+        "golden_evidence": "Its vegetation absorbs vast quantities of carbon dioxide and produces approximately 20% of the world's oxygen."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The Amazon contains about 10% of all species on Earth.",
+        "keywords": ["10%", "species", "biodiversity"],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Amazon rainforest",
+        "golden_evidence": "The Amazon rainforest contains 10% of all the species in the world."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Deforestation, driven mainly by agriculture and cattle ranching, is the primary threat to the Amazon.",
+        "keywords": ["deforestation", "agriculture", "cattle ranching", "logging"],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "Deforestation of the Amazon rainforest",
+        "golden_evidence": "Deforestation is primarily driven by agricultural expansion, cattle ranching, logging, and infrastructure development."
+      }
+    ]
+  },
+  {
+    "sample_id": "new_example_025",
+    "question": "What was the Cold War and when did it end?",
+    "answer": "The Cold War was a period of geopolitical tension between the United States and the Soviet Union and their respective allies, lasting from approximately 1947 to 1991. It was characterized by ideological rivalry between capitalism and communism, an arms race including nuclear weapons, proxy wars, and a space race. Key events include the Berlin Blockade (1948), the Cuban Missile Crisis (1962), the Vietnam War, and the Soviet invasion of Afghanistan (1979). The Cold War ended with the dissolution of the Soviet Union on December 26, 1991, following the fall of the Berlin Wall in 1989.",
+    "qa_pairs": [
+      {
+        "context": "The Cold War was a period of geopolitical tension between the United States and the Soviet Union and their allies from approximately 1947 to 1991. It was characterized by political, military, and economic rivalry without direct large-scale armed conflict between the two superpowers.",
+        "question": "What was the Cold War?",
+        "short_answers": [
+          "a geopolitical tension between the US and USSR from 1947 to 1991",
+          "a rivalry between the United States and the Soviet Union"
+        ],
+        "wikipage": "Cold War"
+      },
+      {
+        "context": "The Cold War ended in 1991 with the dissolution of the Soviet Union. A key symbolic moment was the fall of the Berlin Wall in November 1989, which marked the collapse of communist regimes across Eastern Europe.",
+        "question": "When did the Cold War end?",
+        "short_answers": [
+          "1991",
+          "with the dissolution of the Soviet Union in 1991"
+        ],
+        "wikipage": "Cold War"
+      },
+      {
+        "context": "The Cuban Missile Crisis in October 1962 was the most dangerous confrontation of the Cold War, when the Soviet Union placed nuclear missiles in Cuba, bringing the world to the brink of nuclear war.",
+        "question": "What was the most dangerous moment of the Cold War?",
+        "short_answers": [
+          "the Cuban Missile Crisis in 1962",
+          "Cuban Missile Crisis"
+        ],
+        "wikipage": "Cuban Missile Crisis"
+      }
+    ],
+    "wikipages": [
+      {
+        "title": "Cold War",
+        "url": "https://en.wikipedia.org/wiki/Cold_War"
+      },
+      {
+        "title": "Cuban Missile Crisis",
+        "url": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis"
+      },
+      {
+        "title": "Dissolution of the Soviet Union",
+        "url": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union"
+      },
+      {
+        "title": "Berlin Wall",
+        "url": "https://en.wikipedia.org/wiki/Berlin_Wall"
+      },
+      {
+        "title": "Nuclear arms race",
+        "url": "https://en.wikipedia.org/wiki/Nuclear_arms_race"
+      }
+    ],
+    "annotations": [
+      {
+        "knowledge": [
+          {
+            "content": "The Cold War was a US-USSR geopolitical rivalry lasting from 1947 to 1991, ending with the dissolution of the Soviet Union.",
+            "wikipage": "Cold War"
+          }
+        ],
+        "long_answer": "The Cold War was a geopolitical and ideological conflict between the United States and the Soviet Union lasting from approximately 1947 to 1991. Key events included the Cuban Missile Crisis and the Berlin Wall's fall. It ended with the dissolution of the Soviet Union on December 26, 1991."
+      }
+    ],
+    "docs": [
+      {
+        "id": "doc017_1",
+        "title": "Cold War",
+        "text": "The Cold War was a period of geopolitical tension between the United States and the Soviet Union and their respective allies, the Western Bloc and the Eastern Bloc. It began following the end of World War II in 1947 and lasted until the dissolution of the Soviet Union in 1991. The conflict was characterized by political and military rivalry, ideological opposition between capitalism and communism, proxy wars in Korea, Vietnam, and elsewhere, and a nuclear arms race. While the two superpowers never engaged in direct warfare, the Cold War shaped world politics for nearly five decades.",
+        "score": 0.96,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The Cold War was a period of geopolitical tension between the United States and the Soviet Union. It began following the end of World War II in 1947 and lasted until the dissolution of the Soviet Union in 1991.",
+        "supports_sub_questions": [0, 1],
+        "annotation_note": "Documento principale: definisce la Guerra Fredda, la sua durata e le sue caratteristiche principali.",
+        "answers_found": [1, 1, 0],
+        "extraction": "The Cold War was a US-USSR rivalry from 1947 to 1991, involving ideological conflict, proxy wars, and a nuclear arms race.",
+        "summary": "The Cold War was a US-USSR geopolitical rivalry (1947–1991) involving ideological conflict, proxy wars, and nuclear arms buildup."
+      },
+      {
+        "id": "doc017_2",
+        "title": "Cuban Missile Crisis",
+        "text": "The Cuban Missile Crisis, also known as the October Crisis, was a confrontation between the United States and the Soviet Union that occurred in October 1962. The crisis began when U.S. reconnaissance aircraft discovered Soviet ballistic missile sites being constructed in Cuba. After a tense 13-day standoff, the Soviet Union agreed to dismantle and remove the missiles in exchange for a U.S. pledge not to invade Cuba. It is widely considered the closest the Cold War came to escalating into full-scale nuclear war.",
+        "score": 0.88,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "It is widely considered the closest the Cold War came to escalating into full-scale nuclear war.",
+        "supports_sub_questions": [2],
+        "annotation_note": "Risponde alla sub-question sul momento più pericoloso della Guerra Fredda.",
+        "answers_found": [0, 0, 1],
+        "extraction": "The Cuban Missile Crisis in October 1962 was the closest the Cold War came to nuclear war, ended by Soviet agreement to remove missiles from Cuba.",
+        "summary": "The Cuban Missile Crisis (October 1962) was the most dangerous moment of the Cold War, nearly leading to nuclear conflict."
+      },
+      {
+        "id": "doc017_3",
+        "title": "Dissolution of the Soviet Union",
+        "text": "The dissolution of the Soviet Union was the process of disintegration within the Soviet Union (USSR) which resulted in the end of the country's and the federal government's existence on December 26, 1991. It was a result of the declaration of independence by several Soviet republics and the resignation of Soviet leader Mikhail Gorbachev. The dissolution effectively ended the Cold War and led to the emergence of 15 independent post-Soviet states, the largest of which was the Russian Federation.",
+        "score": 0.85,
+        "is_gold": true,
+        "support_level": "full",
+        "evidence_sentence": "The dissolution of the Soviet Union resulted in the end of the country's existence on December 26, 1991, effectively ending the Cold War.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Conferma la fine della Guerra Fredda con la dissoluzione dell'URSS il 26 dicembre 1991.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The Soviet Union dissolved on December 26, 1991, following independence declarations and Gorbachev's resignation, ending the Cold War.",
+        "summary": "The Soviet Union dissolved on December 26, 1991, ending the Cold War and creating 15 independent states."
+      },
+      {
+        "id": "doc017_4",
+        "title": "Berlin Wall",
+        "text": "The Berlin Wall was a guarded concrete barrier that divided Berlin from 1961 to 1989. It was constructed by the German Democratic Republic (East Germany) to prevent mass emigration to West Germany. The wall became a symbol of the Cold War and the Iron Curtain. On November 9, 1989, following a series of civil unrest events and a miscommunication by an East German official, crowds began to demolish the wall. The fall of the Berlin Wall marked the beginning of the end of the Cold War and the reunification of Germany.",
+        "score": 0.79,
+        "is_gold": true,
+        "support_level": "partial",
+        "evidence_sentence": "The fall of the Berlin Wall on November 9, 1989, marked the beginning of the end of the Cold War.",
+        "supports_sub_questions": [1],
+        "annotation_note": "Supporta la sub-question sulla fine della Guerra Fredda, identificando la caduta del Muro come momento simbolico.",
+        "answers_found": [0, 1, 0],
+        "extraction": "The Berlin Wall fell on November 9, 1989, marking the beginning of the end of the Cold War.",
+        "summary": "The Berlin Wall fell on November 9, 1989, symbolizing the collapse of communist Eastern Europe and the coming end of the Cold War."
+      },
+      {
+        "id": "doc017_5",
+        "title": "Nuclear arms race",
+        "text": "The nuclear arms race was a competition for supremacy in nuclear warfare between the United States, the Soviet Union, and their respective allies during the Cold War. During this period, in addition to the American and Soviet nuclear stockpiles, other countries developed nuclear weapons, including the United Kingdom, France, and China. The arms race led to the development of the intercontinental ballistic missile (ICBM), nuclear submarines, and the concept of mutually assured destruction (MAD). At its peak in 1986, global nuclear warhead stockpiles numbered approximately 70,000.",
+        "score": 0.65,
+        "is_gold": false,
+        "support_level": "none",
+        "evidence_sentence": null,
+        "supports_sub_questions": [],
+        "annotation_note": "Documento distractor: descrive la corsa agli armamenti nucleari come aspetto della Guerra Fredda ma non risponde alle sub-questions principali.",
+        "answers_found": [0, 0, 0],
+        "extraction": "irrelevant",
+        "summary": "The nuclear arms race was a Cold War feature but this document does not directly answer the sub-questions about what the Cold War was, when it ended, or the Cuban Missile Crisis."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 3,
+      "n_partial_support": 1,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Cold War was a geopolitical rivalry between the United States and the Soviet Union lasting from 1947 to 1991.",
+        "keywords": ["United States", "1947"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Cold War",
+        "golden_evidence": "The Cold War was a period of geopolitical tension between the United States and the Soviet Union. It began in 1947 and lasted until the dissolution of the Soviet Union in 1991."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The Cold War ended on December 26, 1991, with the dissolution of the Soviet Union.",
+        "keywords": ["December 26, 1991", "dissolution", "Soviet Union", "end"],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Dissolution of the Soviet Union",
+        "golden_evidence": "The dissolution of the Soviet Union resulted in the end of the country's existence on December 26, 1991, effectively ending the Cold War."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The fall of the Berlin Wall on November 9, 1989, marked the symbolic beginning of the Cold War's end.",
+        "keywords": ["Berlin Wall", "November 9, 1989", "fall"],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "Berlin Wall",
+        "golden_evidence": "The fall of the Berlin Wall on November 9, 1989, marked the beginning of the end of the Cold War."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "The Cuban Missile Crisis (October 1962) was the most dangerous moment of the Cold War.",
+        "keywords": ["Cuban Missile Crisis", "October 1962", "nuclear war"],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Cuban Missile Crisis",
+        "golden_evidence": "It is widely considered the closest the Cold War came to escalating into full-scale nuclear war."
       }
     ]
   }

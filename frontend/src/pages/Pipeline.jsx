@@ -16,7 +16,16 @@ import MetricCard from '../components/MetricCard'
 import Icon from '../components/Icon'
 import { downloadJSON, timestampedFilename } from '../utils/download'
 
+
 // ── Metric definitions ────────────────────────────────────────────────────────
+
+const GLOBAL_METRIC_INFO = {
+  macro_nugget_precision: { label: 'Macro Nugget Precision', desc: 'Precisione calcolata su tutti i nugget del dataset (cited/covered).' },
+  macro_nugget_recall: { label: 'Macro Nugget Recall', desc: 'Recall calcolata su tutti i nugget del dataset (cited/total).' },
+  macro_nugget_coverage: { label: 'Macro Nugget Coverage', desc: 'Copertura su tutti i nugget del dataset (covered/total).' },
+  avg_nugget_precision: { label: 'Avg Nugget Precision', desc: 'Media delle precisioni per esempio.' },
+  avg_nugget_recall: { label: 'Avg Nugget Recall', desc: 'Media delle recall per esempio.' },
+}
 
 const METRIC_INFO_STANDARD = {
   citation_precision:    { label: 'Citation Precision',     desc: '% di coppie (claim, passaggio) dove il passaggio supporta il claim via NLI.' },
@@ -505,6 +514,123 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
   )
 }
 
+// NEW: Global Dataset Evaluation Results View
+function DatasetEvalResultsView({ results, onSave, onDownload }) {
+  const gm = results.global_metrics || {}
+  const mode = results.eval_mode || 'standard'
+  
+  return (
+    <div>
+      {/* Summary header */}
+      <div style={{
+        padding: '16px 20px',
+        background: 'linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%)',
+        border: '1px solid #C7D2FE',
+        borderRadius: 10,
+        marginBottom: 20,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+          <Icon name="barChart2" size={20} color="#4338CA" strokeWidth={2} />
+          <span style={{ fontSize: 16, fontWeight: 700, color: '#312E81' }}>
+            Valutazione Globale Dataset
+          </span>
+        </div>
+        <div style={{ fontSize: 12, color: '#4338CA', display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+          <span>{results.num_examples} esempi</span>
+          <span>{results.num_successful} completati con successo</span>
+          <span>{results.runtime_seconds}s runtime</span>
+          <span>Modalità: {mode === 'nugget' ? 'Nugget' : 'Standard'}</span>
+        </div>
+      </div>
+      
+      {/* Global metrics grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12, marginBottom: 20 }}>
+        {Object.entries(gm).map(([key, value]) => {
+          if (typeof value !== 'number') return null
+          const pct = Math.round(value * 100)
+          const color = key.includes('precision') || key.includes('recall') || key.includes('coverage')
+            ? (value >= 0.7 ? 'var(--green)' : value >= 0.4 ? 'var(--amber)' : 'var(--red)')
+            : 'var(--accent)'
+          
+          return (
+            <div key={key} style={{
+              background: 'white',
+              border: '1px solid var(--border)',
+              borderRadius: 8,
+              padding: '14px 16px',
+            }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 4 }}>
+                {key.replace(/_/g, ' ')}
+              </div>
+              <div style={{ fontSize: 28, fontWeight: 800, color, lineHeight: 1 }}>
+                {pct}%
+              </div>
+              <div style={{
+                height: 4, background: 'var(--border-2)', borderRadius: 2,
+                marginTop: 8, overflow: 'hidden',
+              }}>
+                <div style={{
+                  height: '100%', borderRadius: 2,
+                  width: `${Math.min(100, pct)}%`,
+                  background: color,
+                  transition: 'width 0.5s ease',
+                }} />
+              </div>
+            </div>
+          )
+        })}
+      </div>
+      
+      {/* Per-example summary table (collapsed by default) */}
+      <details style={{ marginTop: 16 }}>
+        <summary style={{
+          cursor: 'pointer', fontSize: 13, fontWeight: 600,
+          color: 'var(--text-2)', padding: '8px 0',
+        }}>
+          Dettaglio per esempio ({results.per_example?.length || 0})
+        </summary>
+        <div style={{ marginTop: 8 }}>
+          {(results.per_example || []).map((ex, i) => (
+            <div key={i} style={{
+              padding: '8px 12px', marginBottom: 4,
+              background: ex.error ? '#FEF2F2' : '#FAFAF9',
+              border: `1px solid ${ex.error ? '#FECACA' : 'var(--border-2)'}`,
+              borderRadius: 6,
+              fontSize: 12,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--text-3)' }}>
+                  [{i}]
+                </span>
+                <span style={{ flex: 1, fontWeight: 500, color: 'var(--text)' }}>
+                  {ex.question?.slice(0, 80)}{(ex.question?.length > 80) ? '...' : ''}
+                </span>
+                {ex.error ? (
+                  <span style={{ color: '#DC2626', fontSize: 11 }}>❌ {ex.error}</span>
+                ) : (
+                  <span style={{ color: 'var(--green)', fontSize: 11 }}>✓ OK</span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </details>
+      
+      {/* Actions */}
+      <div style={{ marginTop: 20, display: 'flex', gap: 12 }}>
+        <button className="btn btn-primary" onClick={onSave}>
+          <Icon name="download" size={13} color="white" strokeWidth={2} />
+          Salva in Esplora
+        </button>
+        <button className="btn btn-secondary" onClick={onDownload}>
+          <Icon name="download" size={13} strokeWidth={1.75} />
+          Scarica dati
+        </button>
+      </div>
+    </div>
+  )
+}
+
 // ── Main Pipeline component ───────────────────────────────────────────────────
 
 export default function Pipeline() {
@@ -541,6 +667,12 @@ export default function Pipeline() {
 
   const [running, setRunning] = useState(null)
   const [error, setError] = useState(null)
+
+  // Stato per la valutazione globale del dataset
+const [datasetEvalRunning, setDatasetEvalRunning] = useState(false)
+const [datasetEvalProgress, setDatasetEvalProgress] = useState({ current: 0, total: 0 })
+const [datasetEvalResults, setDatasetEvalResults] = useState(null)
+const [datasetEvalError, setDatasetEvalError] = useState(null)
 
   // Step status
   const steps = {
@@ -702,6 +834,39 @@ export default function Pipeline() {
     }
     setRunning(null)
   }
+
+  // NEW: Run evaluation on the entire dataset
+async function runDatasetEvaluation() {
+  if (!dataset || dataset.length === 0) return
+  
+  setDatasetEvalRunning(true)
+  setDatasetEvalError(null)
+  setDatasetEvalResults(null)
+  setDatasetEvalProgress({ current: 0, total: dataset.length })
+  
+  try {
+    const res = await api.pipeline.evaluateDataset({
+      dataset: dataset.map(ex => ({
+        question: ex.question,
+        docs: ex.docs || [],
+        nuggets: ex.nuggets || null,
+        // Passiamo già i docs originali, non quelli con noise
+      })),
+      model,
+      retrieve_method: retrieveMethod,
+      threshold,
+      top_k: topK,
+      eval_mode: effectiveMode,
+      noise_enabled: noiseEnabled,
+      noise_seed: 42,
+    })
+    setDatasetEvalResults(res)
+    setDatasetEvalProgress({ current: dataset.length, total: dataset.length })
+  } catch (e) {
+    setDatasetEvalError(`Errore valutazione dataset: ${e.message}`)
+  }
+  setDatasetEvalRunning(false)
+}
 
   function saveToExplore() {
     addPipelineResult({
@@ -922,7 +1087,7 @@ export default function Pipeline() {
         )}
       </StepCard>
 
-      {/* Step 6 — Evaluate (with mode toggle) */}
+            {/* Step 6 — Evaluate (with mode toggle) */}
       <StepCard
         num={6}
         title={
@@ -931,7 +1096,7 @@ export default function Pipeline() {
             {steps.evaluate !== 'locked' && (
               <EvalModeToggle
                 mode={evalMode}
-                onChange={mode => { setEvalMode(mode); setMetrics(null); setNuggetMetrics(null); setNuggetFieldError(null) }}
+                onChange={mode => { setEvalMode(mode); setMetrics(null); setNuggetMetrics(null); setNuggetFieldError(null); setDatasetEvalResults(null) }}
                 hasNuggets={hasNuggets}
               />
             )}
@@ -945,6 +1110,125 @@ export default function Pipeline() {
         {/* Inline field-missing error for nugget mode */}
         {nuggetFieldError && (
           <NuggetMissingFieldsError missingFields={nuggetFieldError} />
+        )}
+
+        {/* ============================================================ */}
+        {/* NEW: Dataset-wide evaluation button & results                */}
+        {/* ============================================================ */}
+        {dataset && dataset.length > 1 && (
+          <div style={{
+            marginBottom: 20,
+            padding: '16px 20px',
+            background: '#F5F3FF',
+            border: '2px dashed #C7D2FE',
+            borderRadius: 10,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: '#4338CA', marginBottom: 4 }}>
+                  Valuta tutto il dataset
+                </div>
+                <div style={{ fontSize: 12, color: '#6366F1' }}>
+                  Esegui l&apos;intera pipeline su tutti i {dataset.length} esempi e ottieni metriche globali
+                  di precision e recall aggregate.
+                </div>
+              </div>
+              <button
+                className="btn"
+                onClick={runDatasetEvaluation}
+                disabled={datasetEvalRunning}
+                style={{
+                  background: '#6366F1',
+                  color: 'white',
+                  border: 'none',
+                  padding: '10px 20px',
+                  fontWeight: 700,
+                  fontSize: 13,
+                  borderRadius: 8,
+                  cursor: datasetEvalRunning ? 'not-allowed' : 'pointer',
+                  opacity: datasetEvalRunning ? 0.7 : 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                }}
+              >
+                {datasetEvalRunning ? (
+                  <>
+                    <span className="spinner" style={{ width: 14, height: 14, borderColor: 'white', borderTopColor: 'transparent' }} />
+                    Valutazione in corso...
+                  </>
+                ) : (
+                  <>
+                    <Icon name="play" size={14} color="white" strokeWidth={2} />
+                    Valuta tutto ({dataset.length} esempi)
+                  </>
+                )}
+              </button>
+            </div>
+            
+            {/* Progress bar */}
+            {datasetEvalRunning && datasetEvalProgress.total > 0 && (
+              <div style={{ marginTop: 12 }}>
+                <div style={{
+                  display: 'flex', justifyContent: 'space-between',
+                  fontSize: 11, color: '#6366F1', marginBottom: 4,
+                }}>
+                  <span>Progresso</span>
+                  <span>{datasetEvalProgress.current}/{datasetEvalProgress.total}</span>
+                </div>
+                <div style={{
+                  height: 6, background: '#E0E7FF',
+                  borderRadius: 3, overflow: 'hidden',
+                }}>
+                  <div style={{
+                    height: '100%',
+                    width: `${(datasetEvalProgress.current / datasetEvalProgress.total) * 100}%`,
+                    background: '#6366F1',
+                    borderRadius: 3,
+                    transition: 'width 0.3s ease',
+                  }} />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+        
+        {/* Dataset evaluation error */}
+        {datasetEvalError && (
+          <div className="info-box info-box-red" style={{ marginBottom: 16 }}>
+            <Icon name="xCircle" size={15} strokeWidth={1.75} style={{ flexShrink: 0, marginTop: 1 }} />
+            <span>{datasetEvalError}</span>
+          </div>
+        )}
+        
+        {/* Dataset evaluation results */}
+        {datasetEvalResults && (
+          <DatasetEvalResultsView
+            results={datasetEvalResults}
+            onSave={() => {
+              addPipelineResult({
+                question: `[Dataset] ${datasetName}`,
+                dataset_eval_results: datasetEvalResults,
+              })
+              alert('Risultati globali salvati! Visibile nella pagina Esplora.')
+            }}
+            onDownload={() => {
+              downloadJSON(datasetEvalResults, timestampedFilename('dataset_eval'))
+            }}
+          />
+        )}
+
+        {/* Divider if we also have single-example results */}
+        {(metrics || nuggetMetrics) && datasetEvalResults && (
+          <div style={{
+            margin: '20px 0',
+            borderTop: '1px solid var(--border)',
+            paddingTop: 16,
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 12 }}>
+              Risultati esempio corrente
+            </div>
+          </div>
         )}
 
         {/* Standard metrics */}

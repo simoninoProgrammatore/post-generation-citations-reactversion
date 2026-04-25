@@ -67,6 +67,18 @@ class EvaluateNuggetsResponse(BaseModel):
     n_cited: int
     per_nugget: list[NuggetPerResult]
 
+class EvaluateDatasetRequest(BaseModel):
+    dataset: list[dict]           # ogni elemento ha question e docs (e nuggets se modalità nugget)
+    model: str = "claude-haiku-4-5-20251001"
+    retrieve_method: str = "nli"
+    threshold: float = 0.5
+    top_k: int = 3
+    eval_mode: str = "standard"   # "standard" | "nugget"
+    noise_enabled: bool = False
+    noise_seed: int = 42
+
+
+
 
 # ── Endpoints ─────────────────────────────────────────────────────────────────
 
@@ -239,3 +251,148 @@ async def evaluate_nuggets(req: EvaluateNuggetsRequest):
         return EvaluateNuggetsResponse(**result)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+# ── Endpoint corretto ───────────────────────────────────────────────
+@router.post("/evaluate-dataset")
+async def evaluate_dataset_endpoint(req: EvaluateDatasetRequest):
+    """
+    Valuta l'intero dataset e restituisce metriche globali aggregate.
+    """
+    import time, random
+
+    start_time = time.time()
+    per_example = []
+
+    # Prepara un pool di documenti dagli altri esempi per il noise (opzionale)
+    noise_pool = []
+    if req.noise_enabled:
+        for i, ex in enumerate(req.dataset):
+            for doc in (ex.get("docs") or []):
+                noise_pool.append({"example_idx": i, "doc": doc})
+
+    for idx, example in enumerate(req.dataset):
+        try:
+            query = example.get("question", "")
+            raw_passages = example.get("docs", [])
+
+            # Iniezione di documenti di disturbo
+            if req.noise_enabled and raw_passages and noise_pool:
+                rng = random.Random(req.noise_seed + idx)
+                other_docs = [d["doc"] for d in noise_pool if d["example_idx"] != idx]
+                n_noise = min(max(1, len(raw_passages) // 2), len(other_docs))
+                if n_noise > 0:
+                    noise_docs = rng.sample(other_docs, n_noise)
+                else:
+                    noise_docs = []
+                passages = list(raw_passages) + [{**d, "is_noise": True} for d in noise_docs]
+                rng.shuffle(passages)
+            else:
+                passages = raw_passages
+
+            # Step 2 – Generate
+            response_obj = pipeline_runners.run_generate(
+                query=query, model=req.model, passages=passages
+            )
+            response_text = response_obj if isinstance(response_obj, str) else response_obj.get("response", "")
+
+            # Step 3 – Decompose
+            claims = pipeline_runners.run_decompose(response_text, req.model)
+
+            # Step 4 – Retrieve
+            matched, _ = pipeline_runners.run_retrieve(
+                claims=claims,
+                passages=passages,
+                method=req.retrieve_method,
+                threshold=req.threshold,
+                top_k=req.top_k,
+            )
+
+            # Step 5 – Cite (opzionale, non usato nelle metriche)
+            cited_text, references = pipeline_runners.run_cite(response_text, matched)
+
+            # Step 6 – Evaluate
+            if req.eval_mode == "nugget":
+                nuggets = example.get("nuggets", [])
+                nugget_result = core_nuggets.compute_nugget_metrics(
+                    nuggets=nuggets,
+                    matched_claims=matched,
+                    use_nli=False,
+                    required_only=False,
+                )
+                per_example.append({
+                    "question": query,
+                    "nugget_metrics": nugget_result,
+                })
+            else:
+                metrics = {
+                    "citation_precision": core_evaluate.citation_precision_nli(matched),
+                    "citation_recall": core_evaluate.citation_recall_nli(matched),
+                    "factual_precision": core_evaluate.factual_precision(matched),
+                    "factual_precision_nli": core_evaluate.factual_precision_nli(matched),
+                    "unsupported_ratio": core_evaluate.unsupported_claim_ratio(matched),
+                    "avg_entailment_score": core_evaluate.average_entailment_score(matched),
+                }
+                per_example.append({
+                    "question": query,
+                    "metrics": metrics,
+                })
+
+        except Exception as e:
+            per_example.append({
+                "question": example.get("question", f"Example {idx}"),
+                "error": str(e),
+            })
+
+    # ── Aggregazione metriche globali ──────────────────────────────
+    global_metrics = {}
+
+    if req.eval_mode == "standard":
+        keys = [
+            "citation_precision", "citation_recall",
+            "factual_precision", "factual_precision_nli",
+            "unsupported_ratio", "avg_entailment_score"
+        ]
+        for k in keys:
+            vals = [
+                ex["metrics"][k]
+                for ex in per_example
+                if "metrics" in ex and k in ex["metrics"]
+            ]
+            if vals:
+                global_metrics[k] = sum(vals) / len(vals)
+
+    elif req.eval_mode == "nugget":
+        total_nuggets = 0
+        total_covered = 0
+        total_cited = 0
+        precs, recalls, covs = [], [], []
+        for ex in per_example:
+            nm = ex.get("nugget_metrics")
+            if nm:
+                precs.append(nm.get("nugget_precision", 0))
+                recalls.append(nm.get("nugget_recall", 0))
+                covs.append(nm.get("nugget_coverage", 0))
+                total_nuggets += nm.get("n_nuggets", 0)
+                total_covered += nm.get("n_covered", 0)
+                total_cited += nm.get("n_cited", 0)
+        if precs:
+            global_metrics["avg_nugget_precision"] = sum(precs) / len(precs)
+            global_metrics["avg_nugget_recall"] = sum(recalls) / len(recalls)
+            global_metrics["avg_nugget_coverage"] = sum(covs) / len(covs)
+        if total_nuggets > 0:
+            global_metrics["macro_nugget_precision"] = total_cited / total_covered if total_covered > 0 else 0.0
+            global_metrics["macro_nugget_recall"]   = total_cited / total_nuggets
+            global_metrics["macro_nugget_coverage"] = total_covered / total_nuggets
+        global_metrics["total_nuggets"] = total_nuggets
+        global_metrics["total_cited"]   = total_cited
+        global_metrics["total_covered"] = total_covered
+
+    runtime = round(time.time() - start_time, 1)
+    return {
+        "global_metrics": global_metrics,
+        "per_example": per_example,
+        "num_examples": len(req.dataset),
+        "num_successful": len([ex for ex in per_example if "error" not in ex]),
+        "runtime_seconds": runtime,
+        "eval_mode": req.eval_mode,
+    }    
