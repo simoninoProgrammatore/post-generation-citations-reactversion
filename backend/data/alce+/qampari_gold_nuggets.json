@@ -1,0 +1,2938 @@
+[
+  {
+    "sample_id": "qampari_custom_001",
+    "question": "What films were directed by Christopher Nolan?",
+    "answer": "Memento, The Dark Knight, Inception, Interstellar, Dunkirk, Oppenheimer.",
+    "docs": [
+      {
+        "id": "doc_001_1",
+        "title": "Christopher Nolan",
+        "text": "Christopher Edward Nolan is a British-American filmmaker. He is known for making personal, distinctive films within the Hollywood system. His films have grossed more than $6 billion worldwide. Nolan directed his first feature film, Following, in 1998. He gained international recognition with his second film, Memento, released in 2000. The film's non-linear narrative structure was widely praised by critics. Nolan then directed the psychological thriller Insomnia in 2002, starring Al Pacino and Robin Williams.",
+        "is_gold": true,
+        "golden_passage_title": "Christopher Nolan"
+      },
+      {
+        "id": "doc_001_2",
+        "title": "The Dark Knight Trilogy",
+        "text": "The Dark Knight Trilogy consists of three superhero films directed by Christopher Nolan. The trilogy began with Batman Begins in 2005, which rebooted the Batman film franchise. The Dark Knight followed in 2008, featuring Heath Ledger's iconic portrayal of the Joker. The trilogy concluded with The Dark Knight Rises in 2012. The Dark Knight is widely considered one of the greatest superhero films ever made and grossed over $1 billion worldwide.",
+        "is_gold": true,
+        "golden_passage_title": "The Dark Knight Trilogy"
+      },
+      {
+        "id": "doc_001_3",
+        "title": "Inception",
+        "text": "Inception is a 2010 science fiction action film written, produced, and directed by Christopher Nolan. The film stars Leonardo DiCaprio as a professional thief who steals information by infiltrating the subconscious of his targets. Nolan spent over ten years developing the screenplay. The film was a critical and commercial success, grossing over $836 million worldwide and winning four Academy Awards.",
+        "is_gold": true,
+        "golden_passage_title": "Inception"
+      },
+      {
+        "id": "doc_001_4",
+        "title": "Interstellar",
+        "text": "Interstellar is a 2014 epic science fiction film directed by Christopher Nolan, who co-wrote the screenplay with his brother Jonathan Nolan. The film stars Matthew McConaughey, Anne Hathaway, and Jessica Chastain. The story follows a group of astronauts who travel through a wormhole near Saturn in search of a new home for humanity. Nolan later directed Dunkirk in 2017, a war film depicting the Dunkirk evacuation during World War II, and Tenet in 2020, a spy film involving time inversion.",
+        "is_gold": true,
+        "golden_passage_title": "Interstellar"
+      },
+      {
+        "id": "doc_001_5",
+        "title": "Academy Award for Best Picture",
+        "text": "The Academy Award for Best Picture is presented annually by the Academy of Motion Picture Arts and Sciences. In 2024, Oppenheimer directed by Christopher Nolan won Best Picture at the 96th Academy Awards. The biographical film tells the story of J. Robert Oppenheimer and his role in developing the atomic bomb. Nolan also won his first Academy Award for Best Director for the film. Oppenheimer stars Cillian Murphy, Emily Blunt, Matt Damon, and Robert Downey Jr.",
+        "is_gold": true,
+        "golden_passage_title": "Academy Award for Best Picture"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 3,
+      "n_partial_support": 2,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Memento is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Memento"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Christopher Nolan",
+        "golden_evidence": "He gained international recognition with his second film, Memento, released in 2000."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The Dark Knight is a film directed by Christopher Nolan.",
+        "keywords": [
+          "The Dark Knight"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "The Dark Knight Trilogy",
+        "golden_evidence": "The Dark Knight followed in 2008, featuring Heath Ledger's iconic portrayal of the Joker."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Inception is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Inception"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Inception",
+        "golden_evidence": "Inception is a 2010 science fiction action film written, produced, and directed by Christopher Nolan."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Interstellar is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Interstellar"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Interstellar",
+        "golden_evidence": "Interstellar is a 2014 epic science fiction film directed by Christopher Nolan."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Dunkirk is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Dunkirk"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Interstellar",
+        "golden_evidence": "Nolan later directed Dunkirk in 2017, a war film depicting the Dunkirk evacuation during World War II."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Oppenheimer is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Oppenheimer"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "Academy Award for Best Picture",
+        "golden_evidence": "In 2024, Oppenheimer directed by Christopher Nolan won Best Picture at the 96th Academy Awards."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Batman Begins is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Batman Begins"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "The Dark Knight Trilogy",
+        "golden_evidence": "The trilogy began with Batman Begins in 2005, which rebooted the Batman film franchise."
+      },
+      {
+        "nugget_id": "n7",
+        "text": "Insomnia is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Insomnia"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Christopher Nolan",
+        "golden_evidence": "Nolan then directed the psychological thriller Insomnia in 2002, starring Al Pacino and Robin Williams."
+      },
+      {
+        "nugget_id": "n8",
+        "text": "Tenet is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Tenet"
+        ],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "Interstellar",
+        "golden_evidence": "Nolan later directed Dunkirk in 2017, a war film depicting the Dunkirk evacuation during World War II, and Tenet in 2020, a spy film involving time inversion."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_002",
+    "question": "What programming languages were created by developers at Bell Labs?",
+    "answer": "C, C++, AWK, S.",
+    "docs": [
+      {
+        "id": "doc_002_1",
+        "title": "C (programming language)",
+        "text": "C is a general-purpose programming language. It was created in 1972 by Dennis Ritchie at Bell Labs. C was designed as a systems programming language for the Unix operating system. It has since become one of the most widely used programming languages of all time. The language provides low-level access to memory and maps efficiently to machine instructions.",
+        "is_gold": true,
+        "golden_passage_title": "C (programming language)"
+      },
+      {
+        "id": "doc_002_2",
+        "title": "C++",
+        "text": "C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language. It was first released in 1985. Stroustrup began developing C++ at Bell Labs in 1979, initially calling it C with Classes. The language added object-oriented features such as classes, inheritance, and polymorphism to C.",
+        "is_gold": true,
+        "golden_passage_title": "C++"
+      },
+      {
+        "id": "doc_002_3",
+        "title": "AWK",
+        "text": "AWK is a programming language designed for text processing and data extraction. It was created at Bell Labs in 1977 by Alfred Aho, Peter Weinberger, and Brian Kernighan. The name AWK is derived from the surnames of its three creators. AWK is a standard feature of most Unix-like operating systems and is particularly useful for one-liner programs.",
+        "is_gold": true,
+        "golden_passage_title": "AWK"
+      },
+      {
+        "id": "doc_002_4",
+        "title": "Unix",
+        "text": "Unix is a family of multitasking, multi-user computer operating systems. The original Unix was developed at Bell Labs by Ken Thompson, Dennis Ritchie, and others in the 1970s. Unix was written in the C programming language, which was also developed at Bell Labs. The operating system has had a significant influence on the development of modern computing and has inspired many other systems including Linux and macOS.",
+        "is_gold": false,
+        "golden_passage_title": "Unix"
+      },
+      {
+        "id": "doc_002_5",
+        "title": "S (programming language)",
+        "text": "S is a statistical programming language developed primarily by John Chambers at Bell Labs. The first version of S was written in 1976. S was designed for statistical analysis and graphical display of data. The language later inspired the creation of R, an open-source implementation that became widely used in data science and academia.",
+        "is_gold": true,
+        "golden_passage_title": "S (programming language)"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 0,
+      "n_partial_support": 4,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "C is a programming language created by developers at Bell Labs.",
+        "keywords": [
+          "C"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "C (programming language)",
+        "golden_evidence": "It was created in 1972 by Dennis Ritchie at Bell Labs."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "C++ is a programming language created by developers at Bell Labs.",
+        "keywords": [
+          "C++"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "C++",
+        "golden_evidence": "Stroustrup began developing C++ at Bell Labs in 1979, initially calling it C with Classes."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "AWK is a programming language created by developers at Bell Labs.",
+        "keywords": [
+          "AWK"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "AWK",
+        "golden_evidence": "It was created at Bell Labs in 1977 by Alfred Aho, Peter Weinberger, and Brian Kernighan."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "S is a programming language created by developers at Bell Labs.",
+        "keywords": [
+          "S"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "S (programming language)",
+        "golden_evidence": "S is a statistical programming language developed primarily by John Chambers at Bell Labs."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Dennis Ritchie created the C programming language.",
+        "keywords": [
+          "Dennis Ritchie"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "C (programming language)",
+        "golden_evidence": "It was created in 1972 by Dennis Ritchie at Bell Labs."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_003",
+    "question": "What countries have hosted the FIFA World Cup in the 21st century?",
+    "answer": "South Korea, Japan, Germany, South Africa, Brazil, Russia, Qatar.",
+    "docs": [
+      {
+        "id": "doc_003_1",
+        "title": "2002 FIFA World Cup",
+        "text": "The 2002 FIFA World Cup was the 17th edition of the tournament. It was held in South Korea and Japan, making it the first World Cup to be hosted in Asia and the first to be held in more than one country. Brazil won the tournament, defeating Germany 2-0 in the final. Ronaldo scored both goals in the final.",
+        "is_gold": true,
+        "golden_passage_title": "2002 FIFA World Cup"
+      },
+      {
+        "id": "doc_003_2",
+        "title": "2006 FIFA World Cup",
+        "text": "The 2006 FIFA World Cup took place in Germany from June 9 to July 9, 2006. Italy won the tournament by defeating France in the final on penalties. The event was notable for the head-butting incident involving Zinedine Zidane in the final. A total of 3,359,439 spectators attended the 64 matches.",
+        "is_gold": true,
+        "golden_passage_title": "2006 FIFA World Cup"
+      },
+      {
+        "id": "doc_003_3",
+        "title": "2010 FIFA World Cup",
+        "text": "The 2010 FIFA World Cup was held in South Africa, becoming the first World Cup on the African continent. Spain won the tournament by defeating the Netherlands 1-0 in the final. The tournament was memorable for the use of the vuvuzela, a plastic horn that became a symbol of the event. The final was held at Soccer City stadium in Johannesburg.",
+        "is_gold": true,
+        "golden_passage_title": "2010 FIFA World Cup"
+      },
+      {
+        "id": "doc_003_4",
+        "title": "2014 FIFA World Cup",
+        "text": "The 2014 FIFA World Cup was the 20th edition of the FIFA World Cup. It was held in Brazil from June 12 to July 13, 2014. Germany won the tournament by defeating Argentina 1-0 in the final with a goal by Mario Gotze in extra time. The host nation Brazil suffered a historic 7-1 defeat against Germany in the semi-finals.",
+        "is_gold": true,
+        "golden_passage_title": "2014 FIFA World Cup"
+      },
+      {
+        "id": "doc_003_5",
+        "title": "FIFA World Cup hosts",
+        "text": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe. France won the tournament by defeating Croatia 4-2 in the final. The 2022 FIFA World Cup was held in Qatar, the first World Cup in the Middle East. Argentina won the 2022 tournament, defeating France in a penalty shootout in the final. The tournament was held in November and December due to Qatar's hot climate.",
+        "is_gold": true,
+        "golden_passage_title": "FIFA World Cup hosts"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 2,
+      "n_partial_support": 3,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "South Korea hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "South Korea"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "2002 FIFA World Cup",
+        "golden_evidence": "It was held in South Korea and Japan, making it the first World Cup to be hosted in Asia."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Japan hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "Japan"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "2002 FIFA World Cup",
+        "golden_evidence": "It was held in South Korea and Japan, making it the first World Cup to be hosted in Asia."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Germany hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "Germany"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "2006 FIFA World Cup",
+        "golden_evidence": "The 2006 FIFA World Cup took place in Germany from June 9 to July 9, 2006."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "South Africa hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "South Africa"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "2010 FIFA World Cup",
+        "golden_evidence": "The 2010 FIFA World Cup was held in South Africa, becoming the first World Cup on the African continent."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Brazil hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "Brazil"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "2014 FIFA World Cup",
+        "golden_evidence": "It was held in Brazil from June 12 to July 13, 2014."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Russia hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "Russia"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "FIFA World Cup hosts",
+        "golden_evidence": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Qatar hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "Qatar"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "FIFA World Cup hosts",
+        "golden_evidence": "The 2022 FIFA World Cup was held in Qatar, the first World Cup in the Middle East."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_004",
+    "question": "What novels were written by Haruki Murakami?",
+    "answer": "Norwegian Wood, Kafka on the Shore, 1Q84, The Wind-Up Bird Chronicle.",
+    "docs": [
+      {
+        "id": "doc_004_1",
+        "title": "Haruki Murakami",
+        "text": "Haruki Murakami is a Japanese novelist and short story writer. His novels include Norwegian Wood, published in 1987, which became a bestseller in Japan selling millions of copies. Murakami is also known for his novel The Wind-Up Bird Chronicle, published in 1994, which is considered one of his masterpieces. His writing style blends elements of realism with surrealism.",
+        "is_gold": true,
+        "golden_passage_title": "Haruki Murakami"
+      },
+      {
+        "id": "doc_004_2",
+        "title": "Kafka on the Shore",
+        "text": "Kafka on the Shore is a 2002 novel by Japanese author Haruki Murakami. The novel follows two parallel storylines involving a teenage boy named Kafka Tamura and an elderly man named Nakata. It was awarded the World Fantasy Award in 2006 and has been translated into numerous languages.",
+        "is_gold": true,
+        "golden_passage_title": "Kafka on the Shore"
+      },
+      {
+        "id": "doc_004_3",
+        "title": "1Q84",
+        "text": "1Q84 is a novel written by Haruki Murakami, published in three volumes in Japan in 2009 and 2010. The title is a play on the year 1984, with the letter Q replacing the number 9 in Japanese. The novel tells the parallel stories of Aomame, an assassin, and Tengo, a writer. It became one of the best-selling novels in Japan upon release.",
+        "is_gold": true,
+        "golden_passage_title": "1Q84"
+      },
+      {
+        "id": "doc_004_4",
+        "title": "Japanese literature",
+        "text": "Japanese literature spans a long history dating back to the 8th century. In the modern era, Japanese authors have gained international recognition. Kenzaburo Oe won the Nobel Prize in Literature in 1994. Banana Yoshimoto is known for her novel Kitchen, published in 1988. Contemporary Japanese literature continues to attract readers worldwide.",
+        "is_gold": false,
+        "golden_passage_title": "Japanese literature"
+      },
+      {
+        "id": "doc_004_5",
+        "title": "Magical realism",
+        "text": "Magical realism is a style of fiction that paints a realistic view of the modern world while incorporating magical elements. Gabriel Garcia Marquez is often credited as a pioneer of the genre with his novel One Hundred Years of Solitude. The genre has influenced many writers across the world including authors in Japan and Latin America.",
+        "is_gold": false,
+        "golden_passage_title": "Magical realism"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 3,
+      "n_distractors": 2,
+      "n_full_support": 1,
+      "n_partial_support": 2,
+      "n_no_support": 2
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Norwegian Wood is a novel written by Haruki Murakami.",
+        "keywords": [
+          "Norwegian Wood"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Haruki Murakami",
+        "golden_evidence": "His novels include Norwegian Wood, published in 1987, which became a bestseller in Japan selling millions of copies."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Kafka on the Shore is a novel written by Haruki Murakami.",
+        "keywords": [
+          "Kafka on the Shore"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Kafka on the Shore",
+        "golden_evidence": "Kafka on the Shore is a 2002 novel by Japanese author Haruki Murakami."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "1Q84 is a novel written by Haruki Murakami.",
+        "keywords": [
+          "1Q84"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "1Q84",
+        "golden_evidence": "1Q84 is a novel written by Haruki Murakami, published in three volumes in Japan in 2009 and 2010."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "The Wind-Up Bird Chronicle is a novel written by Haruki Murakami.",
+        "keywords": [
+          "The Wind-Up Bird Chronicle"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Haruki Murakami",
+        "golden_evidence": "Murakami is also known for his novel The Wind-Up Bird Chronicle, published in 1994."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Norwegian Wood was published in 1987.",
+        "keywords": [
+          "1987"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Haruki Murakami",
+        "golden_evidence": "His novels include Norwegian Wood, published in 1987."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_005",
+    "question": "What instruments did Miles Davis play?",
+    "answer": "Trumpet, flugelhorn, organ, piano.",
+    "docs": [
+      {
+        "id": "doc_005_1",
+        "title": "Miles Davis",
+        "text": "Miles Dewey Davis III was an American trumpeter, bandleader, and composer. He is among the most influential and acclaimed figures in the history of jazz and 20th-century music. Davis adopted a variety of musical directions throughout his career. He is best known as a trumpet player and his trumpet sound is one of the most recognizable in jazz history.",
+        "is_gold": true,
+        "golden_passage_title": "Miles Davis"
+      },
+      {
+        "id": "doc_005_2",
+        "title": "Kind of Blue",
+        "text": "Kind of Blue is a studio album by American jazz trumpeter Miles Davis. Released in 1959, it is regarded as one of the greatest jazz albums of all time. The album features Davis on trumpet alongside John Coltrane and Cannonball Adderley on saxophone. Bill Evans and Wynton Kelly played piano on the album. Kind of Blue has sold over five million copies in the United States.",
+        "is_gold": true,
+        "golden_passage_title": "Kind of Blue"
+      },
+      {
+        "id": "doc_005_3",
+        "title": "Bitches Brew",
+        "text": "Bitches Brew is a studio album by American jazz musician Miles Davis, released in 1970. The album marked Davis's transition to jazz fusion. Davis played trumpet and also played organ on several tracks. The album features electric piano, electric guitar, and multiple percussion instruments. It is widely considered a landmark album in the development of jazz fusion.",
+        "is_gold": true,
+        "golden_passage_title": "Bitches Brew"
+      },
+      {
+        "id": "doc_005_4",
+        "title": "Jazz trumpet",
+        "text": "The trumpet is one of the most prominent instruments in jazz music. Famous jazz trumpet players include Louis Armstrong, Dizzy Gillespie, Chet Baker, and Miles Davis. The flugelhorn, a brass instrument similar to the trumpet but with a darker tone, has also been used by jazz musicians. Miles Davis notably played the flugelhorn on several recordings throughout the 1950s and 1960s.",
+        "is_gold": true,
+        "golden_passage_title": "Jazz trumpet"
+      },
+      {
+        "id": "doc_005_5",
+        "title": "Jazz fusion",
+        "text": "Jazz fusion is a music genre that combines jazz with elements of rock, funk, and electronic music. The genre emerged in the late 1960s and early 1970s. Key artists include Herbie Hancock, Weather Report, and Return to Forever. Miles Davis is often credited as a pioneer of the genre with his album Bitches Brew. Davis experimented with electric instruments including electric piano during this period.",
+        "is_gold": false,
+        "golden_passage_title": "Jazz fusion"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 1,
+      "n_partial_support": 3,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Miles Davis played the trumpet.",
+        "keywords": [
+          "trumpet"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Miles Davis",
+        "golden_evidence": "He is best known as a trumpet player and his trumpet sound is one of the most recognizable in jazz history."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Miles Davis played the flugelhorn.",
+        "keywords": [
+          "flugelhorn"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Jazz trumpet",
+        "golden_evidence": "Miles Davis notably played the flugelhorn on several recordings throughout the 1950s and 1960s."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Miles Davis played the organ.",
+        "keywords": [
+          "organ"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Bitches Brew",
+        "golden_evidence": "Davis played trumpet and also played organ on several tracks."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Kind of Blue is one of the greatest jazz albums of all time.",
+        "keywords": [
+          "Kind of Blue"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Kind of Blue",
+        "golden_evidence": "Released in 1959, it is regarded as one of the greatest jazz albums of all time."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_006",
+    "question": "What universities did Barack Obama attend?",
+    "answer": "Occidental College, Columbia University, Harvard Law School.",
+    "docs": [
+      {
+        "id": "doc_006_1",
+        "title": "Barack Obama",
+        "text": "Barack Hussein Obama II is an American politician who served as the 44th president of the United States from 2009 to 2017. After graduating from high school in Honolulu, Obama attended Occidental College in Los Angeles for two years. He then transferred to Columbia University in New York City, where he graduated with a degree in political science in 1983.",
+        "is_gold": true,
+        "golden_passage_title": "Barack Obama"
+      },
+      {
+        "id": "doc_006_2",
+        "title": "Harvard Law School",
+        "text": "Harvard Law School is one of the professional graduate schools of Harvard University. Notable alumni include Barack Obama, who enrolled at the law school in 1988. Obama was elected as the first African American president of the Harvard Law Review in 1990. He graduated magna cum laude from Harvard Law School in 1991.",
+        "is_gold": true,
+        "golden_passage_title": "Harvard Law School"
+      },
+      {
+        "id": "doc_006_3",
+        "title": "List of presidents of the United States",
+        "text": "The president of the United States is the head of state and head of government. George Washington was the first president, serving from 1789 to 1797. The most recent presidents include Donald Trump, who served from 2017 to 2021, and Joe Biden, who took office in 2021. There have been 46 presidents in total.",
+        "is_gold": false,
+        "golden_passage_title": "List of presidents of the United States"
+      },
+      {
+        "id": "doc_006_4",
+        "title": "Columbia University",
+        "text": "Columbia University is a private Ivy League research university in New York City. Founded in 1754, it is the oldest institution of higher education in New York State. Columbia University has produced many notable alumni including Barack Obama, Alexander Hamilton, and Ruth Bader Ginsburg. The university is organized into twenty schools across three campuses.",
+        "is_gold": false,
+        "golden_passage_title": "Columbia University"
+      },
+      {
+        "id": "doc_006_5",
+        "title": "Occidental College",
+        "text": "Occidental College is a private liberal arts college in Los Angeles, California. Founded in 1887, it is one of the oldest liberal arts colleges on the West Coast. Barack Obama attended Occidental College from 1979 to 1981 before transferring to Columbia University. The college has an enrollment of approximately 2,000 students.",
+        "is_gold": false,
+        "golden_passage_title": "Occidental College"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 2,
+      "n_partial_support": 2,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Barack Obama attended Occidental College.",
+        "keywords": [
+          "Occidental College"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Barack Obama",
+        "golden_evidence": "Obama attended Occidental College in Los Angeles for two years."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Barack Obama attended Columbia University.",
+        "keywords": [
+          "Columbia University"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Barack Obama",
+        "golden_evidence": "He then transferred to Columbia University in New York City, where he graduated with a degree in political science in 1983."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Barack Obama attended Harvard Law School.",
+        "keywords": [
+          "Harvard Law School"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Harvard Law School",
+        "golden_evidence": "Notable alumni include Barack Obama, who enrolled at the law school in 1988."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Obama was president of the Harvard Law Review.",
+        "keywords": [
+          "Harvard Law Review"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Harvard Law School",
+        "golden_evidence": "Obama was elected as the first African American president of the Harvard Law Review in 1990."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_007",
+    "question": "What elements were discovered by Marie Curie?",
+    "answer": "Polonium, Radium.",
+    "docs": [
+      {
+        "id": "doc_007_1",
+        "title": "Marie Curie",
+        "text": "Marie Sklodowska Curie was a Polish and naturalized-French physicist and chemist. In 1898, she and her husband Pierre Curie discovered two new chemical elements. They announced the discovery of polonium, named after Marie's native country Poland, in July 1898. In December 1898, they announced the discovery of radium.",
+        "is_gold": true,
+        "golden_passage_title": "Marie Curie"
+      },
+      {
+        "id": "doc_007_2",
+        "title": "Polonium",
+        "text": "Polonium is a chemical element with the symbol Po and atomic number 84. It was discovered in 1898 by Marie and Pierre Curie. The element was named after Poland, the native country of Marie Curie. Polonium is a rare and highly radioactive element with no stable isotopes. It occurs naturally in uranium ores.",
+        "is_gold": true,
+        "golden_passage_title": "Polonium"
+      },
+      {
+        "id": "doc_007_3",
+        "title": "Radium",
+        "text": "Radium is a chemical element with the symbol Ra and atomic number 88. It was discovered by Marie and Pierre Curie in 1898, extracted from uraninite ore. Radium is intensely radioactive and glows with a faint blue light. It was formerly used in self-luminous paints for watches and clocks.",
+        "is_gold": false,
+        "golden_passage_title": "Radium"
+      },
+      {
+        "id": "doc_007_4",
+        "title": "Nobel Prize in Physics",
+        "text": "The Nobel Prize in Physics is awarded annually by the Royal Swedish Academy of Sciences. In 1903, Marie Curie, Pierre Curie, and Henri Becquerel shared the Nobel Prize in Physics for their research on radiation. Marie Curie later won a second Nobel Prize, this time in Chemistry, in 1911 for her discovery of radium and polonium.",
+        "is_gold": true,
+        "golden_passage_title": "Nobel Prize in Physics"
+      },
+      {
+        "id": "doc_007_5",
+        "title": "Periodic table",
+        "text": "The periodic table is a tabular display of the chemical elements organized by atomic number. Dmitri Mendeleev published the first widely recognized periodic table in 1869. The modern periodic table contains 118 confirmed elements. Many elements were discovered in the 19th and 20th centuries through advances in chemistry and physics.",
+        "is_gold": false,
+        "golden_passage_title": "Periodic table"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 2,
+      "n_partial_support": 2,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Polonium was discovered by Marie Curie.",
+        "keywords": [
+          "Polonium"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Marie Curie",
+        "golden_evidence": "They announced the discovery of polonium, named after Marie's native country Poland, in July 1898."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Radium was discovered by Marie Curie.",
+        "keywords": [
+          "Radium"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Marie Curie",
+        "golden_evidence": "In December 1898, they announced the discovery of radium."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Polonium was named after Poland.",
+        "keywords": [
+          "Poland"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Polonium",
+        "golden_evidence": "The element was named after Poland, the native country of Marie Curie."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Marie Curie won the Nobel Prize in Physics in 1903.",
+        "keywords": [
+          "Nobel Prize",
+          "1903"
+        ],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "Nobel Prize in Physics",
+        "golden_evidence": "In 1903, Marie Curie, Pierre Curie, and Henri Becquerel shared the Nobel Prize in Physics."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_008",
+    "question": "What operas were composed by Giuseppe Verdi?",
+    "answer": "Aida, La Traviata, Rigoletto, Nabucco, Otello.",
+    "docs": [
+      {
+        "id": "doc_008_1",
+        "title": "Giuseppe Verdi",
+        "text": "Giuseppe Fortunino Francesco Verdi was an Italian opera composer. He was born in 1813 near Busseto in the Province of Parma. Verdi's first major success came with the opera Nabucco, premiered at La Scala in Milan in 1842. The chorus Va pensiero from Nabucco became an anthem of Italian unification. Verdi went on to compose Rigoletto in 1851 and La Traviata in 1853, which became two of the most performed operas in the world.",
+        "is_gold": true,
+        "golden_passage_title": "Giuseppe Verdi"
+      },
+      {
+        "id": "doc_008_2",
+        "title": "Aida",
+        "text": "Aida is an opera in four acts by Giuseppe Verdi to an Italian libretto by Antonio Ghislanzoni. It was first performed on December 24, 1871 at the Khedivial Opera House in Cairo, Egypt. The opera was commissioned to celebrate the opening of the Suez Canal. Aida is set in ancient Egypt and tells the story of an Ethiopian princess captured and brought to Egypt.",
+        "is_gold": true,
+        "golden_passage_title": "Aida"
+      },
+      {
+        "id": "doc_008_3",
+        "title": "Otello (Verdi)",
+        "text": "Otello is an opera in four acts by Giuseppe Verdi, with an Italian libretto by Arrigo Boito based on Shakespeare's play Othello. It premiered at La Scala in Milan on February 5, 1887. Otello is considered one of the greatest operas ever written and represents the culmination of Verdi's career as a dramatic composer.",
+        "is_gold": true,
+        "golden_passage_title": "Otello (Verdi)"
+      },
+      {
+        "id": "doc_008_4",
+        "title": "La Scala",
+        "text": "La Scala, officially the Teatro alla Scala, is an opera house in Milan, Italy. It was inaugurated on August 3, 1778. La Scala has hosted premieres of many famous operas throughout its history. The opera house seats approximately 2,000 people and is considered one of the leading opera houses in the world.",
+        "is_gold": false,
+        "golden_passage_title": "La Scala"
+      },
+      {
+        "id": "doc_008_5",
+        "title": "Italian opera",
+        "text": "Italian opera is both the art of opera in Italy and opera in the Italian language. Opera was born in Italy around the year 1600 and Italian opera has continued to play a dominant role in the history of the art form. Famous Italian opera composers include Rossini, Donizetti, Bellini, Verdi, and Puccini. Italian remains the most common language used in opera performance.",
+        "is_gold": false,
+        "golden_passage_title": "Italian opera"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 3,
+      "n_distractors": 2,
+      "n_full_support": 1,
+      "n_partial_support": 2,
+      "n_no_support": 2
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Aida is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Aida"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Aida",
+        "golden_evidence": "Aida is an opera in four acts by Giuseppe Verdi to an Italian libretto by Antonio Ghislanzoni."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "La Traviata is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "La Traviata"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "Verdi went on to compose Rigoletto in 1851 and La Traviata in 1853."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Rigoletto is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Rigoletto"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "Verdi went on to compose Rigoletto in 1851 and La Traviata in 1853."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Nabucco is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Nabucco"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "Verdi's first major success came with the opera Nabucco, premiered at La Scala in Milan in 1842."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Otello is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Otello"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Otello (Verdi)",
+        "golden_evidence": "Otello is an opera in four acts by Giuseppe Verdi."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Nabucco premiered at La Scala in Milan in 1842.",
+        "keywords": [
+          "La Scala",
+          "1842"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "Verdi's first major success came with the opera Nabucco, premiered at La Scala in Milan in 1842."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_009",
+    "question": "What planets in the solar system have rings?",
+    "answer": "Saturn, Jupiter, Uranus, Neptune.",
+    "docs": [
+      {
+        "id": "doc_009_1",
+        "title": "Saturn",
+        "text": "Saturn is the sixth planet from the Sun and the second-largest in the Solar System. It is best known for its prominent ring system, which is composed mainly of ice particles, rocky debris, and dust. Saturn's rings extend from 6,630 to 120,700 kilometers above its equator. The rings were first observed by Galileo Galilei in 1610.",
+        "is_gold": true,
+        "golden_passage_title": "Saturn"
+      },
+      {
+        "id": "doc_009_2",
+        "title": "Jupiter",
+        "text": "Jupiter is the fifth planet from the Sun and the largest in the Solar System. Jupiter has a faint ring system that was discovered in 1979 by the Voyager 1 space probe. The rings are composed mainly of dust particles ejected from the surfaces of Jupiter's four small inner moons. Unlike Saturn's rings, Jupiter's rings are very thin and difficult to observe.",
+        "is_gold": true,
+        "golden_passage_title": "Jupiter"
+      },
+      {
+        "id": "doc_009_3",
+        "title": "Uranus",
+        "text": "Uranus is the seventh planet from the Sun. It has the third-largest planetary radius and fourth-largest planetary mass in the Solar System. Uranus has a ring system that was discovered in 1977 by astronomers James Elliot, Edward Dunham, and Jessica Mink. The rings of Uranus are composed of extremely dark particles ranging in size from micrometers to a fraction of a meter.",
+        "is_gold": true,
+        "golden_passage_title": "Uranus"
+      },
+      {
+        "id": "doc_009_4",
+        "title": "Neptune",
+        "text": "Neptune is the eighth and farthest known planet from the Sun in the Solar System. Neptune has a faint and fragmented ring system, confirmed by Voyager 2 in 1989. The rings are named after astronomers who contributed to the discovery of Neptune. Neptune's rings are composed of ice particles coated with silicates and carbon-based material.",
+        "is_gold": true,
+        "golden_passage_title": "Neptune"
+      },
+      {
+        "id": "doc_009_5",
+        "title": "Planetary ring",
+        "text": "A planetary ring is a ring of cosmic dust and other small particles orbiting around a planet in a flat disc-shaped region. All four of the Solar System's giant planets, Jupiter, Saturn, Uranus, and Neptune, have ring systems. Saturn's ring system is by far the most extensive and visible. Ring systems have also been detected around some asteroids and dwarf planets.",
+        "is_gold": false,
+        "golden_passage_title": "Planetary ring"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 1,
+      "n_partial_support": 4,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Saturn has rings.",
+        "keywords": [
+          "Saturn"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Saturn",
+        "golden_evidence": "It is best known for its prominent ring system, which is composed mainly of ice particles, rocky debris, and dust."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Jupiter has rings.",
+        "keywords": [
+          "Jupiter"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Jupiter",
+        "golden_evidence": "Jupiter has a faint ring system that was discovered in 1979 by the Voyager 1 space probe."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Uranus has rings.",
+        "keywords": [
+          "Uranus"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Uranus",
+        "golden_evidence": "Uranus has a ring system that was discovered in 1977 by astronomers James Elliot, Edward Dunham, and Jessica Mink."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Neptune has rings.",
+        "keywords": [
+          "Neptune"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Neptune",
+        "golden_evidence": "Neptune has a faint and fragmented ring system, confirmed by Voyager 2 in 1989."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Saturn's rings were first observed by Galileo in 1610.",
+        "keywords": [
+          "Galileo",
+          "1610"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Saturn",
+        "golden_evidence": "The rings were first observed by Galileo Galilei in 1610."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_010",
+    "question": "What companies did Elon Musk found or co-found?",
+    "answer": "Zip2, X.com, SpaceX, Tesla, Neuralink, The Boring Company.",
+    "docs": [
+      {
+        "id": "doc_010_1",
+        "title": "Elon Musk",
+        "text": "Elon Reeve Musk is a businessman and investor known for his key roles in the space company SpaceX and the electric vehicle company Tesla. In 1995, Musk co-founded Zip2, a web software company that provided business directories and maps for newspapers. Compaq acquired Zip2 in 1999 for $307 million. Musk then co-founded X.com, an online financial services company, in 1999.",
+        "is_gold": true,
+        "golden_passage_title": "Elon Musk"
+      },
+      {
+        "id": "doc_010_2",
+        "title": "SpaceX",
+        "text": "Space Exploration Technologies Corp., commonly referred to as SpaceX, is an American spacecraft manufacturer and space launch provider. SpaceX was founded in 2002 by Elon Musk with the goal of reducing space transportation costs and enabling the colonization of Mars. The company developed the Falcon 1, Falcon 9, and Falcon Heavy launch vehicles, as well as the Starship spacecraft.",
+        "is_gold": true,
+        "golden_passage_title": "SpaceX"
+      },
+      {
+        "id": "doc_010_3",
+        "title": "Tesla, Inc.",
+        "text": "Tesla, Inc. is an American multinational automotive and clean energy company headquartered in Austin, Texas. Tesla was incorporated in 2003 by Martin Eberhard and Marc Tarpenning. Elon Musk joined as chairman of the board and led early funding rounds. A lawsuit settlement in 2009 allows five people, including Musk, Eberhard, Tarpenning, JB Straubel, and Ian Wright, to call themselves co-founders of Tesla.",
+        "is_gold": true,
+        "golden_passage_title": "Tesla, Inc."
+      },
+      {
+        "id": "doc_010_4",
+        "title": "Neuralink",
+        "text": "Neuralink Corporation is a neurotechnology company founded by Elon Musk and others in 2016. The company develops brain-computer interface devices. Neuralink aims to help people with neurological conditions by enabling communication between the brain and computers. In 2024, Neuralink implanted its first brain chip in a human patient.",
+        "is_gold": true,
+        "golden_passage_title": "Neuralink"
+      },
+      {
+        "id": "doc_010_5",
+        "title": "The Boring Company",
+        "text": "The Boring Company is an American infrastructure and tunnel construction company founded by Elon Musk in 2016. The company was created to build underground transportation tunnels to reduce traffic congestion. The Boring Company completed the Las Vegas Convention Center Loop in 2021. The company aims to significantly reduce the cost of tunnel construction.",
+        "is_gold": true,
+        "golden_passage_title": "The Boring Company"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 1,
+      "n_partial_support": 4,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Zip2 is a company co-founded by Elon Musk.",
+        "keywords": [
+          "Zip2"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Elon Musk",
+        "golden_evidence": "In 1995, Musk co-founded Zip2, a web software company that provided business directories and maps for newspapers."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "X.com is a company co-founded by Elon Musk.",
+        "keywords": [
+          "X.com"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Elon Musk",
+        "golden_evidence": "Musk then co-founded X.com, an online financial services company, in 1999."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "SpaceX is a company founded by Elon Musk.",
+        "keywords": [
+          "SpaceX"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "SpaceX",
+        "golden_evidence": "SpaceX was founded in 2002 by Elon Musk with the goal of reducing space transportation costs."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Tesla is a company co-founded by Elon Musk.",
+        "keywords": [
+          "Tesla"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Tesla, Inc.",
+        "golden_evidence": "A lawsuit settlement in 2009 allows five people, including Musk, Eberhard, Tarpenning, JB Straubel, and Ian Wright, to call themselves co-founders of Tesla."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Neuralink is a company founded by Elon Musk.",
+        "keywords": [
+          "Neuralink"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Neuralink",
+        "golden_evidence": "Neuralink Corporation is a neurotechnology company founded by Elon Musk and others in 2016."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "The Boring Company is a company founded by Elon Musk.",
+        "keywords": [
+          "The Boring Company"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "The Boring Company",
+        "golden_evidence": "The Boring Company is an American infrastructure and tunnel construction company founded by Elon Musk in 2016."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Zip2 was acquired by Compaq in 1999.",
+        "keywords": [
+          "Compaq",
+          "1999"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Elon Musk",
+        "golden_evidence": "Compaq acquired Zip2 in 1999 for $307 million."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_001",
+    "question": "What films were directed by Christopher Nolan?",
+    "answer": "Memento, The Dark Knight, Inception, Interstellar, Dunkirk, Oppenheimer.",
+    "docs": [
+      {
+        "id": "doc_001_1",
+        "title": "Christopher Nolan",
+        "text": "Christopher Edward Nolan is a British-American filmmaker. He is known for making personal, distinctive films within the Hollywood system. His films have grossed more than $6 billion worldwide. Nolan directed his first feature film, Following, in 1998. He gained international recognition with his second film, Memento, released in 2000. The film's non-linear narrative structure was widely praised by critics. Nolan then directed the psychological thriller Insomnia in 2002, starring Al Pacino and Robin Williams."
+      },
+      {
+        "id": "doc_001_2",
+        "title": "The Dark Knight Trilogy",
+        "text": "The Dark Knight Trilogy consists of three superhero films directed by Christopher Nolan. The trilogy began with Batman Begins in 2005, which rebooted the Batman film franchise. The Dark Knight followed in 2008, featuring Heath Ledger's iconic portrayal of the Joker. The trilogy concluded with The Dark Knight Rises in 2012. The Dark Knight is widely considered one of the greatest superhero films ever made and grossed over $1 billion worldwide."
+      },
+      {
+        "id": "doc_001_3",
+        "title": "Inception",
+        "text": "Inception is a 2010 science fiction action film written, produced, and directed by Christopher Nolan. The film stars Leonardo DiCaprio as a professional thief who steals information by infiltrating the subconscious of his targets. Nolan spent over ten years developing the screenplay. The film was a critical and commercial success, grossing over $836 million worldwide and winning four Academy Awards."
+      },
+      {
+        "id": "doc_001_4",
+        "title": "Interstellar",
+        "text": "Interstellar is a 2014 epic science fiction film directed by Christopher Nolan, who co-wrote the screenplay with his brother Jonathan Nolan. The film stars Matthew McConaughey, Anne Hathaway, and Jessica Chastain. The story follows a group of astronauts who travel through a wormhole near Saturn in search of a new home for humanity. Nolan later directed Dunkirk in 2017, a war film depicting the Dunkirk evacuation during World War II, and Tenet in 2020, a spy film involving time inversion."
+      },
+      {
+        "id": "doc_001_5",
+        "title": "Academy Award for Best Picture",
+        "text": "The Academy Award for Best Picture is presented annually by the Academy of Motion Picture Arts and Sciences. In 2024, Oppenheimer directed by Christopher Nolan won Best Picture at the 96th Academy Awards. The biographical film tells the story of J. Robert Oppenheimer and his role in developing the atomic bomb. Nolan also won his first Academy Award for Best Director for the film. Oppenheimer stars Cillian Murphy, Emily Blunt, Matt Damon, and Robert Downey Jr."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 3,
+      "n_partial_support": 2,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Memento is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Memento"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Christopher Nolan",
+        "golden_evidence": "He gained international recognition with his second film, Memento, released in 2000."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The Dark Knight is a film directed by Christopher Nolan.",
+        "keywords": [
+          "The Dark Knight"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "The Dark Knight Trilogy",
+        "golden_evidence": "The Dark Knight followed in 2008, featuring Heath Ledger's iconic portrayal of the Joker."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Inception is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Inception"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Inception",
+        "golden_evidence": "Inception is a 2010 science fiction action film written, produced, and directed by Christopher Nolan."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Interstellar is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Interstellar"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Interstellar",
+        "golden_evidence": "Interstellar is a 2014 epic science fiction film directed by Christopher Nolan."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Dunkirk is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Dunkirk"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Interstellar",
+        "golden_evidence": "Nolan later directed Dunkirk in 2017, a war film depicting the Dunkirk evacuation during World War II."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Oppenheimer is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Oppenheimer"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "Academy Award for Best Picture",
+        "golden_evidence": "In 2024, Oppenheimer directed by Christopher Nolan won Best Picture at the 96th Academy Awards."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Batman Begins is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Batman Begins"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "The Dark Knight Trilogy",
+        "golden_evidence": "The trilogy began with Batman Begins in 2005, which rebooted the Batman film franchise."
+      },
+      {
+        "nugget_id": "n7",
+        "text": "Insomnia is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Insomnia"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Christopher Nolan",
+        "golden_evidence": "Nolan then directed the psychological thriller Insomnia in 2002, starring Al Pacino and Robin Williams."
+      },
+      {
+        "nugget_id": "n8",
+        "text": "Tenet is a film directed by Christopher Nolan.",
+        "keywords": [
+          "Tenet"
+        ],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "Interstellar",
+        "golden_evidence": "Nolan later directed Dunkirk in 2017, a war film depicting the Dunkirk evacuation during World War II, and Tenet in 2020, a spy film involving time inversion."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_002",
+    "question": "What programming languages were created by developers at Bell Labs?",
+    "answer": "C, C++, AWK, S.",
+    "docs": [
+      {
+        "id": "doc_002_1",
+        "title": "C (programming language)",
+        "text": "C is a general-purpose programming language. It was created in 1972 by Dennis Ritchie at Bell Labs. C was designed as a systems programming language for the Unix operating system. It has since become one of the most widely used programming languages of all time. The language provides low-level access to memory and maps efficiently to machine instructions."
+      },
+      {
+        "id": "doc_002_2",
+        "title": "C++",
+        "text": "C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language. It was first released in 1985. Stroustrup began developing C++ at Bell Labs in 1979, initially calling it C with Classes. The language added object-oriented features such as classes, inheritance, and polymorphism to C."
+      },
+      {
+        "id": "doc_002_3",
+        "title": "AWK",
+        "text": "AWK is a programming language designed for text processing and data extraction. It was created at Bell Labs in 1977 by Alfred Aho, Peter Weinberger, and Brian Kernighan. The name AWK is derived from the surnames of its three creators. AWK is a standard feature of most Unix-like operating systems and is particularly useful for one-liner programs."
+      },
+      {
+        "id": "doc_002_4",
+        "title": "Unix",
+        "text": "Unix is a family of multitasking, multi-user computer operating systems. The original Unix was developed at Bell Labs by Ken Thompson, Dennis Ritchie, and others in the 1970s. Unix was written in the C programming language, which was also developed at Bell Labs. The operating system has had a significant influence on the development of modern computing and has inspired many other systems including Linux and macOS."
+      },
+      {
+        "id": "doc_002_5",
+        "title": "S (programming language)",
+        "text": "S is a statistical programming language developed primarily by John Chambers at Bell Labs. The first version of S was written in 1976. S was designed for statistical analysis and graphical display of data. The language later inspired the creation of R, an open-source implementation that became widely used in data science and academia."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 0,
+      "n_partial_support": 4,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "C is a programming language created by developers at Bell Labs.",
+        "keywords": [
+          "C"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "C (programming language)",
+        "golden_evidence": "It was created in 1972 by Dennis Ritchie at Bell Labs."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "C++ is a programming language created by developers at Bell Labs.",
+        "keywords": [
+          "C++"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "C++",
+        "golden_evidence": "Stroustrup began developing C++ at Bell Labs in 1979, initially calling it C with Classes."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "AWK is a programming language created by developers at Bell Labs.",
+        "keywords": [
+          "AWK"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "AWK",
+        "golden_evidence": "It was created at Bell Labs in 1977 by Alfred Aho, Peter Weinberger, and Brian Kernighan."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "S is a programming language created by developers at Bell Labs.",
+        "keywords": [
+          "S"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "S (programming language)",
+        "golden_evidence": "S is a statistical programming language developed primarily by John Chambers at Bell Labs."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Dennis Ritchie created the C programming language.",
+        "keywords": [
+          "Dennis Ritchie"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "C (programming language)",
+        "golden_evidence": "It was created in 1972 by Dennis Ritchie at Bell Labs."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_003",
+    "question": "What countries have hosted the FIFA World Cup in the 21st century?",
+    "answer": "South Korea, Japan, Germany, South Africa, Brazil, Russia, Qatar.",
+    "docs": [
+      {
+        "id": "doc_003_1",
+        "title": "2002 FIFA World Cup",
+        "text": "The 2002 FIFA World Cup was the 17th edition of the tournament. It was held in South Korea and Japan, making it the first World Cup to be hosted in Asia and the first to be held in more than one country. Brazil won the tournament, defeating Germany 2-0 in the final. Ronaldo scored both goals in the final."
+      },
+      {
+        "id": "doc_003_2",
+        "title": "2006 FIFA World Cup",
+        "text": "The 2006 FIFA World Cup took place in Germany from June 9 to July 9, 2006. Italy won the tournament by defeating France in the final on penalties. The event was notable for the head-butting incident involving Zinedine Zidane in the final. A total of 3,359,439 spectators attended the 64 matches."
+      },
+      {
+        "id": "doc_003_3",
+        "title": "2010 FIFA World Cup",
+        "text": "The 2010 FIFA World Cup was held in South Africa, becoming the first World Cup on the African continent. Spain won the tournament by defeating the Netherlands 1-0 in the final. The tournament was memorable for the use of the vuvuzela, a plastic horn that became a symbol of the event. The final was held at Soccer City stadium in Johannesburg."
+      },
+      {
+        "id": "doc_003_4",
+        "title": "2014 FIFA World Cup",
+        "text": "The 2014 FIFA World Cup was the 20th edition of the FIFA World Cup. It was held in Brazil from June 12 to July 13, 2014. Germany won the tournament by defeating Argentina 1-0 in the final with a goal by Mario Gotze in extra time. The host nation Brazil suffered a historic 7-1 defeat against Germany in the semi-finals."
+      },
+      {
+        "id": "doc_003_5",
+        "title": "FIFA World Cup hosts",
+        "text": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe. France won the tournament by defeating Croatia 4-2 in the final. The 2022 FIFA World Cup was held in Qatar, the first World Cup in the Middle East. Argentina won the 2022 tournament, defeating France in a penalty shootout in the final. The tournament was held in November and December due to Qatar's hot climate."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 2,
+      "n_partial_support": 3,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "South Korea hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "South Korea"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "2002 FIFA World Cup",
+        "golden_evidence": "It was held in South Korea and Japan, making it the first World Cup to be hosted in Asia."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Japan hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "Japan"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "2002 FIFA World Cup",
+        "golden_evidence": "It was held in South Korea and Japan, making it the first World Cup to be hosted in Asia."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Germany hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "Germany"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "2006 FIFA World Cup",
+        "golden_evidence": "The 2006 FIFA World Cup took place in Germany from June 9 to July 9, 2006."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "South Africa hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "South Africa"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "2010 FIFA World Cup",
+        "golden_evidence": "The 2010 FIFA World Cup was held in South Africa, becoming the first World Cup on the African continent."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Brazil hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "Brazil"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "2014 FIFA World Cup",
+        "golden_evidence": "It was held in Brazil from June 12 to July 13, 2014."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Russia hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "Russia"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "FIFA World Cup hosts",
+        "golden_evidence": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Qatar hosted the FIFA World Cup in the 21st century.",
+        "keywords": [
+          "Qatar"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "FIFA World Cup hosts",
+        "golden_evidence": "The 2022 FIFA World Cup was held in Qatar, the first World Cup in the Middle East."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_004",
+    "question": "What novels were written by Haruki Murakami?",
+    "answer": "Norwegian Wood, Kafka on the Shore, 1Q84, The Wind-Up Bird Chronicle.",
+    "docs": [
+      {
+        "id": "doc_004_1",
+        "title": "Haruki Murakami",
+        "text": "Haruki Murakami is a Japanese novelist and short story writer. His novels include Norwegian Wood, published in 1987, which became a bestseller in Japan selling millions of copies. Murakami is also known for his novel The Wind-Up Bird Chronicle, published in 1994, which is considered one of his masterpieces. His writing style blends elements of realism with surrealism."
+      },
+      {
+        "id": "doc_004_2",
+        "title": "Kafka on the Shore",
+        "text": "Kafka on the Shore is a 2002 novel by Japanese author Haruki Murakami. The novel follows two parallel storylines involving a teenage boy named Kafka Tamura and an elderly man named Nakata. It was awarded the World Fantasy Award in 2006 and has been translated into numerous languages."
+      },
+      {
+        "id": "doc_004_3",
+        "title": "1Q84",
+        "text": "1Q84 is a novel written by Haruki Murakami, published in three volumes in Japan in 2009 and 2010. The title is a play on the year 1984, with the letter Q replacing the number 9 in Japanese. The novel tells the parallel stories of Aomame, an assassin, and Tengo, a writer. It became one of the best-selling novels in Japan upon release."
+      },
+      {
+        "id": "doc_004_4",
+        "title": "Japanese literature",
+        "text": "Japanese literature spans a long history dating back to the 8th century. In the modern era, Japanese authors have gained international recognition. Kenzaburo Oe won the Nobel Prize in Literature in 1994. Banana Yoshimoto is known for her novel Kitchen, published in 1988. Contemporary Japanese literature continues to attract readers worldwide."
+      },
+      {
+        "id": "doc_004_5",
+        "title": "Magical realism",
+        "text": "Magical realism is a style of fiction that paints a realistic view of the modern world while incorporating magical elements. Gabriel Garcia Marquez is often credited as a pioneer of the genre with his novel One Hundred Years of Solitude. The genre has influenced many writers across the world including authors in Japan and Latin America."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 3,
+      "n_distractors": 2,
+      "n_full_support": 1,
+      "n_partial_support": 2,
+      "n_no_support": 2
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Norwegian Wood is a novel written by Haruki Murakami.",
+        "keywords": [
+          "Norwegian Wood"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Haruki Murakami",
+        "golden_evidence": "His novels include Norwegian Wood, published in 1987, which became a bestseller in Japan selling millions of copies."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Kafka on the Shore is a novel written by Haruki Murakami.",
+        "keywords": [
+          "Kafka on the Shore"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Kafka on the Shore",
+        "golden_evidence": "Kafka on the Shore is a 2002 novel by Japanese author Haruki Murakami."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "1Q84 is a novel written by Haruki Murakami.",
+        "keywords": [
+          "1Q84"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "1Q84",
+        "golden_evidence": "1Q84 is a novel written by Haruki Murakami, published in three volumes in Japan in 2009 and 2010."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "The Wind-Up Bird Chronicle is a novel written by Haruki Murakami.",
+        "keywords": [
+          "The Wind-Up Bird Chronicle"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Haruki Murakami",
+        "golden_evidence": "Murakami is also known for his novel The Wind-Up Bird Chronicle, published in 1994."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Norwegian Wood was published in 1987.",
+        "keywords": [
+          "1987"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Haruki Murakami",
+        "golden_evidence": "His novels include Norwegian Wood, published in 1987."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_005",
+    "question": "What instruments did Miles Davis play?",
+    "answer": "Trumpet, flugelhorn, organ, piano.",
+    "docs": [
+      {
+        "id": "doc_005_1",
+        "title": "Miles Davis",
+        "text": "Miles Dewey Davis III was an American trumpeter, bandleader, and composer. He is among the most influential and acclaimed figures in the history of jazz and 20th-century music. Davis adopted a variety of musical directions throughout his career. He is best known as a trumpet player and his trumpet sound is one of the most recognizable in jazz history."
+      },
+      {
+        "id": "doc_005_2",
+        "title": "Kind of Blue",
+        "text": "Kind of Blue is a studio album by American jazz trumpeter Miles Davis. Released in 1959, it is regarded as one of the greatest jazz albums of all time. The album features Davis on trumpet alongside John Coltrane and Cannonball Adderley on saxophone. Bill Evans and Wynton Kelly played piano on the album. Kind of Blue has sold over five million copies in the United States."
+      },
+      {
+        "id": "doc_005_3",
+        "title": "Bitches Brew",
+        "text": "Bitches Brew is a studio album by American jazz musician Miles Davis, released in 1970. The album marked Davis's transition to jazz fusion. Davis played trumpet and also played organ on several tracks. The album features electric piano, electric guitar, and multiple percussion instruments. It is widely considered a landmark album in the development of jazz fusion."
+      },
+      {
+        "id": "doc_005_4",
+        "title": "Jazz trumpet",
+        "text": "The trumpet is one of the most prominent instruments in jazz music. Famous jazz trumpet players include Louis Armstrong, Dizzy Gillespie, Chet Baker, and Miles Davis. The flugelhorn, a brass instrument similar to the trumpet but with a darker tone, has also been used by jazz musicians. Miles Davis notably played the flugelhorn on several recordings throughout the 1950s and 1960s."
+      },
+      {
+        "id": "doc_005_5",
+        "title": "Jazz fusion",
+        "text": "Jazz fusion is a music genre that combines jazz with elements of rock, funk, and electronic music. The genre emerged in the late 1960s and early 1970s. Key artists include Herbie Hancock, Weather Report, and Return to Forever. Miles Davis is often credited as a pioneer of the genre with his album Bitches Brew. Davis experimented with electric instruments including electric piano during this period."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 1,
+      "n_partial_support": 3,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Miles Davis played the trumpet.",
+        "keywords": [
+          "trumpet"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Miles Davis",
+        "golden_evidence": "He is best known as a trumpet player and his trumpet sound is one of the most recognizable in jazz history."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Miles Davis played the flugelhorn.",
+        "keywords": [
+          "flugelhorn"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Jazz trumpet",
+        "golden_evidence": "Miles Davis notably played the flugelhorn on several recordings throughout the 1950s and 1960s."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Miles Davis played the organ.",
+        "keywords": [
+          "organ"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Bitches Brew",
+        "golden_evidence": "Davis played trumpet and also played organ on several tracks."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Kind of Blue is one of the greatest jazz albums of all time.",
+        "keywords": [
+          "Kind of Blue"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Kind of Blue",
+        "golden_evidence": "Released in 1959, it is regarded as one of the greatest jazz albums of all time."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_006",
+    "question": "What universities did Barack Obama attend?",
+    "answer": "Occidental College, Columbia University, Harvard Law School.",
+    "docs": [
+      {
+        "id": "doc_006_1",
+        "title": "Barack Obama",
+        "text": "Barack Hussein Obama II is an American politician who served as the 44th president of the United States from 2009 to 2017. After graduating from high school in Honolulu, Obama attended Occidental College in Los Angeles for two years. He then transferred to Columbia University in New York City, where he graduated with a degree in political science in 1983."
+      },
+      {
+        "id": "doc_006_2",
+        "title": "Harvard Law School",
+        "text": "Harvard Law School is one of the professional graduate schools of Harvard University. Notable alumni include Barack Obama, who enrolled at the law school in 1988. Obama was elected as the first African American president of the Harvard Law Review in 1990. He graduated magna cum laude from Harvard Law School in 1991."
+      },
+      {
+        "id": "doc_006_3",
+        "title": "List of presidents of the United States",
+        "text": "The president of the United States is the head of state and head of government. George Washington was the first president, serving from 1789 to 1797. The most recent presidents include Donald Trump, who served from 2017 to 2021, and Joe Biden, who took office in 2021. There have been 46 presidents in total."
+      },
+      {
+        "id": "doc_006_4",
+        "title": "Columbia University",
+        "text": "Columbia University is a private Ivy League research university in New York City. Founded in 1754, it is the oldest institution of higher education in New York State. Columbia University has produced many notable alumni including Barack Obama, Alexander Hamilton, and Ruth Bader Ginsburg. The university is organized into twenty schools across three campuses."
+      },
+      {
+        "id": "doc_006_5",
+        "title": "Occidental College",
+        "text": "Occidental College is a private liberal arts college in Los Angeles, California. Founded in 1887, it is one of the oldest liberal arts colleges on the West Coast. Barack Obama attended Occidental College from 1979 to 1981 before transferring to Columbia University. The college has an enrollment of approximately 2,000 students."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 2,
+      "n_partial_support": 2,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Barack Obama attended Occidental College.",
+        "keywords": [
+          "Occidental College"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Barack Obama",
+        "golden_evidence": "Obama attended Occidental College in Los Angeles for two years."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Barack Obama attended Columbia University.",
+        "keywords": [
+          "Columbia University"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Barack Obama",
+        "golden_evidence": "He then transferred to Columbia University in New York City, where he graduated with a degree in political science in 1983."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Barack Obama attended Harvard Law School.",
+        "keywords": [
+          "Harvard Law School"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Harvard Law School",
+        "golden_evidence": "Notable alumni include Barack Obama, who enrolled at the law school in 1988."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Obama was president of the Harvard Law Review.",
+        "keywords": [
+          "Harvard Law Review"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Harvard Law School",
+        "golden_evidence": "Obama was elected as the first African American president of the Harvard Law Review in 1990."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_007",
+    "question": "What elements were discovered by Marie Curie?",
+    "answer": "Polonium, Radium.",
+    "docs": [
+      {
+        "id": "doc_007_1",
+        "title": "Marie Curie",
+        "text": "Marie Sklodowska Curie was a Polish and naturalized-French physicist and chemist. In 1898, she and her husband Pierre Curie discovered two new chemical elements. They announced the discovery of polonium, named after Marie's native country Poland, in July 1898. In December 1898, they announced the discovery of radium."
+      },
+      {
+        "id": "doc_007_2",
+        "title": "Polonium",
+        "text": "Polonium is a chemical element with the symbol Po and atomic number 84. It was discovered in 1898 by Marie and Pierre Curie. The element was named after Poland, the native country of Marie Curie. Polonium is a rare and highly radioactive element with no stable isotopes. It occurs naturally in uranium ores."
+      },
+      {
+        "id": "doc_007_3",
+        "title": "Radium",
+        "text": "Radium is a chemical element with the symbol Ra and atomic number 88. It was discovered by Marie and Pierre Curie in 1898, extracted from uraninite ore. Radium is intensely radioactive and glows with a faint blue light. It was formerly used in self-luminous paints for watches and clocks."
+      },
+      {
+        "id": "doc_007_4",
+        "title": "Nobel Prize in Physics",
+        "text": "The Nobel Prize in Physics is awarded annually by the Royal Swedish Academy of Sciences. In 1903, Marie Curie, Pierre Curie, and Henri Becquerel shared the Nobel Prize in Physics for their research on radiation. Marie Curie later won a second Nobel Prize, this time in Chemistry, in 1911 for her discovery of radium and polonium."
+      },
+      {
+        "id": "doc_007_5",
+        "title": "Periodic table",
+        "text": "The periodic table is a tabular display of the chemical elements organized by atomic number. Dmitri Mendeleev published the first widely recognized periodic table in 1869. The modern periodic table contains 118 confirmed elements. Many elements were discovered in the 19th and 20th centuries through advances in chemistry and physics."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 2,
+      "n_partial_support": 2,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Polonium was discovered by Marie Curie.",
+        "keywords": [
+          "Polonium"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Marie Curie",
+        "golden_evidence": "They announced the discovery of polonium, named after Marie's native country Poland, in July 1898."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Radium was discovered by Marie Curie.",
+        "keywords": [
+          "Radium"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Marie Curie",
+        "golden_evidence": "In December 1898, they announced the discovery of radium."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Polonium was named after Poland.",
+        "keywords": [
+          "Poland"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Polonium",
+        "golden_evidence": "The element was named after Poland, the native country of Marie Curie."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Marie Curie won the Nobel Prize in Physics in 1903.",
+        "keywords": [
+          "Nobel Prize",
+          "1903"
+        ],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "Nobel Prize in Physics",
+        "golden_evidence": "In 1903, Marie Curie, Pierre Curie, and Henri Becquerel shared the Nobel Prize in Physics."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_008",
+    "question": "What operas were composed by Giuseppe Verdi?",
+    "answer": "Aida, La Traviata, Rigoletto, Nabucco, Otello.",
+    "docs": [
+      {
+        "id": "doc_008_1",
+        "title": "Giuseppe Verdi",
+        "text": "Giuseppe Fortunino Francesco Verdi was an Italian opera composer. He was born in 1813 near Busseto in the Province of Parma. Verdi's first major success came with the opera Nabucco, premiered at La Scala in Milan in 1842. The chorus Va pensiero from Nabucco became an anthem of Italian unification. Verdi went on to compose Rigoletto in 1851 and La Traviata in 1853, which became two of the most performed operas in the world."
+      },
+      {
+        "id": "doc_008_2",
+        "title": "Aida",
+        "text": "Aida is an opera in four acts by Giuseppe Verdi to an Italian libretto by Antonio Ghislanzoni. It was first performed on December 24, 1871 at the Khedivial Opera House in Cairo, Egypt. The opera was commissioned to celebrate the opening of the Suez Canal. Aida is set in ancient Egypt and tells the story of an Ethiopian princess captured and brought to Egypt."
+      },
+      {
+        "id": "doc_008_3",
+        "title": "Otello (Verdi)",
+        "text": "Otello is an opera in four acts by Giuseppe Verdi, with an Italian libretto by Arrigo Boito based on Shakespeare's play Othello. It premiered at La Scala in Milan on February 5, 1887. Otello is considered one of the greatest operas ever written and represents the culmination of Verdi's career as a dramatic composer."
+      },
+      {
+        "id": "doc_008_4",
+        "title": "La Scala",
+        "text": "La Scala, officially the Teatro alla Scala, is an opera house in Milan, Italy. It was inaugurated on August 3, 1778. La Scala has hosted premieres of many famous operas throughout its history. The opera house seats approximately 2,000 people and is considered one of the leading opera houses in the world."
+      },
+      {
+        "id": "doc_008_5",
+        "title": "Italian opera",
+        "text": "Italian opera is both the art of opera in Italy and opera in the Italian language. Opera was born in Italy around the year 1600 and Italian opera has continued to play a dominant role in the history of the art form. Famous Italian opera composers include Rossini, Donizetti, Bellini, Verdi, and Puccini. Italian remains the most common language used in opera performance."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 3,
+      "n_distractors": 2,
+      "n_full_support": 1,
+      "n_partial_support": 2,
+      "n_no_support": 2
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Aida is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Aida"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Aida",
+        "golden_evidence": "Aida is an opera in four acts by Giuseppe Verdi to an Italian libretto by Antonio Ghislanzoni."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "La Traviata is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "La Traviata"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "Verdi went on to compose Rigoletto in 1851 and La Traviata in 1853."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Rigoletto is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Rigoletto"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "Verdi went on to compose Rigoletto in 1851 and La Traviata in 1853."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Nabucco is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Nabucco"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "Verdi's first major success came with the opera Nabucco, premiered at La Scala in Milan in 1842."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Otello is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Otello"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Otello (Verdi)",
+        "golden_evidence": "Otello is an opera in four acts by Giuseppe Verdi."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Nabucco premiered at La Scala in Milan in 1842.",
+        "keywords": [
+          "La Scala",
+          "1842"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "Verdi's first major success came with the opera Nabucco, premiered at La Scala in Milan in 1842."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_009",
+    "question": "What planets in the solar system have rings?",
+    "answer": "Saturn, Jupiter, Uranus, Neptune.",
+    "docs": [
+      {
+        "id": "doc_009_1",
+        "title": "Saturn",
+        "text": "Saturn is the sixth planet from the Sun and the second-largest in the Solar System. It is best known for its prominent ring system, which is composed mainly of ice particles, rocky debris, and dust. Saturn's rings extend from 6,630 to 120,700 kilometers above its equator. The rings were first observed by Galileo Galilei in 1610."
+      },
+      {
+        "id": "doc_009_2",
+        "title": "Jupiter",
+        "text": "Jupiter is the fifth planet from the Sun and the largest in the Solar System. Jupiter has a faint ring system that was discovered in 1979 by the Voyager 1 space probe. The rings are composed mainly of dust particles ejected from the surfaces of Jupiter's four small inner moons. Unlike Saturn's rings, Jupiter's rings are very thin and difficult to observe."
+      },
+      {
+        "id": "doc_009_3",
+        "title": "Uranus",
+        "text": "Uranus is the seventh planet from the Sun. It has the third-largest planetary radius and fourth-largest planetary mass in the Solar System. Uranus has a ring system that was discovered in 1977 by astronomers James Elliot, Edward Dunham, and Jessica Mink. The rings of Uranus are composed of extremely dark particles ranging in size from micrometers to a fraction of a meter."
+      },
+      {
+        "id": "doc_009_4",
+        "title": "Neptune",
+        "text": "Neptune is the eighth and farthest known planet from the Sun in the Solar System. Neptune has a faint and fragmented ring system, confirmed by Voyager 2 in 1989. The rings are named after astronomers who contributed to the discovery of Neptune. Neptune's rings are composed of ice particles coated with silicates and carbon-based material."
+      },
+      {
+        "id": "doc_009_5",
+        "title": "Planetary ring",
+        "text": "A planetary ring is a ring of cosmic dust and other small particles orbiting around a planet in a flat disc-shaped region. All four of the Solar System's giant planets, Jupiter, Saturn, Uranus, and Neptune, have ring systems. Saturn's ring system is by far the most extensive and visible. Ring systems have also been detected around some asteroids and dwarf planets."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 1,
+      "n_partial_support": 4,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Saturn has rings.",
+        "keywords": [
+          "Saturn"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Saturn",
+        "golden_evidence": "It is best known for its prominent ring system, which is composed mainly of ice particles, rocky debris, and dust."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Jupiter has rings.",
+        "keywords": [
+          "Jupiter"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Jupiter",
+        "golden_evidence": "Jupiter has a faint ring system that was discovered in 1979 by the Voyager 1 space probe."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Uranus has rings.",
+        "keywords": [
+          "Uranus"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Uranus",
+        "golden_evidence": "Uranus has a ring system that was discovered in 1977 by astronomers James Elliot, Edward Dunham, and Jessica Mink."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Neptune has rings.",
+        "keywords": [
+          "Neptune"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Neptune",
+        "golden_evidence": "Neptune has a faint and fragmented ring system, confirmed by Voyager 2 in 1989."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Saturn's rings were first observed by Galileo in 1610.",
+        "keywords": [
+          "Galileo",
+          "1610"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Saturn",
+        "golden_evidence": "The rings were first observed by Galileo Galilei in 1610."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_010",
+    "question": "What companies did Elon Musk found or co-found?",
+    "answer": "Zip2, X.com, SpaceX, Tesla, Neuralink, The Boring Company.",
+    "docs": [
+      {
+        "id": "doc_010_1",
+        "title": "Elon Musk",
+        "text": "Elon Reeve Musk is a businessman and investor known for his key roles in the space company SpaceX and the electric vehicle company Tesla. In 1995, Musk co-founded Zip2, a web software company that provided business directories and maps for newspapers. Compaq acquired Zip2 in 1999 for $307 million. Musk then co-founded X.com, an online financial services company, in 1999."
+      },
+      {
+        "id": "doc_010_2",
+        "title": "SpaceX",
+        "text": "Space Exploration Technologies Corp., commonly referred to as SpaceX, is an American spacecraft manufacturer and space launch provider. SpaceX was founded in 2002 by Elon Musk with the goal of reducing space transportation costs and enabling the colonization of Mars. The company developed the Falcon 1, Falcon 9, and Falcon Heavy launch vehicles, as well as the Starship spacecraft."
+      },
+      {
+        "id": "doc_010_3",
+        "title": "Tesla, Inc.",
+        "text": "Tesla, Inc. is an American multinational automotive and clean energy company headquartered in Austin, Texas. Tesla was incorporated in 2003 by Martin Eberhard and Marc Tarpenning. Elon Musk joined as chairman of the board and led early funding rounds. A lawsuit settlement in 2009 allows five people, including Musk, Eberhard, Tarpenning, JB Straubel, and Ian Wright, to call themselves co-founders of Tesla."
+      },
+      {
+        "id": "doc_010_4",
+        "title": "Neuralink",
+        "text": "Neuralink Corporation is a neurotechnology company founded by Elon Musk and others in 2016. The company develops brain-computer interface devices. Neuralink aims to help people with neurological conditions by enabling communication between the brain and computers. In 2024, Neuralink implanted its first brain chip in a human patient."
+      },
+      {
+        "id": "doc_010_5",
+        "title": "The Boring Company",
+        "text": "The Boring Company is an American infrastructure and tunnel construction company founded by Elon Musk in 2016. The company was created to build underground transportation tunnels to reduce traffic congestion. The Boring Company completed the Las Vegas Convention Center Loop in 2021. The company aims to significantly reduce the cost of tunnel construction."
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 1,
+      "n_partial_support": 4,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Zip2 is a company co-founded by Elon Musk.",
+        "keywords": [
+          "Zip2"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Elon Musk",
+        "golden_evidence": "In 1995, Musk co-founded Zip2, a web software company that provided business directories and maps for newspapers."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "X.com is a company co-founded by Elon Musk.",
+        "keywords": [
+          "X.com"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Elon Musk",
+        "golden_evidence": "Musk then co-founded X.com, an online financial services company, in 1999."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "SpaceX is a company founded by Elon Musk.",
+        "keywords": [
+          "SpaceX"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "SpaceX",
+        "golden_evidence": "SpaceX was founded in 2002 by Elon Musk with the goal of reducing space transportation costs."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Tesla is a company co-founded by Elon Musk.",
+        "keywords": [
+          "Tesla"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Tesla, Inc.",
+        "golden_evidence": "A lawsuit settlement in 2009 allows five people, including Musk, Eberhard, Tarpenning, JB Straubel, and Ian Wright, to call themselves co-founders of Tesla."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Neuralink is a company founded by Elon Musk.",
+        "keywords": [
+          "Neuralink"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Neuralink",
+        "golden_evidence": "Neuralink Corporation is a neurotechnology company founded by Elon Musk and others in 2016."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "The Boring Company is a company founded by Elon Musk.",
+        "keywords": [
+          "The Boring Company"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "The Boring Company",
+        "golden_evidence": "The Boring Company is an American infrastructure and tunnel construction company founded by Elon Musk in 2016."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Zip2 was acquired by Compaq in 1999.",
+        "keywords": [
+          "Compaq",
+          "1999"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Elon Musk",
+        "golden_evidence": "Compaq acquired Zip2 in 1999 for $307 million."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_011",
+    "question": "What novels were written by Agatha Christie?",
+    "answer": "The Mysterious Affair at Styles, Murder on the Orient Express, Death on the Nile, And Then There Were None, The ABC Murders, Crooked House.",
+    "docs": [
+      {
+        "id": "doc_011_1",
+        "title": "Agatha Christie",
+        "text": "Dame Agatha Mary Clarissa Christie was an English writer known for her sixty-six detective novels and fourteen short story collections. She is the best-selling fiction writer of all time. Her debut novel, The Mysterious Affair at Styles, was published in 1920 and introduced the Belgian detective Hercule Poirot. Christie also wrote The ABC Murders in 1936, in which Poirot investigates a series of seemingly random murders announced in advance by an alphabetically-organized killer. Her novel Crooked House, published in 1949, was one of her personal favorites.",
+        "is_gold": true,
+        "golden_passage_title": "Agatha Christie"
+      },
+      {
+        "id": "doc_011_2",
+        "title": "Murder on the Orient Express",
+        "text": "Murder on the Orient Express is a detective novel by Agatha Christie first published in 1934. The story features Hercule Poirot, who investigates a murder that took place on the famous luxury train. Poirot must identify the killer among the twelve passengers who are snowed in on the train. The novel is renowned for its unexpected twist ending. It has been adapted for film, television, and stage multiple times.",
+        "is_gold": true,
+        "golden_passage_title": "Murder on the Orient Express"
+      },
+      {
+        "id": "doc_011_3",
+        "title": "Death on the Nile",
+        "text": "Death on the Nile is a work of detective fiction by Agatha Christie, first published in 1937. The story follows Hercule Poirot, who investigates a murder committed on a cruise ship sailing the Nile in Egypt. The victim is a young wealthy heiress named Linnet Ridgeway. The novel explores themes of jealousy and obsession among its large cast of suspects. It was adapted into a film in 1978 and again in 2022.",
+        "is_gold": true,
+        "golden_passage_title": "Death on the Nile"
+      },
+      {
+        "id": "doc_011_4",
+        "title": "And Then There Were None",
+        "text": "And Then There Were None is a mystery novel by Agatha Christie, published in 1939. Ten strangers are invited to a remote island mansion and are killed one by one, each corresponding to a verse from a nursery rhyme called Ten Little Soldiers. The novel is the best-selling mystery novel of all time, with over 100 million copies sold. It is also the world's best-selling crime novel. Christie considered it one of the most difficult books she had ever written.",
+        "is_gold": true,
+        "golden_passage_title": "And Then There Were None"
+      },
+      {
+        "id": "doc_011_5",
+        "title": "Hercule Poirot",
+        "text": "Hercule Poirot is a fictional Belgian detective created by Agatha Christie. He first appeared in The Mysterious Affair at Styles in 1920 and went on to feature in thirty-three novels and more than fifty short stories. Poirot is known for his immaculate appearance, his waxed mustaches, and his use of what he calls the little grey cells. His final case appeared in Curtain, written during World War II but published in 1975, just before Christie's death.",
+        "is_gold": true,
+        "golden_passage_title": "Hercule Poirot"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 3,
+      "n_partial_support": 2,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Mysterious Affair at Styles is a novel written by Agatha Christie.",
+        "keywords": [
+          "The Mysterious Affair at Styles"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Agatha Christie",
+        "golden_evidence": "Her debut novel, The Mysterious Affair at Styles, was published in 1920 and introduced the Belgian detective Hercule Poirot."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Murder on the Orient Express is a novel written by Agatha Christie.",
+        "keywords": [
+          "Murder on the Orient Express"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Murder on the Orient Express",
+        "golden_evidence": "Murder on the Orient Express is a detective novel by Agatha Christie first published in 1934."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Death on the Nile is a novel written by Agatha Christie.",
+        "keywords": [
+          "Death on the Nile"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Death on the Nile",
+        "golden_evidence": "Death on the Nile is a work of detective fiction by Agatha Christie, first published in 1937."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "And Then There Were None is a novel written by Agatha Christie.",
+        "keywords": [
+          "And Then There Were None"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "And Then There Were None",
+        "golden_evidence": "And Then There Were None is a mystery novel by Agatha Christie, published in 1939."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "The ABC Murders is a novel written by Agatha Christie.",
+        "keywords": [
+          "The ABC Murders"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Agatha Christie",
+        "golden_evidence": "Christie also wrote The ABC Murders in 1936, in which Poirot investigates a series of seemingly random murders announced in advance by an alphabetically-organized killer."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Crooked House is a novel written by Agatha Christie.",
+        "keywords": [
+          "Crooked House"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Agatha Christie",
+        "golden_evidence": "Her novel Crooked House, published in 1949, was one of her personal favorites."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Curtain is a novel written by Agatha Christie featuring Hercule Poirot's final case.",
+        "keywords": [
+          "Curtain"
+        ],
+        "golden_passage_idx": 4,
+        "required": false,
+        "golden_passage_title": "Hercule Poirot",
+        "golden_evidence": "His final case appeared in Curtain, written during World War II but published in 1975, just before Christie's death."
+      },
+      {
+        "nugget_id": "n7",
+        "text": "And Then There Were None is the best-selling mystery novel of all time.",
+        "keywords": [
+          "And Then There Were None",
+          "best-selling"
+        ],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "And Then There Were None",
+        "golden_evidence": "The novel is the best-selling mystery novel of all time, with over 100 million copies sold."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_012",
+    "question": "What countries won the FIFA World Cup?",
+    "answer": "Brazil, Germany, Italy, Argentina, France, Uruguay, England, Spain.",
+    "docs": [
+      {
+        "id": "doc_012_1",
+        "title": "FIFA World Cup",
+        "text": "The FIFA World Cup is the premier international association football tournament contested by the national teams of the member associations of FIFA. It has been held every four years since 1930, except in 1942 and 1946 due to World War II. Brazil has won the tournament a record five times, in 1958, 1962, 1970, 1994, and 2002. Germany and Italy have each won four times. Uruguay won the inaugural edition in 1930 and again in 1950.",
+        "is_gold": true,
+        "golden_passage_title": "FIFA World Cup"
+      },
+      {
+        "id": "doc_012_2",
+        "title": "Argentina national football team",
+        "text": "The Argentina national football team represents Argentina in men's international football. Argentina has won the FIFA World Cup three times: in 1978, 1986, and 2022. The 1986 victory was famously led by Diego Maradona, who scored both the Hand of God goal and the Goal of the Century against England in the quarter-finals. Lionel Messi captained the 2022 winning team in Qatar, finally achieving his long-sought World Cup title.",
+        "is_gold": true,
+        "golden_passage_title": "Argentina national football team"
+      },
+      {
+        "id": "doc_012_3",
+        "title": "France national football team",
+        "text": "The France national football team has won the FIFA World Cup twice. The first victory came in 1998, when France hosted the tournament and won under coach Aimé Jacquet, with Zinedine Zidane scoring twice in the final against Brazil. France won the title again in 2018 in Russia, defeating Croatia 4-2 in the final. Kylian Mbappé scored a hat-trick in the 2022 final, though France ultimately lost on penalties to Argentina.",
+        "is_gold": true,
+        "golden_passage_title": "France national football team"
+      },
+      {
+        "id": "doc_012_4",
+        "title": "England national football team",
+        "text": "The England national football team has won the FIFA World Cup once, in 1966, when the tournament was held at Wembley Stadium in London. England defeated West Germany 4-2 in the final, with Geoff Hurst becoming the only player to score a hat-trick in a World Cup final. Bobby Moore captained the victorious English side. England has not won the tournament since, reaching the semi-finals in 1990 and losing the final in 2024 to Spain.",
+        "is_gold": true,
+        "golden_passage_title": "England national football team"
+      },
+      {
+        "id": "doc_012_5",
+        "title": "Spain national football team",
+        "text": "The Spain national football team won its only FIFA World Cup in 2010, hosted by South Africa. Spain defeated the Netherlands 1-0 in the final, with Andrés Iniesta scoring the winning goal in extra time. The victory completed a historic treble for Spanish football, alongside UEFA Euro victories in 2008 and 2012. Spain's tiki-taka style of play, characterized by short passing and movement, became highly influential worldwide. Spain also won Euro 2024, defeating England in the final.",
+        "is_gold": true,
+        "golden_passage_title": "Spain national football team"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 2,
+      "n_partial_support": 3,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Brazil has won the FIFA World Cup.",
+        "keywords": [
+          "Brazil"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "FIFA World Cup",
+        "golden_evidence": "Brazil has won the tournament a record five times, in 1958, 1962, 1970, 1994, and 2002."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Germany has won the FIFA World Cup.",
+        "keywords": [
+          "Germany"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "FIFA World Cup",
+        "golden_evidence": "Germany and Italy have each won four times."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Italy has won the FIFA World Cup.",
+        "keywords": [
+          "Italy"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "FIFA World Cup",
+        "golden_evidence": "Germany and Italy have each won four times."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Uruguay has won the FIFA World Cup.",
+        "keywords": [
+          "Uruguay"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "FIFA World Cup",
+        "golden_evidence": "Uruguay won the inaugural edition in 1930 and again in 1950."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Argentina has won the FIFA World Cup.",
+        "keywords": [
+          "Argentina"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Argentina national football team",
+        "golden_evidence": "Argentina has won the FIFA World Cup three times: in 1978, 1986, and 2022."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "France has won the FIFA World Cup.",
+        "keywords": [
+          "France"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "France national football team",
+        "golden_evidence": "The France national football team has won the FIFA World Cup twice."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "England has won the FIFA World Cup.",
+        "keywords": [
+          "England"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "England national football team",
+        "golden_evidence": "The England national football team has won the FIFA World Cup once, in 1966."
+      },
+      {
+        "nugget_id": "n7",
+        "text": "Spain has won the FIFA World Cup.",
+        "keywords": [
+          "Spain"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "Spain national football team",
+        "golden_evidence": "The Spain national football team won its only FIFA World Cup in 2010, hosted by South Africa."
+      },
+      {
+        "nugget_id": "n8",
+        "text": "Lionel Messi captained Argentina to win the 2022 FIFA World Cup.",
+        "keywords": [
+          "Messi",
+          "2022"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Argentina national football team",
+        "golden_evidence": "Lionel Messi captained the 2022 winning team in Qatar, finally achieving his long-sought World Cup title."
+      },
+      {
+        "nugget_id": "n9",
+        "text": "Andrés Iniesta scored the winning goal in Spain's 2010 World Cup final.",
+        "keywords": [
+          "Iniesta",
+          "2010"
+        ],
+        "golden_passage_idx": 4,
+        "required": false,
+        "golden_passage_title": "Spain national football team",
+        "golden_evidence": "Spain defeated the Netherlands 1-0 in the final, with Andrés Iniesta scoring the winning goal in extra time."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_013",
+    "question": "What planets in the Solar System have known natural satellites (moons)?",
+    "answer": "Earth, Mars, Jupiter, Saturn, Uranus, Neptune.",
+    "docs": [
+      {
+        "id": "doc_013_1",
+        "title": "Natural satellite",
+        "text": "A natural satellite is a celestial body that orbits a planet or other body larger than itself. The Solar System's planets with confirmed natural satellites include Earth, Mars, Jupiter, Saturn, Uranus, and Neptune. Mercury and Venus are the only planets in the Solar System with no known moons. Jupiter and Saturn have the most moons of any planets, with Saturn recently surpassing Jupiter as the record holder. The term moon is often used informally for natural satellites.",
+        "is_gold": true,
+        "golden_passage_title": "Natural satellite"
+      },
+      {
+        "id": "doc_013_2",
+        "title": "Moons of Jupiter",
+        "text": "Jupiter has 95 confirmed moons as of 2023, making it one of the planets with the most natural satellites in the Solar System. The four largest moons—Io, Europa, Ganymede, and Callisto—were discovered by Galileo Galilei in 1610 and are known as the Galilean moons. Ganymede is the largest moon in the Solar System and is even bigger than the planet Mercury. Europa is of particular scientific interest because it is believed to harbor a liquid water ocean beneath its icy surface.",
+        "is_gold": true,
+        "golden_passage_title": "Moons of Jupiter"
+      },
+      {
+        "id": "doc_013_3",
+        "title": "Moons of Saturn",
+        "text": "Saturn has 146 confirmed moons, the most of any planet in the Solar System. The largest moon, Titan, is the second largest moon in the Solar System and is the only moon known to have a dense atmosphere. Titan's atmosphere is primarily nitrogen with methane clouds. Enceladus is another notable moon of Saturn, known for its geysers of water vapor erupting from its south polar region. Saturn also has the prominent ring system that makes it one of the most recognizable planets.",
+        "is_gold": true,
+        "golden_passage_title": "Moons of Saturn"
+      },
+      {
+        "id": "doc_013_4",
+        "title": "Mars",
+        "text": "Mars is the fourth planet from the Sun and the second smallest planet in the Solar System. It has two small natural satellites, Phobos and Deimos, which were discovered by Asaph Hall in 1877. Both moons are irregularly shaped and are thought to be captured asteroids. Phobos is gradually spiraling inward and is expected to either break apart into a ring or crash into Mars within the next 50 million years. Mars has been the target of numerous robotic missions including rovers like Curiosity and Perseverance.",
+        "is_gold": true,
+        "golden_passage_title": "Mars"
+      },
+      {
+        "id": "doc_013_5",
+        "title": "Moons of Uranus and Neptune",
+        "text": "Uranus has 28 confirmed moons, all of which are named after characters from the works of William Shakespeare and Alexander Pope. The five largest moons are Miranda, Ariel, Umbriel, Titania, and Oberon. Neptune has 16 confirmed moons. The largest, Triton, is unique in that it orbits in the retrograde direction, opposite to Neptune's rotation, suggesting it was a captured Kuiper Belt object. Earth's only natural satellite, the Moon, is the fifth largest in the Solar System and is thought to have formed from a giant impact event early in Earth's history.",
+        "is_gold": true,
+        "golden_passage_title": "Moons of Uranus and Neptune"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 2,
+      "n_partial_support": 3,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Earth has natural satellites.",
+        "keywords": [
+          "Earth"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "Moons of Uranus and Neptune",
+        "golden_evidence": "Earth's only natural satellite, the Moon, is the fifth largest in the Solar System."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Mars has natural satellites.",
+        "keywords": [
+          "Mars"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Mars",
+        "golden_evidence": "It has two small natural satellites, Phobos and Deimos, which were discovered by Asaph Hall in 1877."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Jupiter has natural satellites.",
+        "keywords": [
+          "Jupiter"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Moons of Jupiter",
+        "golden_evidence": "Jupiter has 95 confirmed moons as of 2023."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Saturn has natural satellites.",
+        "keywords": [
+          "Saturn"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Moons of Saturn",
+        "golden_evidence": "Saturn has 146 confirmed moons, the most of any planet in the Solar System."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Uranus has natural satellites.",
+        "keywords": [
+          "Uranus"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "Moons of Uranus and Neptune",
+        "golden_evidence": "Uranus has 28 confirmed moons, all of which are named after characters from the works of William Shakespeare and Alexander Pope."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Neptune has natural satellites.",
+        "keywords": [
+          "Neptune"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "Moons of Uranus and Neptune",
+        "golden_evidence": "Neptune has 16 confirmed moons."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Mercury and Venus are the only planets in the Solar System with no known moons.",
+        "keywords": [
+          "Mercury",
+          "Venus"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Natural satellite",
+        "golden_evidence": "Mercury and Venus are the only planets in the Solar System with no known moons."
+      },
+      {
+        "nugget_id": "n7",
+        "text": "Europa, a moon of Jupiter, is believed to harbor a liquid water ocean beneath its icy surface.",
+        "keywords": [
+          "Europa"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Moons of Jupiter",
+        "golden_evidence": "Europa is of particular scientific interest because it is believed to harbor a liquid water ocean beneath its icy surface."
+      },
+      {
+        "nugget_id": "n8",
+        "text": "Titan, a moon of Saturn, is the only moon known to have a dense atmosphere.",
+        "keywords": [
+          "Titan"
+        ],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "Moons of Saturn",
+        "golden_evidence": "The largest moon, Titan, is the second largest moon in the Solar System and is the only moon known to have a dense atmosphere."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_014",
+    "question": "What operas were composed by Giuseppe Verdi?",
+    "answer": "Nabucco, Macbeth, Rigoletto, Il trovatore, La traviata, Otello, Falstaff, Aida.",
+    "docs": [
+      {
+        "id": "doc_014_1",
+        "title": "Giuseppe Verdi",
+        "text": "Giuseppe Fortunino Francesco Verdi was an Italian composer best known for his operas. He is considered one of the most influential composers in the history of opera. His early success came with Nabucco in 1842, which became a symbol of Italian national sentiment. He followed this with Macbeth in 1847, his first opera based on a Shakespeare play, which he later revised in 1865. Verdi composed over 28 operas throughout his long career, transforming Italian opera with his dramatic intensity and orchestral innovations.",
+        "is_gold": true,
+        "golden_passage_title": "Giuseppe Verdi"
+      },
+      {
+        "id": "doc_014_2",
+        "title": "Rigoletto",
+        "text": "Rigoletto is an opera in three acts composed by Giuseppe Verdi to an Italian libretto by Francesco Maria Piave. It was first performed on 11 March 1851 at La Fenice opera house in Venice. The opera is based on the play Le roi s'amuse by Victor Hugo. It tells the story of a court jester who attempts to protect his daughter from the Duke of Mantua. Rigoletto contains some of Verdi's most famous arias, including La donna è mobile and Caro nome.",
+        "is_gold": true,
+        "golden_passage_title": "Rigoletto"
+      },
+      {
+        "id": "doc_014_3",
+        "title": "Il trovatore and La traviata",
+        "text": "Il trovatore is an opera in four acts by Giuseppe Verdi, with a libretto by Salvadore Cammarano. It was first performed on 19 January 1853 at the Teatro Apollo in Rome. La traviata is an opera in three acts by Giuseppe Verdi, with a libretto by Francesco Maria Piave. It was first performed on 6 March 1853 at La Fenice in Venice, just weeks after Il trovatore. La traviata is based on the novel La dame aux camélias by Alexandre Dumas fils and tells the story of the courtesan Violetta. Together with Rigoletto, these two operas form Verdi's middle period trilogy.",
+        "is_gold": true,
+        "golden_passage_title": "Il trovatore and La traviata"
+      },
+      {
+        "id": "doc_014_4",
+        "title": "Aida",
+        "text": "Aida is an opera in four acts by Giuseppe Verdi to an Italian libretto by Antonio Ghislanzoni. It was first performed on 24 December 1871 at the Khedivial Opera House in Cairo, Egypt. The opera was commissioned by the Khedive of Egypt to celebrate the opening of the Suez Canal. It tells the story of the Ethiopian princess Aida and the Egyptian commander Radamès. Aida is one of the most frequently performed operas in the repertoire and is renowned for its spectacular staging.",
+        "is_gold": true,
+        "golden_passage_title": "Aida"
+      },
+      {
+        "id": "doc_014_5",
+        "title": "Otello and Falstaff",
+        "text": "Otello is an opera in four acts composed by Giuseppe Verdi to an Italian libretto by Arrigo Boito, based on Shakespeare's play Othello. It premiered at La Scala in Milan on 5 February 1887. Falstaff is a comic opera in three acts composed by Verdi, also to a libretto by Arrigo Boito. It premiered at La Scala on 9 February 1893 and was Verdi's last opera, composed when he was nearly 80 years old. Both operas are considered the pinnacle of Verdi's late style and among the greatest works in the operatic repertoire.",
+        "is_gold": true,
+        "golden_passage_title": "Otello and Falstaff"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 3,
+      "n_partial_support": 2,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Nabucco is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Nabucco"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "His early success came with Nabucco in 1842, which became a symbol of Italian national sentiment."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Macbeth is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Macbeth"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "He followed this with Macbeth in 1847, his first opera based on a Shakespeare play."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Rigoletto is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Rigoletto"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Rigoletto",
+        "golden_evidence": "Rigoletto is an opera in three acts composed by Giuseppe Verdi to an Italian libretto by Francesco Maria Piave."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Il trovatore is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Il trovatore"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Il trovatore and La traviata",
+        "golden_evidence": "Il trovatore is an opera in four acts by Giuseppe Verdi, with a libretto by Salvadore Cammarano."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "La traviata is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "La traviata"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Il trovatore and La traviata",
+        "golden_evidence": "La traviata is an opera in three acts by Giuseppe Verdi, with a libretto by Francesco Maria Piave."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Aida is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Aida"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Aida",
+        "golden_evidence": "Aida is an opera in four acts by Giuseppe Verdi to an Italian libretto by Antonio Ghislanzoni."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Otello is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Otello"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "Otello and Falstaff",
+        "golden_evidence": "Otello is an opera in four acts composed by Giuseppe Verdi to an Italian libretto by Arrigo Boito."
+      },
+      {
+        "nugget_id": "n7",
+        "text": "Falstaff is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Falstaff"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "Otello and Falstaff",
+        "golden_evidence": "Falstaff is a comic opera in three acts composed by Verdi, also to a libretto by Arrigo Boito."
+      },
+      {
+        "nugget_id": "n8",
+        "text": "Rigoletto, Il trovatore, and La traviata form Verdi's middle period trilogy.",
+        "keywords": [
+          "trilogy",
+          "middle period"
+        ],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "Il trovatore and La traviata",
+        "golden_evidence": "Together with Rigoletto, these two operas form Verdi's middle period trilogy."
+      },
+      {
+        "nugget_id": "n9",
+        "text": "Falstaff was Verdi's last opera, composed when he was nearly 80 years old.",
+        "keywords": [
+          "Falstaff",
+          "last opera"
+        ],
+        "golden_passage_idx": 4,
+        "required": false,
+        "golden_passage_title": "Otello and Falstaff",
+        "golden_evidence": "It premiered at La Scala on 9 February 1893 and was Verdi's last opera, composed when he was nearly 80 years old."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_015",
+    "question": "What elements were discovered by Marie Curie?",
+    "answer": "Polonium, Radium.",
+    "docs": [
+      {
+        "id": "doc_015_1",
+        "title": "Marie Curie",
+        "text": "Marie Skłodowska Curie was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity. She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the Nobel Prize in two different sciences. Together with her husband Pierre Curie, she discovered two new chemical elements: polonium, named after her homeland Poland, and radium. She coined the term radioactivity to describe the phenomenon she was studying.",
+        "is_gold": true,
+        "golden_passage_title": "Marie Curie"
+      },
+      {
+        "id": "doc_015_2",
+        "title": "Polonium",
+        "text": "Polonium is a chemical element with the symbol Po and atomic number 84. It was discovered in 1898 by Marie and Pierre Curie, who named it after Marie's homeland, Poland. Polonium was the first element discovered by the Curies during their investigation of pitchblende, a uranium ore that exhibited greater radioactivity than could be accounted for by its uranium content alone. Polonium is highly radioactive and has no stable isotopes. It became internationally known in 2006 following the poisoning of Alexander Litvinenko.",
+        "is_gold": true,
+        "golden_passage_title": "Polonium"
+      },
+      {
+        "id": "doc_015_3",
+        "title": "Radium",
+        "text": "Radium is a chemical element with the symbol Ra and atomic number 88. It was discovered by Marie and Pierre Curie in 1898, shortly after their discovery of polonium. The Curies spent nearly four years processing over a ton of pitchblende to isolate one decigram of radium chloride. Marie Curie received the Nobel Prize in Chemistry in 1911 specifically for her discovery of radium and polonium and for isolating radium. Radium was historically used in luminous paints and medical treatments, though its high radioactivity makes it hazardous.",
+        "is_gold": true,
+        "golden_passage_title": "Radium"
+      },
+      {
+        "id": "doc_015_4",
+        "title": "Nobel Prize in Physics 1903",
+        "text": "The Nobel Prize in Physics 1903 was divided, with one half awarded to Henri Becquerel and the other half jointly to Pierre Curie and Marie Curie, née Sklodowska, in recognition of the extraordinary services they have rendered by their joint researches on the radiation phenomena discovered by Professor Henri Becquerel. Marie Curie became the first woman to receive a Nobel Prize. She went on to win a second Nobel Prize, this time in Chemistry, in 1911 for the discovery of polonium and radium.",
+        "is_gold": true,
+        "golden_passage_title": "Nobel Prize in Physics 1903"
+      },
+      {
+        "id": "doc_015_5",
+        "title": "Radioactivity",
+        "text": "Radioactivity is the process by which unstable atomic nuclei lose energy by emitting radiation. The phenomenon was first discovered by Henri Becquerel in 1896. Marie Curie, who coined the term radioactivity, carried out systematic investigations of radioactive substances. Her research led to the identification of two new radioactive elements, polonium and radium, both discovered in 1898. The study of radioactivity opened up entirely new fields of physics and chemistry and later contributed to the development of nuclear energy and nuclear medicine.",
+        "is_gold": true,
+        "golden_passage_title": "Radioactivity"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 5,
+      "n_distractors": 0,
+      "n_full_support": 3,
+      "n_partial_support": 2,
+      "n_no_support": 0
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Polonium is an element discovered by Marie Curie.",
+        "keywords": [
+          "Polonium"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Polonium",
+        "golden_evidence": "It was discovered in 1898 by Marie and Pierre Curie, who named it after Marie's homeland, Poland."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Radium is an element discovered by Marie Curie.",
+        "keywords": [
+          "Radium"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Radium",
+        "golden_evidence": "It was discovered by Marie and Pierre Curie in 1898, shortly after their discovery of polonium."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Marie Curie coined the term radioactivity.",
+        "keywords": [
+          "radioactivity",
+          "coined"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Marie Curie",
+        "golden_evidence": "She coined the term radioactivity to describe the phenomenon she was studying."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Polonium was named after Marie Curie's homeland, Poland.",
+        "keywords": [
+          "Polonium",
+          "Poland"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Polonium",
+        "golden_evidence": "Polonium was the first element discovered by the Curies during their investigation of pitchblende."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Marie Curie received the Nobel Prize in Chemistry in 1911 for the discovery of radium and polonium.",
+        "keywords": [
+          "Nobel Prize",
+          "Chemistry",
+          "1911"
+        ],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "Radium",
+        "golden_evidence": "Marie Curie received the Nobel Prize in Chemistry in 1911 specifically for her discovery of radium and polonium and for isolating radium."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Marie Curie was the first woman to win a Nobel Prize.",
+        "keywords": [
+          "first woman",
+          "Nobel Prize"
+        ],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "Nobel Prize in Physics 1903",
+        "golden_evidence": "Marie Curie became the first woman to receive a Nobel Prize."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Both polonium and radium were discovered in 1898 through investigation of pitchblende.",
+        "keywords": [
+          "1898",
+          "pitchblende"
+        ],
+        "golden_passage_idx": 4,
+        "required": false,
+        "golden_passage_title": "Radioactivity",
+        "golden_evidence": "Her research led to the identification of two new radioactive elements, polonium and radium, both discovered in 1898."
+      }
+    ]
+  }
+]

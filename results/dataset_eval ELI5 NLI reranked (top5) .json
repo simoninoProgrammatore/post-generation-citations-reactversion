@@ -1,0 +1,3129 @@
+{
+  "global_metrics": {
+    "avg_nugget_precision": 0.8611133333333333,
+    "avg_nugget_recall": 0.7500066666666665,
+    "avg_nugget_coverage": 0.8777866666666665,
+    "avg_required_precision": 0.9166666666666666,
+    "avg_required_recall": 0.8666666666666667,
+    "macro_nugget_precision": 0.8589743589743589,
+    "macro_nugget_recall": 0.7528089887640449,
+    "macro_nugget_coverage": 0.8764044943820225,
+    "macro_required_precision": 0.9107142857142857,
+    "macro_required_recall": 0.864406779661017,
+    "macro_optional_precision": 0.7272727272727273,
+    "macro_optional_recall": 0.5333333333333333,
+    "total_nuggets": 89,
+    "total_cited": 67,
+    "total_covered": 78,
+    "total_required": 59,
+    "total_required_cited": 51,
+    "total_required_covered": 56,
+    "total_optional": 30,
+    "total_optional_cited": 16,
+    "total_optional_covered": 22,
+    "total_noise_passages_used": 0,
+    "total_claims_citing_noise": 0,
+    "total_nuggets_cited_from_noise": 0
+  },
+  "per_example": [
+    {
+      "question": "How are firms like snapchat, uber etc valued so highly while still not making a profit? Do venture capitalists not expect some form of repayment within a number of years?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.3333,
+        "nugget_coverage": 0.3333,
+        "n_nuggets": 3,
+        "n_covered": 1,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Startups like Snapchat and Uber are valued highly because venture capitalists invest hoping for multi-fold returns through future growth.",
+            "required": true,
+            "keywords": [
+              "venture capital",
+              "valuation",
+              "growth"
+            ],
+            "golden_passage_title": "What Are Venture Capital Investments? – DollarsAndSense.my",
+            "golden_evidence": "Venture capitalists are professional investors who invest in a number of highly scalable high-risk technology ventures hoping to make a multi-fold return.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.54,
+            "cite_score": 0.5412,
+            "n_covering_claims": 9,
+            "best_covering_claim": "Venture capitalists are sending a clear message that companies must outline a solid path to profits and start producing them soon, or expect their valuation to be slashed.",
+            "best_evidence_passage_title": "Unicorns And Wall Street | MoneyTips",
+            "best_evidence_passage_text": "not start showing profits soon. Even Uber, with its massive $62-billion-plus valuation, will test investor's patience if it does not start showing signs of a profit in the next few years. Cracks are s",
+            "best_evidence_sentence": "Larger investors and venture capitalists are sending a message to the unicorns: Outline a solid path to profits and start producing them soon, or expect your valuation to be slashed.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Companies need to establish their brand and user base before introducing ads to generate revenue.",
+            "required": false,
+            "keywords": [
+              "brand",
+              "users",
+              "ads"
+            ],
+            "golden_passage_title": null,
+            "golden_evidence": null,
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Uber reinvests its revenue to improve its service rather than showing profits.",
+            "required": false,
+            "keywords": [
+              "reinvest",
+              "Uber",
+              "service"
+            ],
+            "golden_passage_title": "Opinion | What Dara Khosrowshahi Must Do to Save Uber - The New York Times",
+            "golden_evidence": "Every start-up must one day fulfill the market's demand that it turn a profit, but Uber has never figured out how to do that.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 8,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 1,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why is it bad to eat cookie dough for risk of salmonella but things like Cookie Dough Bites are ok?",
+      "nugget_metrics": {
+        "nugget_precision": 0.3333,
+        "nugget_recall": 0.3333,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Raw cookie dough is risky because eggs can be contaminated with salmonella bacteria.",
+            "required": true,
+            "keywords": [
+              "salmonella",
+              "eggs",
+              "raw"
+            ],
+            "golden_passage_title": "It's Probably OK to Eat Raw Cookie Dough — As Long As You're Smart About It - The Crux - Very Top Secret Information",
+            "golden_evidence": "Eggs can be contaminated with salmonella bacteria, and food safety recommendations encourage people to cook eggs until the white and yolk are firm in order to kill any bacteria.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7717,
+            "cite_score": 0.6558,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Raw eggs, which are found in many cookie recipes, can carry salmonella.",
+            "best_evidence_passage_title": "Resource | Baptist Health South Florida Roundup: Breast Cancer Risk and Childbirth; Needless Glucose Testing; and Raw Cookie Dough Alert | Resource | Baptist Health South Florida",
+            "best_evidence_passage_text": "and Prevention [5] (CDC). Raw eggs, which are found in many cookie recipes, can carry salmonella, the bacteria that can cause severe stomach issues, the CDC says. Even egg-free dough can contain raw f",
+            "best_evidence_sentence": "Raw eggs, which are found in many cookie recipes, can carry salmonella, the bacteria that can cause severe stomach issues, the CDC says.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Commercial cookie dough products like Cookie Dough Bites are made without raw eggs or with pasteurized eggs, making them safe.",
+            "required": true,
+            "keywords": [
+              "pasteurized",
+              "without eggs",
+              "Cookie Dough Bites",
+              "safe"
+            ],
+            "golden_passage_title": "It's Probably OK to Eat Raw Cookie Dough — As Long As You're Smart About It - The Crux - Very Top Secret Information",
+            "golden_evidence": "Eggs can be contaminated with salmonella bacteria, and food safety recommendations encourage people to cook eggs until the white and yolk are firm in order to kill any bacteria.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.188,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Products made with cookie dough, such as ice cream and Cookie Dough Bites, have had the dough heated sufficiently to kill any potential germs.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Raw flour in cookie dough can also carry harmful bacteria like E. coli, beyond just the egg risk.",
+            "required": false,
+            "keywords": [
+              "flour",
+              "E. coli",
+              "bacteria"
+            ],
+            "golden_passage_title": "Stop Eating Cookie Dough, Says The FDA (But For Real This Time)",
+            "golden_evidence": "raw cookie dough is not safe to eat",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.4621,
+            "cite_score": 0,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Raw flour can carry disease-causing germs such as E. coli.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 3,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 1,
+        "required_precision": 0.5,
+        "required_recall": 0.5,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "how does so much of our trash end up in the ocean?",
+      "nugget_metrics": {
+        "nugget_precision": 0.5,
+        "nugget_recall": 0.5,
+        "nugget_coverage": 1,
+        "n_nuggets": 2,
+        "n_covered": 2,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "When it rains, trash on the ground is washed into streams and rivers.",
+            "required": true,
+            "keywords": [
+              "rain",
+              "streams",
+              "rivers",
+              "washed"
+            ],
+            "golden_passage_title": "ENVIRONMENTAL THREATS",
+            "golden_evidence": "When it rains, these items are washed into local streams that feed into the water.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.5122,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "When it rains, trash items are washed into local streams that feed into the water.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Rivers ultimately flow into the ocean, carrying trash with them.",
+            "required": true,
+            "keywords": [
+              "rivers",
+              "ocean"
+            ],
+            "golden_passage_title": "Ocean Pollution: An Increasing Problem – The West Wind",
+            "golden_evidence": "most likely going to end up in streams, rivers or drainage pipes due to winds, and all of these end up in the ocean.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6248,
+            "cite_score": 0.5788,
+            "n_covering_claims": 8,
+            "best_covering_claim": "An estimated 92,000 tons of plastic end up in the oceans every week.",
+            "best_evidence_passage_title": "CHERYL CONLEY: The plastic plight weighs on all of us - Houston Chronicle",
+            "best_evidence_passage_text": "plastic only. Grocery stores have row after row of products in plastic containers replacing what were once glass. It is estimated that 92,000 tons of plastic end up in our oceans every week. To help y",
+            "best_evidence_sentence": "It is estimated that 92,000 tons of plastic end up in our oceans every week.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 4,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 1,
+        "required_precision": 0.5,
+        "required_recall": 0.5,
+        "required_coverage": 1,
+        "n_optional": 0,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "please explain American equivalents for British education terms (0 levels, 6th form, uni, etc)",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "O-levels are 'Ordinary level' exams taken at the end of compulsory education, similar to American high school exit exams.",
+            "required": true,
+            "keywords": [
+              "O-level",
+              "Ordinary"
+            ],
+            "golden_passage_title": "GENUKI: Schools Research, Lincolnshire",
+            "golden_evidence": "an \"O-level\" is passing an exam at the \"Ordinary\" level.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7748,
+            "cite_score": 1.3064,
+            "n_covering_claims": 3,
+            "best_covering_claim": "An O-level represents passing an exam at the Ordinary level.",
+            "best_evidence_passage_title": "GENUKI: Schools Research, Lincolnshire",
+            "best_evidence_passage_text": "terms \"O-level\" and \"A-level\" Oversimplified: an \"O-level\" is passing an exam at the \"Ordinary\" level and going off to a life working in a shop or a factory. An \"A-level\" is an \"Advanced\" level which ",
+            "best_evidence_sentence": "terms \"O-level\" and \"A-level\" Oversimplified: an \"O-level\" is passing an exam at the \"Ordinary\" level and going off to a life working in a shop or a factory.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "A-levels are 'Advanced level' exams taken in sixth form (Years 12-13), used for university entrance.",
+            "required": true,
+            "keywords": [
+              "A-level",
+              "Advanced",
+              "sixth form"
+            ],
+            "golden_passage_title": "GENUKI: Schools Research, Lincolnshire",
+            "golden_evidence": "An \"A-level\" is an \"Advanced\" level which gains one entrance into a college or \"sixth-form\" school",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5975,
+            "cite_score": 1.2973,
+            "n_covering_claims": 3,
+            "best_covering_claim": "An A-level is an Advanced level qualification.",
+            "best_evidence_passage_title": "GENUKI: Schools Research, Lincolnshire",
+            "best_evidence_passage_text": "terms \"O-level\" and \"A-level\" Oversimplified: an \"O-level\" is passing an exam at the \"Ordinary\" level and going off to a life working in a shop or a factory. An \"A-level\" is an \"Advanced\" level which ",
+            "best_evidence_sentence": "An \"A-level\" is an \"Advanced\" level which gains one entrance into a college or \"sixth-form\" school for additional education and, presumably, a better job.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "In the UK, 'uni' means university, equivalent to American college or university.",
+            "required": false,
+            "keywords": [
+              "uni",
+              "university",
+              "college"
+            ],
+            "golden_passage_title": null,
+            "golden_evidence": null,
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 7,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What are quantifiers, and the difference between constants, variables, terms, and sentences in logic?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6667,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Quantifiers in logic are 'for all' (∀) and 'there exists' (∃), which specify how many values make a statement true.",
+            "required": true,
+            "keywords": [
+              "for all",
+              "exists",
+              "quantifier"
+            ],
+            "golden_passage_title": "first-order logic | Definition of first-order logic by Webster's Online Dictionary",
+            "golden_evidence": "\"For all\" and \"Exists\" are quantifiers whose scope is F.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8232,
+            "cite_score": 1.2563,
+            "n_covering_claims": 5,
+            "best_covering_claim": "The two primary quantifiers are \"For all\" and \"Exists.\"",
+            "best_evidence_passage_title": "first-order logic | Definition of first-order logic by Webster's Online Dictionary",
+            "best_evidence_passage_text": "- true if there exists some value of v for which F is true. (Normally written with a reversed E). The operators ^ V => <= == ~ are called connectives. \"For all\" and \"Exists\" are quantifiers whose scop",
+            "best_evidence_sentence": "The \"order\" of a logic specifies what entities \"For all\" and \"Exists\" may quantify over.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "A term is a mathematical expression involving numbers, operators, functions and variables.",
+            "required": true,
+            "keywords": [
+              "term",
+              "expression",
+              "variables"
+            ],
+            "golden_passage_title": "first-order logic | Definition of first-order logic by Webster's Online Dictionary",
+            "golden_evidence": "A term is a mathematical expression involving numbers, operators, functions and variables.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7765,
+            "cite_score": 1.1725,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Terms are mathematical expressions involving numbers, operators, functions, and variables.",
+            "best_evidence_passage_title": "first-order logic | Definition of first-order logic by Webster's Online Dictionary",
+            "best_evidence_passage_text": "- true if there exists some value of v for which F is true. (Normally written with a reversed E). The operators ^ V => <= == ~ are called connectives. \"For all\" and \"Exists\" are quantifiers whose scop",
+            "best_evidence_sentence": "A term is a mathematical expression involving numbers, operators, functions and variables.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Constants are fixed values while variables range over a domain of possible values.",
+            "required": false,
+            "keywords": [
+              "constants",
+              "variables",
+              "domain"
+            ],
+            "golden_passage_title": null,
+            "golden_evidence": null,
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.4524,
+            "cite_score": 0,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Sentences in logic are complete formulas constructed from quantifiers, constants, variables, and terms.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 6,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why does the sky turn red and orange during sunset?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Rayleigh scattering causes shorter wavelengths (blue and violet) to scatter much more strongly than longer wavelengths (red and orange).",
+            "required": true,
+            "keywords": [
+              "Rayleigh scattering",
+              "wavelength",
+              "blue",
+              "scatter"
+            ],
+            "golden_passage_title": "Rayleigh scattering - Wikipedia",
+            "golden_evidence": "shorter wavelengths such as blue and violet light are scattered much more strongly than longer wavelengths such as red and orange.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6558,
+            "cite_score": 1.3086,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Shorter blue wavelengths are preferentially scattered away.",
+            "best_evidence_passage_title": "Rayleigh scattering - Wikipedia",
+            "best_evidence_passage_text": "Rayleigh scattering is the scattering of light or other electromagnetic radiation by particles much smaller than the wavelength of the radiation. It occurs when light travels through transparent solid",
+            "best_evidence_sentence": "The scattering cross section is inversely proportional to the fourth power of the wavelength, which means that shorter wavelengths such as blue and violet light are scattered much more strongly than longer wavelengths such as red and orange.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "At sunset, sunlight travels through a greater thickness of the atmosphere, removing most blue light before it reaches the observer.",
+            "required": true,
+            "keywords": [
+              "sunset",
+              "atmosphere",
+              "path",
+              "blue light"
+            ],
+            "golden_passage_title": "Sunset - Wikipedia",
+            "golden_evidence": "The reddening of the Sun and sky is enhanced when the Sun is near the horizon, as the sunlight must travel through a greater thickness of the atmosphere.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4359,
+            "cite_score": 1.415,
+            "n_covering_claims": 2,
+            "best_covering_claim": "A longer path causes more of the blue light to be removed by scattering before the light reaches the observer's eye.",
+            "best_evidence_passage_title": "Sunset - Wikipedia",
+            "best_evidence_passage_text": "The reddening of the Sun and sky is enhanced when the Sun is near the horizon, as the sunlight must travel through a greater thickness of the atmosphere. This longer path causes more of the blue light",
+            "best_evidence_sentence": "This longer path causes more of the blue light to be removed by scattering before the light reaches the observer's eye.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Clouds can enhance the red and orange colors of a sunset by catching the remaining long-wavelength light.",
+            "required": false,
+            "keywords": [
+              "clouds",
+              "red",
+              "orange",
+              "sunset"
+            ],
+            "golden_passage_title": "Sunset - Wikipedia",
+            "golden_evidence": "The effect is especially vivid when the sky is partially cloudy, as clouds catch the red and orange colors of the sunlight.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5923,
+            "cite_score": 1.3915,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Clouds catch the red and orange colors of the sunlight after the light has passed through the atmosphere.",
+            "best_evidence_passage_title": "Sunset - Wikipedia",
+            "best_evidence_passage_text": "The reddening of the Sun and sky is enhanced when the Sun is near the horizon, as the sunlight must travel through a greater thickness of the atmosphere. This longer path causes more of the blue light",
+            "best_evidence_sentence": "The effect is especially vivid when the sky is partially cloudy, as clouds catch the red and orange colors of the sunlight after passing through the atmosphere.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 9,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "How do vaccines work and why do we need booster shots?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6667,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Vaccines contain weakened or killed forms of a microbe (or its proteins) that train the immune system to recognize and fight the pathogen.",
+            "required": true,
+            "keywords": [
+              "vaccine",
+              "weakened",
+              "immune system",
+              "microbe"
+            ],
+            "golden_passage_title": "Vaccine - Wikipedia",
+            "golden_evidence": "A vaccine typically contains an agent that resembles a disease-causing microorganism and is often made from weakened or killed forms of the microbe, its toxins, or one of its surface proteins.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5849,
+            "cite_score": 1.4494,
+            "n_covering_claims": 5,
+            "best_covering_claim": "A vaccine typically contains an agent that resembles a disease-causing microorganism, often made from weakened or killed forms of the microbe, its toxins, or one of its surface proteins.",
+            "best_evidence_passage_title": "Vaccine - Wikipedia",
+            "best_evidence_passage_text": "A vaccine is a biological preparation that provides active acquired immunity to a particular infectious disease. A vaccine typically contains an agent that resembles a disease-causing microorganism an",
+            "best_evidence_sentence": "A vaccine typically contains an agent that resembles a disease-causing microorganism and is often made from weakened or killed forms of the microbe, its toxins, or one of its surface proteins.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Immunity from vaccination tends to diminish over time, which is why booster doses are given to maintain protection.",
+            "required": true,
+            "keywords": [
+              "booster",
+              "immunity",
+              "wane",
+              "antibodies"
+            ],
+            "golden_passage_title": "Booster dose - Wikipedia",
+            "golden_evidence": "immunity provided by vaccination tends to diminish with time. A booster is given to the body to remind the immune system about the foreign antigen.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4326,
+            "cite_score": 1.3867,
+            "n_covering_claims": 4,
+            "best_covering_claim": "A booster dose serves to remind the immune system about the foreign antigen and to keep the level of antibodies high enough to provide long-term protection.",
+            "best_evidence_passage_title": "Booster dose - Wikipedia",
+            "best_evidence_passage_text": "A booster dose is an extra administration of a vaccine after an earlier (primer) dose or doses. It is given to maintain the immunity of a person against a particular antigen, since in some cases immun",
+            "best_evidence_sentence": "A booster is given to the body to remind the immune system about the foreign antigen and to keep the level of antibodies high enough to provide long-term protection.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The adaptive immune system learns to recognize molecules it has previously encountered, forming the biological basis for vaccine-acquired immunity.",
+            "required": false,
+            "keywords": [
+              "adaptive immune system",
+              "memory",
+              "molecules"
+            ],
+            "golden_passage_title": "Immune system - Wikipedia",
+            "golden_evidence": "the adaptive immune system provides a tailored response to each stimulus by learning to recognize molecules it has previously encountered.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.4823,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The adaptive immune system learns to recognize molecules it has encountered when a vaccine agent is administered.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 7,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why do we dream and what happens in our brain while we sleep?",
+      "nugget_metrics": {
+        "nugget_precision": 0.5,
+        "nugget_recall": 0.3333,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Dreams mainly occur during REM sleep, when brain activity is highest and resembles that seen in wakefulness.",
+            "required": true,
+            "keywords": [
+              "REM sleep",
+              "dreams",
+              "brain activity"
+            ],
+            "golden_passage_title": "Dream - Wikipedia",
+            "golden_evidence": "Dreams mainly occur in the rapid-eye movement (REM) stage of sleep, when brain activity is highest and resembles that seen in wakefulness.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.542,
+            "cite_score": 1.4062,
+            "n_covering_claims": 8,
+            "best_covering_claim": "Dreams mainly occur in the rapid-eye movement (REM) stage of sleep, when brain activity is highest and resembles that seen in wakefulness.",
+            "best_evidence_passage_title": "Dream - Wikipedia",
+            "best_evidence_passage_text": "A dream is a succession of images, ideas, emotions, and sensations that usually occur involuntarily in the mind during certain stages of sleep. The content and purpose of dreams are not fully understo",
+            "best_evidence_sentence": "Dreams mainly occur in the rapid-eye movement (REM) stage of sleep, when brain activity is highest and resembles that seen in wakefulness.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "REM sleep is linked to the consolidation of procedural and emotional memories.",
+            "required": true,
+            "keywords": [
+              "REM",
+              "memory consolidation",
+              "emotional memory"
+            ],
+            "golden_passage_title": "Memory consolidation - Wikipedia",
+            "golden_evidence": "REM sleep has been linked to the consolidation of procedural and emotional memories.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.2414,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Sleep plays a crucial role in memory consolidation, which is a category of processes that stabilize a memory trace after its initial acquisition.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "In adult humans, REM sleep typically occupies 20–25% of total sleep and occurs in 4–5 episodes per night.",
+            "required": false,
+            "keywords": [
+              "REM",
+              "percentage",
+              "sleep cycles"
+            ],
+            "golden_passage_title": "Rapid eye movement sleep - Wikipedia",
+            "golden_evidence": "REM sleep typically occupies 20–25% of total sleep, about 90–120 minutes of a night's sleep.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 13,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 1,
+        "required_precision": 0.5,
+        "required_recall": 0.5,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why does music make us feel emotions, and why do some songs make us cry?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Pleasurable music leads to the release of dopamine, a neurotransmitter associated with reward.",
+            "required": true,
+            "keywords": [
+              "dopamine",
+              "music",
+              "reward",
+              "neurotransmitter"
+            ],
+            "golden_passage_title": "Music and emotion - Wikipedia",
+            "golden_evidence": "Pleasurable music may lead to the release of neurotransmitters associated with reward, such as dopamine.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8006,
+            "cite_score": 1.3852,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Pleasurable music may lead to the release of neurotransmitters associated with reward, such as dopamine.",
+            "best_evidence_passage_title": "Music and emotion - Wikipedia",
+            "best_evidence_passage_text": "Music and emotion is a branch of music psychology concerned with the relationship between music and emotion. Music has the ability to evoke powerful emotional responses such as chills and thrills in l",
+            "best_evidence_sentence": "Pleasurable music may lead to the release of neurotransmitters associated with reward, such as dopamine.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Emotional peaks in music (frisson) occur at unexpected moments such as chord changes or dramatic climaxes.",
+            "required": true,
+            "keywords": [
+              "frisson",
+              "peak",
+              "chord",
+              "climax"
+            ],
+            "golden_passage_title": "Frisson - Wikipedia",
+            "golden_evidence": "Frisson is most often reported in response to music, particularly at 'peak moments' such as unexpected chord changes, a specific vocal performance, or a dramatic climax.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.276,
+            "cite_score": 1.3913,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Frisson is a psychophysiological response characterized by chills or goosebumps.",
+            "best_evidence_passage_title": "Frisson - Wikipedia",
+            "best_evidence_passage_text": "Frisson (French for 'shiver') is a psychophysiological response to rewarding auditory and/or visual stimuli that induces a pleasurable or otherwise positively-valenced affective state and transient pa",
+            "best_evidence_sentence": "Frisson (French for 'shiver') is a psychophysiological response to rewarding auditory and/or visual stimuli that induces a pleasurable or otherwise positively-valenced affective state and transient paresthesia (skin tingling or chills), sometimes also described as 'chills' or 'goosebumps'.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The limbic system, which includes the amygdala and hippocampus, is responsible for emotional processing and long-term memory.",
+            "required": false,
+            "keywords": [
+              "limbic system",
+              "amygdala",
+              "emotion",
+              "memory"
+            ],
+            "golden_passage_title": "Limbic system - Wikipedia",
+            "golden_evidence": "The limbic system supports a variety of functions including emotion, behavior, long-term memory, and olfaction.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5357,
+            "cite_score": 0.644,
+            "n_covering_claims": 7,
+            "best_covering_claim": "The recollection of emotionally charged events is particularly vivid due to its interaction with the amygdala.",
+            "best_evidence_passage_title": "Hippocampus - Wikipedia",
+            "best_evidence_passage_text": "The hippocampus is a major component of the brain of humans and other vertebrates. Humans and other mammals have two hippocampi, one in each side of the brain. The hippocampus is part of the limbic sy",
+            "best_evidence_sentence": "The hippocampus is also involved in the retrieval of autobiographical memories, and the recollection of emotionally charged events is particularly vivid due to its interaction with the amygdala.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 11,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "How does the internet actually work? What happens when I type a URL in my browser?",
+      "nugget_metrics": {
+        "nugget_precision": 0.3333,
+        "nugget_recall": 0.3333,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "DNS translates human-readable domain names into numerical IP addresses needed for network communication.",
+            "required": true,
+            "keywords": [
+              "DNS",
+              "domain name",
+              "IP address",
+              "translate"
+            ],
+            "golden_passage_title": "Domain Name System - Wikipedia",
+            "golden_evidence": "It translates readily memorized domain names to the numerical IP addresses needed for locating and identifying computer services and devices.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.4976,
+            "cite_score": 0,
+            "n_covering_claims": 3,
+            "best_covering_claim": "The Domain Name System translates the readily memorized domain name you typed into the numerical IP address needed for locating and identifying computer services and devices on the network.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Data is broken into discrete packets which are independently routed across the network and reassembled at the destination.",
+            "required": true,
+            "keywords": [
+              "TCP/IP",
+              "packets",
+              "routed",
+              "reassembled"
+            ],
+            "golden_passage_title": "Internet protocol suite - Wikipedia",
+            "golden_evidence": "Data is broken into discrete packets which are independently routed across the network and reassembled at the destination.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6059,
+            "cite_score": 1.2636,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Data is broken into discrete packets which are independently routed across the network and reassembled at the destination.",
+            "best_evidence_passage_title": "Internet protocol suite - Wikipedia",
+            "best_evidence_passage_text": "The Internet protocol suite, commonly known as TCP/IP, is a framework for organizing the set of communication protocols used in the Internet and similar computer networks according to functional crite",
+            "best_evidence_sentence": "Data is broken into discrete packets which are independently routed across the network and reassembled at the destination.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "A web browser renders HTML, CSS, and JavaScript received from a server to display the webpage visually.",
+            "required": false,
+            "keywords": [
+              "browser",
+              "HTML",
+              "CSS",
+              "JavaScript",
+              "render"
+            ],
+            "golden_passage_title": "Web browser - Wikipedia",
+            "golden_evidence": "A browser renders HTML, CSS, and JavaScript to present the content visually and interactively to the user.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6533,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Your browser renders the HTML, CSS, and JavaScript to present the content visually and interactively to you on your device when the web server responds with the content.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 5,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 1,
+        "required_precision": 0.5,
+        "required_recall": 0.5,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What exactly is inflation and why does it make things more expensive over time?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Inflation is a general increase in prices that reduces the purchasing power of money over time.",
+            "required": true,
+            "keywords": [
+              "inflation",
+              "prices",
+              "purchasing power"
+            ],
+            "golden_passage_title": "Inflation - Wikipedia",
+            "golden_evidence": "When the general price level rises, each unit of currency buys fewer goods and services; consequently, inflation corresponds to a reduction in the purchasing power of money.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6118,
+            "cite_score": 0.67,
+            "n_covering_claims": 9,
+            "best_covering_claim": "Deflation increases purchasing power, while inflation decreases it.",
+            "best_evidence_passage_title": "Purchasing power - Wikipedia",
+            "best_evidence_passage_text": "Purchasing power (sometimes retroactively called adjusted for inflation) is the quantity of goods or services that can be purchased with a unit of currency. For example, if you had taken one dollar to",
+            "best_evidence_sentence": "Inflation decreases purchasing power, while deflation increases it.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Inflation can be demand-pull (demand exceeds supply), cost-push (rising input costs), or built-in (self-fulfilling wage-price expectations).",
+            "required": true,
+            "keywords": [
+              "demand-pull",
+              "cost-push",
+              "built-in inflation"
+            ],
+            "golden_passage_title": "Inflation - Wikipedia (Causes section)",
+            "golden_evidence": "Demand-pull inflation occurs when aggregate demand in an economy exceeds aggregate supply. Cost-push inflation is caused by a drop in aggregate supply. Built-in inflation occurs when workers expect wages to keep up with prices.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3352,
+            "cite_score": 1.4507,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Demand-pull inflation occurs when aggregate demand in an economy exceeds aggregate supply.",
+            "best_evidence_passage_title": "Inflation - Wikipedia (Causes section)",
+            "best_evidence_passage_text": "Economists generally believe that high rates of inflation and hyperinflation are caused by an excessive growth of the money supply. Views on which factors determine low to moderate rates of inflation ",
+            "best_evidence_sentence": "Demand-pull inflation occurs when aggregate demand in an economy exceeds aggregate supply.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Most central banks target an annual inflation rate of around 2 percent as a sign of healthy economic growth.",
+            "required": false,
+            "keywords": [
+              "central bank",
+              "2 percent",
+              "inflation target"
+            ],
+            "golden_passage_title": "Central bank - Wikipedia",
+            "golden_evidence": "Many central banks target an inflation rate of around 2 percent annually.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 14,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "How do black holes form, and what happens if something falls into one?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6667,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Black holes form when a massive star collapses in a supernova, creating a region so compact that nothing can escape its gravitational pull.",
+            "required": true,
+            "keywords": [
+              "black hole",
+              "supernova",
+              "gravitational collapse",
+              "event horizon"
+            ],
+            "golden_passage_title": "Black hole - Wikipedia",
+            "golden_evidence": "Stellar black holes form when the center of a very massive star collapses in upon itself (a supernova). The resulting star is so compact that nothing can escape its gravitational pull.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4566,
+            "cite_score": 1.3732,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Black holes form when the center of a very massive star collapses in upon itself during a supernova.",
+            "best_evidence_passage_title": "Black hole - Wikipedia",
+            "best_evidence_passage_text": "A black hole is a region of spacetime where gravity is so strong that nothing, not even light or other electromagnetic waves, has enough energy to escape the boundary known as the event horizon. The t",
+            "best_evidence_sentence": "Stellar black holes form when the center of a very massive star collapses in upon itself (a supernova).",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Spaghettification is the extreme stretching of objects into thin strands caused by tidal forces near a black hole.",
+            "required": true,
+            "keywords": [
+              "spaghettification",
+              "tidal forces",
+              "stretching"
+            ],
+            "golden_passage_title": "Spaghettification - Wikipedia",
+            "golden_evidence": "Spaghettification is the vertical stretching and horizontal compression of objects into long thin shapes in a very strong non-homogeneous gravitational field.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.686,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Spaghettification is the vertical stretching and horizontal compression of objects into long thin shapes caused by extreme tidal forces.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "From a distant observer's perspective, objects approaching the event horizon appear to slow and freeze due to gravitational time dilation.",
+            "required": false,
+            "keywords": [
+              "time dilation",
+              "event horizon",
+              "observer"
+            ],
+            "golden_passage_title": "Event horizon - Wikipedia",
+            "golden_evidence": "Objects approaching the event horizon of a black hole appear to slow down and stop, due to gravitational time dilation, as seen by a distant observer.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7701,
+            "cite_score": 1.3063,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Objects approaching the event horizon appear to slow down and stop due to gravitational time dilation from the perspective of a distant observer.",
+            "best_evidence_passage_title": "Event horizon - Wikipedia",
+            "best_evidence_passage_text": "In astrophysics, an event horizon is a boundary beyond which events cannot affect an observer on the other side of it. Homer's event horizon is the 'point of no return', i.e., the point at which the g",
+            "best_evidence_sentence": "Objects approaching the event horizon of a black hole appear to slow down and stop, due to gravitational time dilation, as seen by a distant observer.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 7,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 1,
+        "required_precision": 0.5,
+        "required_recall": 0.5,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why do we get sick when we're cold, and does being cold actually cause illness?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Cold weather does not directly cause illness; the association with more colds is due to indirect factors like indoor crowding.",
+            "required": true,
+            "keywords": [
+              "cold weather",
+              "illness",
+              "indirect",
+              "indoors"
+            ],
+            "golden_passage_title": "Common cold - Wikipedia",
+            "golden_evidence": "People mistakenly believe that cold weather directly causes colds, but the association is due to indirect factors such as increased time spent indoors in closer contact with other people.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.2917,
+            "cite_score": 1.2866,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Being cold itself does not directly cause illness.",
+            "best_evidence_passage_title": "Common cold - Wikipedia",
+            "best_evidence_passage_text": "The common cold, also known simply as a cold, is a viral infectious disease of the upper respiratory tract that primarily affects the respiratory mucosa of the nose, throat, sinuses, and larynx. Signs",
+            "best_evidence_sentence": "People mistakenly believe that cold weather directly causes colds, but the association between cold weather and increased incidence of colds is due to indirect factors such as increased time spent indoors in closer contact with other people who may be infectious.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Rhinovirus replicates more efficiently at the cooler temperatures of the nasal passages during cold air inhalation.",
+            "required": true,
+            "keywords": [
+              "rhinovirus",
+              "temperature",
+              "nasal",
+              "replicate"
+            ],
+            "golden_passage_title": "Rhinovirus - Wikipedia",
+            "golden_evidence": "At the lower temperatures typical of nasal passages during inhalation of cold air, the virus is better able to replicate.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5184,
+            "cite_score": 1.3743,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Immune defenses are less effective at lower temperatures.",
+            "best_evidence_passage_title": "Rhinovirus - Wikipedia",
+            "best_evidence_passage_text": "Rhinoviruses (from the Greek rhin, meaning 'nose') are the most common cause of the common cold in humans. Rhinovirus infection proliferates in temperatures between 33–35 °C (91–95 °F), the temperatur",
+            "best_evidence_sentence": "At the lower temperatures typical of nasal passages during inhalation of cold air, the virus is better able to replicate, as the immune defenses are less effective at lower temperatures.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Low humidity in winter helps viruses survive longer in aerosol form, increasing the risk of airborne transmission.",
+            "required": false,
+            "keywords": [
+              "humidity",
+              "aerosol",
+              "virus survival"
+            ],
+            "golden_passage_title": "Transmission of viruses - Wikipedia",
+            "golden_evidence": "Low relative humidity has been associated with enhanced survival of viruses in aerosol form, since dry air causes droplets to evaporate more quickly into smaller particles that remain suspended in the air longer.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3208,
+            "cite_score": 1.4021,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Airborne transmission is particularly efficient in enclosed spaces with poor ventilation and low humidity.",
+            "best_evidence_passage_title": "Transmission of viruses - Wikipedia",
+            "best_evidence_passage_text": "Transmission of an infectious disease may occur through one or more of diverse pathways including physical contact with infected individuals, infected body fluids, food, objects, airborne inhalation, ",
+            "best_evidence_sentence": "Airborne transmission is particularly efficient in enclosed spaces with poor ventilation and low humidity.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 6,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why do we have two eyes and not one? What does having two eyes give us?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Stereopsis gives us depth perception by processing the slightly different images projected onto each eye's retina.",
+            "required": true,
+            "keywords": [
+              "stereopsis",
+              "depth perception",
+              "retina",
+              "binocular"
+            ],
+            "golden_passage_title": "Stereopsis - Wikipedia",
+            "golden_evidence": "Stereopsis is the process in visual perception leading to the sensation of depth from the two slightly different projections of the world onto the retinas of the two eyes.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5061,
+            "cite_score": 0.7099,
+            "n_covering_claims": 5,
+            "best_covering_claim": "Binocular cues include stereopsis, eye convergence, and disparity.",
+            "best_evidence_passage_title": "Depth perception - Wikipedia",
+            "best_evidence_passage_text": "Depth perception is the visual ability to perceive the world in three dimensions (3D) and the distance of an object. Depth sensation is the corresponding term for animals, since the term perception im",
+            "best_evidence_sentence": "Binocular cues include stereopsis, eye convergence, disparity, and yielding a 3D structure from motion.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Forward-facing eyes in predators provide excellent depth perception at the cost of a reduced field of view.",
+            "required": true,
+            "keywords": [
+              "predators",
+              "forward-facing",
+              "depth perception",
+              "field of view"
+            ],
+            "golden_passage_title": "Binocular vision - Wikipedia",
+            "golden_evidence": "Most predators have forward-facing eyes that allow for excellent depth perception at the cost of a reduced field of view.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.717,
+            "cite_score": 1.3447,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Forward-facing eyes allow for excellent depth perception in predators.",
+            "best_evidence_passage_title": "Binocular vision - Wikipedia",
+            "best_evidence_passage_text": "In biology, binocular vision is a type of vision in which an animal has two eyes capable of facing the same direction to perceive a single three-dimensional image of its surroundings. Binocular vision",
+            "best_evidence_sentence": "Among vertebrates, most predators have forward-facing eyes that allow for excellent depth perception at the cost of a reduced field of view.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The visual cortex uses binocular disparity — the difference between the two eyes' inputs — to calculate depth and distance.",
+            "required": false,
+            "keywords": [
+              "visual cortex",
+              "binocular disparity",
+              "depth",
+              "distance"
+            ],
+            "golden_passage_title": "Visual cortex - Wikipedia",
+            "golden_evidence": "The visual cortex integrates input from both eyes, and the differences between those two inputs (binocular disparity) are used to calculate depth and distance.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3398,
+            "cite_score": 1.341,
+            "n_covering_claims": 2,
+            "best_covering_claim": "The visual cortex integrates input from both eyes.",
+            "best_evidence_passage_title": "Visual cortex - Wikipedia",
+            "best_evidence_passage_text": "The visual cortex of the brain is a part of the cerebral cortex that processes visual information. It is located in the occipital lobe. Visual signals from the eyes travel via the optic nerve to the l",
+            "best_evidence_sentence": "The visual cortex integrates input from both eyes, and the differences between those two inputs (binocular disparity) are used to calculate depth and distance.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 7,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "How does nuclear energy work, and is it actually safe?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Nuclear fission of uranium-235 and plutonium-239 produces electricity through heat and steam generation.",
+            "required": true,
+            "keywords": [
+              "nuclear fission",
+              "uranium",
+              "plutonium",
+              "heat",
+              "steam"
+            ],
+            "golden_passage_title": "Nuclear fission - Wikipedia",
+            "golden_evidence": "Nuclear fission of uranium-235 and plutonium-239 is used in nuclear power plants to produce electricity through the generation of heat and steam.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7887,
+            "cite_score": 1.3511,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Nuclear fission of uranium-235 and plutonium-239 produces electricity through the generation of heat and steam in nuclear power plants.",
+            "best_evidence_passage_title": "Nuclear fission - Wikipedia",
+            "best_evidence_passage_text": "Nuclear fission is a reaction in which the nucleus of an atom splits into two or more smaller nuclei. The fission process often produces gamma photons and releases a very large amount of energy even b",
+            "best_evidence_sentence": "Nuclear fission of uranium-235 and plutonium-239 is used in nuclear power plants to produce electricity through the generation of heat and steam.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Nuclear power is one of the safest energy forms in terms of deaths per unit of energy generated.",
+            "required": true,
+            "keywords": [
+              "nuclear safety",
+              "deaths per kWh",
+              "energy"
+            ],
+            "golden_passage_title": "Nuclear power - Wikipedia",
+            "golden_evidence": "Nuclear power is, along with hydropower, one of the safest forms of energy production in terms of deaths per unit of energy generated.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3303,
+            "cite_score": 0.5868,
+            "n_covering_claims": 4,
+            "best_covering_claim": "The fission process releases a very large amount of energy.",
+            "best_evidence_passage_title": "Nuclear fission - Wikipedia",
+            "best_evidence_passage_text": "Nuclear fission is a reaction in which the nucleus of an atom splits into two or more smaller nuclei. The fission process often produces gamma photons and releases a very large amount of energy even b",
+            "best_evidence_sentence": "The fission process often produces gamma photons and releases a very large amount of energy even by the energetic standards of radioactive decay.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The long-term storage and disposal of nuclear waste remains one of the biggest unresolved challenges for the nuclear industry.",
+            "required": false,
+            "keywords": [
+              "radioactive waste",
+              "storage",
+              "disposal"
+            ],
+            "golden_passage_title": "Radioactive waste - Wikipedia",
+            "golden_evidence": "The long-term storage and disposal of nuclear waste remains one of the most significant challenges facing the nuclear industry.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5253,
+            "cite_score": 1.34,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Nuclear power generation creates spent nuclear fuel that presents one of the most significant challenges facing the nuclear industry in terms of long-term storage and disposal.",
+            "best_evidence_passage_title": "Radioactive waste - Wikipedia",
+            "best_evidence_passage_text": "Radioactive waste is a type of hazardous waste that contains radioactive material. Radioactive waste is a by-product of various nuclear technology processes. Industries generating radioactive waste in",
+            "best_evidence_sentence": "The long-term storage and disposal of nuclear waste remains one of the most significant challenges facing the nuclear industry.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 8,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why does the same wine taste different depending on what glass you use?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "A larger bowl allows greater aeration and the release of volatile aromatic compounds in red wine.",
+            "required": true,
+            "keywords": [
+              "bowl",
+              "aeration",
+              "volatile",
+              "aromatic compounds"
+            ],
+            "golden_passage_title": "Wine glass - Wikipedia",
+            "golden_evidence": "For red wines, a larger bowl allows greater aeration and the release of volatile aromatic compounds.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.812,
+            "cite_score": 1.3006,
+            "n_covering_claims": 1,
+            "best_covering_claim": "For red wines, a larger bowl allows greater aeration and the release of volatile aromatic compounds.",
+            "best_evidence_passage_title": "Wine glass - Wikipedia",
+            "best_evidence_passage_text": "A wine glass is a type of glass that is used to drink and taste wine. Most wine glasses are stemware (goblets), i.e., they are composed of three parts: the bowl, stem, and foot. The shape of the bowl ",
+            "best_evidence_sentence": "For red wines, a larger bowl allows greater aeration and the release of volatile aromatic compounds.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Wine aromas are volatile organic compounds that evaporate from the wine and are detected by the nose.",
+            "required": true,
+            "keywords": [
+              "volatile organic compounds",
+              "aroma",
+              "nasal",
+              "smell"
+            ],
+            "golden_passage_title": "Olfaction - Wikipedia",
+            "golden_evidence": "Wine aromas are a complex mixture of volatile organic compounds that evaporate from the liquid and are detected in the nasal cavity.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3103,
+            "cite_score": 0.7547,
+            "n_covering_claims": 7,
+            "best_covering_claim": "The nose is sensitive to thousands of volatile organic compounds at concentrations far below those detectable by taste.",
+            "best_evidence_passage_title": "Wine tasting - Wikipedia",
+            "best_evidence_passage_text": "Wine tasting (or viniculture) is the sensory examination and evaluation of wine. While the practice of wine tasting is as ancient as its production, a more formalized methodology has slowly become est",
+            "best_evidence_sentence": "The evaluation of aroma is considered the most important step in wine tasting, as the nose is sensitive to thousands of volatile organic compounds at concentrations far below those detectable by taste.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Aeration softens the astringent quality of tannins in red wine through oxidation, and a wide-bowled glass speeds up this process.",
+            "required": false,
+            "keywords": [
+              "aeration",
+              "tannins",
+              "oxygen",
+              "astringent"
+            ],
+            "golden_passage_title": "Aeration (wine) - Wikipedia",
+            "golden_evidence": "Tannins in red wine bind to oxygen during aeration, softening the astringent quality of the wine.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.2712,
+            "cite_score": 1.3922,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Exposure to oxygen can improve the smell and taste of wine, especially in red wines.",
+            "best_evidence_passage_title": "Aeration (wine) - Wikipedia",
+            "best_evidence_passage_text": "In winemaking, aeration is the deliberate introduction of air into the wine. Exposure to oxygen causes complex chemical reactions in wine that can improve its smell and taste, especially in red wines.",
+            "best_evidence_sentence": "Exposure to oxygen causes complex chemical reactions in wine that can improve its smell and taste, especially in red wines.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 10,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "How do airplanes stay in the air? I know it has something to do with wings but I don't get the physics.",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The curved upper surface of the wing makes air travel faster over the top, creating lower pressure and an upward lift force (Bernoulli's principle).",
+            "required": true,
+            "keywords": [
+              "Bernoulli",
+              "wing",
+              "pressure",
+              "lift"
+            ],
+            "golden_passage_title": "Bernoulli's principle - Wikipedia",
+            "golden_evidence": "The curved upper surface of the wing causes air to travel faster than air beneath, resulting in lower pressure on top. The pressure difference produces an upward force known as lift.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4587,
+            "cite_score": 1.3059,
+            "n_covering_claims": 8,
+            "best_covering_claim": "A pressure difference produces an upward force known as lift.",
+            "best_evidence_passage_title": "Bernoulli's principle - Wikipedia",
+            "best_evidence_passage_text": "Bernoulli's principle is a key concept in fluid dynamics that relates pressure, speed, and elevation. In its most well-known form, an increase in the speed of a fluid occurs simultaneously with a decr",
+            "best_evidence_sentence": "The pressure difference between the bottom and top of the wing produces an upward force known as lift.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "According to Newton's third law, when the wing deflects air downward, an equal and opposite upward force is exerted on the wing.",
+            "required": true,
+            "keywords": [
+              "Newton's third law",
+              "deflect",
+              "downward",
+              "upward force"
+            ],
+            "golden_passage_title": "Lift (force) - Wikipedia",
+            "golden_evidence": "According to Newton's third law, if the wing deflects air downward, the air exerts an equal and opposite (upward) force on the wing.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "As the angle of attack increases beyond a critical value, airflow separates from the wing and lift drops — this is called a stall.",
+            "required": false,
+            "keywords": [
+              "angle of attack",
+              "stall",
+              "lift drop"
+            ],
+            "golden_passage_title": "Angle of attack - Wikipedia",
+            "golden_evidence": "Beyond the stall angle, the airflow separates from the wing and lift drops dramatically — a condition known as a stall.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.545,
+            "cite_score": 1.2734,
+            "n_covering_claims": 3,
+            "best_covering_claim": "A stall is a condition where the airflow separates from the wing and lift drops dramatically.",
+            "best_evidence_passage_title": "Angle of attack - Wikipedia",
+            "best_evidence_passage_text": "The angle of attack (AoA) is the angle between a reference line on a body (often the chord line of an airfoil) and the vector representing the relative motion between the body and the fluid through wh",
+            "best_evidence_sentence": "As the angle of attack increases, lift increases up to a critical angle (the stall angle), beyond which the airflow separates from the wing and lift drops dramatically — a condition known as a stall.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 12,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 0.5,
+        "required_coverage": 0.5,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is the placebo effect and why does it actually work?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The placebo effect is a measurable physiological or psychological improvement following an inert treatment, caused by expectation and belief.",
+            "required": true,
+            "keywords": [
+              "placebo effect",
+              "expectation",
+              "physiological",
+              "inert"
+            ],
+            "golden_passage_title": "Placebo - Wikipedia",
+            "golden_evidence": "The placebo effect refers to the phenomenon in which some patients show a measurable beneficial physiological or psychological response after receiving a placebo.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4637,
+            "cite_score": 1.2091,
+            "n_covering_claims": 7,
+            "best_covering_claim": "The physiological mechanisms of the placebo effect are not fully understood but involve a range of neurobiological pathways.",
+            "best_evidence_passage_title": "Placebo - Wikipedia (Mechanisms section)",
+            "best_evidence_passage_text": "The physiological mechanisms of the placebo effect are not fully understood but involve a range of neurobiological pathways. Expectation plays a major role: when a patient expects relief, the brain ca",
+            "best_evidence_sentence": "The physiological mechanisms of the placebo effect are not fully understood but involve a range of neurobiological pathways.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Placebos trigger endorphin release, alter dopamine activity, modify immune responses, and reduce stress hormones like cortisol.",
+            "required": true,
+            "keywords": [
+              "endorphins",
+              "dopamine",
+              "cortisol",
+              "immune"
+            ],
+            "golden_passage_title": "Placebo - Wikipedia (Mechanisms section)",
+            "golden_evidence": "When a patient expects relief, the brain can release endogenous opioids (endorphins). Placebos can alter dopamine activity, modify immune responses, and reduce levels of stress hormones such as cortisol.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6005,
+            "cite_score": 1.4456,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Placebos can alter dopamine activity in the brain, modify immune responses, and reduce levels of stress hormones such as cortisol.",
+            "best_evidence_passage_title": "Placebo - Wikipedia (Mechanisms section)",
+            "best_evidence_passage_text": "The physiological mechanisms of the placebo effect are not fully understood but involve a range of neurobiological pathways. Expectation plays a major role: when a patient expects relief, the brain ca",
+            "best_evidence_sentence": "Studies have shown that placebos can alter dopamine activity in the brain, modify immune responses, and reduce levels of stress hormones such as cortisol.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Open-label placebos produce measurable benefits even when patients know they are receiving an inert treatment.",
+            "required": false,
+            "keywords": [
+              "open-label placebo",
+              "patient knowledge",
+              "measurable benefit"
+            ],
+            "golden_passage_title": "Open-label placebo - Wikipedia",
+            "golden_evidence": "Research has shown that open-label placebos can produce measurable benefits even when the patient knows the treatment is inert.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3607,
+            "cite_score": 1.3541,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Placebos can produce measurable benefits even when patients know they are receiving one.",
+            "best_evidence_passage_title": "Open-label placebo - Wikipedia",
+            "best_evidence_passage_text": "An open-label placebo is a placebo treatment administered to patients who are told explicitly that the treatment is a placebo. Contrary to the popular belief that placebos only work when the patient i",
+            "best_evidence_sentence": "Contrary to the popular belief that placebos only work when the patient is unaware they are receiving one, research has shown that open-label placebos can produce measurable benefits in conditions such as irritable bowel syndrome, chronic low back pain, and cancer-related fatigue.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 11,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why do leaves change color in autumn and then fall off?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "As chlorophyll breaks down in autumn, underlying carotenoid pigments (yellow and orange) are revealed, and anthocyanins (red) are newly produced.",
+            "required": true,
+            "keywords": [
+              "chlorophyll",
+              "carotenoids",
+              "anthocyanins",
+              "autumn color"
+            ],
+            "golden_passage_title": "Autumn leaf color - Wikipedia",
+            "golden_evidence": "As chlorophyll breaks down, these underlying pigments are revealed. Red colors are produced by anthocyanins, which are synthesized during autumn.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4859,
+            "cite_score": 1.3993,
+            "n_covering_claims": 5,
+            "best_covering_claim": "Chlorophyll masks the yellows and oranges of carotenoids present year-round.",
+            "best_evidence_passage_title": "Autumn leaf color - Wikipedia",
+            "best_evidence_passage_text": "Autumn leaf color is a phenomenon that affects the green leaves of many trees and shrubs by which they take on orange, yellow, red, purple, or brown shades during the weeks of autumn. The phenomenon i",
+            "best_evidence_sentence": "The green color of leaves is due to chlorophyll, which masks the yellows and oranges of carotenoids present year-round.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Leaves fall because an abscission zone forms at the base of the leaf, severing its connection to the stem.",
+            "required": true,
+            "keywords": [
+              "abscission zone",
+              "separation layer",
+              "leaf fall"
+            ],
+            "golden_passage_title": "Abscission - Wikipedia",
+            "golden_evidence": "The separation layer forms at the base of the petiole and the cells within it weaken and break down, severing the connection between the leaf and the stem.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3864,
+            "cite_score": 1.2977,
+            "n_covering_claims": 2,
+            "best_covering_claim": "An abscission zone forms at the base of the petiole.",
+            "best_evidence_passage_title": "Abscission - Wikipedia",
+            "best_evidence_passage_text": "Abscission is the process by which plants shed one or more of their parts, such as a leaf, fruit, flower, or seed, after the plant has formed a specialized abscission zone. In deciduous plants, abscis",
+            "best_evidence_sentence": "The separation layer forms at the base of the petiole and the cells within it weaken and break down, severing the connection between the leaf and the stem and allowing the leaf to fall.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Chlorophyll production slows and stops in autumn as daylight hours decrease, triggering the color change.",
+            "required": false,
+            "keywords": [
+              "chlorophyll",
+              "daylight",
+              "autumn",
+              "production stops"
+            ],
+            "golden_passage_title": "Chlorophyll - Wikipedia",
+            "golden_evidence": "All plants produce chlorophyll during spring and summer when there is adequate sunlight, and production slows or stops in autumn as daylight hours decrease.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.2706,
+            "cite_score": 0.5246,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Abscission occurs in deciduous plants in autumn and involves the senescence of leaves.",
+            "best_evidence_passage_title": "Deciduous - Wikipedia",
+            "best_evidence_passage_text": "In the fields of horticulture and botany, the term deciduous means 'falling off at maturity' and is typically used in reference to trees or shrubs that lose their leaves seasonally. Deciduous trees an",
+            "best_evidence_sentence": "Deciduous trees and shrubs lose their leaves each autumn as temperatures decline and days become shorter.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 14,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What causes earthquakes and how are they measured?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Earthquakes are caused by stress that accumulates at tectonic plate boundaries and is suddenly released along geological faults.",
+            "required": true,
+            "keywords": [
+              "tectonic plates",
+              "fault",
+              "stress release",
+              "earthquake"
+            ],
+            "golden_passage_title": "Earthquake - Wikipedia",
+            "golden_evidence": "Stress accumulates at their boundaries until it is suddenly released, causing an earthquake.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6595,
+            "cite_score": 1.3312,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Earthquakes are caused by the movement of tectonic plates along geological faults.",
+            "best_evidence_passage_title": "Earthquake - Wikipedia",
+            "best_evidence_passage_text": "An earthquake (also known as a quake, tremor or temblor) is the shaking of the surface of the Earth resulting from a sudden release of energy in the Earth's lithosphere that creates seismic waves. Ear",
+            "best_evidence_sentence": "The most common cause of earthquakes is the movement of tectonic plates along geological faults.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Each whole number increase on the magnitude scale represents roughly 31.6 times more energy released.",
+            "required": true,
+            "keywords": [
+              "magnitude scale",
+              "energy",
+              "31 times"
+            ],
+            "golden_passage_title": "Richter magnitude scale - Wikipedia",
+            "golden_evidence": "Each whole number increase in magnitude represents roughly 31.6 times more energy released and approximately 10 times more ground motion.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4768,
+            "cite_score": 1.2082,
+            "n_covering_claims": 7,
+            "best_covering_claim": "The moment magnitude scale is more accurate for large earthquakes.",
+            "best_evidence_passage_title": "Richter magnitude scale - Wikipedia",
+            "best_evidence_passage_text": "The Richter magnitude scale (also Richter scale) is a measure of the strength of earthquakes, developed by Charles Richter in collaboration with Beno Gutenberg in 1935. The scale has been superseded b",
+            "best_evidence_sentence": "The scale has been superseded by the moment magnitude scale (Mw), which is more accurate for large earthquakes.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Seismic waves are the waves of energy that travel through the Earth's layers from an earthquake's source to the surface.",
+            "required": false,
+            "keywords": [
+              "seismic waves",
+              "energy",
+              "Earth's layers"
+            ],
+            "golden_passage_title": "Seismic wave - Wikipedia",
+            "golden_evidence": "Seismic waves are waves of energy that travel through the Earth's layers as a result of an earthquake.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5444,
+            "cite_score": 0.7501,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The sudden release of energy in the Earth's lithosphere creates seismic waves that result in the shaking of the Earth's surface.",
+            "best_evidence_passage_title": "Earthquake - Wikipedia",
+            "best_evidence_passage_text": "An earthquake (also known as a quake, tremor or temblor) is the shaking of the surface of the Earth resulting from a sudden release of energy in the Earth's lithosphere that creates seismic waves. Ear",
+            "best_evidence_sentence": "An earthquake (also known as a quake, tremor or temblor) is the shaking of the surface of the Earth resulting from a sudden release of energy in the Earth's lithosphere that creates seismic waves.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 9,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why is the ocean salty and where does all the salt come from?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Rivers carry dissolved minerals from chemically weathered rocks on land into the ocean, a primary source of ocean salinity.",
+            "required": true,
+            "keywords": [
+              "rivers",
+              "minerals",
+              "weathering",
+              "salinity"
+            ],
+            "golden_passage_title": "Salinity - Wikipedia",
+            "golden_evidence": "The primary source of dissolved salts in the ocean is the continuous input from rivers, which leach minerals from rocks.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6676,
+            "cite_score": 1.3936,
+            "n_covering_claims": 8,
+            "best_covering_claim": "Rivers leach minerals from rocks through chemical weathering.",
+            "best_evidence_passage_title": "Salinity - Wikipedia",
+            "best_evidence_passage_text": "Salinity is the concentration of dissolved salt in a body of water. On Earth, the primary source of dissolved salts in the ocean is the continuous input from rivers, which leach minerals from rocks th",
+            "best_evidence_sentence": "On Earth, the primary source of dissolved salts in the ocean is the continuous input from rivers, which leach minerals from rocks through chemical weathering.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Because water evaporates from the ocean but dissolved salts remain, ocean salinity increases over geological time.",
+            "required": true,
+            "keywords": [
+              "evaporation",
+              "salt remains",
+              "salinity increases"
+            ],
+            "golden_passage_title": "Salinity - Wikipedia",
+            "golden_evidence": "Because water evaporates but the dissolved salts remain behind, the salinity of the ocean increases over geological time.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Hydrothermal vents on the ocean floor release mineral-rich water that also contributes to ocean salt content.",
+            "required": false,
+            "keywords": [
+              "hydrothermal vent",
+              "minerals",
+              "ocean floor"
+            ],
+            "golden_passage_title": "Hydrothermal vent - Wikipedia",
+            "golden_evidence": "The hot water emerging from these vents is rich in minerals which are released into the surrounding seawater and contribute to the chemical composition of the ocean.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8055,
+            "cite_score": 0.7078,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Hydrothermal vent systems on the ocean floor release significant quantities of minerals into seawater.",
+            "best_evidence_passage_title": "Salinity - Wikipedia",
+            "best_evidence_passage_text": "Salinity is the concentration of dissolved salt in a body of water. On Earth, the primary source of dissolved salts in the ocean is the continuous input from rivers, which leach minerals from rocks th",
+            "best_evidence_sentence": "Hydrothermal vent systems on the ocean floor also release significant quantities of minerals into seawater, contributing to its salt content.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 10,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 0.5,
+        "required_coverage": 0.5,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "How does gravity work, and is it a force or something else?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Newton described gravity as a force proportional to the product of masses and inversely proportional to the square of the distance between them.",
+            "required": true,
+            "keywords": [
+              "Newton",
+              "gravity",
+              "mass",
+              "inverse square"
+            ],
+            "golden_passage_title": "Newton's law of universal gravitation - Wikipedia",
+            "golden_evidence": "Every particle attracts every other particle with a force proportional to the product of their masses and inversely proportional to the square of the distance between their centers.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5775,
+            "cite_score": 1.3028,
+            "n_covering_claims": 6,
+            "best_covering_claim": "Newton's law of universal gravitation describes gravity as a force proportional to the product of two masses and inversely proportional to the square of the distance between them.",
+            "best_evidence_passage_title": "Newton's law of universal gravitation - Wikipedia",
+            "best_evidence_passage_text": "Newton's law of universal gravitation states that every particle attracts every other particle in the universe with a force that is proportional to the product of their masses and inversely proportion",
+            "best_evidence_sentence": "Newton's law of universal gravitation states that every particle attracts every other particle in the universe with a force that is proportional to the product of their masses and inversely proportional to the square of the distance between their centers.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Einstein's general relativity describes gravity as the curvature of spacetime caused by mass, not as a traditional force.",
+            "required": true,
+            "keywords": [
+              "Einstein",
+              "general relativity",
+              "spacetime curvature",
+              "geodesic"
+            ],
+            "golden_passage_title": "General relativity - Wikipedia",
+            "golden_evidence": "General relativity describes gravity not as a force but as a consequence of the curvature of spacetime caused by the uneven distribution of mass and energy.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5037,
+            "cite_score": 1.3884,
+            "n_covering_claims": 5,
+            "best_covering_claim": "This explanation comes from Albert Einstein's theory of general relativity.",
+            "best_evidence_passage_title": "General relativity - Wikipedia",
+            "best_evidence_passage_text": "General relativity is Albert Einstein's theory of gravitation, which describes gravity not as a force but as a consequence of the curvature of spacetime caused by the uneven distribution of mass and e",
+            "best_evidence_sentence": "General relativity is Albert Einstein's theory of gravitation, which describes gravity not as a force but as a consequence of the curvature of spacetime caused by the uneven distribution of mass and energy.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Gravity is the weakest of the four fundamental forces but dominates at astronomical scales, governing the motion of planets and galaxies.",
+            "required": false,
+            "keywords": [
+              "fundamental forces",
+              "weakest",
+              "astronomical scale"
+            ],
+            "golden_passage_title": "Gravity - Wikipedia",
+            "golden_evidence": "Gravity is the weakest of the four fundamental interactions, but it is the dominant interaction at the astronomical scale.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 9,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "How does the stock market work and what makes stock prices go up or down?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "A stock market is a marketplace where buyers and sellers trade stocks, which represent ownership claims on businesses.",
+            "required": true,
+            "keywords": [
+              "stock market",
+              "buyers",
+              "sellers",
+              "ownership"
+            ],
+            "golden_passage_title": "Stock market - Wikipedia",
+            "golden_evidence": "A stock market is the aggregation of buyers and sellers of stocks, which represent ownership claims on businesses.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7882,
+            "cite_score": 1.4186,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The stock market is an aggregation of buyers and sellers of stocks, which represent ownership claims on businesses.",
+            "best_evidence_passage_title": "Stock market - Wikipedia",
+            "best_evidence_passage_text": "A stock market, equity market, or share market is the aggregation of buyers and sellers of stocks, which represent ownership claims on businesses; these may include securities listed on a public stock",
+            "best_evidence_sentence": "A stock market, equity market, or share market is the aggregation of buyers and sellers of stocks, which represent ownership claims on businesses; these may include securities listed on a public stock exchange, as well as stock that is only traded privately, such as shares of private companies which are sold to investors through equity crowdfunding platforms.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Stock prices are influenced by company financial performance, economic indicators like interest rates, market sentiment, and news events.",
+            "required": true,
+            "keywords": [
+              "stock price",
+              "earnings",
+              "interest rates",
+              "sentiment"
+            ],
+            "golden_passage_title": "Stock valuation - Wikipedia",
+            "golden_evidence": "Stock prices are influenced by the company's financial performance, broader economic indicators, market sentiment, and news events.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4704,
+            "cite_score": 1.3312,
+            "n_covering_claims": 8,
+            "best_covering_claim": "Stock prices are influenced by broader economic indicators like interest rates, inflation, and GDP growth.",
+            "best_evidence_passage_title": "Stock valuation - Wikipedia",
+            "best_evidence_passage_text": "Stock valuation is the method of calculating theoretical values of companies and their stocks. The main use of these methods is to predict future market prices, or more generally, potential market pri",
+            "best_evidence_sentence": "Stock prices are influenced by a variety of factors, including the company's financial performance (earnings per share), broader economic indicators (interest rates, inflation, GDP growth), market sentiment, and news events that affect industry sectors.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Fear and greed-driven investor sentiment can cause prices to overshoot far above or below intrinsic value in speculative bubbles or crashes.",
+            "required": false,
+            "keywords": [
+              "sentiment",
+              "fear",
+              "greed",
+              "speculative bubble"
+            ],
+            "golden_passage_title": "Market sentiment - Wikipedia",
+            "golden_evidence": "Sentiment is driven by fear and greed, and can cause markets to overshoot — prices can be driven far above or below their intrinsic value during speculative bubbles or crashes.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6907,
+            "cite_score": 1.3667,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Sentiment is driven by fear and greed.",
+            "best_evidence_passage_title": "Market sentiment - Wikipedia",
+            "best_evidence_passage_text": "Market sentiment, also called investor attention, is the overall attitude of investors toward a particular security or financial market. It is the feeling or tone of a market, or its crowd psychology,",
+            "best_evidence_sentence": "Sentiment is driven by fear and greed, and can cause markets to overshoot — prices can be driven far above or below their intrinsic value during speculative bubbles or crashes.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 12,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why do we age and is it possible to slow down or reverse aging?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Telomeres shorten with each cell division; when they become too short the cell enters senescence and can no longer divide.",
+            "required": true,
+            "keywords": [
+              "telomere",
+              "shortening",
+              "cell division",
+              "senescence"
+            ],
+            "golden_passage_title": "Telomere - Wikipedia",
+            "golden_evidence": "Telomeres shorten with every round of DNA replication. When the telomere becomes too short, the cell can no longer divide and enters senescence.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4665,
+            "cite_score": 1.3855,
+            "n_covering_claims": 5,
+            "best_covering_claim": "When telomeres become too short, cells can no longer divide and enter senescence.",
+            "best_evidence_passage_title": "Telomere - Wikipedia",
+            "best_evidence_passage_text": "A telomere is a region of repetitive nucleotide sequences associated with specialized proteins at the ends of linear chromosomes. Telomeres are a protective structure of eukaryotic chromosomes, preven",
+            "best_evidence_sentence": "When the telomere becomes too short, the cell can no longer divide and enters senescence or undergoes apoptosis.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Senescent cells remain in the body, secreting pro-inflammatory signals (SASP) that contribute to age-related diseases.",
+            "required": true,
+            "keywords": [
+              "senescent cells",
+              "SASP",
+              "inflammation",
+              "age-related disease"
+            ],
+            "golden_passage_title": "Cellular senescence - Wikipedia",
+            "golden_evidence": "Senescent cells do not die; instead they remain metabolically active and secrete various pro-inflammatory signals (SASP), which are thought to contribute to age-related diseases and tissue dysfunction.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4909,
+            "cite_score": 1.3763,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Senescent cells secrete pro-inflammatory signals that contribute to age-related diseases and tissue dysfunction.",
+            "best_evidence_passage_title": "Cellular senescence - Wikipedia",
+            "best_evidence_passage_text": "Cellular senescence is a phenomenon characterized by the cessation of cell division. In their experiments during the early 1960s, Leonard Hayflick and Paul Moorhead found that normal human fetal cells",
+            "best_evidence_sentence": "Senescent cells do not die; instead they remain metabolically active and secrete various pro-inflammatory signals (the 'senescence-associated secretory phenotype' or SASP), which are thought to contribute to age-related diseases and tissue dysfunction.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Animal studies show that senolytic drugs that clear senescent cells can extend healthy lifespan and reverse several age-related conditions.",
+            "required": false,
+            "keywords": [
+              "senolytics",
+              "senescent cells",
+              "lifespan",
+              "animal studies"
+            ],
+            "golden_passage_title": "Senolytic - Wikipedia",
+            "golden_evidence": "Animal studies have shown that clearing senescent cells can extend healthy lifespan, restore physical function, and reverse several age-related conditions.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.682,
+            "cite_score": 1.3129,
+            "n_covering_claims": 8,
+            "best_covering_claim": "Animal studies have shown that clearing senescent cells can extend healthy lifespan.",
+            "best_evidence_passage_title": "Senolytic - Wikipedia",
+            "best_evidence_passage_text": "Senolytics are a class of drugs that selectively clear senescent cells from the body. Senescent cells accumulate during aging and contribute to inflammation and tissue dysfunction. The first senolytic",
+            "best_evidence_sentence": "Animal studies have shown that clearing senescent cells can extend healthy lifespan, restore physical function, and reverse several age-related conditions.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 15,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "How do computers store data, and what is the difference between RAM and a hard drive?",
+      "nugget_metrics": {
+        "nugget_precision": 0.5,
+        "nugget_recall": 0.3333,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "RAM is volatile memory used for active data; it loses all stored information when the computer is powered off.",
+            "required": true,
+            "keywords": [
+              "RAM",
+              "volatile",
+              "power off",
+              "active data"
+            ],
+            "golden_passage_title": "Volatile memory - Wikipedia",
+            "golden_evidence": "Volatile memory retains its contents while powered on but when the power is interrupted, the stored data is immediately lost.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4585,
+            "cite_score": 1.392,
+            "n_covering_claims": 8,
+            "best_covering_claim": "Volatile memory is typically used for temporary storage of active data because of its high speed.",
+            "best_evidence_passage_title": "Volatile memory - Wikipedia",
+            "best_evidence_passage_text": "Volatile memory, in contrast to non-volatile memory, is computer memory that requires power to maintain the stored information; it retains its contents while powered on but when the power is interrupt",
+            "best_evidence_sentence": "Volatile memory is typically used for temporary storage of active data because of its high speed, while non-volatile memory like SSDs and HDDs is used for long-term storage.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "SSDs have no moving parts, use flash memory, and are considerably faster than HDDs which use spinning magnetic platters.",
+            "required": true,
+            "keywords": [
+              "SSD",
+              "HDD",
+              "flash memory",
+              "spinning disk",
+              "faster"
+            ],
+            "golden_passage_title": "Solid-state drive - Wikipedia",
+            "golden_evidence": "SSDs have no moving mechanical components, distinguishing them from HDDs which contain spinning disks. SSDs are considerably faster than HDDs in read/write speeds.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "RAM is used for temporary high-speed storage of active data, while HDDs and SSDs are used for persistent long-term storage.",
+            "required": false,
+            "keywords": [
+              "RAM",
+              "temporary",
+              "HDD",
+              "SSD",
+              "long-term"
+            ],
+            "golden_passage_title": "Volatile memory - Wikipedia",
+            "golden_evidence": "Volatile memory is typically used for temporary storage of active data because of its high speed, while non-volatile memory like SSDs and HDDs is used for long-term storage.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.3043,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "RAM provides fast temporary storage that requires power.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 15,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 0.5,
+        "required_coverage": 0.5,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why do humans have different blood types and why does it matter for transfusions?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Blood types are determined by the presence of inherited antigens on the surface of red blood cells.",
+            "required": true,
+            "keywords": [
+              "blood type",
+              "antigens",
+              "red blood cells",
+              "inherited"
+            ],
+            "golden_passage_title": "Blood type - Wikipedia",
+            "golden_evidence": "A blood type is a classification of blood based on the presence and absence of antibodies and inherited antigenic substances on the surface of red blood cells.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6696,
+            "cite_score": 0.6817,
+            "n_covering_claims": 10,
+            "best_covering_claim": "Blood type O-negative lacks both ABO antigens and the Rh D antigen.",
+            "best_evidence_passage_title": "Rh blood group system - Wikipedia",
+            "best_evidence_passage_text": "The Rh blood group system is a human blood group system. It contains proteins on the surface of red blood cells. It is the most complex blood group system with 54 antigens currently identified by the ",
+            "best_evidence_sentence": "Blood type O-negative lacks both ABO antigens and the Rh D antigen, making it suitable for transfusion to anyone in emergencies.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "When incompatible blood is transfused, the recipient's antibodies attack the foreign antigens on donor red blood cells, causing hemolysis.",
+            "required": true,
+            "keywords": [
+              "transfusion reaction",
+              "antibodies",
+              "antigens",
+              "hemolysis"
+            ],
+            "golden_passage_title": "Hemolytic transfusion reaction - Wikipedia",
+            "golden_evidence": "When the recipient receives blood containing antigens that they do not have, their pre-existing antibodies attack the donor red blood cells, causing hemolysis.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6008,
+            "cite_score": 1.3981,
+            "n_covering_claims": 3,
+            "best_covering_claim": "When a recipient receives blood containing antigens that they do not have, their pre-existing antibodies attack the donor red blood cells, causing hemolysis.",
+            "best_evidence_passage_title": "Hemolytic transfusion reaction - Wikipedia",
+            "best_evidence_passage_text": "A hemolytic transfusion reaction is a serious complication of a blood transfusion in which red blood cells that were transfused are destroyed by the recipient's immune system. The most common cause is",
+            "best_evidence_sentence": "When the recipient receives blood containing antigens that they do not have, their pre-existing antibodies attack the donor red blood cells, causing hemolysis (destruction of red blood cells).",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "O-negative blood lacks both ABO antigens and the Rh D antigen, making it suitable for emergency transfusion to any patient.",
+            "required": false,
+            "keywords": [
+              "O-negative",
+              "universal donor",
+              "Rh D",
+              "emergency"
+            ],
+            "golden_passage_title": "Rh blood group system - Wikipedia",
+            "golden_evidence": "Blood type O-negative lacks both ABO antigens and the Rh D antigen, making it suitable for transfusion to anyone in emergencies.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 8,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why do we feel pain and what purpose does it serve?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Pain motivates withdrawal from damaging situations, protects injured body parts during healing, and helps avoid similar harm in the future.",
+            "required": true,
+            "keywords": [
+              "pain",
+              "protective",
+              "withdrawal",
+              "healing"
+            ],
+            "golden_passage_title": "Pain - Wikipedia",
+            "golden_evidence": "Pain motivates the individual to withdraw from damaging situations, to protect a damaged body part while it heals, and to avoid similar experiences in the future.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4327,
+            "cite_score": 1.344,
+            "n_covering_claims": 9,
+            "best_covering_claim": "Pain is a distressing feeling often caused by intense or damaging stimuli that serves several critical protective functions.",
+            "best_evidence_passage_title": "Pain - Wikipedia",
+            "best_evidence_passage_text": "Pain is a distressing feeling often caused by intense or damaging stimuli. The International Association for the Study of Pain defines pain as 'an unpleasant sensory and emotional experience associate",
+            "best_evidence_sentence": "Pain motivates the individual to withdraw from damaging situations, to protect a damaged body part while it heals, and to avoid similar experiences in the future.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Nociceptors are specialized sensory nerve fibers that detect harmful stimuli and send signals to the brain via the spinal cord.",
+            "required": true,
+            "keywords": [
+              "nociceptors",
+              "sensory nerve",
+              "spinal cord",
+              "brain"
+            ],
+            "golden_passage_title": "Nociception - Wikipedia",
+            "golden_evidence": "Nociceptors are specialized sensory nerve fibers that generate signals in response to intense stimuli. These signals reach the brain via the spinal cord.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.665,
+            "cite_score": 1.3611,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Nociceptors generate signals that reach the brain via the spinal cord.",
+            "best_evidence_passage_title": "Nociception - Wikipedia",
+            "best_evidence_passage_text": "Nociception (also nocioception), or nociperception, is the sensory nervous system's process of encoding noxious stimuli. In nociception, intense chemical (pH < 6), mechanical (e.g. cutting, crushing),",
+            "best_evidence_sentence": "cutting, crushing), or thermal energy stimulates specialized sensory nerve fibers (called nociceptors) to generate signals that reach the brain via the spinal cord.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Chronic pain persists beyond the expected healing period and is considered a malfunction of the nervous system with no protective purpose.",
+            "required": false,
+            "keywords": [
+              "chronic pain",
+              "healing",
+              "nervous system malfunction"
+            ],
+            "golden_passage_title": "Chronic pain - Wikipedia",
+            "golden_evidence": "Chronic pain persists beyond the expected period of healing and is generally considered to be a malfunction of the nervous system.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 10,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is DNA, and how does it determine what we look like?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "DNA is a double helix polymer that carries genetic instructions for the development and functioning of all known organisms.",
+            "required": true,
+            "keywords": [
+              "DNA",
+              "double helix",
+              "genetic instructions"
+            ],
+            "golden_passage_title": "DNA - Wikipedia",
+            "golden_evidence": "DNA is a polymer composed of two polynucleotide chains that coil around each other to form a double helix. The polymer carries genetic instructions for the development, functioning, growth and reproduction of all known organisms.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5337,
+            "cite_score": 1.3771,
+            "n_covering_claims": 4,
+            "best_covering_claim": "DNA, or deoxyribonucleic acid, is a polymer composed of two polynucleotide chains that coil around each other to form a double helix.",
+            "best_evidence_passage_title": "DNA - Wikipedia",
+            "best_evidence_passage_text": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix. The polymer carries genetic instructions for the development, functio",
+            "best_evidence_sentence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Each person inherits one allele of each gene from each parent; the combination of alleles determines the individual's phenotype.",
+            "required": true,
+            "keywords": [
+              "allele",
+              "inherit",
+              "phenotype",
+              "parent"
+            ],
+            "golden_passage_title": "Gene - Wikipedia",
+            "golden_evidence": "Each person receives one allele for each gene from each parent; the combined expression of these alleles determines the individual's phenotype.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4611,
+            "cite_score": 1.3334,
+            "n_covering_claims": 5,
+            "best_covering_claim": "The combined expression of alleles determines the individual's phenotype.",
+            "best_evidence_passage_title": "Gene - Wikipedia",
+            "best_evidence_passage_text": "In biology, a gene (from Greek genos, meaning generation or birth or gender) is a basic unit of heredity and a sequence of nucleotides in DNA or RNA that encodes the synthesis of a gene product, eithe",
+            "best_evidence_sentence": "Each person receives one allele for each gene from each parent; the combined expression of these alleles determines the individual's phenotype.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Proteins perform a vast array of functions in the body, and their amino acid sequence is dictated by the nucleotide sequence of genes.",
+            "required": false,
+            "keywords": [
+              "proteins",
+              "amino acids",
+              "genes",
+              "function"
+            ],
+            "golden_passage_title": "Protein - Wikipedia",
+            "golden_evidence": "The sequence of amino acids in a protein is dictated by the nucleotide sequence of their genes.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4551,
+            "cite_score": 0.5913,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Proteins are synthesized based on the nucleotide sequence of genes.",
+            "best_evidence_passage_title": "Gene - Wikipedia",
+            "best_evidence_passage_text": "In biology, a gene (from Greek genos, meaning generation or birth or gender) is a basic unit of heredity and a sequence of nucleotides in DNA or RNA that encodes the synthesis of a gene product, eithe",
+            "best_evidence_sentence": "In biology, a gene (from Greek genos, meaning generation or birth or gender) is a basic unit of heredity and a sequence of nucleotides in DNA or RNA that encodes the synthesis of a gene product, either RNA or protein.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 13,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Why do we have two brain hemispheres and what does each one do?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The left hemisphere is dominant for language in most people; the right hemisphere is dominant for spatial and nonverbal processing.",
+            "required": true,
+            "keywords": [
+              "left hemisphere",
+              "language",
+              "right hemisphere",
+              "spatial"
+            ],
+            "golden_passage_title": "Lateralization of brain function - Wikipedia",
+            "golden_evidence": "The left hemisphere is dominant for language processing in most right-handed people. The right hemisphere is dominant for spatial and nonverbal processing, such as map reading and face recognition.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4811,
+            "cite_score": 1.3941,
+            "n_covering_claims": 2,
+            "best_covering_claim": "The left hemisphere is dominant for language processing in most right-handed people.",
+            "best_evidence_passage_title": "Lateralization of brain function - Wikipedia",
+            "best_evidence_passage_text": "The lateralization of brain function (or hemispheric dominance) is the tendency for some neural functions or cognitive processes to be specialized to one side of the brain or the other. The medial lon",
+            "best_evidence_sentence": "The left hemisphere is dominant for language processing in most right-handed people.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The corpus callosum is a large bundle of neural fibers connecting the two hemispheres and enabling them to share information.",
+            "required": true,
+            "keywords": [
+              "corpus callosum",
+              "neural fibers",
+              "hemispheres",
+              "communication"
+            ],
+            "golden_passage_title": "Corpus callosum - Wikipedia",
+            "golden_evidence": "The corpus callosum is a wide bundle of neural fibers that connects the left and right cerebral hemispheres and facilitates interhemispheric communication.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.586,
+            "cite_score": 1.4197,
+            "n_covering_claims": 3,
+            "best_covering_claim": "The corpus callosum enables the two hemispheres to share information and coordinate their activities.",
+            "best_evidence_passage_title": "Corpus callosum - Wikipedia",
+            "best_evidence_passage_text": "The corpus callosum (Latin for tough body), also callosal commissure, is a wide, flat bundle of neural fibers beneath the cerebral cortex in the human brain. It connects the left and right cerebral he",
+            "best_evidence_sentence": "The corpus callosum enables the two hemispheres to share information and coordinate their activities.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Each cerebral hemisphere controls movement on the opposite side of the body — the right controls the left side and vice versa.",
+            "required": false,
+            "keywords": [
+              "hemisphere",
+              "contralateral",
+              "motor control",
+              "body"
+            ],
+            "golden_passage_title": "Cerebral hemisphere - Wikipedia",
+            "golden_evidence": "Each hemisphere controls movement on the opposite side of the body — the right hemisphere controls the left side, and the left hemisphere controls the right side.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4746,
+            "cite_score": 1.2886,
+            "n_covering_claims": 3,
+            "best_covering_claim": "The left hemisphere controls the right side of the body.",
+            "best_evidence_passage_title": "Cerebral hemisphere - Wikipedia",
+            "best_evidence_passage_text": "A cerebral hemisphere (hemispherium cerebrale) is defined as one of the two regions of the eutherian (placental mammal) brain that are delineated by the body's median plane. The brain can thus be desc",
+            "best_evidence_sentence": "Each hemisphere controls movement on the opposite side of the body — the right hemisphere controls the left side, and the left hemisphere controls the right side.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 6,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "How does evolution work and how do new species form?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6667,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Natural selection acts on random mutations — individuals whose traits improve survival and reproduction pass them on more often.",
+            "required": true,
+            "keywords": [
+              "natural selection",
+              "mutation",
+              "survival",
+              "reproduction"
+            ],
+            "golden_passage_title": "Natural selection - Wikipedia",
+            "golden_evidence": "Natural selection is the differential survival and reproduction of individuals due to differences in phenotype. Random mutations arise in the genome, and offspring can inherit such mutations.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6474,
+            "cite_score": 1.4523,
+            "n_covering_claims": 5,
+            "best_covering_claim": "Natural selection is the differential survival and reproduction of individuals due to differences in phenotype.",
+            "best_evidence_passage_title": "Natural selection - Wikipedia",
+            "best_evidence_passage_text": "Natural selection is the differential survival and reproduction of individuals due to differences in phenotype. It is a key mechanism of evolution, the change in the heritable traits characteristic of",
+            "best_evidence_sentence": "Natural selection is the differential survival and reproduction of individuals due to differences in phenotype.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Speciation (allopatric) occurs when geographically separated populations evolve independently until they can no longer produce viable offspring together.",
+            "required": true,
+            "keywords": [
+              "speciation",
+              "allopatric",
+              "geographic isolation",
+              "reproductive isolation"
+            ],
+            "golden_passage_title": "Speciation - Wikipedia",
+            "golden_evidence": "Allopatric speciation occurs when populations are geographically separated and can no longer interbreed; over time, they evolve independently until they could not produce viable offspring.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4571,
+            "cite_score": 1.3772,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Allopatric speciation occurs when populations are geographically separated and can no longer interbreed.",
+            "best_evidence_passage_title": "Speciation - Wikipedia",
+            "best_evidence_passage_text": "Speciation is the evolutionary process by which populations evolve to become distinct species. The biologist Orator F. Cook coined the term 'speciation' for the splitting of lineages or 'cladogenesis,",
+            "best_evidence_sentence": "Allopatric speciation occurs when populations are geographically separated and can no longer interbreed; over time, they evolve independently until they are so different that even if they were to come into contact, they could not produce viable offspring.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Reproductive isolation — which can be geographic, behavioral, or temporal — prevents interbreeding and maintains species boundaries.",
+            "required": false,
+            "keywords": [
+              "reproductive isolation",
+              "geographic",
+              "behavioral",
+              "species"
+            ],
+            "golden_passage_title": "Reproductive isolation - Wikipedia",
+            "golden_evidence": "Reproductive isolation prevents members of different species from producing offspring. Geographic isolation, behavioral differences, and temporal differences in breeding seasons are common causes.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.3373,
+            "cite_score": 0,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Reproductive isolation is maintained through a collection of evolutionary mechanisms, behaviors, and physiological processes that prevent members of different species from producing offspring or ensure that any offspring are sterile.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 9,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    }
+  ],
+  "num_examples": 30,
+  "num_successful": 30,
+  "runtime_seconds": null,
+  "eval_mode": "nugget"
+}

@@ -1,0 +1,3087 @@
+{
+  "global_metrics": {
+    "avg_nugget_precision": 0.9761928571428572,
+    "avg_nugget_recall": 0.7631,
+    "avg_nugget_coverage": 0.7839321428571429,
+    "avg_required_precision": 0.9642857142857143,
+    "avg_required_recall": 0.9196428571428571,
+    "macro_nugget_precision": 0.9722222222222222,
+    "macro_nugget_recall": 0.7526881720430108,
+    "macro_nugget_coverage": 0.7741935483870968,
+    "macro_required_precision": 0.9607843137254902,
+    "macro_required_recall": 0.8909090909090909,
+    "macro_optional_precision": 1,
+    "macro_optional_recall": 0.5526315789473685,
+    "total_nuggets": 93,
+    "total_cited": 70,
+    "total_covered": 72,
+    "total_required": 55,
+    "total_required_cited": 49,
+    "total_required_covered": 51,
+    "total_optional": 38,
+    "total_optional_cited": 21,
+    "total_optional_covered": 21,
+    "total_noise_passages_used": 0,
+    "total_claims_citing_noise": 0,
+    "total_nuggets_cited_from_noise": 0
+  },
+  "per_example": [
+    {
+      "question": "Who has the highest goals in world football?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 1,
+        "n_covered": 1,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Josef Bican holds the record for the highest number of goals all-time in men's football.",
+            "required": true,
+            "keywords": [
+              "Bican",
+              "Josef Bican"
+            ],
+            "golden_passage_title": "Josef Bican",
+            "golden_evidence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7993,
+            "cite_score": 1.3087,
+            "n_covering_claims": 1,
+            "best_covering_claim": "According to RSSSF, Josef Bican has 805 goals.",
+            "best_evidence_passage_title": "Josef Bican",
+            "best_evidence_passage_text": "Josef Bican Josef \"Pepi\" Bican (25 September 1913 – 12 December 2001) was a Czech-Austrian professional footballer who played as a striker. Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates tha",
+            "best_evidence_sentence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 11,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 1,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 0,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who is the original artist of sound of silence?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.3333,
+        "nugget_coverage": 0.3333,
+        "n_nuggets": 3,
+        "n_covered": 1,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Sound of Silence is a song by Simon & Garfunkel, written by Paul Simon.",
+            "required": true,
+            "keywords": [
+              "Simon & Garfunkel",
+              "Paul Simon"
+            ],
+            "golden_passage_title": "The Sound of Silence",
+            "golden_evidence": "\"The Sound of Silence\", originally \"The Sounds of Silence\", is a song by the American music duo Simon & Garfunkel. The song was written by Paul Simon over a period of several months in 1963 and 1964.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5176,
+            "cite_score": 1.4533,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Simon & Garfunkel is an American music duo.",
+            "best_evidence_passage_title": "The Sound of Silence",
+            "best_evidence_passage_text": "The Sound of Silence \"The Sound of Silence\", originally \"The Sounds of Silence\", is a song by the American music duo Simon & Garfunkel. The song was written by Paul Simon over a period of several mont",
+            "best_evidence_sentence": "\"The Sound of Silence\", originally \"The Sounds of Silence\", is a song by the American music duo Simon & Garfunkel.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Sounds of Silence is the second studio album by Simon & Garfunkel, released in 1966.",
+            "required": false,
+            "keywords": [
+              "album",
+              "second album",
+              "Sounds of Silence"
+            ],
+            "golden_passage_title": "Sounds of Silence",
+            "golden_evidence": "Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Sound of Silence is also a song performed by Australian artist Dami Im.",
+            "required": false,
+            "keywords": [
+              "Dami Im"
+            ],
+            "golden_passage_title": "Sound of Silence (Dami Im song)",
+            "golden_evidence": "\"Sound of Silence\" is a song performed by Australian recording artist Dami Im.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 12,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 1,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "When was the first apple i phone made?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.5,
+        "nugget_coverage": 0.5,
+        "n_nuggets": 2,
+        "n_covered": 1,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The first iPhone was released on June 29, 2007.",
+            "required": true,
+            "keywords": [
+              "June 29, 2007",
+              "June 2007"
+            ],
+            "golden_passage_title": "IPhone (1st generation)",
+            "golden_evidence": "it was officially announced on January 9, 2007, and was later released in the United States on June 29, 2007.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.482,
+            "cite_score": 1.1896,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The first iPhone was released on June 29, 2007.",
+            "best_evidence_passage_title": "IPhone (1st generation)",
+            "best_evidence_passage_text": "IPhone (1st generation) The iPhone (colloquially known as the iPhone 2G after 2008) is the first smartphone model designed and marketed by Apple Inc. After years of rumors and speculation, it was offi",
+            "best_evidence_sentence": "it was officially announced on January 9, 2007, and was later released in the United States on June 29, 2007.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Development of the iPhone began in 2004.",
+            "required": false,
+            "keywords": [
+              "2004",
+              "development"
+            ],
+            "golden_passage_title": "IPhone",
+            "golden_evidence": "Development of what was to become the iPhone began in 2004, when Apple started to gather a team of 1,000 employees",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 5,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 1,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who played the weasley brothers in harry potter?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.2,
+        "nugget_coverage": 0.2,
+        "n_nuggets": 5,
+        "n_covered": 1,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Richard Fish appeared as Bill Weasley in Harry Potter and the Prisoner of Azkaban.",
+            "required": false,
+            "keywords": [
+              "Richard Fish"
+            ],
+            "golden_passage_title": "Order of the Phoenix (fictional organisation)",
+            "golden_evidence": "Richard Fish appeared as Bill briefly in the film adaptation of \"Harry Potter and the Prisoner of Azkaban\". Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), plays Bill Weasley in \"Harry Potter and the Deathly Hallows\"",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Domhnall Gleeson played Bill Weasley in the later Harry Potter films.",
+            "required": true,
+            "keywords": [
+              "Domhnall Gleeson"
+            ],
+            "golden_passage_title": "Order of the Phoenix (fictional organisation)",
+            "golden_evidence": "Richard Fish appeared as Bill briefly in the film adaptation of \"Harry Potter and the Prisoner of Azkaban\". Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), plays Bill Weasley in \"Harry Potter and the Deathly Hallows\"",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Chris Rankin portrayed Percy Weasley in Harry Potter.",
+            "required": true,
+            "keywords": [
+              "Chris Rankin"
+            ],
+            "golden_passage_title": "Ministry of Magic",
+            "golden_evidence": "Percy is portrayed by Chris Rankin in",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "James Phelps played Fred Weasley and Oliver Phelps played George Weasley.",
+            "required": true,
+            "keywords": [
+              "James Phelps",
+              "Oliver Phelps",
+              "Phelps"
+            ],
+            "golden_passage_title": "James and Oliver Phelps",
+            "golden_evidence": "James Andrew Eric and Oliver Martyn John Phelps (born 25 February 1986) are identical twin British actors, best known for playing Fred and George Weasley in the \"Harry Potter\" film series.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6717,
+            "cite_score": 1.448,
+            "n_covering_claims": 6,
+            "best_covering_claim": "Oliver Phelps is a British actor.",
+            "best_evidence_passage_title": "James and Oliver Phelps",
+            "best_evidence_passage_text": "James and Oliver Phelps James Andrew Eric and Oliver Martyn John Phelps (born 25 February 1986) are identical twin British actors, best known for playing Fred and George Weasley in the \"Harry Potter\" ",
+            "best_evidence_sentence": "James and Oliver Phelps James Andrew Eric and Oliver Martyn John Phelps (born 25 February 1986) are identical twin British actors, best known for playing Fred and George Weasley in the \"Harry Potter\" film series.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Rupert Grint played Ron Weasley in Harry Potter.",
+            "required": true,
+            "keywords": [
+              "Rupert Grint"
+            ],
+            "golden_passage_title": "Harry Potter fandom",
+            "golden_evidence": "Rupert Grint (Ron Weasley)",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 10,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 4,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 0.25,
+        "required_coverage": 0.25,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "How many state parks are there in virginia?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.5,
+        "nugget_coverage": 0.5,
+        "n_nuggets": 2,
+        "n_covered": 1,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Virginia opened its state park system in June 1936 with six original parks.",
+            "required": false,
+            "keywords": [
+              "six",
+              "1936",
+              "6"
+            ],
+            "golden_passage_title": "Virginia Department of Conservation and Recreation",
+            "golden_evidence": "Virginia's first six state parks were created in June 1936 despite the opposition of Virginia's Senators Carter Glass and Harry F. Byrd",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "As of 2016, Virginia has 38 state parks.",
+            "required": true,
+            "keywords": [
+              "38",
+              "38 state parks",
+              "38 parks"
+            ],
+            "golden_passage_title": "Virginia Department of Conservation and Recreation",
+            "golden_evidence": "Now virginia has 38 state parks",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5636,
+            "cite_score": 0.7004,
+            "n_covering_claims": 1,
+            "best_covering_claim": "According to the passages, there are 38 state parks in Virginia today.",
+            "best_evidence_passage_title": "National Register of Historic Places listings in Virginia",
+            "best_evidence_passage_text": "National Register of Historic Places listings in Virginia Buildings, sites, districts, and objects in Virginia listed on the National Register of Historic Places: As of , there are 3,027 properties an",
+            "best_evidence_sentence": "As of , there are 3,027 properties and districts listed on the National Register of Historic Places in all 95 Virginia counties and 37 of the 38 independent cities, including 120 National Historic Landmarks and National Historic Landmark Districts, four National Historical Parks, two National Monuments, two National Battlefield Parks,",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 1,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 1,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who discovered penicillin and when?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 2,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Alexander Fleming discovered penicillin.",
+            "required": true,
+            "keywords": [
+              "Fleming"
+            ],
+            "golden_passage_title": "Penicillin",
+            "golden_evidence": "Alexander Fleming",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7437,
+            "cite_score": 1.2487,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Penicillin was discovered by Alexander Fleming.",
+            "best_evidence_passage_title": "Penicillin",
+            "best_evidence_passage_text": "Penicillin was discovered in 1928 by Alexander Fleming.",
+            "best_evidence_sentence": "Penicillin was discovered in 1928 by Alexander Fleming.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Penicillin was discovered in 1928.",
+            "required": true,
+            "keywords": [
+              "1928"
+            ],
+            "golden_passage_title": "Penicillin",
+            "golden_evidence": "1928",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7343,
+            "cite_score": 1.1897,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Penicillin was discovered in 1928.",
+            "best_evidence_passage_title": "Penicillin",
+            "best_evidence_passage_text": "Penicillin was discovered in 1928 by Alexander Fleming.",
+            "best_evidence_sentence": "Penicillin was discovered in 1928 by Alexander Fleming.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 2,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 0,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who invented the telephone and when?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Alexander Graham Bell was awarded the first patent for the telephone on March 7, 1876.",
+            "required": true,
+            "keywords": [
+              "Bell",
+              "Alexander Graham Bell",
+              "March 7, 1876",
+              "1876"
+            ],
+            "golden_passage_title": "Alexander Graham Bell",
+            "golden_evidence": "Bell filed his patent application on February 14, 1876, and was officially awarded US Patent 174,465 on March 7, 1876.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8565,
+            "cite_score": 1.3596,
+            "n_covering_claims": 5,
+            "best_covering_claim": "Alexander Graham Bell was officially awarded US Patent 174,465 on March 7, 1876.",
+            "best_evidence_passage_title": "Alexander Graham Bell",
+            "best_evidence_passage_text": "Alexander Graham Bell (March 3, 1847 – August 2, 1922) was a Scottish-American inventor and scientist who is credited with patenting the first practical telephone. Bell filed his patent application on",
+            "best_evidence_sentence": "Bell filed his patent application on February 14, 1876, and was officially awarded US Patent 174,465 on March 7, 1876.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Antonio Meucci developed an earlier voice communication device and filed a caveat in 1871, before Bell's patent.",
+            "required": false,
+            "keywords": [
+              "Meucci",
+              "Antonio Meucci",
+              "1871"
+            ],
+            "golden_passage_title": "Antonio Meucci",
+            "golden_evidence": "he developed a form of voice communication device in 1849, and later, in 1871, filed a caveat (a temporary patent) for a 'sound telegraph'.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.819,
+            "cite_score": 1.3842,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Antonio Meucci filed a caveat for a sound telegraph in 1871.",
+            "best_evidence_passage_title": "Antonio Meucci",
+            "best_evidence_passage_text": "Antonio Santi Giuseppe Meucci (13 April 1808 – 18 October 1889) was an Italian inventor and activist. Born in Florence, he developed a form of voice communication device in 1849, and later, in 1871, f",
+            "best_evidence_sentence": "later, in 1871, filed a caveat (a temporary patent) for a 'sound telegraph'.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Elisha Gray independently filed a telephone patent caveat on the same day as Bell, February 14, 1876.",
+            "required": false,
+            "keywords": [
+              "Elisha Gray",
+              "Gray",
+              "February 14, 1876"
+            ],
+            "golden_passage_title": "Elisha Gray",
+            "golden_evidence": "On February 14, 1876, Gray filed a patent caveat for a telephone design at the U.S. Patent Office, the same day Alexander Graham Bell filed his patent application.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8221,
+            "cite_score": 1.3809,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Elisha Gray filed a patent caveat for a telephone design on February 14, 1876.",
+            "best_evidence_passage_title": "Elisha Gray",
+            "best_evidence_passage_text": "Elisha Gray (August 2, 1835 – January 21, 1901) was an American electrical engineer who co-founded the Western Electric Manufacturing Company. On February 14, 1876, Gray filed a patent caveat for a te",
+            "best_evidence_sentence": "On February 14, 1876, Gray filed a patent caveat for a telephone design at the U.S. Patent Office, the same day Alexander Graham Bell filed his patent application.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 26,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 1,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 2,
+        "n_optional_cited": 2,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who wrote Romeo and Juliet and what is it about?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 4,
+        "n_covered": 4,
+        "n_cited": 4,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Romeo and Juliet was written by William Shakespeare.",
+            "required": true,
+            "keywords": [
+              "Shakespeare",
+              "William Shakespeare"
+            ],
+            "golden_passage_title": "Romeo and Juliet",
+            "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.9083,
+            "cite_score": 1.411,
+            "n_covering_claims": 3,
+            "best_covering_claim": "William Shakespeare wrote Romeo and Juliet.",
+            "best_evidence_passage_title": "Romeo and Juliet",
+            "best_evidence_passage_text": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families. It was among Shak",
+            "best_evidence_sentence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Shakespeare is believed to have written Romeo and Juliet between 1594 and 1596.",
+            "required": true,
+            "keywords": [
+              "1594",
+              "1596",
+              "1594–1596"
+            ],
+            "golden_passage_title": "Romeo and Juliet",
+            "golden_evidence": "Shakespeare is believed to have written the play between 1594 and 1596.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5461,
+            "cite_score": 1.3267,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Romeo and Juliet was written between 1594 and 1596.",
+            "best_evidence_passage_title": "Romeo and Juliet",
+            "best_evidence_passage_text": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families. It was among Shak",
+            "best_evidence_sentence": "Shakespeare is believed to have written the play between 1594 and 1596.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The play is a tragedy about two star-crossed lovers whose deaths reconcile their feuding families.",
+            "required": true,
+            "keywords": [
+              "star-crossed",
+              "tragedy",
+              "lovers"
+            ],
+            "golden_passage_title": "Romeo and Juliet",
+            "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5834,
+            "cite_score": 1.411,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Romeo and Juliet is about two young Italian star-crossed lovers.",
+            "best_evidence_passage_title": "Romeo and Juliet",
+            "best_evidence_passage_text": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families. It was among Shak",
+            "best_evidence_sentence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "The feuding families are the Montagues and the Capulets, set in Verona.",
+            "required": false,
+            "keywords": [
+              "Montague",
+              "Capulet",
+              "Verona"
+            ],
+            "golden_passage_title": "Montague family",
+            "golden_evidence": "The Montagues are one of the two feuding families in Shakespeare's Romeo and Juliet. The other family is the Capulets.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5779,
+            "cite_score": 1.4586,
+            "n_covering_claims": 4,
+            "best_covering_claim": "The Montagues and the Capulets are enemies of each other.",
+            "best_evidence_passage_title": "Montague family",
+            "best_evidence_passage_text": "The Montagues are one of the two feuding families in Shakespeare's Romeo and Juliet. The other family is the Capulets. The patriarch of the family is Lord Montague. Romeo is the son of Lord and Lady M",
+            "best_evidence_sentence": "The Montagues are one of the two feuding families in Shakespeare's Romeo and Juliet.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 26,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 3,
+        "n_required_covered": 3,
+        "n_required_cited": 3,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is the speed of light and who measured it first?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The speed of light in vacuum is exactly 299,792,458 metres per second.",
+            "required": true,
+            "keywords": [
+              "299,792,458",
+              "300,000 km",
+              "186,000 mi"
+            ],
+            "golden_passage_title": "Speed of light",
+            "golden_evidence": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3498,
+            "cite_score": 1.4753,
+            "n_covering_claims": 3,
+            "best_covering_claim": "The speed of light in vacuum is approximately 300,000 km/s.",
+            "best_evidence_passage_title": "Speed of light",
+            "best_evidence_passage_text": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second (approximately 300,000 km/s or 186,000 mi/s). According to the special",
+            "best_evidence_sentence": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second (approximately 300,000 km/s or 186,000 mi/s).",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Ole Rømer made the first quantitative measurement of the speed of light in 1676 using observations of Jupiter's moon Io.",
+            "required": true,
+            "keywords": [
+              "Rømer",
+              "Ole Rømer",
+              "1676",
+              "Io"
+            ],
+            "golden_passage_title": "Ole Rømer",
+            "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7428,
+            "cite_score": 1.3662,
+            "n_covering_claims": 6,
+            "best_covering_claim": "In 1676, Ole Rømer observed that the periods of Jupiter's moon Io appeared shorter when Earth was approaching Jupiter than when receding.",
+            "best_evidence_passage_title": "Ole Rømer",
+            "best_evidence_passage_text": "Ole Christensen Rømer (25 September 1644 – 19 September 1710) was a Danish astronomer who made the first quantitative measurements of the speed of light. In 1676, Rømer observed that the periods of Ju",
+            "best_evidence_sentence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "James Bradley provided a more accurate measurement of the speed of light in 1728 using stellar aberration, obtaining approximately 301,000 km/s.",
+            "required": false,
+            "keywords": [
+              "James Bradley",
+              "Bradley",
+              "1728",
+              "stellar aberration"
+            ],
+            "golden_passage_title": "James Bradley",
+            "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 15,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who painted the Sistine Chapel ceiling and how long did it take?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6667,
+        "nugget_recall": 0.5,
+        "nugget_coverage": 0.75,
+        "n_nuggets": 4,
+        "n_covered": 3,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Sistine Chapel ceiling was painted by Michelangelo.",
+            "required": true,
+            "keywords": [
+              "Michelangelo"
+            ],
+            "golden_passage_title": "Sistine Chapel ceiling",
+            "golden_evidence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most renowned works of High Renaissance art.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.774,
+            "cite_score": 1.4392,
+            "n_covering_claims": 5,
+            "best_covering_claim": "Michelangelo painted the Sistine Chapel ceiling.",
+            "best_evidence_passage_title": "Sistine Chapel ceiling",
+            "best_evidence_passage_text": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most renowned works of High Renaissance art. Pope Julius II commissioned Michelangelo in 1508, initially to pai",
+            "best_evidence_sentence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most renowned works of High Renaissance art.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Michelangelo painted the ceiling between 1508 and 1512, taking approximately four years.",
+            "required": true,
+            "keywords": [
+              "1508",
+              "1512",
+              "four years"
+            ],
+            "golden_passage_title": "Sistine Chapel ceiling",
+            "golden_evidence": "He began painting in May 1508, and the ceiling was unveiled on 31 October 1512.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.2203,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The Sistine Chapel ceiling was unveiled on 31 October 1512.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Pope Julius II commissioned Michelangelo to paint the Sistine Chapel ceiling in 1508.",
+            "required": false,
+            "keywords": [
+              "Pope Julius II",
+              "Julius II",
+              "Julius"
+            ],
+            "golden_passage_title": "Pope Julius II",
+            "golden_evidence": "In 1508, Julius commissioned Michelangelo to paint the ceiling of the Sistine Chapel.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8081,
+            "cite_score": 0.9297,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Pope Julius II initially requested that Michelangelo paint the twelve Apostles.",
+            "best_evidence_passage_title": "Sistine Chapel ceiling",
+            "best_evidence_passage_text": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most renowned works of High Renaissance art. Pope Julius II commissioned Michelangelo in 1508, initially to pai",
+            "best_evidence_sentence": "Pope Julius II commissioned Michelangelo in 1508, initially to paint the twelve Apostles on the triangular pendentives; Michelangelo persuaded Julius to allow a more complex design.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "The ceiling depicts scenes from the Book of Genesis, most famously the Creation of Adam.",
+            "required": false,
+            "keywords": [
+              "Genesis",
+              "Creation of Adam",
+              "Book of Genesis"
+            ],
+            "golden_passage_title": "Creation of Adam",
+            "golden_evidence": "The Creation of Adam is a fresco painting by Michelangelo, which forms part of the Sistine Chapel ceiling.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 13,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 1,
+        "required_precision": 0.5,
+        "required_recall": 0.5,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 0.5,
+        "optional_coverage": 0.5,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who was Marie Curie and what did she discover?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.75,
+        "nugget_coverage": 0.75,
+        "n_nuggets": 4,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Marie Curie was a Polish-French physicist and chemist who conducted pioneering research on radioactivity.",
+            "required": true,
+            "keywords": [
+              "Marie Curie"
+            ],
+            "golden_passage_title": "Marie Curie",
+            "golden_evidence": "Marie Skłodowska Curie (7 November 1867 – 4 July 1934), known as Marie Curie, was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8425,
+            "cite_score": 1.4205,
+            "n_covering_claims": 21,
+            "best_covering_claim": "Marie Curie was Polish.",
+            "best_evidence_passage_title": "Marie Curie",
+            "best_evidence_passage_text": "Marie Skłodowska Curie (7 November 1867 – 4 July 1934), known as Marie Curie, was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity. She was the ",
+            "best_evidence_sentence": "Marie Skłodowska Curie (7 November 1867 – 4 July 1934), known as Marie Curie, was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Marie Curie and Pierre Curie discovered polonium in July 1898, named after Marie's homeland Poland.",
+            "required": true,
+            "keywords": [
+              "polonium",
+              "July 1898",
+              "Pierre Curie"
+            ],
+            "golden_passage_title": "Polonium",
+            "golden_evidence": "It was discovered in July 1898 by Marie Curie and Pierre Curie. The element was named after Marie Curie's homeland of Poland.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6368,
+            "cite_score": 1.308,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Polonium was discovered in July 1898.",
+            "best_evidence_passage_title": "Polonium",
+            "best_evidence_passage_text": "Polonium is a chemical element with the symbol Po and atomic number 84. It was discovered in July 1898 by Marie Curie and Pierre Curie. The element was named after Marie Curie's homeland of Poland, th",
+            "best_evidence_sentence": "It was discovered in July 1898 by Marie Curie and Pierre Curie.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Marie Curie and Pierre Curie discovered radium in December 1898.",
+            "required": true,
+            "keywords": [
+              "radium",
+              "December 1898"
+            ],
+            "golden_passage_title": "Radium",
+            "golden_evidence": "Radium was discovered in 1898 by Marie Curie and Pierre Curie in a pitchblende sample from Bohemia in December 1898.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8452,
+            "cite_score": 1.3792,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Radium was discovered in December 1898.",
+            "best_evidence_passage_title": "Radium",
+            "best_evidence_passage_text": "Radium is a chemical element with the symbol Ra and atomic number 88. It is the sixth element in group 2 of the periodic table, also known as the alkaline earth metals. Radium was discovered in 1898 b",
+            "best_evidence_sentence": "Radium was discovered in 1898 by Marie Curie and Pierre Curie in a pitchblende sample from Bohemia in December 1898.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Marie Curie was the first person to win the Nobel Prize twice, in Physics (1903) and Chemistry (1911).",
+            "required": false,
+            "keywords": [
+              "Nobel Prize",
+              "1903",
+              "Nobel",
+              "1911"
+            ],
+            "golden_passage_title": "Marie Curie",
+            "golden_evidence": "She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the prize in two different sciences (Physics in 1903 and Chemistry in 1911).",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 35,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 3,
+        "n_required_covered": 3,
+        "n_required_cited": 3,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who built the Eiffel Tower and why?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.75,
+        "nugget_coverage": 0.75,
+        "n_nuggets": 4,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Eiffel Tower was designed and built by Gustave Eiffel's company between 1887 and 1889.",
+            "required": true,
+            "keywords": [
+              "Gustave Eiffel"
+            ],
+            "golden_passage_title": "Eiffel Tower",
+            "golden_evidence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7674,
+            "cite_score": 1.385,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The Eiffel Tower was designed by Gustave Eiffel's company.",
+            "best_evidence_passage_title": "Eiffel Tower",
+            "best_evidence_passage_text": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as t",
+            "best_evidence_sentence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The Eiffel Tower was built as the entrance arch for the 1889 World's Fair (Exposition Universelle) in Paris.",
+            "required": true,
+            "keywords": [
+              "Exposition Universelle",
+              "entrance arch"
+            ],
+            "golden_passage_title": "Eiffel Tower",
+            "golden_evidence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4517,
+            "cite_score": 1.385,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The Eiffel Tower was built as the entrance arch for the 1889 World's Fair.",
+            "best_evidence_passage_title": "Eiffel Tower",
+            "best_evidence_passage_text": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as t",
+            "best_evidence_sentence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The 1889 World's Fair celebrated the centennial of the French Revolution.",
+            "required": false,
+            "keywords": [
+              "centennial",
+              "French Revolution",
+              "1789"
+            ],
+            "golden_passage_title": "Exposition Universelle (1889)",
+            "golden_evidence": "It was organized to celebrate the centennial of the French Revolution and to demonstrate France's industrial prowess.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.59,
+            "cite_score": 1.261,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The 1889 World's Fair was organized to celebrate the centennial of the French Revolution.",
+            "best_evidence_passage_title": "Exposition Universelle (1889)",
+            "best_evidence_passage_text": "The Exposition Universelle of 1889 was a world's fair held in Paris, France, from 5 May to 31 October 1889. It was organized to celebrate the centennial of the French Revolution and to demonstrate Fra",
+            "best_evidence_sentence": "It was organized to celebrate the centennial of the French Revolution and to demonstrate France's industrial prowess.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "The Eiffel Tower was the world's tallest man-made structure for 41 years, until the Chrysler Building surpassed it in 1930.",
+            "required": false,
+            "keywords": [
+              "41 years",
+              "1930",
+              "Chrysler Building",
+              "tallest"
+            ],
+            "golden_passage_title": "Eiffel Tower",
+            "golden_evidence": "During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 10,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 0.5,
+        "optional_coverage": 0.5,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who was the first person to walk on the Moon and when?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.5,
+        "nugget_coverage": 0.5,
+        "n_nuggets": 4,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Neil Armstrong was the first person to walk on the Moon.",
+            "required": true,
+            "keywords": [
+              "Neil Armstrong",
+              "Armstrong",
+              "first person"
+            ],
+            "golden_passage_title": "Neil Armstrong",
+            "golden_evidence": "Neil Alden Armstrong (August 5, 1930 – August 25, 2012) was an American astronaut and aeronautical engineer who became the first person to walk on the Moon.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8865,
+            "cite_score": 1.4556,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Neil Armstrong was the first person to walk on the Moon.",
+            "best_evidence_passage_title": "Neil Armstrong",
+            "best_evidence_passage_text": "Neil Alden Armstrong (August 5, 1930 – August 25, 2012) was an American astronaut and aeronautical engineer who became the first person to walk on the Moon. He was also a naval aviator, test pilot, an",
+            "best_evidence_sentence": "Neil Alden Armstrong (August 5, 1930 – August 25, 2012) was an American astronaut and aeronautical engineer who became the first person to walk on the Moon.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Armstrong stepped onto the lunar surface on July 20, 1969, during the Apollo 11 mission.",
+            "required": true,
+            "keywords": [
+              "July 20, 1969",
+              "1969"
+            ],
+            "golden_passage_title": "Apollo 11",
+            "golden_evidence": "Commander Neil Armstrong and lunar module pilot Buzz Aldrin formed the American crew that landed the Apollo Lunar Module Eagle on July 20, 1969, at 20:17 UTC.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7934,
+            "cite_score": 1.4166,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The Apollo Lunar Module Eagle landed on July 20, 1969.",
+            "best_evidence_passage_title": "Apollo 11",
+            "best_evidence_passage_text": "Apollo 11 (July 16–24, 1969) was the American spaceflight that first landed humans on the Moon. Commander Neil Armstrong and lunar module pilot Buzz Aldrin formed the American crew that landed the Apo",
+            "best_evidence_sentence": "Commander Neil Armstrong and lunar module pilot Buzz Aldrin formed the American crew that landed the Apollo Lunar Module Eagle on July 20, 1969, at 20:17 UTC.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Buzz Aldrin was the second person to walk on the Moon, joining Armstrong about 19 minutes later.",
+            "required": false,
+            "keywords": [
+              "Buzz Aldrin",
+              "Aldrin",
+              "second person"
+            ],
+            "golden_passage_title": "Buzz Aldrin",
+            "golden_evidence": "As the second person to walk on the Moon, Aldrin joined commander Neil Armstrong on the lunar surface after Armstrong had stepped out of the Eagle lander.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Michael Collins remained in lunar orbit aboard the Command Module during the Moon landing.",
+            "required": false,
+            "keywords": [
+              "Michael Collins",
+              "Collins",
+              "command module",
+              "lunar orbit"
+            ],
+            "golden_passage_title": "Michael Collins (astronaut)",
+            "golden_evidence": "Michael Collins flew the Apollo 11 command module Columbia around the Moon while his crewmates Neil Armstrong and Buzz Aldrin made the first crewed lunar landing on July 20, 1969.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 10,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is the Great Wall of China and how long is it?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6667,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Great Wall of China is a series of fortifications built along China's northern borders to protect against nomadic invasions.",
+            "required": true,
+            "keywords": [
+              "fortifications",
+              "northern borders",
+              "nomadic"
+            ],
+            "golden_passage_title": "Great Wall of China",
+            "golden_evidence": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5633,
+            "cite_score": 1.3885,
+            "n_covering_claims": 2,
+            "best_covering_claim": "The Great Wall of China is a series of fortifications built across historical northern borders of ancient Chinese states and Imperial China.",
+            "best_evidence_passage_title": "Great Wall of China",
+            "best_evidence_passage_text": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups f",
+            "best_evidence_sentence": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The total length of all sections of the Great Wall across all dynasties is 21,196 km (13,171 mi), according to a 2012 survey.",
+            "required": true,
+            "keywords": [
+              "21,196 km",
+              "21,196",
+              "13,171 miles",
+              "2012 survey"
+            ],
+            "golden_passage_title": "Great Wall of China",
+            "golden_evidence": "A 2012 survey found that the Ming walls measure 8,850 km (5,500 mi), while the total length of all walls across all dynasties measures 21,196 km (13,171 mi).",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.2008,
+            "cite_score": 0,
+            "n_covering_claims": 3,
+            "best_covering_claim": "A 2012 survey found that the Ming walls measure 8,850 kilometers.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The most well-known and best-preserved sections of the Great Wall were built by the Ming dynasty between 1368 and 1644.",
+            "required": false,
+            "keywords": [
+              "Ming dynasty",
+              "Ming",
+              "1368",
+              "1644"
+            ],
+            "golden_passage_title": "Ming dynasty",
+            "golden_evidence": "During the Ming dynasty, the Great Wall of China was extensively rebuilt and extended to its current form.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.2632,
+            "cite_score": 1.4072,
+            "n_covering_claims": 2,
+            "best_covering_claim": "The Ming walls are the most well-known sections of the Great Wall.",
+            "best_evidence_passage_title": "Ming dynasty",
+            "best_evidence_passage_text": "The Ming dynasty (1368–1644) was the ruling dynasty of China for 276 years. It was the last imperial dynasty of China ruled by ethnic Han Chinese. During the Ming dynasty, the Great Wall of China was ",
+            "best_evidence_sentence": "Most of the wall that tourists visit today, including the well-known sections at Badaling and Mutianyu near Beijing, dates from the Ming period.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 16,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 1,
+        "required_precision": 0.5,
+        "required_recall": 0.5,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who wrote the theory of evolution and when?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The theory of evolution by natural selection was developed by Charles Darwin.",
+            "required": true,
+            "keywords": [
+              "Charles Darwin",
+              "Darwin"
+            ],
+            "golden_passage_title": "Charles Darwin",
+            "golden_evidence": "In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8204,
+            "cite_score": 1.3705,
+            "n_covering_claims": 7,
+            "best_covering_claim": "Charles Darwin published the theory of evolution.",
+            "best_evidence_passage_title": "Charles Darwin",
+            "best_evidence_passage_text": "Charles Robert Darwin (12 February 1809 – 19 April 1882) was an English naturalist, geologist and biologist, best known for his contributions to the science of evolution. His proposition that all spec",
+            "best_evidence_sentence": "His proposition that all species of life have descended from common ancestors is now widely accepted and considered a fundamental concept in science.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Darwin published his theory in On the Origin of Species on 24 November 1859.",
+            "required": true,
+            "keywords": [
+              "On the Origin of Species",
+              "1859",
+              "24 November 1859"
+            ],
+            "golden_passage_title": "On the Origin of Species",
+            "golden_evidence": "On the Origin of Species... is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.9227,
+            "cite_score": 1.4565,
+            "n_covering_claims": 1,
+            "best_covering_claim": "On the Origin of Species was published on 24 November 1859.",
+            "best_evidence_passage_title": "On the Origin of Species",
+            "best_evidence_passage_text": "On the Origin of Species (or, more completely, On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life) is a work of scientific literatur",
+            "best_evidence_sentence": "The book was published on 24 November 1859, by John Murray.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Alfred Russel Wallace independently conceived a similar theory and co-presented it with Darwin at the Linnean Society in 1858.",
+            "required": false,
+            "keywords": [
+              "Alfred Russel Wallace",
+              "Wallace",
+              "1858",
+              "Linnean Society"
+            ],
+            "golden_passage_title": "Alfred Russel Wallace",
+            "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 16,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is the Titanic and when did it sink?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line.",
+            "required": true,
+            "keywords": [
+              "White Star Line",
+              "ocean liner"
+            ],
+            "golden_passage_title": "RMS Titanic",
+            "golden_evidence": "RMS Titanic was a British ocean liner owned and operated by the White Star Line.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4776,
+            "cite_score": 1.3989,
+            "n_covering_claims": 3,
+            "best_covering_claim": "The RMS Titanic was a British ocean liner.",
+            "best_evidence_passage_title": "RMS Titanic",
+            "best_evidence_passage_text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line. Built at the Harland and Wolff shipyard in Belfast, designed by chief naval architect Thomas Andrews, and measuring 269",
+            "best_evidence_sentence": "RMS Titanic was a British ocean liner owned and operated by the White Star Line.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The Titanic sank on 15 April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City.",
+            "required": true,
+            "keywords": [
+              "15 April 1912",
+              "1912",
+              "iceberg",
+              "sank"
+            ],
+            "golden_passage_title": "RMS Titanic",
+            "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4676,
+            "cite_score": 1.3318,
+            "n_covering_claims": 5,
+            "best_covering_claim": "The Titanic sank on April 15, 1912.",
+            "best_evidence_passage_title": "Sinking of the RMS Titanic",
+            "best_evidence_passage_text": "The sinking of the RMS Titanic occurred on 15 April 1912 in the North Atlantic Ocean, four days into the ship's maiden voyage from Southampton to New York City. The Titanic struck an iceberg at 11:40 ",
+            "best_evidence_sentence": "The Titanic struck an iceberg at 11:40 pm (ship's time) on 14 April 1912 and sank at 2:20 am on 15 April 1912.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "More than 1,500 of the estimated 2,224 people on board died when the Titanic sank.",
+            "required": false,
+            "keywords": [
+              "1,500",
+              "1500",
+              "2,224",
+              "deaths"
+            ],
+            "golden_passage_title": "RMS Titanic",
+            "golden_evidence": "she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.2709,
+            "cite_score": 1.2935,
+            "n_covering_claims": 2,
+            "best_covering_claim": "There were 2,224 passengers and crew on board the Titanic.",
+            "best_evidence_passage_title": "RMS Titanic",
+            "best_evidence_passage_text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line. Built at the Harland and Wolff shipyard in Belfast, designed by chief naval architect Thomas Andrews, and measuring 269",
+            "best_evidence_sentence": "killing more than 1,500 of the 2,224 passengers and c",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 21,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Where is Mount Everest and how tall is it?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Mount Everest is located in the Mahalangur Himal sub-range of the Himalayas, on the border between Nepal and China (Tibet).",
+            "required": true,
+            "keywords": [
+              "Nepal",
+              "Tibet",
+              "China",
+              "Himalayas",
+              "Mahalangur Himal"
+            ],
+            "golden_passage_title": "Mount Everest",
+            "golden_evidence": "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4377,
+            "cite_score": 1.449,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Mount Everest is located in the Mahalangur Himal sub-range of the Himalayas.",
+            "best_evidence_passage_title": "Mount Everest",
+            "best_evidence_passage_text": "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point. Its elevation (snow height) ",
+            "best_evidence_sentence": "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Mount Everest's height is 8,848.86 metres (29,031.7 ft), established by a 2020 joint survey by China and Nepal.",
+            "required": true,
+            "keywords": [
+              "8,848.86",
+              "8848.86",
+              "29,031.7"
+            ],
+            "golden_passage_title": "Mount Everest",
+            "golden_evidence": "Its elevation (snow height) of 8,848.86 m (29,031.7 ft) was most recently established in 2020 by the Chinese and Nepali authorities.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3397,
+            "cite_score": 1.344,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Mount Everest's elevation is 29,031.7 feet above sea level.",
+            "best_evidence_passage_title": "Mount Everest",
+            "best_evidence_passage_text": "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point. Its elevation (snow height) ",
+            "best_evidence_sentence": "Its elevation (snow height) of 8,848.86 m (29,031.7 ft) was most recently established in 2020 by the Chinese and Nepali authorities.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Edmund Hillary and Tenzing Norgay made the first confirmed ascent of Mount Everest on 29 May 1953.",
+            "required": false,
+            "keywords": [
+              "Edmund Hillary",
+              "Hillary",
+              "Tenzing Norgay",
+              "29 May 1953",
+              "1953"
+            ],
+            "golden_passage_title": "Edmund Hillary",
+            "golden_evidence": "On 29 May 1953, Hillary and Sherpa mountaineer Tenzing Norgay became the first climbers confirmed to have reached the summit of Mount Everest.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 10,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who wrote the Harry Potter books and how many are there?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Harry Potter series was written by British author J. K. Rowling.",
+            "required": true,
+            "keywords": [
+              "J. K. Rowling",
+              "J.K. Rowling",
+              "Rowling"
+            ],
+            "golden_passage_title": "Harry Potter",
+            "golden_evidence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6345,
+            "cite_score": 1.3914,
+            "n_covering_claims": 1,
+            "best_covering_claim": "J. K. Rowling wrote the Harry Potter books.",
+            "best_evidence_passage_title": "Harry Potter",
+            "best_evidence_passage_text": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasl",
+            "best_evidence_sentence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The Harry Potter series consists of seven novels, published between 1997 and 2007.",
+            "required": true,
+            "keywords": [
+              "seven",
+              "7"
+            ],
+            "golden_passage_title": "Harry Potter and the Philosopher's Stone",
+            "golden_evidence": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4316,
+            "cite_score": 0.8637,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The Harry Potter series contains seven novels.",
+            "best_evidence_passage_title": "Harry Potter",
+            "best_evidence_passage_text": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasl",
+            "best_evidence_sentence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The Harry Potter series has sold more than 500 million copies worldwide, making it the best-selling book series in history.",
+            "required": false,
+            "keywords": [
+              "500 million",
+              "best-selling"
+            ],
+            "golden_passage_title": "Harry Potter",
+            "golden_evidence": "Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 5,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What caused World War I and when did it start?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "World War I began on 28 July 1914 when Austria-Hungary declared war on Serbia.",
+            "required": true,
+            "keywords": [
+              "28 July 1914",
+              "1914"
+            ],
+            "golden_passage_title": "World War I",
+            "golden_evidence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7853,
+            "cite_score": 1.4105,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Austria-Hungary declared war on Serbia on 28 July 1914.",
+            "best_evidence_passage_title": "World War I",
+            "best_evidence_passage_text": "World War I or the First World War (28 July 1914 – 11 November 1918) was a global conflict that began in Europe. It was fought between two coalitions, the Allies and the Central Powers. Fighting occur",
+            "best_evidence_sentence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The immediate trigger of World War I was the assassination of Archduke Franz Ferdinand on 28 June 1914 in Sarajevo by Gavrilo Princip.",
+            "required": true,
+            "keywords": [
+              "Franz Ferdinand",
+              "Archduke Franz Ferdinand",
+              "Gavrilo Princip",
+              "Sarajevo",
+              "28 June 1914"
+            ],
+            "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
+            "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7769,
+            "cite_score": 1.3101,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Archduke Franz Ferdinand of Austria-Hungary was assassinated on 28 June 1914 in Sarajevo.",
+            "best_evidence_passage_title": "Assassination of Archduke Franz Ferdinand",
+            "best_evidence_passage_text": "The assassination of Archduke Franz Ferdinand of Austria-Hungary occurred on 28 June 1914 in Sarajevo, Bosnia, then part of Austria-Hungary. He was shot by Gavrilo Princip, a Bosnian Serb nationalist ",
+            "best_evidence_sentence": "The assassination of Archduke Franz Ferdinand of Austria-Hungary occurred on 28 June 1914 in Sarajevo, Bosnia, then part of Austria-Hungary.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The underlying causes of World War I included militarism, alliance systems, imperialism, and nationalism (MAIN).",
+            "required": false,
+            "keywords": [
+              "militarism",
+              "alliances",
+              "imperialism",
+              "nationalism",
+              "MAIN"
+            ],
+            "golden_passage_title": "Causes of World War I",
+            "golden_evidence": "The long-term causes are often grouped under the acronym MAIN: Militarism, Alliance systems, Imperialism, and Nationalism.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.2559,
+            "cite_score": 1.318,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Imperialism, involving competition over colonies, was a long-term cause of World War I.",
+            "best_evidence_passage_title": "Causes of World War I",
+            "best_evidence_passage_text": "The causes of World War I include both the immediate trigger and the underlying long-term factors. The immediate cause was the assassination of Archduke Franz Ferdinand of Austria-Hungary on 28 June 1",
+            "best_evidence_sentence": "The long-term causes are often grouped under the acronym MAIN: Militarism (the arms race between European powers), Alliance systems (which meant that a conflict between two states could rapidly involve many others), Imperialism (competition over colonies), and Nationalism (especially in the Bal",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 21,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who was Leonardo da Vinci and what did he paint?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance, considered one of the greatest painters of all time.",
+            "required": true,
+            "keywords": [
+              "Leonardo da Vinci",
+              "Da Vinci",
+              "polymath"
+            ],
+            "golden_passage_title": "Leonardo da Vinci",
+            "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.849,
+            "cite_score": 1.4439,
+            "n_covering_claims": 14,
+            "best_covering_claim": "Leonardo da Vinci was an Italian polymath of the High Renaissance.",
+            "best_evidence_passage_title": "Leonardo da Vinci",
+            "best_evidence_passage_text": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time. Born in Anchiano, in pres",
+            "best_evidence_sentence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The Mona Lisa, painted by Leonardo da Vinci, is considered the most famous portrait in the world.",
+            "required": true,
+            "keywords": [
+              "Mona Lisa"
+            ],
+            "golden_passage_title": "Mona Lisa",
+            "golden_evidence": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7665,
+            "cite_score": 1.3945,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Leonardo da Vinci painted the Mona Lisa.",
+            "best_evidence_passage_title": "Mona Lisa",
+            "best_evidence_passage_text": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci. It is considered an archetypal masterpiece of the Italian Renaissance, and has been described as '",
+            "best_evidence_sentence": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The Last Supper is a mural painting by Leonardo da Vinci, painted between approximately 1495 and 1498.",
+            "required": false,
+            "keywords": [
+              "Last Supper",
+              "The Last Supper",
+              "1495",
+              "1498"
+            ],
+            "golden_passage_title": "The Last Supper (Leonardo)",
+            "golden_evidence": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory of the Convent of Santa Maria delle Grazie in Milan, Italy.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8584,
+            "cite_score": 1.4628,
+            "n_covering_claims": 5,
+            "best_covering_claim": "The Last Supper was painted between approximately 1495 and 1498.",
+            "best_evidence_passage_title": "The Last Supper (Leonardo)",
+            "best_evidence_passage_text": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory (dining hall) of the Convent of Santa Maria delle Grazie in Milan, Italy. The work, which measures 4.6 metres (15",
+            "best_evidence_sentence": "It was painted between approximately 1495 and 1498.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 31,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is DNA and who discovered its structure?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 3,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "DNA (deoxyribonucleic acid) is a polymer that carries genetic instructions for the development and reproduction of all known living organisms.",
+            "required": true,
+            "keywords": [
+              "polymer",
+              "generic instruction"
+            ],
+            "golden_passage_title": "DNA",
+            "golden_evidence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth and reproduction of all known organisms.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4372,
+            "cite_score": 1.4227,
+            "n_covering_claims": 1,
+            "best_covering_claim": "DNA is a polymer composed of two polynucleotide chains.",
+            "best_evidence_passage_title": "DNA",
+            "best_evidence_passage_text": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth",
+            "best_evidence_sentence": "DNA: Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth and reproduction of all known organisms and many viruses.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The double helix structure of DNA was discovered by James Watson and Francis Crick, published in Nature in April 1953.",
+            "required": true,
+            "keywords": [
+              "Watson",
+              "Crick",
+              "James Watson",
+              "Francis Crick",
+              "double helix"
+            ],
+            "golden_passage_title": "James Watson",
+            "golden_evidence": "In 1953, he co-authored with Francis Crick the academic paper proposing the double helix structure of the DNA molecule.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5658,
+            "cite_score": 1.4009,
+            "n_covering_claims": 7,
+            "best_covering_claim": "Watson and Crick published the double helix model in April 1953.",
+            "best_evidence_passage_title": "James Watson",
+            "best_evidence_passage_text": "James Dewey Watson (born April 6, 1928) is an American molecular biologist, geneticist and zoologist. In 1953, he co-authored with Francis Crick the academic paper proposing the double helix structure",
+            "best_evidence_sentence": "In 1953, he co-authored with Francis Crick the academic paper proposing the double helix structure of the DNA molecule.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Rosalind Franklin's X-ray diffraction images of DNA, particularly Photo 51, were crucial to Watson and Crick's discovery.",
+            "required": false,
+            "keywords": [
+              "Rosalind Franklin",
+              "Franklin",
+              "Photo 51",
+              "X-ray diffraction"
+            ],
+            "golden_passage_title": "Rosalind Franklin",
+            "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial in determining the double helix structure.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4805,
+            "cite_score": 1.3243,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Rosalind Franklin produced X-ray crystallography images used in the DNA structure discovery.",
+            "best_evidence_passage_title": "Rosalind Franklin",
+            "best_evidence_passage_text": "Rosalind Elsie Franklin (25 July 1920 – 16 April 1958) was a British chemist and X-ray crystallographer whose work was central to the understanding of the molecular structures of DNA. Her X-ray diffra",
+            "best_evidence_sentence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial in determining the double helix structure.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 27,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is the theory of general relativity and who developed it?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.75,
+        "nugget_coverage": 0.75,
+        "n_nuggets": 4,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The theory of general relativity was developed by Albert Einstein and published in 1915.",
+            "required": true,
+            "keywords": [
+              "Albert Einstein",
+              "Einstein",
+              "1915"
+            ],
+            "golden_passage_title": "General relativity",
+            "golden_evidence": "General relativity is the geometric theory of gravitation published by Albert Einstein in 1915.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8518,
+            "cite_score": 1.4495,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Albert Einstein published general relativity in 1915.",
+            "best_evidence_passage_title": "General relativity",
+            "best_evidence_passage_text": "General relativity, also known as the general theory of relativity, is the geometric theory of gravitation published by Albert Einstein in 1915 and is the current description of gravitation in modern ",
+            "best_evidence_sentence": "General relativity, also known as the general theory of relativity, is the geometric theory of gravitation published by Albert Einstein in 1915 and is the current description of gravitation in modern physics.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "General relativity describes gravity as a curvature of spacetime caused by mass and energy.",
+            "required": true,
+            "keywords": [
+              "gravity",
+              "curvature",
+              "spacetime",
+              "mass",
+              "energy"
+            ],
+            "golden_passage_title": "General relativity",
+            "golden_evidence": "The curvature of spacetime is directly related to the energy and momentum of whatever matter and radiation are present.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.6061,
+            "cite_score": 0.6259,
+            "n_covering_claims": 8,
+            "best_covering_claim": "The curvature of spacetime is perceived as gravity.",
+            "best_evidence_passage_title": "Spacetime",
+            "best_evidence_passage_text": "In physics, spacetime is any mathematical model that fuses the three dimensions of space and the one dimension of time into a single four-dimensional continuum. The concept was introduced by mathemati",
+            "best_evidence_sentence": "In general relativity, Einstein showed that spacetime is not flat but curves in the presence of mass and energy, and that this curvature is what we perceive as gravity.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "General relativity was first confirmed in 1919 by Arthur Eddington observing light bending during a solar eclipse.",
+            "required": false,
+            "keywords": [
+              "1919",
+              "Arthur Eddington",
+              "solar eclipse",
+              "light bending"
+            ],
+            "golden_passage_title": "Tests of general relativity",
+            "golden_evidence": "The first major test came during the solar eclipse of May 29, 1919, when Arthur Eddington led an expedition to measure the deflection of starlight by the Sun.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "General relativity replaced Newton's theory of gravitation for describing extreme conditions.",
+            "required": false,
+            "keywords": [
+              "Newton",
+              "Newtonian gravity",
+              "replaced"
+            ],
+            "golden_passage_title": "General relativity",
+            "golden_evidence": "General relativity generalizes special relativity and refines Newton's law of universal gravitation.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3267,
+            "cite_score": 1.3905,
+            "n_covering_claims": 1,
+            "best_covering_claim": "General relativity refines Newton's law of universal gravitation.",
+            "best_evidence_passage_title": "General relativity",
+            "best_evidence_passage_text": "General relativity, also known as the general theory of relativity, is the geometric theory of gravitation published by Albert Einstein in 1915 and is the current description of gravitation in modern ",
+            "best_evidence_sentence": "General relativity generalizes special relativity and refines Newton's law of universal gravitation, providing a unified description of gravity as a geometric property of space and time, or four-dimensional spacetime.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 24,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 0.5,
+        "optional_coverage": 0.5,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is the Great Wall of China and why was it built?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 4,
+        "n_covered": 4,
+        "n_cited": 4,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Great Wall of China is a series of fortifications along China's northern borders.",
+            "required": true,
+            "keywords": [
+              "Great Wall",
+              "fortifications",
+              "borders"
+            ],
+            "golden_passage_title": "Great Wall of China",
+            "golden_evidence": "The Great Wall of China is a series of walls and fortifications built across the historical northern borders of China.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7778,
+            "cite_score": 1.4315,
+            "n_covering_claims": 4,
+            "best_covering_claim": "The Great Wall of China is a series of walls and fortifications built across the historical northern borders of China.",
+            "best_evidence_passage_title": "Great Wall of China",
+            "best_evidence_passage_text": "The Great Wall of China is a series of walls and fortifications built across the historical northern borders of China to protect Chinese states and empires against nomadic invasions. Several walls wer",
+            "best_evidence_sentence": "The Great Wall of China is a series of walls and fortifications built across the historical northern borders of China to protect Chinese states and empires against nomadic invasions.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The wall was built to protect against nomadic invasions from the north.",
+            "required": true,
+            "keywords": [
+              "invasions",
+              "protect",
+              "Xiongnu",
+              "Mongols"
+            ],
+            "golden_passage_title": "Great Wall of China",
+            "golden_evidence": "The Great Wall of China was built to protect Chinese states and empires against nomadic invasions.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5966,
+            "cite_score": 0.808,
+            "n_covering_claims": 5,
+            "best_covering_claim": "Construction of the Great Wall during the Qin and Han dynasties was largely motivated by the need to protect against Xiongnu raids and invasions.",
+            "best_evidence_passage_title": "Xiongnu",
+            "best_evidence_passage_text": "The Xiongnu were a tribal confederation of nomadic peoples who inhabited the eastern Eurasian Steppe from the 3rd century BC to the late 1st century AD. They were a major military threat to the Chines",
+            "best_evidence_sentence": "The construction of the Great Wall during the Qin and Han dynasties was largely motivated by the need to protect against Xiongnu raids and invasions.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The most famous sections were built by the Ming dynasty between 1368 and 1644.",
+            "required": false,
+            "keywords": [
+              "Ming dynasty",
+              "1368",
+              "1644"
+            ],
+            "golden_passage_title": "Ming dynasty",
+            "golden_evidence": "The Ming court built the most substantial and well-preserved sections of the Great Wall, primarily to defend against Mongol invasions from the north.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8354,
+            "cite_score": 1.3665,
+            "n_covering_claims": 4,
+            "best_covering_claim": "The Ming dynasty occurred from 1368 to 1644.",
+            "best_evidence_passage_title": "Ming dynasty",
+            "best_evidence_passage_text": "The Ming dynasty (1368–1644) was the ruling dynasty of China for nearly three centuries following the Yuan dynasty. The Ming court built the most substantial and well-preserved sections of the Great W",
+            "best_evidence_sentence": "The Ming dynasty (1368–1644) was the ruling dynasty of China for nearly three centuries following the Yuan dynasty.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Early wall construction began under Qin Shi Huang (221–206 BC), the first emperor of China.",
+            "required": false,
+            "keywords": [
+              "Qin Shi Huang",
+              "221 BC",
+              "first emperor"
+            ],
+            "golden_passage_title": "Qin Shi Huang",
+            "golden_evidence": "Among his major projects was the construction of an early version of the Great Wall of China, connecting and extending existing walls.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3374,
+            "cite_score": 1.3548,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Selective stretches of the Great Wall were joined together by Qin Shi Huang during the Qin dynasty.",
+            "best_evidence_passage_title": "Qin Shi Huang",
+            "best_evidence_passage_text": "Qin Shi Huang (259–210 BC) was the founder of the Qin dynasty and the first emperor to unify China. Among his major projects was the construction of an early version of the Great Wall of China, connec",
+            "best_evidence_sentence": "Among his major projects was the construction of an early version of the Great Wall of China, connecting and extending existing walls built by the former states of Qin, Zhao, and Yan.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 29,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 2,
+        "n_optional_cited": 2,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is the Sistine Chapel and who painted its ceiling?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 4,
+        "n_covered": 4,
+        "n_cited": 4,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Sistine Chapel is a chapel in the Apostolic Palace in Vatican City.",
+            "required": true,
+            "keywords": [
+              "Sistine Chapel",
+              "Apostolic Palace",
+              "Vatican City"
+            ],
+            "golden_passage_title": "Sistine Chapel",
+            "golden_evidence": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.709,
+            "cite_score": 1.4299,
+            "n_covering_claims": 12,
+            "best_covering_claim": "The Apostolic Palace is in Vatican City.",
+            "best_evidence_passage_title": "Sistine Chapel",
+            "best_evidence_passage_text": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City. Originally known as the Cappella Magna, the chapel takes its name from Pope Sixtus IV, who ",
+            "best_evidence_sentence": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The ceiling was painted by Michelangelo between 1508 and 1512.",
+            "required": true,
+            "keywords": [
+              "Michelangelo"
+            ],
+            "golden_passage_title": "Sistine Chapel ceiling",
+            "golden_evidence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most celebrated works of Western art.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7669,
+            "cite_score": 1.421,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Michelangelo considered himself primarily a sculptor.",
+            "best_evidence_passage_title": "Sistine Chapel ceiling",
+            "best_evidence_passage_text": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most celebrated works of Western art. The painting depicts nine scenes from the Book of Genesis, the most famou",
+            "best_evidence_sentence": "Michelangelo, who considered himself primarily a sculptor, initially was reluctant to accept the commission but produced what is widely regarded as one of t",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The ceiling was commissioned by Pope Julius II and depicts scenes from the Book of Genesis.",
+            "required": false,
+            "keywords": [
+              "Pope Julius II",
+              "Genesis",
+              "Creation of Adam"
+            ],
+            "golden_passage_title": "Sistine Chapel ceiling",
+            "golden_evidence": "The painting depicts nine scenes from the Book of Genesis. The ceiling was commissioned by Pope Julius II.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3752,
+            "cite_score": 1.3538,
+            "n_covering_claims": 3,
+            "best_covering_claim": "The Creation of Adam is depicted on the Sistine Chapel ceiling.",
+            "best_evidence_passage_title": "Sistine Chapel ceiling",
+            "best_evidence_passage_text": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most celebrated works of Western art. The painting depicts nine scenes from the Book of Genesis, the most famou",
+            "best_evidence_sentence": "The painting depicts nine scenes from the Book of Genesis, the most famous of which is The Creation of Adam, in which God and Adam are shown reaching toward each other.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "The Sistine Chapel is the site of the papal conclave, where new popes are elected.",
+            "required": false,
+            "keywords": [
+              "papal conclave",
+              "pope elected",
+              "College of Cardinals"
+            ],
+            "golden_passage_title": "Sistine Chapel",
+            "golden_evidence": "The chapel is the site of the papal conclave, the process by which a new pope is elected.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3945,
+            "cite_score": 1.3653,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Papal conclaves are held to elect new popes.",
+            "best_evidence_passage_title": "Sistine Chapel",
+            "best_evidence_passage_text": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City. Originally known as the Cappella Magna, the chapel takes its name from Pope Sixtus IV, who ",
+            "best_evidence_sentence": "The chapel is the site of the papal conclave, the process by which a new pope is elected.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 27,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 2,
+        "n_optional_cited": 2,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What caused the fall of the Roman Empire?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.5,
+        "nugget_coverage": 0.5,
+        "n_nuggets": 4,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Western Roman Empire fell in 476 AD when Odoacer deposed the last emperor, Romulus Augustulus.",
+            "required": true,
+            "keywords": [
+              "476 AD",
+              "Odoacer",
+              "Romulus Augustulus"
+            ],
+            "golden_passage_title": "Fall of the Western Roman Empire",
+            "golden_evidence": "The date most often cited for the 'fall' is 476 AD, when Romulus Augustulus, the last emperor of the Western Roman Empire, was deposed by the Germanic chieftain Odoacer.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Causes of the fall included military overextension, political instability, and barbarian invasions.",
+            "required": true,
+            "keywords": [
+              "military overextension",
+              "political instability",
+              "barbarian invasions"
+            ],
+            "golden_passage_title": "Fall of the Western Roman Empire",
+            "golden_evidence": "Historians have proposed numerous theories including military overextension, the debasement of currency, political instability, and the increasing pressure from barbarian invasions.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3643,
+            "cite_score": 1.1934,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Historians have proposed military overextension as a theory for the fall of the Western Roman Empire.",
+            "best_evidence_passage_title": "Fall of the Western Roman Empire",
+            "best_evidence_passage_text": "The fall of the Western Roman Empire was the process of decline in the Western Roman Empire in which it failed to enforce its rule. The date most often cited for the 'fall' is 476 AD, when Romulus Aug",
+            "best_evidence_sentence": "Historians have proposed numerous theories including military overextension, the debasement of currency, political instability, overreliance on slave labor, and the increasing pressure from barbaria",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The Huns, led by Attila, contributed to the fall by pushing Germanic peoples into Roman territory.",
+            "required": false,
+            "keywords": [
+              "Huns",
+              "Attila",
+              "Germanic peoples"
+            ],
+            "golden_passage_title": "Huns",
+            "golden_evidence": "The Hunnic invasions forced many Germanic peoples such as the Visigoths and Vandals into Roman territory, destabilizing the empire's borders from within.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5825,
+            "cite_score": 1.3326,
+            "n_covering_claims": 3,
+            "best_covering_claim": "The Hunnic invasions under Attila forced Germanic peoples into Roman territory.",
+            "best_evidence_passage_title": "Huns",
+            "best_evidence_passage_text": "The Huns were a nomadic people who inhabited the steppes of Central Asia, the Caucasus, and Eastern Europe between the 4th and 6th centuries AD. Under their most famous leader, Attila, the Huns launch",
+            "best_evidence_sentence": "The Hunnic invasions forced many Germanic peoples such as the Visigoths and Vandals into Roman territory, destabilizing the empire's borders from within.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "The Eastern Roman Empire (Byzantine Empire) survived until 1453, when Constantinople fell to the Ottomans.",
+            "required": false,
+            "keywords": [
+              "Byzantine Empire",
+              "1453",
+              "Constantinople",
+              "Ottoman"
+            ],
+            "golden_passage_title": "Byzantine Empire",
+            "golden_evidence": "It survived the fall of the Western Roman Empire in the 5th century AD and continued to exist until 1453, when Constantinople fell to the Ottoman Empire.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 22,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 1,
+        "n_required_cited": 1,
+        "required_precision": 1,
+        "required_recall": 0.5,
+        "required_coverage": 0.5,
+        "n_optional": 2,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 0.5,
+        "optional_coverage": 0.5,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "Who was William Shakespeare and what are his most famous works?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 4,
+        "n_covered": 4,
+        "n_cited": 4,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "William Shakespeare (1564–1616) was an English playwright, poet, and actor, widely regarded as the greatest writer in the English language.",
+            "required": true,
+            "keywords": [
+              "playwright",
+              "poet"
+            ],
+            "golden_passage_title": "William Shakespeare",
+            "golden_evidence": "He is widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7657,
+            "cite_score": 1.2953,
+            "n_covering_claims": 3,
+            "best_covering_claim": "William Shakespeare was an English playwright, poet, and actor.",
+            "best_evidence_passage_title": "William Shakespeare",
+            "best_evidence_passage_text": "William Shakespeare (baptised 26 April 1564 – 23 April 1616) was an English playwright, poet, and actor. He is widely regarded as the greatest writer in the English language and the world's pre-eminen",
+            "best_evidence_sentence": "William Shakespeare (baptised 26 April 1564 – 23 April 1616) was an English playwright, poet, and actor.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Shakespeare wrote approximately 39 plays and 154 sonnets.",
+            "required": false,
+            "keywords": [
+              "39 plays",
+              "154 sonnets"
+            ],
+            "golden_passage_title": "William Shakespeare",
+            "golden_evidence": "His extant works consist of some 39 plays, 154 sonnets, and several longer poems.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4692,
+            "cite_score": 1.3003,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Shakespeare's extant works include 154 sonnets.",
+            "best_evidence_passage_title": "William Shakespeare",
+            "best_evidence_passage_text": "William Shakespeare (baptised 26 April 1564 – 23 April 1616) was an English playwright, poet, and actor. He is widely regarded as the greatest writer in the English language and the world's pre-eminen",
+            "best_evidence_sentence": "His extant works, including collaborations, consist of some 39 plays, 154 sonnets, and several longer poems.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "His most famous plays include Hamlet, Romeo and Juliet, Macbeth, Othello, and King Lear.",
+            "required": true,
+            "keywords": [
+              "Hamlet",
+              "Romeo and Juliet",
+              "Macbeth",
+              "Othello",
+              "King Lear"
+            ],
+            "golden_passage_title": "Hamlet",
+            "golden_evidence": "Hamlet is considered one of the most influential works of literature ever written.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3131,
+            "cite_score": 0.6317,
+            "n_covering_claims": 12,
+            "best_covering_claim": "Romeo and Juliet was written between 1594 and 1596.",
+            "best_evidence_passage_title": "Romeo and Juliet",
+            "best_evidence_passage_text": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career, about two young star-crossed lovers whose deaths ultimately reconcile their feuding families. It was among Shakespeare",
+            "best_evidence_sentence": "The play was written between 1594 and 1596.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Many of his plays were performed at the Globe Theatre, built in 1599 and co-owned by Shakespeare.",
+            "required": false,
+            "keywords": [
+              "Globe Theatre",
+              "1599",
+              "Lord Chamberlain's Men"
+            ],
+            "golden_passage_title": "Globe Theatre",
+            "golden_evidence": "The Globe Theatre was built in 1599 by Shakespeare's playing company, the Lord Chamberlain's Men.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3283,
+            "cite_score": 0.5379,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Hamlet was written between 1599 and 1601.",
+            "best_evidence_passage_title": "Hamlet",
+            "best_evidence_passage_text": "The Tragedy of Hamlet, Prince of Denmark, often shortened to Hamlet, is a tragedy written by William Shakespeare between 1599 and 1601. It is Shakespeare's longest play. The story concerns Prince Haml",
+            "best_evidence_sentence": "Hamlet: The Tragedy of Hamlet, Prince of Denmark, often shortened to Hamlet, is a tragedy written by William Shakespeare between 1599 and 1601.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 25,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 2,
+        "n_optional_cited": 2,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is DNA and what role does it play in heredity?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.75,
+        "nugget_coverage": 0.75,
+        "n_nuggets": 4,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "DNA (deoxyribonucleic acid) is a double-helix molecule carrying genetic instructions for all known organisms.",
+            "required": true,
+            "keywords": [
+              "molecule",
+              "genetic instructions",
+              "deoxyribonucleic acid"
+            ],
+            "golden_passage_title": "DNA",
+            "golden_evidence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4693,
+            "cite_score": 1.4347,
+            "n_covering_claims": 8,
+            "best_covering_claim": "DNA stands for deoxyribonucleic acid.",
+            "best_evidence_passage_title": "DNA",
+            "best_evidence_passage_text": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth",
+            "best_evidence_sentence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth, and reproduction of all known organisms and many viruses.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Genes are DNA segments that encode traits passed from parents to offspring.",
+            "required": true,
+            "keywords": [
+              "genes",
+              "traits",
+              "heredity",
+              "parents",
+              "offspring"
+            ],
+            "golden_passage_title": "Genetics",
+            "golden_evidence": "Traits are passed from parents to offspring through genes, a process known as inheritance.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7187,
+            "cite_score": 1.3475,
+            "n_covering_claims": 5,
+            "best_covering_claim": "Traits are passed from parents to offspring through genes.",
+            "best_evidence_passage_title": "Genetics",
+            "best_evidence_passage_text": "Genetics is a branch of biology concerned with the study of genes, genetic variation, and heredity in organisms. Genes are segments of DNA that encode information for the production of proteins, which",
+            "best_evidence_sentence": "Traits are passed from parents to offspring through genes, a process known as inheritance.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The double-helix structure of DNA was discovered by Watson and Crick in 1953.",
+            "required": false,
+            "keywords": [
+              "Watson",
+              "Crick",
+              "1953",
+              "double helix"
+            ],
+            "golden_passage_title": "Nucleic acid double helix",
+            "golden_evidence": "The double-helix structure of DNA was proposed by James Watson and Francis Crick in a landmark 1953 paper in Nature.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.2924,
+            "cite_score": 0.503,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The two polynucleotide chains of DNA coil around each other to form a double helix.",
+            "best_evidence_passage_title": "DNA",
+            "best_evidence_passage_text": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth",
+            "best_evidence_sentence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth, and reproduction of all known organisms and many viruses.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Rosalind Franklin's X-ray diffraction images (Photo 51) were crucial to the discovery of the DNA structure.",
+            "required": false,
+            "keywords": [
+              "Rosalind Franklin",
+              "Photo 51",
+              "X-ray crystallography"
+            ],
+            "golden_passage_title": "Rosalind Franklin",
+            "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial data that contributed to Watson and Crick's 1953 model.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 20,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 0.5,
+        "optional_coverage": 0.5,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What is the Amazon rainforest and why is it important?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 4,
+        "n_covered": 4,
+        "n_cited": 4,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Amazon rainforest is the world's largest tropical rainforest, covering about 5.5 million km² across nine countries.",
+            "required": true,
+            "keywords": [
+              "tropical rainforest",
+              "5.5 million km²",
+              "South America"
+            ],
+            "golden_passage_title": "Amazon rainforest",
+            "golden_evidence": "5,500,000 km² are covered by the rainforest. This region includes territory belonging to nine nations.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.3895,
+            "cite_score": 1.3686,
+            "n_covering_claims": 2,
+            "best_covering_claim": "The Amazon rainforest is a moist broadleaf tropical rainforest.",
+            "best_evidence_passage_title": "Amazon rainforest",
+            "best_evidence_passage_text": "The Amazon rainforest, also known as Amazonia or the Amazon Jungle, is a moist broadleaf tropical rainforest in the Amazon biome that covers most of the Amazon basin of South America. This basin encom",
+            "best_evidence_sentence": "The Amazon rainforest, also known as Amazonia or the Amazon Jungle, is a moist broadleaf tropical rainforest in the Amazon biome that covers most of the Amazon basin of South America.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The Amazon produces approximately 20% of the world's oxygen and is called the 'lungs of the Earth.'",
+            "required": true,
+            "keywords": [
+              "lungs",
+              "oxygen",
+              "carbon dioxide",
+              "climate regulation"
+            ],
+            "golden_passage_title": "Biodiversity of the Amazon",
+            "golden_evidence": "Its vegetation absorbs vast quantities of carbon dioxide and produces approximately 20% of the world's oxygen.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.224,
+            "cite_score": 1.2895,
+            "n_covering_claims": 4,
+            "best_covering_claim": "The Amazon rainforest plays a critical role in global climate regulation.",
+            "best_evidence_passage_title": "Biodiversity of the Amazon",
+            "best_evidence_passage_text": "The Amazon rainforest is one of the most biodiverse regions on Earth, home to an estimated 390 billion individual trees representing approximately 16,000 species. It contains around one-tenth of all s",
+            "best_evidence_sentence": "",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The Amazon contains about 10% of all species on Earth.",
+            "required": false,
+            "keywords": [
+              "10%",
+              "species",
+              "biodiversity"
+            ],
+            "golden_passage_title": "Amazon rainforest",
+            "golden_evidence": "The Amazon rainforest contains 10% of all the species in the world.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.5379,
+            "cite_score": 0.8102,
+            "n_covering_claims": 4,
+            "best_covering_claim": "The Amazon rainforest contains around 10% of all species in the world.",
+            "best_evidence_passage_title": "Biodiversity of the Amazon",
+            "best_evidence_passage_text": "The Amazon rainforest is one of the most biodiverse regions on Earth, home to an estimated 390 billion individual trees representing approximately 16,000 species. It contains around one-tenth of all s",
+            "best_evidence_sentence": "It contains around one-tenth of all species on Earth and shelters an extraordinary variety of mammals, birds, reptiles, amphibians, fish, and insects.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Deforestation, driven mainly by agriculture and cattle ranching, is the primary threat to the Amazon.",
+            "required": false,
+            "keywords": [
+              "deforestation",
+              "agriculture",
+              "cattle ranching",
+              "logging"
+            ],
+            "golden_passage_title": "Deforestation of the Amazon rainforest",
+            "golden_evidence": "Deforestation is primarily driven by agricultural expansion, cattle ranching, logging, and infrastructure development.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4355,
+            "cite_score": 1.3285,
+            "n_covering_claims": 7,
+            "best_covering_claim": "The Amazon rainforest faces significant threats from deforestation.",
+            "best_evidence_passage_title": "Deforestation of the Amazon rainforest",
+            "best_evidence_passage_text": "Deforestation of the Amazon rainforest is an ongoing process of forest loss in the Amazon biome that has been occurring for several decades. It is primarily driven by agricultural expansion, cattle ra",
+            "best_evidence_sentence": "",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 29,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 2,
+        "n_optional_cited": 2,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What was the Cold War and when did it end?",
+      "error": "500 Internal Server Error"
+    }
+  ],
+  "num_examples": 29,
+  "num_successful": 28,
+  "runtime_seconds": null,
+  "eval_mode": "nugget"
+}
