@@ -671,7 +671,7 @@ export default function EvaluateDataset() {
   const { addPipelineResult } = useAppData()
 
   // Settings
-  const [model, setModel] = useState('gemma3:1b')
+  const [model, setModel] = useState('claude-haiku-4-5-20251001')
   const [retrieveMethod, setRetrieveMethod] = useState('nli')
   const [threshold, setThreshold] = useState(0.5)
   const [topK, setTopK] = useState(3)

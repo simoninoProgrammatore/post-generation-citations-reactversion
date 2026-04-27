@@ -46,6 +46,7 @@ export const pipeline = {
   generate:        (body) => postJson('/pipeline/generate',          body),
   decompose:       (body) => postJson('/pipeline/decompose',         body),
   retrieve:        (body) => postJson('/pipeline/retrieve',          body),
+  retrieveSingle:  (body) => postJson('/pipeline/retrieve-single',   body),
   retrieveDebug:   (body) => postJson('/pipeline/retrieve/debug',    body),
   cite:            (body) => postJson('/pipeline/cite',              body),
   evaluate:        (body) => postJson('/pipeline/evaluate',          body),

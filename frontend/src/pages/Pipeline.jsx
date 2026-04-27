@@ -506,7 +506,7 @@ export default function Pipeline() {
   const { addPipelineResult } = useAppData()
 
   // Settings
-  const [model, setModel] = useState('gemma3:1b')
+  const [model, setModel] = useState('claude-haiku-4-5-20251001')
   const [retrieveMethod, setRetrieveMethod] = useState('nli')
   const [threshold, setThreshold] = useState(0.5)
   const [topK, setTopK] = useState(3)
@@ -537,6 +537,7 @@ export default function Pipeline() {
 
   const [running, setRunning] = useState(null)
   const [error, setError] = useState(null)
+  const [retrieveProgress, setRetrieveProgress] = useState({ current: 0, total: 0 })
 
   // Step status
   const steps = {
@@ -640,15 +641,28 @@ export default function Pipeline() {
 
   async function runRetrieve() {
     setError(null); setRunning('retrieve'); resetAfter('retrieve')
+    setRetrieveProgress({ current: 0, total: claims.length })
     try {
-      const res = await api.pipeline.retrieve({
-        claims, passages: currentPassages,
-        method: retrieveMethod, threshold, top_k: topK,
-        nuggets: currentNuggets || undefined,
-        pre_filter_k: preFilterK,
-      })
-      setMatched(res.matched)
+      const allMatched = []
+      const allDebug = []
+      for (let i = 0; i < claims.length; i++) {
+        setRetrieveProgress({ current: i + 1, total: claims.length })
+        const res = await api.pipeline.retrieveSingle({
+          claim: claims[i],
+          passages: currentPassages,
+          method: retrieveMethod,
+          threshold,
+          top_k: topK,
+          nuggets: currentNuggets || undefined,
+          pre_filter_k: preFilterK,
+          model,
+        })
+        allMatched.push(res.matched)
+        allDebug.push(res.debug)
+      }
+      setMatched(allMatched)
     } catch (e) { setError(`Retrieve: ${e.message}`) }
+    setRetrieveProgress({ current: 0, total: 0 })
     setRunning(null)
   }
 
@@ -912,6 +926,23 @@ export default function Pipeline() {
       {/* Step 4 */}
       <StepCard num={4} title="Retrieve — Matching claims → passaggi" status={steps.retrieve}
         onRun={runRetrieve} running={running === 'retrieve'} runLabel="Retrieval">
+        {running === 'retrieve' && retrieveProgress.total > 0 && (
+          <div style={{ marginBottom: 16 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 13, color: '#555' }}>
+              <span>Claim {retrieveProgress.current} / {retrieveProgress.total}</span>
+              <span>{Math.round((retrieveProgress.current / retrieveProgress.total) * 100)}%</span>
+            </div>
+            <div style={{ width: '100%', height: 8, background: '#e5e7eb', borderRadius: 4, overflow: 'hidden' }}>
+              <div style={{
+                width: `${(retrieveProgress.current / retrieveProgress.total) * 100}%`,
+                height: '100%',
+                background: 'linear-gradient(90deg, #10b981, #059669)',
+                borderRadius: 4,
+                transition: 'width 0.3s ease',
+              }} />
+            </div>
+          </div>
+        )}
         {matched && <MatchedView matched={matched} passages={currentPassages} retrieveMethod={retrieveMethod} nuggets={currentNuggets} />}
       </StepCard>
 

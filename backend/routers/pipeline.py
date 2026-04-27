@@ -69,7 +69,7 @@ class EvaluateNuggetsResponse(BaseModel):
 
 class EvaluateDatasetRequest(BaseModel):
     dataset: list[dict]           # ogni elemento ha question e docs (e nuggets se modalità nugget)
-    model: str = "gemma3:1b"
+    model: str = "claude-haiku-4-5-20251001"
     retrieve_method: str = "nli"
     threshold: float = 0.5
     top_k: int = 3
@@ -80,7 +80,7 @@ class EvaluateDatasetRequest(BaseModel):
 
 class EvaluateExampleRequest(BaseModel):
     example: dict
-    model: str = "gemma3:1b"
+    model: str = "claude-haiku-4-5-20251001"
     retrieve_method: str = "nli"
     threshold: float = 0.5
     top_k: int = 3
@@ -215,9 +215,47 @@ async def retrieve(req: RetrieveRequest):
             top_k=req.top_k,
             nuggets=nuggets_dict,
             pre_filter_k=req.pre_filter_k,
+            model=req.model,
         )
         return RetrieveResponse(matched=matched, debug=debug)
     except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+class RetrieveSingleRequest(BaseModel):
+    claim: str
+    passages: list[Passage]
+    method: str = "nli"
+    threshold: float = 0.5
+    top_k: int = 3
+    nuggets: list[NuggetItem] | None = None
+    pre_filter_k: int = 0
+    model: str = "claude-haiku-4-5-20251001"
+
+
+@router.post("/retrieve-single")
+async def retrieve_single(req: RetrieveSingleRequest):
+    """Match di UN singolo claim — usato dal frontend per la progress bar."""
+    try:
+        passages_dict = [p.model_dump() for p in req.passages]
+        nuggets_dict = [n.model_dump() for n in req.nuggets] if req.nuggets else None
+        matched, debug = pipeline_runners.run_retrieve(
+            claims=[req.claim],
+            passages=passages_dict,
+            method=req.method,
+            threshold=req.threshold,
+            top_k=req.top_k,
+            nuggets=nuggets_dict,
+            pre_filter_k=req.pre_filter_k,
+            model=req.model,
+        )
+        return {
+            "matched": matched[0] if matched else {"claim": req.claim, "supporting_passages": []},
+            "debug": debug[0] if debug else {"claim": req.claim, "sentence_scores": []},
+        }
+    except Exception as e:
+        import logging
+        logging.getLogger(__name__).error(f"[retrieve-single] ERRORE: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -342,6 +380,7 @@ async def evaluate_example_endpoint(req: EvaluateExampleRequest):
         top_k=req.top_k,
         nuggets=nuggets,
         pre_filter_k=req.pre_filter_k,
+        model=req.model,
     )
     logger.info(f"[evaluate-example] retrieve DONE — {len(matched)} matched")
 
@@ -429,6 +468,7 @@ async def evaluate_dataset_endpoint(req: EvaluateDatasetRequest):
                 top_k=req.top_k,
                 nuggets=nuggets,
                 pre_filter_k=req.pre_filter_k,
+                model=req.model,
             )
 
             # Step 5 – Cite (opzionale, non usato nelle metriche)

@@ -3,7 +3,7 @@ Shared LLM client supporting Ollama (local), Anthropic Claude, and Google Gemini
 
 Usage:
     from llm_client import call_llm
-    response = call_llm("Your prompt here", model="gemma3:1b")
+    response = call_llm("Your prompt here", model="claude-haiku-4-5-20251001")
 """
 
 import os
@@ -30,7 +30,7 @@ def _is_ollama_model(model: str) -> bool:
     return model in OLLAMA_MODELS or model.startswith("ollama/")
 
 
-def call_llm(prompt: str, model: str = "gemma3:1b", max_tokens: int = 1024) -> str:
+def call_llm(prompt: str, model: str = "claude-haiku-4-5-20251001", max_tokens: int = 1024) -> str:
     if _is_ollama_model(model):
         clean_name = model.replace("ollama/", "")
         return _call_ollama(prompt, clean_name, max_tokens)
@@ -43,7 +43,7 @@ def call_llm(prompt: str, model: str = "gemma3:1b", max_tokens: int = 1024) -> s
         return _call_ollama(prompt, model, max_tokens)
 
 
-def call_llm_json(prompt: str, model: str = "gemma3:1b", max_tokens: int = 1024) -> any:
+def call_llm_json(prompt: str, model: str = "claude-haiku-4-5-20251001", max_tokens: int = 1024) -> any:
     import logging
     logger = logging.getLogger(__name__)
     

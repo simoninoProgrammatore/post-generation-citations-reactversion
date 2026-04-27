@@ -26,7 +26,7 @@ class Passage(BaseModel):
 class GenerateRequest(BaseModel):
     query: str = Field(..., description="Domanda a cui rispondere")
     passages: list[Passage] | None = Field(None, description="Passages opzionali per RAG")
-    model: str = Field("gemma3:1b", description="Modello LLM (Ollama/Claude/Gemini)")
+    model: str = Field("claude-haiku-4-5-20251001", description="Modello LLM (Ollama/Claude/Gemini)")
 
 
 class GenerateResponse(BaseModel):
@@ -39,7 +39,7 @@ class GenerateResponse(BaseModel):
 
 class DecomposeRequest(BaseModel):
     text: str = Field(..., description="Testo da scomporre in atomic claims")
-    model: str = Field("gemma3:1b")
+    model: str = Field("claude-haiku-4-5-20251001")
 
 
 class DecomposeResponse(BaseModel):
@@ -69,6 +69,7 @@ class RetrieveRequest(BaseModel):
     top_k: int = Field(3, ge=1, le=10)
     nuggets: list[NuggetInput] | None = None
     pre_filter_k: int = Field(0, ge=0, le=50, description="Pre-filter top-K sentences with embedding reranker before NLI. 0 = disabled.")
+    model: str = Field("claude-haiku-4-5-20251001", description="Modello LLM (usato solo con method=llm)")
 
 
 class SupportingPassage(BaseModel):

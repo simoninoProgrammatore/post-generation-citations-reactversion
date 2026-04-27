@@ -156,6 +156,43 @@ def _load_reranker_embedding(model_name: str = "BAAI/bge-base-en-v1.5"):
     return SentenceTransformer(model_name)
 
 
+def _compute_token_overlap(claim: str, sentence: str) -> float:
+    """
+    Compute normalized token overlap (Jaccard-like) between claim and sentence.
+    Returns a score between 0 and 1.
+    """
+    import re as _re
+
+    # Stopwords da ignorare (parole troppo comuni)
+    stopwords = {
+        "the", "a", "an", "is", "was", "were", "are", "been", "be", "have",
+        "has", "had", "do", "does", "did", "will", "would", "could", "should",
+        "may", "might", "shall", "can", "to", "of", "in", "for", "on", "with",
+        "at", "by", "from", "as", "into", "through", "during", "before",
+        "after", "and", "but", "or", "nor", "not", "so", "yet", "both",
+        "either", "neither", "each", "every", "all", "any", "few", "more",
+        "most", "other", "some", "such", "no", "only", "own", "same", "than",
+        "too", "very", "just", "because", "if", "when", "where", "how",
+        "what", "which", "who", "whom", "this", "that", "these", "those",
+        "it", "its", "he", "she", "they", "them", "his", "her", "their",
+    }
+
+    def tokenize(text):
+        tokens = set(_re.findall(r'\b\w+\b', text.lower()))
+        return tokens - stopwords
+
+    claim_tokens = tokenize(claim)
+    sent_tokens = tokenize(sentence)
+
+    if not claim_tokens or not sent_tokens:
+        return 0.0
+
+    intersection = claim_tokens & sent_tokens
+    union = claim_tokens | sent_tokens
+
+    return len(intersection) / len(union)
+
+
 def _pre_filter_sentences(
     claim: str,
     all_sentences: list[str],
@@ -163,32 +200,42 @@ def _pre_filter_sentences(
     pair_to_span: list[tuple[str, int, int]],
     pre_filter_k: int = 10,
     model_name: str = "BAAI/bge-base-en-v1.5",
+    embedding_weight: float = 0.5,
+    overlap_weight: float = 0.5,
 ) -> tuple[list[str], list[int], list[tuple[str, int, int]]]:
     """
-    Pre-filter sentences using fast embedding cosine similarity.
-    Returns only the top-K most similar sentences (with their metadata).
+    Pre-filter sentences using HYBRID scoring: embedding similarity + token overlap.
     
-    Uses BAAI/bge-base-en-v1.5: strong retrieval-oriented embeddings,
-    768-dim, ~110M params. Much faster than NLI cross-encoder but
-    accurate enough for candidate selection.
+    hybrid_score = embedding_weight × cosine_sim + overlap_weight × jaccard_overlap
+    
+    This combines the best of both worlds:
+    - Embeddings catch semantic paraphrases (different words, same meaning)
+    - Token overlap catches lexical matches (same words, entities, dates)
+    
+    Returns only the top-K scoring sentences (with their metadata).
     """
     import numpy as np
 
     if len(all_sentences) <= pre_filter_k:
-        # No need to filter if we already have fewer sentences
         return all_sentences, pair_to_passage, pair_to_span
 
     model = _load_reranker_embedding(model_name)
 
-    # Encode claim and all sentences in one batch
+    # 1. Embedding cosine similarity
     claim_emb = model.encode([claim], normalize_embeddings=True)
     sent_embs = model.encode(all_sentences, normalize_embeddings=True)
+    embedding_scores = (sent_embs @ claim_emb.T).flatten()
 
-    # Cosine similarity (already normalized)
-    sims = (sent_embs @ claim_emb.T).flatten()
+    # 2. Token overlap (Jaccard)
+    overlap_scores = np.array([
+        _compute_token_overlap(claim, sent) for sent in all_sentences
+    ])
+
+    # 3. Hybrid score
+    hybrid_scores = (embedding_weight * embedding_scores) + (overlap_weight * overlap_scores)
 
     # Get top-K indices
-    top_indices = np.argsort(sims)[::-1][:pre_filter_k]
+    top_indices = np.argsort(hybrid_scores)[::-1][:pre_filter_k]
     # Keep original order for stability
     top_indices = sorted(top_indices)
 
@@ -368,6 +415,7 @@ def match_with_llm(
     passages: list[dict],
     threshold: float = 0.5,
     top_k: int = 3,
+    model: str = "claude-haiku-4-5-20251001",
 ) -> list[dict]:
     from core.llm_client import call_llm_json
 
@@ -408,7 +456,7 @@ Passages:
 """
 
     try:
-        results = call_llm_json(prompt)
+        results = call_llm_json(prompt, model=model)
     except Exception:
         return candidates[:top_k]
 

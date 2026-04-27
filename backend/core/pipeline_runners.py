@@ -28,30 +28,24 @@ def run_generate(query: str, model: str, passages: list[dict] | None = None) -> 
             for i, p in enumerate(passages[:10])
         ])
         prompt = (
-            "You are a knowledgeable assistant. "
-            "Answer the question using the information provided in the passages below.\n\n"
-            "IMPORTANT RULES:\n"
-            "- Use ONLY the information from the passages. Do NOT use external knowledge.\n"
-            "- Write a DETAILED answer of at least 3-5 sentences.\n"
-            "- Include specific facts, names, dates, and numbers from the passages.\n"
-            "- Do NOT include citations, references, or source numbers like [1] or [2].\n"
-            "- Write in plain text without markdown formatting.\n"
-            "- If the passages contain multiple relevant details, include ALL of them.\n\n"
+            "Read the passages below and answer the question.\n\n"
             f"Passages:\n{passages_text}\n\n"
             f"Question: {query}\n\n"
-            "Provide a detailed, informative answer:"
+            "Answer the question directly and naturally. "
+            "Start with what the user needs to know to answer the question, "
+            "then add a few additional facts from the passages that are relevant and useful. "
+            "Use the same words from the passages when possible. "
+            "Do not write meta-commentary like 'the passage says' or 'according to the text'. "
+            "Do not add citation markers like [1] or [2]. "
+            "Write in plain prose, no markdown or bullet points.\n\n"
+            "Answer:"
         )
     else:
         prompt = (
-            "You are a knowledgeable assistant. "
-            "Answer the question with a detailed, informative response.\n\n"
-            "IMPORTANT RULES:\n"
-            "- Write at least 3-5 sentences with specific facts and details.\n"
-            "- Do NOT use markdown formatting, headers, or bullet points.\n"
-            "- Do NOT include any citations or references.\n"
-            "- Write in plain, flowing prose.\n\n"
             f"Question: {query}\n\n"
-            "Provide a detailed, informative answer:"
+            "Answer the question directly, then add a few useful related facts. "
+            "No markdown, bullet points, or citations.\n\n"
+            "Answer:"
         )
 
     return call_llm(prompt, model=model)
@@ -60,23 +54,30 @@ def run_generate(query: str, model: str, passages: list[dict] | None = None) -> 
 def run_decompose(response: str, model: str) -> list[str]:
     from core.llm_client import call_llm_json
     prompt = f"""\
-Break the following text into independent atomic facts.
+Extract individual facts from the text below.
 
 RULES:
-- Each fact must contain exactly ONE piece of information
-- Each fact must be a COMPLETE sentence, understandable on its own without any context
-- Include the SUBJECT in every fact (never use pronouns like "he", "it", "they")
-- Include specific details: names, dates, numbers, locations
+- Each fact = ONE specific piece of information
+- Each fact must be a COMPLETE sentence with a real subject (a person, place, or thing)
+- NEVER start a fact with "The passage", "The text", "The answer", or "It"
+- NEVER use vague phrases like "on that date", "this person", "the same year"
+- Use the EXACT words from the text as much as possible
+- Every fact must include specific names, dates, or numbers if the text mentions them
 
-EXAMPLE:
-Text: "Albert Einstein was born in Ulm, Germany in 1879. He developed the theory of relativity and won the Nobel Prize in Physics in 1921."
-Output: ["Albert Einstein was born in Ulm, Germany.", "Albert Einstein was born in 1879.", "Albert Einstein developed the theory of relativity.", "Albert Einstein won the Nobel Prize in Physics.", "Albert Einstein won the Nobel Prize in 1921."]
+BAD examples (NEVER produce these):
+- "The passage details his patent application." (talks about the passage, not a fact)
+- "The patent was awarded on that date." (vague, missing the actual date)
+- "He invented the telephone." (uses pronoun instead of name)
 
-Now do the same for this text. Return ONLY a JSON array of strings, nothing else.
+GOOD examples:
+- "Alexander Graham Bell was awarded the first patent for the telephone."
+- "The patent was awarded on March 7, 1876."
+- "Alexander Graham Bell invented the telephone."
 
 Text:
 {response}
-"""
+
+Return ONLY a JSON array of strings. No other text."""
     return call_llm_json(prompt, model=model)
 
 
@@ -88,6 +89,7 @@ def run_retrieve(
     top_k: int,
     nuggets: list[dict] | None = None,
     pre_filter_k: int = 0,
+    model: str = "claude-haiku-4-5-20251001",
 ) -> tuple[list[dict], list[dict]]:
     from core.retrieve import (
         match_with_nli, match_with_similarity, match_with_llm, extract_evidence
@@ -105,7 +107,7 @@ def run_retrieve(
                 return_all_scores=True, pre_filter_k=pre_filter_k,
             )
         elif method == "llm":
-            matches = match_with_llm(claim, passages, threshold=threshold, top_k=top_k)
+            matches = match_with_llm(claim, passages, threshold=threshold, top_k=top_k, model=model)
         else:
             matches = match_with_similarity(claim, passages, top_k=top_k)
 
