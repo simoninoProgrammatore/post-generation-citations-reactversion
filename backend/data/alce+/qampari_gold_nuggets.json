@@ -2934,5 +2934,1157 @@
         "golden_evidence": "Her research led to the identification of two new radioactive elements, polonium and radium, both discovered in 1898."
       }
     ]
+  },
+  {
+    "sample_id": "qampari_custom_026",
+    "question": "What novels were written by George Orwell?",
+    "answer": "Burmese Days, A Clergyman's Daughter, Keep the Aspidistra Flying, Coming Up for Air, Animal Farm, Nineteen Eighty-Four.",
+    "docs": [
+      {
+        "id": "doc_026_1",
+        "title": "George Orwell bibliography",
+        "text": "George Orwell, born Eric Arthur Blair, was a prolific British writer. His fiction includes six novels written between 1934 and 1949. His first novel, Burmese Days, was published in 1934, drawing on his experiences as a colonial officer in Burma. A Clergyman's Daughter followed in 1935, and Keep the Aspidistra Flying in 1936. Orwell considered these early novels inferior to his later work.",
+        "is_gold": true,
+        "golden_passage_title": "George Orwell bibliography"
+      },
+      {
+        "id": "doc_026_2",
+        "title": "Animal Farm",
+        "text": "Animal Farm is a satirical allegorical novella by George Orwell, published in August 1945. The story tells of a group of farm animals who rebel against their human farmer, hoping to create a society where animals can be equal, free, and happy. The novella is widely interpreted as a critique of the Soviet Union under Stalin. It became one of Orwell's most celebrated works and remains a staple of school curricula worldwide.",
+        "is_gold": true,
+        "golden_passage_title": "Animal Farm"
+      },
+      {
+        "id": "doc_026_3",
+        "title": "Nineteen Eighty-Four",
+        "text": "Nineteen Eighty-Four, often published as 1984, is a dystopian social science fiction novel and cautionary tale written by Orwell. It was published on 8 June 1949 by Secker & Warburg. The novel is set in a totalitarian society ruled by Big Brother and introduced concepts such as doublethink, thoughtcrime, and Newspeak into public discourse. It is considered one of the most influential novels of the twentieth century.",
+        "is_gold": true,
+        "golden_passage_title": "Nineteen Eighty-Four"
+      },
+      {
+        "id": "doc_026_4",
+        "title": "Coming Up for Air",
+        "text": "Coming Up for Air is a novel by George Orwell published in 1939. The novel's narrator, George Bowling, is a middle-aged insurance salesman who reflects on his youth and tries to revisit the places of his childhood. The book explores themes of nostalgia, the threat of war, and the erosion of traditional English life. It was the last novel Orwell completed before World War II began.",
+        "is_gold": true,
+        "golden_passage_title": "Coming Up for Air"
+      },
+      {
+        "id": "doc_026_5",
+        "title": "George Orwell",
+        "text": "George Orwell was an English novelist, essayist, journalist, and critic. He was born on 25 June 1903 and died on 21 January 1950. His work is characterised by lucid prose, social criticism, opposition to totalitarianism, and support for democratic socialism. Besides his novels, Orwell is known for his essays and non-fiction books such as The Road to Wigan Pier and Homage to Catalonia. He is consistently ranked among the greatest English writers of the twentieth century.",
+        "is_gold": false,
+        "golden_passage_title": "George Orwell"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 0,
+      "n_partial_support": 4,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Burmese Days is a novel written by George Orwell.",
+        "keywords": [
+          "Burmese Days"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "George Orwell bibliography",
+        "golden_evidence": "His first novel, Burmese Days, was published in 1934."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "A Clergyman's Daughter is a novel written by George Orwell.",
+        "keywords": [
+          "A Clergyman's Daughter"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "George Orwell bibliography",
+        "golden_evidence": "A Clergyman's Daughter followed in 1935."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Keep the Aspidistra Flying is a novel written by George Orwell.",
+        "keywords": [
+          "Keep the Aspidistra Flying"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "George Orwell bibliography",
+        "golden_evidence": "Keep the Aspidistra Flying in 1936."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Animal Farm is a novel written by George Orwell.",
+        "keywords": [
+          "Animal Farm"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Animal Farm",
+        "golden_evidence": "Animal Farm is a satirical allegorical novella by George Orwell, published in August 1945."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Nineteen Eighty-Four is a novel written by George Orwell.",
+        "keywords": [
+          "Nineteen Eighty-Four",
+          "1984"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Nineteen Eighty-Four",
+        "golden_evidence": "Nineteen Eighty-Four, often published as 1984, is a dystopian social science fiction novel and cautionary tale written by Orwell."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Coming Up for Air is a novel written by George Orwell.",
+        "keywords": [
+          "Coming Up for Air"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Coming Up for Air",
+        "golden_evidence": "Coming Up for Air is a novel by George Orwell published in 1939."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Animal Farm is a critique of the Soviet Union under Stalin.",
+        "keywords": [
+          "Animal Farm",
+          "Stalin"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Animal Farm",
+        "golden_evidence": "The novella is widely interpreted as a critique of the Soviet Union under Stalin."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_027",
+    "question": "What planets in the Solar System have known rings?",
+    "answer": "Saturn, Jupiter, Uranus, Neptune.",
+    "docs": [
+      {
+        "id": "doc_027_1",
+        "title": "Rings of Saturn",
+        "text": "The rings of Saturn are the most extensive planetary ring system of any planet in the Solar System. They consist of countless small particles, ranging in size from micrometers to meters, that orbit around Saturn. The rings are made primarily of ice particles, rocky debris, and dust. Saturn's rings were first observed by Galileo Galilei in 1610, though he did not recognize them as rings.",
+        "is_gold": true,
+        "golden_passage_title": "Rings of Saturn"
+      },
+      {
+        "id": "doc_027_2",
+        "title": "Rings of Jupiter",
+        "text": "Jupiter has a faint ring system composed of three main components: the halo ring, the main ring, and the Gossamer rings. The rings were first observed in 1979 by the Voyager 1 spacecraft. Unlike Saturn's rings, Jupiter's rings are composed mainly of dust particles ejected from its moons by meteoroid impacts. The rings are relatively thin and dark, making them difficult to observe from Earth.",
+        "is_gold": true,
+        "golden_passage_title": "Rings of Jupiter"
+      },
+      {
+        "id": "doc_027_3",
+        "title": "Rings of Uranus",
+        "text": "The rings of Uranus were discovered on March 10, 1977, by James Elliot, Edward Dunham, and Jessica Mink. Uranus has 13 known rings, with the epsilon ring being the brightest. The rings are composed of extremely dark particles and vary in size from micrometers to a fraction of a meter. They were the second ring system to be discovered in the Solar System after Saturn's.",
+        "is_gold": true,
+        "golden_passage_title": "Rings of Uranus"
+      },
+      {
+        "id": "doc_027_4",
+        "title": "Rings of Neptune",
+        "text": "Neptune has five known planetary rings, named Galle, Le Verrier, Lassell, Arago, and Adams. These rings were discovered in 1989 during the Voyager 2 flyby. The Adams ring contains three prominent arcs named Liberté, Egalité, and Fraternité. Neptune's rings are dark and are thought to be relatively young and unstable.",
+        "is_gold": true,
+        "golden_passage_title": "Rings of Neptune"
+      },
+      {
+        "id": "doc_027_5",
+        "title": "Solar System",
+        "text": "The Solar System consists of the Sun and everything gravitationally bound to it. The eight recognized planets are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune. The inner Solar System contains the four terrestrial planets, while the outer Solar System hosts the four giant planets. The Solar System also contains moons, asteroids, comets, and other smaller bodies.",
+        "is_gold": false,
+        "golden_passage_title": "Solar System"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 0,
+      "n_partial_support": 4,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Saturn has known rings.",
+        "keywords": [
+          "Saturn"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Rings of Saturn",
+        "golden_evidence": "The rings of Saturn are the most extensive planetary ring system of any planet in the Solar System."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Jupiter has known rings.",
+        "keywords": [
+          "Jupiter"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Rings of Jupiter",
+        "golden_evidence": "Jupiter has a faint ring system composed of three main components."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Uranus has known rings.",
+        "keywords": [
+          "Uranus"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Rings of Uranus",
+        "golden_evidence": "The rings of Uranus were discovered on March 10, 1977."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Neptune has known rings.",
+        "keywords": [
+          "Neptune"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Rings of Neptune",
+        "golden_evidence": "Neptune has five known planetary rings."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Saturn's rings were first observed by Galileo Galilei in 1610.",
+        "keywords": [
+          "Galileo",
+          "1610"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Rings of Saturn",
+        "golden_evidence": "Saturn's rings were first observed by Galileo Galilei in 1610."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_028",
+    "question": "What programming languages were created by Guido van Rossum?",
+    "answer": "Python, ABC.",
+    "docs": [
+      {
+        "id": "doc_028_1",
+        "title": "Python (programming language)",
+        "text": "Python is a high-level, general-purpose programming language. It was created by Guido van Rossum and first released in 1991. Python's design philosophy emphasizes code readability, and its syntax allows programmers to express concepts in fewer lines of code than languages such as C++ or Java. Python is consistently ranked as one of the most popular programming languages in the world.",
+        "is_gold": true,
+        "golden_passage_title": "Python (programming language)"
+      },
+      {
+        "id": "doc_028_2",
+        "title": "Guido van Rossum",
+        "text": "Guido van Rossum is a Dutch programmer best known as the creator of the Python programming language. He was born on January 31, 1956. Van Rossum served as Python's Benevolent Dictator For Life until July 2018, when he stepped down from the role. Before Python, van Rossum also contributed to the development of the ABC programming language while working at Centrum Wiskunde & Informatica in the Netherlands.",
+        "is_gold": true,
+        "golden_passage_title": "Guido van Rossum"
+      },
+      {
+        "id": "doc_028_3",
+        "title": "ABC (programming language)",
+        "text": "ABC is an imperative general-purpose programming language and programming environment developed at CWI in the Netherlands. It was designed by Lambert Meertens, Leo Geurts, and others, with contributions from Guido van Rossum in the early 1980s. ABC was intended as an alternative to BASIC and designed to be easy to learn. Python was directly influenced by ABC, inheriting several of its design principles.",
+        "is_gold": true,
+        "golden_passage_title": "ABC (programming language)"
+      },
+      {
+        "id": "doc_028_4",
+        "title": "History of programming languages",
+        "text": "The history of programming languages spans from the 1940s to the present. Early languages such as FORTRAN and COBOL were developed for scientific and business computing respectively. The 1970s saw the rise of structured programming with languages like Pascal and C. In the 1980s and 1990s, object-oriented programming became dominant with languages such as C++, Java, and Smalltalk. The late 1980s also saw the rise of scripting languages.",
+        "is_gold": false,
+        "golden_passage_title": "History of programming languages"
+      },
+      {
+        "id": "doc_028_5",
+        "title": "Python Software Foundation",
+        "text": "The Python Software Foundation is a nonprofit organization devoted to the Python programming language. It was founded in 2001 to promote, protect, and advance the language, and to support the growth of the international community of Python programmers. The foundation manages the intellectual property rights for Python and organizes PyCon, the official annual Python conference. Guido van Rossum was a founding member of the organization.",
+        "is_gold": false,
+        "golden_passage_title": "Python Software Foundation"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 3,
+      "n_distractors": 2,
+      "n_full_support": 0,
+      "n_partial_support": 3,
+      "n_no_support": 2
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Python is a programming language created by Guido van Rossum.",
+        "keywords": [
+          "Python"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Python (programming language)",
+        "golden_evidence": "It was created by Guido van Rossum and first released in 1991."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "ABC is a programming language that Guido van Rossum contributed to creating.",
+        "keywords": [
+          "ABC"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "ABC (programming language)",
+        "golden_evidence": "ABC is an imperative general-purpose programming language developed at CWI in the Netherlands, with contributions from Guido van Rossum in the early 1980s."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Python was first released in 1991.",
+        "keywords": [
+          "1991"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Python (programming language)",
+        "golden_evidence": "It was created by Guido van Rossum and first released in 1991."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Python was directly influenced by ABC.",
+        "keywords": [
+          "ABC",
+          "influence"
+        ],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "ABC (programming language)",
+        "golden_evidence": "Python was directly influenced by ABC, inheriting several of its design principles."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_029",
+    "question": "What operas were composed by Giuseppe Verdi?",
+    "answer": "Nabucco, Macbeth, Rigoletto, Il trovatore, La traviata, Otello, Falstaff.",
+    "docs": [
+      {
+        "id": "doc_029_1",
+        "title": "Giuseppe Verdi",
+        "text": "Giuseppe Fortunino Francesco Verdi was an Italian opera composer. He was born on 10 October 1813 and died on 27 January 1901. Verdi dominated the Italian opera scene after Bellini and Donizetti. His operas are frequently performed in opera houses throughout the world, and the 200th anniversary of his birth was widely celebrated in 2013. His best-known early work is Nabucco, whose chorus became a symbol of Italian national identity.",
+        "is_gold": true,
+        "golden_passage_title": "Giuseppe Verdi"
+      },
+      {
+        "id": "doc_029_2",
+        "title": "Rigoletto",
+        "text": "Rigoletto is an opera in three acts by Giuseppe Verdi. The libretto was written by Francesco Maria Piave, based on the play Le roi s'amuse by Victor Hugo. It was first performed on 11 March 1851 at La Fenice opera house in Venice. Rigoletto was followed shortly by two other Verdi operas that form an unofficial trilogy: Il trovatore and La traviata, both first performed in 1853.",
+        "is_gold": true,
+        "golden_passage_title": "Rigoletto"
+      },
+      {
+        "id": "doc_029_3",
+        "title": "Otello (Verdi)",
+        "text": "Otello is an opera in four acts by Giuseppe Verdi. It was composed between 1884 and 1886, with a libretto by Arrigo Boito based on Shakespeare's play Othello. It had its world premiere at La Scala in Milan on 5 February 1887. Otello is considered one of Verdi's greatest achievements and one of the supreme works of the operatic repertoire.",
+        "is_gold": true,
+        "golden_passage_title": "Otello (Verdi)"
+      },
+      {
+        "id": "doc_029_4",
+        "title": "Falstaff (opera)",
+        "text": "Falstaff is a comic opera in three acts by Giuseppe Verdi. It was composed in the early 1890s with a libretto by Arrigo Boito, loosely based on Shakespeare's The Merry Wives of Windsor and Henry IV. It was Verdi's last opera and premiered at La Scala in Milan on 9 February 1893. The opera is regarded as one of the greatest comedic operas in the repertoire.",
+        "is_gold": true,
+        "golden_passage_title": "Falstaff (opera)"
+      },
+      {
+        "id": "doc_029_5",
+        "title": "Italian opera",
+        "text": "Italian opera is a significant tradition in classical music. Opera originated in Italy in the late sixteenth century. Major Italian opera composers include Claudio Monteverdi, who wrote the earliest surviving opera, L'Orfeo, in 1607, as well as later composers such as Bellini, Donizetti, Puccini, and Rossini. Italian opera houses such as La Scala in Milan and La Fenice in Venice are among the most prestigious in the world.",
+        "is_gold": false,
+        "golden_passage_title": "Italian opera"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 0,
+      "n_partial_support": 4,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Nabucco is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Nabucco"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Giuseppe Verdi",
+        "golden_evidence": "His best-known early work is Nabucco."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Rigoletto is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Rigoletto"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Rigoletto",
+        "golden_evidence": "Rigoletto is an opera in three acts by Giuseppe Verdi."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Il trovatore is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Il trovatore"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Rigoletto",
+        "golden_evidence": "Rigoletto was followed shortly by two other Verdi operas: Il trovatore and La traviata, both first performed in 1853."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "La traviata is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "La traviata"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Rigoletto",
+        "golden_evidence": "Rigoletto was followed shortly by two other Verdi operas: Il trovatore and La traviata, both first performed in 1853."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Otello is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Otello"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Otello (Verdi)",
+        "golden_evidence": "Otello is an opera in four acts by Giuseppe Verdi."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Falstaff is an opera composed by Giuseppe Verdi.",
+        "keywords": [
+          "Falstaff"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Falstaff (opera)",
+        "golden_evidence": "Falstaff is a comic opera in three acts by Giuseppe Verdi."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Falstaff was Verdi's last opera, premiering in 1893.",
+        "keywords": [
+          "Falstaff",
+          "last opera"
+        ],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "Falstaff (opera)",
+        "golden_evidence": "It was Verdi's last opera and premiered at La Scala in Milan on 9 February 1893."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_030",
+    "question": "What elements were discovered by Marie Curie?",
+    "answer": "Polonium, Radium.",
+    "docs": [
+      {
+        "id": "doc_030_1",
+        "title": "Marie Curie",
+        "text": "Marie Salomea Curie, born Maria Sklodowska, was a Polish and naturalised-French physicist and chemist who conducted pioneering research on radioactivity. She was the first woman to win a Nobel Prize and the only person to win it in two different sciences. She discovered two elements: polonium, named after her homeland Poland, and radium. She also conducted the first research into the treatment of tumors using radioactive isotopes.",
+        "is_gold": true,
+        "golden_passage_title": "Marie Curie"
+      },
+      {
+        "id": "doc_030_2",
+        "title": "Polonium",
+        "text": "Polonium is a chemical element with the symbol Po and atomic number 84. It was discovered in July 1898 by Marie and Pierre Curie and named after Marie's homeland of Poland. It is a radioactive metal with no stable isotopes. Polonium is rare in nature, with most of it being produced in nuclear reactors. It was the first element discovered by the Curies and was key to their identification of radium.",
+        "is_gold": true,
+        "golden_passage_title": "Polonium"
+      },
+      {
+        "id": "doc_030_3",
+        "title": "Radium",
+        "text": "Radium is a chemical element with the symbol Ra and atomic number 88. It was discovered by Marie and Pierre Curie on 26 December 1898, in a pitchblende sample from Bohemia. Radium is highly radioactive and was formerly used in luminous paints, medical treatments, and consumer products. The discovery of radium was a significant milestone in the understanding of atomic structure and radioactivity.",
+        "is_gold": true,
+        "golden_passage_title": "Radium"
+      },
+      {
+        "id": "doc_030_4",
+        "title": "Nobel Prize in Chemistry",
+        "text": "The Nobel Prize in Chemistry is awarded annually by the Royal Swedish Academy of Sciences to researchers who have made outstanding contributions to chemistry. Marie Curie won the prize in 1911 for the discovery of radium and polonium, the isolation of radium, and the study of the nature and compounds of this remarkable element. It was her second Nobel Prize, having previously won the Nobel Prize in Physics in 1903.",
+        "is_gold": false,
+        "golden_passage_title": "Nobel Prize in Chemistry"
+      },
+      {
+        "id": "doc_030_5",
+        "title": "Radioactivity",
+        "text": "Radioactivity, also known as nuclear decay or radioactive decay, is the process by which an unstable atomic nucleus loses energy by radiation. The term was coined by Marie Curie. Henri Becquerel discovered radioactivity in 1896 when he found that uranium salts emitted penetrating rays spontaneously. The Curies extended his work, showing that radioactivity was a property of the atom and not a result of chemical reactions.",
+        "is_gold": false,
+        "golden_passage_title": "Radioactivity"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 3,
+      "n_distractors": 2,
+      "n_full_support": 0,
+      "n_partial_support": 3,
+      "n_no_support": 2
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Polonium is an element discovered by Marie Curie.",
+        "keywords": [
+          "Polonium"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Polonium",
+        "golden_evidence": "It was discovered in July 1898 by Marie and Pierre Curie."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Radium is an element discovered by Marie Curie.",
+        "keywords": [
+          "Radium"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Radium",
+        "golden_evidence": "It was discovered by Marie and Pierre Curie on 26 December 1898."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Polonium was named after Marie Curie's homeland, Poland.",
+        "keywords": [
+          "Polonium",
+          "Poland"
+        ],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Polonium",
+        "golden_evidence": "It was discovered in July 1898 by Marie and Pierre Curie and named after Marie's homeland of Poland."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Marie Curie was the first person to win Nobel Prizes in two different sciences.",
+        "keywords": [
+          "Nobel Prize",
+          "two sciences"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Marie Curie",
+        "golden_evidence": "She was the first woman to win a Nobel Prize and the only person to win it in two different sciences."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_031",
+    "question": "What countries are members of the G7?",
+    "answer": "United States, United Kingdom, Canada, France, Germany, Italy, Japan.",
+    "docs": [
+      {
+        "id": "doc_031_1",
+        "title": "G7",
+        "text": "The Group of Seven, commonly known as the G7, is an intergovernmental political and economic forum. Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States. The forum originated with a summit attended by the leaders of six nations in 1975 and expanded to include Canada in 1976. The European Union has attended summits since 1977 but is not a full member.",
+        "is_gold": true,
+        "golden_passage_title": "G7"
+      },
+      {
+        "id": "doc_031_2",
+        "title": "G7 summits",
+        "text": "G7 summits are held annually and bring together the heads of government of the member states. The first summit was held at the Château de Rambouillet in France in November 1975. Summits rotate among the member countries, with each country taking the presidency for one year. Discussions typically cover global economic policy, security, climate change, and other pressing international issues.",
+        "is_gold": false,
+        "golden_passage_title": "G7 summits"
+      },
+      {
+        "id": "doc_031_3",
+        "title": "G8 (intergovernmental forum)",
+        "text": "The G8 was an intergovernmental forum that included the G7 nations plus Russia. Russia was formally invited to join the G7 in 1997, creating the G8. However, following Russia's annexation of Crimea in 2014, the other members suspended Russia's participation, effectively returning the forum to the G7 format. The G8 format therefore covered only the period from 1998 to 2014.",
+        "is_gold": false,
+        "golden_passage_title": "G8 (intergovernmental forum)"
+      },
+      {
+        "id": "doc_031_4",
+        "title": "Italy and international organizations",
+        "text": "Italy is a founding member of numerous international organizations, including the United Nations, NATO, and the European Union. Italy also participates in the G7, the group of seven major advanced economies. Italy hosted the G7 summit in 2009 in L'Aquila and again in 2017 in Taormina, Sicily. The country plays a significant role in shaping global economic and security policy through its membership in these bodies.",
+        "is_gold": true,
+        "golden_passage_title": "Italy and international organizations"
+      },
+      {
+        "id": "doc_031_5",
+        "title": "Japan and the G7",
+        "text": "Japan has been a member of the G7 since the forum's inception in 1975. It is the only Asian country in the group. Japan hosted the G7 summit in Hiroshima in May 2023, where leaders focused on issues including nuclear disarmament, the war in Ukraine, and global economic stability. Japan's inclusion in the G7 reflects its status as one of the world's largest economies.",
+        "is_gold": true,
+        "golden_passage_title": "Japan and the G7"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 3,
+      "n_distractors": 2,
+      "n_full_support": 1,
+      "n_partial_support": 2,
+      "n_no_support": 2
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Canada is a member of the G7.",
+        "keywords": [
+          "Canada"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "G7",
+        "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "France is a member of the G7.",
+        "keywords": [
+          "France"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "G7",
+        "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Germany is a member of the G7.",
+        "keywords": [
+          "Germany"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "G7",
+        "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Italy is a member of the G7.",
+        "keywords": [
+          "Italy"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "G7",
+        "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Japan is a member of the G7.",
+        "keywords": [
+          "Japan"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "G7",
+        "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "The United Kingdom is a member of the G7.",
+        "keywords": [
+          "United Kingdom"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "G7",
+        "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "The United States is a member of the G7.",
+        "keywords": [
+          "United States"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "G7",
+        "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States."
+      },
+      {
+        "nugget_id": "n7",
+        "text": "Japan is the only Asian country in the G7.",
+        "keywords": [
+          "Japan",
+          "Asia"
+        ],
+        "golden_passage_idx": 4,
+        "required": false,
+        "golden_passage_title": "Japan and the G7",
+        "golden_evidence": "It is the only Asian country in the group."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_032",
+    "question": "What vaccines were developed using mRNA technology?",
+    "answer": "Pfizer-BioNTech COVID-19 vaccine, Moderna COVID-19 vaccine.",
+    "docs": [
+      {
+        "id": "doc_032_1",
+        "title": "Pfizer–BioNTech COVID-19 vaccine",
+        "text": "The Pfizer–BioNTech COVID-19 vaccine, sold under the brand name Comirnaty, is an mRNA-based vaccine against COVID-19 developed by BioNTech and Pfizer. It was the first COVID-19 vaccine to receive emergency use authorization by the U.S. Food and Drug Administration, which was granted on December 11, 2020. The vaccine uses mRNA technology to instruct cells to produce the spike protein of the SARS-CoV-2 virus, triggering an immune response.",
+        "is_gold": true,
+        "golden_passage_title": "Pfizer–BioNTech COVID-19 vaccine"
+      },
+      {
+        "id": "doc_032_2",
+        "title": "Moderna COVID-19 vaccine",
+        "text": "The Moderna COVID-19 vaccine, sold under the brand name Spikevax, is an mRNA vaccine developed by Moderna. It received emergency use authorization from the FDA on December 18, 2020. Like the Pfizer–BioNTech vaccine, it uses messenger RNA technology to teach the immune system to recognize and fight the SARS-CoV-2 coronavirus. Clinical trials showed an efficacy of approximately 94% against symptomatic COVID-19.",
+        "is_gold": true,
+        "golden_passage_title": "Moderna COVID-19 vaccine"
+      },
+      {
+        "id": "doc_032_3",
+        "title": "mRNA vaccine",
+        "text": "An mRNA vaccine is a type of vaccine that uses a copy of a natural chemical called messenger RNA to produce an immune response. The technology was pioneered by scientists Katalin Karikó and Drew Weissman, who received the Nobel Prize in Physiology or Medicine in 2023 for their foundational discoveries. mRNA vaccines do not alter the recipient's DNA, as the mRNA does not enter the cell nucleus. The COVID-19 pandemic accelerated the deployment of the first approved mRNA vaccines.",
+        "is_gold": false,
+        "golden_passage_title": "mRNA vaccine"
+      },
+      {
+        "id": "doc_032_4",
+        "title": "Oxford–AstraZeneca COVID-19 vaccine",
+        "text": "The Oxford–AstraZeneca COVID-19 vaccine, sold under the brand names Vaxzevria and Covishield, is a viral vector vaccine developed by Oxford University and AstraZeneca. Unlike the Pfizer and Moderna vaccines, it does not use mRNA technology but instead uses a modified chimpanzee adenovirus to deliver instructions for making the spike protein. It was authorized for emergency use in the United Kingdom in December 2020.",
+        "is_gold": false,
+        "golden_passage_title": "Oxford–AstraZeneca COVID-19 vaccine"
+      },
+      {
+        "id": "doc_032_5",
+        "title": "COVID-19 vaccine development",
+        "text": "COVID-19 vaccines were developed in record time following the declaration of the COVID-19 pandemic in March 2020. Several different vaccine technologies were employed, including mRNA vaccines, viral vector vaccines, and protein subunit vaccines. The unprecedented speed of development was enabled by prior research into coronaviruses and the use of established platforms. By the end of 2021, billions of vaccine doses had been administered worldwide.",
+        "is_gold": false,
+        "golden_passage_title": "COVID-19 vaccine development"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 2,
+      "n_distractors": 3,
+      "n_full_support": 2,
+      "n_partial_support": 0,
+      "n_no_support": 3
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Pfizer-BioNTech COVID-19 vaccine was developed using mRNA technology.",
+        "keywords": [
+          "Pfizer",
+          "BioNTech",
+          "Comirnaty"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Pfizer–BioNTech COVID-19 vaccine",
+        "golden_evidence": "The Pfizer–BioNTech COVID-19 vaccine is an mRNA-based vaccine against COVID-19 developed by BioNTech and Pfizer."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The Moderna COVID-19 vaccine was developed using mRNA technology.",
+        "keywords": [
+          "Moderna",
+          "Spikevax"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Moderna COVID-19 vaccine",
+        "golden_evidence": "The Moderna COVID-19 vaccine is an mRNA vaccine developed by Moderna."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The Pfizer-BioNTech vaccine received FDA emergency use authorization on December 11, 2020.",
+        "keywords": [
+          "FDA",
+          "December 2020"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Pfizer–BioNTech COVID-19 vaccine",
+        "golden_evidence": "It was the first COVID-19 vaccine to receive emergency use authorization by the U.S. FDA, granted on December 11, 2020."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_033",
+    "question": "What mountains in the world exceed 8000 metres in height?",
+    "answer": "Mount Everest, K2, Kangchenjunga, Lhotse, Makalu, Cho Oyu, Dhaulagiri, Manaslu, Nanga Parbat, Annapurna, Gasherbrum I, Broad Peak, Gasherbrum II, Shishapangma.",
+    "docs": [
+      {
+        "id": "doc_033_1",
+        "title": "Eight-thousander",
+        "text": "An eight-thousander is a mountain whose summit is at least 8,000 metres above sea level. There are 14 such peaks, all located in the Himalayan and Karakoram mountain ranges of Asia. The first person to climb all 14 eight-thousanders was Reinhold Messner, who completed the feat in 1986. The peaks include Mount Everest, K2, Kangchenjunga, Lhotse, Makalu, Cho Oyu, Dhaulagiri, Manaslu, Nanga Parbat, Annapurna, Gasherbrum I, Broad Peak, Gasherbrum II, and Shishapangma.",
+        "is_gold": true,
+        "golden_passage_title": "Eight-thousander"
+      },
+      {
+        "id": "doc_033_2",
+        "title": "Mount Everest",
+        "text": "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point. Its elevation of 8,848.86 metres was most recently established in 2020 by a Chinese survey. It was first summited on 29 May 1953 by Tenzing Norgay and Edmund Hillary.",
+        "is_gold": true,
+        "golden_passage_title": "Mount Everest"
+      },
+      {
+        "id": "doc_033_3",
+        "title": "K2",
+        "text": "K2, at 8,611 metres above sea level, is the second-highest mountain on Earth, after Mount Everest. It is located on the China–Pakistan border in the Karakoram range. K2 is known as the Savage Mountain due to the difficulty of its ascent and the high fatality rate compared to Everest. It was first summited on 31 July 1954 by Achille Compagnoni and Lino Lacedelli.",
+        "is_gold": true,
+        "golden_passage_title": "K2"
+      },
+      {
+        "id": "doc_033_4",
+        "title": "Annapurna",
+        "text": "Annapurna is a massif in the Himalayas in north-central Nepal that includes one peak over 8,000 metres: Annapurna I, the tenth-highest mountain in the world at 8,091 metres. Annapurna I was the first eight-thousander to be climbed, on 3 June 1950 by Maurice Herzog and Louis Lachenal. The Annapurna massif also has several other high peaks, though only Annapurna I exceeds 8,000 metres.",
+        "is_gold": true,
+        "golden_passage_title": "Annapurna"
+      },
+      {
+        "id": "doc_033_5",
+        "title": "Himalayan mountaineering",
+        "text": "Himalayan mountaineering refers to the climbing of peaks in the Himalayan range, which contains most of the world's highest mountains. The first successful ascent of an eight-thousander was Annapurna in 1950. The 1953 ascent of Everest by Hillary and Tenzing marked a milestone in the history of mountaineering. Commercial expeditions to Himalayan peaks have grown significantly since the 1990s, with hundreds of climbers attempting Everest each year.",
+        "is_gold": false,
+        "golden_passage_title": "Himalayan mountaineering"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 1,
+      "n_partial_support": 3,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Mount Everest exceeds 8000 metres in height.",
+        "keywords": [
+          "Mount Everest"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Mount Everest",
+        "golden_evidence": "Mount Everest is Earth's highest mountain above sea level with an elevation of 8,848.86 metres."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "K2 exceeds 8000 metres in height.",
+        "keywords": [
+          "K2"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "K2",
+        "golden_evidence": "K2, at 8,611 metres above sea level, is the second-highest mountain on Earth."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Kangchenjunga exceeds 8000 metres in height.",
+        "keywords": [
+          "Kangchenjunga"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Eight-thousander",
+        "golden_evidence": "The peaks include Mount Everest, K2, Kangchenjunga, Lhotse, Makalu, Cho Oyu, Dhaulagiri, Manaslu, Nanga Parbat, Annapurna, Gasherbrum I, Broad Peak, Gasherbrum II, and Shishapangma."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Annapurna exceeds 8000 metres in height.",
+        "keywords": [
+          "Annapurna"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Annapurna",
+        "golden_evidence": "Annapurna I, the tenth-highest mountain in the world at 8,091 metres."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "There are 14 mountains that exceed 8000 metres, all in the Himalayas or Karakoram.",
+        "keywords": [
+          "14",
+          "eight-thousander"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Eight-thousander",
+        "golden_evidence": "There are 14 such peaks, all located in the Himalayan and Karakoram mountain ranges of Asia."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "Annapurna was the first eight-thousander to be climbed, in 1950.",
+        "keywords": [
+          "Annapurna",
+          "first climbed",
+          "1950"
+        ],
+        "golden_passage_idx": 3,
+        "required": false,
+        "golden_passage_title": "Annapurna",
+        "golden_evidence": "Annapurna I was the first eight-thousander to be climbed, on 3 June 1950."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_034",
+    "question": "What architectural works were designed by Renzo Piano?",
+    "answer": "Centre Pompidou, Shard, Whitney Museum of American Art, The New York Times Building, Stavros Niarchos Foundation Cultural Centre.",
+    "docs": [
+      {
+        "id": "doc_034_1",
+        "title": "Renzo Piano",
+        "text": "Renzo Piano is an Italian architect born on 14 September 1937 in Genoa. He is one of the most celebrated architects of the late twentieth and early twenty-first centuries. Piano won the Pritzker Architecture Prize in 1998. Among his best-known works are the Centre Georges Pompidou in Paris (co-designed with Richard Rogers), The Shard in London, and the Whitney Museum of American Art in New York. Piano's office, Renzo Piano Building Workshop, operates from Paris and Genoa.",
+        "is_gold": true,
+        "golden_passage_title": "Renzo Piano"
+      },
+      {
+        "id": "doc_034_2",
+        "title": "Centre Georges Pompidou",
+        "text": "The Centre Georges Pompidou, commonly known as the Pompidou Centre, is a complex building in the Beaubourg area of the 4th arrondissement of Paris. It was designed in the style of high-tech architecture by the architectural team of Renzo Piano, Richard Rogers, and Gianfranco Franchini. The building was inaugurated in January 1977. It houses the Bibliothèque publique d'information and the Musée National d'Art Moderne.",
+        "is_gold": true,
+        "golden_passage_title": "Centre Georges Pompidou"
+      },
+      {
+        "id": "doc_034_3",
+        "title": "The Shard",
+        "text": "The Shard, also referred to as the Shard of Glass, is a 95-storey skyscraper in Southwark, London. Designed by Renzo Piano, it stands 309.6 metres tall, making it the tallest building in the United Kingdom. Construction began in 2009 and was completed in 2012. The Shard contains offices, restaurants, a hotel, and a viewing gallery open to the public.",
+        "is_gold": true,
+        "golden_passage_title": "The Shard"
+      },
+      {
+        "id": "doc_034_4",
+        "title": "Stavros Niarchos Foundation Cultural Centre",
+        "text": "The Stavros Niarchos Foundation Cultural Centre is a building complex in Kallithea, Athens, Greece. It was designed by Renzo Piano Building Workshop and opened in 2016. The complex houses the National Library of Greece and the Greek National Opera. The project cost approximately 600 million euros, funded entirely by the Stavros Niarchos Foundation.",
+        "is_gold": true,
+        "golden_passage_title": "Stavros Niarchos Foundation Cultural Centre"
+      },
+      {
+        "id": "doc_034_5",
+        "title": "Pritzker Architecture Prize",
+        "text": "The Pritzker Architecture Prize is an annual award given to a living architect who has produced consistent and significant contributions to humanity and the built environment through the art of architecture. It was established in 1979 by Jay A. Pritzker and his wife Cindy, and funded by the Hyatt Foundation. Notable laureates include Philip Johnson, Frank Gehry, Zaha Hadid, and Norman Foster. The prize is often described as the highest honor in architecture.",
+        "is_gold": false,
+        "golden_passage_title": "Pritzker Architecture Prize"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 0,
+      "n_partial_support": 4,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "The Centre Pompidou was designed by Renzo Piano.",
+        "keywords": [
+          "Centre Pompidou"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Centre Georges Pompidou",
+        "golden_evidence": "It was designed by the architectural team of Renzo Piano, Richard Rogers, and Gianfranco Franchini."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "The Shard was designed by Renzo Piano.",
+        "keywords": [
+          "Shard"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "The Shard",
+        "golden_evidence": "Designed by Renzo Piano, it stands 309.6 metres tall, making it the tallest building in the United Kingdom."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "The Stavros Niarchos Foundation Cultural Centre was designed by Renzo Piano.",
+        "keywords": [
+          "Stavros Niarchos"
+        ],
+        "golden_passage_idx": 3,
+        "required": true,
+        "golden_passage_title": "Stavros Niarchos Foundation Cultural Centre",
+        "golden_evidence": "It was designed by Renzo Piano Building Workshop and opened in 2016."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "The Whitney Museum of American Art was designed by Renzo Piano.",
+        "keywords": [
+          "Whitney Museum"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Renzo Piano",
+        "golden_evidence": "Among his best-known works are the Centre Georges Pompidou, The Shard, and the Whitney Museum of American Art in New York."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Renzo Piano won the Pritzker Architecture Prize in 1998.",
+        "keywords": [
+          "Pritzker",
+          "1998"
+        ],
+        "golden_passage_idx": 0,
+        "required": false,
+        "golden_passage_title": "Renzo Piano",
+        "golden_evidence": "Piano won the Pritzker Architecture Prize in 1998."
+      }
+    ]
+  },
+  {
+    "sample_id": "qampari_custom_035",
+    "question": "What spacecraft have successfully landed on Mars?",
+    "answer": "Viking 1, Viking 2, Mars Pathfinder, Spirit, Opportunity, Phoenix, Curiosity, InSight, Perseverance.",
+    "docs": [
+      {
+        "id": "doc_035_1",
+        "title": "List of Mars landers",
+        "text": "Several spacecraft have successfully landed on Mars. The first successful Mars landing was achieved by NASA's Viking 1 on July 20, 1976, followed by Viking 2 on September 3, 1976. Mars Pathfinder, carrying the Sojourner rover, landed in 1997. The Mars Exploration Rovers Spirit and Opportunity landed in January 2004. The Phoenix lander arrived in 2008. Curiosity, InSight, and Perseverance landed in 2012, 2018, and 2021 respectively.",
+        "is_gold": true,
+        "golden_passage_title": "List of Mars landers"
+      },
+      {
+        "id": "doc_035_2",
+        "title": "Curiosity rover",
+        "text": "Curiosity is a car-sized Mars rover designed to explore Gale Crater on Mars as part of NASA's Mars Science Laboratory mission. It was launched on November 26, 2011 and landed on Mars on August 6, 2012. As of 2024, Curiosity remains operational. The rover is designed to assess whether Mars ever had an environment capable of supporting small life forms. It has traveled over 30 kilometres on the Martian surface.",
+        "is_gold": true,
+        "golden_passage_title": "Curiosity rover"
+      },
+      {
+        "id": "doc_035_3",
+        "title": "Perseverance rover",
+        "text": "Perseverance is a Mars rover manufactured by NASA that landed in Jezero Crater on February 18, 2021. It is the most advanced rover ever sent to Mars. Among its mission objectives are seeking signs of ancient microbial life and collecting rock and soil samples for potential future return to Earth. Perseverance also carried the Ingenuity helicopter, the first aircraft to make a powered flight on another planet.",
+        "is_gold": true,
+        "golden_passage_title": "Perseverance rover"
+      },
+      {
+        "id": "doc_035_4",
+        "title": "Mars exploration",
+        "text": "Mars exploration has been conducted primarily through robotic spacecraft, including orbiters, landers, and rovers. The first successful flyby was by Mariner 4 in 1965. The Soviet Mars 3 was the first spacecraft to soft-land on Mars in 1971, but it ceased transmission after 20 seconds. NASA's Viking program achieved the first fully successful Mars landings in 1976. Interest in Mars exploration has been driven by the possibility of past or present life on the planet.",
+        "is_gold": false,
+        "golden_passage_title": "Mars exploration"
+      },
+      {
+        "id": "doc_035_5",
+        "title": "InSight",
+        "text": "InSight was a NASA Mars lander that operated on the planet from November 26, 2018 until December 21, 2022, when the mission was declared ended due to insufficient power from its solar panels. The lander studied the deep interior of Mars using a seismometer and a heat flow probe. InSight detected thousands of marsquakes during its mission, providing the first direct measurements of the Martian interior structure.",
+        "is_gold": true,
+        "golden_passage_title": "InSight"
+      }
+    ],
+    "gold_stats": {
+      "n_docs": 5,
+      "n_gold": 4,
+      "n_distractors": 1,
+      "n_full_support": 1,
+      "n_partial_support": 3,
+      "n_no_support": 1
+    },
+    "nuggets": [
+      {
+        "nugget_id": "n0",
+        "text": "Viking 1 successfully landed on Mars.",
+        "keywords": [
+          "Viking 1"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "List of Mars landers",
+        "golden_evidence": "The first successful Mars landing was achieved by NASA's Viking 1 on July 20, 1976."
+      },
+      {
+        "nugget_id": "n1",
+        "text": "Viking 2 successfully landed on Mars.",
+        "keywords": [
+          "Viking 2"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "List of Mars landers",
+        "golden_evidence": "Viking 1 on July 20, 1976, followed by Viking 2 on September 3, 1976."
+      },
+      {
+        "nugget_id": "n2",
+        "text": "Mars Pathfinder successfully landed on Mars.",
+        "keywords": [
+          "Pathfinder"
+        ],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "List of Mars landers",
+        "golden_evidence": "Mars Pathfinder, carrying the Sojourner rover, landed in 1997."
+      },
+      {
+        "nugget_id": "n3",
+        "text": "Curiosity successfully landed on Mars.",
+        "keywords": [
+          "Curiosity"
+        ],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Curiosity rover",
+        "golden_evidence": "It was launched on November 26, 2011 and landed on Mars on August 6, 2012."
+      },
+      {
+        "nugget_id": "n4",
+        "text": "Perseverance successfully landed on Mars.",
+        "keywords": [
+          "Perseverance"
+        ],
+        "golden_passage_idx": 2,
+        "required": true,
+        "golden_passage_title": "Perseverance rover",
+        "golden_evidence": "Perseverance is a Mars rover manufactured by NASA that landed in Jezero Crater on February 18, 2021."
+      },
+      {
+        "nugget_id": "n5",
+        "text": "InSight successfully landed on Mars.",
+        "keywords": [
+          "InSight"
+        ],
+        "golden_passage_idx": 4,
+        "required": true,
+        "golden_passage_title": "InSight",
+        "golden_evidence": "InSight was a NASA Mars lander that operated on the planet from November 26, 2018 until December 21, 2022."
+      },
+      {
+        "nugget_id": "n6",
+        "text": "Perseverance carried the Ingenuity helicopter, the first aircraft to make a powered flight on another planet.",
+        "keywords": [
+          "Ingenuity"
+        ],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "Perseverance rover",
+        "golden_evidence": "Perseverance also carried the Ingenuity helicopter, the first aircraft to make a powered flight on another planet."
+      }
+    ]
   }
 ]
