@@ -506,7 +506,7 @@ export default function Pipeline() {
   const { addPipelineResult } = useAppData()
 
   // Settings
-  const [model, setModel] = useState('claude-haiku-4-5-20251001')
+  const [model, setModel] = useState('gemma3:1b')
   const [retrieveMethod, setRetrieveMethod] = useState('nli')
   const [threshold, setThreshold] = useState(0.5)
   const [topK, setTopK] = useState(3)
@@ -754,6 +754,10 @@ export default function Pipeline() {
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label className="form-label">Modello LLM</label>
                 <select className="input" value={model} onChange={e => setModel(e.target.value)}>
+                  <option>gemma3:1b</option>
+                  <option>gemma3:4b</option>
+                  <option>llama3.2:3b</option>
+                  <option>phi4-mini</option>
                   <option>claude-haiku-4-5-20251001</option>
                   <option>claude-sonnet-4-20250514</option>
                 </select>

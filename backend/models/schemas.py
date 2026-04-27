@@ -26,7 +26,7 @@ class Passage(BaseModel):
 class GenerateRequest(BaseModel):
     query: str = Field(..., description="Domanda a cui rispondere")
     passages: list[Passage] | None = Field(None, description="Passages opzionali per RAG")
-    model: str = Field("claude-haiku-4-5-20251001", description="Modello Claude")
+    model: str = Field("gemma3:1b", description="Modello LLM (Ollama/Claude/Gemini)")
 
 
 class GenerateResponse(BaseModel):
@@ -39,7 +39,7 @@ class GenerateResponse(BaseModel):
 
 class DecomposeRequest(BaseModel):
     text: str = Field(..., description="Testo da scomporre in atomic claims")
-    model: str = Field("claude-haiku-4-5-20251001")
+    model: str = Field("gemma3:1b")
 
 
 class DecomposeResponse(BaseModel):

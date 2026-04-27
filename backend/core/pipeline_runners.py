@@ -29,21 +29,29 @@ def run_generate(query: str, model: str, passages: list[dict] | None = None) -> 
         ])
         prompt = (
             "You are a knowledgeable assistant. "
-            "Answer the question ONLY using the information provided in the passages below. "
-            "Do NOT use any external knowledge. "
-            "If the passages do not contain enough information to answer, say so. "
-            "Do NOT include any citations or references in your response. "
-            "Write in plain text without markdown formatting.\n\n"
+            "Answer the question using the information provided in the passages below.\n\n"
+            "IMPORTANT RULES:\n"
+            "- Use ONLY the information from the passages. Do NOT use external knowledge.\n"
+            "- Write a DETAILED answer of at least 3-5 sentences.\n"
+            "- Include specific facts, names, dates, and numbers from the passages.\n"
+            "- Do NOT include citations, references, or source numbers like [1] or [2].\n"
+            "- Write in plain text without markdown formatting.\n"
+            "- If the passages contain multiple relevant details, include ALL of them.\n\n"
             f"Passages:\n{passages_text}\n\n"
-            f"Question: {query}\n\nAnswer:"
+            f"Question: {query}\n\n"
+            "Provide a detailed, informative answer:"
         )
     else:
         prompt = (
             "You are a knowledgeable assistant. "
-            "Answer the question clearly and factually in plain text. "
-            "Do NOT use markdown formatting, headers, or bullet points. "
-            "Do NOT include any citations or references in your response.\n\n"
-            f"Question: {query}\n\nAnswer:"
+            "Answer the question with a detailed, informative response.\n\n"
+            "IMPORTANT RULES:\n"
+            "- Write at least 3-5 sentences with specific facts and details.\n"
+            "- Do NOT use markdown formatting, headers, or bullet points.\n"
+            "- Do NOT include any citations or references.\n"
+            "- Write in plain, flowing prose.\n\n"
+            f"Question: {query}\n\n"
+            "Provide a detailed, informative answer:"
         )
 
     return call_llm(prompt, model=model)
@@ -53,12 +61,18 @@ def run_decompose(response: str, model: str) -> list[str]:
     from core.llm_client import call_llm_json
     prompt = f"""\
 Break the following text into independent atomic facts.
-Each fact must:
-- Contain exactly one piece of information
-- Be self-contained and understandable without context
-- Be a complete declarative sentence
 
-Return ONLY a JSON array of strings, no preamble.
+RULES:
+- Each fact must contain exactly ONE piece of information
+- Each fact must be a COMPLETE sentence, understandable on its own without any context
+- Include the SUBJECT in every fact (never use pronouns like "he", "it", "they")
+- Include specific details: names, dates, numbers, locations
+
+EXAMPLE:
+Text: "Albert Einstein was born in Ulm, Germany in 1879. He developed the theory of relativity and won the Nobel Prize in Physics in 1921."
+Output: ["Albert Einstein was born in Ulm, Germany.", "Albert Einstein was born in 1879.", "Albert Einstein developed the theory of relativity.", "Albert Einstein won the Nobel Prize in Physics.", "Albert Einstein won the Nobel Prize in 1921."]
+
+Now do the same for this text. Return ONLY a JSON array of strings, nothing else.
 
 Text:
 {response}

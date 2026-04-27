@@ -69,7 +69,7 @@ class EvaluateNuggetsResponse(BaseModel):
 
 class EvaluateDatasetRequest(BaseModel):
     dataset: list[dict]           # ogni elemento ha question e docs (e nuggets se modalità nugget)
-    model: str = "claude-haiku-4-5-20251001"
+    model: str = "gemma3:1b"
     retrieve_method: str = "nli"
     threshold: float = 0.5
     top_k: int = 3
@@ -80,7 +80,7 @@ class EvaluateDatasetRequest(BaseModel):
 
 class EvaluateExampleRequest(BaseModel):
     example: dict
-    model: str = "claude-haiku-4-5-20251001"
+    model: str = "gemma3:1b"
     retrieve_method: str = "nli"
     threshold: float = 0.5
     top_k: int = 3
@@ -196,6 +196,8 @@ async def decompose(req: DecomposeRequest):
         claims = pipeline_runners.run_decompose(req.text, req.model)
         return DecomposeResponse(claims=claims)
     except Exception as e:
+        import logging
+        logging.getLogger(__name__).error(f"[decompose] ERRORE: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -268,7 +270,28 @@ async def evaluate_nuggets(req: EvaluateNuggetsRequest):
         return EvaluateNuggetsResponse(**result)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
+
+
+def _compute_noise_stats(matched_claims: list[dict]) -> dict:
+    """Calcola statistiche sull'uso dei passaggi di noise nelle citazioni."""
+    noise_supporting = 0
+    claims_citing_noise = 0
+
+    for mc in matched_claims:
+        has_noise = False
+        for sp in mc.get("supporting_passages", []):
+            if sp.get("is_noise", False):
+                noise_supporting += 1
+                has_noise = True
+        if has_noise:
+            claims_citing_noise += 1
+
+    return {
+        "noise_supporting_passages": noise_supporting,
+        "claims_citing_noise": claims_citing_noise,
+    }
+
+
 @router.post("/evaluate-example")
 async def evaluate_example_endpoint(req: EvaluateExampleRequest):
     """Esegue l'intera pipeline su un singolo esempio e restituisce le metriche."""

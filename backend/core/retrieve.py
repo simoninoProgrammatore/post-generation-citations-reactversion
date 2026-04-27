@@ -385,18 +385,23 @@ def match_with_llm(
         for i, p in enumerate(candidates)
     ])
 
-    prompt = f"""You are a fact-checking assistant.
+    prompt = f"""You are a fact-checking assistant. Check if passages support a claim.
 
 Claim: "{claim}"
 
-For each passage below, decide if it SUPPORTS the claim (entails it), CONTRADICTS it, or is NEUTRAL.
-If it SUPPORTS, extract the EXACT sentence from the passage that best supports the claim.
-Copy the sentence verbatim — do not paraphrase.
+For each passage, decide: "supports", "contradicts", or "neutral".
+If "supports", copy the EXACT sentence from the passage that supports the claim.
 
-Return ONLY a JSON array like:
-[{{"idx": 0, "label": "supports", "score": 0.95, "evidence": "The exact sentence from the passage."}}, ...]
+EXAMPLE:
+Claim: "The Eiffel Tower is 330 meters tall."
+Passages:
+[0] Eiffel Tower: The Eiffel Tower is a wrought-iron lattice tower in Paris. It is 330 metres tall and was completed in 1889.
+[1] Big Ben: Big Ben is the nickname for the Great Bell in London. The tower is 96 metres tall.
 
-For non-supporting passages, set "evidence" to "".
+Output:
+[{{"idx": 0, "label": "supports", "score": 0.95, "evidence": "It is 330 metres tall and was completed in 1889."}}, {{"idx": 1, "label": "neutral", "score": 0.1, "evidence": ""}}]
+
+Now analyze these passages. Return ONLY a JSON array, nothing else.
 
 Passages:
 {passages_text}
