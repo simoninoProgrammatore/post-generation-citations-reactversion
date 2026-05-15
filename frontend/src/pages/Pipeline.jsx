@@ -780,7 +780,6 @@ export default function Pipeline() {
                 <label className="form-label">Metodo retrieval</label>
                 <select className="input" value={retrieveMethod} onChange={e => setRetrieveMethod(e.target.value)}>
                   <option value="nli">NLI</option>
-                  <option value="similarity">Similarity</option>
                   <option value="llm">LLM</option>
                 </select>
               </div>

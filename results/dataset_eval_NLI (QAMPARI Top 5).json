@@ -1,0 +1,3411 @@
+{
+  "global_metrics": {
+    "avg_nugget_precision": 0.6947095238095238,
+    "avg_nugget_recall": 0.5854285714285714,
+    "avg_nugget_coverage": 0.8344952380952381,
+    "avg_required_precision": 0.7142809523809523,
+    "avg_required_recall": 0.6921714285714285,
+    "macro_nugget_precision": 0.7090909090909091,
+    "macro_nugget_recall": 0.6,
+    "macro_nugget_coverage": 0.8461538461538461,
+    "macro_required_precision": 0.7368421052631579,
+    "macro_required_recall": 0.6862745098039216,
+    "macro_optional_precision": 0.5333333333333333,
+    "macro_optional_recall": 0.2857142857142857,
+    "total_nuggets": 130,
+    "total_cited": 78,
+    "total_covered": 110,
+    "total_required": 102,
+    "total_required_cited": 70,
+    "total_required_covered": 95,
+    "total_optional": 28,
+    "total_optional_cited": 8,
+    "total_optional_covered": 15,
+    "total_noise_passages_used": 0,
+    "total_claims_citing_noise": 0,
+    "total_nuggets_cited_from_noise": 0
+  },
+  "per_example": [
+    {
+      "question": "What films were directed by Christopher Nolan?",
+      "nugget_metrics": {
+        "nugget_precision": 0.7778,
+        "nugget_recall": 0.7778,
+        "nugget_coverage": 1,
+        "n_nuggets": 9,
+        "n_covered": 9,
+        "n_cited": 7,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Memento is a film directed by Christopher Nolan.",
+            "required": true,
+            "keywords": [
+              "Memento"
+            ],
+            "golden_passage_title": "Christopher Nolan",
+            "golden_evidence": "He gained international recognition with his second film, Memento, released in 2000.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6488,
+            "cite_score": 0,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Christopher Nolan directed Memento in 2000.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The Dark Knight is a film directed by Christopher Nolan.",
+            "required": true,
+            "keywords": [
+              "The Dark Knight"
+            ],
+            "golden_passage_title": "The Dark Knight Trilogy",
+            "golden_evidence": "The Dark Knight followed in 2008, featuring Heath Ledger's iconic portrayal of the Joker.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7897,
+            "cite_score": 1.3655,
+            "n_covering_claims": 4,
+            "best_covering_claim": "The Dark Knight grossed over $1 billion worldwide.",
+            "best_evidence_passage_title": "The Dark Knight Trilogy",
+            "best_evidence_passage_text": "The Dark Knight Trilogy consists of three superhero films directed by Christopher Nolan. The trilogy began with Batman Begins in 2005, which rebooted the Batman film franchise. The Dark Knight followe",
+            "best_evidence_sentence": "The Dark Knight is widely considered one of the greatest superhero films ever made and grossed over $1 billion worldwide.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Inception is a film directed by Christopher Nolan.",
+            "required": true,
+            "keywords": [
+              "Inception"
+            ],
+            "golden_passage_title": "Inception",
+            "golden_evidence": "Inception is a 2010 science fiction action film written, produced, and directed by Christopher Nolan.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7599,
+            "cite_score": 1.4351,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Christopher Nolan directed Inception in 2010.",
+            "best_evidence_passage_title": "Inception",
+            "best_evidence_passage_text": "Inception is a 2010 science fiction action film written, produced, and directed by Christopher Nolan. The film stars Leonardo DiCaprio as a professional thief who steals information by infiltrating th",
+            "best_evidence_sentence": "Inception is a 2010 science fiction action film written, produced, and directed by Christopher Nolan.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Interstellar is a film directed by Christopher Nolan.",
+            "required": true,
+            "keywords": [
+              "Interstellar"
+            ],
+            "golden_passage_title": "Interstellar",
+            "golden_evidence": "Interstellar is a 2014 epic science fiction film directed by Christopher Nolan.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7749,
+            "cite_score": 1.4153,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Christopher Nolan directed Interstellar in 2014.",
+            "best_evidence_passage_title": "Interstellar",
+            "best_evidence_passage_text": "Interstellar is a 2014 epic science fiction film directed by Christopher Nolan, who co-wrote the screenplay with his brother Jonathan Nolan. The film stars Matthew McConaughey, Anne Hathaway, and Jess",
+            "best_evidence_sentence": "Interstellar is a 2014 epic science fiction film directed by Christopher Nolan, who co-wrote the screenplay with his brother Jonathan Nolan.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Dunkirk is a film directed by Christopher Nolan.",
+            "required": true,
+            "keywords": [
+              "Dunkirk"
+            ],
+            "golden_passage_title": "Interstellar",
+            "golden_evidence": "Nolan later directed Dunkirk in 2017, a war film depicting the Dunkirk evacuation during World War II.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7481,
+            "cite_score": 1.3334,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Christopher Nolan directed Dunkirk in 2017.",
+            "best_evidence_passage_title": "Interstellar",
+            "best_evidence_passage_text": "Interstellar is a 2014 epic science fiction film directed by Christopher Nolan, who co-wrote the screenplay with his brother Jonathan Nolan. The film stars Matthew McConaughey, Anne Hathaway, and Jess",
+            "best_evidence_sentence": "Nolan later directed Dunkirk in 2017, a war film depicting the Dunkirk evacuation during World War II, and Tenet in 2020, a spy film involving time inversion.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "Oppenheimer is a film directed by Christopher Nolan.",
+            "required": true,
+            "keywords": [
+              "Oppenheimer"
+            ],
+            "golden_passage_title": "Academy Award for Best Picture",
+            "golden_evidence": "In 2024, Oppenheimer directed by Christopher Nolan won Best Picture at the 96th Academy Awards.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.77,
+            "cite_score": 1.4345,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Christopher Nolan directed Oppenheimer in 2024.",
+            "best_evidence_passage_title": "Academy Award for Best Picture",
+            "best_evidence_passage_text": "The Academy Award for Best Picture is presented annually by the Academy of Motion Picture Arts and Sciences. In 2024, Oppenheimer directed by Christopher Nolan won Best Picture at the 96th Academy Awa",
+            "best_evidence_sentence": "In 2024, Oppenheimer directed by Christopher Nolan won Best Picture at the 96th Academy Awards.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n6",
+            "nugget_text": "Batman Begins is a film directed by Christopher Nolan.",
+            "required": false,
+            "keywords": [
+              "Batman Begins"
+            ],
+            "golden_passage_title": "The Dark Knight Trilogy",
+            "golden_evidence": "The trilogy began with Batman Begins in 2005, which rebooted the Batman film franchise.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6796,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Christopher Nolan directed Batman Begins in 2005.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n7",
+            "nugget_text": "Insomnia is a film directed by Christopher Nolan.",
+            "required": false,
+            "keywords": [
+              "Insomnia"
+            ],
+            "golden_passage_title": "Christopher Nolan",
+            "golden_evidence": "Nolan then directed the psychological thriller Insomnia in 2002, starring Al Pacino and Robin Williams.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7542,
+            "cite_score": 1.4089,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Christopher Nolan directed Insomnia in 2002.",
+            "best_evidence_passage_title": "Christopher Nolan",
+            "best_evidence_passage_text": "Christopher Edward Nolan is a British-American filmmaker. He is known for making personal, distinctive films within the Hollywood system. His films have grossed more than $6 billion worldwide. Nolan d",
+            "best_evidence_sentence": "Nolan then directed the psychological thriller Insomnia in 2002, starring Al Pacino and Robin Williams.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n8",
+            "nugget_text": "Tenet is a film directed by Christopher Nolan.",
+            "required": false,
+            "keywords": [
+              "Tenet"
+            ],
+            "golden_passage_title": "Interstellar",
+            "golden_evidence": "Nolan later directed Dunkirk in 2017, a war film depicting the Dunkirk evacuation during World War II, and Tenet in 2020, a spy film involving time inversion.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7357,
+            "cite_score": 1.3417,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Christopher Nolan directed Tenet in 2020.",
+            "best_evidence_passage_title": "Interstellar",
+            "best_evidence_passage_text": "Interstellar is a 2014 epic science fiction film directed by Christopher Nolan, who co-wrote the screenplay with his brother Jonathan Nolan. The film stars Matthew McConaughey, Anne Hathaway, and Jess",
+            "best_evidence_sentence": "Nolan later directed Dunkirk in 2017, a war film depicting the Dunkirk evacuation during World War II, and Tenet in 2020, a spy film involving time inversion.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 10,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 6,
+        "n_required_covered": 6,
+        "n_required_cited": 5,
+        "required_precision": 0.8333,
+        "required_recall": 0.8333,
+        "required_coverage": 1,
+        "n_optional": 3,
+        "n_optional_covered": 3,
+        "n_optional_cited": 2,
+        "optional_precision": 0.6667,
+        "optional_recall": 0.6667,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What programming languages were created by developers at Bell Labs?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6,
+        "nugget_recall": 0.6,
+        "nugget_coverage": 1,
+        "n_nuggets": 5,
+        "n_covered": 5,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "C is a programming language created by developers at Bell Labs.",
+            "required": true,
+            "keywords": [
+              "C"
+            ],
+            "golden_passage_title": "C (programming language)",
+            "golden_evidence": "It was created in 1972 by Dennis Ritchie at Bell Labs.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7041,
+            "cite_score": 0.4702,
+            "n_covering_claims": 5,
+            "best_covering_claim": "S was designed for statistical analysis and graphical display of data.",
+            "best_evidence_passage_title": "S (programming language)",
+            "best_evidence_passage_text": "S is a statistical programming language developed primarily by John Chambers at Bell Labs. The first version of S was written in 1976. S was designed for statistical analysis and graphical display of ",
+            "best_evidence_sentence": "S was designed for statistical analysis and graphical display of data.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "C++ is a programming language created by developers at Bell Labs.",
+            "required": true,
+            "keywords": [
+              "C++"
+            ],
+            "golden_passage_title": "C++",
+            "golden_evidence": "Stroustrup began developing C++ at Bell Labs in 1979, initially calling it C with Classes.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7054,
+            "cite_score": 1.4055,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Bjarne Stroustrup created C++ beginning in 1979 as an extension of the C programming language.",
+            "best_evidence_passage_title": "C++",
+            "best_evidence_passage_text": "C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language. It was first released in 1985. Stroustrup began developing C++ at Bell Labs in",
+            "best_evidence_sentence": "Stroustrup began developing C++ at Bell Labs in 1979, initially calling it C with Classes.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "AWK is a programming language created by developers at Bell Labs.",
+            "required": true,
+            "keywords": [
+              "AWK"
+            ],
+            "golden_passage_title": "AWK",
+            "golden_evidence": "It was created at Bell Labs in 1977 by Alfred Aho, Peter Weinberger, and Brian Kernighan.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6129,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Alfred Aho, Peter Weinberger, and Brian Kernighan created AWK in 1977.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "S is a programming language created by developers at Bell Labs.",
+            "required": true,
+            "keywords": [
+              "S"
+            ],
+            "golden_passage_title": "S (programming language)",
+            "golden_evidence": "S is a statistical programming language developed primarily by John Chambers at Bell Labs.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7059,
+            "cite_score": 0.6123,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Unix operating system was developed at Bell Labs.",
+            "best_evidence_passage_title": "Unix",
+            "best_evidence_passage_text": "Unix is a family of multitasking, multi-user computer operating systems. The original Unix was developed at Bell Labs by Ken Thompson, Dennis Ritchie, and others in the 1970s. Unix was written in the ",
+            "best_evidence_sentence": "The original Unix was developed at Bell Labs by Ken Thompson, Dennis Ritchie, and others in the 1970s.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Dennis Ritchie created the C programming language.",
+            "required": false,
+            "keywords": [
+              "Dennis Ritchie"
+            ],
+            "golden_passage_title": "C (programming language)",
+            "golden_evidence": "It was created in 1972 by Dennis Ritchie at Bell Labs.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.7273,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Dennis Ritchie created C in 1972.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 4,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 4,
+        "n_required_covered": 4,
+        "n_required_cited": 3,
+        "required_precision": 0.75,
+        "required_recall": 0.75,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What countries have hosted the FIFA World Cup in the 21st century?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6667,
+        "nugget_recall": 0.5714,
+        "nugget_coverage": 0.8571,
+        "n_nuggets": 7,
+        "n_covered": 6,
+        "n_cited": 4,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "South Korea hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "South Korea"
+            ],
+            "golden_passage_title": "2002 FIFA World Cup",
+            "golden_evidence": "It was held in South Korea and Japan, making it the first World Cup to be hosted in Asia.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6532,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "South Korea and Japan together hosted the 2002 FIFA World Cup.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Japan hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "Japan"
+            ],
+            "golden_passage_title": "2002 FIFA World Cup",
+            "golden_evidence": "It was held in South Korea and Japan, making it the first World Cup to be hosted in Asia.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Germany hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "Germany"
+            ],
+            "golden_passage_title": "2006 FIFA World Cup",
+            "golden_evidence": "The 2006 FIFA World Cup took place in Germany from June 9 to July 9, 2006.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7499,
+            "cite_score": 1.3839,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Germany hosted the FIFA World Cup in 2006.",
+            "best_evidence_passage_title": "2006 FIFA World Cup",
+            "best_evidence_passage_text": "The 2006 FIFA World Cup took place in Germany from June 9 to July 9, 2006. Italy won the tournament by defeating France in the final on penalties. The event was notable for the head-butting incident i",
+            "best_evidence_sentence": "The 2006 FIFA World Cup took place in Germany from June 9 to July 9, 2006.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "South Africa hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "South Africa"
+            ],
+            "golden_passage_title": "2010 FIFA World Cup",
+            "golden_evidence": "The 2010 FIFA World Cup was held in South Africa, becoming the first World Cup on the African continent.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7765,
+            "cite_score": 1.4165,
+            "n_covering_claims": 1,
+            "best_covering_claim": "South Africa hosted the FIFA World Cup in 2010.",
+            "best_evidence_passage_title": "2010 FIFA World Cup",
+            "best_evidence_passage_text": "The 2010 FIFA World Cup was held in South Africa, becoming the first World Cup on the African continent. Spain won the tournament by defeating the Netherlands 1-0 in the final. The tournament was memo",
+            "best_evidence_sentence": "The 2010 FIFA World Cup was held in South Africa, becoming the first World Cup on the African continent.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Brazil hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "Brazil"
+            ],
+            "golden_passage_title": "2014 FIFA World Cup",
+            "golden_evidence": "It was held in Brazil from June 12 to July 13, 2014.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6514,
+            "cite_score": 0,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Brazil won the 2002 FIFA World Cup.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "Russia hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "Russia"
+            ],
+            "golden_passage_title": "FIFA World Cup hosts",
+            "golden_evidence": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7471,
+            "cite_score": 1.4269,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Russia hosted the 2018 FIFA World Cup.",
+            "best_evidence_passage_title": "FIFA World Cup hosts",
+            "best_evidence_passage_text": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe. France won the tournament by defeating Croatia 4-2 in the final. The 2022 FIFA World Cup was held in Qatar,",
+            "best_evidence_sentence": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n6",
+            "nugget_text": "Qatar hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "Qatar"
+            ],
+            "golden_passage_title": "FIFA World Cup hosts",
+            "golden_evidence": "The 2022 FIFA World Cup was held in Qatar, the first World Cup in the Middle East.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7404,
+            "cite_score": 1.3864,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Qatar hosted the 2022 FIFA World Cup.",
+            "best_evidence_passage_title": "FIFA World Cup hosts",
+            "best_evidence_passage_text": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe. France won the tournament by defeating Croatia 4-2 in the final. The 2022 FIFA World Cup was held in Qatar,",
+            "best_evidence_sentence": "The 2022 FIFA World Cup was held in Qatar, the first World Cup in the Middle East.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 6,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 7,
+        "n_required_covered": 6,
+        "n_required_cited": 4,
+        "required_precision": 0.6667,
+        "required_recall": 0.5714,
+        "required_coverage": 0.8571,
+        "n_optional": 0,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What novels were written by Haruki Murakami?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.8,
+        "nugget_coverage": 0.8,
+        "n_nuggets": 5,
+        "n_covered": 4,
+        "n_cited": 4,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Norwegian Wood is a novel written by Haruki Murakami.",
+            "required": true,
+            "keywords": [
+              "Norwegian Wood"
+            ],
+            "golden_passage_title": "Haruki Murakami",
+            "golden_evidence": "His novels include Norwegian Wood, published in 1987, which became a bestseller in Japan selling millions of copies.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.759,
+            "cite_score": 1.2737,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Norwegian Wood became a bestseller in Japan selling millions of copies.",
+            "best_evidence_passage_title": "Haruki Murakami",
+            "best_evidence_passage_text": "Haruki Murakami is a Japanese novelist and short story writer. His novels include Norwegian Wood, published in 1987, which became a bestseller in Japan selling millions of copies. Murakami is also kno",
+            "best_evidence_sentence": "His novels include Norwegian Wood, published in 1987, which became a bestseller in Japan selling millions of copies.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Kafka on the Shore is a novel written by Haruki Murakami.",
+            "required": true,
+            "keywords": [
+              "Kafka on the Shore"
+            ],
+            "golden_passage_title": "Kafka on the Shore",
+            "golden_evidence": "Kafka on the Shore is a 2002 novel by Japanese author Haruki Murakami.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7981,
+            "cite_score": 1.4643,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Haruki Murakami wrote Kafka on the Shore, a 2002 novel.",
+            "best_evidence_passage_title": "Kafka on the Shore",
+            "best_evidence_passage_text": "Kafka on the Shore is a 2002 novel by Japanese author Haruki Murakami. The novel follows two parallel storylines involving a teenage boy named Kafka Tamura and an elderly man named Nakata. It was awar",
+            "best_evidence_sentence": "Kafka on the Shore is a 2002 novel by Japanese author Haruki Murakami.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "1Q84 is a novel written by Haruki Murakami.",
+            "required": true,
+            "keywords": [
+              "1Q84"
+            ],
+            "golden_passage_title": "1Q84",
+            "golden_evidence": "1Q84 is a novel written by Haruki Murakami, published in three volumes in Japan in 2009 and 2010.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7145,
+            "cite_score": 1.4453,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Haruki Murakami wrote 1Q84, published in three volumes in Japan in 2009 and 2010.",
+            "best_evidence_passage_title": "1Q84",
+            "best_evidence_passage_text": "1Q84 is a novel written by Haruki Murakami, published in three volumes in Japan in 2009 and 2010. The title is a play on the year 1984, with the letter Q replacing the number 9 in Japanese. The novel ",
+            "best_evidence_sentence": "1Q84 is a novel written by Haruki Murakami, published in three volumes in Japan in 2009 and 2010.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "The Wind-Up Bird Chronicle is a novel written by Haruki Murakami.",
+            "required": true,
+            "keywords": [
+              "The Wind-Up Bird Chronicle"
+            ],
+            "golden_passage_title": "Haruki Murakami",
+            "golden_evidence": "Murakami is also known for his novel The Wind-Up Bird Chronicle, published in 1994.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8197,
+            "cite_score": 1.4225,
+            "n_covering_claims": 2,
+            "best_covering_claim": "The Wind-Up Bird Chronicle is considered one of his masterpieces.",
+            "best_evidence_passage_title": "Haruki Murakami",
+            "best_evidence_passage_text": "Haruki Murakami is a Japanese novelist and short story writer. His novels include Norwegian Wood, published in 1987, which became a bestseller in Japan selling millions of copies. Murakami is also kno",
+            "best_evidence_sentence": "Murakami is also known for his novel The Wind-Up Bird Chronicle, published in 1994, which is considered one of his masterpieces.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Norwegian Wood was published in 1987.",
+            "required": false,
+            "keywords": [
+              "1987"
+            ],
+            "golden_passage_title": "Haruki Murakami",
+            "golden_evidence": "His novels include Norwegian Wood, published in 1987.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 5,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 4,
+        "n_required_covered": 4,
+        "n_required_cited": 4,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What instruments did Miles Davis play?",
+      "nugget_metrics": {
+        "nugget_precision": 0.3333,
+        "nugget_recall": 0.25,
+        "nugget_coverage": 0.75,
+        "n_nuggets": 4,
+        "n_covered": 3,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Miles Davis played the trumpet.",
+            "required": true,
+            "keywords": [
+              "trumpet"
+            ],
+            "golden_passage_title": "Miles Davis",
+            "golden_evidence": "He is best known as a trumpet player and his trumpet sound is one of the most recognizable in jazz history.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6396,
+            "cite_score": 0,
+            "n_covering_claims": 2,
+            "best_covering_claim": "On his 1970 album Bitches Brew, Davis played trumpet.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Miles Davis played the flugelhorn.",
+            "required": true,
+            "keywords": [
+              "flugelhorn"
+            ],
+            "golden_passage_title": "Jazz trumpet",
+            "golden_evidence": "Miles Davis notably played the flugelhorn on several recordings throughout the 1950s and 1960s.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7289,
+            "cite_score": 1.3361,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Miles Davis notably played the flugelhorn on several recordings throughout the 1950s and 1960s.",
+            "best_evidence_passage_title": "Jazz trumpet",
+            "best_evidence_passage_text": "The trumpet is one of the most prominent instruments in jazz music. Famous jazz trumpet players include Louis Armstrong, Dizzy Gillespie, Chet Baker, and Miles Davis. The flugelhorn, a brass instrumen",
+            "best_evidence_sentence": "Miles Davis notably played the flugelhorn on several recordings throughout the 1950s and 1960s.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Miles Davis played the organ.",
+            "required": true,
+            "keywords": [
+              "organ"
+            ],
+            "golden_passage_title": "Bitches Brew",
+            "golden_evidence": "Davis played trumpet and also played organ on several tracks.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6217,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "On his 1970 album Bitches Brew, Davis played organ on several tracks.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Kind of Blue is one of the greatest jazz albums of all time.",
+            "required": false,
+            "keywords": [
+              "Kind of Blue"
+            ],
+            "golden_passage_title": "Kind of Blue",
+            "golden_evidence": "Released in 1959, it is regarded as one of the greatest jazz albums of all time.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 1,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 3,
+        "n_required_covered": 3,
+        "n_required_cited": 1,
+        "required_precision": 0.3333,
+        "required_recall": 0.3333,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What universities did Barack Obama attend?",
+      "nugget_metrics": {
+        "nugget_precision": 0,
+        "nugget_recall": 0,
+        "nugget_coverage": 1,
+        "n_nuggets": 4,
+        "n_covered": 4,
+        "n_cited": 0,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Barack Obama attended Occidental College.",
+            "required": true,
+            "keywords": [
+              "Occidental College"
+            ],
+            "golden_passage_title": "Barack Obama",
+            "golden_evidence": "Obama attended Occidental College in Los Angeles for two years.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.673,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Barack Obama attended Occidental College in Los Angeles from 1979 to 1981.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Barack Obama attended Columbia University.",
+            "required": true,
+            "keywords": [
+              "Columbia University"
+            ],
+            "golden_passage_title": "Barack Obama",
+            "golden_evidence": "He then transferred to Columbia University in New York City, where he graduated with a degree in political science in 1983.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6877,
+            "cite_score": 0,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Barack Obama transferred to Columbia University in New York City.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Barack Obama attended Harvard Law School.",
+            "required": true,
+            "keywords": [
+              "Harvard Law School",
+              "Harvard University"
+            ],
+            "golden_passage_title": "Harvard Law School",
+            "golden_evidence": "Notable alumni include Barack Obama, who enrolled at the law school in 1988.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.4038,
+            "cite_score": 0,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Barack Obama enrolled at Harvard Law School in 1988.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Obama was president of the Harvard Law Review.",
+            "required": false,
+            "keywords": [
+              "Harvard Law Review"
+            ],
+            "golden_passage_title": "Harvard Law School",
+            "golden_evidence": "Obama was elected as the first African American president of the Harvard Law Review in 1990.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6545,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Barack Obama was elected as the first African American president of the Harvard Law Review in 1990.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 0,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 3,
+        "n_required_covered": 3,
+        "n_required_cited": 0,
+        "required_precision": 0,
+        "required_recall": 0,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What elements were discovered by Marie Curie?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6667,
+        "nugget_recall": 0.5,
+        "nugget_coverage": 0.75,
+        "n_nuggets": 4,
+        "n_covered": 3,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Polonium was discovered by Marie Curie.",
+            "required": true,
+            "keywords": [
+              "Polonium"
+            ],
+            "golden_passage_title": "Marie Curie",
+            "golden_evidence": "They announced the discovery of polonium, named after Marie's native country Poland, in July 1898.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7341,
+            "cite_score": 0.6138,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Marie Curie discovered two new chemical elements: polonium and radium.",
+            "best_evidence_passage_title": "Nobel Prize in Physics",
+            "best_evidence_passage_text": "The Nobel Prize in Physics is awarded annually by the Royal Swedish Academy of Sciences. In 1903, Marie Curie, Pierre Curie, and Henri Becquerel shared the Nobel Prize in Physics for their research on",
+            "best_evidence_sentence": "Marie Curie later won a second Nobel Prize, this time in Chemistry, in 1911 for her discovery of radium and polonium.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Radium was discovered by Marie Curie.",
+            "required": true,
+            "keywords": [
+              "Radium"
+            ],
+            "golden_passage_title": "Marie Curie",
+            "golden_evidence": "In December 1898, they announced the discovery of radium.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6225,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Marie Curie and Pierre Curie announced the discovery of radium in December 1898.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Polonium was named after Poland.",
+            "required": false,
+            "keywords": [
+              "Poland"
+            ],
+            "golden_passage_title": "Polonium",
+            "golden_evidence": "The element was named after Poland, the native country of Marie Curie.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Marie Curie won the Nobel Prize in Physics in 1903.",
+            "required": false,
+            "keywords": [
+              "Nobel Prize",
+              "1903"
+            ],
+            "golden_passage_title": "Nobel Prize in Physics",
+            "golden_evidence": "In 1903, Marie Curie, Pierre Curie, and Henri Becquerel shared the Nobel Prize in Physics.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7362,
+            "cite_score": 1.3894,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Marie Curie shared the Nobel Prize in Physics in 1903 with Pierre Curie and Henri Becquerel for their research on radiation.",
+            "best_evidence_passage_title": "Nobel Prize in Physics",
+            "best_evidence_passage_text": "The Nobel Prize in Physics is awarded annually by the Royal Swedish Academy of Sciences. In 1903, Marie Curie, Pierre Curie, and Henri Becquerel shared the Nobel Prize in Physics for their research on",
+            "best_evidence_sentence": "In 1903, Marie Curie, Pierre Curie, and Henri Becquerel shared the Nobel Prize in Physics for their research on radiation.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 3,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 1,
+        "required_precision": 0.5,
+        "required_recall": 0.5,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 0.5,
+        "optional_coverage": 0.5,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What operas were composed by Giuseppe Verdi?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 1,
+        "nugget_coverage": 1,
+        "n_nuggets": 6,
+        "n_covered": 6,
+        "n_cited": 6,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Aida is an opera composed by Giuseppe Verdi.",
+            "required": true,
+            "keywords": [
+              "Aida"
+            ],
+            "golden_passage_title": "Aida",
+            "golden_evidence": "Aida is an opera in four acts by Giuseppe Verdi to an Italian libretto by Antonio Ghislanzoni.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7143,
+            "cite_score": 1.4509,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Aida is an opera in four acts with an Italian libretto by Antonio Ghislanzoni.",
+            "best_evidence_passage_title": "Aida",
+            "best_evidence_passage_text": "Aida is an opera in four acts by Giuseppe Verdi to an Italian libretto by Antonio Ghislanzoni. It was first performed on December 24, 1871 at the Khedivial Opera House in Cairo, Egypt. The opera was c",
+            "best_evidence_sentence": "Aida is an opera in four acts by Giuseppe Verdi to an Italian libretto by Antonio Ghislanzoni.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "La Traviata is an opera composed by Giuseppe Verdi.",
+            "required": true,
+            "keywords": [
+              "La Traviata"
+            ],
+            "golden_passage_title": "Giuseppe Verdi",
+            "golden_evidence": "Verdi went on to compose Rigoletto in 1851 and La Traviata in 1853.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.794,
+            "cite_score": 1.3641,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Verdi composed La Traviata in 1853.",
+            "best_evidence_passage_title": "Giuseppe Verdi",
+            "best_evidence_passage_text": "Giuseppe Fortunino Francesco Verdi was an Italian opera composer. He was born in 1813 near Busseto in the Province of Parma. Verdi's first major success came with the opera Nabucco, premiered at La Sc",
+            "best_evidence_sentence": "Verdi went on to compose Rigoletto in 1851 and La Traviata in 1853, which became two of the most performed operas in the world.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Rigoletto is an opera composed by Giuseppe Verdi.",
+            "required": true,
+            "keywords": [
+              "Rigoletto"
+            ],
+            "golden_passage_title": "Giuseppe Verdi",
+            "golden_evidence": "Verdi went on to compose Rigoletto in 1851 and La Traviata in 1853.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7816,
+            "cite_score": 1.3641,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Verdi composed Rigoletto in 1851.",
+            "best_evidence_passage_title": "Giuseppe Verdi",
+            "best_evidence_passage_text": "Giuseppe Fortunino Francesco Verdi was an Italian opera composer. He was born in 1813 near Busseto in the Province of Parma. Verdi's first major success came with the opera Nabucco, premiered at La Sc",
+            "best_evidence_sentence": "Verdi went on to compose Rigoletto in 1851 and La Traviata in 1853, which became two of the most performed operas in the world.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Nabucco is an opera composed by Giuseppe Verdi.",
+            "required": true,
+            "keywords": [
+              "Nabucco"
+            ],
+            "golden_passage_title": "Giuseppe Verdi",
+            "golden_evidence": "Verdi's first major success came with the opera Nabucco, premiered at La Scala in Milan in 1842.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7487,
+            "cite_score": 1.39,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Nabucco became Verdi's first major success.",
+            "best_evidence_passage_title": "Giuseppe Verdi",
+            "best_evidence_passage_text": "Giuseppe Fortunino Francesco Verdi was an Italian opera composer. He was born in 1813 near Busseto in the Province of Parma. Verdi's first major success came with the opera Nabucco, premiered at La Sc",
+            "best_evidence_sentence": "Verdi's first major success came with the opera Nabucco, premiered at La Scala in Milan in 1842.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Otello is an opera composed by Giuseppe Verdi.",
+            "required": true,
+            "keywords": [
+              "Otello"
+            ],
+            "golden_passage_title": "Otello (Verdi)",
+            "golden_evidence": "Otello is an opera in four acts by Giuseppe Verdi.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7381,
+            "cite_score": 1.4529,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Otello is based on Shakespeare's play Othello.",
+            "best_evidence_passage_title": "Otello (Verdi)",
+            "best_evidence_passage_text": "Otello is an opera in four acts by Giuseppe Verdi, with an Italian libretto by Arrigo Boito based on Shakespeare's play Othello. It premiered at La Scala in Milan on February 5, 1887. Otello is consid",
+            "best_evidence_sentence": "Otello is an opera in four acts by Giuseppe Verdi, with an Italian libretto by Arrigo Boito based on Shakespeare's play Othello.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "Nabucco premiered at La Scala in Milan in 1842.",
+            "required": false,
+            "keywords": [
+              "La Scala",
+              "1842"
+            ],
+            "golden_passage_title": "Giuseppe Verdi",
+            "golden_evidence": "Verdi's first major success came with the opera Nabucco, premiered at La Scala in Milan in 1842.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7738,
+            "cite_score": 1.39,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Nabucco premiered at La Scala in Milan in 1842.",
+            "best_evidence_passage_title": "Giuseppe Verdi",
+            "best_evidence_passage_text": "Giuseppe Fortunino Francesco Verdi was an Italian opera composer. He was born in 1813 near Busseto in the Province of Parma. Verdi's first major success came with the opera Nabucco, premiered at La Sc",
+            "best_evidence_sentence": "Verdi's first major success came with the opera Nabucco, premiered at La Scala in Milan in 1842.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 11,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 5,
+        "n_required_covered": 5,
+        "n_required_cited": 5,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 1,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What planets in the solar system have rings?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.8,
+        "nugget_coverage": 0.8,
+        "n_nuggets": 5,
+        "n_covered": 4,
+        "n_cited": 4,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Saturn has rings.",
+            "required": true,
+            "keywords": [
+              "Saturn"
+            ],
+            "golden_passage_title": "Saturn",
+            "golden_evidence": "It is best known for its prominent ring system, which is composed mainly of ice particles, rocky debris, and dust.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7286,
+            "cite_score": 0.6607,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Saturn's ring system is by far the most extensive and visible.",
+            "best_evidence_passage_title": "Planetary ring",
+            "best_evidence_passage_text": "A planetary ring is a ring of cosmic dust and other small particles orbiting around a planet in a flat disc-shaped region. All four of the Solar System's giant planets, Jupiter, Saturn, Uranus, and Ne",
+            "best_evidence_sentence": "Saturn's ring system is by far the most extensive and visible.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Jupiter has rings.",
+            "required": true,
+            "keywords": [
+              "Jupiter"
+            ],
+            "golden_passage_title": "Jupiter",
+            "golden_evidence": "Jupiter has a faint ring system that was discovered in 1979 by the Voyager 1 space probe.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.738,
+            "cite_score": 1.3766,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Jupiter's rings are very thin and difficult to observe.",
+            "best_evidence_passage_title": "Jupiter",
+            "best_evidence_passage_text": "Jupiter is the fifth planet from the Sun and the largest in the Solar System. Jupiter has a faint ring system that was discovered in 1979 by the Voyager 1 space probe. The rings are composed mainly of",
+            "best_evidence_sentence": "Unlike Saturn's rings, Jupiter's rings are very thin and difficult to observe.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Uranus has rings.",
+            "required": true,
+            "keywords": [
+              "Uranus"
+            ],
+            "golden_passage_title": "Uranus",
+            "golden_evidence": "Uranus has a ring system that was discovered in 1977 by astronomers James Elliot, Edward Dunham, and Jessica Mink.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7408,
+            "cite_score": 1.43,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Uranus has a ring system discovered in 1977.",
+            "best_evidence_passage_title": "Uranus",
+            "best_evidence_passage_text": "Uranus is the seventh planet from the Sun. It has the third-largest planetary radius and fourth-largest planetary mass in the Solar System. Uranus has a ring system that was discovered in 1977 by astr",
+            "best_evidence_sentence": "Uranus has a ring system that was discovered in 1977 by astronomers James Elliot, Edward Dunham, and Jessica Mink.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Neptune has rings.",
+            "required": true,
+            "keywords": [
+              "Neptune"
+            ],
+            "golden_passage_title": "Neptune",
+            "golden_evidence": "Neptune has a faint and fragmented ring system, confirmed by Voyager 2 in 1989.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7262,
+            "cite_score": 1.3297,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Neptune has a faint and fragmented ring system confirmed by Voyager 2 in 1989.",
+            "best_evidence_passage_title": "Neptune",
+            "best_evidence_passage_text": "Neptune is the eighth and farthest known planet from the Sun in the Solar System. Neptune has a faint and fragmented ring system, confirmed by Voyager 2 in 1989. The rings are named after astronomers ",
+            "best_evidence_sentence": "Neptune has a faint and fragmented ring system, confirmed by Voyager 2 in 1989.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Saturn's rings were first observed by Galileo in 1610.",
+            "required": false,
+            "keywords": [
+              "Galileo",
+              "1610"
+            ],
+            "golden_passage_title": "Saturn",
+            "golden_evidence": "The rings were first observed by Galileo Galilei in 1610.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 9,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 4,
+        "n_required_covered": 4,
+        "n_required_cited": 4,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What companies did Elon Musk found or co-found?",
+      "nugget_metrics": {
+        "nugget_precision": 0.5,
+        "nugget_recall": 0.4286,
+        "nugget_coverage": 0.8571,
+        "n_nuggets": 7,
+        "n_covered": 6,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Zip2 is a company co-founded by Elon Musk.",
+            "required": true,
+            "keywords": [
+              "Zip2"
+            ],
+            "golden_passage_title": "Elon Musk",
+            "golden_evidence": "In 1995, Musk co-founded Zip2, a web software company that provided business directories and maps for newspapers.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7065,
+            "cite_score": 1.4079,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Elon Musk co-founded Zip2, a web software company that provided business directories and maps for newspapers, in 1995.",
+            "best_evidence_passage_title": "Elon Musk",
+            "best_evidence_passage_text": "Elon Reeve Musk is a businessman and investor known for his key roles in the space company SpaceX and the electric vehicle company Tesla. In 1995, Musk co-founded Zip2, a web software company that pro",
+            "best_evidence_sentence": "In 1995, Musk co-founded Zip2, a web software company that provided business directories and maps for newspapers.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "X.com is a company co-founded by Elon Musk.",
+            "required": true,
+            "keywords": [
+              "X.com"
+            ],
+            "golden_passage_title": "Elon Musk",
+            "golden_evidence": "Musk then co-founded X.com, an online financial services company, in 1999.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6203,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Elon Musk co-founded X.com, an online financial services company, in 1999.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "SpaceX is a company founded by Elon Musk.",
+            "required": true,
+            "keywords": [
+              "SpaceX"
+            ],
+            "golden_passage_title": "SpaceX",
+            "golden_evidence": "SpaceX was founded in 2002 by Elon Musk with the goal of reducing space transportation costs.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.702,
+            "cite_score": 1.3995,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Elon Musk founded SpaceX in 2002 with the goal of reducing space transportation costs and enabling the colonization of Mars.",
+            "best_evidence_passage_title": "SpaceX",
+            "best_evidence_passage_text": "Space Exploration Technologies Corp., commonly referred to as SpaceX, is an American spacecraft manufacturer and space launch provider. SpaceX was founded in 2002 by Elon Musk with the goal of reducin",
+            "best_evidence_sentence": "ceX was founded in 2002 by Elon Musk with the goal of reducing space transportation costs and enabling the colonization of Mars. The",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Tesla is a company co-founded by Elon Musk.",
+            "required": true,
+            "keywords": [
+              "Tesla"
+            ],
+            "golden_passage_title": "Tesla, Inc.",
+            "golden_evidence": "A lawsuit settlement in 2009 allows five people, including Musk, Eberhard, Tarpenning, JB Straubel, and Ian Wright, to call themselves co-founders of Tesla.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7143,
+            "cite_score": 1.4106,
+            "n_covering_claims": 2,
+            "best_covering_claim": "A lawsuit settlement in 2009 allows Elon Musk to be called a co-founder of Tesla.",
+            "best_evidence_passage_title": "Tesla, Inc.",
+            "best_evidence_passage_text": "Tesla, Inc. is an American multinational automotive and clean energy company headquartered in Austin, Texas. Tesla was incorporated in 2003 by Martin Eberhard and Marc Tarpenning. Elon Musk joined as ",
+            "best_evidence_sentence": "wsuit settlement in 2009 allows five people, including Musk, Eberhard, Tarpenning, JB Straubel, and Ian Wright, to call themselves co-founders of Tesla.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Neuralink is a company founded by Elon Musk.",
+            "required": true,
+            "keywords": [
+              "Neuralink"
+            ],
+            "golden_passage_title": "Neuralink",
+            "golden_evidence": "Neuralink Corporation is a neurotechnology company founded by Elon Musk and others in 2016.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6216,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Elon Musk co-founded Neuralink Corporation in 2016, a neurotechnology company that develops brain-computer interface devices.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "The Boring Company is a company founded by Elon Musk.",
+            "required": true,
+            "keywords": [
+              "The Boring Company"
+            ],
+            "golden_passage_title": "The Boring Company",
+            "golden_evidence": "The Boring Company is an American infrastructure and tunnel construction company founded by Elon Musk in 2016.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6305,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Elon Musk founded The Boring Company in 2016, an infrastructure and tunnel construction company created to build underground transportation tunnels to reduce traffic congestion.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n6",
+            "nugget_text": "Zip2 was acquired by Compaq in 1999.",
+            "required": false,
+            "keywords": [
+              "Compaq",
+              "1999"
+            ],
+            "golden_passage_title": "Elon Musk",
+            "golden_evidence": "Compaq acquired Zip2 in 1999 for $307 million.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 3,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 6,
+        "n_required_covered": 6,
+        "n_required_cited": 3,
+        "required_precision": 0.5,
+        "required_recall": 0.5,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What countries have hosted the FIFA World Cup in the 21st century?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6667,
+        "nugget_recall": 0.5714,
+        "nugget_coverage": 0.8571,
+        "n_nuggets": 7,
+        "n_covered": 6,
+        "n_cited": 4,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "South Korea hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "South Korea"
+            ],
+            "golden_passage_title": "2002 FIFA World Cup",
+            "golden_evidence": "It was held in South Korea and Japan, making it the first World Cup to be hosted in Asia.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6623,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "South Korea and Japan hosted the 2002 FIFA World Cup.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Japan hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "Japan"
+            ],
+            "golden_passage_title": "2002 FIFA World Cup",
+            "golden_evidence": "It was held in South Korea and Japan, making it the first World Cup to be hosted in Asia.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Germany hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "Germany"
+            ],
+            "golden_passage_title": "2006 FIFA World Cup",
+            "golden_evidence": "The 2006 FIFA World Cup took place in Germany from June 9 to July 9, 2006.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7537,
+            "cite_score": 1.3839,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Germany hosted the 2006 FIFA World Cup.",
+            "best_evidence_passage_title": "2006 FIFA World Cup",
+            "best_evidence_passage_text": "The 2006 FIFA World Cup took place in Germany from June 9 to July 9, 2006. Italy won the tournament by defeating France in the final on penalties. The event was notable for the head-butting incident i",
+            "best_evidence_sentence": "The 2006 FIFA World Cup took place in Germany from June 9 to July 9, 2006.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "South Africa hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "South Africa"
+            ],
+            "golden_passage_title": "2010 FIFA World Cup",
+            "golden_evidence": "The 2010 FIFA World Cup was held in South Africa, becoming the first World Cup on the African continent.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7817,
+            "cite_score": 1.4165,
+            "n_covering_claims": 2,
+            "best_covering_claim": "South Africa hosted the 2010 FIFA World Cup.",
+            "best_evidence_passage_title": "2010 FIFA World Cup",
+            "best_evidence_passage_text": "The 2010 FIFA World Cup was held in South Africa, becoming the first World Cup on the African continent. Spain won the tournament by defeating the Netherlands 1-0 in the final. The tournament was memo",
+            "best_evidence_sentence": "The 2010 FIFA World Cup was held in South Africa, becoming the first World Cup on the African continent.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Brazil hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "Brazil"
+            ],
+            "golden_passage_title": "2014 FIFA World Cup",
+            "golden_evidence": "It was held in Brazil from June 12 to July 13, 2014.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6474,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Brazil hosted the 2014 FIFA World Cup.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "Russia hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "Russia"
+            ],
+            "golden_passage_title": "FIFA World Cup hosts",
+            "golden_evidence": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7471,
+            "cite_score": 1.4269,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Russia hosted the 2018 FIFA World Cup.",
+            "best_evidence_passage_title": "FIFA World Cup hosts",
+            "best_evidence_passage_text": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe. France won the tournament by defeating Croatia 4-2 in the final. The 2022 FIFA World Cup was held in Qatar,",
+            "best_evidence_sentence": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n6",
+            "nugget_text": "Qatar hosted the FIFA World Cup in the 21st century.",
+            "required": true,
+            "keywords": [
+              "Qatar"
+            ],
+            "golden_passage_title": "FIFA World Cup hosts",
+            "golden_evidence": "The 2022 FIFA World Cup was held in Qatar, the first World Cup in the Middle East.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7404,
+            "cite_score": 1.3864,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Qatar hosted the 2022 FIFA World Cup.",
+            "best_evidence_passage_title": "FIFA World Cup hosts",
+            "best_evidence_passage_text": "Russia hosted the 2018 FIFA World Cup, making it the first World Cup held in Eastern Europe. France won the tournament by defeating Croatia 4-2 in the final. The 2022 FIFA World Cup was held in Qatar,",
+            "best_evidence_sentence": "The 2022 FIFA World Cup was held in Qatar, the first World Cup in the Middle East.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 9,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 7,
+        "n_required_covered": 6,
+        "n_required_cited": 4,
+        "required_precision": 0.6667,
+        "required_recall": 0.5714,
+        "required_coverage": 0.8571,
+        "n_optional": 0,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What novels were written by Agatha Christie?",
+      "nugget_metrics": {
+        "nugget_precision": 0.75,
+        "nugget_recall": 0.75,
+        "nugget_coverage": 1,
+        "n_nuggets": 8,
+        "n_covered": 8,
+        "n_cited": 6,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Mysterious Affair at Styles is a novel written by Agatha Christie.",
+            "required": true,
+            "keywords": [
+              "The Mysterious Affair at Styles"
+            ],
+            "golden_passage_title": "Agatha Christie",
+            "golden_evidence": "Her debut novel, The Mysterious Affair at Styles, was published in 1920 and introduced the Belgian detective Hercule Poirot.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.7107,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The Mysterious Affair at Styles was Agatha Christie's debut novel published in 1920.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Murder on the Orient Express is a novel written by Agatha Christie.",
+            "required": true,
+            "keywords": [
+              "Murder on the Orient Express"
+            ],
+            "golden_passage_title": "Murder on the Orient Express",
+            "golden_evidence": "Murder on the Orient Express is a detective novel by Agatha Christie first published in 1934.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8641,
+            "cite_score": 1.4141,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Murder on the Orient Express was published in 1934.",
+            "best_evidence_passage_title": "Murder on the Orient Express",
+            "best_evidence_passage_text": "Murder on the Orient Express is a detective novel by Agatha Christie first published in 1934. The story features Hercule Poirot, who investigates a murder that took place on the famous luxury train. P",
+            "best_evidence_sentence": "Murder on the Orient Express is a detective novel by Agatha Christie first published in 1934.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Death on the Nile is a novel written by Agatha Christie.",
+            "required": true,
+            "keywords": [
+              "Death on the Nile"
+            ],
+            "golden_passage_title": "Death on the Nile",
+            "golden_evidence": "Death on the Nile is a work of detective fiction by Agatha Christie, first published in 1937.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8271,
+            "cite_score": 1.4288,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Death on the Nile was published in 1937.",
+            "best_evidence_passage_title": "Death on the Nile",
+            "best_evidence_passage_text": "Death on the Nile is a work of detective fiction by Agatha Christie, first published in 1937. The story follows Hercule Poirot, who investigates a murder committed on a cruise ship sailing the Nile in",
+            "best_evidence_sentence": "Death on the Nile is a work of detective fiction by Agatha Christie, first published in 1937.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "And Then There Were None is a novel written by Agatha Christie.",
+            "required": true,
+            "keywords": [
+              "And Then There Were None"
+            ],
+            "golden_passage_title": "And Then There Were None",
+            "golden_evidence": "And Then There Were None is a mystery novel by Agatha Christie, published in 1939.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8523,
+            "cite_score": 1.3817,
+            "n_covering_claims": 3,
+            "best_covering_claim": "And Then There Were None was published in 1939.",
+            "best_evidence_passage_title": "And Then There Were None",
+            "best_evidence_passage_text": "And Then There Were None is a mystery novel by Agatha Christie, published in 1939. Ten strangers are invited to a remote island mansion and are killed one by one, each corresponding to a verse from a ",
+            "best_evidence_sentence": "And Then There Were None is a mystery novel by Agatha Christie, published in 1939.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "The ABC Murders is a novel written by Agatha Christie.",
+            "required": true,
+            "keywords": [
+              "The ABC Murders"
+            ],
+            "golden_passage_title": "Agatha Christie",
+            "golden_evidence": "Christie also wrote The ABC Murders in 1936, in which Poirot investigates a series of seemingly random murders announced in advance by an alphabetically-organized killer.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8183,
+            "cite_score": 1.3389,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The ABC Murders was published in 1936.",
+            "best_evidence_passage_title": "Agatha Christie",
+            "best_evidence_passage_text": "Dame Agatha Mary Clarissa Christie was an English writer known for her sixty-six detective novels and fourteen short story collections. She is the best-selling fiction writer of all time. Her debut no",
+            "best_evidence_sentence": "Christie also wrote The ABC Murders in 1936, in which Poirot investigates a series of seemingly random murders announced in advance by an alphabetically-organized killer.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "Crooked House is a novel written by Agatha Christie.",
+            "required": true,
+            "keywords": [
+              "Crooked House"
+            ],
+            "golden_passage_title": "Agatha Christie",
+            "golden_evidence": "Her novel Crooked House, published in 1949, was one of her personal favorites.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8077,
+            "cite_score": 1.3013,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Crooked House was published in 1949.",
+            "best_evidence_passage_title": "Agatha Christie",
+            "best_evidence_passage_text": "Dame Agatha Mary Clarissa Christie was an English writer known for her sixty-six detective novels and fourteen short story collections. She is the best-selling fiction writer of all time. Her debut no",
+            "best_evidence_sentence": "Her novel Crooked House, published in 1949, was one of her personal favorites.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n6",
+            "nugget_text": "Curtain is a novel written by Agatha Christie featuring Hercule Poirot's final case.",
+            "required": false,
+            "keywords": [
+              "Curtain"
+            ],
+            "golden_passage_title": "Hercule Poirot",
+            "golden_evidence": "His final case appeared in Curtain, written during World War II but published in 1975, just before Christie's death.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7335,
+            "cite_score": 1.1873,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Curtain was written during World War II but published in 1975.",
+            "best_evidence_passage_title": "Hercule Poirot",
+            "best_evidence_passage_text": "Hercule Poirot is a fictional Belgian detective created by Agatha Christie. He first appeared in The Mysterious Affair at Styles in 1920 and went on to feature in thirty-three novels and more than fif",
+            "best_evidence_sentence": "His final case appeared in Curtain, written during World War II but published in 1975, just before Christie's death.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n7",
+            "nugget_text": "And Then There Were None is the best-selling mystery novel of all time.",
+            "required": false,
+            "keywords": [
+              "And Then There Were None",
+              "best-selling"
+            ],
+            "golden_passage_title": "And Then There Were None",
+            "golden_evidence": "The novel is the best-selling mystery novel of all time, with over 100 million copies sold.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.7521,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "And Then There Were None is the best-selling mystery novel of all time.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 10,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 6,
+        "n_required_covered": 6,
+        "n_required_cited": 5,
+        "required_precision": 0.8333,
+        "required_recall": 0.8333,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 2,
+        "n_optional_cited": 1,
+        "optional_precision": 0.5,
+        "optional_recall": 0.5,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What countries won the FIFA World Cup?",
+      "nugget_metrics": {
+        "nugget_precision": 0.4444,
+        "nugget_recall": 0.4,
+        "nugget_coverage": 0.9,
+        "n_nuggets": 10,
+        "n_covered": 9,
+        "n_cited": 4,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Brazil has won the FIFA World Cup.",
+            "required": true,
+            "keywords": [
+              "Brazil"
+            ],
+            "golden_passage_title": "FIFA World Cup",
+            "golden_evidence": "Brazil has won the tournament a record five times, in 1958, 1962, 1970, 1994, and 2002.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.622,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Brazil has won the FIFA World Cup five times, in 1958, 1962, 1970, 1994, and 2002.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Germany has won the FIFA World Cup.",
+            "required": true,
+            "keywords": [
+              "Germany"
+            ],
+            "golden_passage_title": "FIFA World Cup",
+            "golden_evidence": "Germany and Italy have each won four times.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6457,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Germany has won the FIFA World Cup four times.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Italy has won the FIFA World Cup.",
+            "required": true,
+            "keywords": [
+              "Italy"
+            ],
+            "golden_passage_title": "FIFA World Cup",
+            "golden_evidence": "Germany and Italy have each won four times.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6341,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Italy has won the FIFA World Cup four times.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Uruguay has won the FIFA World Cup.",
+            "required": true,
+            "keywords": [
+              "Uruguay"
+            ],
+            "golden_passage_title": "FIFA World Cup",
+            "golden_evidence": "Uruguay won the inaugural edition in 1930 and again in 1950.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6467,
+            "cite_score": 0,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Uruguay won the FIFA World Cup again in 1950.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Argentina has won the FIFA World Cup.",
+            "required": true,
+            "keywords": [
+              "Argentina"
+            ],
+            "golden_passage_title": "Argentina national football team",
+            "golden_evidence": "Argentina has won the FIFA World Cup three times: in 1978, 1986, and 2022.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7656,
+            "cite_score": 1.4177,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Argentina won the FIFA World Cup in 1978.",
+            "best_evidence_passage_title": "Argentina national football team",
+            "best_evidence_passage_text": "The Argentina national football team represents Argentina in men's international football. Argentina has won the FIFA World Cup three times: in 1978, 1986, and 2022. The 1986 victory was famously led ",
+            "best_evidence_sentence": "Argentina has won the FIFA World Cup three times: in 1978, 1986, and 2022.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "France has won the FIFA World Cup.",
+            "required": true,
+            "keywords": [
+              "France"
+            ],
+            "golden_passage_title": "France national football team",
+            "golden_evidence": "The France national football team has won the FIFA World Cup twice.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7167,
+            "cite_score": 1.4137,
+            "n_covering_claims": 3,
+            "best_covering_claim": "France won the FIFA World Cup in 1998 when France hosted the tournament.",
+            "best_evidence_passage_title": "France national football team",
+            "best_evidence_passage_text": "The France national football team has won the FIFA World Cup twice. The first victory came in 1998, when France hosted the tournament and won under coach Aimé Jacquet, with Zinedine Zidane scoring twi",
+            "best_evidence_sentence": "The first victory came in 1998, when France hosted the tournament and won under coach Aimé Jacquet, with Zinedine Zidane scoring twice in the final against Brazil.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n6",
+            "nugget_text": "England has won the FIFA World Cup.",
+            "required": true,
+            "keywords": [
+              "England"
+            ],
+            "golden_passage_title": "England national football team",
+            "golden_evidence": "The England national football team has won the FIFA World Cup once, in 1966.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7213,
+            "cite_score": 1.3982,
+            "n_covering_claims": 2,
+            "best_covering_claim": "England won the FIFA World Cup in 1966 when the tournament was held at Wembley Stadium in London.",
+            "best_evidence_passage_title": "England national football team",
+            "best_evidence_passage_text": "The England national football team has won the FIFA World Cup once, in 1966, when the tournament was held at Wembley Stadium in London. England defeated West Germany 4-2 in the final, with Geoff Hurst",
+            "best_evidence_sentence": "The England national football team has won the FIFA World Cup once, in 1966, when the tournament was held at Wembley Stadium in London.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n7",
+            "nugget_text": "Spain has won the FIFA World Cup.",
+            "required": true,
+            "keywords": [
+              "Spain"
+            ],
+            "golden_passage_title": "Spain national football team",
+            "golden_evidence": "The Spain national football team won its only FIFA World Cup in 2010, hosted by South Africa.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7246,
+            "cite_score": 1.3939,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Spain won the FIFA World Cup in 2010 hosted by South Africa.",
+            "best_evidence_passage_title": "Spain national football team",
+            "best_evidence_passage_text": "The Spain national football team won its only FIFA World Cup in 2010, hosted by South Africa. Spain defeated the Netherlands 1-0 in the final, with Andrés Iniesta scoring the winning goal in extra tim",
+            "best_evidence_sentence": "The Spain national football team won its only FIFA World Cup in 2010, hosted by South Africa.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n8",
+            "nugget_text": "Lionel Messi captained Argentina to win the 2022 FIFA World Cup.",
+            "required": false,
+            "keywords": [
+              "Messi",
+              "2022"
+            ],
+            "golden_passage_title": "Argentina national football team",
+            "golden_evidence": "Lionel Messi captained the 2022 winning team in Qatar, finally achieving his long-sought World Cup title.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n9",
+            "nugget_text": "Andrés Iniesta scored the winning goal in Spain's 2010 World Cup final.",
+            "required": false,
+            "keywords": [
+              "Iniesta",
+              "2010"
+            ],
+            "golden_passage_title": "Spain national football team",
+            "golden_evidence": "Spain defeated the Netherlands 1-0 in the final, with Andrés Iniesta scoring the winning goal in extra time.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6324,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Andrés Iniesta scored the winning goal in the Spain 2010 FIFA World Cup final against the Netherlands.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 5,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 8,
+        "n_required_covered": 8,
+        "n_required_cited": 4,
+        "required_precision": 0.5,
+        "required_recall": 0.5,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0.5,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What planets in the Solar System have known natural satellites (moons)?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.8889,
+        "nugget_coverage": 0.8889,
+        "n_nuggets": 9,
+        "n_covered": 8,
+        "n_cited": 8,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Earth has natural satellites.",
+            "required": true,
+            "keywords": [
+              "Earth"
+            ],
+            "golden_passage_title": "Moons of Uranus and Neptune",
+            "golden_evidence": "Earth's only natural satellite, the Moon, is the fifth largest in the Solar System.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7383,
+            "cite_score": 0.8072,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Earth has confirmed natural satellites.",
+            "best_evidence_passage_title": "Natural satellite",
+            "best_evidence_passage_text": "A natural satellite is a celestial body that orbits a planet or other body larger than itself. The Solar System's planets with confirmed natural satellites include Earth, Mars, Jupiter, Saturn, Uranus",
+            "best_evidence_sentence": "The Solar System's planets with confirmed natural satellites include Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Mars has natural satellites.",
+            "required": true,
+            "keywords": [
+              "Mars"
+            ],
+            "golden_passage_title": "Mars",
+            "golden_evidence": "It has two small natural satellites, Phobos and Deimos, which were discovered by Asaph Hall in 1877.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7313,
+            "cite_score": 1.3048,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Mars has confirmed natural satellites.",
+            "best_evidence_passage_title": "Mars",
+            "best_evidence_passage_text": "Mars is the fourth planet from the Sun and the second smallest planet in the Solar System. It has two small natural satellites, Phobos and Deimos, which were discovered by Asaph Hall in 1877. Both moo",
+            "best_evidence_sentence": "It has two small natural satellites, Phobos and Deimos, which were discovered by Asaph Hall in 1877.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Jupiter has natural satellites.",
+            "required": true,
+            "keywords": [
+              "Jupiter"
+            ],
+            "golden_passage_title": "Moons of Jupiter",
+            "golden_evidence": "Jupiter has 95 confirmed moons as of 2023.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.751,
+            "cite_score": 1.3712,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Jupiter has confirmed natural satellites.",
+            "best_evidence_passage_title": "Moons of Jupiter",
+            "best_evidence_passage_text": "Jupiter has 95 confirmed moons as of 2023, making it one of the planets with the most natural satellites in the Solar System. The four largest moons—Io, Europa, Ganymede, and Callisto—were discovered ",
+            "best_evidence_sentence": "Jupiter has 95 confirmed moons as of 2023, making it one of the planets with the most natural satellites in the Solar System.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Saturn has natural satellites.",
+            "required": true,
+            "keywords": [
+              "Saturn"
+            ],
+            "golden_passage_title": "Moons of Saturn",
+            "golden_evidence": "Saturn has 146 confirmed moons, the most of any planet in the Solar System.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7578,
+            "cite_score": 1.4051,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Saturn has 146 confirmed moons.",
+            "best_evidence_passage_title": "Moons of Saturn",
+            "best_evidence_passage_text": "Saturn has 146 confirmed moons, the most of any planet in the Solar System. The largest moon, Titan, is the second largest moon in the Solar System and is the only moon known to have a dense atmospher",
+            "best_evidence_sentence": "Saturn has 146 confirmed moons, the most of any planet in the Solar System.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Uranus has natural satellites.",
+            "required": true,
+            "keywords": [
+              "Uranus"
+            ],
+            "golden_passage_title": "Moons of Uranus and Neptune",
+            "golden_evidence": "Uranus has 28 confirmed moons, all of which are named after characters from the works of William Shakespeare and Alexander Pope.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7598,
+            "cite_score": 1.3922,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Uranus has 28 confirmed moons.",
+            "best_evidence_passage_title": "Moons of Uranus and Neptune",
+            "best_evidence_passage_text": "Uranus has 28 confirmed moons, all of which are named after characters from the works of William Shakespeare and Alexander Pope. The five largest moons are Miranda, Ariel, Umbriel, Titania, and Oberon",
+            "best_evidence_sentence": "Uranus has 28 confirmed moons, all of which are named after characters from the works of William Shakespeare and Alexander Pope.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "Neptune has natural satellites.",
+            "required": true,
+            "keywords": [
+              "Neptune"
+            ],
+            "golden_passage_title": "Moons of Uranus and Neptune",
+            "golden_evidence": "Neptune has 16 confirmed moons.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7676,
+            "cite_score": 1.3737,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Neptune has 16 confirmed moons.",
+            "best_evidence_passage_title": "Moons of Uranus and Neptune",
+            "best_evidence_passage_text": "Uranus has 28 confirmed moons, all of which are named after characters from the works of William Shakespeare and Alexander Pope. The five largest moons are Miranda, Ariel, Umbriel, Titania, and Oberon",
+            "best_evidence_sentence": "Neptune has 16 confirmed moons.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n6",
+            "nugget_text": "Mercury and Venus are the only planets in the Solar System with no known moons.",
+            "required": false,
+            "keywords": [
+              "Mercury",
+              "Venus"
+            ],
+            "golden_passage_title": "Natural satellite",
+            "golden_evidence": "Mercury and Venus are the only planets in the Solar System with no known moons.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.4774,
+            "cite_score": 1.3545,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Mercury has no known moons.",
+            "best_evidence_passage_title": "Natural satellite",
+            "best_evidence_passage_text": "A natural satellite is a celestial body that orbits a planet or other body larger than itself. The Solar System's planets with confirmed natural satellites include Earth, Mars, Jupiter, Saturn, Uranus",
+            "best_evidence_sentence": "Mercury and Venus are the only planets in the Solar System with no known moons.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n7",
+            "nugget_text": "Europa, a moon of Jupiter, is believed to harbor a liquid water ocean beneath its icy surface.",
+            "required": false,
+            "keywords": [
+              "Europa"
+            ],
+            "golden_passage_title": "Moons of Jupiter",
+            "golden_evidence": "Europa is of particular scientific interest because it is believed to harbor a liquid water ocean beneath its icy surface.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7437,
+            "cite_score": 1.2423,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Europa is one of the four Galilean moons.",
+            "best_evidence_passage_title": "Moons of Jupiter",
+            "best_evidence_passage_text": "Jupiter has 95 confirmed moons as of 2023, making it one of the planets with the most natural satellites in the Solar System. The four largest moons—Io, Europa, Ganymede, and Callisto—were discovered ",
+            "best_evidence_sentence": "The four largest moons—Io, Europa, Ganymede, and Callisto—were discovered by Galileo Galilei in 1610 and are known as the Galilean moons.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n8",
+            "nugget_text": "Titan, a moon of Saturn, is the only moon known to have a dense atmosphere.",
+            "required": false,
+            "keywords": [
+              "Titan"
+            ],
+            "golden_passage_title": "Moons of Saturn",
+            "golden_evidence": "The largest moon, Titan, is the second largest moon in the Solar System and is the only moon known to have a dense atmosphere.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 27,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 6,
+        "n_required_covered": 6,
+        "n_required_cited": 6,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 3,
+        "n_optional_covered": 2,
+        "n_optional_cited": 2,
+        "optional_precision": 1,
+        "optional_recall": 0.6667,
+        "optional_coverage": 0.6667,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What novels were written by George Orwell?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.8571,
+        "nugget_coverage": 0.8571,
+        "n_nuggets": 7,
+        "n_covered": 6,
+        "n_cited": 6,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Burmese Days is a novel written by George Orwell.",
+            "required": true,
+            "keywords": [
+              "Burmese Days"
+            ],
+            "golden_passage_title": "George Orwell bibliography",
+            "golden_evidence": "His first novel, Burmese Days, was published in 1934.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8024,
+            "cite_score": 1.3579,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Burmese Days was published in 1934.",
+            "best_evidence_passage_title": "George Orwell bibliography",
+            "best_evidence_passage_text": "George Orwell, born Eric Arthur Blair, was a prolific British writer. His fiction includes six novels written between 1934 and 1949. His first novel, Burmese Days, was published in 1934, drawing on hi",
+            "best_evidence_sentence": "His first novel, Burmese Days, was published in 1934, drawing on his experiences as a colonial officer in Burma.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "A Clergyman's Daughter is a novel written by George Orwell.",
+            "required": true,
+            "keywords": [
+              "A Clergyman's Daughter"
+            ],
+            "golden_passage_title": "George Orwell bibliography",
+            "golden_evidence": "A Clergyman's Daughter followed in 1935.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8465,
+            "cite_score": 1.042,
+            "n_covering_claims": 1,
+            "best_covering_claim": "A Clergyman's Daughter was published in 1935.",
+            "best_evidence_passage_title": "George Orwell bibliography",
+            "best_evidence_passage_text": "George Orwell, born Eric Arthur Blair, was a prolific British writer. His fiction includes six novels written between 1934 and 1949. His first novel, Burmese Days, was published in 1934, drawing on hi",
+            "best_evidence_sentence": "A Clergyman's Daughter followed in 1935, and Keep the Aspidistra Flying in 1936.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Keep the Aspidistra Flying is a novel written by George Orwell.",
+            "required": true,
+            "keywords": [
+              "Keep the Aspidistra Flying"
+            ],
+            "golden_passage_title": "George Orwell bibliography",
+            "golden_evidence": "Keep the Aspidistra Flying in 1936.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8591,
+            "cite_score": 1.0969,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Keep the Aspidistra Flying was published in 1936.",
+            "best_evidence_passage_title": "George Orwell bibliography",
+            "best_evidence_passage_text": "George Orwell, born Eric Arthur Blair, was a prolific British writer. His fiction includes six novels written between 1934 and 1949. His first novel, Burmese Days, was published in 1934, drawing on hi",
+            "best_evidence_sentence": "A Clergyman's Daughter followed in 1935, and Keep the Aspidistra Flying in 1936.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Animal Farm is a novel written by George Orwell.",
+            "required": true,
+            "keywords": [
+              "Animal Farm"
+            ],
+            "golden_passage_title": "Animal Farm",
+            "golden_evidence": "Animal Farm is a satirical allegorical novella by George Orwell, published in August 1945.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7801,
+            "cite_score": 1.4736,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Animal Farm was published in August 1945.",
+            "best_evidence_passage_title": "Animal Farm",
+            "best_evidence_passage_text": "Animal Farm is a satirical allegorical novella by George Orwell, published in August 1945. The story tells of a group of farm animals who rebel against their human farmer, hoping to create a society w",
+            "best_evidence_sentence": "Animal Farm is a satirical allegorical novella by George Orwell, published in August 1945.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Nineteen Eighty-Four is a novel written by George Orwell.",
+            "required": true,
+            "keywords": [
+              "Nineteen Eighty-Four",
+              "1984"
+            ],
+            "golden_passage_title": "Nineteen Eighty-Four",
+            "golden_evidence": "Nineteen Eighty-Four, often published as 1984, is a dystopian social science fiction novel and cautionary tale written by Orwell.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8496,
+            "cite_score": 1.4676,
+            "n_covering_claims": 5,
+            "best_covering_claim": "Nineteen Eighty-Four is often published as 1984.",
+            "best_evidence_passage_title": "Nineteen Eighty-Four",
+            "best_evidence_passage_text": "Nineteen Eighty-Four, often published as 1984, is a dystopian social science fiction novel and cautionary tale written by Orwell. It was published on 8 June 1949 by Secker & Warburg. The novel is set ",
+            "best_evidence_sentence": "Nineteen Eighty-Four, often published as 1984, is a dystopian social science fiction novel and cautionary tale written by Orwell.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "Coming Up for Air is a novel written by George Orwell.",
+            "required": true,
+            "keywords": [
+              "Coming Up for Air"
+            ],
+            "golden_passage_title": "Coming Up for Air",
+            "golden_evidence": "Coming Up for Air is a novel by George Orwell published in 1939.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8271,
+            "cite_score": 1.4459,
+            "n_covering_claims": 3,
+            "best_covering_claim": "Coming Up for Air was published in 1939.",
+            "best_evidence_passage_title": "Coming Up for Air",
+            "best_evidence_passage_text": "Coming Up for Air is a novel by George Orwell published in 1939. The novel's narrator, George Bowling, is a middle-aged insurance salesman who reflects on his youth and tries to revisit the places of ",
+            "best_evidence_sentence": "Coming Up for Air is a novel by George Orwell published in 1939.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n6",
+            "nugget_text": "Animal Farm is a critique of the Soviet Union under Stalin.",
+            "required": false,
+            "keywords": [
+              "Animal Farm",
+              "Stalin"
+            ],
+            "golden_passage_title": "Animal Farm",
+            "golden_evidence": "The novella is widely interpreted as a critique of the Soviet Union under Stalin.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 10,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 6,
+        "n_required_covered": 6,
+        "n_required_cited": 6,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What programming languages were created by Guido van Rossum?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.75,
+        "nugget_coverage": 0.75,
+        "n_nuggets": 4,
+        "n_covered": 3,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Python is a programming language created by Guido van Rossum.",
+            "required": true,
+            "keywords": [
+              "Python"
+            ],
+            "golden_passage_title": "Python (programming language)",
+            "golden_evidence": "It was created by Guido van Rossum and first released in 1991.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7345,
+            "cite_score": 0.495,
+            "n_covering_claims": 6,
+            "best_covering_claim": "Python inherited several design principles from ABC.",
+            "best_evidence_passage_title": "ABC (programming language)",
+            "best_evidence_passage_text": "ABC is an imperative general-purpose programming language and programming environment developed at CWI in the Netherlands. It was designed by Lambert Meertens, Leo Geurts, and others, with contributio",
+            "best_evidence_sentence": "Python was directly influenced by ABC, inheriting several of its design principles.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "ABC is a programming language that Guido van Rossum contributed to creating.",
+            "required": true,
+            "keywords": [
+              "ABC"
+            ],
+            "golden_passage_title": "ABC (programming language)",
+            "golden_evidence": "ABC is an imperative general-purpose programming language developed at CWI in the Netherlands, with contributions from Guido van Rossum in the early 1980s.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7203,
+            "cite_score": 0.6556,
+            "n_covering_claims": 4,
+            "best_covering_claim": "Guido van Rossum made contributions to ABC.",
+            "best_evidence_passage_title": "Guido van Rossum",
+            "best_evidence_passage_text": "Guido van Rossum is a Dutch programmer best known as the creator of the Python programming language. He was born on January 31, 1956. Van Rossum served as Python's Benevolent Dictator For Life until J",
+            "best_evidence_sentence": "Before Python, van Rossum also contributed to the development of the ABC programming language while working at Centrum Wiskunde & Informatica in the Netherlands.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Python was first released in 1991.",
+            "required": false,
+            "keywords": [
+              "1991"
+            ],
+            "golden_passage_title": "Python (programming language)",
+            "golden_evidence": "It was created by Guido van Rossum and first released in 1991.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Python was directly influenced by ABC.",
+            "required": false,
+            "keywords": [
+              "ABC",
+              "influence"
+            ],
+            "golden_passage_title": "ABC (programming language)",
+            "golden_evidence": "Python was directly influenced by ABC, inheriting several of its design principles.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7946,
+            "cite_score": 1.3847,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Python was directly influenced by ABC.",
+            "best_evidence_passage_title": "ABC (programming language)",
+            "best_evidence_passage_text": "ABC is an imperative general-purpose programming language and programming environment developed at CWI in the Netherlands. It was designed by Lambert Meertens, Leo Geurts, and others, with contributio",
+            "best_evidence_sentence": "Python was directly influenced by ABC, inheriting several of its design principles.",
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 7,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 1,
+        "n_optional_cited": 1,
+        "optional_precision": 1,
+        "optional_recall": 0.5,
+        "optional_coverage": 0.5,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What countries are members of the G7?",
+      "nugget_metrics": {
+        "nugget_precision": 0.25,
+        "nugget_recall": 0.125,
+        "nugget_coverage": 0.5,
+        "n_nuggets": 8,
+        "n_covered": 4,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Canada is a member of the G7.",
+            "required": true,
+            "keywords": [
+              "Canada"
+            ],
+            "golden_passage_title": "G7",
+            "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6514,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Canada was added to the G7 in 1976.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "France is a member of the G7.",
+            "required": true,
+            "keywords": [
+              "France"
+            ],
+            "golden_passage_title": "G7",
+            "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Germany is a member of the G7.",
+            "required": true,
+            "keywords": [
+              "Germany"
+            ],
+            "golden_passage_title": "G7",
+            "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Italy is a member of the G7.",
+            "required": true,
+            "keywords": [
+              "Italy"
+            ],
+            "golden_passage_title": "G7",
+            "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Japan is a member of the G7.",
+            "required": true,
+            "keywords": [
+              "Japan"
+            ],
+            "golden_passage_title": "G7",
+            "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.724,
+            "cite_score": 1.0185,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Japan has been a member of the G7 since the forum's inception.",
+            "best_evidence_passage_title": "Japan and the G7",
+            "best_evidence_passage_text": "Japan has been a member of the G7 since the forum's inception in 1975. It is the only Asian country in the group. Japan hosted the G7 summit in Hiroshima in May 2023, where leaders focused on issues i",
+            "best_evidence_sentence": "Japan has been a member of the G7 since the forum's inception in 1975.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "The United Kingdom is a member of the G7.",
+            "required": true,
+            "keywords": [
+              "United Kingdom"
+            ],
+            "golden_passage_title": "G7",
+            "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6393,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "The members of the G7 are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n6",
+            "nugget_text": "The United States is a member of the G7.",
+            "required": true,
+            "keywords": [
+              "United States"
+            ],
+            "golden_passage_title": "G7",
+            "golden_evidence": "Its members are Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n7",
+            "nugget_text": "Japan is the only Asian country in the G7.",
+            "required": false,
+            "keywords": [
+              "Japan",
+              "Asia"
+            ],
+            "golden_passage_title": "Japan and the G7",
+            "golden_evidence": "It is the only Asian country in the group.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6643,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Japan is the only Asian country in the G7.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 3,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 7,
+        "n_required_covered": 3,
+        "n_required_cited": 1,
+        "required_precision": 0.3333,
+        "required_recall": 0.1429,
+        "required_coverage": 0.4286,
+        "n_optional": 1,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 1,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What vaccines were developed using mRNA technology?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.6667,
+        "nugget_coverage": 0.6667,
+        "n_nuggets": 3,
+        "n_covered": 2,
+        "n_cited": 2,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Pfizer-BioNTech COVID-19 vaccine was developed using mRNA technology.",
+            "required": true,
+            "keywords": [
+              "Pfizer",
+              "BioNTech",
+              "Comirnaty"
+            ],
+            "golden_passage_title": "Pfizer–BioNTech COVID-19 vaccine",
+            "golden_evidence": "The Pfizer–BioNTech COVID-19 vaccine is an mRNA-based vaccine against COVID-19 developed by BioNTech and Pfizer.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7644,
+            "cite_score": 1.4059,
+            "n_covering_claims": 3,
+            "best_covering_claim": "The Pfizer–BioNTech vaccine was developed using mRNA technology and is sold under the brand name Comirnaty.",
+            "best_evidence_passage_title": "Pfizer–BioNTech COVID-19 vaccine",
+            "best_evidence_passage_text": "The Pfizer–BioNTech COVID-19 vaccine, sold under the brand name Comirnaty, is an mRNA-based vaccine against COVID-19 developed by BioNTech and Pfizer. It was the first COVID-19 vaccine to receive emer",
+            "best_evidence_sentence": "The Pfizer–BioNTech COVID-19 vaccine, sold under the brand name Comirnaty, is an mRNA-based vaccine against COVID-19 developed by BioNTech and Pfizer.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The Moderna COVID-19 vaccine was developed using mRNA technology.",
+            "required": true,
+            "keywords": [
+              "Moderna",
+              "Spikevax"
+            ],
+            "golden_passage_title": "Moderna COVID-19 vaccine",
+            "golden_evidence": "The Moderna COVID-19 vaccine is an mRNA vaccine developed by Moderna.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7458,
+            "cite_score": 1.3922,
+            "n_covering_claims": 3,
+            "best_covering_claim": "The Moderna vaccine was developed using mRNA technology and is sold under the brand name Spikevax.",
+            "best_evidence_passage_title": "Moderna COVID-19 vaccine",
+            "best_evidence_passage_text": "The Moderna COVID-19 vaccine, sold under the brand name Spikevax, is an mRNA vaccine developed by Moderna. It received emergency use authorization from the FDA on December 18, 2020. Like the Pfizer–Bi",
+            "best_evidence_sentence": "The Moderna COVID-19 vaccine, sold under the brand name Spikevax, is an mRNA vaccine developed by Moderna.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The Pfizer-BioNTech vaccine received FDA emergency use authorization on December 11, 2020.",
+            "required": false,
+            "keywords": [
+              "FDA",
+              "December 2020"
+            ],
+            "golden_passage_title": "Pfizer–BioNTech COVID-19 vaccine",
+            "golden_evidence": "It was the first COVID-19 vaccine to receive emergency use authorization by the U.S. FDA, granted on December 11, 2020.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 4,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 2,
+        "n_required_covered": 2,
+        "n_required_cited": 2,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What mountains in the world exceed 8000 metres in height?",
+      "nugget_metrics": {
+        "nugget_precision": 0.6,
+        "nugget_recall": 0.5,
+        "nugget_coverage": 0.8333,
+        "n_nuggets": 6,
+        "n_covered": 5,
+        "n_cited": 3,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Mount Everest exceeds 8000 metres in height.",
+            "required": true,
+            "keywords": [
+              "Mount Everest"
+            ],
+            "golden_passage_title": "Mount Everest",
+            "golden_evidence": "Mount Everest is Earth's highest mountain above sea level with an elevation of 8,848.86 metres.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.749,
+            "cite_score": 0.7227,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Mount Everest is Earth's highest mountain above sea level at 8,848.86 metres.",
+            "best_evidence_passage_title": "K2",
+            "best_evidence_passage_text": "K2, at 8,611 metres above sea level, is the second-highest mountain on Earth, after Mount Everest. It is located on the China–Pakistan border in the Karakoram range. K2 is known as the Savage Mountain",
+            "best_evidence_sentence": "K2, at 8,611 metres above sea level, is the second-highest mountain on Earth, after Mount Everest.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "K2 exceeds 8000 metres in height.",
+            "required": true,
+            "keywords": [
+              "K2"
+            ],
+            "golden_passage_title": "K2",
+            "golden_evidence": "K2, at 8,611 metres above sea level, is the second-highest mountain on Earth.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.71,
+            "cite_score": 1.4516,
+            "n_covering_claims": 2,
+            "best_covering_claim": "K2 is the second-highest mountain on Earth at 8,611 metres.",
+            "best_evidence_passage_title": "K2",
+            "best_evidence_passage_text": "K2, at 8,611 metres above sea level, is the second-highest mountain on Earth, after Mount Everest. It is located on the China–Pakistan border in the Karakoram range. K2 is known as the Savage Mountain",
+            "best_evidence_sentence": "K2, at 8,611 metres above sea level, is the second-highest mountain on Earth, after Mount Everest.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Kangchenjunga exceeds 8000 metres in height.",
+            "required": true,
+            "keywords": [
+              "Kangchenjunga"
+            ],
+            "golden_passage_title": "Eight-thousander",
+            "golden_evidence": "The peaks include Mount Everest, K2, Kangchenjunga, Lhotse, Makalu, Cho Oyu, Dhaulagiri, Manaslu, Nanga Parbat, Annapurna, Gasherbrum I, Broad Peak, Gasherbrum II, and Shishapangma.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.665,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Kangchenjunga is one of the fourteen eight-thousander peaks.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Annapurna exceeds 8000 metres in height.",
+            "required": true,
+            "keywords": [
+              "Annapurna"
+            ],
+            "golden_passage_title": "Annapurna",
+            "golden_evidence": "Annapurna I, the tenth-highest mountain in the world at 8,091 metres.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7424,
+            "cite_score": 1.4349,
+            "n_covering_claims": 2,
+            "best_covering_claim": "Annapurna I is located in the Himalayas in north-central Nepal.",
+            "best_evidence_passage_title": "Annapurna",
+            "best_evidence_passage_text": "Annapurna is a massif in the Himalayas in north-central Nepal that includes one peak over 8,000 metres: Annapurna I, the tenth-highest mountain in the world at 8,091 metres. Annapurna I was the first ",
+            "best_evidence_sentence": "Annapurna is a massif in the Himalayas in north-central Nepal that includes one peak over 8,000 metres: Annapurna I, the tenth-highest mountain in the world at 8,091 metres.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "There are 14 mountains that exceed 8000 metres, all in the Himalayas or Karakoram.",
+            "required": false,
+            "keywords": [
+              "14",
+              "eight-thousander"
+            ],
+            "golden_passage_title": "Eight-thousander",
+            "golden_evidence": "There are 14 such peaks, all located in the Himalayan and Karakoram mountain ranges of Asia.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.3906,
+            "cite_score": 0,
+            "n_covering_claims": 12,
+            "best_covering_claim": "Lhotse is one of the fourteen eight-thousander peaks.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "Annapurna was the first eight-thousander to be climbed, in 1950.",
+            "required": false,
+            "keywords": [
+              "Annapurna",
+              "first climbed",
+              "1950"
+            ],
+            "golden_passage_title": "Annapurna",
+            "golden_evidence": "Annapurna I was the first eight-thousander to be climbed, on 3 June 1950.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 4,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 4,
+        "n_required_covered": 4,
+        "n_required_cited": 3,
+        "required_precision": 0.75,
+        "required_recall": 0.75,
+        "required_coverage": 1,
+        "n_optional": 2,
+        "n_optional_covered": 1,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0.5,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What architectural works were designed by Renzo Piano?",
+      "nugget_metrics": {
+        "nugget_precision": 0.3333,
+        "nugget_recall": 0.2,
+        "nugget_coverage": 0.6,
+        "n_nuggets": 5,
+        "n_covered": 3,
+        "n_cited": 1,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "The Centre Pompidou was designed by Renzo Piano.",
+            "required": true,
+            "keywords": [
+              "Centre Pompidou"
+            ],
+            "golden_passage_title": "Centre Georges Pompidou",
+            "golden_evidence": "It was designed by the architectural team of Renzo Piano, Richard Rogers, and Gianfranco Franchini.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "The Shard was designed by Renzo Piano.",
+            "required": true,
+            "keywords": [
+              "Shard"
+            ],
+            "golden_passage_title": "The Shard",
+            "golden_evidence": "Designed by Renzo Piano, it stands 309.6 metres tall, making it the tallest building in the United Kingdom.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7413,
+            "cite_score": 1.2674,
+            "n_covering_claims": 5,
+            "best_covering_claim": "The Shard is a 95-storey skyscraper.",
+            "best_evidence_passage_title": "The Shard",
+            "best_evidence_passage_text": "The Shard, also referred to as the Shard of Glass, is a 95-storey skyscraper in Southwark, London. Designed by Renzo Piano, it stands 309.6 metres tall, making it the tallest building in the United Ki",
+            "best_evidence_sentence": "The Shard, also referred to as the Shard of Glass, is a 95-storey skyscraper in Southwark, London.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "The Stavros Niarchos Foundation Cultural Centre was designed by Renzo Piano.",
+            "required": true,
+            "keywords": [
+              "Stavros Niarchos"
+            ],
+            "golden_passage_title": "Stavros Niarchos Foundation Cultural Centre",
+            "golden_evidence": "It was designed by Renzo Piano Building Workshop and opened in 2016.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6762,
+            "cite_score": 0,
+            "n_covering_claims": 3,
+            "best_covering_claim": "The Stavros Niarchos Foundation Cultural Centre opened in 2016.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "The Whitney Museum of American Art was designed by Renzo Piano.",
+            "required": true,
+            "keywords": [
+              "Whitney Museum"
+            ],
+            "golden_passage_title": "Renzo Piano",
+            "golden_evidence": "Among his best-known works are the Centre Georges Pompidou, The Shard, and the Whitney Museum of American Art in New York.",
+            "covered": true,
+            "cited": false,
+            "semantic_similarity": 0.6618,
+            "cite_score": 0,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Renzo Piano designed the Whitney Museum of American Art in New York.",
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Renzo Piano won the Pritzker Architecture Prize in 1998.",
+            "required": false,
+            "keywords": [
+              "Pritzker",
+              "1998"
+            ],
+            "golden_passage_title": "Renzo Piano",
+            "golden_evidence": "Piano won the Pritzker Architecture Prize in 1998.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 3,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 4,
+        "n_required_covered": 3,
+        "n_required_cited": 1,
+        "required_precision": 0.3333,
+        "required_recall": 0.25,
+        "required_coverage": 0.75,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    },
+    {
+      "question": "What spacecraft have successfully landed on Mars?",
+      "nugget_metrics": {
+        "nugget_precision": 1,
+        "nugget_recall": 0.8571,
+        "nugget_coverage": 0.8571,
+        "n_nuggets": 7,
+        "n_covered": 6,
+        "n_cited": 6,
+        "per_nugget": [
+          {
+            "nugget_id": "n0",
+            "nugget_text": "Viking 1 successfully landed on Mars.",
+            "required": true,
+            "keywords": [
+              "Viking 1"
+            ],
+            "golden_passage_title": "List of Mars landers",
+            "golden_evidence": "The first successful Mars landing was achieved by NASA's Viking 1 on July 20, 1976.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7315,
+            "cite_score": 1.4005,
+            "n_covering_claims": 1,
+            "best_covering_claim": "NASA's Viking 1 achieved the first successful Mars landing on July 20, 1976.",
+            "best_evidence_passage_title": "List of Mars landers",
+            "best_evidence_passage_text": "Several spacecraft have successfully landed on Mars. The first successful Mars landing was achieved by NASA's Viking 1 on July 20, 1976, followed by Viking 2 on September 3, 1976. Mars Pathfinder, car",
+            "best_evidence_sentence": "The first successful Mars landing was achieved by NASA's Viking 1 on July 20, 1976, followed by Viking 2 on September 3, 1976.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n1",
+            "nugget_text": "Viking 2 successfully landed on Mars.",
+            "required": true,
+            "keywords": [
+              "Viking 2"
+            ],
+            "golden_passage_title": "List of Mars landers",
+            "golden_evidence": "Viking 1 on July 20, 1976, followed by Viking 2 on September 3, 1976.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7543,
+            "cite_score": 1.1971,
+            "n_covering_claims": 1,
+            "best_covering_claim": "NASA's Viking 2 landed on September 3, 1976.",
+            "best_evidence_passage_title": "List of Mars landers",
+            "best_evidence_passage_text": "Several spacecraft have successfully landed on Mars. The first successful Mars landing was achieved by NASA's Viking 1 on July 20, 1976, followed by Viking 2 on September 3, 1976. Mars Pathfinder, car",
+            "best_evidence_sentence": "The first successful Mars landing was achieved by NASA's Viking 1 on July 20, 1976, followed by Viking 2 on September 3, 1976.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n2",
+            "nugget_text": "Mars Pathfinder successfully landed on Mars.",
+            "required": true,
+            "keywords": [
+              "Pathfinder"
+            ],
+            "golden_passage_title": "List of Mars landers",
+            "golden_evidence": "Mars Pathfinder, carrying the Sojourner rover, landed in 1997.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7498,
+            "cite_score": 1.3625,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Mars Pathfinder landed in 1997 carrying the Sojourner rover.",
+            "best_evidence_passage_title": "List of Mars landers",
+            "best_evidence_passage_text": "Several spacecraft have successfully landed on Mars. The first successful Mars landing was achieved by NASA's Viking 1 on July 20, 1976, followed by Viking 2 on September 3, 1976. Mars Pathfinder, car",
+            "best_evidence_sentence": "Mars Pathfinder, carrying the Sojourner rover, landed in 1997.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n3",
+            "nugget_text": "Curiosity successfully landed on Mars.",
+            "required": true,
+            "keywords": [
+              "Curiosity"
+            ],
+            "golden_passage_title": "Curiosity rover",
+            "golden_evidence": "It was launched on November 26, 2011 and landed on Mars on August 6, 2012.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8077,
+            "cite_score": 0.6918,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Curiosity landed in 2012.",
+            "best_evidence_passage_title": "List of Mars landers",
+            "best_evidence_passage_text": "Several spacecraft have successfully landed on Mars. The first successful Mars landing was achieved by NASA's Viking 1 on July 20, 1976, followed by Viking 2 on September 3, 1976. Mars Pathfinder, car",
+            "best_evidence_sentence": "Curiosity, InSight, and Perseverance landed in 2012, 2018, and 2021 respectively.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n4",
+            "nugget_text": "Perseverance successfully landed on Mars.",
+            "required": true,
+            "keywords": [
+              "Perseverance"
+            ],
+            "golden_passage_title": "Perseverance rover",
+            "golden_evidence": "Perseverance is a Mars rover manufactured by NASA that landed in Jezero Crater on February 18, 2021.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.8278,
+            "cite_score": 1.4752,
+            "n_covering_claims": 1,
+            "best_covering_claim": "Perseverance landed in 2021.",
+            "best_evidence_passage_title": "Perseverance rover",
+            "best_evidence_passage_text": "Perseverance is a Mars rover manufactured by NASA that landed in Jezero Crater on February 18, 2021. It is the most advanced rover ever sent to Mars. Among its mission objectives are seeking signs of ",
+            "best_evidence_sentence": "Perseverance is a Mars rover manufactured by NASA that landed in Jezero Crater on February 18, 2021.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n5",
+            "nugget_text": "InSight successfully landed on Mars.",
+            "required": true,
+            "keywords": [
+              "InSight"
+            ],
+            "golden_passage_title": "InSight",
+            "golden_evidence": "InSight was a NASA Mars lander that operated on the planet from November 26, 2018 until December 21, 2022.",
+            "covered": true,
+            "cited": true,
+            "semantic_similarity": 0.7911,
+            "cite_score": 1.4489,
+            "n_covering_claims": 1,
+            "best_covering_claim": "InSight landed in 2018.",
+            "best_evidence_passage_title": "InSight",
+            "best_evidence_passage_text": "InSight was a NASA Mars lander that operated on the planet from November 26, 2018 until December 21, 2022, when the mission was declared ended due to insufficient power from its solar panels. The land",
+            "best_evidence_sentence": "InSight was a NASA Mars lander that operated on the planet from November 26, 2018 until December 21, 2022, when the mission was declared ended due to insufficient power from its solar panels.",
+            "cited_from_noise": false
+          },
+          {
+            "nugget_id": "n6",
+            "nugget_text": "Perseverance carried the Ingenuity helicopter, the first aircraft to make a powered flight on another planet.",
+            "required": false,
+            "keywords": [
+              "Ingenuity"
+            ],
+            "golden_passage_title": "Perseverance rover",
+            "golden_evidence": "Perseverance also carried the Ingenuity helicopter, the first aircraft to make a powered flight on another planet.",
+            "covered": false,
+            "cited": false,
+            "semantic_similarity": 0,
+            "cite_score": 0,
+            "n_covering_claims": 0,
+            "best_covering_claim": null,
+            "best_evidence_passage_title": null,
+            "best_evidence_passage_text": null,
+            "best_evidence_sentence": null,
+            "cited_from_noise": false
+          }
+        ],
+        "noise_usage": {
+          "total_supporting_passages": 15,
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0,
+          "noise_ratio": 0
+        },
+        "n_cited_from_noise": 0,
+        "n_required": 6,
+        "n_required_covered": 6,
+        "n_required_cited": 6,
+        "required_precision": 1,
+        "required_recall": 1,
+        "required_coverage": 1,
+        "n_optional": 1,
+        "n_optional_covered": 0,
+        "n_optional_cited": 0,
+        "optional_precision": 0,
+        "optional_recall": 0,
+        "optional_coverage": 0,
+        "noise_stats": {
+          "noise_supporting_passages": 0,
+          "claims_citing_noise": 0
+        }
+      }
+    }
+  ],
+  "num_examples": 21,
+  "num_successful": 21,
+  "runtime_seconds": null,
+  "eval_mode": "nugget"
+}
