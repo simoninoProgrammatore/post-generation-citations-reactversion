@@ -80,12 +80,12 @@ async def _judge_pair(
     evidence: str,
     model: str,
 ) -> dict:
-    """Giudizio binario per UNA coppia (claim, span di evidenza).
+    """Giudizio binario per UNA coppia (claim, span di evidenza)."""
+    # Nessuna evidenza da valutare: non chiamiamo l'API, e' banalmente non
+    # supportato. Evita anche un content vuoto -> JSONDecodeError.
+    if not evidence or not evidence.strip():
+        return {"supported": False, "reason": "[nessuna evidenza estratta]"}
 
-    Ritorna {"supported": bool, "reason": str}. In caso di errore ritorna
-    supported=False con la reason che riporta l'errore (stesso comportamento
-    fail-safe di deepseek_eval.py, che su eccezione ritorna False).
-    """
     prompt = _build_prompt(claim, evidence)
     async with sem:
         try:
@@ -103,12 +103,11 @@ async def _judge_pair(
                 "supported": bool(res.get("supported", False)),
                 "reason": str(res.get("reason", "")),
             }
-        except Exception as e:  # noqa: BLE001 - fail-safe come l'originale
+        except Exception as e:  # noqa: BLE001
             return {
                 "supported": False,
                 "reason": f"[errore API] {e}",
             }
-
 
 async def _evaluate_matched_async(
     matched_claims: list[dict],

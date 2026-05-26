@@ -152,20 +152,6 @@ function EvalModeToggle({ mode, onChange, hasNuggets }) {
       borderRadius: 10, padding: 3, gap: 2,
     }}>
       <button
-        onClick={() => onChange('standard')}
-        style={{
-          ...baseBtn,
-          background: mode === 'standard' ? 'var(--accent)' : 'transparent',
-          color: mode === 'standard' ? 'white' : 'var(--text-2)',
-          boxShadow: mode === 'standard' ? '0 1px 4px rgba(0,0,0,0.15)' : 'none',
-        }}
-      >
-        <Icon name="barChart2" size={12} strokeWidth={2}
-          color={mode === 'standard' ? 'white' : 'var(--text-3)'} />
-        Standard
-      </button>
- 
-      <button
         onClick={() => onChange('nugget')}
         style={{
           ...baseBtn,
@@ -187,7 +173,7 @@ function EvalModeToggle({ mode, onChange, hasNuggets }) {
           </span>
         )}
       </button>
- 
+
       <button
         onClick={() => onChange('deepseek')}
         style={{
@@ -241,7 +227,7 @@ function NuggetMissingFieldsError({ missingFields }) {
           <div style={{ marginTop: 10, fontSize: 11, color: 'var(--text-3)', lineHeight: 1.5 }}>
             Assicurati che ogni esempio nel dataset abbia un campo <code style={{ background: '#FEE2E2', padding: '1px 4px', borderRadius: 3 }}>nuggets</code> (array)
             e che i docs abbiano <code style={{ background: '#FEE2E2', padding: '1px 4px', borderRadius: 3 }}>golden_passage_title</code> o <code style={{ background: '#FEE2E2', padding: '1px 4px', borderRadius: 3 }}>is_gold</code>.
-            In alternativa, passa alla modalità <strong>Standard</strong>.
+            In alternativa, passa alla modalità <strong>Deepseek</strong>.
           </div>
         </div>
       </div>
@@ -795,7 +781,7 @@ export default function Pipeline() {
   const fileRef = useRef()
 
   // Evaluation mode
-  const [evalMode, setEvalMode] = useState('standard') // 'standard' | 'nugget'
+  const [evalMode, setEvalMode] = useState('nugget') // 'standard' | 'nugget'
 
   // Nugget field validation error
   const [nuggetFieldError, setNuggetFieldError] = useState(null) // string[] | null
@@ -843,8 +829,8 @@ export default function Pipeline() {
   const currentNuggets = currentExample?.nuggets || null
   const hasNuggets = !!currentNuggets
 
-  const effectiveMode = evalMode === 'nugget' && !hasNuggets ? 'standard' : evalMode
-
+  const effectiveMode = evalMode === 'nugget' && !hasNuggets ? 'deepseek' : evalMode
+ 
   function resetAfter(step) {
     const order = ['generate', 'decompose', 'retrieve', 'cite', 'evaluate']
     const idx = order.indexOf(step)
@@ -1240,7 +1226,7 @@ async function runEvaluate() {
         )}
       </StepCard>
 
-      {/* Step 6 — Evaluate */}
+            {/* Step 6 — Evaluate */}
       <StepCard
         num={6}
         title={
@@ -1249,7 +1235,7 @@ async function runEvaluate() {
             {steps.evaluate !== 'locked' && (
               <EvalModeToggle
                 mode={evalMode}
-                onChange={mode => { setEvalMode(mode); setMetrics(null); setNuggetMetrics(null); setDeepseekMetrics(null); setNuggetFieldError(null) }}                
+                onChange={mode => { setEvalMode(mode); setNuggetMetrics(null); setDeepseekMetrics(null); setNuggetFieldError(null) }}
                 hasNuggets={hasNuggets}
               />
             )}
@@ -1258,34 +1244,11 @@ async function runEvaluate() {
         status={steps.evaluate}
         onRun={runEvaluate}
         running={running === 'evaluate'}
-        runLabel={`Valuta (${effectiveMode === 'nugget' ? 'Nugget' : 'Standard'})`}
+        runLabel={`Valuta (${effectiveMode === 'nugget' ? 'Nugget' : 'DeepSeek'})`}
       >
         {/* Inline field-missing error for nugget mode */}
         {nuggetFieldError && (
           <NuggetMissingFieldsError missingFields={nuggetFieldError} />
-        )}
-
-        {/* Standard metrics */}
-        {metrics && effectiveMode === 'standard' && (
-          <>
-            <div className="grid-3" style={{ gap: 12 }}>
-              {Object.entries(METRIC_INFO_STANDARD).map(([key, { label, desc }]) => (
-                <MetricCard key={key} label={label} value={metrics[key]}
-                  color={metricColor(key, metrics[key])} desc={desc}
-                  isUnsupported={key === 'unsupported_ratio'} />
-              ))}
-            </div>
-            <div style={{ marginTop: 20, display: 'flex', gap: 12 }}>
-              <button className="btn btn-primary" onClick={saveToExplore}>
-                <Icon name="download" size={13} color="white" strokeWidth={2} />
-                Salva in Esplora
-              </button>
-              <button className="btn btn-secondary" onClick={downloadPipelineData}>
-                <Icon name="download" size={13} strokeWidth={1.75} />
-                Scarica dati
-              </button>
-            </div>
-          </>
         )}
 
         {/* Nugget metrics */}
@@ -1296,7 +1259,8 @@ async function runEvaluate() {
             onDownload={downloadPipelineData}
           />
         )}
-         {/* DeepSeek metrics */}
+
+        {/* DeepSeek metrics */}
         {deepseekMetrics && effectiveMode === 'deepseek' && (
           <DeepSeekMetricsView
             metrics={deepseekMetrics}
