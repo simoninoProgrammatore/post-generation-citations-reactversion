@@ -187,21 +187,26 @@
       "n_partial_support": 1,
       "n_no_support": 2
     },
-    "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "Josef Bican holds the record for the highest number of goals all-time in men's football.",
-        "keywords": [
-          "Bican",
-          "Josef Bican",
-          "805"
-        ],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "Josef Bican",
-        "golden_evidence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time."
-      }
-    ]
+   "nuggets": [
+  {
+    "nugget_id": "n0a",
+    "text": "Josef Bican holds the record for the highest number of goals all-time in men's football.",
+    "keywords": ["Bican", "Josef Bican", "record", "all-time"],
+    "required": true
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "Josef Bican scored at least 805 goals in competitive matches.",
+    "keywords": ["805", "goals"],
+    "required": false
+  },
+  {
+    "nugget_id": "n0c",
+    "text": "The 805 goals figure comes from the RSSSF.",
+    "keywords": ["RSSSF"],
+    "required": false
+  }
+]
   },
   {
     "qa_pairs": [
@@ -388,43 +393,52 @@
       "n_no_support": 0
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The Sound of Silence is a song by Simon & Garfunkel, written by Paul Simon.",
-        "keywords": [
-          "Simon & Garfunkel",
-          "Paul Simon"
-        ],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "The Sound of Silence",
-        "golden_evidence": "\"The Sound of Silence\", originally \"The Sounds of Silence\", is a song by the American music duo Simon & Garfunkel. The song was written by Paul Simon over a period of several months in 1963 and 1964."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Sounds of Silence is the second studio album by Simon & Garfunkel, released in 1966.",
-        "keywords": [
-          "album",
-          "second album",
-          "Sounds of Silence"
-        ],
-        "golden_passage_idx": 1,
-        "required": false,
-        "golden_passage_title": "Sounds of Silence",
-        "golden_evidence": "Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "Sound of Silence is also a song performed by Australian artist Dami Im.",
-        "keywords": [
-          "Dami Im"
-        ],
-        "golden_passage_idx": 4,
-        "required": false,
-        "golden_passage_title": "Sound of Silence (Dami Im song)",
-        "golden_evidence": "\"Sound of Silence\" is a song performed by Australian recording artist Dami Im."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "The Sound of Silence is a song by Simon & Garfunkel.",
+    "keywords": ["Simon & Garfunkel", "Sound of Silence"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "The Sound of Silence",
+    "golden_evidence": "\"The Sound of Silence\" is a song by the American music duo Simon & Garfunkel."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "The Sound of Silence was written by Paul Simon.",
+    "keywords": ["Paul Simon"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "The Sound of Silence",
+    "golden_evidence": "The song was written by Paul Simon over a period of several months in 1963 and 1964."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "Sounds of Silence is the second studio album by Simon & Garfunkel.",
+    "keywords": ["album", "second album", "Sounds of Silence"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Sounds of Silence",
+    "golden_evidence": "Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "Sounds of Silence was released in 1966.",
+    "keywords": ["1966"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Sounds of Silence",
+    "golden_evidence": "Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966."
+  },
+  {
+    "nugget_id": "n2",
+    "text": "Sound of Silence is also a song performed by Australian artist Dami Im.",
+    "keywords": ["Dami Im"],
+    "golden_passage_idx": 4,
+    "required": false,
+    "golden_passage_title": "Sound of Silence (Dami Im song)",
+    "golden_evidence": "\"Sound of Silence\" is a song performed by Australian recording artist Dami Im."
+  }
+]
   },
   {
     "qa_pairs": [
@@ -878,64 +892,61 @@
       "n_no_support": 0
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "Richard Fish appeared as Bill Weasley in Harry Potter and the Prisoner of Azkaban.",
-        "keywords": [
-          "Richard Fish"
-        ],
-        "golden_passage_idx": 0,
-        "required": false,
-        "golden_passage_title": "Order of the Phoenix (fictional organisation)",
-        "golden_evidence": "Richard Fish appeared as Bill briefly in the film adaptation of \"Harry Potter and the Prisoner of Azkaban\". Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), plays Bill Weasley in \"Harry Potter and the Deathly Hallows\""
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Domhnall Gleeson played Bill Weasley in the later Harry Potter films.",
-        "keywords": [
-          "Domhnall Gleeson"
-        ],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Order of the Phoenix (fictional organisation)",
-        "golden_evidence": "Richard Fish appeared as Bill briefly in the film adaptation of \"Harry Potter and the Prisoner of Azkaban\". Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), plays Bill Weasley in \"Harry Potter and the Deathly Hallows\""
-      },
-      {
-        "nugget_id": "n2",
-        "text": "Chris Rankin portrayed Percy Weasley in Harry Potter.",
-        "keywords": [
-          "Chris Rankin"
-        ],
-        "golden_passage_idx": 4,
-        "required": true,
-        "golden_passage_title": "Ministry of Magic",
-        "golden_evidence": "Percy is portrayed by Chris Rankin in"
-      },
-      {
-        "nugget_id": "n3",
-        "text": "James Phelps played Fred Weasley and Oliver Phelps played George Weasley.",
-        "keywords": [
-          "James Phelps",
-          "Oliver Phelps",
-          "Phelps"
-        ],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "James and Oliver Phelps",
-        "golden_evidence": "James Andrew Eric and Oliver Martyn John Phelps (born 25 February 1986) are identical twin British actors, best known for playing Fred and George Weasley in the \"Harry Potter\" film series."
-      },
-      {
-        "nugget_id": "n4",
-        "text": "Rupert Grint played Ron Weasley in Harry Potter.",
-        "keywords": [
-          "Rupert Grint"
-        ],
-        "golden_passage_idx": 3,
-        "required": true,
-        "golden_passage_title": "Harry Potter fandom",
-        "golden_evidence": "Rupert Grint (Ron Weasley)"
-      }
-    ]
+  {
+    "nugget_id": "n0",
+    "text": "Richard Fish appeared as Bill Weasley in Harry Potter and the Prisoner of Azkaban.",
+    "keywords": ["Richard Fish", "Bill Weasley"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Order of the Phoenix (fictional organisation)",
+    "golden_evidence": "Richard Fish appeared as Bill briefly in the film adaptation of \"Harry Potter and the Prisoner of Azkaban\"."
+  },
+  {
+    "nugget_id": "n1",
+    "text": "Domhnall Gleeson played Bill Weasley in Harry Potter and the Deathly Hallows.",
+    "keywords": ["Domhnall Gleeson", "Bill Weasley"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Order of the Phoenix (fictional organisation)",
+    "golden_evidence": "Domhnall Gleeson, the son of actor Brendan Gleeson (Alastor Moody in the series), plays Bill Weasley in \"Harry Potter and the Deathly Hallows\"."
+  },
+  {
+    "nugget_id": "n2",
+    "text": "Chris Rankin portrayed Percy Weasley in Harry Potter.",
+    "keywords": ["Chris Rankin", "Percy Weasley"],
+    "golden_passage_idx": 4,
+    "required": true,
+    "golden_passage_title": "Ministry of Magic",
+    "golden_evidence": "Percy is portrayed by Chris Rankin in"
+  },
+  {
+    "nugget_id": "n3a",
+    "text": "James Phelps played Fred Weasley in the Harry Potter film series.",
+    "keywords": ["James Phelps", "Fred Weasley"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "James and Oliver Phelps",
+    "golden_evidence": "James Andrew Eric and Oliver Martyn John Phelps (born 25 February 1986) are identical twin British actors, best known for playing Fred and George Weasley in the \"Harry Potter\" film series."
+  },
+  {
+    "nugget_id": "n3b",
+    "text": "Oliver Phelps played George Weasley in the Harry Potter film series.",
+    "keywords": ["Oliver Phelps", "George Weasley"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "James and Oliver Phelps",
+    "golden_evidence": "James Andrew Eric and Oliver Martyn John Phelps (born 25 February 1986) are identical twin British actors, best known for playing Fred and George Weasley in the \"Harry Potter\" film series."
+  },
+  {
+    "nugget_id": "n4",
+    "text": "Rupert Grint played Ron Weasley in Harry Potter.",
+    "keywords": ["Rupert Grint", "Ron Weasley"],
+    "golden_passage_idx": 3,
+    "required": true,
+    "golden_passage_title": "Harry Potter fandom",
+    "golden_evidence": "Rupert Grint (Ron Weasley)"
+  }
+]
   },
   {
     "qa_pairs": [
@@ -1124,33 +1135,34 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "Virginia opened its state park system in June 1936 with six original parks.",
-        "keywords": [
-          "six",
-          "1936",
-          "6"
-        ],
-        "golden_passage_idx": 1,
-        "required": false,
-        "golden_passage_title": "Virginia Department of Conservation and Recreation",
-        "golden_evidence": "Virginia's first six state parks were created in June 1936 despite the opposition of Virginia's Senators Carter Glass and Harry F. Byrd"
-      },
-      {
-        "nugget_id": "n1",
-        "text": "As of 2016, Virginia has 38 state parks.",
-        "keywords": [
-          "38",
-          "38 state parks", 
-          "38 parks"
-        ],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Virginia Department of Conservation and Recreation",
-        "golden_evidence": "Now virginia has 38 state parks"
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "Virginia opened its state park system in June 1936.",
+    "keywords": ["1936", "June 1936"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Virginia Department of Conservation and Recreation",
+    "golden_evidence": "Virginia's first six state parks were created in June 1936 despite the opposition of Virginia's Senators Carter Glass and Harry F. Byrd."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "Virginia opened with six original state parks.",
+    "keywords": ["six", "six original state parks", "six state parks", "6 state parks", "6 original state parks"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Virginia Department of Conservation and Recreation",
+    "golden_evidence": "Virginia's first six state parks were created in June 1936 despite the opposition of Virginia's Senators Carter Glass and Harry F. Byrd."
+  },
+  {
+    "nugget_id": "n1",
+    "text": "As of 2016, Virginia has 38 state parks.",
+    "keywords": ["38", "38 state parks", "38 parks"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Virginia Department of Conservation and Recreation",
+    "golden_evidence": "Now virginia has 38 state parks"
+  }
+]
   },
   {
     "qa_pairs": [
@@ -1275,7 +1287,7 @@
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Penicillin",
-        "golden_evidence": "Alexander Fleming"
+        "golden_evidence": "Penicillin was discovered by Alexander Fleming"
       },
       {
         "nugget_id": "n1",
@@ -1284,7 +1296,7 @@
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Penicillin",
-        "golden_evidence": "1928"
+        "golden_evidence": "Penicillin was discovered in 1928 by Alexander Fleming"
       }
     ]
   },
@@ -1435,34 +1447,61 @@
       "n_no_support": 0
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "Alexander Graham Bell was awarded the first patent for the telephone on March 7, 1876.",
-        "keywords": ["Bell", "Alexander Graham Bell", "March 7, 1876", "1876"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Alexander Graham Bell",
-        "golden_evidence": "Bell filed his patent application on February 14, 1876, and was officially awarded US Patent 174,465 on March 7, 1876."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Antonio Meucci developed an earlier voice communication device and filed a caveat in 1871, before Bell's patent.",
-        "keywords": ["Meucci", "Antonio Meucci", "1871"],
-        "golden_passage_idx": 1,
-        "required": false,
-        "golden_passage_title": "Antonio Meucci",
-        "golden_evidence": "he developed a form of voice communication device in 1849, and later, in 1871, filed a caveat (a temporary patent) for a 'sound telegraph'."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "Elisha Gray independently filed a telephone patent caveat on the same day as Bell, February 14, 1876.",
-        "keywords": ["Elisha Gray", "Gray", "February 14, 1876"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Elisha Gray",
-        "golden_evidence": "On February 14, 1876, Gray filed a patent caveat for a telephone design at the U.S. Patent Office, the same day Alexander Graham Bell filed his patent application."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "Alexander Graham Bell was awarded the first patent for the telephone.",
+    "keywords": ["Bell", "Alexander Graham Bell", "patent", "telephone"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Alexander Graham Bell",
+    "golden_evidence": "Bell filed his patent application on February 14, 1876, and was officially awarded US Patent 174,465 on March 7, 1876."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "Alexander Graham Bell was awarded the telephone patent on March 7, 1876.",
+    "keywords": ["March 7, 1876", "1876"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Alexander Graham Bell",
+    "golden_evidence": "Bell filed his patent application on February 14, 1876, and was officially awarded US Patent 174,465 on March 7, 1876."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "Antonio Meucci developed a voice communication device in 1849.",
+    "keywords": ["Meucci", "Antonio Meucci", "1849"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Antonio Meucci",
+    "golden_evidence": "he developed a form of voice communication device in 1849, and later, in 1871, filed a caveat (a temporary patent) for a 'sound telegraph'."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "Antonio Meucci filed a caveat for a sound telegraph in 1871.",
+    "keywords": ["Meucci", "1871", "caveat"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Antonio Meucci",
+    "golden_evidence": "he developed a form of voice communication device in 1849, and later, in 1871, filed a caveat (a temporary patent) for a 'sound telegraph'."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "Elisha Gray filed a telephone patent caveat on February 14, 1876.",
+    "keywords": ["Elisha Gray", "Gray", "February 14, 1876"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Elisha Gray",
+    "golden_evidence": "On February 14, 1876, Gray filed a patent caveat for a telephone design at the U.S. Patent Office, the same day Alexander Graham Bell filed his patent application."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "Elisha Gray filed his telephone caveat on the same day as Alexander Graham Bell.",
+    "keywords": ["Elisha Gray", "Gray", "Bell"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Elisha Gray",
+    "golden_evidence": "On February 14, 1876, Gray filed a patent caveat for a telephone design at the U.S. Patent Office, the same day Alexander Graham Bell filed his patent application."
+  }
+]
   },
   {
     "sample_id": "new_example_002",
@@ -1612,43 +1651,61 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "Romeo and Juliet was written by William Shakespeare.",
-        "keywords": ["Shakespeare", "William Shakespeare"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Romeo and Juliet",
-        "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Shakespeare is believed to have written Romeo and Juliet between 1594 and 1596.",
-        "keywords": ["1594", "1596", "1594–1596"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Romeo and Juliet",
-        "golden_evidence": "Shakespeare is believed to have written the play between 1594 and 1596."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The play is a tragedy about two star-crossed lovers whose deaths reconcile their feuding families.",
-        "keywords": ["star-crossed", "tragedy", "lovers"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Romeo and Juliet",
-        "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "The feuding families are the Montagues and the Capulets, set in Verona.",
-        "keywords": ["Montague", "Capulet", "Verona"],
-        "golden_passage_idx": 0,
-        "required": false,
-        "golden_passage_title": "Montague family",
-        "golden_evidence": "The Montagues are one of the two feuding families in Shakespeare's Romeo and Juliet. The other family is the Capulets."
-      }
-    ]
+  {
+    "nugget_id": "n0",
+    "text": "Romeo and Juliet was written by William Shakespeare.",
+    "keywords": ["Shakespeare", "William Shakespeare"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Romeo and Juliet",
+    "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families."
+  },
+  {
+    "nugget_id": "n1",
+    "text": "Shakespeare is believed to have written Romeo and Juliet between 1594 and 1596.",
+    "keywords": ["1594", "1596", "1594–1596"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Romeo and Juliet",
+    "golden_evidence": "Shakespeare is believed to have written the play between 1594 and 1596."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "Romeo and Juliet is a tragedy.",
+    "keywords": ["tragedy"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Romeo and Juliet",
+    "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "Romeo and Juliet features two star-crossed lovers who die.",
+    "keywords": ["star-crossed", "lovers"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Romeo and Juliet",
+    "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families."
+  },
+  {
+    "nugget_id": "n2c",
+    "text": "The deaths of Romeo and Juliet reconcile their feuding families.",
+    "keywords": ["feuding families", "reconcile"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Romeo and Juliet",
+    "golden_evidence": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families."
+  },
+  {
+    "nugget_id": "n3a",
+    "text": "The feuding families in Romeo and Juliet are the Montagues and the Capulets.",
+    "keywords": ["Montague", "Capulet"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Montague family",
+    "golden_evidence": "The Montagues are one of the two feuding families in Shakespeare's Romeo and Juliet. The other family is the Capulets."
+  }
+]
   },
   {
     "sample_id": "new_example_003",
@@ -1797,34 +1854,79 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The speed of light in vacuum is exactly 299,792,458 metres per second.",
-        "keywords": ["299,792,458", "300,000 km", "186,000 mi"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Speed of light",
-        "golden_evidence": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Ole Rømer made the first quantitative measurement of the speed of light in 1676 using observations of Jupiter's moon Io.",
-        "keywords": ["Rømer", "Ole Rømer", "1676", "Io"],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "Ole Rømer",
-        "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "James Bradley provided a more accurate measurement of the speed of light in 1728 using stellar aberration, obtaining approximately 301,000 km/s.",
-        "keywords": ["James Bradley", "Bradley", "1728", "stellar aberration"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "James Bradley",
-        "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
-      }
-    ]
+  {
+    "nugget_id": "n0",
+    "text": "The speed of light in vacuum is exactly 299,792,458 metres per second.",
+    "keywords": ["299,792,458", "300,000 km", "186,000 mi"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Speed of light",
+    "golden_evidence": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "Ole Rømer made the first quantitative measurement of the speed of light.",
+    "keywords": ["Rømer", "Ole Rømer"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Ole Rømer",
+    "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "Rømer made his measurement of the speed of light in 1676.",
+    "keywords": ["1676"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Ole Rømer",
+    "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding."
+  },
+  {
+    "nugget_id": "n1c",
+    "text": "Rømer used observations of Jupiter's moon Io to measure the speed of light.",
+    "keywords": ["Io", "Jupiter"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Ole Rømer",
+    "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "James Bradley provided a more accurate measurement of the speed of light than Rømer.",
+    "keywords": ["James Bradley", "Bradley"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "James Bradley",
+    "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "James Bradley measured the speed of light in 1728.",
+    "keywords": ["1728"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "James Bradley",
+    "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
+  },
+  {
+    "nugget_id": "n2c",
+    "text": "James Bradley used stellar aberration to measure the speed of light.",
+    "keywords": ["stellar aberration"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "James Bradley",
+    "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
+  },
+  {
+    "nugget_id": "n2d",
+    "text": "James Bradley calculated the speed of light as approximately 301,000 km/s.",
+    "keywords": ["301,000 km/s"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "James Bradley",
+    "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
+  }
+]
   },
   {
     "sample_id": "new_example_004",
@@ -1971,44 +2073,53 @@
       "n_partial_support": 2,
       "n_no_support": 1
     },
-    "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The Sistine Chapel ceiling was painted by Michelangelo.",
-        "keywords": ["Michelangelo"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Sistine Chapel ceiling",
-        "golden_evidence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most renowned works of High Renaissance art."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Michelangelo painted the ceiling between 1508 and 1512, taking approximately four years.",
-        "keywords": ["1508", "1512", "four years"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Sistine Chapel ceiling",
-        "golden_evidence": "He began painting in May 1508, and the ceiling was unveiled on 31 October 1512."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "Pope Julius II commissioned Michelangelo to paint the Sistine Chapel ceiling in 1508.",
-        "keywords": ["Pope Julius II", "Julius II", "Julius"],
-        "golden_passage_idx": 3,
-        "required": false,
-        "golden_passage_title": "Pope Julius II",
-        "golden_evidence": "In 1508, Julius commissioned Michelangelo to paint the ceiling of the Sistine Chapel."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "The ceiling depicts scenes from the Book of Genesis, most famously the Creation of Adam.",
-        "keywords": ["Genesis", "Creation of Adam", "Book of Genesis"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Creation of Adam",
-        "golden_evidence": "The Creation of Adam is a fresco painting by Michelangelo, which forms part of the Sistine Chapel ceiling."
-      }
-    ]
+   "nuggets": [
+  {
+    "nugget_id": "n0",
+    "text": "The Sistine Chapel ceiling was painted by Michelangelo.",
+    "keywords": ["Michelangelo"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Sistine Chapel ceiling",
+    "golden_evidence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most renowned works of High Renaissance art."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "Michelangelo began painting the Sistine Chapel ceiling in May 1508.",
+    "keywords": ["1508"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Sistine Chapel ceiling",
+    "golden_evidence": "He began painting in May 1508, and the ceiling was unveiled on 31 October 1512."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "The Sistine Chapel ceiling was unveiled on 31 October 1512.",
+    "keywords": ["1512"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Sistine Chapel ceiling",
+    "golden_evidence": "He began painting in May 1508, and the ceiling was unveiled on 31 October 1512."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "Pope Julius II commissioned Michelangelo to paint the Sistine Chapel ceiling.",
+    "keywords": ["Pope Julius II", "Julius II", "Julius"],
+    "golden_passage_idx": 3,
+    "required": false,
+    "golden_passage_title": "Pope Julius II",
+    "golden_evidence": "In 1508, Julius commissioned Michelangelo to paint the ceiling of the Sistine Chapel."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "Pope Julius II commissioned the Sistine Chapel ceiling in 1508.",
+    "keywords": ["1508"],
+    "golden_passage_idx": 3,
+    "required": false,
+    "golden_passage_title": "Pope Julius II",
+    "golden_evidence": "In 1508, Julius commissioned Michelangelo to paint the ceiling of the Sistine Chapel."
+  }
+]
   },
   {
     "sample_id": "new_example_005",
@@ -2157,43 +2268,106 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "Marie Curie was a Polish-French physicist and chemist who conducted pioneering research on radioactivity.",
-        "keywords": ["Marie Curie"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Marie Curie",
-        "golden_evidence": "Marie Skłodowska Curie (7 November 1867 – 4 July 1934), known as Marie Curie, was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Marie Curie and Pierre Curie discovered polonium in July 1898, named after Marie's homeland Poland.",
-        "keywords": ["polonium", "July 1898", "Pierre Curie"],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "Polonium",
-        "golden_evidence": "It was discovered in July 1898 by Marie Curie and Pierre Curie. The element was named after Marie Curie's homeland of Poland."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "Marie Curie and Pierre Curie discovered radium in December 1898.",
-        "keywords": ["radium", "December 1898"],
-        "golden_passage_idx": 2,
-        "required": true,
-        "golden_passage_title": "Radium",
-        "golden_evidence": "Radium was discovered in 1898 by Marie Curie and Pierre Curie in a pitchblende sample from Bohemia in December 1898."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "Marie Curie was the first person to win the Nobel Prize twice, in Physics (1903) and Chemistry (1911).",
-        "keywords": ["Nobel Prize", "1903", "Nobel", "1911"],
-        "golden_passage_idx": 0,
-        "required": false,
-        "golden_passage_title": "Marie Curie",
-        "golden_evidence": "She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the prize in two different sciences (Physics in 1903 and Chemistry in 1911)."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "Marie Curie was a physicist and chemist.",
+    "keywords": ["Marie Curie", "physicist", "chemist"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Marie Curie",
+    "golden_evidence": "Marie Skłodowska Curie (7 November 1867 – 4 July 1934), known as Marie Curie, was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "Marie Curie was Polish and naturalized French.",
+    "keywords": ["Polish", "French"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Marie Curie",
+    "golden_evidence": "Marie Skłodowska Curie (7 November 1867 – 4 July 1934), known as Marie Curie, was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity."
+  },
+  {
+    "nugget_id": "n0c",
+    "text": "Marie Curie conducted pioneering research on radioactivity.",
+    "keywords": ["radioactivity"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Marie Curie",
+    "golden_evidence": "Marie Skłodowska Curie (7 November 1867 – 4 July 1934), known as Marie Curie, was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "Marie Curie and Pierre Curie discovered polonium.",
+    "keywords": ["polonium", "Pierre Curie"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Polonium",
+    "golden_evidence": "It was discovered in July 1898 by Marie Curie and Pierre Curie. The element was named after Marie Curie's homeland of Poland."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "Polonium was discovered in July 1898.",
+    "keywords": ["July 1898"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Polonium",
+    "golden_evidence": "It was discovered in July 1898 by Marie Curie and Pierre Curie. The element was named after Marie Curie's homeland of Poland."
+  },
+  {
+    "nugget_id": "n1c",
+    "text": "Polonium was named after Marie Curie's homeland of Poland.",
+    "keywords": ["Poland"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Polonium",
+    "golden_evidence": "It was discovered in July 1898 by Marie Curie and Pierre Curie. The element was named after Marie Curie's homeland of Poland."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "Marie Curie and Pierre Curie discovered radium.",
+    "keywords": ["radium", "Pierre Curie"],
+    "golden_passage_idx": 2,
+    "required": true,
+    "golden_passage_title": "Radium",
+    "golden_evidence": "Radium was discovered in 1898 by Marie Curie and Pierre Curie in a pitchblende sample from Bohemia in December 1898."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "Radium was discovered in December 1898.",
+    "keywords": ["December 1898"],
+    "golden_passage_idx": 2,
+    "required": true,
+    "golden_passage_title": "Radium",
+    "golden_evidence": "Radium was discovered in 1898 by Marie Curie and Pierre Curie in a pitchblende sample from Bohemia in December 1898."
+  },
+  {
+    "nugget_id": "n3a",
+    "text": "Marie Curie won the Nobel Prize twice.",
+    "keywords": ["Nobel Prize"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Marie Curie",
+    "golden_evidence": "She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the prize in two different sciences (Physics in 1903 and Chemistry in 1911)."
+  },
+  {
+    "nugget_id": "n3b",
+    "text": "Marie Curie won the Nobel Prize in Physics in 1903.",
+    "keywords": ["1903", "Physics"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Marie Curie",
+    "golden_evidence": "She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the prize in two different sciences (Physics in 1903 and Chemistry in 1911)."
+  },
+  {
+    "nugget_id": "n3c",
+    "text": "Marie Curie won the Nobel Prize in Chemistry in 1911.",
+    "keywords": ["1911", "Chemistry"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Marie Curie",
+    "golden_evidence": "She was the first woman to win a Nobel Prize, the first person to win the Nobel Prize twice, and the only person to win the prize in two different sciences (Physics in 1903 and Chemistry in 1911)."
+  }
+]
   },
   {
     "sample_id": "new_example_006",
@@ -2333,43 +2507,79 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The Eiffel Tower was designed and built by Gustave Eiffel's company between 1887 and 1889.",
-        "keywords": ["Gustave Eiffel"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Eiffel Tower",
-        "golden_evidence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "The Eiffel Tower was built as the entrance arch for the 1889 World's Fair (Exposition Universelle) in Paris.",
-        "keywords": ["Exposition Universelle", "entrance arch"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Eiffel Tower",
-        "golden_evidence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The 1889 World's Fair celebrated the centennial of the French Revolution.",
-        "keywords": ["centennial", "French Revolution", "1789"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Exposition Universelle (1889)",
-        "golden_evidence": "It was organized to celebrate the centennial of the French Revolution and to demonstrate France's industrial prowess."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "The Eiffel Tower was the world's tallest man-made structure for 41 years, until the Chrysler Building surpassed it in 1930.",
-        "keywords": ["41 years", "1930", "Chrysler Building", "tallest"],
-        "golden_passage_idx": 0,
-        "required": false,
-        "golden_passage_title": "Eiffel Tower",
-        "golden_evidence": "During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "The Eiffel Tower was designed and built by Gustave Eiffel's company.",
+    "keywords": ["Gustave Eiffel"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Eiffel Tower",
+    "golden_evidence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "Construction of the Eiffel Tower began in 1887.",
+    "keywords": ["1887"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Eiffel Tower",
+    "golden_evidence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "The Eiffel Tower was built for the 1889 World's Fair.",
+    "keywords": ["1889 World's Fair", "Exposition Universelle"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Eiffel Tower",
+    "golden_evidence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "The Eiffel Tower served as the entrance arch for the 1889 World's Fair.",
+    "keywords": ["entrance arch"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Eiffel Tower",
+    "golden_evidence": "It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889 as the entrance arch for the 1889 World's Fair."
+  },
+  {
+    "nugget_id": "n2",
+    "text": "The 1889 World's Fair celebrated the centennial of the French Revolution.",
+    "keywords": ["centennial", "French Revolution", "1789"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Exposition Universelle (1889)",
+    "golden_evidence": "It was organized to celebrate the centennial of the French Revolution and to demonstrate France's industrial prowess."
+  },
+  {
+    "nugget_id": "n3a",
+    "text": "The Eiffel Tower was the world's tallest man-made structure for 41 years.",
+    "keywords": ["41 years", "tallest"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Eiffel Tower",
+    "golden_evidence": "During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930."
+  },
+  {
+    "nugget_id": "n3b",
+    "text": "The Chrysler Building surpassed the Eiffel Tower as the world's tallest structure.",
+    "keywords": ["Chrysler Building"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Eiffel Tower",
+    "golden_evidence": "During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930."
+  },
+  {
+    "nugget_id": "n3c",
+    "text": "The Chrysler Building surpassed the Eiffel Tower in 1930.",
+    "keywords": ["1930"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Eiffel Tower",
+    "golden_evidence": "During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930."
+  }
+]
   },
   {
     "sample_id": "new_example_007",
@@ -2685,34 +2895,61 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The Great Wall of China is a series of fortifications built along China's northern borders to protect against nomadic invasions.",
-        "keywords": ["fortifications", "northern borders", "nomadic"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Great Wall of China",
-        "golden_evidence": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "The total length of all sections of the Great Wall across all dynasties is 21,196 km (13,171 mi), according to a 2012 survey.",
-        "keywords": ["21,196 km", "21,196", "13,171 miles", "2012 survey"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Great Wall of China",
-        "golden_evidence": "A 2012 survey found that the Ming walls measure 8,850 km (5,500 mi), while the total length of all walls across all dynasties measures 21,196 km (13,171 mi)."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The most well-known and best-preserved sections of the Great Wall were built by the Ming dynasty between 1368 and 1644.",
-        "keywords": ["Ming dynasty", "Ming", "1368", "1644"],
-        "golden_passage_idx": 1,
-        "required": false,
-        "golden_passage_title": "Ming dynasty",
-        "golden_evidence": "During the Ming dynasty, the Great Wall of China was extensively rebuilt and extended to its current form."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "The Great Wall of China is a series of fortifications.",
+    "keywords": ["fortifications"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Great Wall of China",
+    "golden_evidence": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "The Great Wall of China was built to protect against nomadic invasions.",
+    "keywords": ["nomadic"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Great Wall of China",
+    "golden_evidence": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe."
+  },
+  {
+    "nugget_id": "n0c",
+    "text": "The Great Wall of China was built along China's northern borders.",
+    "keywords": ["northern borders"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Great Wall of China",
+    "golden_evidence": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "The total length of all sections of the Great Wall across all dynasties is 21,196 km.",
+    "keywords": ["21,196 km", "21,196", "13,171 miles"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Great Wall of China",
+    "golden_evidence": "A 2012 survey found that the Ming walls measure 8,850 km (5,500 mi), while the total length of all walls across all dynasties measures 21,196 km (13,171 mi)."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "The 21,196 km figure comes from a 2012 survey.",
+    "keywords": ["2012 survey"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Great Wall of China",
+    "golden_evidence": "A 2012 survey found that the Ming walls measure 8,850 km (5,500 mi), while the total length of all walls across all dynasties measures 21,196 km (13,171 mi)."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "The most well-preserved sections of the Great Wall were built by the Ming dynasty.",
+    "keywords": ["Ming dynasty", "Ming"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Ming dynasty",
+    "golden_evidence": "During the Ming dynasty, the Great Wall of China was extensively rebuilt and extended to its current form."
+  }
+]
   },
   {
     "sample_id": "new_example_009",
@@ -2852,34 +3089,61 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The theory of evolution by natural selection was developed by Charles Darwin.",
-        "keywords": ["Charles Darwin", "Darwin"],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "Charles Darwin",
-        "golden_evidence": "In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Darwin published his theory in On the Origin of Species on 24 November 1859.",
-        "keywords": ["On the Origin of Species", "1859", "24 November 1859"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "On the Origin of Species",
-        "golden_evidence": "On the Origin of Species... is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "Alfred Russel Wallace independently conceived a similar theory and co-presented it with Darwin at the Linnean Society in 1858.",
-        "keywords": ["Alfred Russel Wallace", "Wallace", "1858", "Linnean Society"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Alfred Russel Wallace",
-        "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings."
-      }
-    ]
+  {
+    "nugget_id": "n0",
+    "text": "The theory of evolution by natural selection was developed by Charles Darwin.",
+    "keywords": ["Charles Darwin", "Darwin"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Charles Darwin",
+    "golden_evidence": "In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "Darwin published his theory in On the Origin of Species.",
+    "keywords": ["On the Origin of Species"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "On the Origin of Species",
+    "golden_evidence": "On the Origin of Species... is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "On the Origin of Species was published on 24 November 1859.",
+    "keywords": ["1859", "24 November 1859"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "On the Origin of Species",
+    "golden_evidence": "On the Origin of Species... is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "Alfred Russel Wallace independently conceived the theory of evolution through natural selection.",
+    "keywords": ["Alfred Russel Wallace", "Wallace"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Alfred Russel Wallace",
+    "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "Wallace's paper on natural selection was published in 1858.",
+    "keywords": ["1858"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Alfred Russel Wallace",
+    "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings."
+  },
+  {
+    "nugget_id": "n2c",
+    "text": "Wallace's 1858 paper was jointly published with Charles Darwin's writings.",
+    "keywords": ["jointly published"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Alfred Russel Wallace",
+    "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings."
+  }
+]
   },
   {
     "sample_id": "new_example_010",
@@ -3018,35 +3282,62 @@
       "n_partial_support": 2,
       "n_no_support": 1
     },
-    "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line.",
-        "keywords": ["White Star Line", "ocean liner"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "RMS Titanic",
-        "golden_evidence": "RMS Titanic was a British ocean liner owned and operated by the White Star Line."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "The Titanic sank on 15 April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City.",
-        "keywords": ["15 April 1912", "1912", "iceberg", "sank"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "RMS Titanic",
-        "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "More than 1,500 of the estimated 2,224 people on board died when the Titanic sank.",
-        "keywords": ["1,500", "1500", "2,224", "deaths"],
-        "golden_passage_idx": 0,
-        "required": false,
-        "golden_passage_title": "RMS Titanic",
-        "golden_evidence": "she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board."
-      }
-    ]
+   "nuggets": [
+  {
+    "nugget_id": "n0",
+    "text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line.",
+    "keywords": ["White Star Line", "ocean liner"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "RMS Titanic",
+    "golden_evidence": "RMS Titanic was a British ocean liner owned and operated by the White Star Line."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "The Titanic sank on 15 April 1912.",
+    "keywords": ["15 April 1912", "1912"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "RMS Titanic",
+    "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "The Titanic sank after striking an iceberg.",
+    "keywords": ["iceberg"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "RMS Titanic",
+    "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg."
+  },
+  {
+    "nugget_id": "n1c",
+    "text": "The Titanic sank during its maiden voyage from Southampton to New York City.",
+    "keywords": ["maiden voyage", "Southampton", "New York City"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "RMS Titanic",
+    "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "More than 1,500 people died when the Titanic sank.",
+    "keywords": ["1,500", "1500", "deaths"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "RMS Titanic",
+    "golden_evidence": "she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "There were an estimated 2,224 people on board the Titanic.",
+    "keywords": ["2,224"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "RMS Titanic",
+    "golden_evidence": "she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board."
+  }
+]
   },
   {
     "sample_id": "new_example_011",
@@ -3353,34 +3644,52 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The Harry Potter series was written by British author J. K. Rowling.",
-        "keywords": ["J. K. Rowling", "J.K. Rowling", "Rowling"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Harry Potter",
-        "golden_evidence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "The Harry Potter series consists of seven novels, published between 1997 and 2007.",
-        "keywords": ["seven", "7"],
-        "golden_passage_idx": 2,
-        "required": true,
-        "golden_passage_title": "Harry Potter and the Philosopher's Stone",
-        "golden_evidence": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The Harry Potter series has sold more than 500 million copies worldwide, making it the best-selling book series in history.",
-        "keywords": ["500 million", "best-selling"],
-        "golden_passage_idx": 0,
-        "required": false,
-        "golden_passage_title": "Harry Potter",
-        "golden_evidence": "Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide."
-      }
-    ]
+  {
+    "nugget_id": "n0",
+    "text": "The Harry Potter series was written by British author J. K. Rowling.",
+    "keywords": ["J. K. Rowling", "J.K. Rowling", "Rowling"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Harry Potter",
+    "golden_evidence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "The Harry Potter series consists of seven novels.",
+    "keywords": ["seven", "7"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Harry Potter",
+    "golden_evidence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "The first Harry Potter novel was published in 1997.",
+    "keywords": ["1997"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Harry Potter and the Philosopher's Stone",
+    "golden_evidence": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "The Harry Potter series has sold more than 500 million copies worldwide.",
+    "keywords": ["500 million"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Harry Potter",
+    "golden_evidence": "Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "The Harry Potter series is the best-selling book series in history.",
+    "keywords": ["best-selling"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Harry Potter",
+    "golden_evidence": "Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide."
+  }
+]
   },
   {
     "sample_id": "new_example_013",
@@ -3520,34 +3829,70 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "World War I began on 28 July 1914 when Austria-Hungary declared war on Serbia.",
-        "keywords": ["28 July 1914", "1914"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "World War I",
-        "golden_evidence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "The immediate trigger of World War I was the assassination of Archduke Franz Ferdinand on 28 June 1914 in Sarajevo by Gavrilo Princip.",
-        "keywords": ["Franz Ferdinand", "Archduke Franz Ferdinand", "Gavrilo Princip", "Sarajevo", "28 June 1914"],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
-        "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The underlying causes of World War I included militarism, alliance systems, imperialism, and nationalism (MAIN).",
-        "keywords": ["militarism", "alliances", "imperialism", "nationalism", "MAIN"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Causes of World War I",
-        "golden_evidence": "The long-term causes are often grouped under the acronym MAIN: Militarism, Alliance systems, Imperialism, and Nationalism."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "World War I began on 28 July 1914.",
+    "keywords": ["28 July 1914", "1914"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "World War I",
+    "golden_evidence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "Austria-Hungary declared war on Serbia at the start of World War I.",
+    "keywords": ["Austria-Hungary", "Serbia"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "World War I",
+    "golden_evidence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "The immediate trigger of World War I was the assassination of Archduke Franz Ferdinand.",
+    "keywords": ["Franz Ferdinand", "Archduke Franz Ferdinand"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
+    "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "Archduke Franz Ferdinand was assassinated on 28 June 1914.",
+    "keywords": ["28 June 1914"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
+    "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
+  },
+  {
+    "nugget_id": "n1c",
+    "text": "Archduke Franz Ferdinand was assassinated in Sarajevo.",
+    "keywords": ["Sarajevo"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
+    "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
+  },
+  {
+    "nugget_id": "n1d",
+    "text": "Archduke Franz Ferdinand was assassinated by Gavrilo Princip.",
+    "keywords": ["Gavrilo Princip"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
+    "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
+  },
+  {
+    "nugget_id": "n2",
+    "text": "The underlying causes of World War I included militarism, alliance systems, imperialism, and nationalism (MAIN).",
+    "keywords": ["militarism", "alliances", "imperialism", "nationalism", "MAIN"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Causes of World War I",
+    "golden_evidence": "The long-term causes are often grouped under the acronym MAIN: Militarism, Alliance systems, Imperialism, and Nationalism."
+  }
+]
   },
   {
     "sample_id": "new_example_014",
@@ -3687,34 +4032,61 @@
       "n_no_support": 2
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance, considered one of the greatest painters of all time.",
-        "keywords": ["Leonardo da Vinci", "Da Vinci", "polymath"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Leonardo da Vinci",
-        "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "The Mona Lisa, painted by Leonardo da Vinci, is considered the most famous portrait in the world.",
-        "keywords": ["Mona Lisa"],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "Mona Lisa",
-        "golden_evidence": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The Last Supper is a mural painting by Leonardo da Vinci, painted between approximately 1495 and 1498.",
-        "keywords": ["Last Supper", "The Last Supper", "1495", "1498"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "The Last Supper (Leonardo)",
-        "golden_evidence": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory of the Convent of Santa Maria delle Grazie in Milan, Italy."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "Leonardo da Vinci was an Italian polymath of the High Renaissance.",
+    "keywords": ["Leonardo da Vinci", "Da Vinci", "polymath"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Leonardo da Vinci",
+    "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "Leonardo da Vinci is widely considered one of the greatest painters of all time.",
+    "keywords": ["greatest painters"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Leonardo da Vinci",
+    "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+  },
+  {
+    "nugget_id": "n0c",
+    "text": "Leonardo da Vinci was born on 15 April 1452.",
+    "keywords": ["1452"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Leonardo da Vinci",
+    "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+  },
+  {
+    "nugget_id": "n0d",
+    "text": "Leonardo da Vinci died on 2 May 1519.",
+    "keywords": ["1519"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Leonardo da Vinci",
+    "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+  },
+  {
+    "nugget_id": "n1",
+    "text": "The Mona Lisa was painted by Leonardo da Vinci.",
+    "keywords": ["Mona Lisa"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Mona Lisa",
+    "golden_evidence": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci."
+  },
+  {
+    "nugget_id": "n2",
+    "text": "The Last Supper is a mural painting by Leonardo da Vinci.",
+    "keywords": ["Last Supper", "The Last Supper"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "The Last Supper (Leonardo)",
+    "golden_evidence": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory of the Convent of Santa Maria delle Grazie in Milan, Italy."
+  }
+]
   },
   {
     "sample_id": "new_example_015",
@@ -3854,34 +4226,61 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "DNA (deoxyribonucleic acid) is a polymer that carries genetic instructions for the development and reproduction of all known living organisms.",
-        "keywords": ["polymer", "generic instruction"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "DNA",
-        "golden_evidence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth and reproduction of all known organisms."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "The double helix structure of DNA was discovered by James Watson and Francis Crick, published in Nature in April 1953.",
-        "keywords": ["Watson", "Crick", "James Watson", "Francis Crick", "double helix"],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "James Watson",
-        "golden_evidence": "In 1953, he co-authored with Francis Crick the academic paper proposing the double helix structure of the DNA molecule."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "Rosalind Franklin's X-ray diffraction images of DNA, particularly Photo 51, were crucial to Watson and Crick's discovery.",
-        "keywords": ["Rosalind Franklin", "Franklin", "Photo 51", "X-ray diffraction"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Rosalind Franklin",
-        "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial in determining the double helix structure."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "DNA is a polymer composed of two polynucleotide chains that form a double helix.",
+    "keywords": ["polymer", "double helix"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "DNA",
+    "golden_evidence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth and reproduction of all known organisms."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "DNA carries genetic instructions for the development and reproduction of all known organisms.",
+    "keywords": ["genetic instructions"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "DNA",
+    "golden_evidence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth and reproduction of all known organisms."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "The double helix structure of DNA was discovered by James Watson and Francis Crick.",
+    "keywords": ["Watson", "Crick", "James Watson", "Francis Crick", "double helix"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "James Watson",
+    "golden_evidence": "In 1953, he co-authored with Francis Crick the academic paper proposing the double helix structure of the DNA molecule."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "Watson and Crick published their discovery of the DNA double helix in 1953.",
+    "keywords": ["1953"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "James Watson",
+    "golden_evidence": "In 1953, he co-authored with Francis Crick the academic paper proposing the double helix structure of the DNA molecule."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "Rosalind Franklin's X-ray diffraction images of DNA were crucial to determining the double helix structure.",
+    "keywords": ["Rosalind Franklin", "Franklin", "X-ray diffraction"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Rosalind Franklin",
+    "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial in determining the double helix structure."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "Rosalind Franklin's key X-ray image of DNA was known as Photo 51.",
+    "keywords": ["Photo 51"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Rosalind Franklin",
+    "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial in determining the double helix structure."
+  }
+]
   },
   {
     "sample_id": "new_example_017",
@@ -4030,43 +4429,70 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The theory of general relativity was developed by Albert Einstein and published in 1915.",
-        "keywords": ["Albert Einstein", "Einstein", "1915"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "General relativity",
-        "golden_evidence": "General relativity is the geometric theory of gravitation published by Albert Einstein in 1915."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "General relativity describes gravity as a curvature of spacetime caused by mass and energy.",
-        "keywords": ["gravity", "curvature", "spacetime", "mass", "energy"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "General relativity",
-        "golden_evidence": "The curvature of spacetime is directly related to the energy and momentum of whatever matter and radiation are present."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "General relativity was first confirmed in 1919 by Arthur Eddington observing light bending during a solar eclipse.",
-        "keywords": ["1919", "Arthur Eddington", "solar eclipse", "light bending"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Tests of general relativity",
-        "golden_evidence": "The first major test came during the solar eclipse of May 29, 1919, when Arthur Eddington led an expedition to measure the deflection of starlight by the Sun."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "General relativity replaced Newton's theory of gravitation for describing extreme conditions.",
-        "keywords": ["Newton", "Newtonian gravity", "replaced"],
-        "golden_passage_idx": 0,
-        "required": false,
-        "golden_passage_title": "General relativity",
-        "golden_evidence": "General relativity generalizes special relativity and refines Newton's law of universal gravitation."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "The theory of general relativity was developed by Albert Einstein.",
+    "keywords": ["Albert Einstein", "Einstein"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "General relativity",
+    "golden_evidence": "General relativity is the geometric theory of gravitation published by Albert Einstein in 1915."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "General relativity was published in 1915.",
+    "keywords": ["1915"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "General relativity",
+    "golden_evidence": "General relativity is the geometric theory of gravitation published by Albert Einstein in 1915."
+  },
+  {
+    "nugget_id": "n1",
+    "text": "General relativity describes gravity as a curvature of spacetime caused by mass and energy.",
+    "keywords": ["gravity", "curvature", "spacetime", "mass", "energy"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "General relativity",
+    "golden_evidence": "The curvature of spacetime is directly related to the energy and momentum of whatever matter and radiation are present."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "General relativity was first confirmed in 1919.",
+    "keywords": ["1919"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Tests of general relativity",
+    "golden_evidence": "The first major test came during the solar eclipse of May 29, 1919, when Arthur Eddington led an expedition to measure the deflection of starlight by the Sun."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "General relativity was first confirmed by Arthur Eddington.",
+    "keywords": ["Arthur Eddington"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Tests of general relativity",
+    "golden_evidence": "The first major test came during the solar eclipse of May 29, 1919, when Arthur Eddington led an expedition to measure the deflection of starlight by the Sun."
+  },
+  {
+    "nugget_id": "n2c",
+    "text": "General relativity was confirmed by observing the bending of light during a solar eclipse.",
+    "keywords": ["solar eclipse", "light bending"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Tests of general relativity",
+    "golden_evidence": "The first major test came during the solar eclipse of May 29, 1919, when Arthur Eddington led an expedition to measure the deflection of starlight by the Sun."
+  },
+  {
+    "nugget_id": "n3",
+    "text": "General relativity replaced Newton's theory of gravitation for describing extreme conditions.",
+    "keywords": ["Newton", "Newtonian gravity", "replaced"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "General relativity",
+    "golden_evidence": "General relativity generalizes special relativity and refines Newton's law of universal gravitation."
+  }
+]
   },
   {
     "sample_id": "new_example_018",
@@ -4254,191 +4680,6 @@
     ]
   },
   {
-    "sample_id": "new_example_019",
-    "question": "What is the Sistine Chapel and who painted its ceiling?",
-    "answer": "The Sistine Chapel is a chapel in the Apostolic Palace in Vatican City and the official residence of the Pope. It is famous for its ceiling painted by Michelangelo between 1508 and 1512, commissioned by Pope Julius II. The ceiling depicts scenes from the Book of Genesis, including the iconic 'Creation of Adam' fresco. Michelangelo also painted 'The Last Judgment' on the altar wall between 1536 and 1541. The chapel takes its name from Pope Sixtus IV, who commissioned its construction between 1473 and 1481, and it is the site where the papal conclave elects new popes.",
-    "qa_pairs": [
-      {
-        "context": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City. It is renowned for its architecture and its decorations, which include several important Renaissance works.",
-        "question": "What is the Sistine Chapel?",
-        "short_answers": [
-          "a chapel in the Apostolic Palace in Vatican City",
-          "the Pope's official chapel"
-        ],
-        "wikipage": "Sistine Chapel"
-      },
-      {
-        "context": "The ceiling of the Sistine Chapel was painted by Michelangelo between 1508 and 1512, under commission from Pope Julius II. The most famous panel depicts the Creation of Adam.",
-        "question": "Who painted the Sistine Chapel ceiling?",
-        "short_answers": [
-          "Michelangelo",
-          "Michelangelo Buonarroti"
-        ],
-        "wikipage": "Sistine Chapel ceiling"
-      },
-      {
-        "context": "The Sistine Chapel is the site of the papal conclave, the process by which a new Pope is elected by the College of Cardinals.",
-        "question": "What important function does the Sistine Chapel serve today?",
-        "short_answers": [
-          "it is the site of the papal conclave",
-          "where popes are elected"
-        ],
-        "wikipage": "Sistine Chapel"
-      }
-    ],
-    "wikipages": [
-      {
-        "title": "Sistine Chapel",
-        "url": "https://en.wikipedia.org/wiki/Sistine_Chapel"
-      },
-      {
-        "title": "Sistine Chapel ceiling",
-        "url": "https://en.wikipedia.org/wiki/Sistine_Chapel_ceiling"
-      },
-      {
-        "title": "Michelangelo",
-        "url": "https://en.wikipedia.org/wiki/Michelangelo"
-      },
-      {
-        "title": "Pope Julius II",
-        "url": "https://en.wikipedia.org/wiki/Pope_Julius_II"
-      },
-      {
-        "title": "Papal conclave",
-        "url": "https://en.wikipedia.org/wiki/Papal_conclave"
-      }
-    ],
-    "annotations": [
-      {
-        "knowledge": [
-          {
-            "content": "The Sistine Chapel is in Vatican City and its ceiling was painted by Michelangelo between 1508 and 1512.",
-            "wikipage": "Sistine Chapel"
-          }
-        ],
-        "long_answer": "The Sistine Chapel is a chapel in Vatican City's Apostolic Palace. Its ceiling was painted by Michelangelo between 1508 and 1512, commissioned by Pope Julius II, and includes the iconic 'Creation of Adam.' The chapel also serves as the site of the papal conclave for electing new popes."
-      }
-    ],
-    "docs": [
-      {
-        "id": "doc011_1",
-        "title": "Sistine Chapel",
-        "text": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City. Originally known as the Cappella Magna, the chapel takes its name from Pope Sixtus IV, who had it built and decorated between 1477 and 1480. Its fame rests on its architecture and its frescoes, the most famous of which are Michelangelo's ceiling and The Last Judgment on the altar wall. The chapel is the site of the papal conclave, the process by which a new pope is elected.",
-        "score": 0.93,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "The chapel takes its name from Pope Sixtus IV, who had it built and decorated between 1477 and 1480.",
-        "supports_sub_questions": [0, 2],
-        "annotation_note": "Documento principale: descrive la Cappella Sistina, la sua storia e funzione nel conclave.",
-        "answers_found": [1, 0, 1],
-        "extraction": "The Sistine Chapel is in the Apostolic Palace in Vatican City, built under Pope Sixtus IV, and is the site of the papal conclave.",
-        "summary": "The Sistine Chapel is a Vatican City chapel famous for Michelangelo's frescoes and its role in papal elections."
-      },
-      {
-        "id": "doc011_2",
-        "title": "Sistine Chapel ceiling",
-        "text": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most celebrated works of Western art. The painting depicts nine scenes from the Book of Genesis, the most famous of which is The Creation of Adam, in which God and Adam are shown reaching toward each other. The ceiling was commissioned by Pope Julius II. Michelangelo, who considered himself primarily a sculptor, initially was reluctant to accept the commission but produced what is widely regarded as one of the greatest artistic achievements in history.",
-        "score": 0.91,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most celebrated works of Western art.",
-        "supports_sub_questions": [1],
-        "annotation_note": "Risponde direttamente alla sub-question su chi ha dipinto il soffitto e quando.",
-        "answers_found": [0, 1, 0],
-        "extraction": "Michelangelo painted the Sistine Chapel ceiling between 1508 and 1512, commissioned by Pope Julius II.",
-        "summary": "Michelangelo painted the Sistine Chapel ceiling between 1508 and 1512, depicting scenes from Genesis including the Creation of Adam."
-      },
-      {
-        "id": "doc011_3",
-        "title": "Michelangelo",
-        "text": "Michelangelo di Lodovico Buonarroti Simoni (6 March 1475 – 18 February 1564) was an Italian Renaissance sculptor, painter, architect, and poet who exerted an unparalleled influence on the development of Western art. He is widely considered the greatest artist of his lifetime and one of all time. He painted the ceiling of the Sistine Chapel from 1508 to 1512, a work of unprecedented grandeur and beauty. Between 1536 and 1541, he also painted The Last Judgment on the altar wall of the same chapel.",
-        "score": 0.87,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "He painted the ceiling of the Sistine Chapel from 1508 to 1512, a work of unprecedented grandeur and beauty.",
-        "supports_sub_questions": [1],
-        "annotation_note": "Conferma Michelangelo come autore della volta della Sistina e aggiunge informazioni sul Giudizio Universale.",
-        "answers_found": [0, 1, 0],
-        "extraction": "Michelangelo painted the Sistine Chapel ceiling from 1508 to 1512 and The Last Judgment from 1536 to 1541.",
-        "summary": "Michelangelo painted both the Sistine Chapel ceiling (1508–1512) and The Last Judgment (1536–1541)."
-      },
-      {
-        "id": "doc011_4",
-        "title": "Pope Julius II",
-        "text": "Pope Julius II (1 December 1443 – 21 February 1513), born Giuliano della Rovere, was Pope from 1503 to 1513. Known as the 'Warrior Pope' for his militaristic policies, he was also a significant patron of the arts. He commissioned Michelangelo to paint the Sistine Chapel ceiling and to design his tomb, and he commissioned Raphael to decorate the Vatican Stanze. Julius II also laid the foundation stone for the new St. Peter's Basilica in Rome in 1506.",
-        "score": 0.79,
-        "is_gold": true,
-        "support_level": "partial",
-        "evidence_sentence": "He commissioned Michelangelo to paint the Sistine Chapel ceiling and to design his tomb.",
-        "supports_sub_questions": [1],
-        "annotation_note": "Conferma che fu Giulio II a commissionare a Michelangelo la volta della Cappella Sistina.",
-        "answers_found": [0, 1, 0],
-        "extraction": "Pope Julius II commissioned Michelangelo to paint the Sistine Chapel ceiling.",
-        "summary": "Pope Julius II was the patron who commissioned Michelangelo to paint the Sistine Chapel ceiling."
-      },
-      {
-        "id": "doc011_5",
-        "title": "Papal conclave",
-        "text": "A papal conclave is a meeting of the College of Cardinals convened to elect a new Bishop of Rome, who will become Pope. The term 'conclave' derives from the Latin cum clave, meaning 'with a key', referring to the practice of locking the cardinals in to ensure a speedy election. Since 1878, all conclaves have been held in the Sistine Chapel in Vatican City. The last conclave was held in March 2013, when Cardinal Jorge Mario Bergoglio was elected as Pope Francis.",
-        "score": 0.67,
-        "is_gold": false,
-        "support_level": "none",
-        "evidence_sentence": null,
-        "supports_sub_questions": [],
-        "annotation_note": "Documento distractor: descrive il conclave in dettaglio ma non risponde alle sub-questions principali su cosa sia la Cappella Sistina o chi abbia dipinto la volta.",
-        "answers_found": [0, 0, 0],
-        "extraction": "irrelevant",
-        "summary": "This document explains the papal conclave process but does not answer the main sub-questions about the Sistine Chapel or Michelangelo."
-      }
-    ],
-    "gold_stats": {
-      "n_docs": 5,
-      "n_gold": 4,
-      "n_distractors": 1,
-      "n_full_support": 3,
-      "n_partial_support": 1,
-      "n_no_support": 1
-    },
-    "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The Sistine Chapel is a chapel in the Apostolic Palace in Vatican City.",
-        "keywords": ["Sistine Chapel", "Apostolic Palace", "Vatican City"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Sistine Chapel",
-        "golden_evidence": "The Sistine Chapel is a chapel in the Apostolic Palace, the official residence of the Pope, in Vatican City."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "The ceiling was painted by Michelangelo between 1508 and 1512.",
-        "keywords": ["Michelangelo"],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "Sistine Chapel ceiling",
-        "golden_evidence": "The Sistine Chapel ceiling, painted by Michelangelo between 1508 and 1512, is one of the most celebrated works of Western art."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The ceiling was commissioned by Pope Julius II and depicts scenes from the Book of Genesis.",
-        "keywords": ["Pope Julius II", "Genesis", "Creation of Adam"],
-        "golden_passage_idx": 1,
-        "required": false,
-        "golden_passage_title": "Sistine Chapel ceiling",
-        "golden_evidence": "The painting depicts nine scenes from the Book of Genesis. The ceiling was commissioned by Pope Julius II."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "The Sistine Chapel is the site of the papal conclave, where new popes are elected.",
-        "keywords": ["papal conclave", "pope elected", "College of Cardinals"],
-        "golden_passage_idx": 0,
-        "required": false,
-        "golden_passage_title": "Sistine Chapel",
-        "golden_evidence": "The chapel is the site of the papal conclave, the process by which a new pope is elected."
-      }
-    ]
-  },
-  {
     "sample_id": "new_example_020",
     "question": "What caused the fall of the Roman Empire?",
     "answer": "The fall of the Western Roman Empire in 476 AD is attributed to a combination of factors. Historians cite internal causes such as political instability, military overextension, economic troubles, and the debasement of currency. External pressures included invasions by Germanic tribes (Visigoths, Vandals, Huns, Ostrogoths) who gradually eroded Roman frontiers. The traditional end date is 476 AD, when the Germanic chieftain Odoacer deposed the last Western emperor, Romulus Augustulus. The Eastern Roman Empire (Byzantine Empire) survived for nearly another thousand years until 1453.",
@@ -4583,43 +4824,70 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The Western Roman Empire fell in 476 AD when Odoacer deposed the last emperor, Romulus Augustulus.",
-        "keywords": ["476 AD", "Odoacer", "Romulus Augustulus"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Fall of the Western Roman Empire",
-        "golden_evidence": "The date most often cited for the 'fall' is 476 AD, when Romulus Augustulus, the last emperor of the Western Roman Empire, was deposed by the Germanic chieftain Odoacer."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Causes of the fall included military overextension, political instability, and barbarian invasions.",
-        "keywords": ["military overextension", "political instability", "barbarian invasions"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Fall of the Western Roman Empire",
-        "golden_evidence": "Historians have proposed numerous theories including military overextension, the debasement of currency, political instability, and the increasing pressure from barbarian invasions."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The Huns, led by Attila, contributed to the fall by pushing Germanic peoples into Roman territory.",
-        "keywords": ["Huns", "Attila", "Germanic peoples"],
-        "golden_passage_idx": 3,
-        "required": false,
-        "golden_passage_title": "Huns",
-        "golden_evidence": "The Hunnic invasions forced many Germanic peoples such as the Visigoths and Vandals into Roman territory, destabilizing the empire's borders from within."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "The Eastern Roman Empire (Byzantine Empire) survived until 1453, when Constantinople fell to the Ottomans.",
-        "keywords": ["Byzantine Empire", "1453", "Constantinople", "Ottoman"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Byzantine Empire",
-        "golden_evidence": "It survived the fall of the Western Roman Empire in the 5th century AD and continued to exist until 1453, when Constantinople fell to the Ottoman Empire."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "The Western Roman Empire fell in 476 AD.",
+    "keywords": ["476 AD"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Fall of the Western Roman Empire",
+    "golden_evidence": "The date most often cited for the 'fall' is 476 AD, when Romulus Augustulus, the last emperor of the Western Roman Empire, was deposed by the Germanic chieftain Odoacer."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "Romulus Augustulus was the last emperor of the Western Roman Empire.",
+    "keywords": ["Romulus Augustulus"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Fall of the Western Roman Empire",
+    "golden_evidence": "The date most often cited for the 'fall' is 476 AD, when Romulus Augustulus, the last emperor of the Western Roman Empire, was deposed by the Germanic chieftain Odoacer."
+  },
+  {
+    "nugget_id": "n0c",
+    "text": "Romulus Augustulus was deposed by Odoacer.",
+    "keywords": ["Odoacer"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Fall of the Western Roman Empire",
+    "golden_evidence": "The date most often cited for the 'fall' is 476 AD, when Romulus Augustulus, the last emperor of the Western Roman Empire, was deposed by the Germanic chieftain Odoacer."
+  },
+  {
+    "nugget_id": "n1",
+    "text": "Causes of the fall of the Western Roman Empire included military overextension, political instability, and barbarian invasions.",
+    "keywords": ["military overextension", "political instability", "barbarian invasions"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Fall of the Western Roman Empire",
+    "golden_evidence": "Historians have proposed numerous theories including military overextension, the debasement of currency, political instability, and the increasing pressure from barbarian invasions."
+  },
+  {
+    "nugget_id": "n2",
+    "text": "The Huns pushed Germanic peoples into Roman territory, destabilizing the empire.",
+    "keywords": ["Huns", "Attila", "Germanic peoples"],
+    "golden_passage_idx": 3,
+    "required": false,
+    "golden_passage_title": "Huns",
+    "golden_evidence": "The Hunnic invasions forced many Germanic peoples such as the Visigoths and Vandals into Roman territory, destabilizing the empire's borders from within."
+  },
+  {
+    "nugget_id": "n3a",
+    "text": "The Eastern Roman Empire survived until 1453.",
+    "keywords": ["Byzantine Empire", "1453"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Byzantine Empire",
+    "golden_evidence": "It survived the fall of the Western Roman Empire in the 5th century AD and continued to exist until 1453, when Constantinople fell to the Ottoman Empire."
+  },
+  {
+    "nugget_id": "n3b",
+    "text": "Constantinople fell to the Ottoman Empire in 1453.",
+    "keywords": ["Constantinople", "Ottoman"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Byzantine Empire",
+    "golden_evidence": "It survived the fall of the Western Roman Empire in the 5th century AD and continued to exist until 1453, when Constantinople fell to the Ottoman Empire."
+  }
+]
   },
   {
     "sample_id": "new_example_021",
@@ -4767,43 +5035,70 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "William Shakespeare (1564–1616) was an English playwright, poet, and actor, widely regarded as the greatest writer in the English language.",
-        "keywords": ["playwright", "poet"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "William Shakespeare",
-        "golden_evidence": "He is widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Shakespeare wrote approximately 39 plays and 154 sonnets.",
-        "keywords": ["39 plays", "154 sonnets"],
-        "golden_passage_idx": 0,
-        "required": false,
-        "golden_passage_title": "William Shakespeare",
-        "golden_evidence": "His extant works consist of some 39 plays, 154 sonnets, and several longer poems."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "His most famous plays include Hamlet, Romeo and Juliet, Macbeth, Othello, and King Lear.",
-        "keywords": ["Hamlet", "Romeo and Juliet", "Macbeth", "Othello", "King Lear"],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "Hamlet",
-        "golden_evidence": "Hamlet is considered one of the most influential works of literature ever written."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "Many of his plays were performed at the Globe Theatre, built in 1599 and co-owned by Shakespeare.",
-        "keywords": ["Globe Theatre", "1599", "Lord Chamberlain's Men"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Globe Theatre",
-        "golden_evidence": "The Globe Theatre was built in 1599 by Shakespeare's playing company, the Lord Chamberlain's Men."
-      }
-    ]
+  {
+    "nugget_id": "n0b",
+    "text": "William Shakespeare is widely regarded as the greatest writer in the English language.",
+    "keywords": ["greatest writer"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "William Shakespeare",
+    "golden_evidence": "He is widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "Shakespeare wrote approximately 39 plays.",
+    "keywords": ["39 plays"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "William Shakespeare",
+    "golden_evidence": "His extant works consist of some 39 plays, 154 sonnets, and several longer poems."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "Shakespeare wrote 154 sonnets.",
+    "keywords": ["154 sonnets"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "William Shakespeare",
+    "golden_evidence": "His extant works consist of some 39 plays, 154 sonnets, and several longer poems."
+  },
+  {
+    "nugget_id": "n2",
+    "text": "Hamlet is one of Shakespeare's most famous plays.",
+    "keywords": ["Hamlet"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Hamlet",
+    "golden_evidence": "Hamlet is considered one of the most influential works of literature ever written."
+  },
+  {
+    "nugget_id": "n3a",
+    "text": "Many of Shakespeare's plays were performed at the Globe Theatre.",
+    "keywords": ["Globe Theatre"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Globe Theatre",
+    "golden_evidence": "The Globe Theatre was built in 1599 by Shakespeare's playing company, the Lord Chamberlain's Men."
+  },
+  {
+    "nugget_id": "n3b",
+    "text": "The Globe Theatre was built in 1599.",
+    "keywords": ["1599"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Globe Theatre",
+    "golden_evidence": "The Globe Theatre was built in 1599 by Shakespeare's playing company, the Lord Chamberlain's Men."
+  },
+  {
+    "nugget_id": "n3c",
+    "text": "The Globe Theatre was built by Shakespeare's playing company, the Lord Chamberlain's Men.",
+    "keywords": ["Lord Chamberlain's Men"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Globe Theatre",
+    "golden_evidence": "The Globe Theatre was built in 1599 by Shakespeare's playing company, the Lord Chamberlain's Men."
+  }
+]
   },
   {
     "sample_id": "new_example_022",
@@ -4952,43 +5247,79 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "DNA (deoxyribonucleic acid) is a double-helix molecule carrying genetic instructions for all known organisms.",
-        "keywords": ["molecule", "genetic instructions", "deoxyribonucleic acid"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "DNA",
-        "golden_evidence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "Genes are DNA segments that encode traits passed from parents to offspring.",
-        "keywords": ["genes", "traits", "heredity", "parents", "offspring"],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "Genetics",
-        "golden_evidence": "Traits are passed from parents to offspring through genes, a process known as inheritance."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The double-helix structure of DNA was discovered by Watson and Crick in 1953.",
-        "keywords": ["Watson", "Crick", "1953", "double helix"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Nucleic acid double helix",
-        "golden_evidence": "The double-helix structure of DNA was proposed by James Watson and Francis Crick in a landmark 1953 paper in Nature."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "Rosalind Franklin's X-ray diffraction images (Photo 51) were crucial to the discovery of the DNA structure.",
-        "keywords": ["Rosalind Franklin", "Photo 51", "X-ray crystallography"],
-        "golden_passage_idx": 3,
-        "required": false,
-        "golden_passage_title": "Rosalind Franklin",
-        "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial data that contributed to Watson and Crick's 1953 model."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "DNA is a double-helix molecule.",
+    "keywords": ["double helix", "molecule"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "DNA",
+    "golden_evidence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "DNA carries genetic instructions for all known organisms.",
+    "keywords": ["genetic instructions", "deoxyribonucleic acid"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "DNA",
+    "golden_evidence": "Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions."
+  },
+  {
+    "nugget_id": "n1a",
+    "text": "Genes are DNA segments that encode traits.",
+    "keywords": ["genes", "traits"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Genetics",
+    "golden_evidence": "Traits are passed from parents to offspring through genes, a process known as inheritance."
+  },
+  {
+    "nugget_id": "n1b",
+    "text": "Traits are passed from parents to offspring through genes.",
+    "keywords": ["heredity", "parents", "offspring"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Genetics",
+    "golden_evidence": "Traits are passed from parents to offspring through genes, a process known as inheritance."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "The double-helix structure of DNA was discovered by Watson and Crick.",
+    "keywords": ["Watson", "Crick", "double helix"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Nucleic acid double helix",
+    "golden_evidence": "The double-helix structure of DNA was proposed by James Watson and Francis Crick in a landmark 1953 paper in Nature."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "Watson and Crick published their discovery of the DNA double helix in 1953.",
+    "keywords": ["1953"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Nucleic acid double helix",
+    "golden_evidence": "The double-helix structure of DNA was proposed by James Watson and Francis Crick in a landmark 1953 paper in Nature."
+  },
+  {
+    "nugget_id": "n3a",
+    "text": "Rosalind Franklin's X-ray diffraction images of DNA were crucial to Watson and Crick's discovery.",
+    "keywords": ["Rosalind Franklin", "X-ray crystallography"],
+    "golden_passage_idx": 3,
+    "required": false,
+    "golden_passage_title": "Rosalind Franklin",
+    "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial data that contributed to Watson and Crick's 1953 model."
+  },
+  {
+    "nugget_id": "n3b",
+    "text": "Rosalind Franklin's key X-ray image of DNA was known as Photo 51.",
+    "keywords": ["Photo 51"],
+    "golden_passage_idx": 3,
+    "required": false,
+    "golden_passage_title": "Rosalind Franklin",
+    "golden_evidence": "Her X-ray diffraction images of DNA, particularly Photo 51, were crucial data that contributed to Watson and Crick's 1953 model."
+  }
+]
   },
   {
     "sample_id": "new_example_024",
@@ -5137,43 +5468,61 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The Amazon rainforest is the world's largest tropical rainforest, covering about 5.5 million km² across nine countries.",
-        "keywords": ["tropical rainforest", "5.5 million km²", "South America"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Amazon rainforest",
-        "golden_evidence": "5,500,000 km² are covered by the rainforest. This region includes territory belonging to nine nations."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "The Amazon produces approximately 20% of the world's oxygen and is called the 'lungs of the Earth.'",
-        "keywords": ["lungs", "oxygen", "carbon dioxide", "climate regulation"],
-        "golden_passage_idx": 1,
-        "required": true,
-        "golden_passage_title": "Biodiversity of the Amazon",
-        "golden_evidence": "Its vegetation absorbs vast quantities of carbon dioxide and produces approximately 20% of the world's oxygen."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The Amazon contains about 10% of all species on Earth.",
-        "keywords": ["10%", "species", "biodiversity"],
-        "golden_passage_idx": 0,
-        "required": false,
-        "golden_passage_title": "Amazon rainforest",
-        "golden_evidence": "The Amazon rainforest contains 10% of all the species in the world."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "Deforestation, driven mainly by agriculture and cattle ranching, is the primary threat to the Amazon.",
-        "keywords": ["deforestation", "agriculture", "cattle ranching", "logging"],
-        "golden_passage_idx": 2,
-        "required": false,
-        "golden_passage_title": "Deforestation of the Amazon rainforest",
-        "golden_evidence": "Deforestation is primarily driven by agricultural expansion, cattle ranching, logging, and infrastructure development."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "The Amazon rainforest is the world's largest tropical rainforest.",
+    "keywords": ["tropical rainforest"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Amazon rainforest",
+    "golden_evidence": "5,500,000 km² are covered by the rainforest. This region includes territory belonging to nine nations."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "The Amazon rainforest covers about 5.5 million km².",
+    "keywords": ["5.5 million km²", "5.5 million km"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Amazon rainforest",
+    "golden_evidence": "5,500,000 km² are covered by the rainforest. This region includes territory belonging to nine nations."
+  },
+  {
+    "nugget_id": "n0c",
+    "text": "The Amazon rainforest spans nine countries.",
+    "keywords": ["nine countries"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Amazon rainforest",
+    "golden_evidence": "5,500,000 km² are covered by the rainforest. This region includes territory belonging to nine nations."
+  },
+  {
+    "nugget_id": "n1",
+    "text": "The Amazon produces approximately 20% of the world's oxygen.",
+    "keywords": ["oxygen", "20%"],
+    "golden_passage_idx": 1,
+    "required": true,
+    "golden_passage_title": "Biodiversity of the Amazon",
+    "golden_evidence": "Its vegetation absorbs vast quantities of carbon dioxide and produces approximately 20% of the world's oxygen."
+  },
+  {
+    "nugget_id": "n2",
+    "text": "The Amazon contains about 10% of all species on Earth.",
+    "keywords": ["10%", "species", "biodiversity"],
+    "golden_passage_idx": 0,
+    "required": false,
+    "golden_passage_title": "Amazon rainforest",
+    "golden_evidence": "The Amazon rainforest contains 10% of all the species in the world."
+  },
+  {
+    "nugget_id": "n3",
+    "text": "Deforestation, driven mainly by agriculture and cattle ranching, is the primary threat to the Amazon.",
+    "keywords": ["deforestation", "agriculture", "cattle ranching", "logging"],
+    "golden_passage_idx": 2,
+    "required": false,
+    "golden_passage_title": "Deforestation of the Amazon rainforest",
+    "golden_evidence": "Deforestation is primarily driven by agricultural expansion, cattle ranching, logging, and infrastructure development."
+  }
+]
   },
   {
     "sample_id": "new_example_025",
@@ -5322,42 +5671,60 @@
       "n_no_support": 1
     },
     "nuggets": [
-      {
-        "nugget_id": "n0",
-        "text": "The Cold War was a geopolitical rivalry between the United States and the Soviet Union lasting from 1947 to 1991.",
-        "keywords": ["United States", "1947"],
-        "golden_passage_idx": 0,
-        "required": true,
-        "golden_passage_title": "Cold War",
-        "golden_evidence": "The Cold War was a period of geopolitical tension between the United States and the Soviet Union. It began in 1947 and lasted until the dissolution of the Soviet Union in 1991."
-      },
-      {
-        "nugget_id": "n1",
-        "text": "The Cold War ended on December 26, 1991, with the dissolution of the Soviet Union.",
-        "keywords": ["December 26, 1991", "dissolution", "Soviet Union", "end"],
-        "golden_passage_idx": 2,
-        "required": true,
-        "golden_passage_title": "Dissolution of the Soviet Union",
-        "golden_evidence": "The dissolution of the Soviet Union resulted in the end of the country's existence on December 26, 1991, effectively ending the Cold War."
-      },
-      {
-        "nugget_id": "n2",
-        "text": "The fall of the Berlin Wall on November 9, 1989, marked the symbolic beginning of the Cold War's end.",
-        "keywords": ["Berlin Wall", "November 9, 1989", "fall"],
-        "golden_passage_idx": 3,
-        "required": false,
-        "golden_passage_title": "Berlin Wall",
-        "golden_evidence": "The fall of the Berlin Wall on November 9, 1989, marked the beginning of the end of the Cold War."
-      },
-      {
-        "nugget_id": "n3",
-        "text": "The Cuban Missile Crisis (October 1962) was the most dangerous moment of the Cold War.",
-        "keywords": ["Cuban Missile Crisis", "October 1962", "nuclear war"],
-        "golden_passage_idx": 1,
-        "required": false,
-        "golden_passage_title": "Cuban Missile Crisis",
-        "golden_evidence": "It is widely considered the closest the Cold War came to escalating into full-scale nuclear war."
-      }
-    ]
+  {
+    "nugget_id": "n0a",
+    "text": "The Cold War was a geopolitical rivalry between the United States and the Soviet Union.",
+    "keywords": ["United States", "Soviet Union"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Cold War",
+    "golden_evidence": "The Cold War was a period of geopolitical tension between the United States and the Soviet Union. It began in 1947 and lasted until the dissolution of the Soviet Union in 1991."
+  },
+  {
+    "nugget_id": "n0b",
+    "text": "The Cold War began in 1947.",
+    "keywords": ["1947"],
+    "golden_passage_idx": 0,
+    "required": true,
+    "golden_passage_title": "Cold War",
+    "golden_evidence": "The Cold War was a period of geopolitical tension between the United States and the Soviet Union. It began in 1947 and lasted until the dissolution of the Soviet Union in 1991."
+  },
+  {
+    "nugget_id": "n1",
+    "text": "The Cold War ended on December 26, 1991, with the dissolution of the Soviet Union.",
+    "keywords": ["December 26, 1991", "dissolution", "Soviet Union", "end"],
+    "golden_passage_idx": 2,
+    "required": true,
+    "golden_passage_title": "Dissolution of the Soviet Union",
+    "golden_evidence": "The dissolution of the Soviet Union resulted in the end of the country's existence on December 26, 1991, effectively ending the Cold War."
+  },
+  {
+    "nugget_id": "n2a",
+    "text": "The fall of the Berlin Wall marked the symbolic beginning of the Cold War's end.",
+    "keywords": ["Berlin Wall"],
+    "golden_passage_idx": 3,
+    "required": false,
+    "golden_passage_title": "Berlin Wall",
+    "golden_evidence": "The fall of the Berlin Wall on November 9, 1989, marked the beginning of the end of the Cold War."
+  },
+  {
+    "nugget_id": "n2b",
+    "text": "The Berlin Wall fell on November 9, 1989.",
+    "keywords": ["November 9, 1989", "fall"],
+    "golden_passage_idx": 3,
+    "required": false,
+    "golden_passage_title": "Berlin Wall",
+    "golden_evidence": "The fall of the Berlin Wall on November 9, 1989, marked the beginning of the end of the Cold War."
+  },
+  {
+    "nugget_id": "n3a",
+    "text": "The Cuban Missile Crisis was the most dangerous moment of the Cold War.",
+    "keywords": ["Cuban Missile Crisis"],
+    "golden_passage_idx": 1,
+    "required": false,
+    "golden_passage_title": "Cuban Missile Crisis",
+    "golden_evidence": "It is widely considered the closest the Cold War came to escalating into full-scale nuclear war."
+  }
+]
   }
 ]

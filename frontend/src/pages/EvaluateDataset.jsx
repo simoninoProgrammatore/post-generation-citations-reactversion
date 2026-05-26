@@ -1,7 +1,15 @@
 /**
- * EvaluateDataset.jsx — Pagina dedicata alla valutazione globale del dataset.
- * Stessa grafica e stesse metriche già presenti nello Step 6 di Pipeline.jsx,
- * ma esposta come pagina autonoma sotto "Metriche".
+ * EvaluateDataset.jsx — Pagina di valutazione globale del dataset.
+ *
+ * Il backend (/evaluate-example) esegue la pipeline UNA volta per esempio e
+ * restituisce SEMPRE sia nugget_metrics sia deepseek_metrics. Qui le calcoliamo
+ * entrambe in aggregato; il toggle Nugget/DeepSeek e' solo una VISTA sugli
+ * stessi dati gia' calcolati (non sceglie piu' cosa calcolare).
+ *
+ * Nota metriche nugget: la precision e' CONTINUA E PESATA
+ *   precision(g) = Σ_i (w_i · e_i) / Σ_i w_i
+ * dove w_i = match claim↔nugget e e_i = evidence span↔golden_evidence.
+ * Il covering e' nugget-centered, allineato a MatchedView (match_score ≥ 0.6).
  */
 
 import { useState, useRef } from 'react'
@@ -12,45 +20,104 @@ import Icon from '../components/Icon'
 import { downloadJSON, timestampedFilename } from '../utils/download'
 
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// ── Aggregazione globale ───────────────────────────────────────────────────────
 
-function metricColor(key, v) {
-  if (key === 'unsupported_ratio') {
-    return v <= 0.2 ? 'var(--green)' : v <= 0.5 ? 'var(--amber)' : 'var(--red)'
+function computeNuggetGlobal(perExample) {
+  const gm = {}
+  let totalNuggets = 0, totalCovered = 0, totalCited = 0
+  let totalReq = 0, totalReqCovered = 0
+  let totalOpt = 0, totalOptCovered = 0
+  const precs = [], recalls = [], covs = []
+  const reqPrecs = [], reqRecalls = []
+
+  for (const ex of perExample) {
+    const nm = ex.nugget_metrics
+    if (!nm) continue
+    precs.push(nm.nugget_precision ?? 0)
+    recalls.push(nm.nugget_recall ?? 0)
+    covs.push(nm.nugget_coverage ?? 0)
+    reqPrecs.push(nm.required_precision ?? 0)
+    reqRecalls.push(nm.required_recall ?? 0)
+    totalNuggets    += nm.n_nuggets ?? 0
+    totalCovered    += nm.n_covered ?? 0
+    totalCited      += nm.n_cited ?? 0
+    totalReq        += nm.n_required ?? 0
+    totalReqCovered += nm.n_required_covered ?? 0
+    totalOpt        += nm.n_optional ?? 0
+    totalOptCovered += nm.n_optional_covered ?? 0
   }
-  return v >= 0.7 ? 'var(--green)' : v >= 0.4 ? 'var(--amber)' : 'var(--red)'
+
+  if (precs.length) {
+    const mean = a => a.reduce((x, y) => x + y, 0) / a.length
+    gm.avg_nugget_precision   = mean(precs)
+    gm.avg_nugget_recall      = mean(recalls)
+    gm.avg_nugget_coverage    = mean(covs)
+    gm.avg_required_precision = mean(reqPrecs)
+    gm.avg_required_recall    = mean(reqRecalls)
+  }
+  if (totalNuggets > 0) {
+    // "Macro Citation" = quota di nugget coperti che hanno almeno uno span citato.
+    gm.macro_nugget_citation = totalCovered > 0 ? totalCited / totalCovered : 0
+    gm.macro_nugget_recall   = totalCited / totalNuggets
+    gm.macro_nugget_coverage = totalCovered / totalNuggets
+  }
+  if (totalReq > 0) {
+    gm.macro_required_coverage = totalReqCovered / totalReq
+  }
+  if (totalOpt > 0) {
+    gm.macro_optional_coverage = totalOptCovered / totalOpt
+  }
+
+  gm.total_nuggets = totalNuggets
+  gm.total_cited   = totalCited
+  gm.total_covered = totalCovered
+  gm.total_required = totalReq
+  gm.total_required_covered = totalReqCovered
+  gm.total_optional = totalOpt
+  gm.total_optional_covered = totalOptCovered
+
+  let totalNoisePassages = 0, totalClaimsNoise = 0, totalNuggetsNoise = 0
+  for (const ex of perExample) {
+    const nm = ex.nugget_metrics
+    if (!nm) continue
+    const nu = nm.noise_usage || {}
+    totalNoisePassages += nu.noise_supporting_passages || 0
+    totalClaimsNoise   += nu.claims_citing_noise || 0
+    totalNuggetsNoise  += nm.n_cited_from_noise || 0
+  }
+  gm.total_noise_passages_used = totalNoisePassages
+  gm.total_claims_citing_noise = totalClaimsNoise
+  gm.total_nuggets_cited_from_noise = totalNuggetsNoise
+
+  return gm
 }
 
-const GLOBAL_METRIC_INFO = {
-  macro_nugget_precision: {
-    label: 'Macro Nugget Precision',
-    desc: 'Precisione calcolata su tutti i nugget del dataset (cited/covered).',
-  },
-  macro_nugget_recall: {
-    label: 'Macro Nugget Recall',
-    desc: 'Recall calcolata su tutti i nugget del dataset (cited/total).',
-  },
-  macro_nugget_coverage: {
-    label: 'Macro Nugget Coverage',
-    desc: 'Copertura su tutti i nugget del dataset (covered/total).',
-  },
-  avg_nugget_precision: {
-    label: 'Avg Nugget Precision',
-    desc: 'Media delle precisioni per esempio.',
-  },
-  avg_nugget_recall: {
-    label: 'Avg Nugget Recall',
-    desc: 'Media delle recall per esempio.',
-  },
-}
+function computeDeepseekGlobal(perExample) {
+  const gm = {}
+  const precs = [], recalls = []
+  let totalPairs = 0, totalPairsSupported = 0, totalClaims = 0, totalSupportedClaims = 0
 
-const STANDARD_METRIC_LABELS = {
-  citation_precision:    'Citation Precision',
-  citation_recall:       'Citation Recall',
-  factual_precision:     'Factual Precision',
-  factual_precision_nli: 'Factual Precision (NLI)',
-  unsupported_ratio:     'Unsupported Ratio',
-  avg_entailment_score:  'Avg Entailment Score',
+  for (const ex of perExample) {
+    const dm = ex.deepseek_metrics
+    if (!dm) continue
+    precs.push(dm.citation_precision ?? 0)
+    recalls.push(dm.citation_recall ?? 0)
+    totalPairs           += dm.n_pairs ?? 0
+    totalPairsSupported  += dm.n_pairs_supported ?? 0
+    totalClaims          += dm.n_claims ?? 0
+    totalSupportedClaims += Math.round((dm.citation_recall ?? 0) * (dm.n_claims ?? 0))
+  }
+  if (precs.length) {
+    const mean = a => a.reduce((x, y) => x + y, 0) / a.length
+    gm.avg_citation_precision = mean(precs)
+    gm.avg_citation_recall    = mean(recalls)
+  }
+  if (totalPairs > 0)  gm.macro_citation_precision = totalPairsSupported / totalPairs
+  if (totalClaims > 0) gm.macro_citation_recall    = totalSupportedClaims / totalClaims
+  gm.total_pairs = totalPairs
+  gm.total_pairs_supported = totalPairsSupported
+  gm.total_claims = totalClaims
+  return gm
 }
 
 function normalizeDataset(rawData) {
@@ -73,73 +140,421 @@ function normalizeDataset(rawData) {
   })
 }
 
-// ── EvalModeToggle ────────────────────────────────────────────────────────────
 
-function EvalModeToggle({ mode, onChange, hasNuggets }) {
+// ── ViewToggle (2 stati: vista sui dati gia' calcolati) ─────────────────────────
+
+function ViewToggle({ view, onChange, hasNuggets }) {
+  const baseBtn = {
+    display: 'flex', alignItems: 'center', gap: 6,
+    padding: '6px 14px', fontSize: 12, fontWeight: 600,
+    border: 'none', borderRadius: 8, cursor: 'pointer', transition: 'all 0.15s',
+  }
   return (
     <div style={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      background: 'var(--bg)',
-      border: '1px solid var(--border)',
-      borderRadius: 10,
-      padding: 3,
-      gap: 2,
+      display: 'inline-flex', alignItems: 'center',
+      background: 'var(--bg)', border: '1px solid var(--border)',
+      borderRadius: 10, padding: 3, gap: 2,
     }}>
-      <button
-        onClick={() => onChange('standard')}
-        style={{
-          display: 'flex', alignItems: 'center', gap: 6,
-          padding: '6px 14px',
-          fontSize: 12, fontWeight: 600,
-          border: 'none', borderRadius: 8, cursor: 'pointer',
-          transition: 'all 0.15s',
-          background: mode === 'standard' ? 'var(--accent)' : 'transparent',
-          color: mode === 'standard' ? 'white' : 'var(--text-2)',
-          boxShadow: mode === 'standard' ? '0 1px 4px rgba(0,0,0,0.15)' : 'none',
-        }}
-      >
-        <Icon name="barChart2" size={12} strokeWidth={2}
-          color={mode === 'standard' ? 'white' : 'var(--text-3)'} />
-        Standard
-      </button>
-      <button
-        onClick={() => onChange('nugget')}
-        style={{
-          display: 'flex', alignItems: 'center', gap: 6,
-          padding: '6px 14px',
-          fontSize: 12, fontWeight: 600,
-          border: 'none', borderRadius: 8, cursor: 'pointer',
-          transition: 'all 0.15s',
-          background: mode === 'nugget' ? '#7C3AED' : 'transparent',
-          color: mode === 'nugget' ? 'white' : 'var(--text-2)',
-          boxShadow: mode === 'nugget' ? '0 1px 4px rgba(124,58,237,0.3)' : 'none',
-          opacity: !hasNuggets && mode !== 'nugget' ? 0.5 : 1,
-        }}
-      >
+      <button onClick={() => onChange('nugget')} style={{
+        ...baseBtn,
+        background: view === 'nugget' ? '#7C3AED' : 'transparent',
+        color: view === 'nugget' ? 'white' : 'var(--text-2)',
+        boxShadow: view === 'nugget' ? '0 1px 4px rgba(124,58,237,0.3)' : 'none',
+        opacity: !hasNuggets ? 0.5 : 1,
+      }}>
         <Icon name="target" size={12} strokeWidth={2}
-          color={mode === 'nugget' ? 'white' : 'var(--text-3)'} />
+          color={view === 'nugget' ? 'white' : 'var(--text-3)'} />
         Nugget
         {!hasNuggets && (
           <span style={{
             fontSize: 9, fontWeight: 700, background: '#FEF3C7',
             color: '#92400E', padding: '1px 5px', borderRadius: 4,
-          }}>
-            no data
-          </span>
+          }}>no data</span>
         )}
+      </button>
+      <button onClick={() => onChange('deepseek')} style={{
+        ...baseBtn,
+        background: view === 'deepseek' ? '#0EA5E9' : 'transparent',
+        color: view === 'deepseek' ? 'white' : 'var(--text-2)',
+        boxShadow: view === 'deepseek' ? '0 1px 4px rgba(14,165,233,0.3)' : 'none',
+      }}>
+        <Icon name="search" size={12} strokeWidth={2}
+          color={view === 'deepseek' ? 'white' : 'var(--text-3)'} />
+        DeepSeek
       </button>
     </div>
   )
 }
 
-// ── NuggetAssociationTable ────────────────────────────────────────────────────
+
+// ── MetricsLegend — allineata al codice attuale (precision continua pesata) ─────
+
+function MetricsLegend() {
+  const mono = { fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--text)' }
+  const row = { marginBottom: 14 }
+  const name = { fontSize: 13, fontWeight: 700, color: 'var(--text)', marginBottom: 2 }
+  const formula = {
+    ...mono, display: 'inline-block', background: 'var(--bg)',
+    border: '1px solid var(--border)', borderRadius: 6, padding: '3px 8px', margin: '2px 0',
+  }
+  const note = { fontSize: 11, color: 'var(--text-3)', lineHeight: 1.5, marginTop: 2 }
+  const sectionTitle = {
+    fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px',
+    marginBottom: 10, display: 'flex', alignItems: 'center', gap: 8,
+  }
+  const dot = (c) => ({ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: c })
+  const block = (border) => ({
+    marginBottom: 18, padding: '16px 18px', background: 'white',
+    border: `1px solid var(--border)`, borderLeft: `3px solid ${border}`, borderRadius: 10,
+  })
+
+  return (
+    <details style={{ marginTop: 20 }}>
+      <summary style={{ cursor: 'pointer', fontSize: 13, fontWeight: 600, color: 'var(--text-2)', padding: '8px 0' }}>
+        Come vengono calcolate le metriche (definizione tecnica)
+      </summary>
+
+      <div style={{ marginTop: 12, fontSize: 13, color: 'var(--text-2)', lineHeight: 1.6 }}>
+
+        {/* Intro */}
+        <div style={{
+          marginBottom: 18, padding: '16px 18px',
+          background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)',
+          border: '1px solid var(--border)', borderRadius: 10,
+        }}>
+          <div style={{ ...name, marginBottom: 8 }}>Il sistema di valutazione</div>
+          <div style={{ marginBottom: 8 }}>
+            La pipeline genera una risposta, la scompone in <b>claim atomici</b>, e per ogni
+            claim estrae uno o più <b>span di evidenza</b> dai passaggi citati. Ogni esempio
+            viene valutato simultaneamente con due lenti indipendenti:
+          </div>
+          <div style={{ marginBottom: 6 }}>
+            <span style={{ ...dot('#0EA5E9'), marginRight: 6 }} />
+            <b>DeepSeek (LLM-as-judge)</b> — un modello giudice legge la coppia (claim, span)
+            e decide <span style={mono}>supported: true/false</span> con motivazione.
+          </div>
+          <div>
+            <span style={{ ...dot('#7C3AED'), marginRight: 6 }} />
+            <b>Nugget</b> — confronto con ground-truth annotata, con precision <b>continua e
+            pesata</b> (vedi sotto): combina quanto un claim parla del nugget con quanto la sua
+            evidenza somiglia alla golden evidence.
+          </div>
+          <div style={{ ...note, marginTop: 10 }}>
+            <b>Nota:</b> le due lenti non sono confrontabili 1:1. DeepSeek dà un verdetto
+            binario semantico sullo span; il nugget dà un punteggio continuo rispetto al gold.
+          </div>
+        </div>
+
+        {/* Definizioni comuni */}
+        <div style={block('var(--text-3)')}>
+          <div style={sectionTitle}>Definizioni comuni</div>
+          <div style={row}>
+            <div style={name}>Coppia (claim, evidenza)</div>
+            <span style={formula}>coppia = (claim c, span ê)</span>
+            <div style={note}>
+              Ogni claim può avere più span attribuiti (uno per passaggio citato): ciascuno è
+              una coppia valutata separatamente.
+            </div>
+          </div>
+          <div>
+            <div style={name}>Aggregazione: Avg vs Macro</div>
+            <span style={formula}>Avg X = (1/N) · Σ_q X(q)</span>
+            <div style={note}>Media delle metriche per esempio. Ogni <b>domanda</b> pesa uguale.</div>
+            <div style={{ marginTop: 6 }}>
+              <span style={formula}>Macro X = Σ_q num(q) / Σ_q den(q)</span>
+              <div style={note}>
+                Conteggi aggregati su tutto il dataset, poi un solo rapporto. Gli esempi grandi
+                pesano di più.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* DeepSeek */}
+        <div style={block('#0EA5E9')}>
+          <div style={{ ...sectionTitle, color: '#0369A1' }}>
+            <span style={dot('#0EA5E9')} /> DeepSeek — LLM-as-judge
+          </div>
+          <div style={row}>
+            <div style={name}>Verdetto per coppia</div>
+            <span style={formula}>j(c, ê) = 1 se DeepSeek giudica ê ⊨ c, altrimenti 0</span>
+            <div style={note}>Giudizio binario del modello sullo span, con motivazione testuale.</div>
+          </div>
+          <div style={row}>
+            <div style={name}>Citation Precision</div>
+            <span style={formula}>P = Σ j(c, ê) / |coppie|</span>
+            <div style={note}>Delle coppie valutate, quante DeepSeek giudica valide.</div>
+          </div>
+          <div>
+            <div style={name}>Citation Recall</div>
+            <span style={formula}>R = |claim con ≥1 coppia valida| / |claim|</span>
+            <div style={note}>Dei claim, quanti hanno almeno uno span giudicato valido.</div>
+          </div>
+        </div>
+
+        {/* Nugget — precision continua pesata */}
+        <div style={block('#7C3AED')}>
+          <div style={{ ...sectionTitle, color: '#6D28D9' }}>
+            <span style={dot('#7C3AED')} /> Nugget — precision continua pesata
+          </div>
+          <div style={row}>
+            <div style={name}>Covering (fonte di verità = MatchedView)</div>
+            <span style={formula}>covers(c, g) ⇔ match_score(c, g) ≥ 0.6</span>
+            <div style={note}>
+              Un claim copre un nugget se il match (keyword + similarità MiniLM, calcolato nel
+              retrieve) supera la soglia. <b>Stesso criterio</b> dello Step 4 (MatchedView): le
+              evidenze di ogni claim coprente sono i suoi passaggi, presi così come arrivano dal
+              retrieve. <span style={mono}>covered(g) = ∃ c : covers(c, g)</span>.
+            </div>
+          </div>
+          <div style={row}>
+            <div style={name}>Peso match e score evidenza</div>
+            <span style={formula}>w_i = 0.2·lex(c, g) + 0.8·cos(c, g)</span>
+            <div style={note}>Quanto il claim <span style={mono}>c_i</span> parla del nugget <span style={mono}>g</span> (testo↔testo).</div>
+            <div style={{ marginTop: 6 }}>
+              <span style={formula}>e_i = 0.2·lex(ê_i, e*) + 0.8·cos(ê_i, e*)</span>
+              <div style={note}>
+                Quanto l'evidenza del claim (media sui suoi span <span style={mono}>ê_i</span>)
+                somiglia alla golden evidence <span style={mono}>e*</span>. Claim con e_i = 0
+                non contribuiscono.
+              </div>
+            </div>
+          </div>
+          <div style={row}>
+            <div style={name}>Precision continua per nugget</div>
+            <span style={formula}>precision(g) = Σ_i (w_i · e_i) / Σ_i w_i  ∈ [0, 1]</span>
+            <div style={note}>
+              Media degli score di evidenza pesata per quanto ogni claim parla del nugget. Non è
+              più un rapporto binario cited/covered: è continua.
+            </div>
+          </div>
+          <div>
+            <div style={name}>Aggregati per esempio</div>
+            <span style={formula}>nugget_precision = Σ_g precision(g) / n_covered</span>
+            <div style={note}>Media delle precision sui soli nugget coperti (con evidenza reale).</div>
+            <div style={{ marginTop: 6 }}>
+              <span style={formula}>nugget_recall = Σ_g precision(g) / n_total</span>
+              <div style={note}>Stessa somma, ma sul totale dei nugget (inclusi i non coperti).</div>
+            </div>
+            <div style={{ marginTop: 6 }}>
+              <span style={formula}>nugget_coverage = n_covered / n_total</span>
+              <div style={note}>Quota di nugget toccati da almeno un claim con evidenza.</div>
+            </div>
+            <div style={{ ...note, marginTop: 8 }}>
+              <b>Macro Citation</b> (dataset): <span style={mono}>Σ n_cited / Σ n_covered</span>,
+              dove <span style={mono}>cited(g)</span> = esiste almeno uno span estratto per il
+              nugget (indipendente dall'evidence_score). Misura grezza, distinta dalla precision
+              continua. Tutte le metriche sono calcolate anche separatamente su
+              <span style={mono}> required</span> e <span style={mono}>optional</span>.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </details>
+  )
+}
+
+
+// ── NuggetAssociationTable ──────────────────────────────────────────────────────
+
+// Raggruppa all_evidence (lista piatta) per claim → ricostruisce il legame
+// claim→evidenze. all_evidence porta il campo "claim" in ogni riga.
+function groupEvidenceByClaim(allEvidence = []) {
+  const byClaim = new Map()
+  for (const ev of allEvidence) {
+    const key = ev.claim || '(claim sconosciuto)'
+    if (!byClaim.has(key)) byClaim.set(key, [])
+    byClaim.get(key).push(ev)
+  }
+  // Per ogni claim: evidenze ordinate per evidence_score desc; claim ordinati
+  // per la loro miglior evidenza desc.
+  const groups = [...byClaim.entries()].map(([claim, evs]) => {
+    const sorted = [...evs].sort((a, b) => (b.evidence_score ?? 0) - (a.evidence_score ?? 0))
+    return { claim, evidences: sorted, bestScore: sorted[0]?.evidence_score ?? 0 }
+  })
+  groups.sort((a, b) => b.bestScore - a.bestScore)
+  return groups
+}
+
+function evScoreStyle(s) {
+  const v = s ?? 0
+  return {
+    fg: v >= 0.6 ? '#166534' : v >= 0.3 ? '#92400E' : '#991B1B',
+    bg: v >= 0.6 ? '#DCFCE7' : v >= 0.3 ? '#FEF9C3' : '#FEE2E2',
+  }
+}
+
+// ── Livello 3: una singola evidenza ─────────────────────────────────────────
+function EvidenceRow({ ev }) {
+  const c = evScoreStyle(ev.evidence_score)
+  return (
+    <div style={{ padding: '8px 0', borderBottom: '1px solid var(--border-2)', display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+        <span style={{
+          fontSize: 10, fontWeight: 700, fontFamily: 'var(--mono)',
+          background: c.bg, color: c.fg, padding: '1px 6px', borderRadius: 10,
+        }}>
+          {(ev.evidence_score ?? 0).toFixed(2)}
+        </span>
+        {ev.entailment_score != null && (
+          <span style={{ fontSize: 10, color: 'var(--text-3)' }}>ent: {ev.entailment_score.toFixed(2)}</span>
+        )}
+        {ev.is_noise && (
+          <span style={{ fontSize: 9, fontWeight: 600, color: 'var(--amber)' }}>⚠ rumore</span>
+        )}
+        <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-2)' }}>
+          {ev.passage_title || 'Senza titolo'}
+        </span>
+      </div>
+      {ev.span && (
+        <div style={{
+          marginLeft: 12, padding: '4px 8px', background: '#F0F9FF',
+          borderLeft: '3px solid #38BDF8', borderRadius: 4,
+          fontSize: 11, color: '#0C4A6E', fontStyle: 'italic',
+        }}>
+          «{ev.span}»
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── Livello 2: un claim coprente, espandibile sulle sue evidenze ─────────────
+function ClaimGroup({ group }) {
+  const [open, setOpen] = useState(false)
+  const c = evScoreStyle(group.bestScore)
+  return (
+    <div style={{ border: '1px solid var(--border)', borderRadius: 8, overflow: 'hidden', marginBottom: 6 }}>
+      <div onClick={() => setOpen(o => !o)}
+        style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: '#F9FAFB', cursor: 'pointer' }}>
+        <span style={{
+          fontSize: 10, fontWeight: 700, fontFamily: 'var(--mono)',
+          background: c.bg, color: c.fg, padding: '1px 6px', borderRadius: 10, flexShrink: 0,
+        }}>
+          {group.bestScore.toFixed(2)}
+        </span>
+        <span style={{ fontSize: 12, color: 'var(--text)', flex: 1, lineHeight: 1.4 }}>{group.claim}</span>
+        <span style={{ fontSize: 10, color: 'var(--text-3)', fontFamily: 'var(--mono)', flexShrink: 0 }}>
+          {group.evidences.length} evidenz{group.evidences.length === 1 ? 'a' : 'e'}
+        </span>
+        <span style={{ color: 'var(--text-3)', fontSize: 12 }}>{open ? '▲' : '▼'}</span>
+      </div>
+      {open && (
+        <div style={{ padding: '4px 12px 8px' }}>
+          {group.evidences.map((ev, i) => <EvidenceRow key={i} ev={ev} />)}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── Livello 1: un nugget, espandibile sui suoi claim ─────────────────────────
+function NuggetGroup({ row }) {
+  const [open, setOpen] = useState(false)
+  const groups = groupEvidenceByClaim(row.all_evidence)
+  const prec = row.nugget_precision_score
+  const statusLabel = row.cited ? 'Citato' : row.covered ? 'Coperto' : 'Mancante'
+  const statusBg = row.cited ? '#D1FAE5' : row.covered ? '#FEF3C7' : '#FEE2E2'
+  const statusFg = row.cited ? '#065F46' : row.covered ? '#92400E' : '#991B1B'
+
+  return (
+    <div style={{
+      border: `1px solid ${row.required ? '#FDE68A' : 'var(--border)'}`,
+      borderRadius: 8, overflow: 'hidden', marginBottom: 8,
+    }}>
+      {/* Header nugget */}
+      <div onClick={() => setOpen(o => !o)}
+        style={{
+          display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px',
+          background: row.required ? '#FFFBEB' : '#FAFAF9', cursor: 'pointer',
+        }}>
+        <span style={{
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+          width: 20, height: 20, borderRadius: '50%', fontSize: 10, fontWeight: 800, flexShrink: 0,
+          background: row.required ? 'linear-gradient(135deg, #F59E0B, #D97706)' : 'linear-gradient(135deg, #D1D5DB, #9CA3AF)',
+          color: row.required ? '#FFFBEB' : '#374151',
+        }}>
+          {row.required ? '★' : '☆'}
+        </span>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--text-3)', flexShrink: 0 }}>
+          {row.exIdx}.{row.nugget_id}
+        </span>
+        <span style={{ fontSize: 12, color: 'var(--text)', flex: 1, lineHeight: 1.4 }}>{row.nugget_text}</span>
+        <span style={{ fontSize: 10, color: 'var(--text-3)', fontFamily: 'var(--mono)', flexShrink: 0 }}>
+          {row.n_covering_claims} claim
+        </span>
+        {prec != null ? (
+          <span style={{
+            fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, flexShrink: 0,
+            color: prec >= 0.6 ? 'var(--green)' : prec >= 0.3 ? 'var(--amber)' : 'var(--red)',
+          }}>
+            {prec.toFixed(2)}
+          </span>
+        ) : (
+          <span style={{ color: 'var(--text-3)', fontStyle: 'italic', fontSize: 10, flexShrink: 0 }}>excl.</span>
+        )}
+        <span style={{
+          fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 10, flexShrink: 0,
+          background: statusBg, color: statusFg,
+        }}>
+          {statusLabel}
+        </span>
+        <span style={{ color: 'var(--text-3)', fontSize: 12, flexShrink: 0 }}>{open ? '▲' : '▼'}</span>
+      </div>
+
+      {/* Corpo: domanda, keyword, golden, poi i claim */}
+      {open && (
+        <div style={{ padding: '12px 16px', background: 'white' }}>
+          <div style={{ fontSize: 11, color: 'var(--text-3)', marginBottom: 8 }}>
+            <strong>Domanda:</strong> {row.question}
+          </div>
+          {row.keywords?.length > 0 && (
+            <div style={{ marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+              <span style={{ fontSize: 11, color: 'var(--text-3)', fontWeight: 600 }}>Keywords:</span>
+              {row.keywords.map((kw, ki) => (
+                <span key={ki} style={{
+                  fontSize: 11, background: '#EDE9FE', color: '#5B21B6',
+                  padding: '1px 7px', borderRadius: 10, fontFamily: 'var(--mono)',
+                }}>{kw}</span>
+              ))}
+            </div>
+          )}
+          {row.golden_evidence && (
+            <div style={{
+              marginBottom: 10, padding: '8px 12px', background: '#F0F9FF',
+              border: '1px solid #BAE6FD', borderRadius: 6, fontSize: 12, color: '#0C4A6E',
+            }}>
+              <strong>Golden evidence:</strong> {row.golden_evidence}
+            </div>
+          )}
+
+          {groups.length > 0 ? (
+            <div>
+              <div style={{
+                fontSize: 10, fontWeight: 700, color: 'var(--text-3)',
+                textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8,
+              }}>
+                Claim coprenti ({groups.length}) — clicca per le evidenze
+              </div>
+              {groups.map((g, i) => <ClaimGroup key={i} group={g} />)}
+            </div>
+          ) : (
+            <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic' }}>
+              {row.excluded_no_golden
+                ? 'Nugget escluso: manca la golden_evidence, nessuna evidenza valutabile.'
+                : 'Nessuna evidenza disponibile per questo nugget.'}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
 
 function NuggetAssociationTable({ perExample }) {
-  const [filter, setFilter] = useState('all') // all | required | optional | covered | uncovered | cited | uncited
-  const [expandedRow, setExpandedRow] = useState(null)
+  const [filter, setFilter] = useState('all')
 
-  // Flatten all per_nugget entries with their parent question
   const allRows = []
   for (let i = 0; i < perExample.length; i++) {
     const ex = perExample[i]
@@ -151,26 +566,23 @@ function NuggetAssociationTable({ perExample }) {
     }
   }
 
-  // Apply filter
-  const filtered = allRows.filter(r => {
-    if (filter === 'required') return r.required
-    if (filter === 'optional') return !r.required
-    if (filter === 'covered') return r.covered
-    if (filter === 'uncovered') return !r.covered
-    if (filter === 'cited') return r.cited
-    if (filter === 'uncited') return !r.cited
-    if (filter === 'noise') return r.cited_from_noise
+  const matchFilter = (r, val) => {
+    if (val === 'required') return r.required
+    if (val === 'optional') return !r.required
+    if (val === 'covered') return r.covered
+    if (val === 'uncovered') return !r.covered
+    if (val === 'cited') return r.cited
+    if (val === 'uncited') return !r.cited
+    if (val === 'noise') return r.cited_from_noise
     return true
-  })
+  }
 
+  const filtered = allRows.filter(r => matchFilter(r, filter))
   if (allRows.length === 0) return null
 
   return (
     <details style={{ marginTop: 20 }}>
-      <summary style={{
-        cursor: 'pointer', fontSize: 13, fontWeight: 600,
-        color: 'var(--text-2)', padding: '8px 0',
-      }}>
+      <summary style={{ cursor: 'pointer', fontSize: 13, fontWeight: 600, color: 'var(--text-2)', padding: '8px 0' }}>
         Associazioni Nugget ↔ Claim ({allRows.length} nuggets totali)
       </summary>
 
@@ -196,191 +608,134 @@ function NuggetAssociationTable({ perExample }) {
               color: filter === val ? 'var(--accent)' : 'var(--text-2)',
               cursor: 'pointer',
             }}>
-            {label} {val !== 'all' ? `(${allRows.filter(r => {
-              if (val === 'required') return r.required
-              if (val === 'optional') return !r.required
-              if (val === 'covered') return r.covered
-              if (val === 'uncovered') return !r.covered
-              if (val === 'cited') return r.cited
-              if (val === 'uncited') return !r.cited
-              if (val === 'noise') return r.cited_from_noise
-              return true
-            }).length})` : ''}
+            {label} {val !== 'all' ? `(${allRows.filter(r => matchFilter(r, val)).length})` : ''}
           </button>
         ))}
       </div>
 
-      {/* Table */}
-      <div style={{ overflowX: 'auto', marginTop: 8 }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
-          <thead>
-            <tr style={{ background: '#F9FAFB', borderBottom: '2px solid var(--border)' }}>
-              <th style={thStyle}>#</th>
-              <th style={thStyle}>Tipo</th>
-              <th style={thStyle}>Domanda</th>
-              <th style={thStyle}>Nugget</th>
-              <th style={thStyle}>Claim Matchato</th>
-              <th style={thStyle}>Frase Evidenza (Passaggio)</th>
-              <th style={thStyle}>Stato</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtered.map((row, idx) => {
-              const isExpanded = expandedRow === idx
-              const statusColor = row.cited ? 'var(--green)' : row.covered ? 'var(--amber)' : 'var(--red)'
-              const statusLabel = row.cited ? 'Citato' : row.covered ? 'Coperto' : 'Mancante'
-
-              return (
-                <tr key={idx}
-                  onClick={() => setExpandedRow(isExpanded ? null : idx)}
-                  style={{
-                    cursor: 'pointer',
-                    borderBottom: '1px solid var(--border-2)',
-                    background: isExpanded ? '#FAFAF9' : 'white',
-                    transition: 'background 0.15s',
-                  }}
-                  onMouseEnter={e => { if (!isExpanded) e.currentTarget.style.background = '#FAFAF9' }}
-                  onMouseLeave={e => { if (!isExpanded) e.currentTarget.style.background = 'white' }}
-                >
-                  <td style={tdStyle}>
-                    <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--text-3)' }}>
-                      {row.exIdx}.{row.nugget_id}
-                    </span>
-                  </td>
-                  <td style={tdStyle}>
-                    <span style={{
-                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                      width: 18, height: 18, borderRadius: '50%', fontSize: 10, fontWeight: 800,
-                      background: row.required
-                        ? 'linear-gradient(135deg, #F59E0B, #D97706)'
-                        : 'linear-gradient(135deg, #D1D5DB, #9CA3AF)',
-                      color: row.required ? '#FFFBEB' : '#374151',
-                    }}>
-                      {row.required ? '★' : '☆'}
-                    </span>
-                  </td>
-                  <td style={{ ...tdStyle, maxWidth: 180 }}>
-                    <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: isExpanded ? 'normal' : 'nowrap' }}>
-                      {row.question}
-                    </div>
-                  </td>
-                  <td style={{ ...tdStyle, maxWidth: 220 }}>
-                    <div style={{
-                      overflow: 'hidden',
-                      textOverflow: isExpanded ? 'unset' : 'ellipsis',
-                      whiteSpace: isExpanded ? 'normal' : 'nowrap',
-                      fontWeight: 500,
-                    }}>
-                      {row.nugget_text}
-                    </div>
-                    {isExpanded && row.keywords?.length > 0 && (
-                      <div style={{ marginTop: 4 }}>
-                        {row.keywords.map((kw, ki) => (
-                          <span key={ki} style={{
-                            display: 'inline-block', padding: '1px 6px', margin: '2px 2px',
-                            background: row.best_covering_claim?.toLowerCase().includes(kw.toLowerCase())
-                              ? '#FDE68A' : '#F3F4F6',
-                            borderRadius: 4, fontFamily: 'var(--mono)', fontSize: 10,
-                            fontWeight: row.best_covering_claim?.toLowerCase().includes(kw.toLowerCase()) ? 700 : 400,
-                          }}>
-                            {kw}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </td>
-                  <td style={{ ...tdStyle, maxWidth: 250 }}>
-                    {row.best_covering_claim ? (
-                      <div style={{
-                        overflow: 'hidden',
-                        textOverflow: isExpanded ? 'unset' : 'ellipsis',
-                        whiteSpace: isExpanded ? 'normal' : 'nowrap',
-                        color: 'var(--text)',
-                      }}>
-                        {row.best_covering_claim}
-                      </div>
-                    ) : (
-                      <span style={{ color: 'var(--text-3)', fontStyle: 'italic' }}>—</span>
-                    )}
-                  </td>
-                  <td style={{ ...tdStyle, maxWidth: 250 }}>
-                    {(row.best_evidence_sentence || row.best_evidence_passage_text) ? (
-                      <div>
-                        {row.best_evidence_passage_title && (
-                          <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--accent)', marginBottom: 2 }}>
-                            {row.best_evidence_passage_title}
-                          </div>
-                        )}
-                        <div style={{
-                          overflow: 'hidden',
-                          textOverflow: isExpanded ? 'unset' : 'ellipsis',
-                          whiteSpace: isExpanded ? 'normal' : 'nowrap',
-                          color: 'var(--text)',
-                          fontWeight: 500,
-                        }}>
-                          {row.best_evidence_sentence || '—'}
-                        </div>
-                        {isExpanded && row.best_evidence_passage_text && (
-                          <div style={{
-                            marginTop: 6, padding: '6px 8px', background: '#F9FAFB',
-                            borderRadius: 4, fontSize: 11, color: 'var(--text-3)',
-                            fontStyle: 'italic', lineHeight: 1.5,
-                            borderLeft: '2px solid var(--border)',
-                          }}>
-                            {row.best_evidence_passage_text}
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      <span style={{ color: 'var(--text-3)', fontStyle: 'italic' }}>—</span>
-                    )}
-                    {isExpanded && (
-                      <div style={{ marginTop: 4, fontSize: 10, color: 'var(--text-3)' }}>
-                        Cite score: {row.cite_score?.toFixed(3)} · Similarity: {row.semantic_similarity?.toFixed(3)} · Covering claims: {row.n_covering_claims}
-                      </div>
-                    )}
-                  </td>
-                  <td style={tdStyle}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                      <span style={{
-                        display: 'inline-block', padding: '2px 8px', borderRadius: 10,
-                        fontSize: 10, fontWeight: 700,
-                        background: row.cited ? '#D1FAE5' : row.covered ? '#FEF3C7' : '#FEE2E2',
-                        color: row.cited ? '#065F46' : row.covered ? '#92400E' : '#991B1B',
-                      }}>
-                        {statusLabel}
-                      </span>
-                      {row.cited_from_noise && (
-                        <span style={{
-                          display: 'inline-block', padding: '2px 8px', borderRadius: 10,
-                          fontSize: 9, fontWeight: 700,
-                          background: '#FEF3C7', color: '#92400E',
-                          border: '1px solid #F59E0B',
-                        }}>
-                          ⚠ NOISE
-                        </span>
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+      {/* Struttura annidata nugget → claim → evidenze */}
+      <div style={{ marginTop: 8 }}>
+        {filtered.map((row, idx) => (
+          <NuggetGroup key={`${row.exIdx}.${row.nugget_id}.${idx}`} row={row} />
+        ))}
       </div>
     </details>
   )
 }
 
-const thStyle = { textAlign: 'left', padding: '8px 10px', fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.5px', whiteSpace: 'nowrap' }
-const tdStyle = { padding: '8px 10px', verticalAlign: 'top' }
+
+// ── Card helper ─────────────────────────────────────────────────────────────────
+
+function MetricCard({ label, value, desc, isCount = false }) {
+  if (typeof value !== 'number') return null
+  if (isCount) {
+    return (
+      <div style={{ background: 'white', border: '1px solid var(--border)', borderRadius: 8, padding: '14px 16px' }}>
+        <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 4 }}>{label}</div>
+        <div style={{ fontSize: 28, fontWeight: 800, color: 'var(--accent)', lineHeight: 1 }}>{value}</div>
+        {desc && <div style={{ fontSize: 10, color: 'var(--text-3)', marginTop: 4, lineHeight: 1.4 }}>{desc}</div>}
+      </div>
+    )
+  }
+  const pct = Math.round(value * 100)
+  const color = value >= 0.7 ? 'var(--green)' : value >= 0.4 ? 'var(--amber)' : 'var(--red)'
+  return (
+    <div style={{ background: 'white', border: '1px solid var(--border)', borderRadius: 8, padding: '14px 16px' }}>
+      <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 4 }}>{label}</div>
+      <div style={{ fontSize: 28, fontWeight: 800, color, lineHeight: 1 }}>{pct}%</div>
+      {desc && <div style={{ fontSize: 10, color: 'var(--text-3)', marginTop: 4, lineHeight: 1.4 }}>{desc}</div>}
+      <div style={{ height: 4, background: 'var(--border-2)', borderRadius: 2, marginTop: 8, overflow: 'hidden' }}>
+        <div style={{ height: '100%', borderRadius: 2, width: `${Math.min(100, pct)}%`, background: color, transition: 'width 0.5s ease' }} />
+      </div>
+    </div>
+  )
+}
+
+const grid = { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12, marginBottom: 20 }
+const gridSm = { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: 12, marginBottom: 20 }
+const sectionLabel = (color) => ({ fontSize: 11, fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 })
 
 
-// ── DatasetEvalResultsView ────────────────────────────────────────────────────
+// ── Vista DeepSeek ────────────────────────────────────────────────────────────
 
-function DatasetEvalResultsView({ results, onSave, onDownload }) {
-  const gm = results.global_metrics || {}
-  const mode = results.eval_mode || 'standard'
+function DeepSeekView({ gm }) {
+  return (
+    <div>
+      <div style={sectionLabel('#0C4A6E')}>
+        <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#0EA5E9' }} />
+        LLM-as-judge (DeepSeek)
+      </div>
+      <div style={grid}>
+        <MetricCard label="Avg Citation Precision" value={gm.avg_citation_precision} desc="Media precision per esempio." />
+        <MetricCard label="Avg Citation Recall" value={gm.avg_citation_recall} desc="Media recall per esempio." />
+        <MetricCard label="Macro Citation Precision" value={gm.macro_citation_precision} desc="Coppie valide / coppie totali, su tutto il dataset." />
+        <MetricCard label="Macro Citation Recall" value={gm.macro_citation_recall} desc="Claim supportati / claim totali, su tutto il dataset." />
+      </div>
+      <div style={gridSm}>
+        <MetricCard label="Claim Totali" value={gm.total_claims} isCount />
+        <MetricCard label="Coppie Totali" value={gm.total_pairs} isCount />
+        <MetricCard label="Coppie Valide" value={gm.total_pairs_supported} isCount />
+      </div>
+    </div>
+  )
+}
+
+
+// ── Vista Nugget ──────────────────────────────────────────────────────────────
+
+function NuggetView({ gm, perExample }) {
+  return (
+    <div>
+      {/* Required */}
+      <div style={sectionLabel('#92400E')}>
+        <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: 'linear-gradient(135deg, #F59E0B, #D97706)' }} />
+        Required Nuggets
+      </div>
+      <div style={grid}>
+        <MetricCard label="Avg Precision (Req)" value={gm.avg_required_precision} desc="Media precisioni continue per esempio, solo required." />
+        <MetricCard label="Avg Recall (Req)" value={gm.avg_required_recall} desc="Media recall per esempio, solo required." />
+        <MetricCard label="Macro Coverage (Req)" value={gm.macro_required_coverage} desc="covered_req / total_req su tutto il dataset." />
+      </div>
+
+      {/* All */}
+      <div style={sectionLabel('var(--text-2)')}>All Nuggets (Total)</div>
+      <div style={grid}>
+        <MetricCard label="Avg Precision" value={gm.avg_nugget_precision} desc="Media precisioni continue per esempio." />
+        <MetricCard label="Avg Recall" value={gm.avg_nugget_recall} desc="Media recall per esempio." />
+        <MetricCard label="Avg Coverage" value={gm.avg_nugget_coverage} desc="Media copertura per esempio." />
+        <MetricCard label="Macro Citation" value={gm.macro_nugget_citation} desc="cited / covered su tutto il dataset (presenza di span)." />
+        <MetricCard label="Macro Recall" value={gm.macro_nugget_recall} desc="cited / total su tutto il dataset." />
+        <MetricCard label="Macro Coverage" value={gm.macro_nugget_coverage} desc="covered / total su tutto il dataset." />
+      </div>
+
+      {/* Counts */}
+      <div style={sectionLabel('var(--text-2)')}>Conteggi</div>
+      <div style={gridSm}>
+        <MetricCard label="Nuggets Totali" value={gm.total_nuggets} isCount />
+        <MetricCard label="Coperti" value={gm.total_covered} isCount />
+        <MetricCard label="Citati" value={gm.total_cited} isCount />
+        <MetricCard label="Required" value={gm.total_required} isCount />
+        <MetricCard label="Req. Coperti" value={gm.total_required_covered} isCount />
+        <MetricCard label="Optional" value={gm.total_optional} isCount />
+        <MetricCard label="Opt. Coperti" value={gm.total_optional_covered} isCount />
+        <MetricCard label="⚠ Noise Usati" value={gm.total_noise_passages_used} isCount />
+        <MetricCard label="⚠ Claims con Noise" value={gm.total_claims_citing_noise} isCount />
+        <MetricCard label="⚠ Nuggets da Noise" value={gm.total_nuggets_cited_from_noise} isCount />
+      </div>
+
+      <NuggetAssociationTable perExample={perExample} />
+    </div>
+  )
+}
+
+
+// ── Results view ────────────────────────────────────────────────────────────────
+
+function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSave, onDownload }) {
+  const nuggetGm = results.nugget_global || {}
+  const deepseekGm = results.deepseek_global || {}
+  const perExample = results.per_example || []
+  const [expandedEx, setExpandedEx] = useState(null)
 
   return (
     <div>
@@ -388,180 +743,139 @@ function DatasetEvalResultsView({ results, onSave, onDownload }) {
       <div style={{
         padding: '16px 20px',
         background: 'linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%)',
-        border: '1px solid #C7D2FE',
-        borderRadius: 10,
-        marginBottom: 20,
+        border: '1px solid #C7D2FE', borderRadius: 10, marginBottom: 20,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
           <Icon name="barChart2" size={20} color="#4338CA" strokeWidth={2} />
-          <span style={{ fontSize: 16, fontWeight: 700, color: '#312E81' }}>
+          <span style={{ fontSize: 16, fontWeight: 700, color: '#312E81', flex: 1 }}>
             Valutazione Globale Dataset
           </span>
+          <ViewToggle view={view} onChange={onViewChange} hasNuggets={hasNuggets} />
         </div>
         <div style={{ fontSize: 12, color: '#4338CA', display: 'flex', gap: 20, flexWrap: 'wrap' }}>
           <span>{results.num_examples} esempi</span>
           <span>{results.num_successful} completati con successo</span>
-          <span>{results.runtime_seconds}s runtime</span>
-          <span>Modalità: {mode === 'nugget' ? 'Nugget' : 'Standard'}</span>
+          {results.runtime_seconds != null && <span>{results.runtime_seconds}s runtime</span>}
+          {results.partial && (
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontWeight: 700, color: '#B45309' }}>
+              <span className="spinner" style={{ width: 11, height: 11, borderColor: '#B45309', borderTopColor: 'transparent' }} />
+              Valutazione in corso…
+            </span>
+          )}
         </div>
       </div>
 
-      {/* Global metrics grid */}
-      {mode === 'nugget' ? (
-        <div>
-          {/* Required nuggets */}
-          <div style={{ fontSize: 11, fontWeight: 700, color: '#92400E', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: 'linear-gradient(135deg, #F59E0B, #D97706)' }} />
-            Required Nuggets
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12, marginBottom: 20 }}>
-            {[
-              ['avg_required_precision', 'Avg Precision (Req)', 'Media precisioni per esempio, solo nugget required.'],
-              ['avg_required_recall', 'Avg Recall (Req)', 'Media recall per esempio, solo nugget required.'],
-              ['macro_required_precision', 'Macro Precision (Req)', 'cited_req / covered_req su tutto il dataset.'],
-              ['macro_required_recall', 'Macro Recall (Req)', 'cited_req / total_req su tutto il dataset.'],
-            ].map(([key, label, desc]) => {
-              const v = gm[key]
-              if (typeof v !== 'number') return null
-              const pct = Math.round(v * 100)
-              const color = v >= 0.7 ? 'var(--green)' : v >= 0.4 ? 'var(--amber)' : 'var(--red)'
-              return (
-                <div key={key} style={{ background: 'white', border: '1px solid var(--border)', borderRadius: 8, padding: '14px 16px' }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 4 }}>{label}</div>
-                  <div style={{ fontSize: 28, fontWeight: 800, color, lineHeight: 1 }}>{pct}%</div>
-                  <div style={{ fontSize: 10, color: 'var(--text-3)', marginTop: 4, lineHeight: 1.4 }}>{desc}</div>
-                  <div style={{ height: 4, background: 'var(--border-2)', borderRadius: 2, marginTop: 8, overflow: 'hidden' }}>
-                    <div style={{ height: '100%', borderRadius: 2, width: `${Math.min(100, pct)}%`, background: color, transition: 'width 0.5s ease' }} />
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+      {/* Vista selezionata */}
+      {view === 'deepseek'
+        ? <DeepSeekView gm={deepseekGm} />
+        : <NuggetView gm={nuggetGm} perExample={perExample} />}
 
-          {/* All nuggets */}
-          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-2)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 8 }}>
-            All Nuggets (Total)
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12, marginBottom: 20 }}>
-            {[
-              ['avg_nugget_precision', 'Avg Precision', 'Media precisioni per esempio.'],
-              ['avg_nugget_recall', 'Avg Recall', 'Media recall per esempio.'],
-              ['avg_nugget_coverage', 'Avg Coverage', 'Media copertura per esempio.'],
-              ['macro_nugget_precision', 'Macro Precision', 'cited / covered su tutto il dataset.'],
-              ['macro_nugget_recall', 'Macro Recall', 'cited / total su tutto il dataset.'],
-              ['macro_nugget_coverage', 'Macro Coverage', 'covered / total su tutto il dataset.'],
-            ].map(([key, label, desc]) => {
-              const v = gm[key]
-              if (typeof v !== 'number') return null
-              const pct = Math.round(v * 100)
-              const color = v >= 0.7 ? 'var(--green)' : v >= 0.4 ? 'var(--amber)' : 'var(--red)'
-              return (
-                <div key={key} style={{ background: 'white', border: '1px solid var(--border)', borderRadius: 8, padding: '14px 16px' }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 4 }}>{label}</div>
-                  <div style={{ fontSize: 28, fontWeight: 800, color, lineHeight: 1 }}>{pct}%</div>
-                  <div style={{ fontSize: 10, color: 'var(--text-3)', marginTop: 4, lineHeight: 1.4 }}>{desc}</div>
-                  <div style={{ height: 4, background: 'var(--border-2)', borderRadius: 2, marginTop: 8, overflow: 'hidden' }}>
-                    <div style={{ height: '100%', borderRadius: 2, width: `${Math.min(100, pct)}%`, background: color, transition: 'width 0.5s ease' }} />
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+      {/* Per-example summary table (giudizi DeepSeek espandibili) */}
+      <details style={{ marginTop: 16 }}>
+        <summary style={{ cursor: 'pointer', fontSize: 13, fontWeight: 600, color: 'var(--text-2)', padding: '8px 0' }}>
+          Dettaglio per esempio ({perExample.length})
+        </summary>
+        <div style={{ marginTop: 8 }}>
+          {perExample.map((ex, i) => {
+            const isOpen = expandedEx === i
+            const dm = ex.deepseek_metrics
+            const clickable = dm?.per_claim?.length > 0
 
-          {/* Counts — NO percentage, just integer */}
-          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-2)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 8 }}>
-            Conteggi
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: 12, marginBottom: 20 }}>
-            {[
-              ['total_nuggets', 'Nuggets Totali'],
-              ['total_covered', 'Coperti'],
-              ['total_cited', 'Citati'],
-              ['total_required', 'Required'],
-              ['total_required_covered', 'Req. Coperti'],
-              ['total_required_cited', 'Req. Citati'],
-              ['total_optional', 'Optional'],
-              ['total_optional_covered', 'Opt. Coperti'],
-              ['total_optional_cited', 'Opt. Citati'],
-              ['total_noise_passages_used', '⚠ Noise Usati'],
-              ['total_claims_citing_noise', '⚠ Claims con Noise'],
-              ['total_nuggets_cited_from_noise', '⚠ Nuggets da Noise'],
-            ].map(([key, label]) => {
-              const v = gm[key]
-              if (typeof v !== 'number') return null
-              return (
-                <div key={key} style={{ background: 'white', border: '1px solid var(--border)', borderRadius: 8, padding: '14px 16px' }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 4 }}>{label}</div>
-                  <div style={{ fontSize: 28, fontWeight: 800, color: 'var(--accent)', lineHeight: 1 }}>{v}</div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12, marginBottom: 20 }}>
-          {Object.entries(gm).map(([key, value]) => {
-            if (typeof value !== 'number') return null
-            const pct = Math.round(value * 100)
-            const color = key.includes('precision') || key.includes('recall') || key.includes('coverage')
-              ? (value >= 0.7 ? 'var(--green)' : value >= 0.4 ? 'var(--amber)' : 'var(--red)')
-              : 'var(--accent)'
-            const info = GLOBAL_METRIC_INFO[key] || STANDARD_METRIC_LABELS[key]
-            const label = info?.label || info || key.replace(/_/g, ' ')
-            const desc = info?.desc
             return (
-              <div key={key} style={{ background: 'white', border: '1px solid var(--border)', borderRadius: 8, padding: '14px 16px' }}>
-                <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 4 }}>{label}</div>
-                <div style={{ fontSize: 28, fontWeight: 800, color, lineHeight: 1 }}>{pct}%</div>
-                {desc && <div style={{ fontSize: 10, color: 'var(--text-3)', marginTop: 4, lineHeight: 1.4 }}>{desc}</div>}
-                <div style={{ height: 4, background: 'var(--border-2)', borderRadius: 2, marginTop: 8, overflow: 'hidden' }}>
-                  <div style={{ height: '100%', borderRadius: 2, width: `${Math.min(100, pct)}%`, background: color, transition: 'width 0.5s ease' }} />
+              <div key={i} style={{ marginBottom: 4 }}>
+                <div
+                  onClick={() => clickable && setExpandedEx(isOpen ? null : i)}
+                  style={{
+                    padding: '8px 12px',
+                    background: ex.error ? '#FEF2F2' : isOpen ? '#F0F9FF' : '#FAFAF9',
+                    border: `1px solid ${ex.error ? '#FECACA' : isOpen ? '#BAE6FD' : 'var(--border-2)'}`,
+                    borderRadius: 6, fontSize: 12,
+                    cursor: clickable ? 'pointer' : 'default',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--text-3)' }}>[{i}]</span>
+                    <span style={{ flex: 1, fontWeight: 500, color: 'var(--text)' }}>
+                      {ex.question?.slice(0, 80)}{(ex.question?.length > 80) ? '...' : ''}
+                    </span>
+                    {dm && (
+                      <span style={{ fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>
+                        {Math.round((dm.citation_precision ?? 0) * 100)}% P · {Math.round((dm.citation_recall ?? 0) * 100)}% R
+                      </span>
+                    )}
+                    {ex.error
+                      ? <span style={{ color: '#DC2626', fontSize: 11 }}>❌ {ex.error}</span>
+                      : <span style={{ color: 'var(--green)', fontSize: 11 }}>✓ OK</span>}
+                    {clickable && <span style={{ color: 'var(--text-3)', fontSize: 12 }}>{isOpen ? '▲' : '▼'}</span>}
+                  </div>
                 </div>
+
+                {isOpen && clickable && (
+                  <div style={{ marginTop: 4, marginBottom: 8, padding: '12px 14px', background: 'white', border: '1px solid #BAE6FD', borderRadius: 8 }}>
+                    {dm.per_claim.map((c, ci) => {
+                      const ok = c.any_supported
+                      return (
+                        <div key={ci} style={{ marginBottom: 10, border: `1px solid ${ok ? '#A7F3D0' : '#FECACA'}`, borderRadius: 8, overflow: 'hidden' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: ok ? '#F0FDF4' : '#FFF1F2' }}>
+                            <span style={{
+                              fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 10, whiteSpace: 'nowrap', flexShrink: 0,
+                              background: ok ? '#DCFCE7' : '#FEE2E2', color: ok ? '#166534' : '#991B1B',
+                            }}>
+                              {ok ? `${c.n_supported}/${c.n_passages} valide` : 'nessun supporto'}
+                            </span>
+                            <span style={{ fontSize: 12, color: 'var(--text)', flex: 1, lineHeight: 1.4 }}>{c.claim}</span>
+                          </div>
+                          <div style={{ padding: '8px 12px' }}>
+                            {(c.judgments || []).length === 0 ? (
+                              <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic' }}>
+                                Nessun passaggio citato per questo claim.
+                              </div>
+                            ) : c.judgments.map((j, ji) => (
+                              <div key={ji} style={{
+                                marginBottom: 6, padding: '8px 12px', borderRadius: 6,
+                                background: j.supported ? '#F0FDF4' : '#FAFAF9',
+                                border: `1px solid ${j.supported ? '#86EFAC' : 'var(--border)'}`,
+                              }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                                  <span style={{
+                                    fontSize: 10, fontWeight: 700, padding: '1px 7px', borderRadius: 8,
+                                    background: j.supported ? '#DCFCE7' : '#FEE2E2', color: j.supported ? '#166534' : '#991B1B',
+                                  }}>
+                                    {j.supported ? 'SUPPORTED' : 'NOT SUPPORTED'}
+                                  </span>
+                                  <span style={{ fontSize: 12, fontWeight: 600 }}>{j.passage_title || '—'}</span>
+                                </div>
+                                {j.evidence && (
+                                  <div style={{
+                                    fontSize: 11, color: '#166534', lineHeight: 1.5, marginBottom: 6,
+                                    padding: '6px 10px', background: '#ECFDF5', borderRadius: 6, borderLeft: '3px solid #86EFAC',
+                                  }}>
+                                    <strong style={{ color: 'var(--text-3)', fontWeight: 700 }}>Evidenza: </strong>{j.evidence}
+                                  </div>
+                                )}
+                                {j.reason && (
+                                  <div style={{
+                                    fontSize: 11, color: '#0C4A6E', fontStyle: 'italic',
+                                    padding: '6px 10px', background: '#F0F9FF', borderRadius: 6, borderLeft: '3px solid #BAE6FD',
+                                  }}>
+                                    <strong>DeepSeek:</strong> {j.reason}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
               </div>
             )
           })}
         </div>
-      )}
-
-      {/* Per-example summary table */}
-      <details style={{ marginTop: 16 }}>
-        <summary style={{
-          cursor: 'pointer', fontSize: 13, fontWeight: 600,
-          color: 'var(--text-2)', padding: '8px 0',
-        }}>
-          Dettaglio per esempio ({results.per_example?.length || 0})
-        </summary>
-        <div style={{ marginTop: 8 }}>
-          {(results.per_example || []).map((ex, i) => (
-            <div key={i} style={{
-              padding: '8px 12px', marginBottom: 4,
-              background: ex.error ? '#FEF2F2' : '#FAFAF9',
-              border: `1px solid ${ex.error ? '#FECACA' : 'var(--border-2)'}`,
-              borderRadius: 6,
-              fontSize: 12,
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--text-3)' }}>
-                  [{i}]
-                </span>
-                <span style={{ flex: 1, fontWeight: 500, color: 'var(--text)' }}>
-                  {ex.question?.slice(0, 80)}{(ex.question?.length > 80) ? '...' : ''}
-                </span>
-                {ex.error ? (
-                  <span style={{ color: '#DC2626', fontSize: 11 }}>❌ {ex.error}</span>
-                ) : (
-                  <span style={{ color: 'var(--green)', fontSize: 11 }}>✓ OK</span>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
       </details>
 
-      {/* Nugget Association Review Table */}
-      {mode === 'nugget' && (
-        <NuggetAssociationTable perExample={results.per_example || []} />
-      )}
+      <MetricsLegend />
 
       {/* Actions */}
       <div style={{ marginTop: 20, display: 'flex', gap: 12 }}>
@@ -577,6 +891,7 @@ function DatasetEvalResultsView({ results, onSave, onDownload }) {
     </div>
   )
 }
+
 
 // ── Settings panel ────────────────────────────────────────────────────────────
 
@@ -664,6 +979,7 @@ function SettingsPanel({ model, setModel, retrieveMethod, setRetrieveMethod,
   )
 }
 
+
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function EvaluateDataset() {
@@ -683,8 +999,8 @@ export default function EvaluateDataset() {
   const fileRef = useRef()
   const resultsFileRef = useRef()
 
-  // Eval mode
-  const [evalMode, setEvalMode] = useState('standard')
+  // View (solo visualizzazione: i dati hanno SEMPRE entrambe le metriche)
+  const [view, setView] = useState('nugget')
 
   // Run state
   const [running, setRunning] = useState(false)
@@ -693,7 +1009,6 @@ export default function EvaluateDataset() {
   const [error, setError] = useState(null)
 
   const hasNuggets = dataset?.some(ex => ex.nuggets && ex.nuggets.length > 0) ?? false
-  const effectiveMode = evalMode === 'nugget' && !hasNuggets ? 'standard' : evalMode
 
   function onResultsUpload(e) {
     const file = e.target.files[0]
@@ -703,9 +1018,8 @@ export default function EvaluateDataset() {
     reader.onload = evt => {
       try {
         const parsed = JSON.parse(evt.target.result)
-        // Validate: must have global_metrics and per_example
-        if (!parsed.global_metrics || !parsed.per_example) {
-          throw new Error('Il file non contiene risultati validi (mancano global_metrics o per_example).')
+        if (!parsed.per_example || (!parsed.nugget_global && !parsed.deepseek_global)) {
+          throw new Error('Il file non contiene risultati validi (manca per_example o le metriche globali).')
         }
         setResults(parsed)
         setDatasetName(file.name)
@@ -720,7 +1034,6 @@ export default function EvaluateDataset() {
   function onFileUpload(e) {
     const file = e.target.files[0]
     if (!file) return
-    // Reset so the same file can be re-selected after "Cambia dataset"
     e.target.value = ''
     const reader = new FileReader()
     reader.onload = evt => {
@@ -732,7 +1045,8 @@ export default function EvaluateDataset() {
         setDatasetName(file.name)
         setResults(null)
         setError(null)
-        if (normalized.some(ex => ex.nuggets)) setEvalMode('nugget')
+        // Vista di default: nugget se ci sono, altrimenti deepseek.
+        setView(normalized.some(ex => ex.nuggets) ? 'nugget' : 'deepseek')
       } catch (err) {
         setError(`Errore lettura file: ${err.message}`)
       }
@@ -740,18 +1054,15 @@ export default function EvaluateDataset() {
     reader.readAsText(file)
   }
 
- async function runEvaluation() {
+  async function runEvaluation() {
     if (!dataset || dataset.length === 0) return
     setRunning(true)
     setError(null)
     setResults(null)
     setProgress({ current: 0, total: dataset.length })
 
-    // Costruisci il noise pool una volta sola (docs di tutti gli altri esempi)
     const noisePool = noiseEnabled
-      ? dataset.flatMap((ex, i) =>
-          (ex.docs || []).map(doc => ({ ...doc, _source_idx: i }))
-        )
+      ? dataset.flatMap((ex, i) => (ex.docs || []).map(doc => ({ ...doc, _source_idx: i })))
       : []
 
     const perExample = []
@@ -769,7 +1080,7 @@ export default function EvaluateDataset() {
           retrieve_method: retrieveMethod,
           threshold,
           top_k: topK,
-          eval_mode: effectiveMode,
+          // eval_mode RIMOSSO: il backend calcola sempre nugget + deepseek.
           noise_enabled: noiseEnabled,
           noise_pool: noisePool.filter(d => d._source_idx !== idx),
           noise_seed: 42,
@@ -778,142 +1089,50 @@ export default function EvaluateDataset() {
         })
         perExample.push(res)
       } catch (e) {
-        perExample.push({
-          question: ex.question,
-          error: e.message,
-        })
+        perExample.push({ question: ex.question, error: e.message })
       }
+
       setProgress({ current: idx + 1, total: dataset.length })
+
+      // Update incrementale: ricalcola ENTRAMBE le aggregazioni.
+      const isLast = idx + 1 === dataset.length
+      setResults({
+        nugget_global: computeNuggetGlobal(perExample),
+        deepseek_global: computeDeepseekGlobal(perExample),
+        per_example: [...perExample],
+        num_examples: dataset.length,
+        num_successful: perExample.filter(e => !e.error).length,
+        runtime_seconds: null,
+        partial: !isLast,
+      })
     }
 
-    // Aggregazione metriche globali (speculare al backend)
-    const globalMetrics = {}
-
-    if (effectiveMode === 'standard') {
-      const keys = [
-        'citation_precision', 'citation_recall',
-        'factual_precision', 'factual_precision_nli',
-        'unsupported_ratio', 'avg_entailment_score',
-      ]
-      for (const k of keys) {
-        const vals = perExample
-          .filter(ex => ex.metrics?.[k] != null)
-          .map(ex => ex.metrics[k])
-        if (vals.length) globalMetrics[k] = vals.reduce((a, b) => a + b, 0) / vals.length
-      }
-    } else {
-      let totalNuggets = 0, totalCovered = 0, totalCited = 0
-      let totalReq = 0, totalReqCovered = 0, totalReqCited = 0
-      let totalOpt = 0, totalOptCovered = 0, totalOptCited = 0
-      const precs = [], recalls = [], covs = []
-      const reqPrecs = [], reqRecalls = []
-      for (const ex of perExample) {
-        const nm = ex.nugget_metrics
-        if (!nm) continue
-        precs.push(nm.nugget_precision ?? 0)
-        recalls.push(nm.nugget_recall ?? 0)
-        covs.push(nm.nugget_coverage ?? 0)
-        reqPrecs.push(nm.required_precision ?? 0)
-        reqRecalls.push(nm.required_recall ?? 0)
-        totalNuggets += nm.n_nuggets ?? 0
-        totalCovered += nm.n_covered ?? 0
-        totalCited   += nm.n_cited   ?? 0
-        totalReq += nm.n_required ?? 0
-        totalReqCovered += nm.n_required_covered ?? 0
-        totalReqCited   += nm.n_required_cited   ?? 0
-        totalOpt += nm.n_optional ?? 0
-        totalOptCovered += nm.n_optional_covered ?? 0
-        totalOptCited   += nm.n_optional_cited   ?? 0
-      }
-      if (precs.length) {
-        globalMetrics.avg_nugget_precision = precs.reduce((a, b) => a + b, 0) / precs.length
-        globalMetrics.avg_nugget_recall    = recalls.reduce((a, b) => a + b, 0) / recalls.length
-        globalMetrics.avg_nugget_coverage  = covs.reduce((a, b) => a + b, 0) / covs.length
-        globalMetrics.avg_required_precision = reqPrecs.reduce((a, b) => a + b, 0) / reqPrecs.length
-        globalMetrics.avg_required_recall    = reqRecalls.reduce((a, b) => a + b, 0) / reqRecalls.length
-      }
-      if (totalNuggets > 0) {
-        globalMetrics.macro_nugget_precision = totalCovered > 0 ? totalCited / totalCovered : 0
-        globalMetrics.macro_nugget_recall    = totalCited / totalNuggets
-        globalMetrics.macro_nugget_coverage  = totalCovered / totalNuggets
-      }
-      if (totalReq > 0) {
-        globalMetrics.macro_required_precision = totalReqCovered > 0 ? totalReqCited / totalReqCovered : 0
-        globalMetrics.macro_required_recall    = totalReqCited / totalReq
-      }
-      if (totalOpt > 0) {
-        globalMetrics.macro_optional_precision = totalOptCovered > 0 ? totalOptCited / totalOptCovered : 0
-        globalMetrics.macro_optional_recall    = totalOptCited / totalOpt
-      }
-      globalMetrics.total_nuggets = totalNuggets
-      globalMetrics.total_cited   = totalCited
-      globalMetrics.total_covered = totalCovered
-      globalMetrics.total_required = totalReq
-      globalMetrics.total_required_cited = totalReqCited
-      globalMetrics.total_required_covered = totalReqCovered
-      globalMetrics.total_optional = totalOpt
-      globalMetrics.total_optional_cited = totalOptCited
-      globalMetrics.total_optional_covered = totalOptCovered
-
-      // Noise aggregation
-      let totalNoisePassages = 0, totalClaimsNoise = 0, totalNuggetsNoise = 0
-      for (const ex of perExample) {
-        const nm = ex.nugget_metrics
-        if (!nm) continue
-        const nu = nm.noise_usage || {}
-        totalNoisePassages += nu.noise_supporting_passages || 0
-        totalClaimsNoise += nu.claims_citing_noise || 0
-        totalNuggetsNoise += nm.n_cited_from_noise || 0
-      }
-      globalMetrics.total_noise_passages_used = totalNoisePassages
-      globalMetrics.total_claims_citing_noise = totalClaimsNoise
-      globalMetrics.total_nuggets_cited_from_noise = totalNuggetsNoise
-    }
-
-    setResults({
-      global_metrics: globalMetrics,
-      per_example: perExample,
-      num_examples: dataset.length,
-      num_successful: perExample.filter(ex => !ex.error).length,
-      runtime_seconds: null,   // non calcolato lato frontend
-      eval_mode: effectiveMode,
-    })
     setRunning(false)
   }
 
   return (
     <div>
 
-      {/* ── Hidden file input — unico, sempre montato ── */}
-      <input
-        ref={fileRef}
-        type="file"
-        accept=".json,.jsonl"
-        onChange={onFileUpload}
-        style={{ display: 'none' }}
-      />
+      <input ref={fileRef} type="file" accept=".json,.jsonl" onChange={onFileUpload} style={{ display: 'none' }} />
 
-      {/* ── Page header ── */}
+      {/* Page header */}
       <div className="page-header">
         <div className="page-header-title" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{
             width: 32, height: 32,
             background: 'linear-gradient(135deg, #6366F1 0%, #7C3AED 100%)',
-            borderRadius: 8,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            flexShrink: 0,
-            boxShadow: '0 2px 8px rgba(99,102,241,0.3)',
+            borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center',
+            flexShrink: 0, boxShadow: '0 2px 8px rgba(99,102,241,0.3)',
           }}>
             <Icon name="database" size={16} color="white" strokeWidth={1.75} />
           </div>
           Valutazione Dataset
         </div>
         <div className="page-header-sub">
-          Esegui l'intera pipeline su tutti gli esempi del dataset e ottieni metriche globali aggregate.
+          Esegui la pipeline su tutti gli esempi: ogni esempio è valutato con metriche Nugget e DeepSeek insieme.
         </div>
       </div>
 
-      {/* ── Error banner ── */}
       {error && (
         <div className="info-box info-box-red" style={{ marginBottom: 16 }}>
           <Icon name="xCircle" size={15} strokeWidth={1.75} style={{ flexShrink: 0, marginTop: 1 }} />
@@ -921,7 +1140,6 @@ export default function EvaluateDataset() {
         </div>
       )}
 
-      {/* ── Settings ── */}
       <SettingsPanel
         model={model} setModel={setModel}
         retrieveMethod={retrieveMethod} setRetrieveMethod={setRetrieveMethod}
@@ -931,15 +1149,11 @@ export default function EvaluateDataset() {
         noiseEnabled={noiseEnabled} setNoiseEnabled={setNoiseEnabled}
       />
 
-      {/* ── Dataset upload & run card ── */}
+      {/* Dataset upload & run card */}
       <div className="card" style={{ marginBottom: 20 }}>
         <div style={{ padding: '16px 20px' }}>
 
-          {/* Upload row */}
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: 12,
-            flexWrap: 'wrap', marginBottom: dataset ? 16 : 0,
-          }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', marginBottom: dataset ? 16 : 0 }}>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 4 }}>
                 {dataset ? (
@@ -947,25 +1161,18 @@ export default function EvaluateDataset() {
                     <Icon name="fileText" size={14} strokeWidth={1.75} color="var(--accent)" />
                     {datasetName}
                     <span style={{
-                      fontSize: 11, fontWeight: 700,
-                      background: 'var(--bg)', border: '1px solid var(--border)',
+                      fontSize: 11, fontWeight: 700, background: 'var(--bg)', border: '1px solid var(--border)',
                       padding: '1px 8px', borderRadius: 10, color: 'var(--text-2)',
                     }}>
                       {dataset.length} esempi
                     </span>
                     {hasNuggets && (
-                      <span style={{
-                        fontSize: 10, fontWeight: 700,
-                        background: '#EDE9FE', color: '#5B21B6',
-                        padding: '2px 7px', borderRadius: 10,
-                      }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, background: '#EDE9FE', color: '#5B21B6', padding: '2px 7px', borderRadius: 10 }}>
                         nuggets presenti
                       </span>
                     )}
                   </span>
-                ) : (
-                  'Carica un dataset per iniziare'
-                )}
+                ) : 'Carica un dataset per iniziare'}
               </div>
               {dataset && (
                 <div style={{ fontSize: 12, color: 'var(--text-3)' }}>
@@ -983,33 +1190,19 @@ export default function EvaluateDataset() {
                 <Icon name="upload" size={13} strokeWidth={1.75} />
                 {dataset ? 'Cambia dataset' : 'Seleziona file JSON'}
               </button>
-              {dataset && (
-                <EvalModeToggle
-                  mode={evalMode}
-                  onChange={m => { setEvalMode(m); setResults(null) }}
-                  hasNuggets={hasNuggets}
-                />
-              )}
             </div>
           </div>
 
-          {/* Run button */}
           {dataset && (
-            <div style={{
-              padding: '16px 20px',
-              background: '#F5F3FF',
-              border: '2px dashed #C7D2FE',
-              borderRadius: 10,
-            }}>
+            <div style={{ padding: '16px 20px', background: '#F5F3FF', border: '2px dashed #C7D2FE', borderRadius: 10 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 14, fontWeight: 700, color: '#4338CA', marginBottom: 4 }}>
                     Valuta tutto il dataset
                   </div>
                   <div style={{ fontSize: 12, color: '#6366F1' }}>
-                    Esegui l&apos;intera pipeline su tutti i {dataset.length} esempi e ottieni metriche globali
-                    di precision e recall aggregate in modalità{' '}
-                    <strong>{effectiveMode === 'nugget' ? 'Nugget' : 'Standard'}</strong>.
+                    Esegui la pipeline su tutti i {dataset.length} esempi. Ogni esempio produce
+                    metriche <strong>Nugget</strong> e <strong>DeepSeek</strong> in un solo giro.
                   </div>
                 </div>
                 <button
@@ -1017,18 +1210,10 @@ export default function EvaluateDataset() {
                   onClick={runEvaluation}
                   disabled={running}
                   style={{
-                    background: '#6366F1',
-                    color: 'white',
-                    border: 'none',
-                    padding: '10px 20px',
-                    fontWeight: 700,
-                    fontSize: 13,
-                    borderRadius: 8,
-                    cursor: running ? 'not-allowed' : 'pointer',
-                    opacity: running ? 0.7 : 1,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8,
+                    background: '#6366F1', color: 'white', border: 'none',
+                    padding: '10px 20px', fontWeight: 700, fontSize: 13, borderRadius: 8,
+                    cursor: running ? 'not-allowed' : 'pointer', opacity: running ? 0.7 : 1,
+                    display: 'flex', alignItems: 'center', gap: 8,
                   }}
                 >
                   {running ? (
@@ -1045,26 +1230,16 @@ export default function EvaluateDataset() {
                 </button>
               </div>
 
-              {/* Progress bar */}
               {running && progress.total > 0 && (
                 <div style={{ marginTop: 12 }}>
-                  <div style={{
-                    display: 'flex', justifyContent: 'space-between',
-                    fontSize: 11, color: '#6366F1', marginBottom: 4,
-                  }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#6366F1', marginBottom: 4 }}>
                     <span>Progresso</span>
                     <span>{progress.current}/{progress.total}</span>
                   </div>
-                  <div style={{
-                    height: 6, background: '#E0E7FF',
-                    borderRadius: 3, overflow: 'hidden',
-                  }}>
+                  <div style={{ height: 6, background: '#E0E7FF', borderRadius: 3, overflow: 'hidden' }}>
                     <div style={{
-                      height: '100%',
-                      width: `${(progress.current / progress.total) * 100}%`,
-                      background: '#6366F1',
-                      borderRadius: 3,
-                      transition: 'width 0.3s ease',
+                      height: '100%', width: `${(progress.current / progress.total) * 100}%`,
+                      background: '#6366F1', borderRadius: 3, transition: 'width 0.3s ease',
                     }} />
                   </div>
                 </div>
@@ -1074,12 +1249,15 @@ export default function EvaluateDataset() {
         </div>
       </div>
 
-      {/* ── Results ── */}
+      {/* Results */}
       {results && (
         <div className="card">
           <div style={{ padding: '16px 20px' }}>
             <DatasetEvalResultsView
               results={results}
+              view={view}
+              onViewChange={setView}
+              hasNuggets={hasNuggets}
               onSave={() => {
                 addPipelineResult({
                   question: `[Dataset] ${datasetName}`,
@@ -1087,23 +1265,17 @@ export default function EvaluateDataset() {
                 })
                 alert('Risultati globali salvati! Visibile nella pagina Esplora.')
               }}
-              onDownload={() => {
-                downloadJSON(results, timestampedFilename('dataset_eval'))
-              }}
+              onDownload={() => downloadJSON(results, timestampedFilename('dataset_eval'))}
             />
           </div>
         </div>
       )}
 
-      {/* ── Empty state ── */}
+      {/* Empty state */}
       {!dataset && !results && (
         <div style={{
-          marginTop: 32,
-          padding: '48px 32px',
-          textAlign: 'center',
-          border: '2px dashed var(--border)',
-          borderRadius: 12,
-          color: 'var(--text-3)',
+          marginTop: 32, padding: '48px 32px', textAlign: 'center',
+          border: '2px dashed var(--border)', borderRadius: 12, color: 'var(--text-3)',
         }}>
           <input ref={resultsFileRef} type="file" accept=".json" onChange={onResultsUpload} style={{ display: 'none' }} />
           <Icon name="database" size={40} strokeWidth={1} color="var(--border)" />
@@ -1115,17 +1287,11 @@ export default function EvaluateDataset() {
             oppure carica un file di risultati già valutato.
           </div>
           <div style={{ marginTop: 20, display: 'flex', gap: 12, justifyContent: 'center' }}>
-            <button
-              className="btn btn-primary"
-              onClick={() => fileRef.current.click()}
-            >
+            <button className="btn btn-primary" onClick={() => fileRef.current.click()}>
               <Icon name="upload" size={14} strokeWidth={1.75} color="white" />
               Carica dataset
             </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => resultsFileRef.current.click()}
-            >
+            <button className="btn btn-secondary" onClick={() => resultsFileRef.current.click()}>
               <Icon name="upload" size={14} strokeWidth={1.75} />
               Carica risultati
             </button>

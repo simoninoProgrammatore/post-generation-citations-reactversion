@@ -46,6 +46,17 @@ const METRIC_INFO_NUGGET = {
   },
 }
 
+const METRIC_INFO_DEEPSEEK = {
+  citation_precision: {
+    label: 'Citation Precision',
+    desc: 'Dei (claim, passaggio) citati, quanti DeepSeek giudica un supporto valido?',
+  },
+  citation_recall: {
+    label: 'Citation Recall',
+    desc: 'Dei claim, quanti hanno almeno un passaggio che DeepSeek giudica valido?',
+  },
+}
+
 function metricColor(key, v) {
   if (key === 'unsupported_ratio') {
     return v <= 0.2 ? 'var(--green)' : v <= 0.5 ? 'var(--amber)' : 'var(--red)'
@@ -129,24 +140,21 @@ function normalizeDataset(rawData) {
 // ── EvalMode Toggle ───────────────────────────────────────────────────────────
 
 function EvalModeToggle({ mode, onChange, hasNuggets }) {
+  const baseBtn = {
+    display: 'flex', alignItems: 'center', gap: 6,
+    padding: '6px 14px', fontSize: 12, fontWeight: 600,
+    border: 'none', borderRadius: 8, cursor: 'pointer', transition: 'all 0.15s',
+  }
   return (
     <div style={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      background: 'var(--bg)',
-      border: '1px solid var(--border)',
-      borderRadius: 10,
-      padding: 3,
-      gap: 2,
+      display: 'inline-flex', alignItems: 'center',
+      background: 'var(--bg)', border: '1px solid var(--border)',
+      borderRadius: 10, padding: 3, gap: 2,
     }}>
       <button
         onClick={() => onChange('standard')}
         style={{
-          display: 'flex', alignItems: 'center', gap: 6,
-          padding: '6px 14px',
-          fontSize: 12, fontWeight: 600,
-          border: 'none', borderRadius: 8, cursor: 'pointer',
-          transition: 'all 0.15s',
+          ...baseBtn,
           background: mode === 'standard' ? 'var(--accent)' : 'transparent',
           color: mode === 'standard' ? 'white' : 'var(--text-2)',
           boxShadow: mode === 'standard' ? '0 1px 4px rgba(0,0,0,0.15)' : 'none',
@@ -156,15 +164,11 @@ function EvalModeToggle({ mode, onChange, hasNuggets }) {
           color={mode === 'standard' ? 'white' : 'var(--text-3)'} />
         Standard
       </button>
-
+ 
       <button
         onClick={() => onChange('nugget')}
         style={{
-          display: 'flex', alignItems: 'center', gap: 6,
-          padding: '6px 14px',
-          fontSize: 12, fontWeight: 600,
-          border: 'none', borderRadius: 8, cursor: 'pointer',
-          transition: 'all 0.15s',
+          ...baseBtn,
           background: mode === 'nugget' ? '#7C3AED' : 'transparent',
           color: mode === 'nugget' ? 'white' : 'var(--text-2)',
           boxShadow: mode === 'nugget' ? '0 1px 4px rgba(124,58,237,0.3)' : 'none',
@@ -182,6 +186,20 @@ function EvalModeToggle({ mode, onChange, hasNuggets }) {
             no data
           </span>
         )}
+      </button>
+ 
+      <button
+        onClick={() => onChange('deepseek')}
+        style={{
+          ...baseBtn,
+          background: mode === 'deepseek' ? '#0EA5E9' : 'transparent',
+          color: mode === 'deepseek' ? 'white' : 'var(--text-2)',
+          boxShadow: mode === 'deepseek' ? '0 1px 4px rgba(14,165,233,0.3)' : 'none',
+        }}
+      >
+        <Icon name="search" size={12} strokeWidth={2}
+          color={mode === 'deepseek' ? 'white' : 'var(--text-3)'} />
+        DeepSeek
       </button>
     </div>
   )
@@ -236,11 +254,13 @@ function NuggetMissingFieldsError({ missingFields }) {
 function NuggetMetricsView({ metrics, onSave, onDownload }) {
   const [expanded, setExpanded] = useState({})
 
-  const { nugget_precision, nugget_recall, nugget_coverage,
-          n_nuggets, n_covered, n_cited, per_nugget = [] } = metrics
+  const {
+    nugget_precision, nugget_recall, nugget_coverage,
+    n_nuggets, n_covered, n_cited, per_nugget = []
+  } = metrics
 
   const pct = v => `${Math.round(v * 100)}%`
-
+  
   function GaugePill({ value, color }) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -262,15 +282,16 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
     )
   }
 
-  const precColor = metricColor('x', nugget_precision)
-  const recColor  = metricColor('x', nugget_recall)
-  const covColor  = metricColor('x', nugget_coverage)
+  const metricColor = (val) => val >= 0.6 ? 'var(--green)' : val >= 0.3 ? 'var(--amber)' : 'var(--red)'
+  const precColor = metricColor(nugget_precision)
+  const recColor  = metricColor(nugget_recall)
+  const covColor  = metricColor(nugget_coverage)
 
   return (
     <div>
-      {/* Summary cards */}
+      {/* Summary cards (invariate) */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 20 }}>
-        {/* Nugget Precision */}
+        {/* Precisione Nugget */}
         <div style={{
           padding: '16px 18px',
           background: 'white',
@@ -279,21 +300,21 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
           borderRadius: 10,
         }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8 }}>
-            Nugget Precision
+            Precisione Nugget
           </div>
           <div style={{ fontSize: 30, fontWeight: 800, color: precColor, lineHeight: 1, marginBottom: 8 }}>
             {pct(nugget_precision)}
           </div>
           <GaugePill value={nugget_precision} color={precColor} />
           <div style={{ marginTop: 8, fontSize: 11, color: 'var(--text-3)', lineHeight: 1.4 }}>
-            {n_cited} citati su {n_covered} coperti
+            Media pesata sui {n_covered} nugget coperti
           </div>
           <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-3)', fontStyle: 'italic' }}>
-            {METRIC_INFO_NUGGET.nugget_precision.desc}
+            Precisione continua (match × evidenza) sui nugget coperti.
           </div>
         </div>
 
-        {/* Nugget Recall */}
+        {/* Recall Nugget */}
         <div style={{
           padding: '16px 18px',
           background: 'white',
@@ -302,21 +323,21 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
           borderRadius: 10,
         }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8 }}>
-            Nugget Recall
+            Recall Nugget
           </div>
           <div style={{ fontSize: 30, fontWeight: 800, color: recColor, lineHeight: 1, marginBottom: 8 }}>
             {pct(nugget_recall)}
           </div>
           <GaugePill value={nugget_recall} color={recColor} />
           <div style={{ marginTop: 8, fontSize: 11, color: 'var(--text-3)', lineHeight: 1.4 }}>
-            {n_cited} citati su {n_nuggets} nuggets totali
+            Su {n_nuggets} nugget totali
           </div>
           <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-3)', fontStyle: 'italic' }}>
-            {METRIC_INFO_NUGGET.nugget_recall.desc}
+            Stessa media, ma su tutti i nugget (inclusi non coperti).
           </div>
         </div>
 
-        {/* Nugget Coverage */}
+        {/* Copertura Nugget */}
         <div style={{
           padding: '16px 18px',
           background: 'white',
@@ -325,22 +346,22 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
           borderRadius: 10,
         }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8 }}>
-            Nugget Coverage
+            Copertura Nugget
           </div>
           <div style={{ fontSize: 30, fontWeight: 800, color: covColor, lineHeight: 1, marginBottom: 8 }}>
             {pct(nugget_coverage)}
           </div>
           <GaugePill value={nugget_coverage} color={covColor} />
           <div style={{ marginTop: 8, fontSize: 11, color: 'var(--text-3)', lineHeight: 1.4 }}>
-            {n_covered} coperti su {n_nuggets} nuggets
+            {n_covered} coperti su {n_nuggets} nugget
           </div>
           <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-3)', fontStyle: 'italic' }}>
-            {METRIC_INFO_NUGGET.nugget_coverage.desc}
+            Percentuale di nugget toccati da almeno un claim.
           </div>
         </div>
       </div>
 
-      {/* Per-nugget breakdown */}
+      {/* Dettaglio per nugget */}
       {per_nugget.length > 0 && (
         <div>
           <div style={{
@@ -350,33 +371,37 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
           }}>
             Dettaglio per nugget — {per_nugget.length} totali
           </div>
+
           {per_nugget.map((nug, i) => {
-            const statusColor = nug.cited
-              ? 'var(--green)'
-              : nug.covered
-                ? 'var(--amber)'
-                : 'var(--red)'
-            const statusLabel = nug.cited
-              ? 'Citato ✓'
-              : nug.covered
-                ? 'Coperto, non citato'
-                : 'Non coperto'
-            const statusBg = nug.cited ? '#DCFCE7' : nug.covered ? '#FEF9C3' : '#FEE2E2'
-            const statusFg = nug.cited ? '#166534' : nug.covered ? '#713F12' : '#991B1B'
+            const excluded = nug.excluded_no_golden
+            const score = nug.nugget_precision_score
+            const isCited = nug.cited
+            const statusColor = excluded ? 'var(--text-3)'
+              : isCited ? 'var(--green)'
+              : nug.covered ? 'var(--amber)' : 'var(--red)'
+            const statusLabel = excluded ? 'Escluso (no golden evidence)'
+              : isCited ? 'Citato ✓'
+              : nug.covered ? 'Coperto, non citato' : 'Non coperto'
+            const statusBg = excluded ? '#F3F4F6'
+              : isCited ? '#DCFCE7' : nug.covered ? '#FEF9C3' : '#FEE2E2'
+            const statusFg = excluded ? '#6B7280'
+              : isCited ? '#166534' : nug.covered ? '#713F12' : '#991B1B'
 
             return (
               <div key={i} style={{
                 marginBottom: 8,
-                border: `1px solid ${nug.cited ? '#A7F3D0' : nug.covered ? '#FDE68A' : '#FECACA'}`,
+                border: `1px solid ${excluded ? '#E5E7EB' : isCited ? '#A7F3D0' : nug.covered ? '#FDE68A' : '#FECACA'}`,
                 borderRadius: 8,
                 overflow: 'hidden',
+                opacity: excluded ? 0.6 : 1,
               }}>
+                {/* Header del nugget (click per espandere) */}
                 <div
                   onClick={() => setExpanded(e => ({ ...e, [i]: !e[i] }))}
                   style={{
                     display: 'flex', alignItems: 'center', gap: 10,
                     padding: '10px 14px',
-                    background: nug.cited ? '#F0FDF4' : nug.covered ? '#FFFBEB' : '#FFF1F2',
+                    background: excluded ? '#F9FAFB' : isCited ? '#F0FDF4' : nug.covered ? '#FFFBEB' : '#FFF1F2',
                     cursor: 'pointer',
                   }}
                 >
@@ -405,13 +430,37 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
                       REQUIRED
                     </span>
                   )}
+                  {score != null && (
+                    <span style={{
+                      fontSize: 10, fontWeight: 700,
+                      fontFamily: 'var(--mono)',
+                      background: score >= 0.45 ? '#ECFDF5' : '#FEF2F2',
+                      color: score >= 0.45 ? '#166534' : '#991B1B',
+                      padding: '2px 6px', borderRadius: 6,
+                      flexShrink: 0,
+                    }}>
+                      {score.toFixed(2)}
+                    </span>
+                  )}
                   <span style={{ color: 'var(--text-3)', fontSize: 12 }}>
                     {expanded[i] ? '▲' : '▼'}
                   </span>
                 </div>
 
+                {/* Contenuto espanso */}
                 {expanded[i] && (
                   <div style={{ padding: '12px 16px', background: 'white' }}>
+                    {excluded && (
+                      <div style={{
+                        marginBottom: 10, padding: '8px 12px',
+                        background: '#F3F4F6', border: '1px solid #E5E7EB',
+                        borderRadius: 6, fontSize: 12, color: '#6B7280',
+                      }}>
+                        ⚠️ Nugget escluso dalle metriche continue: manca `golden_evidence`.
+                      </div>
+                    )}
+
+                    {/* Keywords */}
                     {nug.keywords?.length > 0 && (
                       <div style={{ marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
                         <span style={{ fontSize: 11, color: 'var(--text-3)', fontWeight: 600 }}>Keywords:</span>
@@ -423,6 +472,8 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
                         ))}
                       </div>
                     )}
+
+                    {/* Golden evidence */}
                     {nug.golden_evidence && (
                       <div style={{
                         marginBottom: 10, padding: '8px 12px',
@@ -437,6 +488,8 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
                         )}
                       </div>
                     )}
+
+                    {/* Miglior claim (informativo) */}
                     {nug.best_covering_claim && (
                       <div style={{
                         marginBottom: 10, padding: '8px 12px',
@@ -444,37 +497,110 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
                         borderRadius: 6, fontSize: 12,
                       }}>
                         <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', marginBottom: 4 }}>
-                          Claim che copre il nugget
+                          Miglior claim che copre il nugget
                         </div>
                         <span style={{ color: '#166534' }}>{nug.best_covering_claim}</span>
+                        {score != null && (
+                          <span style={{ marginLeft: 8, fontSize: 10, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>
+                            (score: {score.toFixed(2)})
+                          </span>
+                        )}
                       </div>
                     )}
-                    {nug.cited && nug.best_evidence_passage_title && (
-                      <div style={{
-                        padding: '8px 12px',
-                        background: '#FAFAF9', border: '1px solid var(--border)',
-                        borderRadius: 6,
-                      }}>
-                        <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', marginBottom: 4 }}>
-                          Passaggio citato con evidenza
+
+                    {/* ===== NUOVA SEZIONE: TUTTE LE EVIDENZE ===== */}
+                    {nug.all_evidence && nug.all_evidence.length > 0 && (
+                      <div style={{ marginTop: 8 }}>
+                        <div style={{
+                          fontSize: 10, fontWeight: 700, color: 'var(--text-3)',
+                          textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8,
+                        }}>
+                          Tutte le evidenze ({nug.all_evidence.length}) — ordinate per similarità decrescente
                         </div>
-                        <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 4 }}>
-                          {nug.best_evidence_passage_title}
-                        </div>
-                        <div style={{ fontSize: 11, color: 'var(--text-2)', lineHeight: 1.5 }}>
-                          {nug.best_evidence_passage_text}
-                          {nug.best_evidence_passage_text?.length >= 200 && '…'}
+                        <div style={{
+                          maxHeight: 400, overflowY: 'auto',
+                          border: '1px solid var(--border)', borderRadius: 6,
+                          padding: '0 8px',
+                        }}>
+                          {nug.all_evidence.map((ev, j) => {
+                            const evScore = ev.evidence_score
+                            const scoreColor = evScore >= 0.6 ? '#166534' : evScore >= 0.3 ? '#92400E' : '#991B1B'
+                            const scoreBg   = evScore >= 0.6 ? '#DCFCE7' : evScore >= 0.3 ? '#FEF9C3' : '#FEE2E2'
+                            return (
+                              <div key={j} style={{
+                                padding: '8px 0',
+                                borderBottom: '1px solid var(--border)',
+                                display: 'flex', flexDirection: 'column', gap: 4,
+                              }}>
+                                {/* Riga superiore: badge score, titolo, eventuale entailment e noise */}
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                                  <span style={{
+                                    fontSize: 10, fontWeight: 700,
+                                    background: scoreBg, color: scoreColor,
+                                    padding: '1px 6px', borderRadius: 10,
+                                    fontFamily: 'var(--mono)',
+                                  }}>
+                                    {evScore.toFixed(2)}
+                                  </span>
+                                  {ev.entailment_score != null && (
+                                    <span style={{ fontSize: 10, color: 'var(--text-3)' }}>
+                                      ent: {ev.entailment_score.toFixed(2)}
+                                    </span>
+                                  )}
+                                  {ev.is_noise && (
+                                    <span style={{ fontSize: 9, color: 'var(--amber)', fontWeight: 600 }}>
+                                      ⚠️ rumore
+                                    </span>
+                                  )}
+                                  <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-2)' }}>
+                                    {ev.passage_title || 'Senza titolo'}
+                                  </span>
+                                </div>
+
+                                {/* Span (frase estratta) */}
+                                {ev.span && (
+                                  <div style={{
+                                    marginLeft: 12, padding: '4px 8px',
+                                    background: '#F0F9FF', borderLeft: '3px solid #38BDF8',
+                                    borderRadius: 4, fontSize: 11, color: '#0C4A6E',
+                                    fontStyle: 'italic',
+                                  }}>
+                                    «{ev.span}»
+                                  </div>
+                                )}
+
+                                {/* Claim di provenienza (troncato) */}
+                                <div style={{ marginLeft: 12, fontSize: 10, color: 'var(--text-3)' }}>
+                                  Claim: {ev.claim}{ev.claim.length >= 200 ? '…' : ''}
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     )}
-                    {!nug.covered && (
+
+                    {/* Nessuna evidenza disponibile (ma nugget coperto) */}
+                    {(!nug.all_evidence || nug.all_evidence.length === 0) && nug.covered && !excluded && (
+                      <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic', marginTop: 8 }}>
+                        Nessun passaggio con evidenza disponibile.
+                      </div>
+                    )}
+
+                    {/* Messaggi finali per stati particolari */}
+                    {!nug.covered && !excluded && (
                       <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic' }}>
-                        Nessun claim generato copre questo nugget (overlap lessicale e keyword insufficienti).
+                        Nessun claim generato copre questo nugget.
                       </div>
                     )}
-                    {nug.covered && !nug.cited && (
+                    {nug.covered && !nug.cited && !excluded && (
                       <div style={{ fontSize: 12, color: '#92400E', fontStyle: 'italic' }}>
-                        Il nugget è menzionato in {nug.n_covering_claims} claim ma nessun passaggio citato fornisce evidenza sufficiente.
+                        Il nugget è coperto da {nug.n_covering_claims} claim, ma il punteggio di evidenza rimane sotto la soglia ({score?.toFixed(2)} &lt; 0.45).
+                      </div>
+                    )}
+                    {excluded && (
+                      <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic' }}>
+                        Nessun dato di precisione disponibile.
                       </div>
                     )}
                   </div>
@@ -485,6 +611,154 @@ function NuggetMetricsView({ metrics, onSave, onDownload }) {
         </div>
       )}
 
+      {/* Actions */}
+      <div style={{ marginTop: 20, display: 'flex', gap: 12 }}>
+        <button className="btn btn-primary" onClick={onSave}>
+          <Icon name="download" size={13} color="white" strokeWidth={2} />
+          Salva in Esplora
+        </button>
+        <button className="btn btn-secondary" onClick={onDownload}>
+          <Icon name="download" size={13} strokeWidth={1.75} />
+          Scarica dati
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function DeepSeekMetricsView({ metrics, onSave, onDownload }) {
+  const [expanded, setExpanded] = useState({})
+  const {
+    citation_precision, citation_recall,
+    n_claims, n_pairs, n_pairs_supported, per_claim = [],
+  } = metrics
+  const pct = v => `${Math.round(v * 100)}%`
+ 
+  return (
+    <div>
+      {/* Banner LLM-judge */}
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16,
+        padding: '8px 14px', background: '#F0F9FF', border: '1px solid #BAE6FD',
+        borderRadius: 8, fontSize: 12, color: '#0C4A6E',
+      }}>
+        <Icon name="search" size={14} color="#0284C7" strokeWidth={2} />
+        Giudizio LLM-as-judge via DeepSeek · {n_pairs} coppie valutate ({n_pairs_supported} valide)
+      </div>
+ 
+      {/* Summary cards */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 20 }}>
+        {[
+          { key: 'citation_precision', value: citation_precision, sub: `${n_pairs_supported} valide su ${n_pairs} coppie` },
+          { key: 'citation_recall', value: citation_recall, sub: `claim supportati su ${n_claims} totali` },
+        ].map(({ key, value, sub }) => {
+          const color = metricColor(key, value)
+          const bd = color === 'var(--green)' ? '#A7F3D0' : color === 'var(--amber)' ? '#FDE68A' : '#FECACA'
+          return (
+            <div key={key} style={{
+              padding: '16px 18px', background: 'white',
+              border: `1px solid ${bd}`, borderTop: `3px solid ${color}`, borderRadius: 10,
+            }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8 }}>
+                {METRIC_INFO_DEEPSEEK[key].label}
+              </div>
+              <div style={{ fontSize: 30, fontWeight: 800, color, lineHeight: 1, marginBottom: 8 }}>
+                {pct(value)}
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--text-3)', lineHeight: 1.4 }}>{sub}</div>
+              <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-3)', fontStyle: 'italic' }}>
+                {METRIC_INFO_DEEPSEEK[key].desc}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+ 
+      {/* Per-claim breakdown con reason */}
+      {per_claim.length > 0 && (
+        <div>
+          <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.7px', marginBottom: 10 }}>
+            Dettaglio per claim — {per_claim.length} totali
+          </div>
+          {per_claim.map((c, i) => {
+            const ok = c.any_supported
+            return (
+              <div key={i} style={{
+                marginBottom: 8,
+                border: `1px solid ${ok ? '#A7F3D0' : '#FECACA'}`,
+                borderRadius: 8, overflow: 'hidden',
+              }}>
+                <div
+                  onClick={() => setExpanded(e => ({ ...e, [i]: !e[i] }))}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px',
+                    background: ok ? '#F0FDF4' : '#FFF1F2', cursor: 'pointer',
+                  }}
+                >
+                  <span style={{
+                    fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 10,
+                    whiteSpace: 'nowrap', flexShrink: 0,
+                    background: ok ? '#DCFCE7' : '#FEE2E2',
+                    color: ok ? '#166534' : '#991B1B',
+                  }}>
+                    {ok ? `${c.n_supported}/${c.n_passages} valide` : 'nessun supporto'}
+                  </span>
+                  <span style={{ fontSize: 12, color: 'var(--text)', flex: 1, lineHeight: 1.4 }}>
+                    {c.claim}
+                  </span>
+                  <span style={{ color: 'var(--text-3)', fontSize: 12 }}>
+                    {expanded[i] ? '▲' : '▼'}
+                  </span>
+                </div>
+                {expanded[i] && (
+                  <div style={{ padding: '12px 16px', background: 'white' }}>
+                    {c.judgments.length === 0 ? (
+                      <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic' }}>
+                        Nessun passaggio citato per questo claim.
+                      </div>
+                    ) : c.judgments.map((j, ji) => (
+                      <div key={ji} style={{
+                        marginBottom: 8, padding: '8px 12px', borderRadius: 6,
+                        background: j.supported ? '#F0FDF4' : '#FAFAF9',
+                        border: `1px solid ${j.supported ? '#86EFAC' : 'var(--border)'}`,
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                          <span style={{
+                            fontSize: 10, fontWeight: 700, padding: '1px 7px', borderRadius: 8,
+                            background: j.supported ? '#DCFCE7' : '#FEE2E2',
+                            color: j.supported ? '#166534' : '#991B1B',
+                          }}>
+                            {j.supported ? 'SUPPORTED' : 'NOT SUPPORTED'}
+                          </span>
+                          <span style={{ fontSize: 12, fontWeight: 600 }}>{j.passage_title || '—'}</span>
+                        </div>
+                        <div style={{
+                          fontSize: 11, color: '#166534', lineHeight: 1.5, marginBottom: 6,
+                          padding: '6px 10px', background: '#ECFDF5',
+                          borderRadius: 6, borderLeft: '3px solid #86EFAC',
+                        }}>
+                          <strong style={{ color: 'var(--text-3)', fontWeight: 700 }}>Evidenza: </strong>
+                          {j.evidence || '(nessuno span estratto)'}
+                        </div>
+                        {j.reason && (
+                          <div style={{
+                            fontSize: 11, color: '#0C4A6E', fontStyle: 'italic',
+                            padding: '6px 10px', background: '#F0F9FF',
+                            borderRadius: 6, borderLeft: '3px solid #BAE6FD',
+                          }}>
+                            <strong>DeepSeek:</strong> {j.reason}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+      )}
+ 
       {/* Actions */}
       <div style={{ marginTop: 20, display: 'flex', gap: 12 }}>
         <button className="btn btn-primary" onClick={onSave}>
@@ -528,12 +802,14 @@ export default function Pipeline() {
 
   // Pipeline state
   const [response, setResponse] = useState(null)
+  const [nuggetCovering, setNuggetCovering] = useState(null)
   const [claims, setClaims] = useState(null)
   const [matched, setMatched] = useState(null)
   const [cited, setCited] = useState(null)
   const [references, setReferences] = useState(null)
   const [metrics, setMetrics] = useState(null)
   const [nuggetMetrics, setNuggetMetrics] = useState(null)
+  const [deepseekMetrics, setDeepseekMetrics] = useState(null)
 
   const [running, setRunning] = useState(null)
   const [error, setError] = useState(null)
@@ -546,7 +822,7 @@ export default function Pipeline() {
     decompose: claims   ? 'done' : response ? 'active' : 'locked',
     retrieve:  matched  ? 'done' : claims   ? 'active' : 'locked',
     cite:      cited    ? 'done' : matched  ? 'active' : 'locked',
-    evaluate:  (metrics || nuggetMetrics) ? 'done' : cited ? 'active' : 'locked',
+    evaluate: (metrics || nuggetMetrics || deepseekMetrics) ? 'done' : cited ? 'active' : 'locked',    
   }
   if (running) steps[running] = 'running'
 
@@ -574,9 +850,9 @@ export default function Pipeline() {
     const idx = order.indexOf(step)
     if (idx <= 0) setResponse(null)
     if (idx <= 1) setClaims(null)
-    if (idx <= 2) setMatched(null)
+    if (idx <= 2) { setMatched(null); setNuggetCovering(null) }
     if (idx <= 3) { setCited(null); setReferences(null) }
-    if (idx <= 4) { setMetrics(null); setNuggetMetrics(null); setNuggetFieldError(null) }
+    if (idx <= 4) { setMetrics(null); setNuggetMetrics(null); setDeepseekMetrics(null); setNuggetFieldError(null) }  
   }
 
   function onFileUpload(e) {
@@ -640,31 +916,66 @@ export default function Pipeline() {
   }
 
   async function runRetrieve() {
-    setError(null); setRunning('retrieve'); resetAfter('retrieve')
-    setRetrieveProgress({ current: 0, total: claims.length })
-    try {
-      const allMatched = []
-      const allDebug = []
-      for (let i = 0; i < claims.length; i++) {
-        setRetrieveProgress({ current: i + 1, total: claims.length })
-        const res = await api.pipeline.retrieveSingle({
-          claim: claims[i],
-          passages: currentPassages,
-          method: retrieveMethod,
-          threshold,
-          top_k: topK,
-          nuggets: currentNuggets || undefined,
-          pre_filter_k: preFilterK,
-          model,
-        })
-        allMatched.push(res.matched)
-        allDebug.push(res.debug)
+  setError(null); setRunning('retrieve'); resetAfter('retrieve')
+  setRetrieveProgress({ current: 0, total: claims.length })
+  try {
+    const allMatched = []
+    const allDebug = []
+    for (let i = 0; i < claims.length; i++) {
+      setRetrieveProgress({ current: i + 1, total: claims.length })
+      const res = await api.pipeline.retrieveSingle({
+        claim: claims[i],
+        passages: currentPassages,
+        method: retrieveMethod,
+        threshold,
+        top_k: topK,
+        nuggets: currentNuggets || undefined,
+        pre_filter_k: preFilterK,
+        model,
+      })
+      allMatched.push(res.matched)
+      allDebug.push(res.debug)
+    }
+    setMatched(allMatched)
+    // nugget_covering non viene dal retrieve singolo — viene calcolato all'evaluate
+  } catch (e) { setError(`Retrieve: ${e.message}`) }
+  setRetrieveProgress({ current: 0, total: 0 })
+  setRunning(null)
+}
+
+async function runEvaluate() {
+  setError(null)
+  setNuggetFieldError(null)
+  setRunning('evaluate')
+  setMetrics(null); setNuggetMetrics(null); setDeepseekMetrics(null)
+
+  try {
+    if (effectiveMode === 'nugget') {
+      const missing = validateNuggetFields()
+      if (missing.length > 0) {
+        setNuggetFieldError(missing)
+        setRunning(null)
+        return
       }
-      setMatched(allMatched)
-    } catch (e) { setError(`Retrieve: ${e.message}`) }
-    setRetrieveProgress({ current: 0, total: 0 })
-    setRunning(null)
+      const res = await api.pipeline.evaluateNuggets({
+        matched_claims: matched,
+        nuggets: currentNuggets,
+        nugget_covering: nuggetCovering,  // null → backend ricalcola
+      })
+      setNuggetMetrics(res)
+
+    } else if (effectiveMode === 'deepseek') {
+      const res = await api.pipeline.evaluateDeepseek({ matched })
+      setDeepseekMetrics(res.deepseek_metrics)
+    } else {
+      const res = await api.pipeline.evaluate({ matched })
+      setMetrics(res)
+    }
+  } catch (e) {
+    setError(`Evaluate: ${e.message}`)
   }
+  setRunning(null)
+}
 
   async function runCite() {
     setError(null); setRunning('cite'); resetAfter('cite')
@@ -676,41 +987,12 @@ export default function Pipeline() {
     setRunning(null)
   }
 
-  async function runEvaluate() {
-    setError(null)
-    setNuggetFieldError(null)
-    setRunning('evaluate')
-    setMetrics(null); setNuggetMetrics(null)
-
-    try {
-      if (effectiveMode === 'nugget') {
-        const missing = validateNuggetFields()
-        if (missing.length > 0) {
-          setNuggetFieldError(missing)
-          setRunning(null)
-          return
-        }
-        const res = await api.pipeline.evaluateNuggets({
-          matched_claims: matched,
-          nuggets: currentNuggets,
-          docs: currentPassages,
-        })
-        setNuggetMetrics(res)
-      } else {
-        const res = await api.pipeline.evaluate({ matched })
-        setMetrics(res)
-      }
-    } catch (e) {
-      setError(`Evaluate: ${e.message}`)
-    }
-    setRunning(null)
-  }
 
   function saveToExplore() {
     addPipelineResult({
       question: currentQuery, raw_response: response, claims,
       matched_claims: matched, cited_response: cited, references,
-      metrics, nugget_metrics: nuggetMetrics,
+      metrics, nugget_metrics: nuggetMetrics, deepseek_metrics: deepseekMetrics,
     })
     alert('Risultato salvato! Visibile nella pagina Esplora.')
   }
@@ -725,6 +1007,7 @@ export default function Pipeline() {
       references,
       metrics,
       nugget_metrics: nuggetMetrics,
+      deepseek_metrics: deepseekMetrics,
       eval_mode: effectiveMode,
       model,
       retrieve_method: retrieveMethod,
@@ -966,7 +1249,7 @@ export default function Pipeline() {
             {steps.evaluate !== 'locked' && (
               <EvalModeToggle
                 mode={evalMode}
-                onChange={mode => { setEvalMode(mode); setMetrics(null); setNuggetMetrics(null); setNuggetFieldError(null) }}
+                onChange={mode => { setEvalMode(mode); setMetrics(null); setNuggetMetrics(null); setDeepseekMetrics(null); setNuggetFieldError(null) }}                
                 hasNuggets={hasNuggets}
               />
             )}
@@ -1013,6 +1296,14 @@ export default function Pipeline() {
             onDownload={downloadPipelineData}
           />
         )}
+         {/* DeepSeek metrics */}
+        {deepseekMetrics && effectiveMode === 'deepseek' && (
+          <DeepSeekMetricsView
+            metrics={deepseekMetrics}
+            onSave={saveToExplore}
+            onDownload={downloadPipelineData}
+          />
+        )}
       </StepCard>
     </div>
   )
@@ -1027,18 +1318,41 @@ function MatchedView({ matched, passages, retrieveMethod, nuggets }) {
 
   const supported = matched.filter(m => (m.supporting_passages || []).length > 0).length
 
-  function findMatchingNugget(claimObj) {
-    if (claimObj.matched_nugget) return claimObj.matched_nugget
-    const claimText = typeof claimObj === 'string' ? claimObj : claimObj.claim
-    if (!nuggets || !Array.isArray(nuggets) || !claimText) return null
-    const claimLower = claimText.toLowerCase()
-    for (const nugget of nuggets) {
-      const keywords = nugget.keywords || []
-      const hasMatch = keywords.some(kw => claimLower.includes(kw.toLowerCase()))
-      if (hasMatch) return nugget
-    }
-    return null
+  // ── Nugget-centered matching ──────────────────────────────────────────────
+  function claimCoversNugget(claimObj, nugget) {
+    if (claimObj.matched_nugget?.nugget_id === nugget.nugget_id) return true
+    const claimText = (claimObj.claim || '').toLowerCase()
+    const keywords = nugget.keywords || []
+    return keywords.some(kw => claimText.includes(kw.toLowerCase()))
   }
+
+  const hasNuggets = nuggets && Array.isArray(nuggets) && nuggets.length > 0
+
+  // nugget_id → [{ m, i, score }] ordinati per match_score desc
+  const nuggetToClaims = {}
+  const claimIdxCovered = new Set()
+
+  if (hasNuggets) {
+    nuggets.forEach(nug => {
+      const covering = []
+      matched.forEach((m, i) => {
+        if (claimCoversNugget(m, nug)) {
+          const score = m.matched_nugget?.match_score || 0
+          // Soglia allineata al backend (coverage_threshold = 0.6)
+          if (score >= 0.6) {
+            covering.push({ m, i, score })
+          }
+        }
+      })
+      covering.sort((a, b) => b.score - a.score)
+      nuggetToClaims[nug.nugget_id] = covering
+      covering.forEach(({ i }) => claimIdxCovered.add(i))
+    })
+  }
+
+  const uncoveredClaims = matched
+    .map((m, i) => ({ m, i }))
+    .filter(({ i }) => !claimIdxCovered.has(i))
 
   async function runDebug(claimText, claimIdx) {
     setDebugging(claimIdx)
@@ -1052,10 +1366,195 @@ function MatchedView({ matched, passages, retrieveMethod, nuggets }) {
     setDebugging(null)
   }
 
-  const hasNuggets = nuggets && Array.isArray(nuggets) && nuggets.length > 0
+  // ── Render di un singolo claim ─────────────────────────────────────────
+  function renderClaim(m, i, nugget) {
+    const passages_m = m.supporting_passages || []
+    const has = passages_m.length > 0
+    const debugData = debug[i]
+    const isGold = nugget?.required === true
+    const isSilver = nugget?.required === false
+    const borderColor = nugget
+      ? (isGold ? '#D97706' : '#9CA3AF')
+      : (has ? '#A7F3D0' : '#FECACA')
+    const headerBg = isGold
+      ? 'linear-gradient(90deg, #FFFBEB 0%, transparent 100%)'
+      : isSilver
+        ? 'linear-gradient(90deg, #F3F4F6 0%, transparent 100%)'
+        : 'none'
+
+    const matchScore = m.matched_nugget?.match_score
+
+    return (
+      <div key={i} className="expander" style={{
+        borderColor,
+        borderWidth: nugget ? '2px' : undefined,
+        marginLeft: nugget ? 16 : 0,
+      }}>
+        <div className="expander-header"
+          onClick={() => setOpen(o => ({ ...o, [i]: !o[i] }))}
+          style={{ background: headerBg }}>
+          <span className={`badge ${has ? 'badge-green' : 'badge-red'}`}>
+            {has
+              ? <Icon name="check" size={10} strokeWidth={2.5} />
+              : <Icon name="x" size={10} strokeWidth={2.5} />}
+          </span>
+          <span className="expander-header-title" style={{ color: 'var(--text)' }}>
+            {m.claim}
+          </span>
+          {matchScore != null && nugget && (
+            <span style={{
+              fontSize: 11, fontWeight: 600,
+              padding: '1px 6px', borderRadius: 8,
+              background: matchScore >= 0.5 ? '#ECFDF5' : '#FEF2F2',
+              color: matchScore >= 0.5 ? '#166534' : '#991B1B',
+              border: `1px solid ${matchScore >= 0.5 ? '#86EFAC' : '#FECACA'}`,
+              marginRight: 6,
+            }}>
+              {matchScore.toFixed(2)}
+            </span>
+          )}
+          {has && (
+            <span style={{ fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>
+              {passages_m.length} fonte{passages_m.length > 1 ? 'i' : ''}
+            </span>
+          )}
+          <span className={`expander-chevron${open[i] ? ' open' : ''}`}>▼</span>
+        </div>
+
+        {open[i] && (
+          <div className="expander-body">
+            <div style={{ marginBottom: 12, display: 'flex', gap: 8, alignItems: 'center' }}>
+              <button
+                className="btn btn-secondary"
+                style={{ fontSize: 11, padding: '4px 10px' }}
+                onClick={(e) => { e.stopPropagation(); runDebug(m.claim, i) }}
+                disabled={debugging === i}
+              >
+                {debugging === i
+                  ? <><span className="spinner" style={{ width: 11, height: 11 }} /> Calcolo...</>
+                  : <><Icon name="search" size={11} strokeWidth={1.75} />
+                      {debugData ? 'Aggiorna debug' : 'Debug frasi (top-4)'}</>}
+              </button>
+              {debugData && (
+                <span style={{ fontSize: 11, color: 'var(--text-3)' }}>
+                  Score {debugData.method.toUpperCase()} su ogni frase del passaggio
+                </span>
+              )}
+            </div>
+            {debugData && <DebugView data={debugData} />}
+            {has ? passages_m.map((p, j) => (
+              <div key={j} className="passage-card" style={{ marginBottom: 8 }}>
+                <div className="passage-header">
+                  <span className="passage-title">{p.title || '—'}</span>
+                  {p.entailment_score != null && <ScorePill score={p.entailment_score} />}
+                </div>
+                <div className="passage-body">{p.text || ''}</div>
+                {p.best_sentence && (
+                  <div style={{
+                    margin: '0 14px 10px', padding: '6px 10px',
+                    background: '#ECFDF5', borderRadius: 6,
+                    fontSize: 12, color: '#166534',
+                    borderLeft: '3px solid #86EFAC',
+                  }}>
+                    <strong>Evidenza:</strong> {p.best_sentence}
+                  </div>
+                )}
+              </div>
+            )) : (
+              !debugData && (
+                <span style={{ color: 'var(--text-3)', fontSize: 13 }}>
+                  Nessun passaggio di supporto trovato.
+                </span>
+              )
+            )}
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  // ── Render nugget header ──────────────────────────────────────────────
+  function renderNuggetHeader(nug) {
+    const isGold = nug.required === true
+    const claims = nuggetToClaims[nug.nugget_id] || []
+    const covered = claims.length > 0
+
+    return (
+      <div key={nug.nugget_id} style={{ marginBottom: 16 }}>
+        <div style={{
+          display: 'flex', alignItems: 'flex-start', gap: 10,
+          padding: '10px 14px', borderRadius: 8, marginBottom: 6,
+          background: isGold ? '#FFFBEB' : '#F9FAFB',
+          border: `1.5px solid ${isGold ? '#FDE68A' : '#E5E7EB'}`,
+          opacity: covered ? 1 : 0.6,
+        }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+            width: 22, height: 22, borderRadius: '50%', flexShrink: 0, marginTop: 1,
+            background: isGold
+              ? 'linear-gradient(135deg, #F59E0B, #D97706)'
+              : 'linear-gradient(135deg, #D1D5DB, #9CA3AF)',
+            border: `1.5px solid ${isGold ? '#B45309' : '#6B7280'}`,
+            fontSize: 11, fontWeight: 800,
+            color: isGold ? '#FFFBEB' : '#374151',
+          }}>
+            {isGold ? '★' : '☆'}
+          </span>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
+              <span style={{
+                fontSize: 11, fontWeight: 700,
+                color: isGold ? '#92400E' : '#6B7280',
+              }}>
+                {nug.nugget_id}
+              </span>
+              <span style={{
+                fontSize: 9, fontWeight: 600, padding: '1px 6px', borderRadius: 8,
+                background: isGold ? '#FEF3C7' : '#F3F4F6',
+                color: isGold ? '#B45309' : '#9CA3AF',
+              }}>
+                {isGold ? 'REQUIRED' : 'OPTIONAL'}
+              </span>
+              {covered
+                ? <span style={{
+                    fontSize: 9, fontWeight: 600, padding: '1px 6px', borderRadius: 8,
+                    background: '#ECFDF5', color: '#166534', border: '1px solid #86EFAC',
+                  }}>
+                    {claims.length} claim{claims.length > 1 ? 's' : ''}
+                  </span>
+                : <span style={{
+                    fontSize: 9, fontWeight: 600, padding: '1px 6px', borderRadius: 8,
+                    background: '#FEF2F2', color: '#991B1B', border: '1px solid #FECACA',
+                  }}>
+                    non coperto
+                  </span>
+              }
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--text-2)', lineHeight: 1.5 }}>
+              {nug.text}
+            </div>
+            <div style={{ marginTop: 4, fontSize: 11, color: 'var(--text-3)' }}>
+              Keywords: {(nug.keywords || []).map((kw, ki) => (
+                <span key={ki} style={{
+                  display: 'inline-block', padding: '1px 6px', margin: '0 3px',
+                  background: '#F3F4F6', borderRadius: 4,
+                  fontFamily: 'var(--mono)', fontSize: 10,
+                }}>
+                  {kw}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {claims.map(({ m, i }) => renderClaim(m, i, nug))}
+      </div>
+    )
+  }
 
   return (
     <div>
+      {/* Header metrica */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
         <div className="metric-card" style={{ padding: '12px 20px', display: 'flex', alignItems: 'center', gap: 12 }}>
           <span style={{ fontSize: 28, fontWeight: 800, color: 'var(--green)' }}>
@@ -1072,6 +1571,7 @@ function MatchedView({ matched, passages, retrieveMethod, nuggets }) {
         </div>
       </div>
 
+      {/* Legend */}
       {hasNuggets && (
         <div style={{
           display: 'flex', alignItems: 'center', gap: 16, marginBottom: 14,
@@ -1098,167 +1598,24 @@ function MatchedView({ matched, passages, retrieveMethod, nuggets }) {
         </div>
       )}
 
-      {(() => {
-        const bestClaimPerNugget = {}
-        matched.forEach((m, i) => {
-          const nug = findMatchingNugget(m)
-          if (!nug) return
-          const nid = nug.nugget_id
-          const score = nug.match_score || 0
-          if (!bestClaimPerNugget[nid] || score > bestClaimPerNugget[nid].score) {
-            bestClaimPerNugget[nid] = { idx: i, score }
-          }
-        })
-        const bestIndices = new Set(Object.values(bestClaimPerNugget).map(v => v.idx))
+      {/* Nugget-centered view */}
+      {hasNuggets && nuggets.map(nug => renderNuggetHeader(nug))}
 
-        return matched.map((m, i) => {
-          const passages_m = m.supporting_passages || []
-          const has = passages_m.length > 0
-          const debugData = debug[i]
-          const rawNugget = findMatchingNugget(m)
-          const matchedNugget = bestIndices.has(i) ? rawNugget : null
-          const isGold = matchedNugget && matchedNugget.required === true
-          const isSilver = matchedNugget && matchedNugget.required === false
-
-          const borderColor = isGold ? '#D97706' : isSilver ? '#9CA3AF' : (has ? '#A7F3D0' : '#FECACA')
-          const headerBg = isGold
-            ? 'linear-gradient(90deg, #FFFBEB 0%, transparent 100%)'
-            : isSilver
-              ? 'linear-gradient(90deg, #F3F4F6 0%, transparent 100%)'
-              : 'none'
-
-          return (
-            <div key={i} className="expander" style={{
-              borderColor,
-              borderWidth: matchedNugget ? '2px' : undefined,
+      {/* Claim non matchati a nessun nugget */}
+      {uncoveredClaims.length > 0 && (
+        <div style={{ marginTop: hasNuggets ? 24 : 0 }}>
+          {hasNuggets && (
+            <div style={{
+              fontSize: 11, fontWeight: 600, color: 'var(--text-3)',
+              textTransform: 'uppercase', letterSpacing: '0.05em',
+              marginBottom: 8, paddingLeft: 2,
             }}>
-              <div className="expander-header" onClick={() => setOpen(o => ({ ...o, [i]: !o[i] }))}
-                style={{ background: headerBg }}>
-                {matchedNugget && (
-                  <span title={`Nugget: ${matchedNugget.text}\nKeywords: ${(matchedNugget.keywords || []).join(', ')}`}
-                    style={{
-                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                      width: 20, height: 20, borderRadius: '50%', flexShrink: 0,
-                      background: isGold
-                        ? 'linear-gradient(135deg, #F59E0B, #D97706)'
-                        : 'linear-gradient(135deg, #D1D5DB, #9CA3AF)',
-                      border: `1.5px solid ${isGold ? '#B45309' : '#6B7280'}`,
-                      fontSize: 10, fontWeight: 800,
-                      color: isGold ? '#FFFBEB' : '#374151',
-                    }}>
-                    {isGold ? '★' : '☆'}
-                  </span>
-                )}
-                <span className={`badge ${has ? 'badge-green' : 'badge-red'}`}>
-                  {has
-                    ? <Icon name="check" size={10} strokeWidth={2.5} />
-                    : <Icon name="x" size={10} strokeWidth={2.5} />}
-                </span>
-                <span className="expander-header-title" style={{ color: 'var(--text)' }}>{m.claim}</span>
-                {matchedNugget && (
-                  <span style={{
-                    fontSize: 10, fontWeight: 600, padding: '2px 8px', borderRadius: 10,
-                    background: isGold ? '#FEF3C7' : '#F3F4F6',
-                    color: isGold ? '#92400E' : '#6B7280',
-                    border: `1px solid ${isGold ? '#FDE68A' : '#D1D5DB'}`,
-                    whiteSpace: 'nowrap',
-                  }}>
-                    {matchedNugget.nugget_id}
-                  </span>
-                )}
-                {has && (
-                  <span style={{ fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>
-                    {passages_m.length} fonte{passages_m.length > 1 ? 'i' : ''}
-                  </span>
-                )}
-                <span className={`expander-chevron${open[i] ? ' open' : ''}`}>▼</span>
-              </div>
-              {open[i] && (
-                <div className="expander-body">
-                  {matchedNugget && (
-                    <div style={{
-                      marginBottom: 12, padding: '8px 12px', borderRadius: 8,
-                      background: isGold ? '#FFFBEB' : '#F9FAFB',
-                      border: `1px solid ${isGold ? '#FDE68A' : '#E5E7EB'}`,
-                      fontSize: 12,
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-                        <span style={{ fontWeight: 700, color: isGold ? '#92400E' : '#6B7280' }}>
-                          {isGold ? '★' : '☆'} Nugget {matchedNugget.nugget_id}
-                        </span>
-                        <span style={{
-                          fontSize: 9, fontWeight: 600, padding: '1px 6px', borderRadius: 8,
-                          background: isGold ? '#FEF3C7' : '#F3F4F6',
-                          color: isGold ? '#B45309' : '#9CA3AF',
-                        }}>
-                          {isGold ? 'REQUIRED' : 'OPTIONAL'}
-                        </span>
-                      </div>
-                      <div style={{ color: 'var(--text-2)', lineHeight: 1.5 }}>
-                        {matchedNugget.text}
-                      </div>
-                      <div style={{ marginTop: 4, fontSize: 11, color: 'var(--text-3)' }}>
-                        Keywords: {(matchedNugget.keywords || []).map((kw, ki) => (
-                          <span key={ki} style={{
-                            display: 'inline-block', padding: '1px 6px', margin: '0 3px',
-                            background: m.claim.toLowerCase().includes(kw.toLowerCase()) ? (isGold ? '#FDE68A' : '#D1D5DB') : '#F3F4F6',
-                            borderRadius: 4, fontFamily: 'var(--mono)', fontSize: 10,
-                            fontWeight: m.claim.toLowerCase().includes(kw.toLowerCase()) ? 700 : 400,
-                          }}>
-                            {kw}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  <div style={{ marginBottom: 12, display: 'flex', gap: 8, alignItems: 'center' }}>
-                    <button
-                      className="btn btn-secondary"
-                      style={{ fontSize: 11, padding: '4px 10px' }}
-                      onClick={(e) => { e.stopPropagation(); runDebug(m.claim, i) }}
-                      disabled={debugging === i}
-                    >
-                      {debugging === i
-                        ? <><span className="spinner" style={{ width: 11, height: 11 }} /> Calcolo...</>
-                        : <><Icon name="search" size={11} strokeWidth={1.75} />
-                            {debugData ? 'Aggiorna debug' : 'Debug frasi (top-4)'}</>}
-                    </button>
-                    {debugData && (
-                      <span style={{ fontSize: 11, color: 'var(--text-3)' }}>
-                        Score {debugData.method.toUpperCase()} su ogni frase del passaggio
-                      </span>
-                    )}
-                  </div>
-                  {debugData && <DebugView data={debugData} />}
-                  {has ? passages_m.map((p, j) => (
-                    <div key={j} className="passage-card" style={{ marginBottom: 8 }}>
-                      <div className="passage-header">
-                        <span className="passage-title">{p.title || '—'}</span>
-                        {p.entailment_score != null && <ScorePill score={p.entailment_score} />}
-                      </div>
-                      <div className="passage-body">{p.text || ''}</div>
-                      {p.best_sentence && (
-                        <div style={{
-                          margin: '0 14px 10px', padding: '6px 10px',
-                          background: '#ECFDF5', borderRadius: 6,
-                          fontSize: 12, color: '#166534',
-                          borderLeft: '3px solid #86EFAC',
-                        }}>
-                          <strong>Evidenza:</strong> {p.best_sentence}
-                        </div>
-                      )}
-                    </div>
-                  )) : (
-                    !debugData && <span style={{ color: 'var(--text-3)', fontSize: 13 }}>
-                      Nessun passaggio di supporto trovato.
-                    </span>
-                  )}
-                </div>
-              )}
+              Claims senza nugget ({uncoveredClaims.length})
             </div>
-          )
-        })
-      })()}
+          )}
+          {uncoveredClaims.map(({ m, i }) => renderClaim(m, i, null))}
+        </div>
+      )}
     </div>
   )
 }
@@ -1375,7 +1732,7 @@ function splitIntoSentences(citedResponse) {
   return sentences
 }
 
-function findAssociatedClaims(sentenceText, matchedClaims, threshold = 0.5) {
+function findAssociatedClaims(sentenceText, matchedClaims, threshold = 0.6) {
   const scored = []
   for (const mc of matchedClaims) {
     const overlap = lexicalOverlap(mc.claim, sentenceText)

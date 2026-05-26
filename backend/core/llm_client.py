@@ -1,5 +1,5 @@
 """
-Shared LLM client supporting Ollama (local), Anthropic Claude, and Google Gemini.
+Shared LLM client supporting Ollama (local) and Anthropic Claude.
 
 Usage:
     from llm_client import call_llm
@@ -30,32 +30,39 @@ def _is_ollama_model(model: str) -> bool:
     return model in OLLAMA_MODELS or model.startswith("ollama/")
 
 
-def call_llm(prompt: str, model: str = "claude-haiku-4-5-20251001", max_tokens: int = 1024) -> str:
+def call_llm(
+    prompt: str,
+    model: str = "claude-haiku-4-5-20251001",
+    max_tokens: int = 1024,
+    system: str | None = None,
+) -> str:
     if _is_ollama_model(model):
         clean_name = model.replace("ollama/", "")
-        return _call_ollama(prompt, clean_name, max_tokens)
+        return _call_ollama(prompt, clean_name, max_tokens, system)
     elif model.startswith("claude"):
-        return _call_claude(prompt, model, max_tokens)
-    elif model.startswith("gemini"):
-        return _call_gemini(prompt, model, max_tokens)
+        return _call_claude(prompt, model, max_tokens, system)
     else:
         # Default: try Ollama for unknown models
-        return _call_ollama(prompt, model, max_tokens)
+        return _call_ollama(prompt, model, max_tokens, system)
 
 
-def call_llm_json(prompt: str, model: str = "claude-haiku-4-5-20251001", max_tokens: int = 1024) -> any:
+def call_llm_json(
+    prompt: str,
+    model: str = "claude-haiku-4-5-20251001",
+    max_tokens: int = 1024,
+    system: str | None = None,
+) -> any:
     import logging
     logger = logging.getLogger(__name__)
-    
-    raw = call_llm(prompt, model=model, max_tokens=max_tokens)
+
+    raw = call_llm(prompt, model=model, max_tokens=max_tokens, system=system)
     logger.info(f"[call_llm_json] Raw LLM response ({len(raw)} chars):\n{raw[:500]}")
-    
+
     clean = re.sub(r"^```(?:json)?\s*", "", raw.strip())
     clean = re.sub(r"\s*```$", "", clean)
 
     # Try to extract JSON from response if model added extra text
     if not clean.startswith("[") and not clean.startswith("{"):
-        # Look for JSON array or object in the response
         json_match = re.search(r'(\[.*\]|\{.*\})', clean, re.DOTALL)
         if json_match:
             clean = json_match.group(1)
@@ -71,7 +78,7 @@ def call_llm_json(prompt: str, model: str = "claude-haiku-4-5-20251001", max_tok
 # Ollama backend (LOCAL)
 # ──────────────────────────────────────────────
 
-def _call_ollama(prompt: str, model: str, max_tokens: int) -> str:
+def _call_ollama(prompt: str, model: str, max_tokens: int, system: str | None = None) -> str:
     import urllib.request
     import urllib.error
     import logging
@@ -79,14 +86,19 @@ def _call_ollama(prompt: str, model: str, max_tokens: int) -> str:
 
     url = f"{OLLAMA_BASE_URL}/api/chat"
     logger.info(f"[ollama] Calling {model} at {url}")
-    
+
+    messages = []
+    if system:
+        messages.append({"role": "system", "content": system})
+    messages.append({"role": "user", "content": prompt})
+
     payload = json.dumps({
         "model": model,
-        "messages": [{"role": "user", "content": prompt}],
+        "messages": messages,
         "stream": False,
         "options": {
             "num_predict": max_tokens,
-            "temperature": 0.1,
+            "temperature": 0,
         },
     }).encode("utf-8")
 
@@ -116,7 +128,7 @@ def _call_ollama(prompt: str, model: str, max_tokens: int) -> str:
 # Claude backend
 # ──────────────────────────────────────────────
 
-def _call_claude(prompt: str, model: str, max_tokens: int) -> str:
+def _call_claude(prompt: str, model: str, max_tokens: int, system: str | None = None) -> str:
     try:
         import anthropic
     except ImportError as e:
@@ -133,36 +145,15 @@ def _call_claude(prompt: str, model: str, max_tokens: int) -> str:
         )
 
     client = anthropic.Anthropic(api_key=api_key)
-    message = client.messages.create(
-        model=model,
-        max_tokens=max_tokens,
-        messages=[{"role": "user", "content": prompt}],
-    )
+
+    kwargs = {
+        "model": model,
+        "max_tokens": max_tokens,
+        "temperature": 0,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    if system:
+        kwargs["system"] = system
+
+    message = client.messages.create(**kwargs)
     return message.content[0].text
-
-
-# ──────────────────────────────────────────────
-# Gemini backend
-# ──────────────────────────────────────────────
-
-def _call_gemini(prompt: str, model: str, max_tokens: int) -> str:
-    try:
-        from google import genai
-        from google.genai import types
-    except ImportError as e:
-        raise ImportError(
-            "google-genai package not found. Install it with:\n"
-            "  pip install google-genai"
-        ) from e
-
-    api_key = os.getenv("GOOGLE_API_KEY")
-    if not api_key:
-        raise EnvironmentError("GOOGLE_API_KEY environment variable is not set.")
-
-    client = genai.Client(api_key=api_key)
-    response = client.models.generate_content(
-        model=model,
-        contents=prompt,
-        config=types.GenerateContentConfig(max_output_tokens=max_tokens),
-    )
-    return response.text

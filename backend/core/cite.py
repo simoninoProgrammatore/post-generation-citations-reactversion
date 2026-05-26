@@ -66,15 +66,26 @@ def insert_citations(
             if not claim_words:
                 continue
             overlap = len(claim_words & sent_words) / len(claim_words)
-            if overlap >= 0.5:
+            
+            # Sbarramento iniziale a 0.6
+            if overlap >= 0.6:
                 scored_claims.append((overlap, nums))
 
         if scored_claims:
+            # Ordina per overlap decrescente
             scored_claims.sort(key=lambda x: x[0], reverse=True)
+            
+            # Prendi il valore massimo assoluto
             top_overlap = scored_claims[0][0]
+            
             for overlap, nums in scored_claims:
-                if overlap >= top_overlap - 0.15:
+                # Vince SOLO chi ha raggiunto il punteggio massimo
+                if overlap == top_overlap:
                     citation_nums.update(nums)
+                else:
+                    # Poiché la lista è ordinata, appena troviamo un punteggio 
+                    # inferiore al top_overlap possiamo fermarci
+                    break
 
         if citation_nums:
             markers = "".join(f"[{n}]" for n in sorted(citation_nums))
@@ -582,10 +593,19 @@ def run(input_path: str, output_path: str, remove_unsupported: bool = False, htm
         data = json.load(f)
 
     for example in data:
-        citation_map = build_citation_map(example["matched_claims"])
+        matched_claims = example.get("matched_claims", [])
+        
+        # SE NON CI SONO FONTI: salta tutto il blocco e lascia la risposta pulita
+        if not matched_claims:
+            example["cited_response"] = example.get("raw_response", "")
+            example["references"] = []
+            continue
+
+        # Altrimenti, procedi normalmente
+        citation_map = build_citation_map(matched_claims)
         cited_response, references = insert_citations(
             example["raw_response"],
-            example["matched_claims"],
+            matched_claims,
             citation_map,
             remove_unsupported,
         )

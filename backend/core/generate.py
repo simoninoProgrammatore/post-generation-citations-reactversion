@@ -1,76 +1,133 @@
 """
 Step 1: Generate LLM responses to queries (with optional RAG).
 
-Given a query and optionally a set of passages from the ALCE dataset,
-this module produces a raw LLM response that will later be augmented
-with citations.
+Given a query and optionally a set of passages from the ALCE+ dataset,
+this module produces a raw LLM response that will later be decomposed
+into atomic claims and augmented with citations.
+
+The response is deliberately produced WITHOUT citations: citation is a
+post-hoc step (P-Cite). The prompt also forbids meta-commentary
+("the passage says...") because such phrasing produces degenerate atomic
+claims downstream in the decomposition step.
+
+This module is the single source of truth for the generation prompt.
+Both the CLI (`run`) and the FastAPI orchestrator
+(`pipeline_runners.run_generate`) call `generate_response` / `build_prompt`
+so the prompt lives in exactly one place.
 """
 
 import json
 import argparse
 from pathlib import Path
 
-from llm_client import call_llm
+from core.llm_client import call_llm
 
 
-SYSTEM_PROMPT = (
-    "You are a knowledgeable assistant. "
-    "Answer the question clearly and factually. "
-    "Do NOT include any citations or references in your response."
+# ──────────────────────────────────────────────
+# Prompt building (single source of truth)
+# ──────────────────────────────────────────────
+
+# Instruction block shared by the RAG (grounded) generation path.
+# NOTE on formatting: each implicitly-concatenated string MUST end with a
+# trailing space, otherwise adjacent instructions fuse into a single
+# unreadable token (e.g. "beginningthen") and the model silently ignores
+# them. Keep the trailing spaces.
+RAG_INSTRUCTIONS = (
+    "Do NOT restate or echo the question, and do NOT add a title or heading. "
+    "Begin straight with the answer. "
+    "Answer the question directly and naturally, in plain prose. "
+    "Start with what the user needs to know, "
+    "then add a few additional facts from the passages that are relevant and useful. "
+    "Use the same words from the passages when possible. "
+    "Do not write meta-commentary like 'the passage says' or 'according to the text'. "
+    "Do not add citation markers like [1] or [2]. "
+    "Do not use any markdown: no headings (#), no bold, no bullet points, no lists. "
+    "Write a single block of plain prose."
 )
 
-RAG_SYSTEM_PROMPT = (
-    "You are a knowledgeable assistant. "
-    "Answer the question ONLY using the information provided in the passages below. "
-    "Do NOT use any external knowledge. "
-    "If the passages do not contain enough information to answer, say so. "
-    "Do NOT include any citations or references in your response."
+# Instruction block for the closed-book (no passages) path.
+NO_RAG_INSTRUCTIONS = (
+    "Do NOT restate or echo the question, and do NOT add a title or heading. "
+    "Begin straight with the answer. "
+    "Answer the question directly, then add a few useful related facts. "
+    "Do not use any markdown, headings, bullet points, or citations. "
+    "Write a single block of plain prose."
 )
+
+
+def _format_passages(passages: list[dict], max_passages: int = 10) -> str:
+    """Render passages as a numbered, titled block for the prompt."""
+    return "\n\n".join(
+        f"[{i + 1}] {p.get('title', 'N/A')}:\n{p.get('text', '')}"
+        for i, p in enumerate(passages[:max_passages])
+    )
+
+
+def build_prompt(query: str, passages: list[dict] | None = None) -> str:
+    """
+    Build the generation prompt. Single source of truth for both the CLI
+    and the FastAPI orchestrator.
+
+    If `passages` are provided, builds the RAG (grounded) prompt; otherwise
+    builds the closed-book prompt.
+
+    The instructions are placed AFTER the question and the final cue is a
+    bare "Answer:" with no echoed question, to discourage the model from
+    repeating the prompt or opening with a markdown title.
+    """
+    if passages:
+        passages_text = _format_passages(passages)
+        return (
+            "Read the passages below and answer the question.\n\n"
+            f"Passages:\n{passages_text}\n\n"
+            f"Question: {query}\n\n"
+            f"{RAG_INSTRUCTIONS}\n\n"
+            "Answer:"
+        )
+    return (
+        f"Question: {query}\n\n"
+        f"{NO_RAG_INSTRUCTIONS}\n\n"
+        "Answer:"
+    )
 
 
 def load_dataset(dataset_path: str) -> list[dict]:
-    """Load ALCE dataset from JSON file."""
+    """Load ALCE+ dataset from JSON file."""
     with open(dataset_path, "r") as f:
         data = json.load(f)
     return data
 
 
-def generate_response(query: str, passages: list[dict] = None,
-                      model: str = "gemini-2.0-flash", max_tokens: int = 300) -> str:
+def generate_response(
+    query: str,
+    passages: list[dict] | None = None,
+    model: str = "claude-haiku-4-5-20251001",
+    max_tokens: int = 1024,
+) -> str:
     """
     Generate a response to a query using the specified LLM.
 
     Args:
         query:      The input question.
-        passages:   Optional list of passages to ground the response.
-        model:      Model identifier (e.g. 'gemini-2.0-flash').
-        max_tokens: Maximum number of tokens in the response.
+        passages:   Optional list of passages to ground the response (RAG).
+        model:      Model identifier routed by llm_client.
+        max_tokens: Maximum number of tokens in the response. Default 1024
+                    so long-form (ELI5) answers are not truncated; lower it
+                    for short factoid runs if needed.
 
     Returns:
         The generated response text (without citations).
     """
-    if passages:
-        passages_text = "\n\n".join([
-            f"[{i+1}] {p.get('title', 'N/A')}:\n{p.get('text', '')}"
-            for i, p in enumerate(passages[:10])
-        ])
-        prompt = (
-            f"{RAG_SYSTEM_PROMPT}\n\n"
-            f"Passages:\n{passages_text}\n\n"
-            f"Question: {query}\n\nAnswer:"
-        )
-    else:
-        prompt = f"{SYSTEM_PROMPT}\n\nQuestion: {query}\n\nAnswer:"
-
+    prompt = build_prompt(query, passages=passages)
     return call_llm(prompt, model=model, max_tokens=max_tokens)
 
 
-def run(dataset_path: str, output_path: str, model: str = "gemini-2.0-flash"):
+def run(dataset_path: str, output_path: str, model: str = "claude-haiku-4-5-20251001"):
     """
     Generate responses for all queries in the dataset.
 
     Args:
-        dataset_path: Path to the ALCE dataset JSON.
+        dataset_path: Path to the ALCE+ dataset JSON.
         output_path:  Path to save the generated responses.
         model:        Model identifier.
     """
@@ -99,6 +156,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate LLM responses")
     parser.add_argument("--dataset", type=str, required=True)
     parser.add_argument("--output", type=str, default="results/generations.json")
-    parser.add_argument("--model", type=str, default="gemini-2.0-flash")
+    parser.add_argument("--model", type=str, default="claude-haiku-4-5-20251001")
     args = parser.parse_args()
     run(args.dataset, args.output, args.model)

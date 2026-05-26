@@ -3,6 +3,14 @@ Step 3: Match atomic claims to supporting evidence passages.
 
 Given a list of claims and a pool of candidate passages (provided 
 by ALCE), this module determines which passages support each claim.
+
+Available attribution methods:
+  - "nli": DeBERTa-v3 cross-encoder, sentence-level entailment
+  - "llm": Claude as re-ranker + evidence extractor
+
+Note: an embedding-based pre-filter is used internally by `match_with_llm`
+to restrict the candidate pool before the LLM re-ranking call. This is
+an implementation detail and not a standalone attribution method.
 """
 
 import re
@@ -33,7 +41,8 @@ def extract_evidence(claim: str, passage_text: str, best_sentence: str = "",
             "summary": f"Matched at [{extraction_start}:{extraction_end}]",
         }
 
-    # Fallback per similarity/llm methods
+    # Fallback NLI: usato quando best_sentence/span non sono già disponibili
+    # (e.g. metodo llm senza match esatto dello span dell'evidence)
     import numpy as np
 
     sentences = _split_passage_into_sentences(passage_text)
@@ -75,7 +84,7 @@ def extract_evidence(claim: str, passage_text: str, best_sentence: str = "",
 def _split_passage_into_sentences(text: str) -> list[str]:
     """
     Split a passage into individual sentences.
-    Kept for backward compatibility with similarity/llm methods.
+    Kept for backward compatibility with the LLM evidence-extraction fallback.
     """
     protected = text
     abbreviations = ["Mr.", "Mrs.", "Ms.", "Dr.", "Jr.", "Sr.", "Prof.",
@@ -147,11 +156,22 @@ def _load_nli_model(model_name: str):
 
 
 # ──────────────────────────────────────────────
-# Embedding model for pre-filtering (reranker)
+# Embedding model for pre-filtering
 # ──────────────────────────────────────────────
+# NOTA: i modelli di embedding qui di seguito sono usati ESCLUSIVAMENTE come
+# componenti interne di altri metodi (pre-filtering frasi per NLI,
+# pre-filtering passaggi per LLM). NON sono esposti come metodo di
+# attribution autonomo: la tesi confronta solo NLI (DeBERTa) vs LLM (Claude).
 
 @lru_cache(maxsize=1)
 def _load_reranker_embedding(model_name: str = "BAAI/bge-base-en-v1.5"):
+    from sentence_transformers import SentenceTransformer
+    return SentenceTransformer(model_name)
+
+
+@lru_cache(maxsize=1)
+def _load_embedding_model(model_name: str):
+    """Embedding model used only as internal pre-filter for `match_with_llm`."""
     from sentence_transformers import SentenceTransformer
     return SentenceTransformer(model_name)
 
@@ -376,25 +396,28 @@ def match_with_nli(
 
 
 # ──────────────────────────────────────────────
-# Similarity-based matching (baseline)
+# Internal helper: similarity-based ranking (used only by match_with_llm)
 # ──────────────────────────────────────────────
+# Questa è la funzione che fa pre-filtering top-K via embedding cosine.
+# In passato era esposta come `match_with_similarity` ed era selezionabile
+# dall'utente come metodo di attribution autonomo: è stata declassata a
+# helper interna perché misura vicinanza semantica, non entailment, e quindi
+# non è confrontabile con NLI/LLM come giudice di citazione.
 
-@lru_cache(maxsize=1)
-def _load_embedding_model(model_name: str):
-    from sentence_transformers import SentenceTransformer
-    return SentenceTransformer(model_name)
-
-
-def match_with_similarity(
+def _similarity_rank_for_llm(
     claim: str,
     passages: list[dict],
     model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
-    top_k: int = 3,
+    top_k: int = 10,
 ) -> list[dict]:
+    """
+    Internal helper: rank passages by embedding cosine similarity to the claim.
+    Used by `match_with_llm` to restrict the candidate pool before the LLM call.
+    Not exposed as a public attribution method.
+    """
     if not passages:
         return []
 
-    import numpy as np
     from sklearn.metrics.pairwise import cosine_similarity
 
     model = _load_embedding_model(model_name)
@@ -403,7 +426,7 @@ def match_with_similarity(
     sims = cosine_similarity(claim_emb, passage_embs)[0]
 
     ranked = sorted(enumerate(sims), key=lambda x: x[1], reverse=True)[:top_k]
-    return [{**passages[i], "similarity_score": float(score)} for i, score in ranked]
+    return [{**passages[i], "_prefilter_score": float(score)} for i, score in ranked]
 
 
 # ──────────────────────────────────────────────
@@ -422,8 +445,9 @@ def match_with_llm(
     if not passages:
         return []
 
-    # Step 1: pre-filtra con similarity → top 10
-    candidates = match_with_similarity(claim, passages, top_k=10)
+    # Step 1: pre-filtra via embedding cosine → top 10
+    # (helper interna, non un metodo di attribution)
+    candidates = _similarity_rank_for_llm(claim, passages, top_k=10)
     if not candidates:
         return []
 
@@ -505,7 +529,7 @@ def run(input_path: str, output_path: str, method: str = "nli", extract: bool = 
     Args:
         input_path:  Path to claims JSON (from Step 2).
         output_path: Path to save matched claims.
-        method:      Matching method ('nli', 'similarity', 'llm').
+        method:      Matching method ('nli' or 'llm').
         extract:     If True, run evidence extraction on each match.
     """
     with open(input_path, "r") as f:
@@ -513,7 +537,6 @@ def run(input_path: str, output_path: str, method: str = "nli", extract: bool = 
 
     match_fn = {
         "nli": match_with_nli,
-        "similarity": match_with_similarity,
         "llm": match_with_llm,
     }[method]
 
@@ -565,7 +588,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Match claims to evidence")
     parser.add_argument("--input", type=str, required=True)
     parser.add_argument("--output", type=str, default="results/matched.json")
-    parser.add_argument("--method", type=str, default="nli", choices=["nli", "similarity", "llm"])
+    parser.add_argument("--method", type=str, default="nli", choices=["nli", "llm"])
     parser.add_argument("--no-extract", action="store_true",
                         help="Skip evidence extraction")
     args = parser.parse_args()

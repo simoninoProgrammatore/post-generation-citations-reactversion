@@ -51,6 +51,7 @@ export const pipeline = {
   cite:            (body) => postJson('/pipeline/cite',              body),
   evaluate:        (body) => postJson('/pipeline/evaluate',          body),
   evaluateNuggets: (body) => postJson('/pipeline/evaluate-nuggets',  body),
+  evaluateDeepseek: (body) => postJson('/pipeline/evaluate-deepseek',  body),
   evaluateDataset: (body) => postJson('/pipeline/evaluate-dataset',  body),
   evaluateExample: (body) => postJson('/pipeline/evaluate-example',  body),
 }

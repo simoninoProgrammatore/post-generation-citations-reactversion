@@ -159,7 +159,6 @@ Computational Linguistics. Survey canonica sul probing. Solo se si fa probing.
 
 ## 8 — Paper da tenere sotto osservazione o verificare
 
-**⚠ Da verificare prima della consegna della tesi.** Lasciare riferimenti non verificati nella bibliografia è rischioso. Decidere entro la fine della stesura: o si verifica e si promuove a [core]/[ctx], o si rimuove.
 
 - **"Neutralizing Bias in LLM Reasoning using Entailment Graphs" (2025)** — verificare autori, sede di pubblicazione, e se propone davvero una mitigazione applicabile al caso della tesi. Se è arXiv-only, marcarlo come **[preprint]**.
 - **"LLMs' Reading Comprehension Is Affected by Parametric Knowledge" (2024)** — verificare riferimento completo. L'idea (uso di dati fittizi per valutazione pulita) è in linea con la parte "Invented entities" della batteria sperimentale — se il paper regge, è una citazione molto utile.
