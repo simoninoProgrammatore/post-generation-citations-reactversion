@@ -1,212 +1,229 @@
 [
   {
-    "qa_pairs": [
-      {
-        "context": "No context provided",
-        "question": "Who has the highest goals in men's world international football?",
-        "short_answers": [
-          "Daei",
-          "Ali Daei"
-        ],
-        "wikipage": null
-      },
-      {
-        "context": "No context provided",
-        "question": "Who has the highest goals all-time in men's football?",
-        "short_answers": [
-          "Bican",
-          "Josef Bican"
-        ],
-        "wikipage": null
-      },
-      {
-        "context": "The first player to reach 100 international goals was Italian Elisabetta Vignotto. Abby Wambach scored 100 goals in 9 years, while Christine Sinclair reached the milestone in just under 10 years while Mia Hamm is the youngest player to score 100 international goals at the age of 26 years 185 days. Most played exclusively in the forward position, with Kristine Lilly and Michelle Akers having also played as midfielder. All players scored at a high average rate of more than one goal every three matches. International goals in this list should not include goals scored in penalty-shoot-out; see Penalty shootout (association football). Players who are currently active at international level are indicated in bold type background.",
-        "question": "Who has the highest goals in women's world international football?",
-        "short_answers": [
-          "Sinclair",
-          "Christine Sinclair"
-        ],
-        "wikipage": "List of women's footballers with 100 or more international goals ..."
-      }
-    ],
-    "wikipages": [
-      {
-        "title": "International Federation of Football History & Statistics",
-        "url": "https://en.wikipedia.org/wiki/International%20Federation%20of%20Football%20History%20%26%20Statistics"
-      },
-      {
-        "title": "List of FIFA World Cup records and statistics",
-        "url": "https://en.wikipedia.org/wiki/List%20of%20FIFA%20World%20Cup%20records%20and%20statistics"
-      },
-      {
-        "title": "List of footballers with more than 50 international goals",
-        "url": "https://en.wikipedia.org/wiki/List%20of%20footballers%20with%20more%20than%2050%20international%20goals"
-      },
-      {
-        "title": "List of women's footballers with 100 or more international goals ...",
-        "url": "https://en.wikipedia.org/wiki/List%20of%20women%27s%20footballers%20with%20100%20or%20more%20international%20goals"
-      },
-      {
-        "title": "List of footballers with 500 or more goals",
-        "url": "https://en.wikipedia.org/wiki/List%20of%20footballers%20with%20500%20or%20more%20goals"
-      }
-    ],
-    "annotations": [
-      {
-        "knowledge": [],
-        "long_answer": "Ali Dael has the highest goals in men's world international football with 109 goals. Josef Bican has the highest goals all-time in men's football and Christine Sinclair has the highest goals in women's world international football."
-      },
-      {
-        "knowledge": [
-          {
-            "content": "Sinclair is the world's all-time leader for international goals scored for men or women with 187 goals, and is one of the most-capped active international footballer with 300 caps.",
-            "wikipage": "Christine Sinclair"
-          },
-          {
-            "content": "Along with Cristiano Ronaldo, he is the world's joint all-time leading goalscorer in the history of men's international football with 109 goals scored for Iran.",
-            "wikipage": "Ali Daei"
-          },
-          {
-            "content": "Ronaldo holds the records for most goals (134) and assists (42) in the Champions League, most goals in the European Championship (14), and is currently tied with Ali Daei for most international goals (109).",
-            "wikipage": "Cristiano Ronaldo"
-          },
-          {
-            "content": "FIFA, the international governing body of football, have never released a list detailing the highest goalscorers and do not keep official records;[6][7] in 2020, they recognised Bican, an Austrian-Czech dual international who played between the 1930s and the 1950s,[8] as the record scorer with an estimated 805 goals,[9][10] while CNN, the BBC, France 24, and O Jogo all acknowledge that Bican's tally of 805 includes goals scored for reserve teams and in unofficial international matches.",
-            "wikipage": "List of footballers with 500 or more goals"
-          }
-        ],
-        "long_answer": "The players with the highest all-time goals and highest men's and women's international football goals differ. The player with the highest all-time men's football goals is Josef Bican, who in 2020 was recognized by FIFA, the international governing body of football, as the record scorer with an estimated 805 goals. Christine Sinclair has the highest goals in women's international football with 187 and is the all-time leader for international goals scored for men or women. Cristiano Ronaldo and Ali Daei are currently tied for leading goalscorer in the history of men's international football with 109."
-      }
-    ],
-    "sample_id": "-7013890438520559398",
-    "question": "Who has the highest goals in world football?",
-    "answer": "The players with the highest all-time goals and highest men's and women's international football goals differ. The player with the highest all-time men's football goals is Josef Bican, who in 2020 was recognized by FIFA, the international governing body of football, as the record scorer with an estimated 805 goals. Christine Sinclair has the highest goals in women's international football with 187 and is the all-time leader for international goals scored for men or women. Cristiano Ronaldo and Ali Daei are currently tied for leading goalscorer in the history of men's international football with 109.",
-    "docs": [
-      {
-        "id": "6669150",
-        "title": "Argentina–Brazil football rivalry",
-        "text": "\"Football Player of the Century\", by IFFHS International Federation of Football History and Statistics, 1999, \"South America Football Player of the Century\", by IFFHS International Federation of Football History and Statistics. Pelé's 1281 goals are recognized by FIFA as the highest total achieved by a professional footballer, although the Soccer Statistic Foundation (rssf) recognizes only 767 goals in official mode, occupying the third place after Josef Bican (805) and Romario (772). For his part, Maradona has been named the best soccer player in World Cup history both by The Times and FourFourTwo, publication that also rewarded him as the \"Best",
-        "score": 0.73388671875,
-        "is_gold": true,
-        "support_level": "partial",
-        "evidence_sentence": "the Soccer Statistic Foundation (rssf) recognizes only 767 goals in official mode, occupying the third place after Josef Bican (805) and Romario (772).",
-        "supports_sub_questions": [
-          1
-        ],
-        "annotation_note": "Menziona Bican con 805 goal, supporta la sub-question su chi ha più goal all-time.",
-        "answers_found": [
-          0,
-          1,
-          0
-        ],
-        "extraction": "Pelé's 1281 goals are recognized by FIFA as the highest total achieved by a professional footballer.",
-        "summary": "Pelé holds the record for the highest total goals achieved by a professional footballer with 1281 goals, recognized by FIFA. However, the Soccer Statistic Foundation recognizes only 767 goals in official mode, with Josef Bican and Romario having higher counts. Maradona has been named the best soccer player in World Cup history."
-      },
-      {
-        "id": "3986261",
-        "title": "Josef Bican",
-        "text": "for Christmas, but died less than 2 weeks before that, at the age of 88. Josef Bican Josef \"Pepi\" Bican (25 September 1913 – 12 December 2001) was a Czech-Austrian professional footballer who played as a striker. Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time. Having scored a record 600 league goals and at least 1468 goals overall, the International Federation of Football History & Statistics (IFFHS) awarded Bican the \"Golden Ball\" as the greatest goalscorer of the last century. He",
-        "score": 0.703125,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time.",
-        "supports_sub_questions": [
-          1
-        ],
-        "annotation_note": "Conferma direttamente Bican come top scorer all-time con 805 goal.",
-        "answers_found": [
-          0,
-          1,
-          0
-        ],
-        "extraction": "Josef Bican would be the answer to the question \"Who has the highest goals in world football?\" as the passage states that he is estimated to have scored at least 805 goals in all competitive matches, making him the most prolific scorer of all time.",
-        "summary": "Josef Bican is estimated to have scored at least 805 goals in all competitive matches, making him the most prolific scorer of all time according to the Rec.Sport.Soccer Statistics Foundation (RSSSF). He also holds the record for scoring 600 league goals and at least 1468 goals overall, and was awarded the \"Golden Ball\" by the International Federation of Football History & Statistics (IFFHS) as the greatest goalscorer of the last century."
-      },
-      {
-        "id": "3986251",
-        "title": "Josef Bican",
-        "text": "Josef Bican Josef \"Pepi\" Bican (25 September 1913 – 12 December 2001) was a Czech-Austrian professional footballer who played as a striker. Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time. Having scored a record 600 league goals and at least 1468 goals overall, the International Federation of Football History & Statistics (IFFHS) awarded Bican the \"Golden Ball\" as the greatest goalscorer of the last century. He was a member of the Austrian \"Wunderteam\" of the 1930s and was the season's highest",
-        "score": 0.70166015625,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time.",
-        "supports_sub_questions": [
-          1
-        ],
-        "annotation_note": "Stesso contenuto del doc 1, conferma Bican.",
-        "answers_found": [
-          0,
-          1,
-          0
-        ],
-        "extraction": "Josef Bican has the highest goals in world football, having scored at least 805 goals in all competitive matches, according to the Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates.",
-        "summary": "Josef Bican is estimated to have scored at least 805 goals in all competitive matches, making him the most prolific scorer of all time, according to the Rec.Sport.Soccer Statistics Foundation."
-      },
-      {
-        "id": "9416170",
-        "title": "Godfrey Chitalu",
-        "text": "have beaten Gerd Müller's record of 85 goals in a year, the Football Association of Zambia claimed that the world record actually pertained to Godfrey Chitalu who had scored 116 goals (possibly 117) during the 1972 calendar year and 107 during the 1972 season. The difference of goals is due to first 9 goals being scored before the season officially started. The Football Association of Zambia presented the evidence to FIFA but a spokesperson responded that they would ratify neither Lionel Messi's nor Chitalu's records as they do not keep statistical track of domestic competitions. Nonetheless, it could constitute the",
-        "score": 0.7080078125,
-        "is_gold": false,
-        "support_level": "none",
-        "evidence_sentence": null,
-        "supports_sub_questions": [],
-        "annotation_note": "Parla di Godfrey Chitalu e del suo record annuale, non risponde alla domanda su chi ha più goal in assoluto. Il claim di Chitalu non è stato ratificato da FIFA.",
-        "answers_found": [
-          0,
-          0,
-          0
-        ],
-        "extraction": "Godfrey Chitalu has the highest goals in world football with 116 goals (possibly 117) during the 1972 calendar year and 107 during the 1972 season, according to the Football Association of Zambia.",
-        "summary": "Godfrey Chitalu had scored 116 goals (possibly 117) during the 1972 calendar year and 107 during the 1972 season, surpassing Gerd Müller's record of 85 goals. However, FIFA did not officially ratify either Chitalu's or Lionel Messi's records as they do not keep statistical track of domestic competitions."
-      },
-      {
-        "id": "9416171",
-        "title": "Godfrey Chitalu",
-        "text": "highest official tally claimed by a national football association. Chitalu made his international debut on 29 June 1968 in a friendly match against Uganda in Lusaka which Zambia won 2–1. He scored his first goal in a 2–2 draw against the same team five days later. Chitalu played a prominent role during the World Cup qualification matches against Sudan with Zambia being eliminated on a strange rule which was peculiar to Africa and favoured the team that won the second leg. Despite the aggregate score being tied at 6–6 after Zambia won the first leg 4–2 and lost the return",
-        "score": 0.70556640625,
-        "is_gold": false,
-        "support_level": "none",
-        "evidence_sentence": null,
-        "supports_sub_questions": [],
-        "annotation_note": "Continua su Chitalu ma parla della sua carriera internazionale, non fornisce evidenza per la domanda principale.",
-        "answers_found": [
-          0,
-          0,
-          0
-        ],
-        "extraction": "irrelevant.",
-        "summary": "Irrelevant."
-      }
-    ],
-    "gold_stats": {
-      "n_docs": 5,
-      "n_gold": 3,
-      "n_distractors": 2,
-      "n_full_support": 2,
-      "n_partial_support": 1,
-      "n_no_support": 2
+  "qa_pairs": [
+    {
+      "context": "No context provided",
+      "question": "Who has the highest goals in men's world international football?",
+      "short_answers": [
+        "Daei",
+        "Ali Daei"
+      ],
+      "wikipage": null
     },
-   "nuggets": [
-  {
-    "nugget_id": "n0a",
-    "text": "Josef Bican holds the record for the highest number of goals all-time in men's football.",
-    "keywords": ["Bican", "Josef Bican", "record", "all-time"],
-    "required": true
+    {
+      "context": "No context provided",
+      "question": "Who has the highest goals all-time in men's football?",
+      "short_answers": [
+        "Bican",
+        "Josef Bican"
+      ],
+      "wikipage": null
+    },
+    {
+      "context": "The first player to reach 100 international goals was Italian Elisabetta Vignotto. Abby Wambach scored 100 goals in 9 years, while Christine Sinclair reached the milestone in just under 10 years while Mia Hamm is the youngest player to score 100 international goals at the age of 26 years 185 days. Most played exclusively in the forward position, with Kristine Lilly and Michelle Akers having also played as midfielder. All players scored at a high average rate of more than one goal every three matches. International goals in this list should not include goals scored in penalty-shoot-out; see Penalty shootout (association football). Players who are currently active at international level are indicated in bold type background.",
+      "question": "Who has the highest goals in women's world international football?",
+      "short_answers": [
+        "Sinclair",
+        "Christine Sinclair"
+      ],
+      "wikipage": "List of women's footballers with 100 or more international goals ..."
+    }
+  ],
+  "wikipages": [
+    {
+      "title": "International Federation of Football History & Statistics",
+      "url": "https://en.wikipedia.org/wiki/International%20Federation%20of%20Football%20History%20%26%20Statistics"
+    },
+    {
+      "title": "List of FIFA World Cup records and statistics",
+      "url": "https://en.wikipedia.org/wiki/List%20of%20FIFA%20World%20Cup%20records%20and%20statistics"
+    },
+    {
+      "title": "List of footballers with more than 50 international goals",
+      "url": "https://en.wikipedia.org/wiki/List%20of%20footballers%20with%20more%20than%2050%20international%20goals"
+    },
+    {
+      "title": "List of women's footballers with 100 or more international goals ...",
+      "url": "https://en.wikipedia.org/wiki/List%20of%20women%27s%20footballers%20with%20100%20or%20more%20international%20goals"
+    },
+    {
+      "title": "List of footballers with 500 or more goals",
+      "url": "https://en.wikipedia.org/wiki/List%20of%20footballers%20with%20500%20or%20more%20goals"
+    }
+  ],
+  "annotations": [
+    {
+      "knowledge": [],
+      "long_answer": "Ali Dael has the highest goals in men's world international football with 109 goals. Josef Bican has the highest goals all-time in men's football and Christine Sinclair has the highest goals in women's world international football."
+    },
+    {
+      "knowledge": [
+        {
+          "content": "Sinclair is the world's all-time leader for international goals scored for men or women with 187 goals, and is one of the most-capped active international footballer with 300 caps.",
+          "wikipage": "Christine Sinclair"
+        },
+        {
+          "content": "Along with Cristiano Ronaldo, he is the world's joint all-time leading goalscorer in the history of men's international football with 109 goals scored for Iran.",
+          "wikipage": "Ali Daei"
+        },
+        {
+          "content": "Ronaldo holds the records for most goals (134) and assists (42) in the Champions League, most goals in the European Championship (14), and is currently tied with Ali Daei for most international goals (109).",
+          "wikipage": "Cristiano Ronaldo"
+        },
+        {
+          "content": "FIFA, the international governing body of football, have never released a list detailing the highest goalscorers and do not keep official records;[6][7] in 2020, they recognised Bican, an Austrian-Czech dual international who played between the 1930s and the 1950s,[8] as the record scorer with an estimated 805 goals,[9][10] while CNN, the BBC, France 24, and O Jogo all acknowledge that Bican's tally of 805 includes goals scored for reserve teams and in unofficial international matches.",
+          "wikipage": "List of footballers with 500 or more goals"
+        }
+      ],
+      "long_answer": "The players with the highest all-time goals and highest men's and women's international football goals differ. The player with the highest all-time men's football goals is Josef Bican, who in 2020 was recognized by FIFA, the international governing body of football, as the record scorer with an estimated 805 goals. Christine Sinclair has the highest goals in women's international football with 187 and is the all-time leader for international goals scored for men or women. Cristiano Ronaldo and Ali Daei are currently tied for leading goalscorer in the history of men's international football with 109."
+    }
+  ],
+  "sample_id": "-7013890438520559398",
+  "question": "Who has the highest goals in world football?",
+  "answer": "The players with the highest all-time goals and highest men's and women's international football goals differ. The player with the highest all-time men's football goals is Josef Bican, who in 2020 was recognized by FIFA, the international governing body of football, as the record scorer with an estimated 805 goals. Christine Sinclair has the highest goals in women's international football with 187 and is the all-time leader for international goals scored for men or women. Cristiano Ronaldo and Ali Daei are currently tied for leading goalscorer in the history of men's international football with 109.",
+  "docs": [
+    {
+      "id": "6669150",
+      "title": "Argentina–Brazil football rivalry",
+      "text": "\"Football Player of the Century\", by IFFHS International Federation of Football History and Statistics, 1999, \"South America Football Player of the Century\", by IFFHS International Federation of Football History and Statistics. Pelé's 1281 goals are recognized by FIFA as the highest total achieved by a professional footballer, although the Soccer Statistic Foundation (rssf) recognizes only 767 goals in official mode, occupying the third place after Josef Bican (805) and Romario (772). For his part, Maradona has been named the best soccer player in World Cup history both by The Times and FourFourTwo, publication that also rewarded him as the \"Best",
+      "score": 0.73388671875,
+      "is_gold": true,
+      "support_level": "partial",
+      "evidence_sentence": "the Soccer Statistic Foundation (rssf) recognizes only 767 goals in official mode, occupying the third place after Josef Bican (805) and Romario (772).",
+      "supports_sub_questions": [
+        1
+      ],
+      "annotation_note": "Menziona Bican con 805 goal, supporta la sub-question su chi ha piu goal all-time.",
+      "answers_found": [
+        0,
+        1,
+        0
+      ],
+      "extraction": "Pelé's 1281 goals are recognized by FIFA as the highest total achieved by a professional footballer.",
+      "summary": "Pelé holds the record for the highest total goals achieved by a professional footballer with 1281 goals, recognized by FIFA. However, the Soccer Statistic Foundation recognizes only 767 goals in official mode, with Josef Bican and Romario having higher counts. Maradona has been named the best soccer player in World Cup history."
+    },
+    {
+      "id": "3986261",
+      "title": "Josef Bican",
+      "text": "for Christmas, but died less than 2 weeks before that, at the age of 88. Josef Bican Josef \"Pepi\" Bican (25 September 1913 – 12 December 2001) was a Czech-Austrian professional footballer who played as a striker. Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time. Having scored a record 600 league goals and at least 1468 goals overall, the International Federation of Football History & Statistics (IFFHS) awarded Bican the \"Golden Ball\" as the greatest goalscorer of the last century. He",
+      "score": 0.703125,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time.",
+      "supports_sub_questions": [
+        1
+      ],
+      "annotation_note": "Conferma direttamente Bican come top scorer all-time con 805 goal.",
+      "answers_found": [
+        0,
+        1,
+        0
+      ],
+      "extraction": "Josef Bican would be the answer to the question \"Who has the highest goals in world football?\" as the passage states that he is estimated to have scored at least 805 goals in all competitive matches, making him the most prolific scorer of all time.",
+      "summary": "Josef Bican is estimated to have scored at least 805 goals in all competitive matches, making him the most prolific scorer of all time according to the Rec.Sport.Soccer Statistics Foundation (RSSSF). He also holds the record for scoring 600 league goals and at least 1468 goals overall, and was awarded the \"Golden Ball\" by the International Federation of Football History & Statistics (IFFHS) as the greatest goalscorer of the last century."
+    },
+    {
+      "id": "3986251",
+      "title": "Josef Bican",
+      "text": "Josef Bican Josef \"Pepi\" Bican (25 September 1913 – 12 December 2001) was a Czech-Austrian professional footballer who played as a striker. Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time. Having scored a record 600 league goals and at least 1468 goals overall, the International Federation of Football History & Statistics (IFFHS) awarded Bican the \"Golden Ball\" as the greatest goalscorer of the last century. He was a member of the Austrian \"Wunderteam\" of the 1930s and was the season's highest",
+      "score": 0.70166015625,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time.",
+      "supports_sub_questions": [
+        1
+      ],
+      "annotation_note": "Stesso contenuto del doc 1, conferma Bican.",
+      "answers_found": [
+        0,
+        1,
+        0
+      ],
+      "extraction": "Josef Bican has the highest goals in world football, having scored at least 805 goals in all competitive matches, according to the Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates.",
+      "summary": "Josef Bican is estimated to have scored at least 805 goals in all competitive matches, making him the most prolific scorer of all time, according to the Rec.Sport.Soccer Statistics Foundation."
+    },
+    {
+      "id": "9416170",
+      "title": "Godfrey Chitalu",
+      "text": "have beaten Gerd Müller's record of 85 goals in a year, the Football Association of Zambia claimed that the world record actually pertained to Godfrey Chitalu who had scored 116 goals (possibly 117) during the 1972 calendar year and 107 during the 1972 season. The difference of goals is due to first 9 goals being scored before the season officially started. The Football Association of Zambia presented the evidence to FIFA but a spokesperson responded that they would ratify neither Lionel Messi's nor Chitalu's records as they do not keep statistical track of domestic competitions. Nonetheless, it could constitute the",
+      "score": 0.7080078125,
+      "is_gold": false,
+      "support_level": "none",
+      "evidence_sentence": null,
+      "supports_sub_questions": [],
+      "annotation_note": "Parla di Godfrey Chitalu e del suo record annuale, non risponde alla domanda su chi ha piu goal in assoluto. Il claim di Chitalu non e stato ratificato da FIFA.",
+      "answers_found": [
+        0,
+        0,
+        0
+      ],
+      "extraction": "Godfrey Chitalu has the highest goals in world football with 116 goals (possibly 117) during the 1972 calendar year and 107 during the 1972 season, according to the Football Association of Zambia.",
+      "summary": "Godfrey Chitalu had scored 116 goals (possibly 117) during the 1972 calendar year and 107 during the 1972 season, surpassing Gerd Müller's record of 85 goals. However, FIFA did not officially ratify either Chitalu's or Lionel Messi's records as they do not keep statistical track of domestic competitions."
+    },
+    {
+      "id": "9416171",
+      "title": "Godfrey Chitalu",
+      "text": "highest official tally claimed by a national football association. Chitalu made his international debut on 29 June 1968 in a friendly match against Uganda in Lusaka which Zambia won 2–1. He scored his first goal in a 2–2 draw against the same team five days later. Chitalu played a prominent role during the World Cup qualification matches against Sudan with Zambia being eliminated on a strange rule which was peculiar to Africa and favoured the team that won the second leg. Despite the aggregate score being tied at 6–6 after Zambia won the first leg 4–2 and lost the return",
+      "score": 0.70556640625,
+      "is_gold": false,
+      "support_level": "none",
+      "evidence_sentence": null,
+      "supports_sub_questions": [],
+      "annotation_note": "Continua su Chitalu ma parla della sua carriera internazionale, non fornisce evidenza per la domanda principale.",
+      "answers_found": [
+        0,
+        0,
+        0
+      ],
+      "extraction": "irrelevant.",
+      "summary": "Irrelevant."
+    }
+  ],
+  "gold_stats": {
+    "n_docs": 5,
+    "n_gold": 3,
+    "n_distractors": 2,
+    "n_full_support": 2,
+    "n_partial_support": 1,
+    "n_no_support": 2
   },
-  {
-    "nugget_id": "n0b",
-    "text": "Josef Bican scored at least 805 goals in competitive matches.",
-    "keywords": ["805", "goals"],
-    "required": false
-  },
-  {
-    "nugget_id": "n0c",
-    "text": "The 805 goals figure comes from the RSSSF.",
-    "keywords": ["RSSSF"],
-    "required": false
-  }
-]
+  "nuggets": [
+    {
+      "nugget_id": "n0a",
+      "text": "Josef Bican is estimated to be the most prolific goalscorer of all time in men's football.",
+      "keywords": [
+        "Bican",
+        "Josef Bican",
+        "most prolific"
+      ],
+      "golden_passage_idx": 2,
+      "required": true,
+      "golden_passage_title": "Josef Bican",
+      "golden_evidence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time."
+    },
+    {
+      "nugget_id": "n0b",
+      "text": "Josef Bican scored at least 805 goals in competitive matches.",
+      "keywords": [
+        "805"
+      ],
+      "golden_passage_idx": 2,
+      "required": false,
+      "golden_passage_title": "Josef Bican",
+      "golden_evidence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time."
+    },
+    {
+      "nugget_id": "n0c",
+      "text": "The estimate of at least 805 goals comes from the RSSSF.",
+      "keywords": [
+        "RSSSF"
+      ],
+      "golden_passage_idx": 2,
+      "required": false,
+      "golden_passage_title": "Josef Bican",
+      "golden_evidence": "Rec.Sport.Soccer Statistics Foundation (RSSSF) estimates that he scored at least 805 goals in all competitive matches, which would make him the most prolific scorer of all time."
+    }
+  ]
   },
   {
     "qa_pairs": [
@@ -396,11 +413,11 @@
   {
     "nugget_id": "n0a",
     "text": "The Sound of Silence is a song by Simon & Garfunkel.",
-    "keywords": ["Simon & Garfunkel", "Sound of Silence"],
+    "keywords": ["Simon & Garfunkel"],
     "golden_passage_idx": 0,
     "required": true,
     "golden_passage_title": "The Sound of Silence",
-    "golden_evidence": "\"The Sound of Silence\" is a song by the American music duo Simon & Garfunkel."
+    "golden_evidence": " 'The Sound of Silence', originally 'The Sounds of Silence, is a song by the American music duo Simon & Garfunkel."
   },
   {
     "nugget_id": "n0b",
@@ -414,7 +431,7 @@
   {
     "nugget_id": "n1a",
     "text": "Sounds of Silence is the second studio album by Simon & Garfunkel.",
-    "keywords": ["album", "second album", "Sounds of Silence"],
+    "keywords": ["second album", "second"],
     "golden_passage_idx": 1,
     "required": false,
     "golden_passage_title": "Sounds of Silence",
@@ -1160,7 +1177,7 @@
     "golden_passage_idx": 0,
     "required": true,
     "golden_passage_title": "Virginia Department of Conservation and Recreation",
-    "golden_evidence": "Now virginia has 38 state parks"
+    "golden_evidence": "There are 38 state parks in Virginia today"
   }
 ]
   },
@@ -1287,7 +1304,7 @@
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Penicillin",
-        "golden_evidence": "Penicillin was discovered by Alexander Fleming"
+        "golden_evidence": "Penicillin was discovered in 1928 by Alexander Fleming."
       },
       {
         "nugget_id": "n1",
@@ -1450,7 +1467,7 @@
   {
     "nugget_id": "n0a",
     "text": "Alexander Graham Bell was awarded the first patent for the telephone.",
-    "keywords": ["Bell", "Alexander Graham Bell", "patent", "telephone"],
+    "keywords": ["Bell", "Alexander Graham Bell", "patent"],
     "golden_passage_idx": 0,
     "required": true,
     "golden_passage_title": "Alexander Graham Bell",
@@ -1700,14 +1717,14 @@
     "nugget_id": "n3a",
     "text": "The feuding families in Romeo and Juliet are the Montagues and the Capulets.",
     "keywords": ["Montague", "Capulet"],
-    "golden_passage_idx": 0,
+    "golden_passage_idx": 2,
     "required": false,
     "golden_passage_title": "Montague family",
     "golden_evidence": "The Montagues are one of the two feuding families in Shakespeare's Romeo and Juliet. The other family is the Capulets."
   }
 ]
   },
-  {
+ {
     "sample_id": "new_example_003",
     "question": "What is the speed of light and who measured it first?",
     "answer": "The speed of light in a vacuum is exactly 299,792,458 metres per second (approximately 300,000 km/s or 186,000 miles per second). The first quantitative measurement of the speed of light was made by Danish astronomer Ole Rømer in 1676 using observations of Jupiter's moon Io. James Bradley provided a more accurate measurement in 1728. The exact value was fixed by definition in 1983 when the metre was redefined.",
@@ -1854,79 +1871,79 @@
       "n_no_support": 1
     },
     "nuggets": [
-  {
-    "nugget_id": "n0",
-    "text": "The speed of light in vacuum is exactly 299,792,458 metres per second.",
-    "keywords": ["299,792,458", "300,000 km", "186,000 mi"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "Speed of light",
-    "golden_evidence": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second."
-  },
-  {
-    "nugget_id": "n1a",
-    "text": "Ole Rømer made the first quantitative measurement of the speed of light.",
-    "keywords": ["Rømer", "Ole Rømer"],
-    "golden_passage_idx": 1,
-    "required": true,
-    "golden_passage_title": "Ole Rømer",
-    "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding."
-  },
-  {
-    "nugget_id": "n1b",
-    "text": "Rømer made his measurement of the speed of light in 1676.",
-    "keywords": ["1676"],
-    "golden_passage_idx": 1,
-    "required": true,
-    "golden_passage_title": "Ole Rømer",
-    "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding."
-  },
-  {
-    "nugget_id": "n1c",
-    "text": "Rømer used observations of Jupiter's moon Io to measure the speed of light.",
-    "keywords": ["Io", "Jupiter"],
-    "golden_passage_idx": 1,
-    "required": false,
-    "golden_passage_title": "Ole Rømer",
-    "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding."
-  },
-  {
-    "nugget_id": "n2a",
-    "text": "James Bradley provided a more accurate measurement of the speed of light than Rømer.",
-    "keywords": ["James Bradley", "Bradley"],
-    "golden_passage_idx": 2,
-    "required": false,
-    "golden_passage_title": "James Bradley",
-    "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
-  },
-  {
-    "nugget_id": "n2b",
-    "text": "James Bradley measured the speed of light in 1728.",
-    "keywords": ["1728"],
-    "golden_passage_idx": 2,
-    "required": false,
-    "golden_passage_title": "James Bradley",
-    "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
-  },
-  {
-    "nugget_id": "n2c",
-    "text": "James Bradley used stellar aberration to measure the speed of light.",
-    "keywords": ["stellar aberration"],
-    "golden_passage_idx": 2,
-    "required": false,
-    "golden_passage_title": "James Bradley",
-    "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
-  },
-  {
-    "nugget_id": "n2d",
-    "text": "James Bradley calculated the speed of light as approximately 301,000 km/s.",
-    "keywords": ["301,000 km/s"],
-    "golden_passage_idx": 2,
-    "required": false,
-    "golden_passage_title": "James Bradley",
-    "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
-  }
-]
+      {
+        "nugget_id": "n0",
+        "text": "The speed of light in vacuum is exactly 299,792,458 metres per second.",
+        "keywords": ["299,792,458", "metres per second"],
+        "golden_passage_idx": 0,
+        "required": true,
+        "golden_passage_title": "Speed of light",
+        "golden_evidence": "The speed of light in vacuum, commonly denoted c, is a universal physical constant equal to exactly 299,792,458 metres per second (approximately 300,000 km/s or 186,000 mi/s)."
+      },
+      {
+        "nugget_id": "n1a",
+        "text": "Ole Rømer made the first quantitative measurement of the speed of light.",
+        "keywords": ["Rømer", "Ole Rømer"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Ole Rømer",
+        "golden_evidence": "Ole Christensen Rømer (25 September 1644 – 19 September 1710) was a Danish astronomer who made the first quantitative measurements of the speed of light."
+      },
+      {
+        "nugget_id": "n1b",
+        "text": "Rømer made his measurement of the speed of light in 1676.",
+        "keywords": ["1676"],
+        "golden_passage_idx": 1,
+        "required": true,
+        "golden_passage_title": "Ole Rømer",
+        "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding."
+      },
+      {
+        "nugget_id": "n1c",
+        "text": "Rømer used observations of Jupiter's moon Io to measure the speed of light.",
+        "keywords": ["Io", "Jupiter"],
+        "golden_passage_idx": 1,
+        "required": false,
+        "golden_passage_title": "Ole Rømer",
+        "golden_evidence": "In 1676, Rømer observed that the periods of Jupiter's innermost moon, Io, appeared to be shorter when Earth was approaching Jupiter than when it was receding."
+      },
+      {
+        "nugget_id": "n2a",
+        "text": "James Bradley provided a more accurate measurement of the speed of light than Rømer.",
+        "keywords": ["James Bradley", "Bradley"],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "James Bradley",
+        "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
+      },
+      {
+        "nugget_id": "n2b",
+        "text": "James Bradley measured the speed of light in 1728.",
+        "keywords": ["1728"],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "James Bradley",
+        "golden_evidence": "In 1728, Bradley discovered stellar aberration, the apparent shift in the positions of stars due to Earth's orbital velocity."
+      },
+      {
+        "nugget_id": "n2c",
+        "text": "James Bradley used stellar aberration to measure the speed of light.",
+        "keywords": ["stellar aberration"],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "James Bradley",
+        "golden_evidence": "In 1728, Bradley discovered stellar aberration, the apparent shift in the positions of stars due to Earth's orbital velocity."
+      },
+      {
+        "nugget_id": "n2d",
+        "text": "James Bradley calculated the speed of light as approximately 301,000 km/s.",
+        "keywords": ["301,000 km/s"],
+        "golden_passage_idx": 2,
+        "required": false,
+        "golden_passage_title": "James Bradley",
+        "golden_evidence": "By measuring the angle of aberration, he was able to calculate the speed of light as approximately 301,000 km/s—much closer to the true value than Rømer's 1676 estimate."
+      }
+    ]
   },
   {
     "sample_id": "new_example_004",
@@ -2546,7 +2563,7 @@
   {
     "nugget_id": "n2",
     "text": "The 1889 World's Fair celebrated the centennial of the French Revolution.",
-    "keywords": ["centennial", "French Revolution", "1789"],
+    "keywords": ["centennial", "French Revolution"],
     "golden_passage_idx": 2,
     "required": false,
     "golden_passage_title": "Exposition Universelle (1889)",
@@ -2944,400 +2961,512 @@
     "nugget_id": "n2a",
     "text": "The most well-preserved sections of the Great Wall were built by the Ming dynasty.",
     "keywords": ["Ming dynasty", "Ming"],
-    "golden_passage_idx": 1,
+    "golden_passage_idx": 0,
     "required": false,
     "golden_passage_title": "Ming dynasty",
-    "golden_evidence": "During the Ming dynasty, the Great Wall of China was extensively rebuilt and extended to its current form."
+    "golden_evidence": "The most well-known sections of the wall were built by the Ming dynasty (1368–1644)."
   }
 ]
   },
   {
-    "sample_id": "new_example_009",
-    "question": "Who wrote the theory of evolution and when?",
-    "answer": "The theory of evolution by natural selection was primarily developed by Charles Darwin, who published it in his 1859 book 'On the Origin of Species'. Alfred Russel Wallace independently conceived a similar theory and co-presented it with Darwin in 1858. Darwin's theory proposed that species evolve over generations through natural selection, where individuals with favourable traits survive and reproduce more successfully.",
-    "qa_pairs": [
-      {
-        "context": "Charles Darwin published On the Origin of Species on 24 November 1859. The book introduced the scientific theory that populations evolve over generations through the process of natural selection.",
-        "question": "Who developed the theory of evolution by natural selection?",
-        "short_answers": ["Charles Darwin", "Darwin"],
-        "wikipage": "On the Origin of Species"
-      },
-      {
-        "context": "Alfred Russel Wallace independently conceived a theory of evolution by natural selection and sent a letter describing it to Darwin in 1858. Darwin and Wallace co-presented their papers at the Linnean Society of London on 1 July 1858.",
-        "question": "Who else independently developed a theory of evolution at the same time as Darwin?",
-        "short_answers": ["Alfred Russel Wallace", "Wallace"],
-        "wikipage": "Alfred Russel Wallace"
-      },
-      {
-        "context": "On the Origin of Species was published on 24 November 1859 by John Murray. The first edition of 1,250 copies sold out on the day of publication. The book's full title is 'On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life'.",
-        "question": "When was On the Origin of Species published?",
-        "short_answers": ["1859", "24 November 1859"],
-        "wikipage": "On the Origin of Species"
-      }
-    ],
-    "wikipages": [
-      {
-        "title": "On the Origin of Species",
-        "url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species"
-      },
-      {
-        "title": "Charles Darwin",
-        "url": "https://en.wikipedia.org/wiki/Charles_Darwin"
-      },
-      {
-        "title": "Alfred Russel Wallace",
-        "url": "https://en.wikipedia.org/wiki/Alfred_Russel_Wallace"
-      },
-      {
-        "title": "Natural selection",
-        "url": "https://en.wikipedia.org/wiki/Natural_selection"
-      },
-      {
-        "title": "Jean-Baptiste Lamarck",
-        "url": "https://en.wikipedia.org/wiki/Jean-Baptiste_Lamarck"
-      }
-    ],
-    "annotations": [
-      {
-        "knowledge": [
-          {
-            "content": "Charles Darwin published the theory of evolution by natural selection in On the Origin of Species in 1859.",
-            "wikipage": "On the Origin of Species"
-          }
-        ],
-        "long_answer": "The theory of evolution by natural selection was primarily developed by Charles Darwin, published in On the Origin of Species in 1859. Alfred Russel Wallace independently developed a similar theory and co-presented it with Darwin in 1858."
-      }
-    ],
-    "docs": [
-      {
-        "id": "doc009_1",
-        "title": "On the Origin of Species",
-        "text": "On the Origin of Species (or, more completely, On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life) is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859, by John Murray. The first edition of 1,250 copies sold out the same day. Darwin presents a body of evidence that the diversity of life arose by common descent through a branching pattern of evolution. His theory of natural selection was proposed as the mechanism.",
-        "score": 0.91,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "On the Origin of Species... is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859.",
-        "supports_sub_questions": [0, 2],
-        "annotation_note": "Documento principale: conferma Darwin come autore e la data di pubblicazione del 1859.",
-        "answers_found": [1, 0, 1],
-        "extraction": "On the Origin of Species was written by Charles Darwin and published on 24 November 1859.",
-        "summary": "On the Origin of Species by Charles Darwin, published 24 November 1859, is the foundation of evolutionary biology."
-      },
-      {
-        "id": "doc009_2",
-        "title": "Charles Darwin",
-        "text": "Charles Robert Darwin (12 February 1809 – 19 April 1882) was an English naturalist, geologist and biologist, best known for his contributions to the science of evolution. His proposition that all species of life have descended from common ancestors is now widely accepted and considered a fundamental concept in science. In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection. His 1859 book On the Origin of Species established evolutionary theory.",
-        "score": 0.86,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection.",
-        "supports_sub_questions": [0, 1],
-        "annotation_note": "Conferma Darwin come autore della teoria e Wallace come co-presentatore.",
-        "answers_found": [1, 1, 0],
-        "extraction": "Charles Darwin introduced the theory of evolution by natural selection in a joint presentation with Alfred Russel Wallace.",
-        "summary": "Charles Darwin was the primary developer of the theory of evolution; he jointly presented it with Alfred Russel Wallace."
-      },
-      {
-        "id": "doc009_3",
-        "title": "Alfred Russel Wallace",
-        "text": "Alfred Russel Wallace (8 January 1823 – 7 November 1913) was a British naturalist, explorer, geographer, anthropologist, biologist and illustrator. He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings and prompted Darwin to write and publish On the Origin of Species. Darwin and Wallace co-presented their findings at the Linnean Society of London on 1 July 1858.",
-        "score": 0.83,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings.",
-        "supports_sub_questions": [1],
-        "annotation_note": "Conferma Wallace come co-inventore indipendente della teoria dell'evoluzione nel 1858.",
-        "answers_found": [0, 1, 0],
-        "extraction": "Alfred Russel Wallace independently conceived the theory of evolution through natural selection and co-presented it with Darwin in 1858.",
-        "summary": "Alfred Russel Wallace independently developed the theory of evolution and jointly presented it with Darwin at the Linnean Society in 1858."
-      },
-      {
-        "id": "doc009_4",
-        "title": "Natural selection",
-        "text": "Natural selection is the differential survival and reproduction of individuals due to differences in phenotype. It is a key mechanism of evolution, the change in the heritable characteristics of a population over time. Charles Darwin popularised the term 'natural selection' contrasting it with artificial selection. The concept was independently conceived by Darwin and Wallace. Natural selection acts on the phenotype, the characteristics of the organism which actually interact with the environment, but the genetic (heritable) basis of any phenotype that gives that phenotype a reproductive advantage will become more common in a population.",
-        "score": 0.77,
-        "is_gold": true,
-        "support_level": "partial",
-        "evidence_sentence": "The concept was independently conceived by Darwin and Wallace.",
-        "supports_sub_questions": [0, 1],
-        "annotation_note": "Conferma la co-concezione di Darwin e Wallace, supporto parziale.",
-        "answers_found": [1, 1, 0],
-        "extraction": "Natural selection was independently conceived by Darwin and Wallace.",
-        "summary": "Natural selection was independently conceived by both Charles Darwin and Alfred Russel Wallace."
-      },
-      {
-        "id": "doc009_5",
-        "title": "Jean-Baptiste Lamarck",
-        "text": "Jean-Baptiste Pierre Antoine de Monet, Chevalier de Lamarck (1 August 1744 – 18 December 1829) was a French naturalist and biologist. He is recognised as a pioneer of the idea that biological evolution occurs. His theory of 'soft inheritance' proposed that an organism could pass on characteristics acquired during its lifetime to its offspring. Lamarck published his theory of evolution in 1809, fifty years before Darwin's On the Origin of Species, but his mechanism—inheritance of acquired characteristics—was later shown to be incorrect.",
-        "score": 0.68,
-        "is_gold": false,
-        "support_level": "none",
-        "evidence_sentence": null,
-        "supports_sub_questions": [],
-        "annotation_note": "Documento distractor: parla di Lamarck come precursore dell'idea di evoluzione, ma la sua teoria è diversa da quella di Darwin e non risponde alle sub-questions.",
-        "answers_found": [0, 0, 0],
-        "extraction": "irrelevant",
-        "summary": "Lamarck proposed an earlier theory of evolution in 1809 but with a different mechanism; this document is not relevant to Darwin's theory of natural selection."
-      }
-    ],
-    "gold_stats": {
-      "n_docs": 5,
-      "n_gold": 4,
-      "n_distractors": 1,
-      "n_full_support": 3,
-      "n_partial_support": 1,
-      "n_no_support": 1
+  "sample_id": "new_example_009",
+  "question": "Who wrote the theory of evolution and when?",
+  "answer": "The theory of evolution by natural selection was primarily developed by Charles Darwin, who published it in his 1859 book 'On the Origin of Species'. Alfred Russel Wallace independently conceived a similar theory and co-presented it with Darwin in 1858. Darwin's theory proposed that species evolve over generations through natural selection, where individuals with favourable traits survive and reproduce more successfully.",
+  "qa_pairs": [
+    {
+      "context": "Charles Darwin published On the Origin of Species on 24 November 1859. The book introduced the scientific theory that populations evolve over generations through the process of natural selection.",
+      "question": "Who developed the theory of evolution by natural selection?",
+      "short_answers": [
+        "Charles Darwin",
+        "Darwin"
+      ],
+      "wikipage": "On the Origin of Species"
     },
-    "nuggets": [
-  {
-    "nugget_id": "n0",
-    "text": "The theory of evolution by natural selection was developed by Charles Darwin.",
-    "keywords": ["Charles Darwin", "Darwin"],
-    "golden_passage_idx": 1,
-    "required": true,
-    "golden_passage_title": "Charles Darwin",
-    "golden_evidence": "In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection."
-  },
-  {
-    "nugget_id": "n1a",
-    "text": "Darwin published his theory in On the Origin of Species.",
-    "keywords": ["On the Origin of Species"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "On the Origin of Species",
-    "golden_evidence": "On the Origin of Species... is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859."
-  },
-  {
-    "nugget_id": "n1b",
-    "text": "On the Origin of Species was published on 24 November 1859.",
-    "keywords": ["1859", "24 November 1859"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "On the Origin of Species",
-    "golden_evidence": "On the Origin of Species... is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859."
-  },
-  {
-    "nugget_id": "n2a",
-    "text": "Alfred Russel Wallace independently conceived the theory of evolution through natural selection.",
-    "keywords": ["Alfred Russel Wallace", "Wallace"],
-    "golden_passage_idx": 2,
-    "required": false,
-    "golden_passage_title": "Alfred Russel Wallace",
-    "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings."
-  },
-  {
-    "nugget_id": "n2b",
-    "text": "Wallace's paper on natural selection was published in 1858.",
-    "keywords": ["1858"],
-    "golden_passage_idx": 2,
-    "required": false,
-    "golden_passage_title": "Alfred Russel Wallace",
-    "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings."
-  },
-  {
-    "nugget_id": "n2c",
-    "text": "Wallace's 1858 paper was jointly published with Charles Darwin's writings.",
-    "keywords": ["jointly published"],
-    "golden_passage_idx": 2,
-    "required": false,
-    "golden_passage_title": "Alfred Russel Wallace",
-    "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings."
-  }
-]
-  },
-  {
-    "sample_id": "new_example_010",
-    "question": "What is the Titanic and when did it sink?",
-    "answer": "The RMS Titanic was a British ocean liner operated by the White Star Line. It sank in the North Atlantic Ocean on 15 April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City. Of the estimated 2,224 passengers and crew aboard, more than 1,500 died, making it one of the deadliest peacetime maritime disasters in history. The ship was designed by Thomas Andrews and built at the Harland and Wolff shipyard in Belfast.",
-    "qa_pairs": [
-      {
-        "context": "RMS Titanic was a British ocean liner owned and operated by the White Star Line. Built at the Harland and Wolff shipyard in Belfast, Northern Ireland, the Titanic was the largest ship afloat at the time of her maiden voyage.",
-        "question": "What was the Titanic?",
-        "short_answers": ["a British ocean liner", "an ocean liner"],
-        "wikipage": "Titanic"
-      },
-      {
-        "context": "At 11:40 pm (ship's time) on 14 April 1912, RMS Titanic struck an iceberg. The ship sank at 2:20 am on 15 April 1912. The Titanic was on its maiden voyage from Southampton, England, to New York City.",
-        "question": "When did the Titanic sink?",
-        "short_answers": ["15 April 1912", "April 1912"],
-        "wikipage": "Titanic"
-      },
-      {
-        "context": "Of the estimated 2,224 passengers and crew aboard, more than 1,500 died. The death toll was exacerbated by the lack of lifeboats, which could accommodate only 1,178 people.",
-        "question": "How many people died when the Titanic sank?",
-        "short_answers": ["more than 1,500", "over 1,500"],
-        "wikipage": "Titanic"
-      }
-    ],
-    "wikipages": [
-      {
-        "title": "Titanic",
-        "url": "https://en.wikipedia.org/wiki/Titanic"
-      },
-      {
-        "title": "RMS Titanic",
-        "url": "https://en.wikipedia.org/wiki/RMS_Titanic"
-      },
-      {
-        "title": "White Star Line",
-        "url": "https://en.wikipedia.org/wiki/White_Star_Line"
-      },
-      {
-        "title": "Sinking of the RMS Titanic",
-        "url": "https://en.wikipedia.org/wiki/Sinking_of_the_RMS_Titanic"
-      },
-      {
-        "title": "Harland and Wolff",
-        "url": "https://en.wikipedia.org/wiki/Harland_and_Wolff"
-      }
-    ],
-    "annotations": [
-      {
-        "knowledge": [
-          {
-            "content": "RMS Titanic was a British ocean liner that sank on 15 April 1912 after striking an iceberg, killing more than 1,500 people.",
-            "wikipage": "RMS Titanic"
-          }
-        ],
-        "long_answer": "The RMS Titanic was a British ocean liner operated by the White Star Line. It sank on 15 April 1912 in the North Atlantic after striking an iceberg during its maiden voyage. More than 1,500 of the estimated 2,224 people on board died."
-      }
-    ],
-    "docs": [
-      {
-        "id": "doc010_1",
-        "title": "RMS Titanic",
-        "text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line. Built at the Harland and Wolff shipyard in Belfast, designed by chief naval architect Thomas Andrews, and measuring 269 metres (882 ft) in length, she was the largest ocean liner in service at the time of her maiden voyage. On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board. Her sinking is considered one of the deadliest peacetime maritime disasters in history.",
-        "score": 0.94,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board.",
-        "supports_sub_questions": [0, 1, 2],
-        "annotation_note": "Documento principale: risponde a tutte le sub-questions su cosa era il Titanic, quando affondò, e quante persone morirono.",
-        "answers_found": [1, 1, 1],
-        "extraction": "RMS Titanic was a British ocean liner that sank on 15 April 1912 after striking an iceberg, killing more than 1,500 of the 2,224 people on board.",
-        "summary": "RMS Titanic was a British ocean liner that sank on 15 April 1912 after striking an iceberg, with more than 1,500 deaths."
-      },
-      {
-        "id": "doc010_2",
-        "title": "Sinking of the RMS Titanic",
-        "text": "The sinking of the RMS Titanic occurred on 15 April 1912 in the North Atlantic Ocean, four days into the ship's maiden voyage from Southampton to New York City. The Titanic struck an iceberg at 11:40 pm (ship's time) on 14 April 1912 and sank at 2:20 am on 15 April 1912. The ship broke apart and sank, with 1,517 people dying in one of the deadliest peacetime maritime disasters in history. The Titanic had insufficient lifeboats for all passengers and crew, due in part to outdated maritime safety regulations.",
-        "score": 0.88,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "The Titanic struck an iceberg at 11:40 pm (ship's time) on 14 April 1912 and sank at 2:20 am on 15 April 1912.",
-        "supports_sub_questions": [1, 2],
-        "annotation_note": "Fornisce dettagli precisi sull'ora e le circostanze dell'affondamento.",
-        "answers_found": [0, 1, 1],
-        "extraction": "The Titanic struck an iceberg on 14 April 1912 and sank on 15 April 1912, killing 1,517 people.",
-        "summary": "The Titanic struck an iceberg on 14 April 1912 and sank the following day, killing 1,517 people."
-      },
-      {
-        "id": "doc010_3",
-        "title": "White Star Line",
-        "text": "The White Star Line was a prominent British shipping company. It was founded in 1845 and became one of the most important passenger shipping companies in the world. The company operated several famous ocean liners, including the Titanic, the Britannic, and the Olympic. The Titanic's sinking in 1912 was a severe blow to the company's reputation. White Star Line merged with its rival Cunard Line in 1934, forming the Cunard-White Star Line.",
-        "score": 0.75,
-        "is_gold": true,
-        "support_level": "partial",
-        "evidence_sentence": "The company operated several famous ocean liners, including the Titanic, the Britannic, and the Olympic.",
-        "supports_sub_questions": [0],
-        "annotation_note": "Identifica la White Star Line come operatore del Titanic, supporto parziale per la prima sub-question.",
-        "answers_found": [1, 0, 0],
-        "extraction": "The Titanic was operated by the White Star Line.",
-        "summary": "White Star Line was a British shipping company that operated the Titanic."
-      },
-      {
-        "id": "doc010_4",
-        "title": "Harland and Wolff",
-        "text": "Harland and Wolff is a heavy industrial company based in Belfast, Northern Ireland, primarily known as a shipbuilder. It was founded in 1861 by Edward James Harland and Gustav Wilhelm Wolff. The company built many famous ships, including RMS Titanic, RMS Olympic, and RMS Britannic, all for the White Star Line. The Titanic was constructed in Belfast between 1909 and 1912 and was the largest ship ever built at the time of its launch. The shipyard employed over 15,000 workers at its peak.",
-        "score": 0.72,
-        "is_gold": true,
-        "support_level": "partial",
-        "evidence_sentence": "The Titanic was constructed in Belfast between 1909 and 1912 and was the largest ship ever built at the time of its launch.",
-        "supports_sub_questions": [0],
-        "annotation_note": "Conferma il cantiere navale come costruttore del Titanic e il periodo di costruzione.",
-        "answers_found": [1, 0, 0],
-        "extraction": "The Titanic was built by Harland and Wolff in Belfast between 1909 and 1912.",
-        "summary": "Harland and Wolff built the Titanic in Belfast between 1909 and 1912 for the White Star Line."
-      },
-      {
-        "id": "doc010_5",
-        "title": "Titanic (1997 film)",
-        "text": "Titanic is a 1997 American epic romance and disaster film directed, written, co-produced, and co-edited by James Cameron. Incorporating both historical and fictional elements, it is based on accounts of the sinking of the RMS Titanic in 1912. Kate Winslet and Leonardo DiCaprio star as members of different social classes who fall in love aboard the ship. The film was the highest-grossing film of all time from 1998 to 2010, when it was overtaken by Cameron's Avatar.",
-        "score": 0.65,
-        "is_gold": false,
-        "support_level": "none",
-        "evidence_sentence": null,
-        "supports_sub_questions": [],
-        "annotation_note": "Documento distractor: parla del film del 1997, non della nave reale. Non risponde a nessuna delle sub-questions.",
-        "answers_found": [0, 0, 0],
-        "extraction": "irrelevant",
-        "summary": "This document is about the 1997 film Titanic and is not relevant to questions about the actual ship."
-      }
-    ],
-    "gold_stats": {
-      "n_docs": 5,
-      "n_gold": 4,
-      "n_distractors": 1,
-      "n_full_support": 2,
-      "n_partial_support": 2,
-      "n_no_support": 1
+    {
+      "context": "Alfred Russel Wallace independently conceived a theory of evolution by natural selection and sent a letter describing it to Darwin in 1858. Darwin and Wallace co-presented their papers at the Linnean Society of London on 1 July 1858.",
+      "question": "Who else independently developed a theory of evolution at the same time as Darwin?",
+      "short_answers": [
+        "Alfred Russel Wallace",
+        "Wallace"
+      ],
+      "wikipage": "Alfred Russel Wallace"
     },
-   "nuggets": [
-  {
-    "nugget_id": "n0",
-    "text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line.",
-    "keywords": ["White Star Line", "ocean liner"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "RMS Titanic",
-    "golden_evidence": "RMS Titanic was a British ocean liner owned and operated by the White Star Line."
+    {
+      "context": "On the Origin of Species was published on 24 November 1859 by John Murray. The first edition of 1,250 copies sold out on the day of publication. The book's full title is 'On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life'.",
+      "question": "When was On the Origin of Species published?",
+      "short_answers": [
+        "1859",
+        "24 November 1859"
+      ],
+      "wikipage": "On the Origin of Species"
+    }
+  ],
+  "wikipages": [
+    {
+      "title": "On the Origin of Species",
+      "url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species"
+    },
+    {
+      "title": "Charles Darwin",
+      "url": "https://en.wikipedia.org/wiki/Charles_Darwin"
+    },
+    {
+      "title": "Alfred Russel Wallace",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Russel_Wallace"
+    },
+    {
+      "title": "Natural selection",
+      "url": "https://en.wikipedia.org/wiki/Natural_selection"
+    },
+    {
+      "title": "Jean-Baptiste Lamarck",
+      "url": "https://en.wikipedia.org/wiki/Jean-Baptiste_Lamarck"
+    }
+  ],
+  "annotations": [
+    {
+      "knowledge": [
+        {
+          "content": "Charles Darwin published the theory of evolution by natural selection in On the Origin of Species in 1859.",
+          "wikipage": "On the Origin of Species"
+        }
+      ],
+      "long_answer": "The theory of evolution by natural selection was primarily developed by Charles Darwin, published in On the Origin of Species in 1859. Alfred Russel Wallace independently developed a similar theory and co-presented it with Darwin in 1858."
+    }
+  ],
+  "docs": [
+    {
+      "id": "doc009_1",
+      "title": "On the Origin of Species",
+      "text": "On the Origin of Species (or, more completely, On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life) is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859, by John Murray. The first edition of 1,250 copies sold out the same day. Darwin presents a body of evidence that the diversity of life arose by common descent through a branching pattern of evolution. His theory of natural selection was proposed as the mechanism.",
+      "score": 0.91,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "On the Origin of Species... is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology. The book was published on 24 November 1859.",
+      "supports_sub_questions": [
+        0,
+        2
+      ],
+      "annotation_note": "Documento principale: conferma Darwin come autore e la data di pubblicazione del 1859.",
+      "answers_found": [
+        1,
+        0,
+        1
+      ],
+      "extraction": "On the Origin of Species was written by Charles Darwin and published on 24 November 1859.",
+      "summary": "On the Origin of Species by Charles Darwin, published 24 November 1859, is the foundation of evolutionary biology."
+    },
+    {
+      "id": "doc009_2",
+      "title": "Charles Darwin",
+      "text": "Charles Robert Darwin (12 February 1809 – 19 April 1882) was an English naturalist, geologist and biologist, best known for his contributions to the science of evolution. His proposition that all species of life have descended from common ancestors is now widely accepted and considered a fundamental concept in science. In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection. His 1859 book On the Origin of Species established evolutionary theory.",
+      "score": 0.86,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection.",
+      "supports_sub_questions": [
+        0,
+        1
+      ],
+      "annotation_note": "Conferma Darwin come autore della teoria e Wallace come co-presentatore.",
+      "answers_found": [
+        1,
+        1,
+        0
+      ],
+      "extraction": "Charles Darwin introduced the theory of evolution by natural selection in a joint presentation with Alfred Russel Wallace.",
+      "summary": "Charles Darwin was the primary developer of the theory of evolution; he jointly presented it with Alfred Russel Wallace."
+    },
+    {
+      "id": "doc009_3",
+      "title": "Alfred Russel Wallace",
+      "text": "Alfred Russel Wallace (8 January 1823 – 7 November 1913) was a British naturalist, explorer, geographer, anthropologist, biologist and illustrator. He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings and prompted Darwin to write and publish On the Origin of Species. Darwin and Wallace co-presented their findings at the Linnean Society of London on 1 July 1858.",
+      "score": 0.83,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings.",
+      "supports_sub_questions": [
+        1
+      ],
+      "annotation_note": "Conferma Wallace come co-inventore indipendente della teoria dell'evoluzione nel 1858.",
+      "answers_found": [
+        0,
+        1,
+        0
+      ],
+      "extraction": "Alfred Russel Wallace independently conceived the theory of evolution through natural selection and co-presented it with Darwin in 1858.",
+      "summary": "Alfred Russel Wallace independently developed the theory of evolution and jointly presented it with Darwin at the Linnean Society in 1858."
+    },
+    {
+      "id": "doc009_4",
+      "title": "Natural selection",
+      "text": "Natural selection is the differential survival and reproduction of individuals due to differences in phenotype. It is a key mechanism of evolution, the change in the heritable characteristics of a population over time. Charles Darwin popularised the term 'natural selection' contrasting it with artificial selection. The concept was independently conceived by Darwin and Wallace. Natural selection acts on the phenotype, the characteristics of the organism which actually interact with the environment, but the genetic (heritable) basis of any phenotype that gives that phenotype a reproductive advantage will become more common in a population.",
+      "score": 0.77,
+      "is_gold": true,
+      "support_level": "partial",
+      "evidence_sentence": "The concept was independently conceived by Darwin and Wallace.",
+      "supports_sub_questions": [
+        0,
+        1
+      ],
+      "annotation_note": "Conferma la co-concezione di Darwin e Wallace, supporto parziale.",
+      "answers_found": [
+        1,
+        1,
+        0
+      ],
+      "extraction": "Natural selection was independently conceived by Darwin and Wallace.",
+      "summary": "Natural selection was independently conceived by both Charles Darwin and Alfred Russel Wallace."
+    },
+    {
+      "id": "doc009_5",
+      "title": "Jean-Baptiste Lamarck",
+      "text": "Jean-Baptiste Pierre Antoine de Monet, Chevalier de Lamarck (1 August 1744 – 18 December 1829) was a French naturalist and biologist. He is recognised as a pioneer of the idea that biological evolution occurs. His theory of 'soft inheritance' proposed that an organism could pass on characteristics acquired during its lifetime to its offspring. Lamarck published his theory of evolution in 1809, fifty years before Darwin's On the Origin of Species, but his mechanism—inheritance of acquired characteristics—was later shown to be incorrect.",
+      "score": 0.68,
+      "is_gold": false,
+      "support_level": "none",
+      "evidence_sentence": null,
+      "supports_sub_questions": [],
+      "annotation_note": "Documento distractor: parla di Lamarck come precursore dell'idea di evoluzione, ma la sua teoria è diversa da quella di Darwin e non risponde alle sub-questions.",
+      "answers_found": [
+        0,
+        0,
+        0
+      ],
+      "extraction": "irrelevant",
+      "summary": "Lamarck proposed an earlier theory of evolution in 1809 but with a different mechanism; this document is not relevant to Darwin's theory of natural selection."
+    }
+  ],
+  "gold_stats": {
+    "n_docs": 5,
+    "n_gold": 4,
+    "n_distractors": 1,
+    "n_full_support": 3,
+    "n_partial_support": 1,
+    "n_no_support": 1
+  },
+  "nuggets": [
+    {
+      "nugget_id": "n0",
+      "text": "The theory of evolution by natural selection was developed by Charles Darwin.",
+      "keywords": [
+        "Charles Darwin",
+        "Darwin"
+      ],
+      "golden_passage_idx": 1,
+      "required": true,
+      "golden_passage_title": "Charles Darwin",
+      "golden_evidence": "In a joint presentation with Alfred Russel Wallace, he introduced his scientific theory that this branching pattern of evolution resulted from a process that he called natural selection."
+    },
+    {
+      "nugget_id": "n1a",
+      "text": "Darwin published his theory in On the Origin of Species.",
+      "keywords": [
+        "On the Origin of Species"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "On the Origin of Species",
+      "golden_evidence": "On the Origin of Species (or, more completely, On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life) is a work of scientific literature by Charles Darwin that is considered the foundation of evolutionary biology."
+    },
+    {
+      "nugget_id": "n1b",
+      "text": "On the Origin of Species was published on 24 November 1859.",
+      "keywords": [
+        "1859",
+        "24 November 1859"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "On the Origin of Species",
+      "golden_evidence": "The book was published on 24 November 1859, by John Murray."
+    },
+    {
+      "nugget_id": "n2a",
+      "text": "Alfred Russel Wallace independently conceived the theory of evolution through natural selection.",
+      "keywords": [
+        "Alfred Russel Wallace",
+        "Wallace"
+      ],
+      "golden_passage_idx": 2,
+      "required": false,
+      "golden_passage_title": "Alfred Russel Wallace",
+      "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings"
+    },
+    {
+      "nugget_id": "n2b",
+      "text": "Wallace's paper on natural selection was published in 1858.",
+      "keywords": [
+        "1858"
+      ],
+      "golden_passage_idx": 2,
+      "required": false,
+      "golden_passage_title": "Alfred Russel Wallace",
+      "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings"
+    },
+    {
+      "nugget_id": "n2c",
+      "text": "Wallace's 1858 paper was jointly published with Charles Darwin's writings.",
+      "keywords": [
+        "jointly published"
+      ],
+      "golden_passage_idx": 2,
+      "required": false,
+      "golden_passage_title": "Alfred Russel Wallace",
+      "golden_evidence": "He is best known for independently conceiving the theory of evolution through natural selection; his 1858 paper on the subject was jointly published with some of Charles Darwin's writings"
+    }
+  ]
   },
   {
-    "nugget_id": "n1a",
-    "text": "The Titanic sank on 15 April 1912.",
-    "keywords": ["15 April 1912", "1912"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "RMS Titanic",
-    "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg."
+  "sample_id": "new_example_010",
+  "question": "What is the Titanic and when did it sink?",
+  "answer": "The RMS Titanic was a British ocean liner operated by the White Star Line. It sank in the North Atlantic Ocean on 15 April 1912 after striking an iceberg during its maiden voyage from Southampton to New York City. Of the estimated 2,224 passengers and crew aboard, more than 1,500 died, making it one of the deadliest peacetime maritime disasters in history. The ship was designed by Thomas Andrews and built at the Harland and Wolff shipyard in Belfast.",
+  "qa_pairs": [
+    {
+      "context": "RMS Titanic was a British ocean liner owned and operated by the White Star Line. Built at the Harland and Wolff shipyard in Belfast, Northern Ireland, the Titanic was the largest ship afloat at the time of her maiden voyage.",
+      "question": "What was the Titanic?",
+      "short_answers": [
+        "a British ocean liner",
+        "an ocean liner"
+      ],
+      "wikipage": "Titanic"
+    },
+    {
+      "context": "At 11:40 pm (ship's time) on 14 April 1912, RMS Titanic struck an iceberg. The ship sank at 2:20 am on 15 April 1912. The Titanic was on its maiden voyage from Southampton, England, to New York City.",
+      "question": "When did the Titanic sink?",
+      "short_answers": [
+        "15 April 1912",
+        "April 1912"
+      ],
+      "wikipage": "Titanic"
+    },
+    {
+      "context": "Of the estimated 2,224 passengers and crew aboard, more than 1,500 died. The death toll was exacerbated by the lack of lifeboats, which could accommodate only 1,178 people.",
+      "question": "How many people died when the Titanic sank?",
+      "short_answers": [
+        "more than 1,500",
+        "over 1,500"
+      ],
+      "wikipage": "Titanic"
+    }
+  ],
+  "wikipages": [
+    {
+      "title": "Titanic",
+      "url": "https://en.wikipedia.org/wiki/Titanic"
+    },
+    {
+      "title": "RMS Titanic",
+      "url": "https://en.wikipedia.org/wiki/RMS_Titanic"
+    },
+    {
+      "title": "White Star Line",
+      "url": "https://en.wikipedia.org/wiki/White_Star_Line"
+    },
+    {
+      "title": "Sinking of the RMS Titanic",
+      "url": "https://en.wikipedia.org/wiki/Sinking_of_the_RMS_Titanic"
+    },
+    {
+      "title": "Harland and Wolff",
+      "url": "https://en.wikipedia.org/wiki/Harland_and_Wolff"
+    }
+  ],
+  "annotations": [
+    {
+      "knowledge": [
+        {
+          "content": "RMS Titanic was a British ocean liner that sank on 15 April 1912 after striking an iceberg, killing more than 1,500 people.",
+          "wikipage": "RMS Titanic"
+        }
+      ],
+      "long_answer": "The RMS Titanic was a British ocean liner operated by the White Star Line. It sank on 15 April 1912 in the North Atlantic after striking an iceberg during its maiden voyage. More than 1,500 of the estimated 2,224 people on board died."
+    }
+  ],
+  "docs": [
+    {
+      "id": "doc010_1",
+      "title": "RMS Titanic",
+      "text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line. Built at the Harland and Wolff shipyard in Belfast, designed by chief naval architect Thomas Andrews, and measuring 269 metres (882 ft) in length, she was the largest ocean liner in service at the time of her maiden voyage. On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board. Her sinking is considered one of the deadliest peacetime maritime disasters in history.",
+      "score": 0.94,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board.",
+      "supports_sub_questions": [
+        0,
+        1,
+        2
+      ],
+      "annotation_note": "Documento principale: risponde a tutte le sub-questions su cosa era il Titanic, quando affondò, e quante persone morirono.",
+      "answers_found": [
+        1,
+        1,
+        1
+      ],
+      "extraction": "RMS Titanic was a British ocean liner that sank on 15 April 1912 after striking an iceberg, killing more than 1,500 of the 2,224 people on board.",
+      "summary": "RMS Titanic was a British ocean liner that sank on 15 April 1912 after striking an iceberg, with more than 1,500 deaths."
+    },
+    {
+      "id": "doc010_2",
+      "title": "Sinking of the RMS Titanic",
+      "text": "The sinking of the RMS Titanic occurred on 15 April 1912 in the North Atlantic Ocean, four days into the ship's maiden voyage from Southampton to New York City. The Titanic struck an iceberg at 11:40 pm (ship's time) on 14 April 1912 and sank at 2:20 am on 15 April 1912. The ship broke apart and sank, with 1,517 people dying in one of the deadliest peacetime maritime disasters in history. The Titanic had insufficient lifeboats for all passengers and crew, due in part to outdated maritime safety regulations.",
+      "score": 0.88,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "The Titanic struck an iceberg at 11:40 pm (ship's time) on 14 April 1912 and sank at 2:20 am on 15 April 1912.",
+      "supports_sub_questions": [
+        1,
+        2
+      ],
+      "annotation_note": "Fornisce dettagli precisi sull'ora e le circostanze dell'affondamento.",
+      "answers_found": [
+        0,
+        1,
+        1
+      ],
+      "extraction": "The Titanic struck an iceberg on 14 April 1912 and sank on 15 April 1912, killing 1,517 people.",
+      "summary": "The Titanic struck an iceberg on 14 April 1912 and sank the following day, killing 1,517 people."
+    },
+    {
+      "id": "doc010_3",
+      "title": "White Star Line",
+      "text": "The White Star Line was a prominent British shipping company. It was founded in 1845 and became one of the most important passenger shipping companies in the world. The company operated several famous ocean liners, including the Titanic, the Britannic, and the Olympic. The Titanic's sinking in 1912 was a severe blow to the company's reputation. White Star Line merged with its rival Cunard Line in 1934, forming the Cunard-White Star Line.",
+      "score": 0.75,
+      "is_gold": true,
+      "support_level": "partial",
+      "evidence_sentence": "The company operated several famous ocean liners, including the Titanic, the Britannic, and the Olympic.",
+      "supports_sub_questions": [
+        0
+      ],
+      "annotation_note": "Identifica la White Star Line come operatore del Titanic, supporto parziale per la prima sub-question.",
+      "answers_found": [
+        1,
+        0,
+        0
+      ],
+      "extraction": "The Titanic was operated by the White Star Line.",
+      "summary": "White Star Line was a British shipping company that operated the Titanic."
+    },
+    {
+      "id": "doc010_4",
+      "title": "Harland and Wolff",
+      "text": "Harland and Wolff is a heavy industrial company based in Belfast, Northern Ireland, primarily known as a shipbuilder. It was founded in 1861 by Edward James Harland and Gustav Wilhelm Wolff. The company built many famous ships, including RMS Titanic, RMS Olympic, and RMS Britannic, all for the White Star Line. The Titanic was constructed in Belfast between 1909 and 1912 and was the largest ship ever built at the time of its launch. The shipyard employed over 15,000 workers at its peak.",
+      "score": 0.72,
+      "is_gold": true,
+      "support_level": "partial",
+      "evidence_sentence": "The Titanic was constructed in Belfast between 1909 and 1912 and was the largest ship ever built at the time of its launch.",
+      "supports_sub_questions": [
+        0
+      ],
+      "annotation_note": "Conferma il cantiere navale come costruttore del Titanic e il periodo di costruzione.",
+      "answers_found": [
+        1,
+        0,
+        0
+      ],
+      "extraction": "The Titanic was built by Harland and Wolff in Belfast between 1909 and 1912.",
+      "summary": "Harland and Wolff built the Titanic in Belfast between 1909 and 1912 for the White Star Line."
+    },
+    {
+      "id": "doc010_5",
+      "title": "Titanic (1997 film)",
+      "text": "Titanic is a 1997 American epic romance and disaster film directed, written, co-produced, and co-edited by James Cameron. Incorporating both historical and fictional elements, it is based on accounts of the sinking of the RMS Titanic in 1912. Kate Winslet and Leonardo DiCaprio star as members of different social classes who fall in love aboard the ship. The film was the highest-grossing film of all time from 1998 to 2010, when it was overtaken by Cameron's Avatar.",
+      "score": 0.65,
+      "is_gold": false,
+      "support_level": "none",
+      "evidence_sentence": null,
+      "supports_sub_questions": [],
+      "annotation_note": "Documento distractor: parla del film del 1997, non della nave reale. Non risponde a nessuna delle sub-questions.",
+      "answers_found": [
+        0,
+        0,
+        0
+      ],
+      "extraction": "irrelevant",
+      "summary": "This document is about the 1997 film Titanic and is not relevant to questions about the actual ship."
+    }
+  ],
+  "gold_stats": {
+    "n_docs": 5,
+    "n_gold": 4,
+    "n_distractors": 1,
+    "n_full_support": 2,
+    "n_partial_support": 2,
+    "n_no_support": 1
   },
-  {
-    "nugget_id": "n1b",
-    "text": "The Titanic sank after striking an iceberg.",
-    "keywords": ["iceberg"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "RMS Titanic",
-    "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg."
-  },
-  {
-    "nugget_id": "n1c",
-    "text": "The Titanic sank during its maiden voyage from Southampton to New York City.",
-    "keywords": ["maiden voyage", "Southampton", "New York City"],
-    "golden_passage_idx": 0,
-    "required": false,
-    "golden_passage_title": "RMS Titanic",
-    "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg."
-  },
-  {
-    "nugget_id": "n2a",
-    "text": "More than 1,500 people died when the Titanic sank.",
-    "keywords": ["1,500", "1500", "deaths"],
-    "golden_passage_idx": 0,
-    "required": false,
-    "golden_passage_title": "RMS Titanic",
-    "golden_evidence": "she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board."
-  },
-  {
-    "nugget_id": "n2b",
-    "text": "There were an estimated 2,224 people on board the Titanic.",
-    "keywords": ["2,224"],
-    "golden_passage_idx": 0,
-    "required": false,
-    "golden_passage_title": "RMS Titanic",
-    "golden_evidence": "she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board."
-  }
-]
+  "nuggets": [
+    {
+      "nugget_id": "n0",
+      "text": "RMS Titanic was a British ocean liner owned and operated by the White Star Line.",
+      "keywords": [
+        "White Star Line",
+        "ocean liner"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "RMS Titanic",
+      "golden_evidence": "RMS Titanic was a British ocean liner owned and operated by the White Star Line."
+    },
+    {
+      "nugget_id": "n1a",
+      "text": "The Titanic sank on 15 April 1912.",
+      "keywords": [
+        "15 April 1912",
+        "1912"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "RMS Titanic",
+      "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg"
+    },
+    {
+      "nugget_id": "n1b",
+      "text": "The Titanic sank after striking an iceberg.",
+      "keywords": [
+        "iceberg"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "RMS Titanic",
+      "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg"
+    },
+    {
+      "nugget_id": "n1c",
+      "text": "The Titanic sank during its maiden voyage from Southampton to New York City.",
+      "keywords": [
+        "maiden voyage",
+        "Southampton",
+        "New York City"
+      ],
+      "golden_passage_idx": 0,
+      "required": false,
+      "golden_passage_title": "RMS Titanic",
+      "golden_evidence": "On 15 April 1912, during her maiden voyage from Southampton to New York City, she sank in the North Atlantic Ocean after striking an iceberg"
+    },
+    {
+      "nugget_id": "n2a",
+      "text": "More than 1,500 people died when the Titanic sank.",
+      "keywords": [
+        "1,500",
+        "more than 1,500"
+      ],
+      "golden_passage_idx": 0,
+      "required": false,
+      "golden_passage_title": "RMS Titanic",
+      "golden_evidence": "she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board."
+    },
+    {
+      "nugget_id": "n2b",
+      "text": "There were an estimated 2,224 people on board the Titanic.",
+      "keywords": [
+        "2,224"
+      ],
+      "golden_passage_idx": 0,
+      "required": false,
+      "golden_passage_title": "RMS Titanic",
+      "golden_evidence": "she sank in the North Atlantic Ocean after striking an iceberg, killing more than 1,500 of the 2,224 passengers and crew on board."
+    }
+  ]
   },
   {
     "sample_id": "new_example_011",
@@ -3480,7 +3609,7 @@
       {
         "nugget_id": "n0",
         "text": "Mount Everest is located in the Mahalangur Himal sub-range of the Himalayas, on the border between Nepal and China (Tibet).",
-        "keywords": ["Nepal", "Tibet", "China", "Himalayas", "Mahalangur Himal"],
+        "keywords": ["Nepal", "China", "Himalayas", "Mahalangur Himal"],
         "golden_passage_idx": 0,
         "required": true,
         "golden_passage_title": "Mount Everest",
@@ -3507,586 +3636,741 @@
     ]
   },
   {
-    "sample_id": "new_example_012",
-    "question": "Who wrote the Harry Potter books and how many are there?",
-    "answer": "The Harry Potter book series was written by British author J. K. Rowling. The series consists of seven novels, published between 1997 and 2007. The books follow the story of young wizard Harry Potter and his friends Hermione Granger and Ron Weasley as they attend Hogwarts School of Witchcraft and Wizardry. The series has sold more than 500 million copies worldwide, making it the best-selling book series in history.",
-    "qa_pairs": [
-      {
-        "context": "The Harry Potter series is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley.",
-        "question": "Who wrote the Harry Potter books?",
-        "short_answers": ["J. K. Rowling", "J.K. Rowling", "Rowling"],
-        "wikipage": "Harry Potter"
-      },
-      {
-        "context": "The Harry Potter series consists of seven novels. The first novel, Harry Potter and the Philosopher's Stone, was published on 26 June 1997. The seventh and final novel, Harry Potter and the Deathly Hallows, was published on 21 July 2007.",
-        "question": "How many Harry Potter books are there?",
-        "short_answers": ["seven", "7"],
-        "wikipage": "Harry Potter"
-      },
-      {
-        "context": "With more than 500 million copies sold worldwide, the Harry Potter series is the best-selling book series in history. The books have been translated into 80 languages.",
-        "question": "How many copies of the Harry Potter books have been sold?",
-        "short_answers": ["more than 500 million", "500 million"],
-        "wikipage": "Harry Potter"
-      }
-    ],
-    "wikipages": [
-      {
-        "title": "Harry Potter",
-        "url": "https://en.wikipedia.org/wiki/Harry_Potter"
-      },
-      {
-        "title": "J. K. Rowling",
-        "url": "https://en.wikipedia.org/wiki/J._K._Rowling"
-      },
-      {
-        "title": "Harry Potter and the Philosopher's Stone",
-        "url": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone"
-      },
-      {
-        "title": "Harry Potter and the Deathly Hallows",
-        "url": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Deathly_Hallows"
-      },
-      {
-        "title": "Hogwarts",
-        "url": "https://en.wikipedia.org/wiki/Hogwarts"
-      }
-    ],
-    "annotations": [
-      {
-        "knowledge": [
-          {
-            "content": "The Harry Potter series consists of seven fantasy novels written by J. K. Rowling, published from 1997 to 2007.",
-            "wikipage": "Harry Potter"
-          }
-        ],
-        "long_answer": "The Harry Potter book series was written by British author J. K. Rowling. It consists of seven novels, the first published in 1997 and the last in 2007. The series has sold more than 500 million copies, making it the best-selling book series in history."
-      }
-    ],
-    "docs": [
-      {
-        "id": "doc012_1",
-        "title": "Harry Potter",
-        "text": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's conflict with Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic, and subjugate all wizards and Muggles (non-magical people). Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide.",
-        "score": 0.93,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling.",
-        "supports_sub_questions": [0, 1, 2],
-        "annotation_note": "Documento principale: risponde a tutte le sub-questions su autrice, numero di libri, e copie vendute.",
-        "answers_found": [1, 1, 1],
-        "extraction": "Harry Potter is a series of seven fantasy novels by J. K. Rowling, with more than 500 million copies sold worldwide.",
-        "summary": "Harry Potter is a seven-novel series by J. K. Rowling, with more than 500 million copies sold."
-      },
-      {
-        "id": "doc012_2",
-        "title": "J. K. Rowling",
-        "text": "Joanne Rowling (born 31 July 1965), better known by her pen name J. K. Rowling, is a British author, philanthropist, film producer, television producer and screenwriter. She is best known for writing the Harry Potter fantasy series, which has won multiple awards and sold more than 500 million copies. The Harry Potter books have been adapted into the highest-grossing film franchise in history. Rowling devised the idea for the Harry Potter series in 1990 while sitting on a delayed train from Manchester to London.",
-        "score": 0.85,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "She is best known for writing the Harry Potter fantasy series, which has won multiple awards and sold more than 500 million copies.",
-        "supports_sub_questions": [0, 2],
-        "annotation_note": "Conferma Rowling come autrice della serie Harry Potter e il dato delle 500 milioni di copie.",
-        "answers_found": [1, 0, 1],
-        "extraction": "J. K. Rowling wrote the Harry Potter series, which has sold more than 500 million copies.",
-        "summary": "J. K. Rowling is a British author best known for writing the Harry Potter series, which has sold over 500 million copies."
-      },
-      {
-        "id": "doc012_3",
-        "title": "Harry Potter and the Philosopher's Stone",
-        "text": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997 by Bloomsbury in the United Kingdom and Scholastic in the United States. The novel follows Harry Potter, an eleven-year-old orphan who discovers on his birthday that he is a wizard and has been accepted to Hogwarts School of Witchcraft and Wizardry.",
-        "score": 0.78,
-        "is_gold": true,
-        "support_level": "partial",
-        "evidence_sentence": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997.",
-        "supports_sub_questions": [0, 1],
-        "annotation_note": "Conferma Rowling come autrice e la data di pubblicazione del primo libro nel 1997.",
-        "answers_found": [1, 1, 0],
-        "extraction": "The first Harry Potter novel was written by J. K. Rowling and published on 26 June 1997.",
-        "summary": "Harry Potter and the Philosopher's Stone, published 26 June 1997, is the first of the seven Harry Potter novels by J. K. Rowling."
-      },
-      {
-        "id": "doc012_4",
-        "title": "Harry Potter and the Deathly Hallows",
-        "text": "Harry Potter and the Deathly Hallows is the seventh and final novel in the Harry Potter series by J. K. Rowling. It was published in the United Kingdom by Bloomsbury and in the United States by Scholastic on 21 July 2007. The book sold 11 million copies in the first 24 hours of its release in the United States and the United Kingdom, breaking sales records. In the UK, it broke all records for adult or children's books sold in a single day.",
-        "score": 0.76,
-        "is_gold": true,
-        "support_level": "partial",
-        "evidence_sentence": "Harry Potter and the Deathly Hallows is the seventh and final novel in the Harry Potter series by J. K. Rowling.",
-        "supports_sub_questions": [1],
-        "annotation_note": "Conferma che ci sono sette libri nella serie (è il settimo e finale) e la data di pubblicazione del 2007.",
-        "answers_found": [0, 1, 0],
-        "extraction": "The Deathly Hallows is the seventh and final Harry Potter novel, published in 2007.",
-        "summary": "Harry Potter and the Deathly Hallows is the seventh and final novel in the series, published on 21 July 2007."
-      },
-      {
-        "id": "doc012_5",
-        "title": "Hogwarts",
-        "text": "Hogwarts School of Witchcraft and Wizardry, often shortened to Hogwarts, is a fictional British boarding school of magic in the Harry Potter series by J. K. Rowling. The school is the primary setting for the first six books in the series. Hogwarts is described as a large castle in the Scottish Highlands. It accepts students at the age of eleven and educates them until the age of seventeen. Students are sorted into one of four houses: Gryffindor, Hufflepuff, Ravenclaw, and Slytherin.",
-        "score": 0.66,
-        "is_gold": false,
-        "support_level": "none",
-        "evidence_sentence": null,
-        "supports_sub_questions": [],
-        "annotation_note": "Documento distractor: descrive Hogwarts come ambientazione della serie ma non risponde alle sub-questions su autrice, numero di libri, o copie vendute.",
-        "answers_found": [0, 0, 0],
-        "extraction": "irrelevant",
-        "summary": "Hogwarts is the fictional school in the Harry Potter series, but this document does not address who wrote the books, how many there are, or how many copies were sold."
-      }
-    ],
-    "gold_stats": {
-      "n_docs": 5,
-      "n_gold": 4,
-      "n_distractors": 1,
-      "n_full_support": 2,
-      "n_partial_support": 2,
-      "n_no_support": 1
+  "sample_id": "new_example_012",
+  "question": "Who wrote the Harry Potter books and how many are there?",
+  "answer": "The Harry Potter book series was written by British author J. K. Rowling. The series consists of seven novels, published between 1997 and 2007. The books follow the story of young wizard Harry Potter and his friends Hermione Granger and Ron Weasley as they attend Hogwarts School of Witchcraft and Wizardry. The series has sold more than 500 million copies worldwide, making it the best-selling book series in history.",
+  "qa_pairs": [
+    {
+      "context": "The Harry Potter series is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley.",
+      "question": "Who wrote the Harry Potter books?",
+      "short_answers": [
+        "J. K. Rowling",
+        "J.K. Rowling",
+        "Rowling"
+      ],
+      "wikipage": "Harry Potter"
     },
-    "nuggets": [
-  {
-    "nugget_id": "n0",
-    "text": "The Harry Potter series was written by British author J. K. Rowling.",
-    "keywords": ["J. K. Rowling", "J.K. Rowling", "Rowling"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "Harry Potter",
-    "golden_evidence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling."
-  },
-  {
-    "nugget_id": "n1a",
-    "text": "The Harry Potter series consists of seven novels.",
-    "keywords": ["seven", "7"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "Harry Potter",
-    "golden_evidence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling."
-  },
-  {
-    "nugget_id": "n1b",
-    "text": "The first Harry Potter novel was published in 1997.",
-    "keywords": ["1997"],
-    "golden_passage_idx": 2,
-    "required": false,
-    "golden_passage_title": "Harry Potter and the Philosopher's Stone",
-    "golden_evidence": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997."
-  },
-  {
-    "nugget_id": "n2a",
-    "text": "The Harry Potter series has sold more than 500 million copies worldwide.",
-    "keywords": ["500 million"],
-    "golden_passage_idx": 0,
-    "required": false,
-    "golden_passage_title": "Harry Potter",
-    "golden_evidence": "Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide."
-  },
-  {
-    "nugget_id": "n2b",
-    "text": "The Harry Potter series is the best-selling book series in history.",
-    "keywords": ["best-selling"],
-    "golden_passage_idx": 0,
-    "required": false,
-    "golden_passage_title": "Harry Potter",
-    "golden_evidence": "Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide."
-  }
-]
-  },
-  {
-    "sample_id": "new_example_013",
-    "question": "What caused World War I and when did it start?",
-    "answer": "World War I began on 28 July 1914, when Austria-Hungary declared war on Serbia. The immediate trigger was the assassination of Archduke Franz Ferdinand of Austria-Hungary on 28 June 1914 in Sarajevo by Gavrilo Princip, a Bosnian Serb nationalist. The underlying causes included militarism, imperial rivalries, a complex system of alliances, and nationalist tensions across Europe. The war lasted until 11 November 1918.",
-    "qa_pairs": [
-      {
-        "context": "World War I began on 28 July 1914 when Austria-Hungary declared war on Serbia. Within weeks, the conflict had expanded to include all the major European powers due to the alliance system.",
-        "question": "When did World War I start?",
-        "short_answers": ["28 July 1914", "July 1914", "1914"],
-        "wikipage": "World War I"
-      },
-      {
-        "context": "The assassination of Archduke Franz Ferdinand of Austria-Hungary on 28 June 1914 in Sarajevo is considered the immediate trigger of World War I. He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with the Black Hand.",
-        "question": "What was the immediate cause of World War I?",
-        "short_answers": ["the assassination of Archduke Franz Ferdinand", "Franz Ferdinand's assassination"],
-        "wikipage": "Assassination of Archduke Franz Ferdinand"
-      },
-      {
-        "context": "The underlying causes of World War I are often summarized by the acronym MAIN: Militarism, Alliances, Imperialism, and Nationalism. The alliance system meant that a conflict between two nations could rapidly draw in many others.",
-        "question": "What were the underlying causes of World War I?",
-        "short_answers": ["militarism, alliances, imperialism, and nationalism", "MAIN"],
-        "wikipage": "Causes of World War I"
-      }
-    ],
-    "wikipages": [
-      {
-        "title": "World War I",
-        "url": "https://en.wikipedia.org/wiki/World_War_I"
-      },
-      {
-        "title": "Assassination of Archduke Franz Ferdinand",
-        "url": "https://en.wikipedia.org/wiki/Assassination_of_Archduke_Franz_Ferdinand"
-      },
-      {
-        "title": "Causes of World War I",
-        "url": "https://en.wikipedia.org/wiki/Causes_of_World_War_I"
-      },
-      {
-        "title": "Gavrilo Princip",
-        "url": "https://en.wikipedia.org/wiki/Gavrilo_Princip"
-      },
-      {
-        "title": "Franz Ferdinand, Archduke of Austria",
-        "url": "https://en.wikipedia.org/wiki/Franz_Ferdinand,_Archduke_of_Austria"
-      }
-    ],
-    "annotations": [
-      {
-        "knowledge": [
-          {
-            "content": "World War I started on 28 July 1914 triggered by the assassination of Archduke Franz Ferdinand on 28 June 1914.",
-            "wikipage": "World War I"
-          }
-        ],
-        "long_answer": "World War I began on 28 July 1914, triggered by the assassination of Archduke Franz Ferdinand of Austria-Hungary in Sarajevo on 28 June 1914 by Gavrilo Princip. The underlying causes included militarism, alliances, imperialism, and nationalism."
-      }
-    ],
-    "docs": [
-      {
-        "id": "doc013_1",
-        "title": "World War I",
-        "text": "World War I or the First World War (28 July 1914 – 11 November 1918) was a global conflict that began in Europe. It was fought between two coalitions, the Allies and the Central Powers. Fighting occurred throughout Europe, the Middle East, Africa, the Pacific, and parts of Asia. The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary. More than 70 million military personnel, including 60 million Europeans, were mobilised in one of the largest wars in history.",
-        "score": 0.92,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary.",
-        "supports_sub_questions": [0, 1],
-        "annotation_note": "Documento principale: conferma la data di inizio (28 luglio 1914) e il trigger (assassinio di Franz Ferdinand).",
-        "answers_found": [1, 1, 0],
-        "extraction": "World War I began on 28 July 1914 with Austria-Hungary's declaration of war on Serbia, following the assassination of Archduke Franz Ferdinand.",
-        "summary": "World War I began on 28 July 1914 triggered by the assassination of Franz Ferdinand."
-      },
-      {
-        "id": "doc013_2",
-        "title": "Assassination of Archduke Franz Ferdinand",
-        "text": "The assassination of Archduke Franz Ferdinand of Austria-Hungary occurred on 28 June 1914 in Sarajevo, Bosnia, then part of Austria-Hungary. He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand. The assassination set off a chain of diplomatic crises that escalated into World War I. Austria-Hungary issued an ultimatum to Serbia on 23 July 1914, and after Serbia's response was deemed unsatisfactory, declared war on 28 July 1914.",
-        "score": 0.88,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand.",
-        "supports_sub_questions": [1],
-        "annotation_note": "Conferma l'assassinio di Franz Ferdinand da parte di Gavrilo Princip come causa immediata della guerra.",
-        "answers_found": [0, 1, 0],
-        "extraction": "Archduke Franz Ferdinand was assassinated by Gavrilo Princip on 28 June 1914 in Sarajevo, triggering World War I.",
-        "summary": "The assassination of Archduke Franz Ferdinand by Gavrilo Princip on 28 June 1914 in Sarajevo set off the chain of events that led to World War I."
-      },
-      {
-        "id": "doc013_3",
-        "title": "Causes of World War I",
-        "text": "The causes of World War I include both the immediate trigger and the underlying long-term factors. The immediate cause was the assassination of Archduke Franz Ferdinand of Austria-Hungary on 28 June 1914. The long-term causes are often grouped under the acronym MAIN: Militarism (the arms race between European powers), Alliance systems (which meant that a conflict between two states could rapidly involve many others), Imperialism (competition over colonies), and Nationalism (especially in the Balkans, where ethnic groups sought independence from the Ottoman and Austro-Hungarian empires).",
-        "score": 0.85,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "The long-term causes are often grouped under the acronym MAIN: Militarism, Alliance systems, Imperialism, and Nationalism.",
-        "supports_sub_questions": [2],
-        "annotation_note": "Documento che risponde alla sub-question sulle cause di fondo della guerra con il modello MAIN.",
-        "answers_found": [0, 0, 1],
-        "extraction": "The underlying causes of WWI are summarized as MAIN: Militarism, Alliances, Imperialism, and Nationalism.",
-        "summary": "The underlying causes of WWI include Militarism, Alliance systems, Imperialism, and Nationalism (MAIN)."
-      },
-      {
-        "id": "doc013_4",
-        "title": "Gavrilo Princip",
-        "text": "Gavrilo Princip (25 July 1894 – 28 April 1918) was a Bosnian Serb nationalist and member of the organisation Young Bosnia. On 28 June 1914, he assassinated Archduke Franz Ferdinand of Austria-Hungary and his wife Sophie, Duchess of Hohenberg, in Sarajevo. The assassination is considered the immediate cause of World War I. Princip was arrested at the scene of the assassination. Due to his age at the time of the assassination (19 years, 11 months), he was below the age required for the death penalty under Austro-Hungarian law and was sentenced to 20 years in prison.",
-        "score": 0.81,
-        "is_gold": true,
-        "support_level": "partial",
-        "evidence_sentence": "On 28 June 1914, he assassinated Archduke Franz Ferdinand of Austria-Hungary and his wife Sophie, Duchess of Hohenberg, in Sarajevo.",
-        "supports_sub_questions": [1],
-        "annotation_note": "Conferma Princip come assassino di Franz Ferdinand e fornisce il suo background.",
-        "answers_found": [0, 1, 0],
-        "extraction": "Gavrilo Princip assassinated Archduke Franz Ferdinand on 28 June 1914 in Sarajevo.",
-        "summary": "Gavrilo Princip was the Bosnian Serb nationalist who assassinated Archduke Franz Ferdinand on 28 June 1914."
-      },
-      {
-        "id": "doc013_5",
-        "title": "Franz Ferdinand, Archduke of Austria",
-        "text": "Archduke Franz Ferdinand Carl Ludwig Joseph Maria of Austria (18 December 1863 – 28 June 1914) was the heir presumptive to the Austro-Hungarian throne. His assassination in Sarajevo on 28 June 1914 by Bosnian Serb nationalist Gavrilo Princip initiated the chain of events that led to the outbreak of World War I. Franz Ferdinand was the nephew of Emperor Franz Joseph I of Austria and became heir to the throne after the suicide of Crown Prince Rudolf in 1889.",
-        "score": 0.78,
-        "is_gold": false,
-        "support_level": "none",
-        "evidence_sentence": null,
-        "supports_sub_questions": [],
-        "annotation_note": "Documento distractor: fornisce background su Franz Ferdinand ma ripete informazioni già coperte dal doc 2, senza aggiungere elementi nuovi alle sub-questions.",
-        "answers_found": [0, 0, 0],
-        "extraction": "irrelevant",
-        "summary": "This document provides biographical background on Archduke Franz Ferdinand but does not add new information beyond what is covered in other documents."
-      }
-    ],
-    "gold_stats": {
-      "n_docs": 5,
-      "n_gold": 4,
-      "n_distractors": 1,
-      "n_full_support": 3,
-      "n_partial_support": 1,
-      "n_no_support": 1
+    {
+      "context": "The Harry Potter series consists of seven novels. The first novel, Harry Potter and the Philosopher's Stone, was published on 26 June 1997. The seventh and final novel, Harry Potter and the Deathly Hallows, was published on 21 July 2007.",
+      "question": "How many Harry Potter books are there?",
+      "short_answers": [
+        "seven",
+        "7"
+      ],
+      "wikipage": "Harry Potter"
     },
-    "nuggets": [
-  {
-    "nugget_id": "n0a",
-    "text": "World War I began on 28 July 1914.",
-    "keywords": ["28 July 1914", "1914"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "World War I",
-    "golden_evidence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary."
-  },
-  {
-    "nugget_id": "n0b",
-    "text": "Austria-Hungary declared war on Serbia at the start of World War I.",
-    "keywords": ["Austria-Hungary", "Serbia"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "World War I",
-    "golden_evidence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary."
-  },
-  {
-    "nugget_id": "n1a",
-    "text": "The immediate trigger of World War I was the assassination of Archduke Franz Ferdinand.",
-    "keywords": ["Franz Ferdinand", "Archduke Franz Ferdinand"],
-    "golden_passage_idx": 1,
-    "required": true,
-    "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
-    "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
-  },
-  {
-    "nugget_id": "n1b",
-    "text": "Archduke Franz Ferdinand was assassinated on 28 June 1914.",
-    "keywords": ["28 June 1914"],
-    "golden_passage_idx": 1,
-    "required": true,
-    "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
-    "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
-  },
-  {
-    "nugget_id": "n1c",
-    "text": "Archduke Franz Ferdinand was assassinated in Sarajevo.",
-    "keywords": ["Sarajevo"],
-    "golden_passage_idx": 1,
-    "required": false,
-    "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
-    "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
-  },
-  {
-    "nugget_id": "n1d",
-    "text": "Archduke Franz Ferdinand was assassinated by Gavrilo Princip.",
-    "keywords": ["Gavrilo Princip"],
-    "golden_passage_idx": 1,
-    "required": true,
-    "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
-    "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
-  },
-  {
-    "nugget_id": "n2",
-    "text": "The underlying causes of World War I included militarism, alliance systems, imperialism, and nationalism (MAIN).",
-    "keywords": ["militarism", "alliances", "imperialism", "nationalism", "MAIN"],
-    "golden_passage_idx": 2,
-    "required": false,
-    "golden_passage_title": "Causes of World War I",
-    "golden_evidence": "The long-term causes are often grouped under the acronym MAIN: Militarism, Alliance systems, Imperialism, and Nationalism."
-  }
-]
-  },
-  {
-    "sample_id": "new_example_014",
-    "question": "Who was Leonardo da Vinci and what did he paint?",
-    "answer": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance, widely considered one of the greatest painters of all time. He is best known for two paintings: the Mona Lisa, widely regarded as the world's most famous portrait, and The Last Supper, the most reproduced religious painting. Da Vinci was also a sculptor, architect, musician, engineer, scientist, and inventor, keeping extensive notebooks filled with scientific drawings and observations that were centuries ahead of his time.",
-    "qa_pairs": [
-      {
-        "context": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance who is widely considered to be one of the greatest painters of all time. Born in Anchiano, Tuscany, he is also known for his work as a sculptor, architect, musician, mathematician, engineer, inventor, anatomist, geologist, cartographer, botanist, and writer.",
-        "question": "Who was Leonardo da Vinci?",
-        "short_answers": ["an Italian polymath", "a Renaissance painter and scientist"],
-        "wikipage": "Leonardo da Vinci"
-      },
-      {
-        "context": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci. It has been described as 'the best known, the most visited, the most written about, the most sung about, the most parodied work of art in the world.'",
-        "question": "What is Leonardo da Vinci's most famous painting?",
-        "short_answers": ["the Mona Lisa", "Mona Lisa"],
-        "wikipage": "Mona Lisa"
-      },
-      {
-        "context": "The Last Supper is a mural painting by Leonardo da Vinci, completed between 1495 and 1498. It depicts the scene from the Gospel of John in which Jesus announces that one of his apostles will betray him.",
-        "question": "What other famous painting did Leonardo da Vinci create?",
-        "short_answers": ["The Last Supper"],
-        "wikipage": "The Last Supper (Leonardo)"
-      }
-    ],
-    "wikipages": [
-      {
-        "title": "Leonardo da Vinci",
-        "url": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci"
-      },
-      {
-        "title": "Mona Lisa",
-        "url": "https://en.wikipedia.org/wiki/Mona_Lisa"
-      },
-      {
-        "title": "The Last Supper (Leonardo)",
-        "url": "https://en.wikipedia.org/wiki/The_Last_Supper_(Leonardo)"
-      },
-      {
-        "title": "Vitruvian Man",
-        "url": "https://en.wikipedia.org/wiki/Vitruvian_Man"
-      },
-      {
-        "title": "Michelangelo",
-        "url": "https://en.wikipedia.org/wiki/Michelangelo"
-      }
-    ],
-    "annotations": [
-      {
-        "knowledge": [
-          {
-            "content": "Leonardo da Vinci was an Italian Renaissance polymath who painted the Mona Lisa and The Last Supper.",
-            "wikipage": "Leonardo da Vinci"
-          }
-        ],
-        "long_answer": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance and one of the greatest painters of all time. His most famous paintings are the Mona Lisa and The Last Supper. He was also a scientist, inventor, and engineer whose notebooks were centuries ahead of their time."
-      }
-    ],
-    "docs": [
-      {
-        "id": "doc014_1",
-        "title": "Leonardo da Vinci",
-        "text": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time. Born in Anchiano, in present-day Italy, he is also known for his work as a sculptor, architect, musician, mathematician, engineer, inventor, anatomist, and botanist. Among his famous works are the Mona Lisa, the most famous portrait in the world, The Last Supper, the most reproduced religious painting of all time, and the Vitruvian Man, a study of the proportions of the human body.",
-        "score": 0.93,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "Among his famous works are the Mona Lisa, the most famous portrait in the world, The Last Supper, the most reproduced religious painting of all time.",
-        "supports_sub_questions": [0, 1, 2],
-        "annotation_note": "Documento principale: risponde a tutte le sub-questions su chi era Leonardo, la Mona Lisa, e L'Ultima Cena.",
-        "answers_found": [1, 1, 1],
-        "extraction": "Leonardo da Vinci was an Italian Renaissance polymath who painted the Mona Lisa and The Last Supper.",
-        "summary": "Leonardo da Vinci was an Italian Renaissance polymath known for the Mona Lisa and The Last Supper."
-      },
-      {
-        "id": "doc014_2",
-        "title": "Mona Lisa",
-        "text": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci. It is considered an archetypal masterpiece of the Italian Renaissance, and has been described as 'the best known, the most visited, the most written about, the most sung about, the most parodied work of art in the world.' The painting is believed to have been executed between 1503 and 1519. It is housed in the Louvre Museum in Paris, France, where it is the most visited work of art.",
-        "score": 0.87,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci.",
-        "supports_sub_questions": [1],
-        "annotation_note": "Conferma la Mona Lisa come opera di Leonardo e il suo status di opera d'arte più famosa al mondo.",
-        "answers_found": [0, 1, 0],
-        "extraction": "The Mona Lisa is a portrait painting by Leonardo da Vinci, considered the most visited work of art in the world.",
-        "summary": "The Mona Lisa, painted by Leonardo da Vinci between 1503 and 1519, is the most visited painting in the world, housed in the Louvre."
-      },
-      {
-        "id": "doc014_3",
-        "title": "The Last Supper (Leonardo)",
-        "text": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory (dining hall) of the Convent of Santa Maria delle Grazie in Milan, Italy. The work, which measures 4.6 metres (15 ft) × 8.8 metres (29 ft), was commissioned by Ludovico Sforza, Duke of Milan, and represents the scene of the Last Supper of Jesus with his apostles, as it is told in the Gospel of John 13:21. It was painted between approximately 1495 and 1498.",
-        "score": 0.83,
-        "is_gold": true,
-        "support_level": "full",
-        "evidence_sentence": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory of the Convent of Santa Maria delle Grazie in Milan, Italy.",
-        "supports_sub_questions": [2],
-        "annotation_note": "Conferma L'Ultima Cena come opera di Leonardo, dipinta tra il 1495 e il 1498.",
-        "answers_found": [0, 0, 1],
-        "extraction": "The Last Supper is a mural painting by Leonardo da Vinci, painted between approximately 1495 and 1498.",
-        "summary": "The Last Supper is a mural by Leonardo da Vinci, painted 1495–1498, housed in Milan."
-      },
-      {
-        "id": "doc014_4",
-        "title": "Vitruvian Man",
-        "text": "The Vitruvian Man is a drawing by the Italian Renaissance artist and scientist Leonardo da Vinci, dated to around 1490. It depicts a male figure in two superimposed positions with his arms and legs apart and inscribed in both a circle and a square. The drawing, which is in pen and ink on paper, depicts a study of the proportions of the human body as described by the ancient Roman architect Vitruvius. It is housed in the Gallerie dell'Accademia in Venice.",
-        "score": 0.74,
-        "is_gold": false,
-        "support_level": "none",
-        "evidence_sentence": null,
-        "supports_sub_questions": [],
-        "annotation_note": "Documento distractor: parla del Vitruvian Man, un disegno di Leonardo, ma non risponde alle sub-questions sui dipinti principali o su chi era.",
-        "answers_found": [0, 0, 0],
-        "extraction": "irrelevant",
-        "summary": "The Vitruvian Man is a famous drawing by Leonardo but is not directly relevant to questions about his identity or most famous paintings."
-      },
-      {
-        "id": "doc014_5",
-        "title": "Michelangelo",
-        "text": "Michelangelo di Lodovico Buonarroti Simoni (6 March 1475 – 18 February 1564), known as Michelangelo, was an Italian Renaissance sculptor, painter, architect and poet. Along with Leonardo da Vinci and Raphael, he is considered to be one of the three titans of the High Renaissance. His most famous works include the Pietà, David, the ceiling of the Sistine Chapel, and The Last Judgment. Michelangelo was born 23 years after Leonardo da Vinci and outlived him by 45 years.",
-        "score": 0.67,
-        "is_gold": false,
-        "support_level": "none",
-        "evidence_sentence": null,
-        "supports_sub_questions": [],
-        "annotation_note": "Documento distractor: parla di Michelangelo, contemporaneo di Leonardo, ma non risponde alle sub-questions su Leonardo da Vinci.",
-        "answers_found": [0, 0, 0],
-        "extraction": "irrelevant",
-        "summary": "This document is about Michelangelo, not Leonardo da Vinci, and does not answer any sub-questions."
-      }
-    ],
-    "gold_stats": {
-      "n_docs": 5,
-      "n_gold": 3,
-      "n_distractors": 2,
-      "n_full_support": 3,
-      "n_partial_support": 0,
-      "n_no_support": 2
+    {
+      "context": "With more than 500 million copies sold worldwide, the Harry Potter series is the best-selling book series in history. The books have been translated into 80 languages.",
+      "question": "How many copies of the Harry Potter books have been sold?",
+      "short_answers": [
+        "more than 500 million",
+        "500 million"
+      ],
+      "wikipage": "Harry Potter"
+    }
+  ],
+  "wikipages": [
+    {
+      "title": "Harry Potter",
+      "url": "https://en.wikipedia.org/wiki/Harry_Potter"
     },
-    "nuggets": [
-  {
-    "nugget_id": "n0a",
-    "text": "Leonardo da Vinci was an Italian polymath of the High Renaissance.",
-    "keywords": ["Leonardo da Vinci", "Da Vinci", "polymath"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "Leonardo da Vinci",
-    "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+    {
+      "title": "J. K. Rowling",
+      "url": "https://en.wikipedia.org/wiki/J._K._Rowling"
+    },
+    {
+      "title": "Harry Potter and the Philosopher's Stone",
+      "url": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone"
+    },
+    {
+      "title": "Harry Potter and the Deathly Hallows",
+      "url": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Deathly_Hallows"
+    },
+    {
+      "title": "Hogwarts",
+      "url": "https://en.wikipedia.org/wiki/Hogwarts"
+    }
+  ],
+  "annotations": [
+    {
+      "knowledge": [
+        {
+          "content": "The Harry Potter series consists of seven fantasy novels written by J. K. Rowling, published from 1997 to 2007.",
+          "wikipage": "Harry Potter"
+        }
+      ],
+      "long_answer": "The Harry Potter book series was written by British author J. K. Rowling. It consists of seven novels, the first published in 1997 and the last in 2007. The series has sold more than 500 million copies, making it the best-selling book series in history."
+    }
+  ],
+  "docs": [
+    {
+      "id": "doc012_1",
+      "title": "Harry Potter",
+      "text": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's conflict with Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic, and subjugate all wizards and Muggles (non-magical people). Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide.",
+      "score": 0.93,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling.",
+      "supports_sub_questions": [
+        0,
+        1,
+        2
+      ],
+      "annotation_note": "Documento principale: risponde a tutte le sub-questions su autrice, numero di libri, e copie vendute.",
+      "answers_found": [
+        1,
+        1,
+        1
+      ],
+      "extraction": "Harry Potter is a series of seven fantasy novels by J. K. Rowling, with more than 500 million copies sold worldwide.",
+      "summary": "Harry Potter is a seven-novel series by J. K. Rowling, with more than 500 million copies sold."
+    },
+    {
+      "id": "doc012_2",
+      "title": "J. K. Rowling",
+      "text": "Joanne Rowling (born 31 July 1965), better known by her pen name J. K. Rowling, is a British author, philanthropist, film producer, television producer and screenwriter. She is best known for writing the Harry Potter fantasy series, which has won multiple awards and sold more than 500 million copies. The Harry Potter books have been adapted into the highest-grossing film franchise in history. Rowling devised the idea for the Harry Potter series in 1990 while sitting on a delayed train from Manchester to London.",
+      "score": 0.85,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "She is best known for writing the Harry Potter fantasy series, which has won multiple awards and sold more than 500 million copies.",
+      "supports_sub_questions": [
+        0,
+        2
+      ],
+      "annotation_note": "Conferma Rowling come autrice della serie Harry Potter e il dato delle 500 milioni di copie.",
+      "answers_found": [
+        1,
+        0,
+        1
+      ],
+      "extraction": "J. K. Rowling wrote the Harry Potter series, which has sold more than 500 million copies.",
+      "summary": "J. K. Rowling is a British author best known for writing the Harry Potter series, which has sold over 500 million copies."
+    },
+    {
+      "id": "doc012_3",
+      "title": "Harry Potter and the Philosopher's Stone",
+      "text": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997 by Bloomsbury in the United Kingdom and Scholastic in the United States. The novel follows Harry Potter, an eleven-year-old orphan who discovers on his birthday that he is a wizard and has been accepted to Hogwarts School of Witchcraft and Wizardry.",
+      "score": 0.78,
+      "is_gold": true,
+      "support_level": "partial",
+      "evidence_sentence": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997.",
+      "supports_sub_questions": [
+        0,
+        1
+      ],
+      "annotation_note": "Conferma Rowling come autrice e la data di pubblicazione del primo libro nel 1997.",
+      "answers_found": [
+        1,
+        1,
+        0
+      ],
+      "extraction": "The first Harry Potter novel was written by J. K. Rowling and published on 26 June 1997.",
+      "summary": "Harry Potter and the Philosopher's Stone, published 26 June 1997, is the first of the seven Harry Potter novels by J. K. Rowling."
+    },
+    {
+      "id": "doc012_4",
+      "title": "Harry Potter and the Deathly Hallows",
+      "text": "Harry Potter and the Deathly Hallows is the seventh and final novel in the Harry Potter series by J. K. Rowling. It was published in the United Kingdom by Bloomsbury and in the United States by Scholastic on 21 July 2007. The book sold 11 million copies in the first 24 hours of its release in the United States and the United Kingdom, breaking sales records. In the UK, it broke all records for adult or children's books sold in a single day.",
+      "score": 0.76,
+      "is_gold": true,
+      "support_level": "partial",
+      "evidence_sentence": "Harry Potter and the Deathly Hallows is the seventh and final novel in the Harry Potter series by J. K. Rowling.",
+      "supports_sub_questions": [
+        1
+      ],
+      "annotation_note": "Conferma che ci sono sette libri nella serie (è il settimo e finale) e la data di pubblicazione del 2007.",
+      "answers_found": [
+        0,
+        1,
+        0
+      ],
+      "extraction": "The Deathly Hallows is the seventh and final Harry Potter novel, published in 2007.",
+      "summary": "Harry Potter and the Deathly Hallows is the seventh and final novel in the series, published on 21 July 2007."
+    },
+    {
+      "id": "doc012_5",
+      "title": "Hogwarts",
+      "text": "Hogwarts School of Witchcraft and Wizardry, often shortened to Hogwarts, is a fictional British boarding school of magic in the Harry Potter series by J. K. Rowling. The school is the primary setting for the first six books in the series. Hogwarts is described as a large castle in the Scottish Highlands. It accepts students at the age of eleven and educates them until the age of seventeen. Students are sorted into one of four houses: Gryffindor, Hufflepuff, Ravenclaw, and Slytherin.",
+      "score": 0.66,
+      "is_gold": false,
+      "support_level": "none",
+      "evidence_sentence": null,
+      "supports_sub_questions": [],
+      "annotation_note": "Documento distractor: descrive Hogwarts come ambientazione della serie ma non risponde alle sub-questions su autrice, numero di libri, o copie vendute.",
+      "answers_found": [
+        0,
+        0,
+        0
+      ],
+      "extraction": "irrelevant",
+      "summary": "Hogwarts is the fictional school in the Harry Potter series, but this document does not address who wrote the books, how many there are, or how many copies were sold."
+    }
+  ],
+  "gold_stats": {
+    "n_docs": 5,
+    "n_gold": 4,
+    "n_distractors": 1,
+    "n_full_support": 2,
+    "n_partial_support": 2,
+    "n_no_support": 1
+  },
+  "nuggets": [
+    {
+      "nugget_id": "n0",
+      "text": "The Harry Potter series was written by British author J. K. Rowling.",
+      "keywords": [
+        "J. K. Rowling",
+        "J.K. Rowling",
+        "Rowling"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "Harry Potter",
+      "golden_evidence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling."
+    },
+    {
+      "nugget_id": "n1a",
+      "text": "The Harry Potter series consists of seven novels.",
+      "keywords": [
+        "seven",
+        "7"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "Harry Potter",
+      "golden_evidence": "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling."
+    },
+    {
+      "nugget_id": "n1b",
+      "text": "The first Harry Potter novel was published in 1997.",
+      "keywords": [
+        "1997"
+      ],
+      "golden_passage_idx": 2,
+      "required": false,
+      "golden_passage_title": "Harry Potter and the Philosopher's Stone",
+      "golden_evidence": "Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series by J. K. Rowling. It was published on 26 June 1997 by Bloomsbury in the United Kingdom and Scholastic in the United States."
+    },
+    {
+      "nugget_id": "n2a",
+      "text": "The Harry Potter series has sold more than 500 million copies worldwide.",
+      "keywords": [
+        "500 million"
+      ],
+      "golden_passage_idx": 0,
+      "required": false,
+      "golden_passage_title": "Harry Potter",
+      "golden_evidence": "Since the release of the first novel, Harry Potter and the Philosopher's Stone, on 26 June 1997, the books have found immense popularity, with more than 500 million copies sold worldwide."
+    }
+  ]
   },
   {
-    "nugget_id": "n0b",
-    "text": "Leonardo da Vinci is widely considered one of the greatest painters of all time.",
-    "keywords": ["greatest painters"],
-    "golden_passage_idx": 0,
-    "required": true,
-    "golden_passage_title": "Leonardo da Vinci",
-    "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+  "sample_id": "new_example_013",
+  "question": "What caused World War I and when did it start?",
+  "answer": "World War I began on 28 July 1914, when Austria-Hungary declared war on Serbia. The immediate trigger was the assassination of Archduke Franz Ferdinand of Austria-Hungary on 28 June 1914 in Sarajevo by Gavrilo Princip, a Bosnian Serb nationalist. The underlying causes included militarism, imperial rivalries, a complex system of alliances, and nationalist tensions across Europe. The war lasted until 11 November 1918.",
+  "qa_pairs": [
+    {
+      "context": "World War I began on 28 July 1914 when Austria-Hungary declared war on Serbia. Within weeks, the conflict had expanded to include all the major European powers due to the alliance system.",
+      "question": "When did World War I start?",
+      "short_answers": [
+        "28 July 1914",
+        "July 1914",
+        "1914"
+      ],
+      "wikipage": "World War I"
+    },
+    {
+      "context": "The assassination of Archduke Franz Ferdinand of Austria-Hungary on 28 June 1914 in Sarajevo is considered the immediate trigger of World War I. He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with the Black Hand.",
+      "question": "What was the immediate cause of World War I?",
+      "short_answers": [
+        "the assassination of Archduke Franz Ferdinand",
+        "Franz Ferdinand's assassination"
+      ],
+      "wikipage": "Assassination of Archduke Franz Ferdinand"
+    },
+    {
+      "context": "The underlying causes of World War I are often summarized by the acronym MAIN: Militarism, Alliances, Imperialism, and Nationalism. The alliance system meant that a conflict between two nations could rapidly draw in many others.",
+      "question": "What were the underlying causes of World War I?",
+      "short_answers": [
+        "militarism, alliances, imperialism, and nationalism",
+        "MAIN"
+      ],
+      "wikipage": "Causes of World War I"
+    }
+  ],
+  "wikipages": [
+    {
+      "title": "World War I",
+      "url": "https://en.wikipedia.org/wiki/World_War_I"
+    },
+    {
+      "title": "Assassination of Archduke Franz Ferdinand",
+      "url": "https://en.wikipedia.org/wiki/Assassination_of_Archduke_Franz_Ferdinand"
+    },
+    {
+      "title": "Causes of World War I",
+      "url": "https://en.wikipedia.org/wiki/Causes_of_World_War_I"
+    },
+    {
+      "title": "Gavrilo Princip",
+      "url": "https://en.wikipedia.org/wiki/Gavrilo_Princip"
+    },
+    {
+      "title": "Franz Ferdinand, Archduke of Austria",
+      "url": "https://en.wikipedia.org/wiki/Franz_Ferdinand,_Archduke_of_Austria"
+    }
+  ],
+  "annotations": [
+    {
+      "knowledge": [
+        {
+          "content": "World War I started on 28 July 1914 triggered by the assassination of Archduke Franz Ferdinand on 28 June 1914.",
+          "wikipage": "World War I"
+        }
+      ],
+      "long_answer": "World War I began on 28 July 1914, triggered by the assassination of Archduke Franz Ferdinand of Austria-Hungary in Sarajevo on 28 June 1914 by Gavrilo Princip. The underlying causes included militarism, alliances, imperialism, and nationalism."
+    }
+  ],
+  "docs": [
+    {
+      "id": "doc013_1",
+      "title": "World War I",
+      "text": "World War I or the First World War (28 July 1914 – 11 November 1918) was a global conflict that began in Europe. It was fought between two coalitions, the Allies and the Central Powers. Fighting occurred throughout Europe, the Middle East, Africa, the Pacific, and parts of Asia. The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary. More than 70 million military personnel, including 60 million Europeans, were mobilised in one of the largest wars in history.",
+      "score": 0.92,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary.",
+      "supports_sub_questions": [
+        0,
+        1
+      ],
+      "annotation_note": "Documento principale: conferma la data di inizio (28 luglio 1914) e il trigger (assassinio di Franz Ferdinand).",
+      "answers_found": [
+        1,
+        1,
+        0
+      ],
+      "extraction": "World War I began on 28 July 1914 with Austria-Hungary's declaration of war on Serbia, following the assassination of Archduke Franz Ferdinand.",
+      "summary": "World War I began on 28 July 1914 triggered by the assassination of Franz Ferdinand."
+    },
+    {
+      "id": "doc013_2",
+      "title": "Assassination of Archduke Franz Ferdinand",
+      "text": "The assassination of Archduke Franz Ferdinand of Austria-Hungary occurred on 28 June 1914 in Sarajevo, Bosnia, then part of Austria-Hungary. He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand. The assassination set off a chain of diplomatic crises that escalated into World War I. Austria-Hungary issued an ultimatum to Serbia on 23 July 1914, and after Serbia's response was deemed unsatisfactory, declared war on 28 July 1914.",
+      "score": 0.88,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand.",
+      "supports_sub_questions": [
+        1
+      ],
+      "annotation_note": "Conferma l'assassinio di Franz Ferdinand da parte di Gavrilo Princip come causa immediata della guerra.",
+      "answers_found": [
+        0,
+        1,
+        0
+      ],
+      "extraction": "Archduke Franz Ferdinand was assassinated by Gavrilo Princip on 28 June 1914 in Sarajevo, triggering World War I.",
+      "summary": "The assassination of Archduke Franz Ferdinand by Gavrilo Princip on 28 June 1914 in Sarajevo set off the chain of events that led to World War I."
+    },
+    {
+      "id": "doc013_3",
+      "title": "Causes of World War I",
+      "text": "The causes of World War I include both the immediate trigger and the underlying long-term factors. The immediate cause was the assassination of Archduke Franz Ferdinand of Austria-Hungary on 28 June 1914. The long-term causes are often grouped under the acronym MAIN: Militarism (the arms race between European powers), Alliance systems (which meant that a conflict between two states could rapidly involve many others), Imperialism (competition over colonies), and Nationalism (especially in the Balkans, where ethnic groups sought independence from the Ottoman and Austro-Hungarian empires).",
+      "score": 0.85,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "The long-term causes are often grouped under the acronym MAIN: Militarism, Alliance systems, Imperialism, and Nationalism.",
+      "supports_sub_questions": [
+        2
+      ],
+      "annotation_note": "Documento che risponde alla sub-question sulle cause di fondo della guerra con il modello MAIN.",
+      "answers_found": [
+        0,
+        0,
+        1
+      ],
+      "extraction": "The underlying causes of WWI are summarized as MAIN: Militarism, Alliances, Imperialism, and Nationalism.",
+      "summary": "The underlying causes of WWI include Militarism, Alliance systems, Imperialism, and Nationalism (MAIN)."
+    },
+    {
+      "id": "doc013_4",
+      "title": "Gavrilo Princip",
+      "text": "Gavrilo Princip (25 July 1894 – 28 April 1918) was a Bosnian Serb nationalist and member of the organisation Young Bosnia. On 28 June 1914, he assassinated Archduke Franz Ferdinand of Austria-Hungary and his wife Sophie, Duchess of Hohenberg, in Sarajevo. The assassination is considered the immediate cause of World War I. Princip was arrested at the scene of the assassination. Due to his age at the time of the assassination (19 years, 11 months), he was below the age required for the death penalty under Austro-Hungarian law and was sentenced to 20 years in prison.",
+      "score": 0.81,
+      "is_gold": true,
+      "support_level": "partial",
+      "evidence_sentence": "On 28 June 1914, he assassinated Archduke Franz Ferdinand of Austria-Hungary and his wife Sophie, Duchess of Hohenberg, in Sarajevo.",
+      "supports_sub_questions": [
+        1
+      ],
+      "annotation_note": "Conferma Princip come assassino di Franz Ferdinand e fornisce il suo background.",
+      "answers_found": [
+        0,
+        1,
+        0
+      ],
+      "extraction": "Gavrilo Princip assassinated Archduke Franz Ferdinand on 28 June 1914 in Sarajevo.",
+      "summary": "Gavrilo Princip was the Bosnian Serb nationalist who assassinated Archduke Franz Ferdinand on 28 June 1914."
+    },
+    {
+      "id": "doc013_5",
+      "title": "Franz Ferdinand, Archduke of Austria",
+      "text": "Archduke Franz Ferdinand Carl Ludwig Joseph Maria of Austria (18 December 1863 – 28 June 1914) was the heir presumptive to the Austro-Hungarian throne. His assassination in Sarajevo on 28 June 1914 by Bosnian Serb nationalist Gavrilo Princip initiated the chain of events that led to the outbreak of World War I. Franz Ferdinand was the nephew of Emperor Franz Joseph I of Austria and became heir to the throne after the suicide of Crown Prince Rudolf in 1889.",
+      "score": 0.78,
+      "is_gold": false,
+      "support_level": "none",
+      "evidence_sentence": null,
+      "supports_sub_questions": [],
+      "annotation_note": "Documento distractor: fornisce background su Franz Ferdinand ma ripete informazioni gia coperte dal doc 2, senza aggiungere elementi nuovi alle sub-questions.",
+      "answers_found": [
+        0,
+        0,
+        0
+      ],
+      "extraction": "irrelevant",
+      "summary": "This document provides biographical background on Archduke Franz Ferdinand but does not add new information beyond what is covered in other documents."
+    }
+  ],
+  "gold_stats": {
+    "n_docs": 5,
+    "n_gold": 4,
+    "n_distractors": 1,
+    "n_full_support": 3,
+    "n_partial_support": 1,
+    "n_no_support": 1
+  },
+  "nuggets": [
+    {
+      "nugget_id": "n0a",
+      "text": "World War I began on 28 July 1914.",
+      "keywords": [
+        "28 July 1914",
+        "1914"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "World War I",
+      "golden_evidence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary."
+    },
+    {
+      "nugget_id": "n0b",
+      "text": "Austria-Hungary declared war on Serbia at the start of World War I.",
+      "keywords": [
+        "Austria-Hungary",
+        "Serbia"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "World War I",
+      "golden_evidence": "The first major act of the war was Austria-Hungary's declaration of war against Serbia on 28 July 1914, following the assassination of Archduke Franz Ferdinand of Austria-Hungary."
+    },
+    {
+      "nugget_id": "n1a",
+      "text": "The immediate trigger of World War I was the assassination of Archduke Franz Ferdinand.",
+      "keywords": [
+        "Franz Ferdinand",
+        "Archduke Franz Ferdinand"
+      ],
+      "golden_passage_idx": 1,
+      "required": true,
+      "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
+      "golden_evidence": "The assassination set off a chain of diplomatic crises that escalated into World War I."
+    },
+    {
+      "nugget_id": "n1b",
+      "text": "Archduke Franz Ferdinand was assassinated on 28 June 1914.",
+      "keywords": [
+        "28 June 1914"
+      ],
+      "golden_passage_idx": 1,
+      "required": true,
+      "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
+      "golden_evidence": "The assassination of Archduke Franz Ferdinand of Austria-Hungary occurred on 28 June 1914 in Sarajevo, Bosnia, then part of Austria-Hungary."
+    },
+    {
+      "nugget_id": "n1c",
+      "text": "Archduke Franz Ferdinand was assassinated in Sarajevo.",
+      "keywords": [
+        "Sarajevo"
+      ],
+      "golden_passage_idx": 1,
+      "required": false,
+      "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
+      "golden_evidence": "The assassination of Archduke Franz Ferdinand of Austria-Hungary occurred on 28 June 1914 in Sarajevo, Bosnia, then part of Austria-Hungary."
+    },
+    {
+      "nugget_id": "n1d",
+      "text": "Archduke Franz Ferdinand was assassinated by Gavrilo Princip.",
+      "keywords": [
+        "Gavrilo Princip"
+      ],
+      "golden_passage_idx": 1,
+      "required": true,
+      "golden_passage_title": "Assassination of Archduke Franz Ferdinand",
+      "golden_evidence": "He was shot by Gavrilo Princip, a Bosnian Serb nationalist affiliated with a secret military society known as the Black Hand."
+    },
+    {
+      "nugget_id": "n2",
+      "text": "The underlying causes of World War I included militarism, alliance systems, imperialism, and nationalism (MAIN).",
+      "keywords": [
+        "militarism",
+        "alliances",
+        "imperialism",
+        "nationalism",
+        "MAIN"
+      ],
+      "golden_passage_idx": 2,
+      "required": false,
+      "golden_passage_title": "Causes of World War I",
+      "golden_evidence": "The long-term causes are often grouped under the acronym MAIN: Militarism (the arms race between European powers), Alliance systems (which meant that a conflict between two states could rapidly involve many others), Imperialism (competition over colonies), and Nationalism (especially in the Balkans, where ethnic groups sought independence from the Ottoman and Austro-Hungarian empires)."
+    }
+  ]
   },
   {
-    "nugget_id": "n0c",
-    "text": "Leonardo da Vinci was born on 15 April 1452.",
-    "keywords": ["1452"],
-    "golden_passage_idx": 0,
-    "required": false,
-    "golden_passage_title": "Leonardo da Vinci",
-    "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+  "sample_id": "new_example_014",
+  "question": "Who was Leonardo da Vinci and what did he paint?",
+  "answer": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance, widely considered one of the greatest painters of all time. He is best known for two paintings: the Mona Lisa, widely regarded as the world's most famous portrait, and The Last Supper, the most reproduced religious painting. Da Vinci was also a sculptor, architect, musician, engineer, scientist, and inventor, keeping extensive notebooks filled with scientific drawings and observations that were centuries ahead of his time.",
+  "qa_pairs": [
+    {
+      "context": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance who is widely considered to be one of the greatest painters of all time. Born in Anchiano, Tuscany, he is also known for his work as a sculptor, architect, musician, mathematician, engineer, inventor, anatomist, geologist, cartographer, botanist, and writer.",
+      "question": "Who was Leonardo da Vinci?",
+      "short_answers": [
+        "an Italian polymath",
+        "a Renaissance painter and scientist"
+      ],
+      "wikipage": "Leonardo da Vinci"
+    },
+    {
+      "context": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci. It has been described as 'the best known, the most visited, the most written about, the most sung about, the most parodied work of art in the world.'",
+      "question": "What is Leonardo da Vinci's most famous painting?",
+      "short_answers": [
+        "the Mona Lisa",
+        "Mona Lisa"
+      ],
+      "wikipage": "Mona Lisa"
+    },
+    {
+      "context": "The Last Supper is a mural painting by Leonardo da Vinci, completed between 1495 and 1498. It depicts the scene from the Gospel of John in which Jesus announces that one of his apostles will betray him.",
+      "question": "What other famous painting did Leonardo da Vinci create?",
+      "short_answers": [
+        "The Last Supper"
+      ],
+      "wikipage": "The Last Supper (Leonardo)"
+    }
+  ],
+  "wikipages": [
+    {
+      "title": "Leonardo da Vinci",
+      "url": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci"
+    },
+    {
+      "title": "Mona Lisa",
+      "url": "https://en.wikipedia.org/wiki/Mona_Lisa"
+    },
+    {
+      "title": "The Last Supper (Leonardo)",
+      "url": "https://en.wikipedia.org/wiki/The_Last_Supper_(Leonardo)"
+    },
+    {
+      "title": "Vitruvian Man",
+      "url": "https://en.wikipedia.org/wiki/Vitruvian_Man"
+    },
+    {
+      "title": "Michelangelo",
+      "url": "https://en.wikipedia.org/wiki/Michelangelo"
+    }
+  ],
+  "annotations": [
+    {
+      "knowledge": [
+        {
+          "content": "Leonardo da Vinci was an Italian Renaissance polymath who painted the Mona Lisa and The Last Supper.",
+          "wikipage": "Leonardo da Vinci"
+        }
+      ],
+      "long_answer": "Leonardo da Vinci (1452–1519) was an Italian polymath of the High Renaissance and one of the greatest painters of all time. His most famous paintings are the Mona Lisa and The Last Supper. He was also a scientist, inventor, and engineer whose notebooks were centuries ahead of their time."
+    }
+  ],
+  "docs": [
+    {
+      "id": "doc014_1",
+      "title": "Leonardo da Vinci",
+      "text": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time. Born in Anchiano, in present-day Italy, he is also known for his work as a sculptor, architect, musician, mathematician, engineer, inventor, anatomist, and botanist. Among his famous works are the Mona Lisa, the most famous portrait in the world, The Last Supper, the most reproduced religious painting of all time, and the Vitruvian Man, a study of the proportions of the human body.",
+      "score": 0.93,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "Among his famous works are the Mona Lisa, the most famous portrait in the world, The Last Supper, the most reproduced religious painting of all time.",
+      "supports_sub_questions": [
+        0,
+        1,
+        2
+      ],
+      "annotation_note": "Documento principale: risponde a tutte le sub-questions su chi era Leonardo, la Mona Lisa, e L'Ultima Cena.",
+      "answers_found": [
+        1,
+        1,
+        1
+      ],
+      "extraction": "Leonardo da Vinci was an Italian Renaissance polymath who painted the Mona Lisa and The Last Supper.",
+      "summary": "Leonardo da Vinci was an Italian Renaissance polymath known for the Mona Lisa and The Last Supper."
+    },
+    {
+      "id": "doc014_2",
+      "title": "Mona Lisa",
+      "text": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci. It is considered an archetypal masterpiece of the Italian Renaissance, and has been described as 'the best known, the most visited, the most written about, the most sung about, the most parodied work of art in the world.' The painting is believed to have been executed between 1503 and 1519. It is housed in the Louvre Museum in Paris, France, where it is the most visited work of art.",
+      "score": 0.87,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci.",
+      "supports_sub_questions": [
+        1
+      ],
+      "annotation_note": "Conferma la Mona Lisa come opera di Leonardo e il suo status di opera d'arte piu famosa al mondo.",
+      "answers_found": [
+        0,
+        1,
+        0
+      ],
+      "extraction": "The Mona Lisa is a portrait painting by Leonardo da Vinci, considered the most visited work of art in the world.",
+      "summary": "The Mona Lisa, painted by Leonardo da Vinci between 1503 and 1519, is the most visited painting in the world, housed in the Louvre."
+    },
+    {
+      "id": "doc014_3",
+      "title": "The Last Supper (Leonardo)",
+      "text": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory (dining hall) of the Convent of Santa Maria delle Grazie in Milan, Italy. The work, which measures 4.6 metres (15 ft) × 8.8 metres (29 ft), was commissioned by Ludovico Sforza, Duke of Milan, and represents the scene of the Last Supper of Jesus with his apostles, as it is told in the Gospel of John 13:21. It was painted between approximately 1495 and 1498.",
+      "score": 0.83,
+      "is_gold": true,
+      "support_level": "full",
+      "evidence_sentence": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory of the Convent of Santa Maria delle Grazie in Milan, Italy.",
+      "supports_sub_questions": [
+        2
+      ],
+      "annotation_note": "Conferma L'Ultima Cena come opera di Leonardo, dipinta tra il 1495 e il 1498.",
+      "answers_found": [
+        0,
+        0,
+        1
+      ],
+      "extraction": "The Last Supper is a mural painting by Leonardo da Vinci, painted between approximately 1495 and 1498.",
+      "summary": "The Last Supper is a mural by Leonardo da Vinci, painted 1495–1498, housed in Milan."
+    },
+    {
+      "id": "doc014_4",
+      "title": "Vitruvian Man",
+      "text": "The Vitruvian Man is a drawing by the Italian Renaissance artist and scientist Leonardo da Vinci, dated to around 1490. It depicts a male figure in two superimposed positions with his arms and legs apart and inscribed in both a circle and a square. The drawing, which is in pen and ink on paper, depicts a study of the proportions of the human body as described by the ancient Roman architect Vitruvius. It is housed in the Gallerie dell'Accademia in Venice.",
+      "score": 0.74,
+      "is_gold": false,
+      "support_level": "none",
+      "evidence_sentence": null,
+      "supports_sub_questions": [],
+      "annotation_note": "Documento distractor: parla del Vitruvian Man, un disegno di Leonardo, ma non risponde alle sub-questions sui dipinti principali o su chi era.",
+      "answers_found": [
+        0,
+        0,
+        0
+      ],
+      "extraction": "irrelevant",
+      "summary": "The Vitruvian Man is a famous drawing by Leonardo but is not directly relevant to questions about his identity or most famous paintings."
+    },
+    {
+      "id": "doc014_5",
+      "title": "Michelangelo",
+      "text": "Michelangelo di Lodovico Buonarroti Simoni (6 March 1475 – 18 February 1564), known as Michelangelo, was an Italian Renaissance sculptor, painter, architect and poet. Along with Leonardo da Vinci and Raphael, he is considered to be one of the three titans of the High Renaissance. His most famous works include the Pietà, David, the ceiling of the Sistine Chapel, and The Last Judgment. Michelangelo was born 23 years after Leonardo da Vinci and outlived him by 45 years.",
+      "score": 0.67,
+      "is_gold": false,
+      "support_level": "none",
+      "evidence_sentence": null,
+      "supports_sub_questions": [],
+      "annotation_note": "Documento distractor: parla di Michelangelo, contemporaneo di Leonardo, ma non risponde alle sub-questions su Leonardo da Vinci.",
+      "answers_found": [
+        0,
+        0,
+        0
+      ],
+      "extraction": "irrelevant",
+      "summary": "This document is about Michelangelo, not Leonardo da Vinci, and does not answer any sub-questions."
+    }
+  ],
+  "gold_stats": {
+    "n_docs": 5,
+    "n_gold": 3,
+    "n_distractors": 2,
+    "n_full_support": 3,
+    "n_partial_support": 0,
+    "n_no_support": 2
   },
-  {
-    "nugget_id": "n0d",
-    "text": "Leonardo da Vinci died on 2 May 1519.",
-    "keywords": ["1519"],
-    "golden_passage_idx": 0,
-    "required": false,
-    "golden_passage_title": "Leonardo da Vinci",
-    "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
-  },
-  {
-    "nugget_id": "n1",
-    "text": "The Mona Lisa was painted by Leonardo da Vinci.",
-    "keywords": ["Mona Lisa"],
-    "golden_passage_idx": 1,
-    "required": true,
-    "golden_passage_title": "Mona Lisa",
-    "golden_evidence": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci."
-  },
-  {
-    "nugget_id": "n2",
-    "text": "The Last Supper is a mural painting by Leonardo da Vinci.",
-    "keywords": ["Last Supper", "The Last Supper"],
-    "golden_passage_idx": 2,
-    "required": false,
-    "golden_passage_title": "The Last Supper (Leonardo)",
-    "golden_evidence": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory of the Convent of Santa Maria delle Grazie in Milan, Italy."
-  }
-]
+  "nuggets": [
+    {
+      "nugget_id": "n0a",
+      "text": "Leonardo da Vinci was an Italian polymath of the High Renaissance.",
+      "keywords": [
+        "Leonardo da Vinci",
+        "Da Vinci",
+        "polymath"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "Leonardo da Vinci",
+      "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+    },
+    {
+      "nugget_id": "n0b",
+      "text": "Leonardo da Vinci is widely considered one of the greatest painters of all time.",
+      "keywords": [
+        "greatest painters"
+      ],
+      "golden_passage_idx": 0,
+      "required": true,
+      "golden_passage_title": "Leonardo da Vinci",
+      "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+    },
+    {
+      "nugget_id": "n0c",
+      "text": "Leonardo da Vinci was born on 15 April 1452.",
+      "keywords": [
+        "1452"
+      ],
+      "golden_passage_idx": 0,
+      "required": false,
+      "golden_passage_title": "Leonardo da Vinci",
+      "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+    },
+    {
+      "nugget_id": "n0d",
+      "text": "Leonardo da Vinci died on 2 May 1519.",
+      "keywords": [
+        "1519"
+      ],
+      "golden_passage_idx": 0,
+      "required": false,
+      "golden_passage_title": "Leonardo da Vinci",
+      "golden_evidence": "Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time."
+    },
+    {
+      "nugget_id": "n1",
+      "text": "The Mona Lisa was painted by Leonardo da Vinci.",
+      "keywords": [
+        "Mona Lisa"
+      ],
+      "golden_passage_idx": 1,
+      "required": true,
+      "golden_passage_title": "Mona Lisa",
+      "golden_evidence": "The Mona Lisa is a half-length portrait painting by the Italian Renaissance artist Leonardo da Vinci."
+    },
+    {
+      "nugget_id": "n2",
+      "text": "The Last Supper is a mural painting by Leonardo da Vinci.",
+      "keywords": [
+        "Last Supper",
+        "The Last Supper"
+      ],
+      "golden_passage_idx": 2,
+      "required": false,
+      "golden_passage_title": "The Last Supper (Leonardo)",
+      "golden_evidence": "The Last Supper is a large mural painting by Leonardo da Vinci housed in the refectory (dining hall) of the Convent of Santa Maria delle Grazie in Milan, Italy."
+    }
+  ]
   },
   {
     "sample_id": "new_example_015",

@@ -22,7 +22,7 @@ import { downloadJSON, timestampedFilename } from '../utils/download'
 
 // ── Aggregazione globale ───────────────────────────────────────────────────────
 
-function computeNuggetGlobal(perExample) {
+function computeNuggetGlobal(perExample, metricKey = 'nugget_metrics') {
   const gm = {}
   let totalNuggets = 0, totalCovered = 0, totalCited = 0
   let totalReq = 0, totalReqCovered = 0
@@ -31,7 +31,7 @@ function computeNuggetGlobal(perExample) {
   const reqPrecs = [], reqRecalls = []
 
   for (const ex of perExample) {
-    const nm = ex.nugget_metrics
+    const nm = ex[metricKey]
     if (!nm) continue
     precs.push(nm.nugget_precision ?? 0)
     recalls.push(nm.nugget_recall ?? 0)
@@ -56,49 +56,44 @@ function computeNuggetGlobal(perExample) {
     gm.avg_required_recall    = mean(reqRecalls)
   }
   if (totalNuggets > 0) {
-    // "Macro Citation" = quota di nugget coperti che hanno almeno uno span citato.
     gm.macro_nugget_citation = totalCovered > 0 ? totalCited / totalCovered : 0
     gm.macro_nugget_recall   = totalCited / totalNuggets
     gm.macro_nugget_coverage = totalCovered / totalNuggets
   }
-  if (totalReq > 0) {
-    gm.macro_required_coverage = totalReqCovered / totalReq
-  }
-  if (totalOpt > 0) {
-    gm.macro_optional_coverage = totalOptCovered / totalOpt
-  }
+  if (totalReq > 0) gm.macro_required_coverage = totalReqCovered / totalReq
+  if (totalOpt > 0) gm.macro_optional_coverage = totalOptCovered / totalOpt
 
-  gm.total_nuggets = totalNuggets
-  gm.total_cited   = totalCited
-  gm.total_covered = totalCovered
-  gm.total_required = totalReq
+  gm.total_nuggets          = totalNuggets
+  gm.total_cited            = totalCited
+  gm.total_covered          = totalCovered
+  gm.total_required         = totalReq
   gm.total_required_covered = totalReqCovered
-  gm.total_optional = totalOpt
+  gm.total_optional         = totalOpt
   gm.total_optional_covered = totalOptCovered
 
   let totalNoisePassages = 0, totalClaimsNoise = 0, totalNuggetsNoise = 0
   for (const ex of perExample) {
-    const nm = ex.nugget_metrics
+    const nm = ex[metricKey]
     if (!nm) continue
     const nu = nm.noise_usage || {}
     totalNoisePassages += nu.noise_supporting_passages || 0
     totalClaimsNoise   += nu.claims_citing_noise || 0
     totalNuggetsNoise  += nm.n_cited_from_noise || 0
   }
-  gm.total_noise_passages_used = totalNoisePassages
-  gm.total_claims_citing_noise = totalClaimsNoise
+  gm.total_noise_passages_used      = totalNoisePassages
+  gm.total_claims_citing_noise      = totalClaimsNoise
   gm.total_nuggets_cited_from_noise = totalNuggetsNoise
 
   return gm
 }
 
-function computeDeepseekGlobal(perExample) {
+function computeDeepseekGlobal(perExample, metricKey = 'deepseek_metrics') {
   const gm = {}
   const precs = [], recalls = []
   let totalPairs = 0, totalPairsSupported = 0, totalClaims = 0, totalSupportedClaims = 0
 
   for (const ex of perExample) {
-    const dm = ex.deepseek_metrics
+    const dm = ex[metricKey]   // ← era "nm", ora corretto
     if (!dm) continue
     precs.push(dm.citation_precision ?? 0)
     recalls.push(dm.citation_recall ?? 0)
@@ -114,9 +109,9 @@ function computeDeepseekGlobal(perExample) {
   }
   if (totalPairs > 0)  gm.macro_citation_precision = totalPairsSupported / totalPairs
   if (totalClaims > 0) gm.macro_citation_recall    = totalSupportedClaims / totalClaims
-  gm.total_pairs = totalPairs
+  gm.total_pairs           = totalPairs
   gm.total_pairs_supported = totalPairsSupported
-  gm.total_claims = totalClaims
+  gm.total_claims          = totalClaims
   return gm
 }
 
@@ -182,6 +177,32 @@ function ViewToggle({ view, onChange, hasNuggets }) {
           color={view === 'deepseek' ? 'white' : 'var(--text-3)'} />
         DeepSeek
       </button>
+    </div>
+  )
+}
+
+function TopKToggle({ topK, onChange }) {
+  const baseBtn = {
+    display: 'flex', alignItems: 'center', gap: 6,
+    padding: '6px 14px', fontSize: 12, fontWeight: 600,
+    border: 'none', borderRadius: 8, cursor: 'pointer', transition: 'all 0.15s',
+  }
+  return (
+    <div style={{
+      display: 'inline-flex', alignItems: 'center',
+      background: 'var(--bg)', border: '1px solid var(--border)',
+      borderRadius: 10, padding: 3, gap: 2,
+    }}>
+      {[3, 1].map(k => (
+        <button key={k} onClick={() => onChange(k)} style={{
+          ...baseBtn,
+          background: topK === k ? '#0F766E' : 'transparent',
+          color: topK === k ? 'white' : 'var(--text-2)',
+          boxShadow: topK === k ? '0 1px 4px rgba(15,118,110,0.3)' : 'none',
+        }}>
+          top-{k}
+        </button>
+      ))}
     </div>
   )
 }
@@ -552,14 +573,14 @@ function NuggetGroup({ row }) {
   )
 }
 
-function NuggetAssociationTable({ perExample }) {
+function NuggetAssociationTable({ perExample, metricKey = 'nugget_metrics' }) {
   const [filter, setFilter] = useState('all')
 
   const allRows = []
   for (let i = 0; i < perExample.length; i++) {
     const ex = perExample[i]
     if (ex.error) continue
-    const nm = ex.nugget_metrics
+    const nm = ex[metricKey]   // ← era ex.nugget_metrics hardcoded
     if (!nm?.per_nugget) continue
     for (const pn of nm.per_nugget) {
       allRows.push({ exIdx: i, question: ex.question, ...pn })
@@ -683,7 +704,7 @@ function DeepSeekView({ gm }) {
 
 // ── Vista Nugget ──────────────────────────────────────────────────────────────
 
-function NuggetView({ gm, perExample }) {
+function NuggetView({ gm, perExample, metricKey = 'nugget_metrics' }) {
   return (
     <div>
       {/* Required */}
@@ -723,19 +744,21 @@ function NuggetView({ gm, perExample }) {
         <MetricCard label="⚠ Nuggets da Noise" value={gm.total_nuggets_cited_from_noise} isCount />
       </div>
 
-      <NuggetAssociationTable perExample={perExample} />
+      <NuggetAssociationTable perExample={perExample} metricKey={metricKey} />
     </div>
   )
 }
 
-
-// ── Results view ────────────────────────────────────────────────────────────────
-
 function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSave, onDownload }) {
-  const nuggetGm = results.nugget_global || {}
-  const deepseekGm = results.deepseek_global || {}
-  const perExample = results.per_example || []
+  const [topK, setTopK] = useState(3)
   const [expandedEx, setExpandedEx] = useState(null)
+
+  const nuggetKey   = topK === 1 ? 'nugget_metrics_top1'   : 'nugget_metrics'
+  const deepseekKey = topK === 1 ? 'deepseek_metrics_top1' : 'deepseek_metrics'
+
+  const nuggetGm   = topK === 1 ? (results.nugget_global_top1   || {}) : (results.nugget_global   || {})
+  const deepseekGm = topK === 1 ? (results.deepseek_global_top1 || {}) : (results.deepseek_global || {})
+  const perExample = results.per_example || []
 
   return (
     <div>
@@ -750,6 +773,7 @@ function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSav
           <span style={{ fontSize: 16, fontWeight: 700, color: '#312E81', flex: 1 }}>
             Valutazione Globale Dataset
           </span>
+          <TopKToggle topK={topK} onChange={setTopK} />
           <ViewToggle view={view} onChange={onViewChange} hasNuggets={hasNuggets} />
         </div>
         <div style={{ fontSize: 12, color: '#4338CA', display: 'flex', gap: 20, flexWrap: 'wrap' }}>
@@ -768,9 +792,9 @@ function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSav
       {/* Vista selezionata */}
       {view === 'deepseek'
         ? <DeepSeekView gm={deepseekGm} />
-        : <NuggetView gm={nuggetGm} perExample={perExample} />}
+        : <NuggetView gm={nuggetGm} perExample={perExample} metricKey={nuggetKey} />}
 
-      {/* Per-example summary table (giudizi DeepSeek espandibili) */}
+      {/* Per-example summary table */}
       <details style={{ marginTop: 16 }}>
         <summary style={{ cursor: 'pointer', fontSize: 13, fontWeight: 600, color: 'var(--text-2)', padding: '8px 0' }}>
           Dettaglio per esempio ({perExample.length})
@@ -778,7 +802,7 @@ function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSav
         <div style={{ marginTop: 8 }}>
           {perExample.map((ex, i) => {
             const isOpen = expandedEx === i
-            const dm = ex.deepseek_metrics
+            const dm = ex[deepseekKey]
             const clickable = dm?.per_claim?.length > 0
 
             return (
@@ -1097,14 +1121,16 @@ export default function EvaluateDataset() {
       // Update incrementale: ricalcola ENTRAMBE le aggregazioni.
       const isLast = idx + 1 === dataset.length
       setResults({
-        nugget_global: computeNuggetGlobal(perExample),
-        deepseek_global: computeDeepseekGlobal(perExample),
-        per_example: [...perExample],
-        num_examples: dataset.length,
-        num_successful: perExample.filter(e => !e.error).length,
-        runtime_seconds: null,
-        partial: !isLast,
-      })
+      nugget_global:      computeNuggetGlobal(perExample, 'nugget_metrics'),
+      deepseek_global:    computeDeepseekGlobal(perExample, 'deepseek_metrics'),
+      nugget_global_top1:   computeNuggetGlobal(perExample, 'nugget_metrics_top1'),
+      deepseek_global_top1: computeDeepseekGlobal(perExample, 'deepseek_metrics_top1'),
+      per_example: [...perExample],
+      num_examples: dataset.length,
+      num_successful: perExample.filter(e => !e.error).length,
+      runtime_seconds: null,
+      partial: !isLast,
+    })
     }
 
     setRunning(false)

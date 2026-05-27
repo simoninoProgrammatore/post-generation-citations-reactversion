@@ -157,3 +157,76 @@ def _call_claude(prompt: str, model: str, max_tokens: int, system: str | None = 
 
     message = client.messages.create(**kwargs)
     return message.content[0].text
+
+# ──────────────────────────────────────────────
+# Async (solo backend Claude) — per parallelizzare le chiamate
+# ──────────────────────────────────────────────
+
+async def call_llm_async(
+    prompt: str,
+    model: str = "claude-haiku-4-5-20251001",
+    max_tokens: int = 1024,
+    system: str | None = None,
+) -> str:
+    """Variante async di call_llm. SOLO per modelli Claude.
+    Per i modelli Ollama solleva: parallelizzare HTTP locale non e' l'obiettivo."""
+    if not model.startswith("claude"):
+        raise ValueError(
+            f"call_llm_async supporta solo modelli Claude, ricevuto: {model}. "
+            f"Usa la versione sincrona per Ollama."
+        )
+    return await _call_claude_async(prompt, model, max_tokens, system)
+
+
+async def call_llm_json_async(
+    prompt: str,
+    model: str = "claude-haiku-4-5-20251001",
+    max_tokens: int = 1024,
+    system: str | None = None,
+) -> any:
+    import logging
+    logger = logging.getLogger(__name__)
+
+    raw = await call_llm_async(prompt, model=model, max_tokens=max_tokens, system=system)
+    logger.info(f"[call_llm_json_async] Raw ({len(raw)} chars):\n{raw[:500]}")
+
+    clean = re.sub(r"^```(?:json)?\s*", "", raw.strip())
+    clean = re.sub(r"\s*```$", "", clean)
+    if not clean.startswith("[") and not clean.startswith("{"):
+        m = re.search(r'(\[.*\]|\{.*\})', clean, re.DOTALL)
+        if m:
+            clean = m.group(1)
+    try:
+        return json.loads(clean)
+    except json.JSONDecodeError as e:
+        logger.error(f"[call_llm_json_async] JSON parse FAILED.\nRaw: {raw}\nError: {e}")
+        raise ValueError(f"LLM did not return valid JSON.\nRaw:\n{raw}\nError: {e}")
+
+
+# Client async riusato (creato una volta sola)
+_async_client = None
+
+def _get_async_client():
+    global _async_client
+    if _async_client is None:
+        import anthropic
+        api_key = os.getenv("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise EnvironmentError("ANTHROPIC_API_KEY non impostata.")
+        _async_client = anthropic.AsyncAnthropic(api_key=api_key)
+    return _async_client
+
+
+async def _call_claude_async(prompt: str, model: str, max_tokens: int,
+                             system: str | None = None) -> str:
+    client = _get_async_client()
+    kwargs = {
+        "model": model,
+        "max_tokens": max_tokens,
+        "temperature": 0,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    if system:
+        kwargs["system"] = system
+    message = await client.messages.create(**kwargs)
+    return message.content[0].text

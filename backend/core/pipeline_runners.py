@@ -92,7 +92,7 @@ def run_decompose(response: str, model: str) -> list[str]:
     return decompose_with_llm(response, model=model)
 
 
-def run_retrieve(
+async def run_retrieve(
     claims: list[str],
     passages: list[dict],
     method: str,
@@ -101,25 +101,47 @@ def run_retrieve(
     nuggets: list[dict] | None = None,
     pre_filter_k: int = 0,
     model: str = "claude-haiku-4-5-20251001",
+    max_concurrency: int = 8,
 ) -> tuple[list[dict], list[dict]]:
-    from core.retrieve import match_with_nli, match_with_llm, extract_evidence
-
-    matched = []
-    debug_data = []
-
-    for claim in claims:
+    """Versione ASYNC. I claim sono indipendenti -> li processiamo in parallelo.
+ 
+    - method="llm": chiamate Claude parallele via asyncio.gather + Semaphore.
+    - method="nli"/"similarity": niente rete; eseguite in thread (to_thread)
+      per non bloccare l'event loop, ma senza vero parallelismo (PyTorch).
+ 
+    L'ORDINE dei risultati e' garantito allineato a `claims` (gather preserva
+    l'ordine dei task).
+    """
+    import asyncio
+    from core.retrieve import (
+        match_with_nli, match_with_llm, match_with_llm_async, extract_evidence,
+    )
+ 
+    sem = asyncio.Semaphore(max_concurrency)
+ 
+    async def _process_claim(claim: str) -> tuple[dict, dict]:
         sentence_scores = []
-
+ 
         if method == "nli":
-            matches, sentence_scores = match_with_nli(
-                claim, passages, threshold=threshold, top_k=top_k,
-                return_all_scores=True, pre_filter_k=pre_filter_k,
-            )
+            # NLI: nessuna rete. Offload in thread per non bloccare il loop.
+            def _nli():
+                return match_with_nli(
+                    claim, passages, threshold=threshold, top_k=top_k,
+                    return_all_scores=True, pre_filter_k=pre_filter_k,
+                )
+            matches, sentence_scores = await asyncio.to_thread(_nli)
+ 
         elif method == "llm":
-            matches = match_with_llm(claim, passages, threshold=threshold, top_k=top_k, model=model)
+            async with sem:
+                matches = await match_with_llm_async(
+                    claim, passages, threshold=threshold, top_k=top_k, model=model,
+                )
         else:
-            matches = match_with_similarity(claim, passages, top_k=top_k)
-
+            def _sim():
+                return match_with_similarity(claim, passages, top_k=top_k)
+            matches = await asyncio.to_thread(_sim)
+ 
+        # ── Evidence extraction (sincrona; NLI locale, veloce) ──
         for match in matches:
             ev = extract_evidence(
                 claim,
@@ -132,21 +154,26 @@ def run_retrieve(
             match["extraction_start"] = ev["extraction_start"]
             match["extraction_end"] = ev["extraction_end"]
             match["summary"] = ev["summary"]
-
+ 
         matches = [m for m in matches if m.get("extraction", "").strip()]
-
-        # ── Nugget matching (keyword-based, anticipato) ──
+ 
+        # ── Nugget matching (invariato) ──
         matched_nugget = None
         if nuggets:
             matched_nugget = _find_best_nugget(claim, nuggets, matches)
-
+ 
         entry = {"claim": claim, "supporting_passages": matches}
         if matched_nugget:
             entry["matched_nugget"] = matched_nugget
-
-        matched.append(entry)
-        debug_data.append({"claim": claim, "sentence_scores": sentence_scores})
-
+ 
+        debug = {"claim": claim, "sentence_scores": sentence_scores}
+        return entry, debug
+ 
+    # gather preserva l'ordine -> matched[i] <-> claims[i]
+    pairs = await asyncio.gather(*[_process_claim(c) for c in claims])
+ 
+    matched = [p[0] for p in pairs]
+    debug_data = [p[1] for p in pairs]
     return matched, debug_data
 
 
@@ -215,75 +242,37 @@ def _find_best_nugget(
     return best
 
 
-def find_covering_claims_for_nugget(
-    nugget: dict,
-    claims: list[dict],  # matched_claims con "claim" e "supporting_passages"
-    embedding_model=None,
-    min_keywords_matched: int = 1,
-    coverage_threshold: float = COVERAGE_THRESHOLD,
-) -> list[dict]:
-    """UNUSED — conservata per riferimento. Lo Step 6 usa
-    core.nuggets_evaluate._group_like_frontend (fonte di verita' = MatchedView).
-
-    Nugget-centered: per UN nugget, tutti i claim che lo coprono, ordinati per
-    score decrescente (n_kw PRIMARY, tie SECONDARY). Usa encode batched."""
-    if embedding_model is None:
-        embedding_model = get_embedding_model("all-MiniLM-L6-v2")
-
-    keywords = nugget.get("keywords", [])
-    nugget_text = nugget.get("text", "")
-    claim_texts = [mc.get("claim", "") for mc in claims]
-
-    if not claim_texts:
-        return []
-
-    # Encode batched: nugget + tutti i claim in una chiamata sola.
-    # normalize_embeddings=True ⇒ la cosine si riduce a un prodotto scalare.
-    all_embs = embedding_model.encode(
-        [nugget_text] + claim_texts,
-        convert_to_numpy=True,
-        normalize_embeddings=True,
-    )
-    nugget_emb = all_embs[0]
-    claim_embs = all_embs[1:]
-    semantic_scores = claim_embs @ nugget_emb  # shape (n_claims,)
-
-    covering = []
-    for idx, mc in enumerate(claims):
-        claim_text = claim_texts[idx]
-        n_kw = count_matched_keywords(keywords, claim_text)
-
-        # Gate 1: almeno 1 keyword esatta
-        if n_kw < min_keywords_matched:
-            continue
-
-        lexical = keyword_overlap(nugget_text, claim_text)
-        semantic = float(semantic_scores[idx])
-        tie = round(LEXICAL_WEIGHT * lexical + (1.0 - LEXICAL_WEIGHT) * semantic, 4)
-
-        # Gate 2: tie sopra threshold
-        if tie < coverage_threshold:
-            continue
-
-        covering.append({
-            "claim":                  claim_text,
-            "supporting_passages":    mc.get("supporting_passages", []),
-            "matched_keywords_count": n_kw,
-            "match_score":            tie,
-        })
-
-    covering.sort(key=lambda x: (x["matched_keywords_count"], x["match_score"]), reverse=True)
-    return covering
-
-
 # ──────────────────────────────────────────────
 # Cite / Evaluate
 # ──────────────────────────────────────────────
 
-def run_cite(response: str, matched_claims: list[dict]) -> tuple[str, list[dict]]:
+def run_cite(
+    response: str,
+    matched_claims: list[dict],
+    model: str = "claude-haiku-4-5-20251001",
+    use_source_map: bool = True,
+) -> tuple[str, list[dict]]:
     from core.cite import build_citation_map, insert_citations
+
+    # ── Secondo prompt: mappa claim -> frasi sorgente (elimina l'overlap) ──
+    claim_source_map = None
+    if use_source_map and matched_claims:
+        try:
+            from core.claim_source_map import map_claims_to_sentences
+            claims = [mc["claim"] for mc in matched_claims]
+            claim_source_map = map_claims_to_sentences(response, claims, model=model)
+        except Exception as e:
+            import logging
+            logging.getLogger(__name__).error(
+                f"[run_cite] mappa sorgente fallita, uso fallback overlap: {e}"
+            )
+            claim_source_map = None
+
     citation_map = build_citation_map(matched_claims)
-    cited, refs = insert_citations(response, matched_claims, citation_map)
+    cited, refs = insert_citations(
+        response, matched_claims, citation_map,
+        claim_source_map=claim_source_map,
+    )
     return cited, refs
 
 

@@ -4,6 +4,16 @@ Step 4: Insert inline citations into the generated response.
 Given matched claims and their supporting passages, this module
 reconstructs the response with inline citation markers (e.g., [1][2])
 and generates an interactive HTML viewer.
+
+MAPPA SORGENTE (claim -> frasi):
+  insert_citations accetta un parametro opzionale `claim_source_map`
+  ({claim_text: [frase_sorgente, ...]}) prodotto dal secondo prompt
+  (core.claim_source_map). Se presente, le citazioni di un claim vengono
+  attaccate alle frasi che il claim dichiara come sorgente, tramite un
+  ALLINEAMENTO ESATTO/CONTENIMENTO con _sentence_split — niente piu' overlap
+  fuzzy a soglia. Se la mappa e' assente (o non copre un claim), si ricade
+  sul vecchio matching per overlap di parole, cosi' il path CLI in run()
+  resta funzionante.
 """
 
 import re
@@ -31,12 +41,93 @@ def _sentence_split(text: str) -> list[str]:
     return re.split(r'(?<=[.!?])(?:\[\d+\])*\s+', text.strip())
 
 
+# ──────────────────────────────────────────────
+# Allineamento source_sentence (da claim_source_map) <-> frasi dello split
+# ──────────────────────────────────────────────
+
+def _norm(s: str) -> str:
+    """Normalizza per il SOLO confronto: rimuove marker citazione e
+    punteggiatura, lowercase, collassa gli spazi. Non altera l'output."""
+    s = re.sub(r'\[\d+\]', '', s)
+    s = re.sub(r'[^\w\s]', '', s.lower())
+    s = re.sub(r'\s+', ' ', s).strip()
+    return s
+
+
+def _align_source_to_split(source_sentence: str, norm_split: list[str]) -> list[int]:
+    """Indici delle frasi dello split corrispondenti a una source_sentence.
+    Una source puo' coprire piu' frasi (claim che fonde piu' affermazioni).
+
+    Cascata: (1) esatto, (2) la source contiene frasi dello split (fusione),
+    (3) una frase dello split contiene la source (frammento) -> la piu' corta.
+    """
+    src = _norm(source_sentence)
+    if not src:
+        return []
+
+    # 1. esatto
+    for i, ns in enumerate(norm_split):
+        if ns and ns == src:
+            return [i]
+
+    # 2. la source contiene una o piu' frasi dello split
+    contained = [i for i, ns in enumerate(norm_split) if ns and ns in src]
+    if contained:
+        return contained
+
+    # 3. una frase dello split contiene la source: la piu' corta
+    candidates = sorted(
+        (len(ns), i) for i, ns in enumerate(norm_split) if ns and src in ns
+    )
+    if candidates:
+        return [candidates[0][1]]
+
+    return []
+
+
+def _citations_via_source_map(
+    sentences: list[str],
+    claim_to_citations: dict[str, list[int]],
+    claim_source_map: dict[str, list[str]],
+) -> tuple[dict[int, set[int]], set[str]]:
+    """Assegna citazioni alle frasi usando la mappa claim->frasi-sorgente.
+
+    Ritorna:
+      - sent_idx -> set di numeri citazione
+      - set dei claim_text effettivamente risolti via mappa (per sapere quali
+        NON serve gestire col fallback overlap).
+    """
+    norm_split = [_norm(s) for s in sentences]
+    sent_citations: dict[int, set[int]] = {}
+    resolved_claims: set[str] = set()
+
+    for claim_text, nums in claim_to_citations.items():
+        sources = claim_source_map.get(claim_text)
+        if not sources:                     # claim assente o senza sorgenti -> fallback
+            continue
+
+        target_indices: set[int] = set()
+        for src in sources:
+            target_indices.update(_align_source_to_split(src, norm_split))
+
+        if not target_indices:              # mappa presente ma nessun allineamento -> fallback
+            continue
+
+        for si in target_indices:
+            sent_citations.setdefault(si, set()).update(nums)
+        resolved_claims.add(claim_text)
+
+    return sent_citations, resolved_claims
+
+
 def insert_citations(
     response: str,
     matched_claims: list[dict],
     citation_map: dict,
     remove_unsupported: bool = False,
+    claim_source_map: dict[str, list[str]] | None = None,
 ) -> tuple[str, list[dict]]:
+    # claim_text -> numeri citazione (dai supporting_passages)
     claim_to_citations: dict[str, list[int]] = {}
     for mc in matched_claims:
         claim_text = mc["claim"]
@@ -54,38 +145,47 @@ def insert_citations(
                  'it', 'this', 'that', 'from', 'not', 'be', 'been'}
 
     sentences = _sentence_split(response)
+
+    # ── Fase 1: assegnazione via mappa sorgente (se disponibile) ──
+    sent_citations_from_map: dict[int, set[int]] = {}
+    resolved_claims: set[str] = set()
+    if claim_source_map:
+        sent_citations_from_map, resolved_claims = _citations_via_source_map(
+            sentences, claim_to_citations, claim_source_map
+        )
+
+    # I claim risolti dalla mappa NON partecipano al fallback overlap.
+    fallback_claims = {
+        c: nums for c, nums in claim_to_citations.items() if c not in resolved_claims
+    }
+
     cited_sentences = []
 
-    for sentence in sentences:
-        sent_words = set(re.sub(r'[^\w\s]', '', sentence.lower()).split()) - stopwords
-        citation_nums: set[int] = set()
+    for si, sentence in enumerate(sentences):
+        citation_nums: set[int] = set(sent_citations_from_map.get(si, set()))
 
-        scored_claims = []
-        for claim_text, nums in claim_to_citations.items():
-            claim_words = set(re.sub(r'[^\w\s]', '', claim_text.lower()).split()) - stopwords
-            if not claim_words:
-                continue
-            overlap = len(claim_words & sent_words) / len(claim_words)
-            
-            # Sbarramento iniziale a 0.6
-            if overlap >= 0.6:
-                scored_claims.append((overlap, nums))
+        # ── Fase 2: fallback overlap SOLO per i claim non risolti via mappa ──
+        if fallback_claims:
+            sent_words = set(re.sub(r'[^\w\s]', '', sentence.lower()).split()) - stopwords
 
-        if scored_claims:
-            # Ordina per overlap decrescente
-            scored_claims.sort(key=lambda x: x[0], reverse=True)
-            
-            # Prendi il valore massimo assoluto
-            top_overlap = scored_claims[0][0]
-            
-            for overlap, nums in scored_claims:
-                # Vince SOLO chi ha raggiunto il punteggio massimo
-                if overlap == top_overlap:
-                    citation_nums.update(nums)
-                else:
-                    # Poiché la lista è ordinata, appena troviamo un punteggio 
-                    # inferiore al top_overlap possiamo fermarci
-                    break
+            scored_claims = []
+            for claim_text, nums in fallback_claims.items():
+                claim_words = set(re.sub(r'[^\w\s]', '', claim_text.lower()).split()) - stopwords
+                if not claim_words:
+                    continue
+                overlap = len(claim_words & sent_words) / len(claim_words)
+                # Sbarramento iniziale a 0.6
+                if overlap >= 0.6:
+                    scored_claims.append((overlap, nums))
+
+            if scored_claims:
+                scored_claims.sort(key=lambda x: x[0], reverse=True)
+                top_overlap = scored_claims[0][0]
+                for overlap, nums in scored_claims:
+                    if overlap == top_overlap:
+                        citation_nums.update(nums)
+                    else:
+                        break
 
         if citation_nums:
             markers = "".join(f"[{n}]" for n in sorted(citation_nums))
@@ -108,7 +208,7 @@ def insert_citations(
 
 def build_reference_list(citation_map: dict, passages: list[dict]) -> list[dict]:
     references = []
-    
+
     # Indice multiplo: sia per id che per title
     pid_to_passage = {}
     for p in passages:
@@ -143,7 +243,11 @@ def _build_num_to_claims_map(matched_claims: list[dict], references: list[dict])
 
 
 def generate_html(examples: list[dict]) -> str:
-    """Generate a standalone HTML file for interactive citation exploration."""
+    """Generate a standalone HTML file for interactive citation exploration.
+
+    INVARIATO rispetto all'originale: dipende solo da
+    cited_response / references / num_to_claims, non dalla mappa sorgente.
+    """
 
     # Serialise only what the JS needs
     js_data = []
@@ -459,13 +563,10 @@ function parseParts(cited) {{
 
 // Split parts into sentences keeping cite markers attached to preceding text
 function buildSentences(parts) {{
-  // Rejoin to full string with sentinel placeholders, then split on sentence boundary
-  // Simpler: work directly on parts, splitting text nodes on sentence boundaries
   const sentences = [];
   let buf = [];
   for (const p of parts) {{
     if (p.type === 'text') {{
-      // Split this text node on sentence boundaries
       const segs = p.text.split(/(?<=[.!?]) +/);
       for (let i = 0; i < segs.length; i++) {{
         buf.push({{ type:'text', text: segs[i] }});
@@ -476,7 +577,6 @@ function buildSentences(parts) {{
       }}
     }} else {{
       buf.push(p);
-      // A cite block marks end of sentence
       sentences.push(buf);
       buf = [];
     }}
@@ -488,7 +588,7 @@ function buildSentences(parts) {{
 function renderClaimPanel(nums, numToClaims) {{
   const items = nums.flatMap(n => numToClaims[n] || []);
   if (!items.length) return '';
-  const rows = items.map({{ claim, passage }} => `
+  const rows = items.map(({{ claim, passage }}) => `
     <div class="claim-block">
       <div class="claim-label">Claim</div>
       <div class="claim-text">${{escHtml(claim)}}</div>
@@ -561,7 +661,6 @@ function togglePanel(el) {{
   const panel = host?.querySelector('.inline-panel');
   if (!panel) return;
   const isOpen = panel.classList.contains('visible');
-  // Close all
   document.querySelectorAll('.cited').forEach(e => e.classList.remove('open'));
   document.querySelectorAll('.inline-panel').forEach(p => p.classList.remove('visible'));
   if (!isOpen) {{
@@ -574,7 +673,6 @@ function loadExample(idx) {{
   renderExample(idx);
 }}
 
-// Init select
 const sel = document.getElementById('example-select');
 DATA.forEach((ex, i) => {{
   const opt = document.createElement('option');
@@ -588,26 +686,44 @@ if (DATA.length) renderExample(0);
 </html>"""
 
 
-def run(input_path: str, output_path: str, remove_unsupported: bool = False, html: bool = True):
+def run(input_path: str, output_path: str, remove_unsupported: bool = False,
+        html: bool = True, model: str = "claude-haiku-4-5-20251001",
+        use_source_map: bool = True):
     with open(input_path, "r") as f:
         data = json.load(f)
 
     for example in data:
         matched_claims = example.get("matched_claims", [])
-        
+
         # SE NON CI SONO FONTI: salta tutto il blocco e lascia la risposta pulita
         if not matched_claims:
             example["cited_response"] = example.get("raw_response", "")
             example["references"] = []
             continue
 
-        # Altrimenti, procedi normalmente
+        # ── Mappa claim -> frasi sorgente (secondo prompt) ──
+        claim_source_map = None
+        if use_source_map:
+            try:
+                from core.claim_source_map import map_claims_to_sentences
+                claims = [mc["claim"] for mc in matched_claims]
+                claim_source_map = map_claims_to_sentences(
+                    example["raw_response"], claims, model=model
+                )
+            except Exception as e:
+                import logging
+                logging.getLogger(__name__).error(
+                    f"[cite.run] mappa sorgente fallita, uso fallback overlap: {e}"
+                )
+                claim_source_map = None
+
         citation_map = build_citation_map(matched_claims)
         cited_response, references = insert_citations(
             example["raw_response"],
             matched_claims,
             citation_map,
             remove_unsupported,
+            claim_source_map=claim_source_map,
         )
         example["cited_response"] = cited_response
         example["references"] = references
@@ -631,5 +747,10 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=str, default="results/cited.json")
     parser.add_argument("--remove-unsupported", action="store_true")
     parser.add_argument("--no-html", action="store_true", help="Skip HTML generation")
+    parser.add_argument("--no-source-map", action="store_true",
+                        help="Disabilita il secondo prompt, usa solo overlap")
+    parser.add_argument("--model", type=str, default="claude-haiku-4-5-20251001")
     args = parser.parse_args()
-    run(args.input, args.output, args.remove_unsupported, html=not args.no_html)
+    run(args.input, args.output, args.remove_unsupported,
+        html=not args.no_html, model=args.model,
+        use_source_map=not args.no_source_map)

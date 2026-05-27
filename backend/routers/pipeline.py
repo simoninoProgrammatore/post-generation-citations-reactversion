@@ -217,7 +217,7 @@ async def retrieve(req: RetrieveRequest):
     try:
         passages_dict = [p.model_dump() for p in req.passages]
         nuggets_dict = [n.model_dump() for n in req.nuggets] if req.nuggets else None
-        matched, debug = pipeline_runners.run_retrieve(
+        matched, debug = await pipeline_runners.run_retrieve(
             claims=req.claims,
             passages=passages_dict,
             method=req.method,
@@ -249,7 +249,7 @@ async def retrieve_single(req: RetrieveSingleRequest):
     try:
         passages_dict = [p.model_dump() for p in req.passages]
         nuggets_dict = [n.model_dump() for n in req.nuggets] if req.nuggets else None
-        matched, debug = pipeline_runners.run_retrieve(
+        matched, debug = await pipeline_runners.run_retrieve(
             claims=[req.claim],
             passages=passages_dict,
             method=req.method,
@@ -358,6 +358,20 @@ def _compute_noise_stats(matched_claims: list[dict]) -> dict:
     }
 
 
+import copy
+
+def _keep_top1_evidence(matched: list) -> list:
+    """Ritorna una copia di matched con al massimo 1 supporting_passage per claim:
+    il PRIMO così come arriva dal retrieve (già ordinato per rilevanza)."""
+    result = []
+    for claim_obj in matched:
+        filtered = copy.deepcopy(claim_obj)
+        if isinstance(filtered.get("supporting_passages"), list):
+            filtered["supporting_passages"] = filtered["supporting_passages"][:1]
+        result.append(filtered)
+    return result
+
+
 @router.post("/evaluate-example")
 async def evaluate_example_endpoint(req: EvaluateExampleRequest):
     """Esegue la pipeline UNA volta su un esempio e restituisce
@@ -370,7 +384,7 @@ async def evaluate_example_endpoint(req: EvaluateExampleRequest):
     query = example.get("question", "")
     raw_passages = example.get("docs", [])
 
-    # ── Noise injection (invariato) ──
+    # ── Noise injection ──
     if req.noise_enabled and raw_passages and req.noise_pool:
         rng = random.Random(req.noise_seed + req.example_idx)
         n_noise = min(max(1, len(raw_passages) // 2), len(req.noise_pool))
@@ -388,15 +402,13 @@ async def evaluate_example_endpoint(req: EvaluateExampleRequest):
     # ── Decompose ──
     claims = pipeline_runners.run_decompose(response_text, req.model)
 
-    # ── Retrieve (UNA volta) ──
-    # I nugget vanno SEMPRE passati al retrieve se presenti: e' cio' che
-    # popola matched_nugget/match_score, su cui si basa il covering nugget.
+    # ── Retrieve (una volta sola) ──
     nuggets = example.get("nuggets", []) or None
     logger.info(
         f"[evaluate-example] retrieve START — method={req.retrieve_method} "
         f"top_k={req.top_k} nuggets={len(nuggets) if nuggets else 0}"
     )
-    matched, _ = pipeline_runners.run_retrieve(
+    matched, _ = await pipeline_runners.run_retrieve(
         claims=claims,
         passages=passages,
         method=req.retrieve_method,
@@ -407,10 +419,13 @@ async def evaluate_example_endpoint(req: EvaluateExampleRequest):
         model=req.model,
     )
 
-    noise_stats = _compute_noise_stats(matched)
+    # ── Top1: log + deepcopy (filtro disabilitato finché non vediamo la struttura) ──
+    matched_top1 = _keep_top1_evidence(matched)
 
-    # ── Evaluate: ENTRAMBE le metriche sullo stesso matched ──
-    # 1) Nugget (sincrono)
+    noise_stats      = _compute_noise_stats(matched)
+    noise_stats_top1 = _compute_noise_stats(matched_top1)
+
+    # ── Metriche top_k completo ──
     nugget_metrics = core_nuggets.compute_nugget_metrics(
         nuggets=nuggets or [],
         matched_claims=matched,
@@ -419,12 +434,26 @@ async def evaluate_example_endpoint(req: EvaluateExampleRequest):
     )
     nugget_metrics["noise_stats"] = noise_stats
 
-    # 2) DeepSeek (async — siamo dentro un loop FastAPI gia' attivo)
     deepseek_metrics = await core_deepseek.evaluate_matched_deepseek_async(
         matched_claims=matched,
         model=req.deepseek_model,
     )
     deepseek_metrics["noise_stats"] = noise_stats
+
+    # ── Metriche top1 ──
+    nugget_metrics_top1 = core_nuggets.compute_nugget_metrics(
+        nuggets=nuggets or [],
+        matched_claims=matched_top1,
+        use_nli=False,
+        required_only=False,
+    )
+    nugget_metrics_top1["noise_stats"] = noise_stats_top1
+
+    deepseek_metrics_top1 = await core_deepseek.evaluate_matched_deepseek_async(
+        matched_claims=matched_top1,
+        model=req.deepseek_model,
+    )
+    deepseek_metrics_top1["noise_stats"] = noise_stats_top1
 
     logger.info(
         f"[evaluate-example] DONE — nugget_precision={nugget_metrics.get('nugget_precision')} "
@@ -435,4 +464,6 @@ async def evaluate_example_endpoint(req: EvaluateExampleRequest):
         "question": query,
         "nugget_metrics": nugget_metrics,
         "deepseek_metrics": deepseek_metrics,
+        "nugget_metrics_top1": nugget_metrics_top1,
+        "deepseek_metrics_top1": deepseek_metrics_top1,
     }

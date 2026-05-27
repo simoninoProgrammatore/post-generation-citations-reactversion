@@ -517,6 +517,100 @@ Passages:
     return scored[:top_k]
 
 
+async def match_with_llm_async(
+    claim: str,
+    passages: list[dict],
+    threshold: float = 0.5,
+    top_k: int = 3,
+    model: str = "claude-haiku-4-5-20251001",
+) -> list[dict]:
+    """Variante async di match_with_llm.
+ 
+    Il pre-filtering via embedding resta SINCRONO (gira su PyTorch locale, non
+    e' la parte lenta). Solo la chiamata LLM e' awaitata: e' quella che, messa
+    in asyncio.gather sui claim, da' lo speedup.
+ 
+    Fallback automatico al sincrono per modelli NON-Claude (Ollama), perche'
+    call_llm_json_async supporta solo Claude.
+    """
+    if not model.startswith("claude"):
+        # Ollama: niente async, riusa il path sincrono esistente.
+        return match_with_llm(claim, passages, threshold=threshold, top_k=top_k, model=model)
+ 
+    from core.llm_client import call_llm_json_async
+ 
+    if not passages:
+        return []
+ 
+    # Step 1: pre-filtra via embedding cosine → top 10 (sincrono, invariato)
+    candidates = _similarity_rank_for_llm(claim, passages, top_k=10)
+    if not candidates:
+        return []
+ 
+    # Step 2: LLM re-ranking + extraction (UNICA chiamata, ora awaitata)
+    passages_text = "\n\n".join([
+        f"[{i}] {p.get('title', 'N/A')}: {p.get('text', '')[:500]}"
+        for i, p in enumerate(candidates)
+    ])
+ 
+    prompt = f"""You are a fact-checking assistant. Check if passages support a claim.
+ 
+Claim: "{claim}"
+ 
+For each passage, decide: "supports", "contradicts", or "neutral".
+If "supports", copy the EXACT sentence from the passage that supports the claim.
+ 
+EXAMPLE:
+Claim: "The Eiffel Tower is 330 meters tall."
+Passages:
+[0] Eiffel Tower: The Eiffel Tower is a wrought-iron lattice tower in Paris. It is 330 metres tall and was completed in 1889.
+[1] Big Ben: Big Ben is the nickname for the Great Bell in London. The tower is 96 metres tall.
+ 
+Output:
+[{{"idx": 0, "label": "supports", "score": 0.95, "evidence": "It is 330 metres tall and was completed in 1889."}}, {{"idx": 1, "label": "neutral", "score": 0.1, "evidence": ""}}]
+ 
+Now analyze these passages. Return ONLY a JSON array, nothing else.
+ 
+Passages:
+{passages_text}
+"""
+ 
+    try:
+        results = await call_llm_json_async(prompt, model=model)
+    except Exception:
+        return candidates[:top_k]
+ 
+    scored = []
+    for r in results:
+        idx = r.get("idx")
+        if (
+            isinstance(idx, int)
+            and 0 <= idx < len(candidates)
+            and r.get("label") == "supports"
+            and r.get("score", 0) >= threshold
+        ):
+            p = candidates[idx]
+            evidence = r.get("evidence", "").strip()
+            passage_text = p.get("text", "")
+            extraction_start = -1
+            extraction_end = -1
+            if evidence:
+                extraction_start = passage_text.find(evidence)
+                if extraction_start != -1:
+                    extraction_end = extraction_start + len(evidence)
+            scored.append({
+                **p,
+                "entailment_score": float(r["score"]),
+                "best_sentence": evidence,
+                "extraction_start": extraction_start,
+                "extraction_end": extraction_end,
+            })
+ 
+    scored.sort(key=lambda x: x["entailment_score"], reverse=True)
+    return scored[:top_k]
+ 
+
+
 # ──────────────────────────────────────────────
 # Runner
 # ──────────────────────────────────────────────
