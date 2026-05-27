@@ -91,9 +91,10 @@ function computeDeepseekGlobal(perExample, metricKey = 'deepseek_metrics') {
   const gm = {}
   const precs = [], recalls = []
   let totalPairs = 0, totalPairsSupported = 0, totalClaims = 0, totalSupportedClaims = 0
+  let totalFull = 0, totalPartial = 0, totalNone = 0
 
   for (const ex of perExample) {
-    const dm = ex[metricKey]   // ← era "nm", ora corretto
+    const dm = ex[metricKey]
     if (!dm) continue
     precs.push(dm.citation_precision ?? 0)
     recalls.push(dm.citation_recall ?? 0)
@@ -101,17 +102,30 @@ function computeDeepseekGlobal(perExample, metricKey = 'deepseek_metrics') {
     totalPairsSupported  += dm.n_pairs_supported ?? 0
     totalClaims          += dm.n_claims ?? 0
     totalSupportedClaims += Math.round((dm.citation_recall ?? 0) * (dm.n_claims ?? 0))
+    // tri-livello (default a 0 per JSON vecchi senza i campi nuovi)
+    totalFull    += dm.n_full    ?? 0
+    totalPartial += dm.n_partial ?? 0
+    totalNone    += dm.n_none    ?? 0
   }
   if (precs.length) {
     const mean = a => a.reduce((x, y) => x + y, 0) / a.length
     gm.avg_citation_precision = mean(precs)
     gm.avg_citation_recall    = mean(recalls)
   }
-  if (totalPairs > 0)  gm.macro_citation_precision = totalPairsSupported / totalPairs
-  if (totalClaims > 0) gm.macro_citation_recall    = totalSupportedClaims / totalClaims
+  // Macro precision PESATA: (full + 0.5*partial) / totalPairs
+  if (totalPairs > 0) {
+    gm.macro_citation_precision = (totalFull + 0.5 * totalPartial) / totalPairs
+    gm.macro_pct_full    = totalFull    / totalPairs
+    gm.macro_pct_partial = totalPartial / totalPairs
+    gm.macro_pct_none    = totalNone    / totalPairs
+  }
+  if (totalClaims > 0) gm.macro_citation_recall = totalSupportedClaims / totalClaims
   gm.total_pairs           = totalPairs
-  gm.total_pairs_supported = totalPairsSupported
+  gm.total_pairs_supported = totalPairsSupported   // retrocompat (full+partial)
   gm.total_claims          = totalClaims
+  gm.total_full    = totalFull
+  gm.total_partial = totalPartial
+  gm.total_none    = totalNone
   return gm
 }
 
@@ -678,7 +692,6 @@ const sectionLabel = (color) => ({ fontSize: 11, fontWeight: 700, color, textTra
 
 
 // ── Vista DeepSeek ────────────────────────────────────────────────────────────
-
 function DeepSeekView({ gm }) {
   return (
     <div>
@@ -687,15 +700,25 @@ function DeepSeekView({ gm }) {
         LLM-as-judge (DeepSeek)
       </div>
       <div style={grid}>
-        <MetricCard label="Avg Citation Precision" value={gm.avg_citation_precision} desc="Media precision per esempio." />
-        <MetricCard label="Avg Citation Recall" value={gm.avg_citation_recall} desc="Media recall per esempio." />
-        <MetricCard label="Macro Citation Precision" value={gm.macro_citation_precision} desc="Coppie valide / coppie totali, su tutto il dataset." />
+        <MetricCard label="Avg Citation Precision" value={gm.avg_citation_precision} desc="Media precision (pesata: partial=0.5) per esempio." />
+        <MetricCard label="Avg Citation Recall" value={gm.avg_citation_recall} desc="Media recall per esempio (claim con ≥1 full o partial)." />
+        <MetricCard label="Macro Citation Precision" value={gm.macro_citation_precision} desc="(full + 0.5·partial) / coppie totali, su tutto il dataset." />
         <MetricCard label="Macro Citation Recall" value={gm.macro_citation_recall} desc="Claim supportati / claim totali, su tutto il dataset." />
       </div>
+
+      <div style={sectionLabel('var(--text-2)')}>Distribuzione verdetti</div>
+      <div style={grid}>
+        <MetricCard label="Full support" value={gm.macro_pct_full} desc="% di coppie giudicate 'supported' (piena)." />
+        <MetricCard label="Partial support" value={gm.macro_pct_partial} desc="% di coppie giudicate 'partial'." />
+        <MetricCard label="Not supported" value={gm.macro_pct_none} desc="% di coppie giudicate 'not_supported'." />
+      </div>
+
       <div style={gridSm}>
         <MetricCard label="Claim Totali" value={gm.total_claims} isCount />
         <MetricCard label="Coppie Totali" value={gm.total_pairs} isCount />
-        <MetricCard label="Coppie Valide" value={gm.total_pairs_supported} isCount />
+        <MetricCard label="Full" value={gm.total_full} isCount />
+        <MetricCard label="Partial" value={gm.total_partial} isCount />
+        <MetricCard label="Not supported" value={gm.total_none} isCount />
       </div>
     </div>
   )
@@ -749,6 +772,13 @@ function NuggetView({ gm, perExample, metricKey = 'nugget_metrics' }) {
   )
 }
 
+// ══════════════════════════════════════════════════════════════════════
+// SOSTITUISCI in EvaluateDataset.jsx la funzione DatasetEvalResultsView
+// con questa versione completa. Le altre funzioni del file
+// (DeepSeekView, NuggetView, computeDeepseekGlobal, ecc.) sono nei
+// blocchi separati che ti ho dato prima.
+// ══════════════════════════════════════════════════════════════════════
+
 function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSave, onDownload }) {
   const [topK, setTopK] = useState(3)
   const [expandedEx, setExpandedEx] = useState(null)
@@ -759,6 +789,15 @@ function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSav
   const nuggetGm   = topK === 1 ? (results.nugget_global_top1   || {}) : (results.nugget_global   || {})
   const deepseekGm = topK === 1 ? (results.deepseek_global_top1 || {}) : (results.deepseek_global || {})
   const perExample = results.per_example || []
+
+  // Stile dei badge tri-livello (riusato in tutto il dettaglio per-claim)
+  const STYLE_BY_VERDICT = {
+    supported:     { bg: '#F0FDF4', bd: '#86EFAC',       pillBg: '#DCFCE7', pillFg: '#166534', label: 'SUPPORTED' },
+    partial:       { bg: '#FFFBEB', bd: '#FDE68A',       pillBg: '#FEF3C7', pillFg: '#92400E', label: 'PARTIAL'   },
+    not_supported: { bg: '#FAFAF9', bd: 'var(--border)', pillBg: '#FEE2E2', pillFg: '#991B1B', label: 'NOT SUPPORTED' },
+  }
+  // Retrocompat: vecchi JSON che hanno solo j.supported (bool) e non j.verdict
+  const verdictOf = (j) => j.verdict || (j.supported ? 'supported' : 'not_supported')
 
   return (
     <div>
@@ -825,6 +864,11 @@ function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSav
                     {dm && (
                       <span style={{ fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>
                         {Math.round((dm.citation_precision ?? 0) * 100)}% P · {Math.round((dm.citation_recall ?? 0) * 100)}% R
+                        {dm.n_pairs > 0 && (
+                          <> · <span style={{ color: '#166534' }}>{dm.n_full ?? 0}F</span>
+                             /<span style={{ color: '#92400E' }}>{dm.n_partial ?? 0}P</span>
+                             /<span style={{ color: '#991B1B' }}>{dm.n_none ?? 0}N</span></>
+                        )}
                       </span>
                     )}
                     {ex.error
@@ -838,55 +882,77 @@ function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSav
                   <div style={{ marginTop: 4, marginBottom: 8, padding: '12px 14px', background: 'white', border: '1px solid #BAE6FD', borderRadius: 8 }}>
                     {dm.per_claim.map((c, ci) => {
                       const ok = c.any_supported
+                      const nFull    = c.n_full    ?? c.n_supported ?? 0
+                      const nPartial = c.n_partial ?? 0
+                      // Pill sintetica del claim: mostra full e partial separati
+                      const pillLabel = ok
+                        ? `${nFull} full${nPartial > 0 ? ` + ${nPartial} partial` : ''} / ${c.n_passages}`
+                        : 'nessun supporto'
+
                       return (
-                        <div key={ci} style={{ marginBottom: 10, border: `1px solid ${ok ? '#A7F3D0' : '#FECACA'}`, borderRadius: 8, overflow: 'hidden' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: ok ? '#F0FDF4' : '#FFF1F2' }}>
+                        <div key={ci} style={{
+                          marginBottom: 10,
+                          border: `1px solid ${ok ? '#A7F3D0' : '#FECACA'}`,
+                          borderRadius: 8, overflow: 'hidden',
+                        }}>
+                          <div style={{
+                            display: 'flex', alignItems: 'center', gap: 10,
+                            padding: '8px 12px',
+                            background: ok ? '#F0FDF4' : '#FFF1F2',
+                          }}>
                             <span style={{
-                              fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 10, whiteSpace: 'nowrap', flexShrink: 0,
-                              background: ok ? '#DCFCE7' : '#FEE2E2', color: ok ? '#166534' : '#991B1B',
+                              fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 10,
+                              whiteSpace: 'nowrap', flexShrink: 0,
+                              background: ok ? '#DCFCE7' : '#FEE2E2',
+                              color: ok ? '#166534' : '#991B1B',
                             }}>
-                              {ok ? `${c.n_supported}/${c.n_passages} valide` : 'nessun supporto'}
+                              {pillLabel}
                             </span>
                             <span style={{ fontSize: 12, color: 'var(--text)', flex: 1, lineHeight: 1.4 }}>{c.claim}</span>
                           </div>
+
                           <div style={{ padding: '8px 12px' }}>
                             {(c.judgments || []).length === 0 ? (
                               <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic' }}>
                                 Nessun passaggio citato per questo claim.
                               </div>
-                            ) : c.judgments.map((j, ji) => (
-                              <div key={ji} style={{
-                                marginBottom: 6, padding: '8px 12px', borderRadius: 6,
-                                background: j.supported ? '#F0FDF4' : '#FAFAF9',
-                                border: `1px solid ${j.supported ? '#86EFAC' : 'var(--border)'}`,
-                              }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                                  <span style={{
-                                    fontSize: 10, fontWeight: 700, padding: '1px 7px', borderRadius: 8,
-                                    background: j.supported ? '#DCFCE7' : '#FEE2E2', color: j.supported ? '#166534' : '#991B1B',
-                                  }}>
-                                    {j.supported ? 'SUPPORTED' : 'NOT SUPPORTED'}
-                                  </span>
-                                  <span style={{ fontSize: 12, fontWeight: 600 }}>{j.passage_title || '—'}</span>
+                            ) : c.judgments.map((j, ji) => {
+                              const v = verdictOf(j)
+                              const st = STYLE_BY_VERDICT[v]
+                              return (
+                                <div key={ji} style={{
+                                  marginBottom: 6, padding: '8px 12px', borderRadius: 6,
+                                  background: st.bg, border: `1px solid ${st.bd}`,
+                                }}>
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                                    <span style={{
+                                      fontSize: 10, fontWeight: 700, padding: '1px 7px', borderRadius: 8,
+                                      background: st.pillBg, color: st.pillFg,
+                                    }}>
+                                      {st.label}
+                                    </span>
+                                    <span style={{ fontSize: 12, fontWeight: 600 }}>{j.passage_title || '—'}</span>
+                                  </div>
+                                  {j.evidence && (
+                                    <div style={{
+                                      fontSize: 11, color: st.pillFg, lineHeight: 1.5, marginBottom: 6,
+                                      padding: '6px 10px', background: 'white', borderRadius: 6,
+                                      borderLeft: `3px solid ${st.bd}`,
+                                    }}>
+                                      <strong style={{ color: 'var(--text-3)', fontWeight: 700 }}>Evidenza: </strong>{j.evidence}
+                                    </div>
+                                  )}
+                                  {j.reason && (
+                                    <div style={{
+                                      fontSize: 11, color: '#0C4A6E', fontStyle: 'italic',
+                                      padding: '6px 10px', background: '#F0F9FF', borderRadius: 6, borderLeft: '3px solid #BAE6FD',
+                                    }}>
+                                      <strong>DeepSeek:</strong> {j.reason}
+                                    </div>
+                                  )}
                                 </div>
-                                {j.evidence && (
-                                  <div style={{
-                                    fontSize: 11, color: '#166534', lineHeight: 1.5, marginBottom: 6,
-                                    padding: '6px 10px', background: '#ECFDF5', borderRadius: 6, borderLeft: '3px solid #86EFAC',
-                                  }}>
-                                    <strong style={{ color: 'var(--text-3)', fontWeight: 700 }}>Evidenza: </strong>{j.evidence}
-                                  </div>
-                                )}
-                                {j.reason && (
-                                  <div style={{
-                                    fontSize: 11, color: '#0C4A6E', fontStyle: 'italic',
-                                    padding: '6px 10px', background: '#F0F9FF', borderRadius: 6, borderLeft: '3px solid #BAE6FD',
-                                  }}>
-                                    <strong>DeepSeek:</strong> {j.reason}
-                                  </div>
-                                )}
-                              </div>
-                            ))}
+                              )
+                            })}
                           </div>
                         </div>
                       )

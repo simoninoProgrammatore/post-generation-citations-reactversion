@@ -58,9 +58,23 @@ def _get_evidence(passage: dict) -> str:
 
 
 def _build_prompt(claim: str, evidence: str) -> str:
-    """Prompt di giudizio: l'EVIDENZA e' lo span attribuito al claim."""
+    """Prompt di giudizio a TRE livelli: supported / partial / not_supported.
+
+    - supported:    l'evidenza stabilisce pienamente il claim.
+    - partial:      l'evidenza tocca il claim ma non lo stabilisce del tutto
+                    (manca un pezzo, e' troppo generica, supporta solo in parte).
+    - not_supported: l'evidenza non sostiene il claim (irrilevante o contraddittoria).
+    """
     return f"""Analizza se l'EVIDENZA supporta logicamente il CLAIM.
 L'evidenza e' uno specifico estratto (span) attribuito al claim.
+
+Rispondi con uno di tre verdetti:
+- "supported": l'evidenza stabilisce PIENAMENTE il claim (tutti gli elementi del claim sono coperti).
+- "partial": l'evidenza tocca il claim ma non lo stabilisce del tutto. Esempi: copre solo
+  una parte del claim, e' troppo generica, manca un dettaglio chiave (data, soggetto,
+  qualificatore), oppure suggerisce ma non afferma.
+- "not_supported": l'evidenza non sostiene il claim (irrilevante o contraddittoria).
+
 Rispondi esclusivamente in formato JSON.
 
 CLAIM: "{claim}"
@@ -68,7 +82,7 @@ EVIDENZA: "{evidence}"
 
 JSON format:
 {{
-  "supported": true/false,
+  "verdict": "supported" | "partial" | "not_supported",
   "reason": "breve spiegazione del verdetto"
 }}"""
 
@@ -80,11 +94,14 @@ async def _judge_pair(
     evidence: str,
     model: str,
 ) -> dict:
-    """Giudizio binario per UNA coppia (claim, span di evidenza)."""
-    # Nessuna evidenza da valutare: non chiamiamo l'API, e' banalmente non
-    # supportato. Evita anche un content vuoto -> JSONDecodeError.
+    """Giudizio a tre livelli per UNA coppia (claim, span di evidenza).
+
+    Ritorna {"verdict": "supported"|"partial"|"not_supported", "supported": bool, "reason": str}.
+    Il bool "supported" e' tenuto per retrocompatibilita': True solo se verdict=="supported".
+    """
     if not evidence or not evidence.strip():
-        return {"supported": False, "reason": "[nessuna evidenza estratta]"}
+        return {"verdict": "not_supported", "supported": False,
+                "reason": "[nessuna evidenza estratta]"}
 
     prompt = _build_prompt(claim, evidence)
     async with sem:
@@ -99,67 +116,73 @@ async def _judge_pair(
                 temperature=0,
             )
             res = json.loads(response.choices[0].message.content)
+            v = str(res.get("verdict", "not_supported")).lower().strip()
+            # Difensivo: se il modello ignora le 3 etichette, fallback dal vecchio bool.
+            if v not in ("supported", "partial", "not_supported"):
+                if "supported" in res:
+                    v = "supported" if bool(res["supported"]) else "not_supported"
+                else:
+                    v = "not_supported"
             return {
-                "supported": bool(res.get("supported", False)),
+                "verdict": v,
+                "supported": v == "supported",   # retrocompat
                 "reason": str(res.get("reason", "")),
             }
         except Exception as e:  # noqa: BLE001
-            return {
-                "supported": False,
-                "reason": f"[errore API] {e}",
-            }
+            return {"verdict": "not_supported", "supported": False,
+                    "reason": f"[errore API] {e}"}
 
 async def _evaluate_matched_async(
     matched_claims: list[dict],
     model: str,
 ) -> dict:
-    """Valuta tutti i claim di un esempio in concorrenza.
+    """Valuta tutti i claim di un esempio in concorrenza, su 3 livelli.
 
-    Lancia una task per ogni coppia (claim, span di evidenza), poi ricostruisce
-    precision e recall a partire dai verdetti. Una sola passata di chiamate
-    API serve sia per precision che per recall (a differenza di
-    deepseek_eval.py che le calcolava in due funzioni separate, raddoppiando
-    le chiamate).
+    PRECISION (pesata):  (n_full + 0.5 * n_partial) / n_pairs
+    RECALL:              claim con >=1 evidenza (full O partial) / n_claims
+    Esposte anche le frazioni per livello (pct_full / pct_partial / pct_none).
     """
     client = _get_async_client()
     sem = asyncio.Semaphore(MAX_CONCURRENCY)
 
-    # Lista piatta di task, una per coppia (claim, span di evidenza), tenendo
-    # traccia di a quale claim/passaggio appartiene ciascuna per la
-    # ricostruzione successiva.
     tasks = []
     index = []  # (claim_idx, passage_idx)
     for ci, mc in enumerate(matched_claims):
         claim = mc.get("claim", "")
         for pi, passage in enumerate(mc.get("supporting_passages", [])):
-            # Valutiamo lo SPAN di evidenza attribuito dal retrieve, NON il
-            # testo intero del passaggio: ogni span evidenziato e' una coppia
-            # claim->evidenza da giudicare separatamente.
             evidence = _get_evidence(passage)
             tasks.append(_judge_pair(client, sem, claim, evidence, model))
             index.append((ci, pi))
 
     verdicts = await asyncio.gather(*tasks) if tasks else []
 
-    # Raggruppa i verdetti per claim.
+    # Raggruppa per claim.
     per_claim: list[list[dict]] = [[] for _ in matched_claims]
     for (ci, _pi), verdict in zip(index, verdicts):
         per_claim[ci].append(verdict)
 
-    # ── Precision: % di coppie (claim, span) giudicate valide su tutte ──
-    all_supported = [v["supported"] for v in verdicts]
-    precision = (sum(all_supported) / len(all_supported)) if all_supported else 0.0
+    # ── Conteggi a 3 livelli ──
+    n_pairs = len(verdicts)
+    n_full     = sum(1 for v in verdicts if v["verdict"] == "supported")
+    n_partial  = sum(1 for v in verdicts if v["verdict"] == "partial")
+    n_none     = sum(1 for v in verdicts if v["verdict"] == "not_supported")
 
-    # ── Recall: % di claim con almeno uno span valido ──
+    # ── Precision pesata: partial = 0.5 ──
+    precision = ((n_full + 0.5 * n_partial) / n_pairs) if n_pairs else 0.0
+
+    # Retrocompat: queste due chiavi le legge ancora qualcuno.
+    n_pairs_supported = n_full + n_partial   # "valide" nel senso lato
+
+    # ── Recall: claim con >=1 evidenza full O partial ──
+    def _claim_is_covered(verdicts_c: list[dict]) -> bool:
+        return any(v["verdict"] in ("supported", "partial") for v in verdicts_c)
+
     if matched_claims:
-        supported_claims = sum(
-            1 for verdicts_c in per_claim if any(v["supported"] for v in verdicts_c)
-        )
-        recall = supported_claims / len(matched_claims)
+        recall = sum(1 for vs in per_claim if _claim_is_covered(vs)) / len(matched_claims)
     else:
         recall = 0.0
 
-    # ── Dettaglio per claim (con reason) per il frontend ──
+    # ── Dettaglio per claim, con verdict per ogni judgment ──
     per_claim_detail = []
     for mc, verdicts_c in zip(matched_claims, per_claim):
         passages = mc.get("supporting_passages", [])
@@ -169,26 +192,37 @@ async def _evaluate_matched_async(
                 "passage_title": passage.get("title", ""),
                 "passage_text": passage.get("text", ""),
                 "evidence": _get_evidence(passage),
-                "supported": verdict["supported"],
+                "verdict": verdict["verdict"],                # nuovo
+                "supported": verdict["supported"],            # retrocompat
                 "reason": verdict["reason"],
             })
+        n_full_c    = sum(1 for v in verdicts_c if v["verdict"] == "supported")
+        n_partial_c = sum(1 for v in verdicts_c if v["verdict"] == "partial")
         per_claim_detail.append({
             "claim": mc.get("claim", ""),
-            "any_supported": any(v["supported"] for v in verdicts_c),
+            "any_supported": _claim_is_covered(verdicts_c),   # ora include partial
             "n_passages": len(passages),
-            "n_supported": sum(1 for v in verdicts_c if v["supported"]),
+            "n_supported": n_full_c,                          # solo full (retrocompat)
+            "n_full": n_full_c,
+            "n_partial": n_partial_c,
             "judgments": judgments,
         })
 
     return {
         "citation_precision": precision,
-        "citation_recall": recall,
-        "n_claims": len(matched_claims),
-        "n_pairs": len(verdicts),
-        "n_pairs_supported": sum(all_supported),
-        "per_claim": per_claim_detail,
+        "citation_recall":    recall,
+        "n_claims":           len(matched_claims),
+        "n_pairs":            n_pairs,
+        "n_pairs_supported":  n_pairs_supported,              # retrocompat (full+partial)
+        # Nuovi campi a 3 livelli:
+        "n_full":     n_full,
+        "n_partial":  n_partial,
+        "n_none":     n_none,
+        "pct_full":    (n_full    / n_pairs) if n_pairs else 0.0,
+        "pct_partial": (n_partial / n_pairs) if n_pairs else 0.0,
+        "pct_none":    (n_none    / n_pairs) if n_pairs else 0.0,
+        "per_claim":  per_claim_detail,
     }
-
 
 def evaluate_matched_deepseek(
     matched_claims: list[dict],
