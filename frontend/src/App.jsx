@@ -9,6 +9,7 @@ import Sidebar from './components/Sidebar'
 import Icon from './components/Icon'
 
 const PAGE_TITLES = {
+  '/demo':     '"Demo production like"',
   '/pipeline':  'Pipeline interattivo',
   '/explore':   'Esplora risultati',
   '/metrics':   'Metriche di valutazione',

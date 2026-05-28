@@ -24,6 +24,7 @@ const REGISTRY = {
   metrics: BarChart3,
   attention: Eye,
   interpret: Microscope,
+  demo: Zap,
 
   // Logo/actions
   book: BookOpen,

@@ -8,9 +8,8 @@ import Explore from './pages/Explore'
 import Metrics from './pages/Metrics'
 import Attention from './pages/Attention'
 import Interpretability from './pages/Interpretability'
-import EvaluateDataset from './pages/EvaluateDataset'   // ← aggiungi
-
-// Dentro <Route path="/" element={<App />}>:
+import EvaluateDataset from './pages/EvaluateDataset'  
+import Demo from "./pages/Demo"
 
 import { AppDataProvider } from './context/AppData'
 import './index.css'
@@ -21,7 +20,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route index element={<Navigate to="/pipeline" replace />} />
+            <Route index element={<Navigate to="/demo" replace />} />
+            <Route path="demo"      element={<Demo />} />
             <Route path="pipeline"  element={<Pipeline />} />
             <Route path="explore"   element={<Explore />} />
             <Route path="metrics"   element={<Metrics />} />

@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom'
 import Icon from './Icon'
 
 const NAV = [
+  { path: '/demo',  icon: 'demo',  label: 'Demo "production like"' },
   { path: '/pipeline',  icon: 'pipeline',  label: 'Pipeline interattivo' },
   { path: '/explore',   icon: 'explore',   label: 'Esplora risultati' },
   { path: '/metrics',   icon: 'metrics',   label: 'Metriche' },

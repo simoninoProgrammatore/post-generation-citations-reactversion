@@ -1,6 +1,10 @@
 /**
  * Explore.jsx — Naviga i risultati pipeline salvati.
  * Supporta upload JSON (reset) e download del dataset corrente.
+ *
+ * Tab Metriche: mostra il dettaglio per-nugget / per-claim riusando le viste
+ * condivise (components/MetricsViews). La tab Citata mostra solo risposta +
+ * references (le metriche Standard obsolete sono state rimosse).
  */
 
 import { useState, useEffect, useRef } from 'react'
@@ -9,8 +13,9 @@ import { downloadJSON, timestampedFilename } from '../utils/download'
 import EmptyState from '../components/EmptyState'
 import ScorePill from '../components/ScorePill'
 import Icon from '../components/Icon'
+import { NuggetMetricsView, DeepSeekMetricsView } from '../components/MetricsViews'
 
-const TABS = ['Risposta grezza', 'Claims', 'Matched', 'Citata']
+const TABS = ['Risposta grezza', 'Claims', 'Matched', 'Citata', 'Metriche']
 
 export default function Explore() {
   const { pipelineResults, setPipelineResults, clearAll } = useAppData()
@@ -34,7 +39,6 @@ export default function Explore() {
     reader.onload = evt => {
       try {
         let parsed = JSON.parse(evt.target.result)
-        // Se è un singolo oggetto, lo convertiamo in array
         if (!Array.isArray(parsed)) {
           if (parsed && typeof parsed === 'object') {
             parsed = [parsed]
@@ -45,7 +49,6 @@ export default function Explore() {
         if (parsed.length === 0) {
           throw new Error('Il file è vuoto.')
         }
-        // Validation minima: ogni elemento deve avere almeno 'question' o 'raw_response'
         const valid = parsed.every(r =>
           r && typeof r === 'object' && (r.question != null || r.raw_response != null)
         )
@@ -60,7 +63,6 @@ export default function Explore() {
       }
     }
     reader.readAsText(file)
-    // Reset dell'input per permettere di ricaricare lo stesso file
     e.target.value = ''
   }
 
@@ -69,13 +71,9 @@ export default function Explore() {
     downloadJSON(pipelineResults, timestampedFilename('pipeline_results'))
   }
 
-  // ── Header sempre visibile ────────────────────────────────────────────
   const headerActions = (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-      <input
-        ref={fileRef} type="file" accept=".json"
-        onChange={onFileUpload} style={{ display: 'none' }}
-      />
+      <input ref={fileRef} type="file" accept=".json" onChange={onFileUpload} style={{ display: 'none' }} />
       <button className="btn btn-secondary" onClick={() => fileRef.current.click()}>
         <Icon name="upload" size={13} strokeWidth={1.75} /> Carica JSON
       </button>
@@ -84,10 +82,7 @@ export default function Explore() {
           <button className="btn btn-secondary" onClick={onDownload}>
             <Icon name="download" size={13} strokeWidth={1.75} /> Scarica JSON
           </button>
-          <button
-            className="btn btn-secondary"
-            onClick={() => { if (confirm('Cancellare tutti i risultati?')) clearAll() }}
-          >
+          <button className="btn btn-secondary" onClick={() => { if (confirm('Cancellare tutti i risultati?')) clearAll() }}>
             Svuota
           </button>
         </>
@@ -102,9 +97,7 @@ export default function Explore() {
           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
             <div>
               <div className="page-header-title">Esplora risultati</div>
-              <div className="page-header-sub">
-                Naviga i risultati prodotti dal pipeline step-by-step.
-              </div>
+              <div className="page-header-sub">Naviga i risultati prodotti dal pipeline step-by-step.</div>
             </div>
             {headerActions}
           </div>
@@ -151,17 +144,12 @@ export default function Explore() {
       {/* Selector esempio */}
       <div className="card" style={{ marginBottom: 16 }}>
         <div className="card-body">
-          <div style={{
-            fontSize: 11, fontWeight: 600, color: 'var(--text-3)',
-            textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 6,
-          }}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 6 }}>
             Esempio
           </div>
           <select className="input" value={idx} onChange={e => setIdx(+e.target.value)}>
             {pipelineResults.map((r, i) => (
-              <option key={i} value={i}>
-                [{i}] {(r.question || '').slice(0, 80)}
-              </option>
+              <option key={i} value={i}>[{i}] {(r.question || '').slice(0, 80)}</option>
             ))}
           </select>
         </div>
@@ -176,9 +164,7 @@ export default function Explore() {
         <div style={{ padding: '0 20px', borderBottom: '1px solid var(--border-2)' }}>
           <div className="tabs" style={{ marginBottom: 0 }}>
             {TABS.map(t => (
-              <div key={t} className={`tab${tab === t ? ' active' : ''}`} onClick={() => setTab(t)}>
-                {t}
-              </div>
+              <div key={t} className={`tab${tab === t ? ' active' : ''}`} onClick={() => setTab(t)}>{t}</div>
             ))}
           </div>
         </div>
@@ -189,11 +175,10 @@ export default function Explore() {
           {tab === 'Claims' && <ClaimsTab claims={ex.claims || []} />}
           {tab === 'Matched' && <MatchedTab matched={ex.matched_claims || []} />}
           {tab === 'Citata' && (
-            <CitedTab
-              citedResponse={ex.cited_response || ''}
-              references={ex.references || []}
-              metrics={ex.metrics}
-            />
+            <CitedTab citedResponse={ex.cited_response || ''} references={ex.references || []} />
+          )}
+          {tab === 'Metriche' && (
+            <MetricsTab nugget={ex.nugget_metrics} deepseek={ex.deepseek_metrics} />
           )}
         </div>
       </div>
@@ -201,7 +186,7 @@ export default function Explore() {
   )
 }
 
-// ── Sub-components (invariati) ─────────────────────────────────────────
+// ── Sub-components ─────────────────────────────────────────
 
 function ClaimsTab({ claims }) {
   if (claims.length === 0) return <div style={{ color: 'var(--text-3)' }}>Nessun claim.</div>
@@ -211,18 +196,8 @@ function ClaimsTab({ claims }) {
         {claims.length} claims estratti
       </div>
       {claims.map((c, i) => (
-        <div key={i} style={{
-          display: 'flex', alignItems: 'flex-start', gap: 10,
-          padding: '10px 14px',
-          background: '#F5F3FF', border: '1px solid #DDD6FE',
-          borderRadius: 8, marginBottom: 6,
-        }}>
-          <span style={{
-            fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 600,
-            color: 'var(--accent)', background: 'white',
-            border: '1px solid #DDD6FE', borderRadius: 4,
-            padding: '1px 6px', flexShrink: 0, marginTop: 1,
-          }}>{String(i + 1).padStart(2, '0')}</span>
+        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 14px', background: '#F5F3FF', border: '1px solid #DDD6FE', borderRadius: 8, marginBottom: 6 }}>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 600, color: 'var(--accent)', background: 'white', border: '1px solid #DDD6FE', borderRadius: 4, padding: '1px 6px', flexShrink: 0, marginTop: 1 }}>{String(i + 1).padStart(2, '0')}</span>
           <span style={{ fontSize: 13, color: '#2E1065', lineHeight: 1.5 }}>{c}</span>
         </div>
       ))}
@@ -242,9 +217,7 @@ function MatchedTab({ matched }) {
           <div key={i} className="expander" style={{ borderColor: has ? '#A7F3D0' : '#FECACA' }}>
             <div className="expander-header" onClick={() => setOpen(o => ({ ...o, [i]: !o[i] }))}>
               <span className={`badge ${has ? 'badge-green' : 'badge-red'}`}>
-                {has
-                  ? <Icon name="check" size={10} strokeWidth={2.5} />
-                  : <Icon name="x" size={10} strokeWidth={2.5} />}
+                {has ? <Icon name="check" size={10} strokeWidth={2.5} /> : <Icon name="x" size={10} strokeWidth={2.5} />}
               </span>
               <span className="expander-header-title" style={{ color: 'var(--text)' }}>{m.claim}</span>
               {has && passages[0].entailment_score != null && (
@@ -264,20 +237,13 @@ function MatchedTab({ matched }) {
                     </div>
                     <div className="passage-body">{p.text || ''}</div>
                     {p.best_sentence && (
-                      <div style={{
-                        margin: '0 14px 10px', padding: '6px 10px',
-                        background: '#ECFDF5', borderRadius: 6,
-                        fontSize: 11, color: '#166534',
-                        borderLeft: '3px solid #86EFAC',
-                      }}>
+                      <div style={{ margin: '0 14px 10px', padding: '6px 10px', background: '#ECFDF5', borderRadius: 6, fontSize: 11, color: '#166534', borderLeft: '3px solid #86EFAC' }}>
                         <strong>Evidenza:</strong> {p.best_sentence}
                       </div>
                     )}
                   </div>
                 )) : (
-                  <span style={{ color: 'var(--text-3)', fontSize: 13 }}>
-                    Nessun passaggio di supporto trovato.
-                  </span>
+                  <span style={{ color: 'var(--text-3)', fontSize: 13 }}>Nessun passaggio di supporto trovato.</span>
                 )}
               </div>
             )}
@@ -288,21 +254,7 @@ function MatchedTab({ matched }) {
   )
 }
 
-function CitedTab({ citedResponse, references, metrics }) {
-  const METRIC_LABELS = {
-    citation_precision: 'Citation Precision',
-    citation_recall: 'Citation Recall',
-    factual_precision: 'Factual Precision',
-    factual_precision_nli: 'Factual Precision NLI',
-    unsupported_ratio: 'Unsupported Ratio',
-    avg_entailment_score: 'Avg Entailment',
-  }
-
-  function metricColor(key, v) {
-    if (key === 'unsupported_ratio') return v <= 0.2 ? 'var(--green)' : v <= 0.5 ? 'var(--amber)' : 'var(--red)'
-    return v >= 0.7 ? 'var(--green)' : v >= 0.4 ? 'var(--amber)' : 'var(--red)'
-  }
-
+function CitedTab({ citedResponse, references }) {
   return (
     <div>
       <div className="response-box">{citedResponse || '—'}</div>
@@ -311,41 +263,55 @@ function CitedTab({ citedResponse, references, metrics }) {
         <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
           <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>References</div>
           {references.map(r => (
-            <div key={r.citation_number} style={{
-              padding: '10px 14px', background: 'var(--bg)',
-              border: '1px solid var(--border)', borderRadius: 8, marginBottom: 8,
-            }}>
-              <span style={{ fontFamily: 'var(--mono)', fontWeight: 700, color: 'var(--green)', marginRight: 6 }}>
-                [{r.citation_number}]
-              </span>
+            <div key={r.citation_number} style={{ padding: '10px 14px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 8, marginBottom: 8 }}>
+              <span style={{ fontFamily: 'var(--mono)', fontWeight: 700, color: 'var(--green)', marginRight: 6 }}>[{r.citation_number}]</span>
               <strong style={{ fontSize: 13 }}>{r.title || '—'}</strong>
               <div style={{ fontSize: 12, color: 'var(--text-2)', marginTop: 4 }}>{r.text || ''}</div>
             </div>
           ))}
         </div>
       )}
+    </div>
+  )
+}
 
-      {metrics && Object.keys(metrics).length > 0 && (
-        <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10 }}>Metriche</div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 8 }}>
-            {Object.entries(METRIC_LABELS).map(([k, l]) => {
-              const v = metrics[k]
-              if (v == null) return null
-              const c = metricColor(k, v)
-              return (
-                <div key={k} style={{
-                  padding: '10px 14px', background: 'var(--bg)',
-                  borderRadius: 8, border: '1px solid var(--border)',
-                }}>
-                  <div style={{ fontSize: 18, fontWeight: 700, color: c, fontFamily: 'var(--mono)' }}>
-                    {v.toFixed(3)}
-                  </div>
-                  <div style={{ fontSize: 11, color: 'var(--text-2)', marginTop: 2 }}>{l}</div>
-                </div>
-              )
-            })}
-          </div>
+// ── MetricsTab — dettaglio Nugget e/o DeepSeek per il singolo esempio ──────────
+
+function MetricsTab({ nugget, deepseek }) {
+  const hasNugget   = nugget   && Object.keys(nugget).length   > 0
+  const hasDeepseek = deepseek && Object.keys(deepseek).length > 0
+
+  if (!hasNugget && !hasDeepseek) {
+    return (
+      <div style={{ color: 'var(--text-3)', fontSize: 13, padding: '8px 0' }}>
+        Nessuna metrica salvata per questo esempio. Esegui lo step <strong>Valuta</strong> (Nugget o DeepSeek) nella Pipeline prima di salvare in Esplora.
+      </div>
+    )
+  }
+
+  const SectionLabel = ({ color, children }) => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8, margin: '4px 0 14px', fontSize: 12, fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+      <span style={{ width: 8, height: 8, borderRadius: '50%', background: color, display: 'inline-block' }} />
+      {children}
+    </div>
+  )
+
+  return (
+    <div>
+      {hasNugget && (
+        <div style={{ marginBottom: hasDeepseek ? 28 : 0 }}>
+          <SectionLabel color="#7C3AED">Valutazione Nugget</SectionLabel>
+          {/* niente onSave/onDownload → nessun bottone azione */}
+          <NuggetMetricsView metrics={nugget} />
+        </div>
+      )}
+
+      {hasNugget && hasDeepseek && <div className="divider" style={{ margin: '0 0 24px' }} />}
+
+      {hasDeepseek && (
+        <div>
+          <SectionLabel color="#0EA5E9">Valutazione DeepSeek</SectionLabel>
+          <DeepSeekMetricsView metrics={deepseek} />
         </div>
       )}
     </div>
