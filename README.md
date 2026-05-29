@@ -375,7 +375,7 @@ The first call to the LLM attribution endpoint additionally downloads `BAAI/bge-
 - **Meng, K. et al.** (2022). *Locating and Editing Factual Associations in GPT*. NeurIPS. — Activation Patching.
 - **Vig, J. et al.** (2020). *Investigating Gender Bias in Language Models Using Causal Mediation Analysis*. NeurIPS. — causal mediation template.
 
-Full bibliography in [`docs/bibliografia_tesi.md`](docs/bibliografia_tesi.md). Metric formalization in [`docs/Metriche_Nugget_DeepSeek.pdf`](docs/Metriche_Nugget_DeepSeek.pdf).
+Full bibliography in [`docs/bibliografia_tesi.md`](bibliography/bibliografia_tesi.md). Metric formalization in [`docs/Metriche_Nugget_DeepSeek.pdf`](docs/Metriche_Nugget_DeepSeek.pdf).
 
 ---
 
