@@ -274,8 +274,9 @@ async def cite(req: CiteRequest):
     """Inserisce citazioni inline nella risposta."""
     try:
         matched_dict = [m.model_dump() for m in req.matched]
-        cited, references = pipeline_runners.run_cite(req.response, matched_dict)
-        return CiteResponse(cited_response=cited, references=references)
+        cited, references, sentence_claims = pipeline_runners.run_cite(req.response, matched_dict)
+        return CiteResponse(cited_response=cited, references=references,
+                            sentence_claims=sentence_claims)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

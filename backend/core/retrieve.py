@@ -113,34 +113,52 @@ def _split_passage_with_spans(text: str) -> list[tuple[str, int, int]]:
     """
     Split a passage into sentences, returning (sentence, start, end) tuples
     with positions relative to the original text.
+
+    Due proprieta' importanti:
+      - i placeholder delle abbreviazioni hanno LA STESSA LUNGHEZZA
+        dell'originale (solo i punti sostituiti da '_'), cosi' gli offset
+        calcolati sul testo protetto valgono anche sul testo originale
+        (il vecchio __ABBRn__ cambiava lunghezza e sfalsava gli span);
+      - frammenti adiacenti vengono FUSI se il confine cade prima di una
+        cifra o minuscola: protegge i decimali ("8,848. 86 m") e le sigle
+        non in lista, senza invalidare gli span (start del primo, end
+        dell'ultimo).
     """
     abbreviations = ["Mr.", "Mrs.", "Ms.", "Dr.", "Jr.", "Sr.", "Prof.",
                      "Inc.", "Ltd.", "Corp.", "vs.", "etc.", "approx.",
                      "U.S.", "U.K.", "E.U."]
 
     protected = text
-    placeholders = {}
-    for i, abbr in enumerate(abbreviations):
-        placeholder = f"__ABBR{i}__"
-        placeholders[placeholder] = abbr
-        protected = protected.replace(abbr, placeholder)
+    for abbr in abbreviations:
+        protected = protected.replace(abbr, abbr.replace(".", "_"))
+
+    # Frammenti grezzi (stessi offset di `text` grazie ai placeholder isometrici)
+    raw = []
+    for match in re.finditer(r'[^.!?]*[.!?]+', protected):
+        if match.group().strip():
+            raw.append((match.start(), match.end()))
+    if not raw:
+        return []
+
+    # Fusione: il confine e' valido solo se dopo c'e' (spazio +) maiuscola
+    # o fine testo; altrimenti ("8,848." + "86 metres...") si fonde col prossimo.
+    merged = [raw[0]]
+    boundary_ok = re.compile(r'\s+["\'(\[]?[A-Z]')
+    for start, end in raw[1:]:
+        prev_start, prev_end = merged[-1]
+        if boundary_ok.match(protected, prev_end):
+            merged.append((start, end))
+        else:
+            merged[-1] = (prev_start, end)
 
     results = []
-    for match in re.finditer(r'[^.!?]*[.!?]+', protected):
-        sent_protected = match.group().strip()
-        if not sent_protected:
-            continue
-
-        start = match.start()
-        end = match.end()
-
+    for start, end in merged:
         original_sent = text[start:end].strip()
-
+        if not original_sent:
+            continue
         stripped_start = start + (len(text[start:end]) - len(text[start:end].lstrip()))
         stripped_end = stripped_start + len(original_sent)
-
-        if original_sent:
-            results.append((original_sent, stripped_start, stripped_end))
+        results.append((original_sent, stripped_start, stripped_end))
 
     return results
 
@@ -178,39 +196,19 @@ def _load_embedding_model(model_name: str):
 
 def _compute_token_overlap(claim: str, sentence: str) -> float:
     """
-    Compute normalized token overlap (Jaccard-like) between claim and sentence.
-    Returns a score between 0 and 1.
+    DEPRECATO nel pre-filtro (sostituito dal containment pesato IDF di
+    core.cite, che non penalizza le frasi lunghe e normalizza numeri e
+    genitivi). Mantenuto solo per compatibilita' con eventuali usi esterni.
     """
-    import re as _re
+    from core.cite import word_tokens
 
-    # Stopwords da ignorare (parole troppo comuni)
-    stopwords = {
-        "the", "a", "an", "is", "was", "were", "are", "been", "be", "have",
-        "has", "had", "do", "does", "did", "will", "would", "could", "should",
-        "may", "might", "shall", "can", "to", "of", "in", "for", "on", "with",
-        "at", "by", "from", "as", "into", "through", "during", "before",
-        "after", "and", "but", "or", "nor", "not", "so", "yet", "both",
-        "either", "neither", "each", "every", "all", "any", "few", "more",
-        "most", "other", "some", "such", "no", "only", "own", "same", "than",
-        "too", "very", "just", "because", "if", "when", "where", "how",
-        "what", "which", "who", "whom", "this", "that", "these", "those",
-        "it", "its", "he", "she", "they", "them", "his", "her", "their",
-    }
-
-    def tokenize(text):
-        tokens = set(_re.findall(r'\b\w+\b', text.lower()))
-        return tokens - stopwords
-
-    claim_tokens = tokenize(claim)
-    sent_tokens = tokenize(sentence)
+    claim_tokens = word_tokens(claim)
+    sent_tokens = word_tokens(sentence)
 
     if not claim_tokens or not sent_tokens:
         return 0.0
 
-    intersection = claim_tokens & sent_tokens
-    union = claim_tokens | sent_tokens
-
-    return len(intersection) / len(union)
+    return len(claim_tokens & sent_tokens) / len(claim_tokens | sent_tokens)
 
 
 def _pre_filter_sentences(
@@ -224,15 +222,22 @@ def _pre_filter_sentences(
     overlap_weight: float = 0.5,
 ) -> tuple[list[str], list[int], list[tuple[str, int, int]]]:
     """
-    Pre-filter sentences using HYBRID scoring: embedding similarity + token overlap.
-    
-    hybrid_score = embedding_weight × cosine_sim + overlap_weight × jaccard_overlap
-    
-    This combines the best of both worlds:
-    - Embeddings catch semantic paraphrases (different words, same meaning)
-    - Token overlap catches lexical matches (same words, entities, dates)
-    
-    Returns only the top-K scoring sentences (with their metadata).
+    Pre-filter sentences using HYBRID scoring: embedding similarity + lexical.
+
+    hybrid_score = embedding_weight x cosine_sim + overlap_weight x containment
+
+    La componente lessicale e' il CONTAINMENT PESATO IDF (da core.cite):
+        c(claim, S) = somma IDF dei token del claim coperti da S
+                      / somma IDF di tutti i token del claim
+    A differenza del Jaccard usato in precedenza: (a) non penalizza le frasi
+    lunghe (misura asimmetrica, normalizzata sul claim); (b) i token rari nel
+    pool — date, numeri, entita' — dominano lo score; (c) eredita la
+    normalizzazione di core.cite (numeri "8,848. 86" == "8,848.86",
+    genitivi sassoni), che rende claim ed evidenza confrontabili anche con
+    artefatti di generazione.
+    La componente embedding resta: copre le parafrasi, dove il segnale
+    lessicale e' cieco. Il pre-filtro massimizza la recall dei candidati;
+    la DECISIONE di supporto resta a DeBERTa-NLI.
     """
     import numpy as np
 
@@ -246,9 +251,14 @@ def _pre_filter_sentences(
     sent_embs = model.encode(all_sentences, normalize_embeddings=True)
     embedding_scores = (sent_embs @ claim_emb.T).flatten()
 
-    # 2. Token overlap (Jaccard)
+    # 2. Containment pesato IDF (IDF calcolato sulle frasi del pool)
+    from core.cite import word_tokens, idf_weights, containment
+
+    claim_toks = word_tokens(claim)
+    sentence_tokens = [word_tokens(s) for s in all_sentences]
+    idf = idf_weights(sentence_tokens)
     overlap_scores = np.array([
-        _compute_token_overlap(claim, sent) for sent in all_sentences
+        containment(claim_toks, st, idf) for st in sentence_tokens
     ])
 
     # 3. Hybrid score
@@ -409,9 +419,19 @@ def _similarity_rank_for_llm(
     passages: list[dict],
     model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
     top_k: int = 10,
+    embedding_weight: float = 0.5,
+    containment_weight: float = 0.5,
 ) -> list[dict]:
     """
-    Internal helper: rank passages by embedding cosine similarity to the claim.
+    Internal helper: rank passages for the LLM judge with a HYBRID score:
+
+        score = embedding_weight x cosine + containment_weight x containment
+
+    Il containment pesato IDF (a livello di passaggio) compensa la nota
+    debolezza degli embedding sui numeri: "8,848.86" e "8,849.96" producono
+    vettori quasi identici, ma per i claim metrici la cifra esatta e' il
+    segnale decisivo. Stessa struttura ibrida del pre-filtro NLI: i due
+    percorsi di matching restano metodologicamente simmetrici.
     Used by `match_with_llm` to restrict the candidate pool before the LLM call.
     Not exposed as a public attribution method.
     """
@@ -419,13 +439,24 @@ def _similarity_rank_for_llm(
         return []
 
     from sklearn.metrics.pairwise import cosine_similarity
+    from core.cite import word_tokens, idf_weights, containment
 
     model = _load_embedding_model(model_name)
     claim_emb = model.encode([claim])
     passage_embs = model.encode([p["text"] for p in passages])
     sims = cosine_similarity(claim_emb, passage_embs)[0]
 
-    ranked = sorted(enumerate(sims), key=lambda x: x[1], reverse=True)[:top_k]
+    claim_toks = word_tokens(claim)
+    passage_tokens = [word_tokens(p["text"]) for p in passages]
+    idf = idf_weights(passage_tokens)
+    cont = [containment(claim_toks, pt, idf) for pt in passage_tokens]
+
+    hybrid = [
+        embedding_weight * float(s) + containment_weight * c
+        for s, c in zip(sims, cont)
+    ]
+
+    ranked = sorted(enumerate(hybrid), key=lambda x: x[1], reverse=True)[:top_k]
     return [{**passages[i], "_prefilter_score": float(score)} for i, score in ranked]
 
 

@@ -280,6 +280,7 @@ export default function Pipeline() {
   const [matched, setMatched] = useState(null)
   const [cited, setCited] = useState(null)
   const [references, setReferences] = useState(null)
+  const [sentenceClaims, setSentenceClaims] = useState(null)
   const [metrics, setMetrics] = useState(null)
   const [nuggetMetrics, setNuggetMetrics] = useState(null)
   const [deepseekMetrics, setDeepseekMetrics] = useState(null)
@@ -324,7 +325,7 @@ export default function Pipeline() {
     if (idx <= 0) setResponse(null)
     if (idx <= 1) setClaims(null)
     if (idx <= 2) { setMatched(null); setNuggetCovering(null) }
-    if (idx <= 3) { setCited(null); setReferences(null) }
+    if (idx <= 3) { setCited(null); setReferences(null); setSentenceClaims(null) }
     if (idx <= 4) { setMetrics(null); setNuggetMetrics(null); setDeepseekMetrics(null); setNuggetFieldError(null) }  
   }
 
@@ -456,6 +457,7 @@ async function runEvaluate() {
       const res = await api.pipeline.cite({ response, matched })
       setCited(res.cited_response)
       setReferences(res.references)
+      setSentenceClaims(res.sentence_claims || null)
     } catch (e) { setError(`Cite: ${e.message}`) }
     setRunning(null)
   }
@@ -464,7 +466,7 @@ async function runEvaluate() {
   function saveToExplore() {
     addPipelineResult({
       question: currentQuery, raw_response: response, claims,
-      matched_claims: matched, cited_response: cited, references,
+      matched_claims: matched, cited_response: cited, references, sentence_claims: sentenceClaims,
       metrics, nugget_metrics: nuggetMetrics, deepseek_metrics: deepseekMetrics,
     })
     alert('Risultato salvato! Visibile nella pagina Esplora.')
@@ -478,6 +480,7 @@ async function runEvaluate() {
       matched_claims: matched,
       cited_response: cited,
       references,
+      sentence_claims: sentenceClaims,
       metrics,
       nugget_metrics: nuggetMetrics,
       deepseek_metrics: deepseekMetrics,
@@ -737,6 +740,7 @@ async function runEvaluate() {
             citedResponse={cited}
             references={references || []}
             matched={matched}
+            sentenceClaims={sentenceClaims}
           />
         )}
       </StepCard>
@@ -1261,10 +1265,21 @@ function highlightEvidence(passageText, extraction, start, end) {
   return <span>{passageText}</span>
 }
 
-function CitedView({ citedResponse, references, matched }) {
+function CitedView({ citedResponse, references, matched, sentenceClaims }) {
   const [activeSent, setActiveSent] = useState(null)
   const [activeClaim, setActiveClaim] = useState(null)
-  const sentences = splitIntoSentences(citedResponse)
+
+  // SINGLE SOURCE OF TRUTH: l'allineamento claim -> frase arriva dal backend
+  // (containment pesato IDF in core/cite.py). Lo split/overlap client-side
+  // resta SOLO come fallback per run salvati prima di questa modifica.
+  const fromBackend = Array.isArray(sentenceClaims) && sentenceClaims.length > 0
+  const sentences = fromBackend
+    ? sentenceClaims.map(sc => ({
+        text: sc.sentence,
+        citations: sc.citations || [],
+        claims: sc.claims || [],
+      }))
+    : splitIntoSentences(citedResponse)
 
   function onSentenceClick(i) {
     if (activeSent === i) { setActiveSent(null); setActiveClaim(null) }
@@ -1272,7 +1287,14 @@ function CitedView({ citedResponse, references, matched }) {
   }
 
   const associatedClaims = activeSent != null
-    ? findAssociatedClaims(sentences[activeSent].text, matched || [])
+    ? (fromBackend
+        ? sentences[activeSent].claims
+            .map(c => ({
+              matchedClaim: (matched || []).find(mc => mc.claim === c.claim),
+              overlap: c.alignment_score,
+            }))
+            .filter(x => x.matchedClaim)
+        : findAssociatedClaims(sentences[activeSent].text, matched || []))
     : []
 
   return (
@@ -1328,7 +1350,7 @@ function CitedView({ citedResponse, references, matched }) {
           {activeClaim == null ? (
             associatedClaims.length === 0 ? (
               <div style={{ fontSize: 13, color: 'var(--text-3)' }}>
-                Nessun claim associato (overlap lessicale &lt; 0.5).
+                Nessun claim allineato a questa frase.
               </div>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -1348,7 +1370,7 @@ function CitedView({ citedResponse, references, matched }) {
                       <Icon name="search" size={13} color="var(--green)" strokeWidth={2} />
                       <span style={{ flex: 1, fontSize: 13, color: 'var(--text)' }}>{matchedClaim.claim}</span>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--text-3)', whiteSpace: 'nowrap' }}>
-                        overlap {overlap.toFixed(2)}
+                        align {overlap.toFixed(2)}
                       </span>
                       <span style={{
                         fontSize: 11, fontWeight: 600, color: 'var(--green)',

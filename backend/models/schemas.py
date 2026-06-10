@@ -123,9 +123,23 @@ class Reference(BaseModel):
     text: str
 
 
+class AlignedClaim(BaseModel):
+    claim: str
+    alignment_score: float
+
+
+class SentenceClaims(BaseModel):
+    sentence: str
+    citations: list[int]
+    claims: list[AlignedClaim]
+
+
 class CiteResponse(BaseModel):
     cited_response: str
     references: list[Reference]
+    # Allineamento claim -> frase calcolato dal backend (containment pesato
+    # IDF). La UI lo renderizza cosi' com'e': NIENTE ricalcolo client-side.
+    sentence_claims: list[SentenceClaims] = []
 
 
 # ──────────────────────────────────────────────

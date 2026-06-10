@@ -249,31 +249,18 @@ def _find_best_nugget(
 def run_cite(
     response: str,
     matched_claims: list[dict],
-    model: str = "claude-haiku-4-5-20251001",
-    use_source_map: bool = True,
-) -> tuple[str, list[dict]]:
+) -> tuple[str, list[dict], list[dict]]:
+    """Step 4 — inserzione citazioni, interamente locale.
+
+    L'allineamento claim -> frase avviene in core.cite via containment
+    pesato IDF (vedi docstring di core/cite.py). Niente secondo prompt,
+    niente chiamate LLM: deterministico e riproducibile.
+    """
     from core.cite import build_citation_map, insert_citations
 
-    # ── Secondo prompt: mappa claim -> frasi sorgente (elimina l'overlap) ──
-    claim_source_map = None
-    if use_source_map and matched_claims:
-        try:
-            from core.claim_source_map import map_claims_to_sentences
-            claims = [mc["claim"] for mc in matched_claims]
-            claim_source_map = map_claims_to_sentences(response, claims, model=model)
-        except Exception as e:
-            import logging
-            logging.getLogger(__name__).error(
-                f"[run_cite] mappa sorgente fallita, uso fallback overlap: {e}"
-            )
-            claim_source_map = None
-
     citation_map = build_citation_map(matched_claims)
-    cited, refs = insert_citations(
-        response, matched_claims, citation_map,
-        claim_source_map=claim_source_map,
-    )
-    return cited, refs
+    cited, refs, sentence_claims = insert_citations(response, matched_claims, citation_map)
+    return cited, refs, sentence_claims
 
 
 def run_evaluate_deepseek(matched_claims: list[dict], model: str = "deepseek-v4-flash") -> dict:

@@ -5,16 +5,29 @@ Given matched claims and their supporting passages, this module
 reconstructs the response with inline citation markers (e.g., [1][2])
 and generates an interactive HTML viewer.
 
-MAPPA SORGENTE (claim -> frasi):
-  insert_citations accetta un parametro opzionale `claim_source_map`
-  ({claim_text: [frase_sorgente, ...]}) prodotto dal secondo prompt
-  (core.claim_source_map). Se presente, le citazioni di un claim vengono
-  attaccate alle frasi che il claim dichiara come sorgente, tramite un
-  ALLINEAMENTO ESATTO/CONTENIMENTO con _sentence_split — niente piu' overlap
-  fuzzy a soglia. Se la mappa e' assente (o non copre un claim), si ricade
-  sul vecchio matching per overlap di parole, cosi' il path CLI in run()
-  resta funzionante.
+ALLINEAMENTO CLAIM -> FRASI (senza LLM):
+  il secondo prompt (core.claim_source_map) e' stato ELIMINATO. L'assegnazione
+  delle citazioni alla frase giusta avviene ora con un allineamento lessicale
+  deterministico basato su CONTAINMENT PESATO IDF:
+
+      score(claim, S) = sum_{t in tok(claim) ∩ tok(S)} idf(t)
+                        ─────────────────────────────────────
+                           sum_{t in tok(claim)} idf(t)
+
+  dove idf(t) e' calcolato sulle frasi della risposta stessa. Il containment
+  (asimmetrico, normalizzato sul claim) non penalizza le frasi lunghe come
+  farebbe il Jaccard; i pesi IDF fanno si' che i token rari (date, numeri,
+  entita') dominino lo score, neutralizzando il rumore introdotto dalla
+  decontestualizzazione dei claim (pronomi risolti, entita' aggiunte).
+  I claim che fondono due frasi adiacenti sono gestiti con finestre di
+  lunghezza 2. Zero chiamate LLM: deterministico, riproducibile, gratis.
+
+  (Metrica ispirata alle query di containment di ekzhu/datasketch —
+  MinHashLSHEnsemble; qui calcolata in forma esatta, dato che una
+  risposta ha ~5-15 frasi.)
 """
+
+import math
 
 import re
 import json
@@ -38,86 +51,155 @@ def build_citation_map(matched_claims: list[dict]) -> dict:
 
 
 def _sentence_split(text: str) -> list[str]:
-    return re.split(r'(?<=[.!?])(?:\[\d+\])*\s+', text.strip())
+    """Split in frasi. Il lookahead (?=[A-Z...]) evita di spezzare quando
+    dopo il punto segue una cifra o una minuscola: protegge i decimali
+    scritti con spazio ("8,848. 86 metres", artefatto di generazione) e le
+    abbreviazioni. Tradeoff: frasi che iniziano con cifra/minuscola vengono
+    fuse con la precedente — accettabile per prosa inglese generata."""
+    return re.split(r'(?<=[.!?])(?:\[\d+\])*\s+(?=["\'(\[]?[A-Z])', text.strip())
 
 
 # ──────────────────────────────────────────────
-# Allineamento source_sentence (da claim_source_map) <-> frasi dello split
+# Allineamento claim -> frasi della risposta (lessicale, senza LLM)
 # ──────────────────────────────────────────────
+
+# Stopword escluse dalla tokenizzazione (le stesse del vecchio fallback,
+# estese): l'IDF gia' deprime i token frequenti, ma toglierle riduce rumore.
+_STOPWORDS = {
+    'the', 'a', 'an', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+    'in', 'on', 'at', 'to', 'for', 'of', 'and', 'or', 'but', 'with', 'as',
+    'his', 'her', 'their', 'its', 'has', 'have', 'had', 'by', 'it', 'this',
+    'that', 'these', 'those', 'from', 'not', 'no', 'also', 'which', 'who',
+    'he', 'she', 'they', 'them',
+}
+
+# Soglie dell'allineatore:
+#   _TH_CONFIDENT: sopra questa soglia su una singola frase, assegnazione diretta.
+#   _TH_WINDOW_GAIN: una finestra di 2 frasi vince solo se migliora la singola
+#                    di almeno questo margine (evita di "allargare" gratis).
+#   _TH_FLOOR: sotto questa soglia il claim resta non assegnato (meglio nessun
+#              marker che un marker sulla frase sbagliata).
+_TH_CONFIDENT = 0.70
+_TH_WINDOW_GAIN = 0.10
+_TH_FLOOR = 0.35
+_TIE_EPS = 1e-9
+
+
+def _tokens(s: str) -> set[str]:
+    """Token di parola normalizzati (riusa _norm), senza stopword."""
+    return set(_norm(s).split()) - _STOPWORDS
+
+
+def _idf_weights(sentence_tokens: list[set[str]]) -> dict[str, float]:
+    """IDF calcolato sulle frasi della risposta: un token che compare in una
+    sola frase (una data, un'entita') pesa molto; uno che compare ovunque
+    pesa poco. Smoothing +1 per evitare pesi nulli."""
+    n = len(sentence_tokens)
+    df: dict[str, int] = {}
+    for toks in sentence_tokens:
+        for t in toks:
+            df[t] = df.get(t, 0) + 1
+    return {t: math.log((n + 1) / (d + 1)) + 1.0 for t, d in df.items()}
+
+
+def _containment(claim_toks: set[str], window_toks: set[str],
+                 idf: dict[str, float]) -> float:
+    """Containment pesato del claim nella finestra: quota della massa IDF
+    del claim coperta dalla finestra. Token del claim assenti da TUTTA la
+    risposta (aggiunti dalla decontestualizzazione) pesano 1.0 di default."""
+    denom = sum(idf.get(t, 1.0) for t in claim_toks)
+    if denom <= 0:
+        return 0.0
+    num = sum(idf.get(t, 1.0) for t in claim_toks & window_toks)
+    return num / denom
+
+
+def _ordered_tokens(s: str) -> list[str]:
+    """Token normalizzati nell'ordine del testo (dedup alla prima occorrenza)."""
+    seen, out = set(), []
+    for t in _norm(s).split():
+        if t not in _STOPWORDS and t not in seen:
+            seen.add(t)
+            out.append(t)
+    return out
+
+
+def align_claim_to_sentences(claim: str, sentence_tokens: list[set[str]],
+                             idf: dict[str, float]) -> list[int]:
+    """Indici delle frasi a cui attaccare le citazioni di un claim.
+
+    Cascata:
+      1. frasi singole: se il best score >= _TH_CONFIDENT, prendi il best
+         (e gli eventuali pari merito — info ripetuta nella risposta);
+      2. finestre di 2 frasi adiacenti: se una finestra batte la migliore
+         singola di almeno _TH_WINDOW_GAIN e supera _TH_CONFIDENT, il claim
+         POTREBBE fondere due frasi. Ma prima il test anti-decontestualizzazione:
+         se il contributo esclusivo di un membro e' fatto solo di token del
+         PREFISSO del claim (il soggetto, risolto dai pronomi durante la
+         decomposizione: "He was blind" -> "Andrea Bocelli was blind"),
+         quella frase fornisce solo l'entita', non un fatto -> niente fusione,
+         si assegna all'altro membro;
+      3. altrimenti, best singola se >= _TH_FLOOR; sotto, nessuna assegnazione.
+    """
+    claim_toks = _tokens(claim)
+    if not claim_toks or not sentence_tokens:
+        return []
+
+    singles = [_containment(claim_toks, st, idf) for st in sentence_tokens]
+    best = max(singles)
+    best_idxs = [i for i, s in enumerate(singles) if best - s <= _TIE_EPS]
+
+    if best >= _TH_CONFIDENT:
+        return best_idxs
+
+    # Finestre di 2 frasi adiacenti (claim che fonde affermazioni)
+    best_win_score, best_win = 0.0, None
+    for i in range(len(sentence_tokens) - 1):
+        w = _containment(claim_toks, sentence_tokens[i] | sentence_tokens[i + 1], idf)
+        if w > best_win_score:
+            best_win_score, best_win = w, (i, i + 1)
+
+    if (best_win is not None
+            and best_win_score >= _TH_CONFIDENT
+            and best_win_score - best >= _TH_WINDOW_GAIN):
+        i, j = best_win
+        # ── Test anti-decontestualizzazione ──
+        # Token del claim coperti ESCLUSIVAMENTE da ciascun membro.
+        excl_i = claim_toks & sentence_tokens[i] - sentence_tokens[j]
+        excl_j = claim_toks & sentence_tokens[j] - sentence_tokens[i]
+        ordered = _ordered_tokens(claim)
+        prefix = set(ordered[:max(2, len(ordered) // 3)])
+        if excl_i and excl_i <= prefix:
+            return [j]          # i fornisce solo il soggetto -> il fatto e' in j
+        if excl_j and excl_j <= prefix:
+            return [i]
+        return [i, j]           # fusione vera: entrambe le frasi
+
+    if best >= _TH_FLOOR:
+        return best_idxs
+
+    return []
 
 def _norm(s: str) -> str:
-    """Normalizza per il SOLO confronto: rimuove marker citazione e
-    punteggiatura, lowercase, collassa gli spazi. Non altera l'output."""
+    """Normalizza per il SOLO confronto: rimuove marker citazione, genitivi
+    sassoni ("Everest's" -> "everest"), separatori interni ai numeri
+    ("8,848.86" e "8,848. 86" -> "884886"), poi punteggiatura, lowercase,
+    collassa gli spazi. Non altera l'output."""
     s = re.sub(r'\[\d+\]', '', s)
-    s = re.sub(r'[^\w\s]', '', s.lower())
+    s = s.lower()
+    s = re.sub(r"['\u2019]s\b", '', s)              # genitivo sassone
+    s = re.sub(r'(?<=\d)[.,]\s*(?=\d)', '', s)      # 8,848. 86 -> 884886
+    s = re.sub(r'[^\w\s]', '', s)
     s = re.sub(r'\s+', ' ', s).strip()
     return s
 
 
-def _align_source_to_split(source_sentence: str, norm_split: list[str]) -> list[int]:
-    """Indici delle frasi dello split corrispondenti a una source_sentence.
-    Una source puo' coprire piu' frasi (claim che fonde piu' affermazioni).
-
-    Cascata: (1) esatto, (2) la source contiene frasi dello split (fusione),
-    (3) una frase dello split contiene la source (frammento) -> la piu' corta.
-    """
-    src = _norm(source_sentence)
-    if not src:
-        return []
-
-    # 1. esatto
-    for i, ns in enumerate(norm_split):
-        if ns and ns == src:
-            return [i]
-
-    # 2. la source contiene una o piu' frasi dello split
-    contained = [i for i, ns in enumerate(norm_split) if ns and ns in src]
-    if contained:
-        return contained
-
-    # 3. una frase dello split contiene la source: la piu' corta
-    candidates = sorted(
-        (len(ns), i) for i, ns in enumerate(norm_split) if ns and src in ns
-    )
-    if candidates:
-        return [candidates[0][1]]
-
-    return []
-
-
-def _citations_via_source_map(
-    sentences: list[str],
-    claim_to_citations: dict[str, list[int]],
-    claim_source_map: dict[str, list[str]],
-) -> tuple[dict[int, set[int]], set[str]]:
-    """Assegna citazioni alle frasi usando la mappa claim->frasi-sorgente.
-
-    Ritorna:
-      - sent_idx -> set di numeri citazione
-      - set dei claim_text effettivamente risolti via mappa (per sapere quali
-        NON serve gestire col fallback overlap).
-    """
-    norm_split = [_norm(s) for s in sentences]
-    sent_citations: dict[int, set[int]] = {}
-    resolved_claims: set[str] = set()
-
-    for claim_text, nums in claim_to_citations.items():
-        sources = claim_source_map.get(claim_text)
-        if not sources:                     # claim assente o senza sorgenti -> fallback
-            continue
-
-        target_indices: set[int] = set()
-        for src in sources:
-            target_indices.update(_align_source_to_split(src, norm_split))
-
-        if not target_indices:              # mappa presente ma nessun allineamento -> fallback
-            continue
-
-        for si in target_indices:
-            sent_citations.setdefault(si, set()).update(nums)
-        resolved_claims.add(claim_text)
-
-    return sent_citations, resolved_claims
+# Alias pubblici: primitive di normalizzazione condivise con core.retrieve
+# (stessa tokenizzazione = stessi token per claim e per evidenza).
+norm_text = _norm
+word_tokens = _tokens
+idf_weights = _idf_weights
+containment = _containment
 
 
 def insert_citations(
@@ -125,8 +207,15 @@ def insert_citations(
     matched_claims: list[dict],
     citation_map: dict,
     remove_unsupported: bool = False,
-    claim_source_map: dict[str, list[str]] | None = None,
-) -> tuple[str, list[dict]]:
+) -> tuple[str, list[dict], list[dict]]:
+    """Ritorna (cited_response, references, sentence_claims).
+
+    sentence_claims e' la SINGLE SOURCE OF TRUTH dell'allineamento per la UI:
+        [{"sentence": str, "citations": [int],
+          "claims": [{"claim": str, "alignment_score": float}]}]
+    Il frontend la renderizza cosi' com'e', senza ricalcolare split/overlap
+    client-side (era la causa dei pannelli incoerenti col backend).
+    """
     # claim_text -> numeri citazione (dai supporting_passages)
     claim_to_citations: dict[str, list[int]] = {}
     for mc in matched_claims:
@@ -139,61 +228,48 @@ def insert_citations(
         if nums:
             claim_to_citations[claim_text] = sorted(set(nums))
 
-    stopwords = {'the', 'a', 'an', 'is', 'are', 'was', 'were', 'in', 'on',
-                 'at', 'to', 'for', 'of', 'and', 'or', 'but', 'with', 'as',
-                 'his', 'her', 'their', 'its', 'has', 'have', 'had', 'by',
-                 'it', 'this', 'that', 'from', 'not', 'be', 'been'}
-
     sentences = _sentence_split(response)
 
-    # ── Fase 1: assegnazione via mappa sorgente (se disponibile) ──
-    sent_citations_from_map: dict[int, set[int]] = {}
-    resolved_claims: set[str] = set()
-    if claim_source_map:
-        sent_citations_from_map, resolved_claims = _citations_via_source_map(
-            sentences, claim_to_citations, claim_source_map
-        )
+    # ── Allineamento lessicale: ogni claim -> frasi della risposta ──
+    # Tokenizzazione e pesi IDF calcolati UNA volta sulla risposta.
+    sentence_tokens = [_tokens(s) for s in sentences]
+    idf = _idf_weights(sentence_tokens)
 
-    # I claim risolti dalla mappa NON partecipano al fallback overlap.
-    fallback_claims = {
-        c: nums for c, nums in claim_to_citations.items() if c not in resolved_claims
-    }
+    sent_citations: dict[int, set[int]] = {}
+    sent_claims: dict[int, list[dict]] = {}
+    for claim_text, nums in claim_to_citations.items():
+        idxs = align_claim_to_sentences(claim_text, sentence_tokens, idf)
+        if not idxs:
+            continue
+        claim_toks = _tokens(claim_text)
+        covered = set().union(*(sentence_tokens[i] for i in idxs))
+        score = _containment(claim_toks, covered, idf)
+        for si in idxs:
+            sent_citations.setdefault(si, set()).update(nums)
+            sent_claims.setdefault(si, []).append({
+                "claim": claim_text,
+                "alignment_score": round(score, 3),
+            })
 
+    # ── Ricostruzione della risposta con i marker + struttura per la UI ──
     cited_sentences = []
-
+    sentence_claims: list[dict] = []
     for si, sentence in enumerate(sentences):
-        citation_nums: set[int] = set(sent_citations_from_map.get(si, set()))
-
-        # ── Fase 2: fallback overlap SOLO per i claim non risolti via mappa ──
-        if fallback_claims:
-            sent_words = set(re.sub(r'[^\w\s]', '', sentence.lower()).split()) - stopwords
-
-            scored_claims = []
-            for claim_text, nums in fallback_claims.items():
-                claim_words = set(re.sub(r'[^\w\s]', '', claim_text.lower()).split()) - stopwords
-                if not claim_words:
-                    continue
-                overlap = len(claim_words & sent_words) / len(claim_words)
-                # Sbarramento iniziale a 0.6
-                if overlap >= 0.6:
-                    scored_claims.append((overlap, nums))
-
-            if scored_claims:
-                scored_claims.sort(key=lambda x: x[0], reverse=True)
-                top_overlap = scored_claims[0][0]
-                for overlap, nums in scored_claims:
-                    if overlap == top_overlap:
-                        citation_nums.update(nums)
-                    else:
-                        break
-
+        citation_nums = sent_citations.get(si, set())
         if citation_nums:
             markers = "".join(f"[{n}]" for n in sorted(citation_nums))
             cited_sentences.append(f"{sentence}{markers}")
         elif remove_unsupported:
-            pass
+            continue
         else:
             cited_sentences.append(sentence)
+
+        sentence_claims.append({
+            "sentence": sentence,
+            "citations": sorted(citation_nums),
+            "claims": sorted(sent_claims.get(si, []),
+                             key=lambda c: -c["alignment_score"]),
+        })
 
     cited_response = " ".join(cited_sentences)
 
@@ -203,7 +279,7 @@ def insert_citations(
 
     reference_list = build_reference_list(citation_map, all_passages)
 
-    return cited_response, reference_list
+    return cited_response, reference_list, sentence_claims
 
 
 def build_reference_list(citation_map: dict, passages: list[dict]) -> list[dict]:
@@ -687,8 +763,7 @@ if (DATA.length) renderExample(0);
 
 
 def run(input_path: str, output_path: str, remove_unsupported: bool = False,
-        html: bool = True, model: str = "claude-haiku-4-5-20251001",
-        use_source_map: bool = True):
+        html: bool = True):
     with open(input_path, "r") as f:
         data = json.load(f)
 
@@ -701,32 +776,16 @@ def run(input_path: str, output_path: str, remove_unsupported: bool = False,
             example["references"] = []
             continue
 
-        # ── Mappa claim -> frasi sorgente (secondo prompt) ──
-        claim_source_map = None
-        if use_source_map:
-            try:
-                from core.claim_source_map import map_claims_to_sentences
-                claims = [mc["claim"] for mc in matched_claims]
-                claim_source_map = map_claims_to_sentences(
-                    example["raw_response"], claims, model=model
-                )
-            except Exception as e:
-                import logging
-                logging.getLogger(__name__).error(
-                    f"[cite.run] mappa sorgente fallita, uso fallback overlap: {e}"
-                )
-                claim_source_map = None
-
         citation_map = build_citation_map(matched_claims)
-        cited_response, references = insert_citations(
+        cited_response, references, sentence_claims = insert_citations(
             example["raw_response"],
             matched_claims,
             citation_map,
             remove_unsupported,
-            claim_source_map=claim_source_map,
         )
         example["cited_response"] = cited_response
         example["references"] = references
+        example["sentence_claims"] = sentence_claims
 
     output = Path(output_path)
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -747,10 +806,5 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=str, default="results/cited.json")
     parser.add_argument("--remove-unsupported", action="store_true")
     parser.add_argument("--no-html", action="store_true", help="Skip HTML generation")
-    parser.add_argument("--no-source-map", action="store_true",
-                        help="Disabilita il secondo prompt, usa solo overlap")
-    parser.add_argument("--model", type=str, default="claude-haiku-4-5-20251001")
     args = parser.parse_args()
-    run(args.input, args.output, args.remove_unsupported,
-        html=not args.no_html, model=args.model,
-        use_source_map=not args.no_source_map)
+    run(args.input, args.output, args.remove_unsupported, html=not args.no_html)
