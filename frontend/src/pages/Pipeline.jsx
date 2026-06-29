@@ -741,6 +741,7 @@ async function runEvaluate() {
             references={references || []}
             matched={matched}
             sentenceClaims={sentenceClaims}
+            retrieveMethod={retrieveMethod}
           />
         )}
       </StepCard>
@@ -935,7 +936,7 @@ function MatchedView({ matched, passages, retrieveMethod, nuggets }) {
               <div key={j} className="passage-card" style={{ marginBottom: 8 }}>
                 <div className="passage-header">
                   <span className="passage-title">{p.title || '—'}</span>
-                  {p.entailment_score != null && <ScorePill score={p.entailment_score} />}
+                  {retrieveMethod !== 'llm' && p.entailment_score != null && <ScorePill score={p.entailment_score} />}
                 </div>
                 <div className="passage-body">{p.text || ''}</div>
                 {p.best_sentence && (
@@ -1265,7 +1266,7 @@ function highlightEvidence(passageText, extraction, start, end) {
   return <span>{passageText}</span>
 }
 
-function CitedView({ citedResponse, references, matched, sentenceClaims }) {
+function CitedView({ citedResponse, references, matched, sentenceClaims, retrieveMethod }) {
   const [activeSent, setActiveSent] = useState(null)
   const [activeClaim, setActiveClaim] = useState(null)
 
@@ -1403,7 +1404,7 @@ function CitedView({ citedResponse, references, matched, sentenceClaims }) {
                     <div className="passage-header">
                       <span className="passage-title">{p.title || '—'}</span>
                       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                        {p.entailment_score != null && <ScorePill score={p.entailment_score} />}
+                        {retrieveMethod !== 'llm' && p.entailment_score != null && <ScorePill score={p.entailment_score} />}
                         {refNum && (
                           <span style={{
                             background: '#0F172A', color: 'white',

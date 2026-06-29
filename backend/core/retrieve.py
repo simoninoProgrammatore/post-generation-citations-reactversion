@@ -194,22 +194,6 @@ def _load_embedding_model(model_name: str):
     return SentenceTransformer(model_name)
 
 
-def _compute_token_overlap(claim: str, sentence: str) -> float:
-    """
-    DEPRECATO nel pre-filtro (sostituito dal containment pesato IDF di
-    core.cite, che non penalizza le frasi lunghe e normalizza numeri e
-    genitivi). Mantenuto solo per compatibilita' con eventuali usi esterni.
-    """
-    from core.cite import word_tokens
-
-    claim_tokens = word_tokens(claim)
-    sent_tokens = word_tokens(sentence)
-
-    if not claim_tokens or not sent_tokens:
-        return 0.0
-
-    return len(claim_tokens & sent_tokens) / len(claim_tokens | sent_tokens)
-
 
 def _pre_filter_sentences(
     claim: str,
@@ -463,11 +447,88 @@ def _similarity_rank_for_llm(
 # ──────────────────────────────────────────────
 # LLM-based matching (Claude re-ranker)
 # ──────────────────────────────────────────────
+# NOTA: il path LLM e' BINARIO. Il modello dichiara solo "supports" /
+# "contradicts" / "neutral" ed estrae l'evidenza verbatim; non emette piu' uno
+# score di confidenza e non c'e' nessuna soglia. `entailment_score` viene
+# fissato a 1.0 sui match supportati, solo per compatibilita' con il frontend
+# (ScorePill) e con la metrica avg_entailment_score. Il parametro `threshold`
+# resta nelle firme per compatibilita' coi chiamanti, ma e' IGNORATO qui.
+
+_LLM_PROMPT_TEMPLATE = """You are a fact-checking assistant. Check if passages support a claim.
+
+Claim: "{claim}"
+
+For each passage, decide: "supports", "contradicts", or "neutral".
+If "supports", copy the EXACT sentence from the passage that supports the claim.
+
+EXAMPLE:
+Claim: "The Eiffel Tower is 330 meters tall."
+Passages:
+[0] Eiffel Tower: The Eiffel Tower is a wrought-iron lattice tower in Paris. It is 330 metres tall and was completed in 1889.
+[1] Big Ben: Big Ben is the nickname for the Great Bell in London. The tower is 96 metres tall.
+
+Output:
+[{{"idx": 0, "label": "supports", "evidence": "It is 330 metres tall and was completed in 1889."}}, {{"idx": 1, "label": "neutral", "evidence": ""}}]
+
+Now analyze these passages. Return ONLY a JSON array, nothing else.
+
+Passages:
+{passages_text}
+"""
+
+
+def _build_llm_prompt(claim: str, candidates: list[dict]) -> str:
+    """Costruisce il prompt LLM con i passaggi candidati (testo NON troncato)."""
+    passages_text = "\n\n".join([
+        f"[{i}] {p.get('title', 'N/A')}: {p.get('text', '')}"
+        for i, p in enumerate(candidates)
+    ])
+    return _LLM_PROMPT_TEMPLATE.format(claim=claim, passages_text=passages_text)
+
+
+def _parse_llm_results(results: list[dict], candidates: list[dict], top_k: int) -> list[dict]:
+    """
+    Trasforma l'output JSON dell'LLM in match.
+
+    Decisione BINARIA: si tiene un passaggio se e solo se label == "supports".
+    Nessuna soglia. entailment_score = 1.0 (compatibilita' frontend/metriche).
+    """
+    scored = []
+    for r in results:
+        idx = r.get("idx")
+        if (
+            isinstance(idx, int)
+            and 0 <= idx < len(candidates)
+            and r.get("label") == "supports"
+        ):
+            p = candidates[idx]
+            evidence = r.get("evidence", "").strip()
+            passage_text = p.get("text", "")
+
+            # Trova lo span dell'evidenza nel passaggio (testo completo → find
+            # ha buone probabilita' di centrare lo span se l'evidenza e' verbatim)
+            extraction_start = -1
+            extraction_end = -1
+            if evidence:
+                extraction_start = passage_text.find(evidence)
+                if extraction_start != -1:
+                    extraction_end = extraction_start + len(evidence)
+
+            scored.append({
+                **p,
+                "entailment_score": 1.0,  # supporto binario: il modello ha detto "supports"
+                "best_sentence": evidence,
+                "extraction_start": extraction_start,
+                "extraction_end": extraction_end,
+            })
+
+    return scored[:top_k]
+
 
 def match_with_llm(
     claim: str,
     passages: list[dict],
-    threshold: float = 0.5,
+    threshold: float = 0.5,   # IGNORATO: il path LLM e' binario (vedi nota sopra)
     top_k: int = 3,
     model: str = "claude-haiku-4-5-20251001",
 ) -> list[dict]:
@@ -483,163 +544,55 @@ def match_with_llm(
         return []
 
     # Step 2: LLM re-ranking + extraction in un'unica chiamata
-    passages_text = "\n\n".join([
-        f"[{i}] {p.get('title', 'N/A')}: {p.get('text', '')[:500]}"
-        for i, p in enumerate(candidates)
-    ])
-
-    prompt = f"""You are a fact-checking assistant. Check if passages support a claim.
-
-Claim: "{claim}"
-
-For each passage, decide: "supports", "contradicts", or "neutral".
-If "supports", copy the EXACT sentence from the passage that supports the claim.
-
-EXAMPLE:
-Claim: "The Eiffel Tower is 330 meters tall."
-Passages:
-[0] Eiffel Tower: The Eiffel Tower is a wrought-iron lattice tower in Paris. It is 330 metres tall and was completed in 1889.
-[1] Big Ben: Big Ben is the nickname for the Great Bell in London. The tower is 96 metres tall.
-
-Output:
-[{{"idx": 0, "label": "supports", "score": 0.95, "evidence": "It is 330 metres tall and was completed in 1889."}}, {{"idx": 1, "label": "neutral", "score": 0.1, "evidence": ""}}]
-
-Now analyze these passages. Return ONLY a JSON array, nothing else.
-
-Passages:
-{passages_text}
-"""
+    prompt = _build_llm_prompt(claim, candidates)
 
     try:
         results = call_llm_json(prompt, model=model)
     except Exception:
         return candidates[:top_k]
 
-    scored = []
-    for r in results:
-        idx = r.get("idx")
-        if (
-            isinstance(idx, int)
-            and 0 <= idx < len(candidates)
-            and r.get("label") == "supports"
-            and r.get("score", 0) >= threshold
-        ):
-            p = candidates[idx]
-            evidence = r.get("evidence", "").strip()
-            passage_text = p.get("text", "")
-
-            # Trova lo span dell'evidenza nel passaggio
-            extraction_start = -1
-            extraction_end = -1
-            if evidence:
-                extraction_start = passage_text.find(evidence)
-                if extraction_start != -1:
-                    extraction_end = extraction_start + len(evidence)
-
-            scored.append({
-                **p,
-                "entailment_score": float(r["score"]),
-                "best_sentence": evidence,
-                "extraction_start": extraction_start,
-                "extraction_end": extraction_end,
-            })
-
-    scored.sort(key=lambda x: x["entailment_score"], reverse=True)
-    return scored[:top_k]
+    return _parse_llm_results(results, candidates, top_k)
 
 
 async def match_with_llm_async(
     claim: str,
     passages: list[dict],
-    threshold: float = 0.5,
+    threshold: float = 0.5,   # IGNORATO: il path LLM e' binario (vedi nota sopra)
     top_k: int = 3,
     model: str = "claude-haiku-4-5-20251001",
 ) -> list[dict]:
     """Variante async di match_with_llm.
- 
+
     Il pre-filtering via embedding resta SINCRONO (gira su PyTorch locale, non
     e' la parte lenta). Solo la chiamata LLM e' awaitata: e' quella che, messa
     in asyncio.gather sui claim, da' lo speedup.
- 
+
     Fallback automatico al sincrono per modelli NON-Claude (Ollama), perche'
     call_llm_json_async supporta solo Claude.
     """
     if not model.startswith("claude"):
         # Ollama: niente async, riusa il path sincrono esistente.
         return match_with_llm(claim, passages, threshold=threshold, top_k=top_k, model=model)
- 
+
     from core.llm_client import call_llm_json_async
- 
+
     if not passages:
         return []
- 
+
     # Step 1: pre-filtra via embedding cosine → top 10 (sincrono, invariato)
     candidates = _similarity_rank_for_llm(claim, passages, top_k=10)
     if not candidates:
         return []
- 
+
     # Step 2: LLM re-ranking + extraction (UNICA chiamata, ora awaitata)
-    passages_text = "\n\n".join([
-        f"[{i}] {p.get('title', 'N/A')}: {p.get('text', '')[:500]}"
-        for i, p in enumerate(candidates)
-    ])
- 
-    prompt = f"""You are a fact-checking assistant. Check if passages support a claim.
- 
-Claim: "{claim}"
- 
-For each passage, decide: "supports", "contradicts", or "neutral".
-If "supports", copy the EXACT sentence from the passage that supports the claim.
- 
-EXAMPLE:
-Claim: "The Eiffel Tower is 330 meters tall."
-Passages:
-[0] Eiffel Tower: The Eiffel Tower is a wrought-iron lattice tower in Paris. It is 330 metres tall and was completed in 1889.
-[1] Big Ben: Big Ben is the nickname for the Great Bell in London. The tower is 96 metres tall.
- 
-Output:
-[{{"idx": 0, "label": "supports", "score": 0.95, "evidence": "It is 330 metres tall and was completed in 1889."}}, {{"idx": 1, "label": "neutral", "score": 0.1, "evidence": ""}}]
- 
-Now analyze these passages. Return ONLY a JSON array, nothing else.
- 
-Passages:
-{passages_text}
-"""
- 
+    prompt = _build_llm_prompt(claim, candidates)
+
     try:
         results = await call_llm_json_async(prompt, model=model)
     except Exception:
         return candidates[:top_k]
- 
-    scored = []
-    for r in results:
-        idx = r.get("idx")
-        if (
-            isinstance(idx, int)
-            and 0 <= idx < len(candidates)
-            and r.get("label") == "supports"
-            and r.get("score", 0) >= threshold
-        ):
-            p = candidates[idx]
-            evidence = r.get("evidence", "").strip()
-            passage_text = p.get("text", "")
-            extraction_start = -1
-            extraction_end = -1
-            if evidence:
-                extraction_start = passage_text.find(evidence)
-                if extraction_start != -1:
-                    extraction_end = extraction_start + len(evidence)
-            scored.append({
-                **p,
-                "entailment_score": float(r["score"]),
-                "best_sentence": evidence,
-                "extraction_start": extraction_start,
-                "extraction_end": extraction_end,
-            })
- 
-    scored.sort(key=lambda x: x["entailment_score"], reverse=True)
-    return scored[:top_k]
- 
+
+    return _parse_llm_results(results, candidates, top_k)
 
 
 # ──────────────────────────────────────────────

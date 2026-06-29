@@ -72,9 +72,21 @@ class EvaluateNuggetsResponse(BaseModel):
     nugget_precision: float
     nugget_recall: float
     nugget_coverage: float
+    n_claims: int = 0
+    n_claims_covered: int = 0
+    n_pairs: int = 0
+    n_pairs_correct: int = 0
     n_nuggets: int
     n_covered: int
     n_cited: int
+    n_required: int = 0
+    n_required_covered: int = 0
+    required_coverage: float = 0.0
+    n_optional: int = 0
+    n_optional_covered: int = 0
+    optional_coverage: float = 0.0
+    n_pairs_from_noise: int = 0
+    n_pairs_correct_from_noise: int = 0
     per_nugget: list[NuggetPerResult]
 
 class EvaluateDatasetRequest(BaseModel):

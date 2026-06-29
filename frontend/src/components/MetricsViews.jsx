@@ -3,12 +3,12 @@
  * Pipeline (step 6) ed Explore (tab Metriche).
  *
  * Esporta NuggetMetricsView e DeepSeekMetricsView. I bottoni di azione
- * (Salva in Esplora / Scarica dati) sono OPZIONALI: vengono mostrati solo
- * se i rispettivi handler onSave / onDownload sono passati. In Explore non
- * si passano, quindi le viste mostrano solo i dati senza azioni.
+ * (Salva in Esplora / Scarica dati) sono OPZIONALI.
  *
- * Fonte di verità unica: modificare qui (es. peso del partial, stile badge)
- * si riflette sia sulla Pipeline sia su Explore.
+ * Entrambe le lenti: precision sulle coppie (claim, evidenza), recall sui
+ * CLAIM. La lente NUGGET espone in piu' la COVERAGE dei nugget (totale +
+ * required/optional) come diagnostica. La lente DEEPSEEK e' a verdetto
+ * BINARIO (supported / not_supported).
  */
 
 import { useState } from 'react'
@@ -17,11 +17,11 @@ import Icon from './Icon'
 export const METRIC_INFO_DEEPSEEK = {
   citation_precision: {
     label: 'Citation Precision',
-    desc: 'Pesata: (full + 0.5·partial) / coppie totali. Full=evidenza completa, partial=parziale.',
+    desc: 'Delle coppie (claim, evidenza), quante il giudice ritiene supportate.',
   },
   citation_recall: {
     label: 'Citation Recall',
-    desc: 'Dei claim, quanti hanno almeno un\'evidenza full o partial.',
+    desc: 'Dei claim, quanti hanno almeno un\'evidenza giudicata supportata.',
   },
 }
 
@@ -32,6 +32,8 @@ export function metricColor(key, v) {
   return v >= 0.7 ? 'var(--green)' : v >= 0.4 ? 'var(--amber)' : 'var(--red)'
 }
 
+const cardBorder = (c) => c === 'var(--green)' ? '#A7F3D0' : c === 'var(--amber)' ? '#FDE68A' : '#FECACA'
+
 // ── NuggetMetricsView ─────────────────────────────────────────────────────────
 
 export function NuggetMetricsView({ metrics, onSave, onDownload }) {
@@ -39,55 +41,75 @@ export function NuggetMetricsView({ metrics, onSave, onDownload }) {
 
   const {
     nugget_precision, nugget_recall, nugget_coverage,
-    n_nuggets, n_covered, n_cited, per_nugget = []
+    n_claims, n_claims_covered, n_pairs, n_pairs_correct,
+    n_nuggets, n_covered,
+    n_required, n_required_covered, required_coverage,
+    n_optional, n_optional_covered, optional_coverage,
+    n_pairs_from_noise = 0, n_pairs_correct_from_noise = 0,
+    per_nugget = [],
   } = metrics
 
-  const pct = v => `${Math.round(v * 100)}%`
+  const pct = v => `${Math.round((v ?? 0) * 100)}%`
+  const mc = (val) => val >= 0.6 ? 'var(--green)' : val >= 0.3 ? 'var(--amber)' : 'var(--red)'
 
   function GaugePill({ value, color }) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
         <div style={{ width: 80, height: 6, background: 'var(--border)', borderRadius: 3, overflow: 'hidden' }}>
-          <div style={{ height: '100%', borderRadius: 3, width: `${Math.min(100, value * 100)}%`, background: color, transition: 'width 0.4s ease' }} />
+          <div style={{ height: '100%', borderRadius: 3, width: `${Math.min(100, (value ?? 0) * 100)}%`, background: color, transition: 'width 0.4s ease' }} />
         </div>
         <span style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 700, color }}>{pct(value)}</span>
       </div>
     )
   }
 
-  const mc = (val) => val >= 0.6 ? 'var(--green)' : val >= 0.3 ? 'var(--amber)' : 'var(--red)'
-  const precColor = mc(nugget_precision)
-  const recColor  = mc(nugget_recall)
-  const covColor  = mc(nugget_coverage)
+  function BigCard({ title, value, color, lines }) {
+    return (
+      <div style={{ padding: '16px 18px', background: 'white', border: `1px solid ${cardBorder(color)}`, borderTop: `3px solid ${color}`, borderRadius: 10 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8 }}>{title}</div>
+        <div style={{ fontSize: 30, fontWeight: 800, color, lineHeight: 1, marginBottom: 8 }}>{pct(value)}</div>
+        <GaugePill value={value} color={color} />
+        {lines?.map((l, i) => (
+          <div key={i} style={{ marginTop: i === 0 ? 8 : 4, fontSize: 11, color: 'var(--text-3)', lineHeight: 1.4, fontStyle: i === 0 ? 'normal' : 'italic' }}>{l}</div>
+        ))}
+      </div>
+    )
+  }
 
   return (
     <div>
-      {/* Summary cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 20 }}>
-        <div style={{ padding: '16px 18px', background: 'white', border: `1px solid ${precColor === 'var(--green)' ? '#A7F3D0' : precColor === 'var(--amber)' ? '#FDE68A' : '#FECACA'}`, borderTop: `3px solid ${precColor}`, borderRadius: 10 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8 }}>Precisione Nugget</div>
-          <div style={{ fontSize: 30, fontWeight: 800, color: precColor, lineHeight: 1, marginBottom: 8 }}>{pct(nugget_precision)}</div>
-          <GaugePill value={nugget_precision} color={precColor} />
-          <div style={{ marginTop: 8, fontSize: 11, color: 'var(--text-3)', lineHeight: 1.4 }}>Media pesata sui {n_covered} nugget coperti</div>
-          <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-3)', fontStyle: 'italic' }}>Precisione continua (match × evidenza) sui nugget coperti.</div>
-        </div>
-
-        <div style={{ padding: '16px 18px', background: 'white', border: `1px solid ${recColor === 'var(--green)' ? '#A7F3D0' : recColor === 'var(--amber)' ? '#FDE68A' : '#FECACA'}`, borderTop: `3px solid ${recColor}`, borderRadius: 10 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8 }}>Recall Nugget</div>
-          <div style={{ fontSize: 30, fontWeight: 800, color: recColor, lineHeight: 1, marginBottom: 8 }}>{pct(nugget_recall)}</div>
-          <GaugePill value={nugget_recall} color={recColor} />
-          <div style={{ marginTop: 8, fontSize: 11, color: 'var(--text-3)', lineHeight: 1.4 }}>Su {n_nuggets} nugget totali</div>
-          <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-3)', fontStyle: 'italic' }}>Stessa media, ma su tutti i nugget (inclusi non coperti).</div>
-        </div>
-
-        <div style={{ padding: '16px 18px', background: 'white', border: `1px solid ${covColor === 'var(--green)' ? '#A7F3D0' : covColor === 'var(--amber)' ? '#FDE68A' : '#FECACA'}`, borderTop: `3px solid ${covColor}`, borderRadius: 10 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8 }}>Copertura Nugget</div>
-          <div style={{ fontSize: 30, fontWeight: 800, color: covColor, lineHeight: 1, marginBottom: 8 }}>{pct(nugget_coverage)}</div>
-          <GaugePill value={nugget_coverage} color={covColor} />
-          <div style={{ marginTop: 8, fontSize: 11, color: 'var(--text-3)', lineHeight: 1.4 }}>{n_covered} coperti su {n_nuggets} nugget</div>
-          <div style={{ marginTop: 6, fontSize: 11, color: 'var(--text-3)', fontStyle: 'italic' }}>Percentuale di nugget toccati da almeno un claim.</div>
-        </div>
+      {/* Precision (coppie) + Recall (claim) */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 12 }}>
+        <BigCard title="Citation Precision" value={nugget_precision} color={mc(nugget_precision)}
+          lines={[`${n_pairs_correct ?? 0} coppie corrette su ${n_pairs ?? 0} prodotte`,
+                  'Delle citazioni prodotte, quante hanno evidenza che matcha la golden.']} />
+        <BigCard title="Citation Recall" value={nugget_recall} color={mc(nugget_recall)}
+          lines={[`${n_claims_covered ?? 0} claim fondati su ${n_claims ?? 0}`,
+                  'Dei claim prodotti, quanti hanno almeno un\'evidenza valida.']} />
       </div>
+
+      {/* Coverage dei nugget (diagnostica), totale + required/optional */}
+      <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.7px', margin: '4px 0 8px' }}>
+        Nugget coverage — quali fatti del gold sono coperti
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 20 }}>
+        <BigCard title="Coverage (tutti)" value={nugget_coverage} color={mc(nugget_coverage)}
+          lines={[`${n_covered ?? 0} coperti su ${n_nuggets ?? 0} nugget`]} />
+        <BigCard title="Coverage required" value={required_coverage} color={mc(required_coverage)}
+          lines={[`${n_required_covered ?? 0} su ${n_required ?? 0} required`]} />
+        <BigCard title="Coverage optional" value={optional_coverage} color={mc(optional_coverage)}
+          lines={[`${n_optional_covered ?? 0} su ${n_optional ?? 0} optional`]} />
+      </div>
+
+      {/* Evidenze provenienti da noise (solo se c'e' noise) */}
+      {n_pairs_from_noise > 0 && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 20, padding: '8px 14px', background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 8, fontSize: 12, color: '#92400E' }}>
+          <span style={{ fontWeight: 700 }}>⚠ Noise</span>
+          <span><strong>{n_pairs_from_noise}</strong> coppie con evidenza da un passaggio di noise</span>
+          <span style={{ color: 'var(--text-3)' }}>·</span>
+          <span>di cui <strong>{n_pairs_correct_from_noise}</strong> matchano comunque una golden</span>
+        </div>
+      )}
 
       {/* Dettaglio per nugget */}
       {per_nugget.length > 0 && (
@@ -97,36 +119,30 @@ export function NuggetMetricsView({ metrics, onSave, onDownload }) {
           </div>
 
           {per_nugget.map((nug, i) => {
-            const excluded = nug.excluded_no_golden
+            const covered = nug.covered
             const score = nug.nugget_precision_score
-            const isCited = nug.cited
-            const statusLabel = excluded ? 'Escluso (no golden evidence)' : isCited ? 'Citato ✓' : nug.covered ? 'Coperto, non citato' : 'Non coperto'
-            const statusBg = excluded ? '#F3F4F6' : isCited ? '#DCFCE7' : nug.covered ? '#FEF9C3' : '#FEE2E2'
-            const statusFg = excluded ? '#6B7280' : isCited ? '#166534' : nug.covered ? '#713F12' : '#991B1B'
+            const statusLabel = covered ? 'Coperto ✓' : 'Non coperto'
+            const statusBg = covered ? '#DCFCE7' : '#FEE2E2'
+            const statusFg = covered ? '#166534' : '#991B1B'
 
             return (
-              <div key={i} style={{ marginBottom: 8, border: `1px solid ${excluded ? '#E5E7EB' : isCited ? '#A7F3D0' : nug.covered ? '#FDE68A' : '#FECACA'}`, borderRadius: 8, overflow: 'hidden', opacity: excluded ? 0.6 : 1 }}>
+              <div key={i} style={{ marginBottom: 8, border: `1px solid ${covered ? '#A7F3D0' : '#FECACA'}`, borderRadius: 8, overflow: 'hidden' }}>
                 <div onClick={() => setExpanded(e => ({ ...e, [i]: !e[i] }))}
-                  style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', background: excluded ? '#F9FAFB' : isCited ? '#F0FDF4' : nug.covered ? '#FFFBEB' : '#FFF1F2', cursor: 'pointer' }}>
+                  style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', background: covered ? '#F0FDF4' : '#FFF1F2', cursor: 'pointer' }}>
                   <span style={{ fontSize: 10, fontWeight: 700, background: statusBg, color: statusFg, padding: '2px 8px', borderRadius: 10, whiteSpace: 'nowrap', flexShrink: 0 }}>{statusLabel}</span>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, color: 'var(--text-3)', flexShrink: 0 }}>{nug.nugget_id}</span>
                   <span style={{ fontSize: 12, color: 'var(--text)', flex: 1, lineHeight: 1.4 }}>{nug.nugget_text}</span>
-                  {nug.required && (
-                    <span style={{ fontSize: 9, fontWeight: 700, background: '#EDE9FE', color: '#5B21B6', padding: '2px 6px', borderRadius: 4, flexShrink: 0 }}>REQUIRED</span>
-                  )}
+                  {nug.required
+                    ? <span style={{ fontSize: 9, fontWeight: 700, background: '#EDE9FE', color: '#5B21B6', padding: '2px 6px', borderRadius: 4, flexShrink: 0 }}>REQUIRED</span>
+                    : <span style={{ fontSize: 9, fontWeight: 700, background: '#F3F4F6', color: '#6B7280', padding: '2px 6px', borderRadius: 4, flexShrink: 0 }}>OPTIONAL</span>}
                   {score != null && (
-                    <span style={{ fontSize: 10, fontWeight: 700, fontFamily: 'var(--mono)', background: score >= 0.45 ? '#ECFDF5' : '#FEF2F2', color: score >= 0.45 ? '#166534' : '#991B1B', padding: '2px 6px', borderRadius: 6, flexShrink: 0 }}>{score.toFixed(2)}</span>
+                    <span title="Miglior match evidenza ↔ golden evidence" style={{ fontSize: 10, fontWeight: 700, fontFamily: 'var(--mono)', background: score >= 0.5 ? '#ECFDF5' : '#FEF2F2', color: score >= 0.5 ? '#166534' : '#991B1B', padding: '2px 6px', borderRadius: 6, flexShrink: 0 }}>{score.toFixed(2)}</span>
                   )}
                   <span style={{ color: 'var(--text-3)', fontSize: 12 }}>{expanded[i] ? '▲' : '▼'}</span>
                 </div>
 
                 {expanded[i] && (
                   <div style={{ padding: '12px 16px', background: 'white' }}>
-                    {excluded && (
-                      <div style={{ marginBottom: 10, padding: '8px 12px', background: '#F3F4F6', border: '1px solid #E5E7EB', borderRadius: 6, fontSize: 12, color: '#6B7280' }}>
-                        ⚠️ Nugget escluso dalle metriche continue: manca `golden_evidence`.
-                      </div>
-                    )}
                     {nug.keywords?.length > 0 && (
                       <div style={{ marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
                         <span style={{ fontSize: 11, color: 'var(--text-3)', fontWeight: 600 }}>Keywords:</span>
@@ -145,17 +161,17 @@ export function NuggetMetricsView({ metrics, onSave, onDownload }) {
                     )}
                     {nug.best_covering_claim && (
                       <div style={{ marginBottom: 10, padding: '8px 12px', background: '#F0FDF4', border: '1px solid #86EFAC', borderRadius: 6, fontSize: 12 }}>
-                        <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', marginBottom: 4 }}>Miglior claim che copre il nugget</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', marginBottom: 4 }}>Claim con l'evidenza piu' vicina alla golden</div>
                         <span style={{ color: '#166534' }}>{nug.best_covering_claim}</span>
                         {score != null && (
-                          <span style={{ marginLeft: 8, fontSize: 10, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>(score: {score.toFixed(2)})</span>
+                          <span style={{ marginLeft: 8, fontSize: 10, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>(match evidenza: {score.toFixed(2)})</span>
                         )}
                       </div>
                     )}
                     {nug.all_evidence && nug.all_evidence.length > 0 && (
                       <div style={{ marginTop: 8 }}>
                         <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8 }}>
-                          Tutte le evidenze ({nug.all_evidence.length}) — ordinate per similarità decrescente
+                          Evidenze che matchano la golden ({nug.all_evidence.length}) — ordinate per similarità decrescente
                         </div>
                         <div style={{ maxHeight: 400, overflowY: 'auto', border: '1px solid var(--border)', borderRadius: 6, padding: '0 8px' }}>
                           {nug.all_evidence.map((ev, j) => {
@@ -184,14 +200,8 @@ export function NuggetMetricsView({ metrics, onSave, onDownload }) {
                         </div>
                       </div>
                     )}
-                    {(!nug.all_evidence || nug.all_evidence.length === 0) && nug.covered && !excluded && (
-                      <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic', marginTop: 8 }}>Nessun passaggio con evidenza disponibile.</div>
-                    )}
-                    {!nug.covered && !excluded && (
-                      <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic' }}>Nessun claim generato copre questo nugget.</div>
-                    )}
-                    {nug.covered && !nug.cited && !excluded && (
-                      <div style={{ fontSize: 12, color: '#92400E', fontStyle: 'italic' }}>Il nugget è coperto da {nug.n_covering_claims} claim, ma il punteggio di evidenza rimane sotto la soglia ({score?.toFixed(2)} &lt; 0.45).</div>
+                    {!covered && (
+                      <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic' }}>Nessuna citazione prodotta matcha la golden evidence di questo nugget.</div>
                     )}
                   </div>
                 )}
@@ -219,27 +229,22 @@ export function NuggetMetricsView({ metrics, onSave, onDownload }) {
   )
 }
 
-// ── DeepSeekMetricsView ─────────────────────────────────────────────────────────
+// ── DeepSeekMetricsView (verdetto binario) ──────────────────────────────────────
 
 export function DeepSeekMetricsView({ metrics, onSave, onDownload }) {
   const [expanded, setExpanded] = useState({})
   const {
     citation_precision, citation_recall,
-    n_claims, n_pairs, n_pairs_supported, per_claim = [],
+    n_claims, n_pairs, n_supported, n_not_supported, per_claim = [],
   } = metrics
 
-  const nFull    = metrics.n_full    ?? 0
-  const nPartial = metrics.n_partial ?? 0
-  const nNone    = metrics.n_none    ?? Math.max(0, (n_pairs ?? 0) - nFull - nPartial)
-  const pctFull    = metrics.pct_full    ?? (n_pairs > 0 ? nFull    / n_pairs : 0)
-  const pctPartial = metrics.pct_partial ?? (n_pairs > 0 ? nPartial / n_pairs : 0)
-  const pctNone    = metrics.pct_none    ?? (n_pairs > 0 ? nNone    / n_pairs : 0)
+  const nSup = n_supported ?? metrics.n_pairs_supported ?? 0
+  const nNot = n_not_supported ?? Math.max(0, (n_pairs ?? 0) - nSup)
 
-  const pct = v => `${Math.round(v * 100)}%`
+  const pct = v => `${Math.round((v ?? 0) * 100)}%`
 
   const STYLE_BY_VERDICT = {
     supported:     { bg: '#F0FDF4', bd: '#86EFAC',       pillBg: '#DCFCE7', pillFg: '#166534', label: 'SUPPORTED' },
-    partial:       { bg: '#FFFBEB', bd: '#FDE68A',       pillBg: '#FEF3C7', pillFg: '#92400E', label: 'PARTIAL'   },
     not_supported: { bg: '#FAFAF9', bd: 'var(--border)', pillBg: '#FEE2E2', pillFg: '#991B1B', label: 'NOT SUPPORTED' },
   }
   const verdictOf = (j) => j.verdict || (j.supported ? 'supported' : 'not_supported')
@@ -252,24 +257,21 @@ export function DeepSeekMetricsView({ metrics, onSave, onDownload }) {
         {n_pairs > 0 && (
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
             ·
-            <span style={{ color: '#166534', fontWeight: 600 }}>{nFull} full</span>
+            <span style={{ color: '#166534', fontWeight: 600 }}>{nSup} supported</span>
             <span style={{ color: 'var(--text-3)' }}>·</span>
-            <span style={{ color: '#92400E', fontWeight: 600 }}>{nPartial} partial</span>
-            <span style={{ color: 'var(--text-3)' }}>·</span>
-            <span style={{ color: '#991B1B', fontWeight: 600 }}>{nNone} none</span>
+            <span style={{ color: '#991B1B', fontWeight: 600 }}>{nNot} not supported</span>
           </span>
         )}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 12 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 20 }}>
         {[
-          { key: 'citation_precision', value: citation_precision, sub: `(${nFull} full + 0.5·${nPartial} partial) / ${n_pairs} coppie` },
-          { key: 'citation_recall',    value: citation_recall,    sub: `claim con ≥1 evidenza full o partial su ${n_claims} totali` },
+          { key: 'citation_precision', value: citation_precision, sub: `${nSup} coppie supported / ${n_pairs} coppie` },
+          { key: 'citation_recall',    value: citation_recall,    sub: `claim con ≥1 evidenza supported su ${n_claims} totali` },
         ].map(({ key, value, sub }) => {
           const color = metricColor(key, value)
-          const bd = color === 'var(--green)' ? '#A7F3D0' : color === 'var(--amber)' ? '#FDE68A' : '#FECACA'
           return (
-            <div key={key} style={{ padding: '16px 18px', background: 'white', border: `1px solid ${bd}`, borderTop: `3px solid ${color}`, borderRadius: 10 }}>
+            <div key={key} style={{ padding: '16px 18px', background: 'white', border: `1px solid ${cardBorder(color)}`, borderTop: `3px solid ${color}`, borderRadius: 10 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 8 }}>{METRIC_INFO_DEEPSEEK[key].label}</div>
               <div style={{ fontSize: 30, fontWeight: 800, color, lineHeight: 1, marginBottom: 8 }}>{pct(value)}</div>
               <div style={{ fontSize: 11, color: 'var(--text-3)', lineHeight: 1.4 }}>{sub}</div>
@@ -279,24 +281,6 @@ export function DeepSeekMetricsView({ metrics, onSave, onDownload }) {
         })}
       </div>
 
-      {n_pairs > 0 && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 20 }}>
-          {[
-            { label: 'Full support',    value: pctFull,    count: nFull,    color: '#166534', bg: '#ECFDF5', bd: '#A7F3D0' },
-            { label: 'Partial support', value: pctPartial, count: nPartial, color: '#92400E', bg: '#FFFBEB', bd: '#FDE68A' },
-            { label: 'Not supported',   value: pctNone,    count: nNone,    color: '#991B1B', bg: '#FEF2F2', bd: '#FECACA' },
-          ].map(t => (
-            <div key={t.label} style={{ padding: '12px 14px', background: t.bg, border: `1px solid ${t.bd}`, borderRadius: 10 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: 6 }}>{t.label}</div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                <span style={{ fontSize: 22, fontWeight: 800, color: t.color }}>{pct(t.value)}</span>
-                <span style={{ fontSize: 11, fontFamily: 'var(--mono)', color: 'var(--text-3)' }}>({t.count})</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
       {per_claim.length > 0 && (
         <div>
           <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.7px', marginBottom: 10 }}>
@@ -304,9 +288,8 @@ export function DeepSeekMetricsView({ metrics, onSave, onDownload }) {
           </div>
           {per_claim.map((c, i) => {
             const ok = c.any_supported
-            const nFullC    = c.n_full    ?? c.n_supported ?? 0
-            const nPartialC = c.n_partial ?? 0
-            const pillLabel = ok ? `${nFullC} full${nPartialC > 0 ? ` + ${nPartialC} partial` : ''} / ${c.n_passages}` : 'nessun supporto'
+            const nSupC = c.n_supported ?? 0
+            const pillLabel = ok ? `${nSupC} supported / ${c.n_passages}` : 'nessun supporto'
 
             return (
               <div key={i} style={{ marginBottom: 8, border: `1px solid ${ok ? '#A7F3D0' : '#FECACA'}`, borderRadius: 8, overflow: 'hidden' }}>
@@ -322,7 +305,7 @@ export function DeepSeekMetricsView({ metrics, onSave, onDownload }) {
                       <div style={{ fontSize: 12, color: 'var(--text-3)', fontStyle: 'italic' }}>Nessun passaggio citato per questo claim.</div>
                     ) : c.judgments.map((j, ji) => {
                       const v = verdictOf(j)
-                      const st = STYLE_BY_VERDICT[v]
+                      const st = STYLE_BY_VERDICT[v] || STYLE_BY_VERDICT.not_supported
                       return (
                         <div key={ji} style={{ marginBottom: 8, padding: '8px 12px', borderRadius: 6, background: st.bg, border: `1px solid ${st.bd}` }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>

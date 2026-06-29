@@ -1,17 +1,23 @@
 """LLM-as-judge evaluation con DeepSeek.
 
-Riuso della logica di scripts/deepseek_eval.py (judge binario per coppia
+Riuso della logica di scripts/deepseek_eval.py (judge per coppia
 claim/evidenza), ma:
   - richiamabile dai runner del pipeline (non solo da CLI);
   - concorrente via asyncio + semaforo, perché anche un singolo esempio
     (~60-120 coppie) in thinking-mode sequenziale sarebbe troppo lento;
   - ritorna anche la `reason` di ogni giudizio per ispezione nel frontend.
 
-DIFFERENZA CHIAVE rispetto a deepseek_eval.py: NON si valuta il testo intero
-del passaggio, ma lo SPAN di evidenza che il retrieve ha attribuito al claim
-(claim attribution). Ogni coppia (claim, span) e' una valutazione separata:
-un claim con N span attribuiti su N passaggi produce N giudizi. Il compito di
-DeepSeek e' decidere se quello span specifico e' coerente col claim.
+VERDETTO BINARIO. Ogni coppia (claim, span di evidenza) viene giudicata
+"supported" oppure "not_supported". Niente piu' livello "partial" e niente
+precision pesata.
+
+  citation precision = #coppie "supported" / #coppie prodotte
+  citation recall    = #claim con >=1 evidenza "supported" / #claim prodotti
+
+DIFFERENZA rispetto a deepseek_eval.py: NON si valuta il testo intero del
+passaggio, ma lo SPAN di evidenza che il retrieve ha attribuito al claim. Ogni
+coppia (claim, span) e' una valutazione separata: un claim con N span
+attribuiti su N passaggi produce N giudizi.
 """
 
 import os
@@ -26,8 +32,7 @@ import openai  # DeepSeek e' compatibile con la libreria OpenAI
 # instradato a deepseek-v4-flash (thinking mode). Usiamo l'ID esplicito.
 DEFAULT_MODEL = "deepseek-v4-flash"
 
-# Cap di richieste concorrenti verso l'API. 8 e' un compromesso prudente
-# contro i rate-limit; alzalo se hai margine.
+# Cap di richieste concorrenti verso l'API.
 MAX_CONCURRENCY = 8
 
 
@@ -49,31 +54,24 @@ def _get_async_client() -> "openai.AsyncOpenAI":
 def _get_evidence(passage: dict) -> str:
     """Estrae lo span di evidenza da un passaggio matchato.
 
-    Preferisce `extraction` (lo span isolato da extract_evidence, con
-    extraction_start/end) e usa `best_sentence` come fallback. Il retrieve
-    filtra gia' i match senza extraction, ma il fallback evita di mandare a
-    DeepSeek una stringa vuota (che verrebbe sempre giudicata not-supported).
+    Preferisce `extraction` (lo span isolato da extract_evidence) e usa
+    `best_sentence` come fallback.
     """
     return (passage.get("extraction", "") or passage.get("best_sentence", "")).strip()
 
 
 def _build_prompt(claim: str, evidence: str) -> str:
-    """Prompt di giudizio a TRE livelli: supported / partial / not_supported.
-
-    - supported:    l'evidenza stabilisce pienamente il claim.
-    - partial:      l'evidenza tocca il claim ma non lo stabilisce del tutto
-                    (manca un pezzo, e' troppo generica, supporta solo in parte).
-    - not_supported: l'evidenza non sostiene il claim (irrilevante o contraddittoria).
-    """
+    """Prompt di giudizio BINARIO: supported / not_supported."""
     return f"""Analizza se l'EVIDENZA supporta logicamente il CLAIM.
 L'evidenza e' uno specifico estratto (span) attribuito al claim.
 
-Rispondi con uno di tre verdetti:
-- "supported": l'evidenza stabilisce PIENAMENTE il claim (tutti gli elementi del claim sono coperti).
-- "partial": l'evidenza tocca il claim ma non lo stabilisce del tutto. Esempi: copre solo
-  una parte del claim, e' troppo generica, manca un dettaglio chiave (data, soggetto,
-  qualificatore), oppure suggerisce ma non afferma.
-- "not_supported": l'evidenza non sostiene il claim (irrilevante o contraddittoria).
+Rispondi con uno di due verdetti:
+- "supported": l'evidenza sostiene il claim, cioe' gli elementi del claim sono
+  stabiliti dall'evidenza.
+- "not_supported": l'evidenza non sostiene il claim. Vale anche quando
+  l'evidenza e' irrilevante, troppo generica, copre solo in parte il claim,
+  manca un dettaglio chiave (data, soggetto, qualificatore), oppure e'
+  contraddittoria.
 
 Rispondi esclusivamente in formato JSON.
 
@@ -82,7 +80,7 @@ EVIDENZA: "{evidence}"
 
 JSON format:
 {{
-  "verdict": "supported" | "partial" | "not_supported",
+  "verdict": "supported" | "not_supported",
   "reason": "breve spiegazione del verdetto"
 }}"""
 
@@ -94,10 +92,9 @@ async def _judge_pair(
     evidence: str,
     model: str,
 ) -> dict:
-    """Giudizio a tre livelli per UNA coppia (claim, span di evidenza).
+    """Giudizio binario per UNA coppia (claim, span di evidenza).
 
-    Ritorna {"verdict": "supported"|"partial"|"not_supported", "supported": bool, "reason": str}.
-    Il bool "supported" e' tenuto per retrocompatibilita': True solo se verdict=="supported".
+    Ritorna {"verdict": "supported"|"not_supported", "supported": bool, "reason": str}.
     """
     if not evidence or not evidence.strip():
         return {"verdict": "not_supported", "supported": False,
@@ -117,30 +114,31 @@ async def _judge_pair(
             )
             res = json.loads(response.choices[0].message.content)
             v = str(res.get("verdict", "not_supported")).lower().strip()
-            # Difensivo: se il modello ignora le 3 etichette, fallback dal vecchio bool.
-            if v not in ("supported", "partial", "not_supported"):
+            # Difensivo: normalizza qualunque etichetta non prevista (incluso il
+            # vecchio "partial") a not_supported.
+            if v not in ("supported", "not_supported"):
                 if "supported" in res:
                     v = "supported" if bool(res["supported"]) else "not_supported"
                 else:
                     v = "not_supported"
             return {
                 "verdict": v,
-                "supported": v == "supported",   # retrocompat
+                "supported": v == "supported",
                 "reason": str(res.get("reason", "")),
             }
         except Exception as e:  # noqa: BLE001
             return {"verdict": "not_supported", "supported": False,
                     "reason": f"[errore API] {e}"}
 
+
 async def _evaluate_matched_async(
     matched_claims: list[dict],
     model: str,
 ) -> dict:
-    """Valuta tutti i claim di un esempio in concorrenza, su 3 livelli.
+    """Valuta tutti i claim di un esempio in concorrenza, verdetto binario.
 
-    PRECISION (pesata):  (n_full + 0.5 * n_partial) / n_pairs
-    RECALL:              claim con >=1 evidenza (full O partial) / n_claims
-    Esposte anche le frazioni per livello (pct_full / pct_partial / pct_none).
+    PRECISION: #coppie supported / #coppie prodotte
+    RECALL:    #claim con >=1 evidenza supported / #claim
     """
     client = _get_async_client()
     sem = asyncio.Semaphore(MAX_CONCURRENCY)
@@ -161,28 +159,24 @@ async def _evaluate_matched_async(
     for (ci, _pi), verdict in zip(index, verdicts):
         per_claim[ci].append(verdict)
 
-    # ── Conteggi a 3 livelli ──
+    # ── Conteggi binari ──
     n_pairs = len(verdicts)
-    n_full     = sum(1 for v in verdicts if v["verdict"] == "supported")
-    n_partial  = sum(1 for v in verdicts if v["verdict"] == "partial")
-    n_none     = sum(1 for v in verdicts if v["verdict"] == "not_supported")
+    n_supported = sum(1 for v in verdicts if v["verdict"] == "supported")
+    n_not = n_pairs - n_supported
 
-    # ── Precision pesata: partial = 0.5 ──
-    precision = ((n_full + 0.5 * n_partial) / n_pairs) if n_pairs else 0.0
+    # ── Precision: coppie supported / coppie totali ──
+    precision = (n_supported / n_pairs) if n_pairs else 0.0
 
-    # Retrocompat: queste due chiavi le legge ancora qualcuno.
-    n_pairs_supported = n_full + n_partial   # "valide" nel senso lato
-
-    # ── Recall: claim con >=1 evidenza full O partial ──
+    # ── Recall: claim con >=1 evidenza supported / claim totali ──
     def _claim_is_covered(verdicts_c: list[dict]) -> bool:
-        return any(v["verdict"] in ("supported", "partial") for v in verdicts_c)
+        return any(v["verdict"] == "supported" for v in verdicts_c)
 
     if matched_claims:
         recall = sum(1 for vs in per_claim if _claim_is_covered(vs)) / len(matched_claims)
     else:
         recall = 0.0
 
-    # ── Dettaglio per claim, con verdict per ogni judgment ──
+    # ── Dettaglio per claim ──
     per_claim_detail = []
     for mc, verdicts_c in zip(matched_claims, per_claim):
         passages = mc.get("supporting_passages", [])
@@ -192,19 +186,16 @@ async def _evaluate_matched_async(
                 "passage_title": passage.get("title", ""),
                 "passage_text": passage.get("text", ""),
                 "evidence": _get_evidence(passage),
-                "verdict": verdict["verdict"],                # nuovo
-                "supported": verdict["supported"],            # retrocompat
+                "verdict": verdict["verdict"],
+                "supported": verdict["supported"],
                 "reason": verdict["reason"],
             })
-        n_full_c    = sum(1 for v in verdicts_c if v["verdict"] == "supported")
-        n_partial_c = sum(1 for v in verdicts_c if v["verdict"] == "partial")
+        n_supported_c = sum(1 for v in verdicts_c if v["verdict"] == "supported")
         per_claim_detail.append({
             "claim": mc.get("claim", ""),
-            "any_supported": _claim_is_covered(verdicts_c),   # ora include partial
+            "any_supported": _claim_is_covered(verdicts_c),
             "n_passages": len(passages),
-            "n_supported": n_full_c,                          # solo full (retrocompat)
-            "n_full": n_full_c,
-            "n_partial": n_partial_c,
+            "n_supported": n_supported_c,
             "judgments": judgments,
         })
 
@@ -213,27 +204,19 @@ async def _evaluate_matched_async(
         "citation_recall":    recall,
         "n_claims":           len(matched_claims),
         "n_pairs":            n_pairs,
-        "n_pairs_supported":  n_pairs_supported,              # retrocompat (full+partial)
-        # Nuovi campi a 3 livelli:
-        "n_full":     n_full,
-        "n_partial":  n_partial,
-        "n_none":     n_none,
-        "pct_full":    (n_full    / n_pairs) if n_pairs else 0.0,
-        "pct_partial": (n_partial / n_pairs) if n_pairs else 0.0,
-        "pct_none":    (n_none    / n_pairs) if n_pairs else 0.0,
-        "per_claim":  per_claim_detail,
+        "n_pairs_supported":  n_supported,
+        "n_supported":        n_supported,
+        "n_not_supported":    n_not,
+        "pct_supported":      (n_supported / n_pairs) if n_pairs else 0.0,
+        "per_claim":          per_claim_detail,
     }
+
 
 def evaluate_matched_deepseek(
     matched_claims: list[dict],
     model: str = DEFAULT_MODEL,
 ) -> dict:
-    """Entrypoint sincrono per i runner.
-
-    Avvolge la valutazione async. Sicuro da chiamare da codice sincrono
-    (es. un runner del pipeline). Dentro un event loop gia' attivo, usa
-    direttamente la versione async (evaluate_matched_deepseek_async).
-    """
+    """Entrypoint sincrono per i runner."""
     return asyncio.run(_evaluate_matched_async(matched_claims, model))
 
 

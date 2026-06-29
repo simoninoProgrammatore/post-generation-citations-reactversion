@@ -24,11 +24,11 @@ import { downloadJSON, timestampedFilename } from '../utils/download'
 
 function computeNuggetGlobal(perExample, metricKey = 'nugget_metrics') {
   const gm = {}
-  let totalNuggets = 0, totalCovered = 0, totalCited = 0
-  let totalReq = 0, totalReqCovered = 0
-  let totalOpt = 0, totalOptCovered = 0
-  const precs = [], recalls = [], covs = []
-  const reqPrecs = [], reqRecalls = []
+  let totalNuggets = 0, totalCovered = 0
+  let totalReq = 0, totalReqCovered = 0, totalOpt = 0, totalOptCovered = 0
+  let totalPairs = 0, totalPairsCorrect = 0, totalClaims = 0, totalClaimsCovered = 0
+  let totalPairsFromNoise = 0, totalPairsCorrectFromNoise = 0
+  const precs = [], recalls = [], covs = [], reqCovs = [], optCovs = []
 
   for (const ex of perExample) {
     const nm = ex[metricKey]
@@ -36,40 +36,49 @@ function computeNuggetGlobal(perExample, metricKey = 'nugget_metrics') {
     precs.push(nm.nugget_precision ?? 0)
     recalls.push(nm.nugget_recall ?? 0)
     covs.push(nm.nugget_coverage ?? 0)
-    reqPrecs.push(nm.required_precision ?? 0)
-    reqRecalls.push(nm.required_recall ?? 0)
+    reqCovs.push(nm.required_coverage ?? 0)
+    optCovs.push(nm.optional_coverage ?? 0)
     totalNuggets    += nm.n_nuggets ?? 0
     totalCovered    += nm.n_covered ?? 0
-    totalCited      += nm.n_cited ?? 0
     totalReq        += nm.n_required ?? 0
     totalReqCovered += nm.n_required_covered ?? 0
     totalOpt        += nm.n_optional ?? 0
     totalOptCovered += nm.n_optional_covered ?? 0
+    totalPairs         += nm.n_pairs ?? 0
+    totalPairsCorrect  += nm.n_pairs_correct ?? 0
+    totalClaims        += nm.n_claims ?? 0
+    totalClaimsCovered += nm.n_claims_covered ?? 0
+    totalPairsFromNoise        += nm.n_pairs_from_noise ?? 0
+    totalPairsCorrectFromNoise += nm.n_pairs_correct_from_noise ?? 0
+  
   }
 
   if (precs.length) {
     const mean = a => a.reduce((x, y) => x + y, 0) / a.length
-    gm.avg_nugget_precision   = mean(precs)
-    gm.avg_nugget_recall      = mean(recalls)
-    gm.avg_nugget_coverage    = mean(covs)
-    gm.avg_required_precision = mean(reqPrecs)
-    gm.avg_required_recall    = mean(reqRecalls)
+    gm.avg_nugget_precision  = mean(precs)
+    gm.avg_nugget_recall     = mean(recalls)
+    gm.avg_nugget_coverage   = mean(covs)
+    gm.avg_required_coverage = mean(reqCovs)
+    gm.avg_optional_coverage = mean(optCovs)
   }
-  if (totalNuggets > 0) {
-    gm.macro_nugget_citation = totalCovered > 0 ? totalCited / totalCovered : 0
-    gm.macro_nugget_recall   = totalCited / totalNuggets
-    gm.macro_nugget_coverage = totalCovered / totalNuggets
-  }
-  if (totalReq > 0) gm.macro_required_coverage = totalReqCovered / totalReq
-  if (totalOpt > 0) gm.macro_optional_coverage = totalOptCovered / totalOpt
+  if (totalPairs > 0)   gm.macro_nugget_precision  = totalPairsCorrect / totalPairs
+  if (totalClaims > 0)  gm.macro_nugget_recall     = totalClaimsCovered / totalClaims
+  if (totalNuggets > 0) gm.macro_nugget_coverage   = totalCovered / totalNuggets
+  if (totalReq > 0)     gm.macro_required_coverage = totalReqCovered / totalReq
+  if (totalOpt > 0)     gm.macro_optional_coverage = totalOptCovered / totalOpt
 
   gm.total_nuggets          = totalNuggets
-  gm.total_cited            = totalCited
   gm.total_covered          = totalCovered
   gm.total_required         = totalReq
   gm.total_required_covered = totalReqCovered
   gm.total_optional         = totalOpt
   gm.total_optional_covered = totalOptCovered
+  gm.total_pairs            = totalPairs
+  gm.total_pairs_correct    = totalPairsCorrect
+  gm.total_claims           = totalClaims
+  gm.total_claims_covered   = totalClaimsCovered
+  gm.total_pairs_from_noise         = totalPairsFromNoise
+  gm.total_pairs_correct_from_noise = totalPairsCorrectFromNoise
 
   let totalNoisePassages = 0, totalClaimsNoise = 0, totalNuggetsNoise = 0
   for (const ex of perExample) {
@@ -90,8 +99,7 @@ function computeNuggetGlobal(perExample, metricKey = 'nugget_metrics') {
 function computeDeepseekGlobal(perExample, metricKey = 'deepseek_metrics') {
   const gm = {}
   const precs = [], recalls = []
-  let totalPairs = 0, totalPairsSupported = 0, totalClaims = 0, totalSupportedClaims = 0
-  let totalFull = 0, totalPartial = 0, totalNone = 0
+  let totalPairs = 0, totalSupported = 0, totalClaims = 0, totalSupportedClaims = 0
 
   for (const ex of perExample) {
     const dm = ex[metricKey]
@@ -99,33 +107,20 @@ function computeDeepseekGlobal(perExample, metricKey = 'deepseek_metrics') {
     precs.push(dm.citation_precision ?? 0)
     recalls.push(dm.citation_recall ?? 0)
     totalPairs           += dm.n_pairs ?? 0
-    totalPairsSupported  += dm.n_pairs_supported ?? 0
+    totalSupported       += dm.n_supported ?? dm.n_pairs_supported ?? 0
     totalClaims          += dm.n_claims ?? 0
     totalSupportedClaims += Math.round((dm.citation_recall ?? 0) * (dm.n_claims ?? 0))
-    // tri-livello (default a 0 per JSON vecchi senza i campi nuovi)
-    totalFull    += dm.n_full    ?? 0
-    totalPartial += dm.n_partial ?? 0
-    totalNone    += dm.n_none    ?? 0
   }
   if (precs.length) {
     const mean = a => a.reduce((x, y) => x + y, 0) / a.length
     gm.avg_citation_precision = mean(precs)
     gm.avg_citation_recall    = mean(recalls)
   }
-  // Macro precision PESATA: (full + 0.5*partial) / totalPairs
-  if (totalPairs > 0) {
-    gm.macro_citation_precision = (totalFull + 0.5 * totalPartial) / totalPairs
-    gm.macro_pct_full    = totalFull    / totalPairs
-    gm.macro_pct_partial = totalPartial / totalPairs
-    gm.macro_pct_none    = totalNone    / totalPairs
-  }
-  if (totalClaims > 0) gm.macro_citation_recall = totalSupportedClaims / totalClaims
-  gm.total_pairs           = totalPairs
-  gm.total_pairs_supported = totalPairsSupported   // retrocompat (full+partial)
-  gm.total_claims          = totalClaims
-  gm.total_full    = totalFull
-  gm.total_partial = totalPartial
-  gm.total_none    = totalNone
+  if (totalPairs > 0)  gm.macro_citation_precision = totalSupported / totalPairs
+  if (totalClaims > 0) gm.macro_citation_recall    = totalSupportedClaims / totalClaims
+  gm.total_pairs     = totalPairs
+  gm.total_supported = totalSupported
+  gm.total_claims    = totalClaims
   return gm
 }
 
@@ -270,14 +265,14 @@ function MetricsLegend() {
           </div>
           <div>
             <span style={{ ...dot('#7C3AED'), marginRight: 6 }} />
-            <b>Nugget</b> — confronto con ground-truth annotata, con precision <b>continua e
-            pesata</b> (vedi sotto): combina quanto un claim parla del nugget con quanto la sua
-            evidenza somiglia alla golden evidence.
+            <b>Nugget</b> — confronto con ground-truth annotata: ogni coppia (claim, span di
+            evidenza) e' corretta se lo span supera la soglia contro la golden evidence di un
+            nugget. Da qui precision e recall (vedi sotto).
           </div>
           <div style={{ ...note, marginTop: 10 }}>
-            <b>Nota:</b> le due lenti non sono confrontabili 1:1. DeepSeek dà un verdetto
-            binario semantico sullo span; il nugget dà un punteggio continuo rispetto al gold.
-          </div>
+            <b>Nota:</b> le due lenti non sono confrontabili 1:1. DeepSeek giudica il supporto
+            logico dello span; il nugget verifica il match dello span con la golden evidence.
+            </div>
         </div>
 
         {/* Definizioni comuni */}
@@ -327,61 +322,39 @@ function MetricsLegend() {
           </div>
         </div>
 
-        {/* Nugget — precision continua pesata */}
+        {/* Nugget — citation precision/recall sulle coppie */}
         <div style={block('#7C3AED')}>
           <div style={{ ...sectionTitle, color: '#6D28D9' }}>
-            <span style={dot('#7C3AED')} /> Nugget — precision continua pesata
+            <span style={dot('#7C3AED')} /> Nugget — citation precision e recall
           </div>
           <div style={row}>
-            <div style={name}>Covering (fonte di verità = MatchedView)</div>
-            <span style={formula}>covers(c, g) ⇔ match_score(c, g) ≥ 0.6</span>
+            <div style={name}>Coppia e match</div>
+            <span style={formula}>match(s, e*) = 0.2·lex(s, e*) + 0.8·cos(s, e*) ≥ τ</span>
             <div style={note}>
-              Un claim copre un nugget se il match (keyword + similarità MiniLM, calcolato nel
-              retrieve) supera la soglia. <b>Stesso criterio</b> dello Step 4 (MatchedView): le
-              evidenze di ogni claim coprente sono i suoi passaggi, presi così come arrivano dal
-              retrieve. <span style={mono}>covered(g) = ∃ c : covers(c, g)</span>.
+              Ogni coppia (claim, span di evidenza <span style={mono}>s</span>) e' corretta se lo
+              span supera la soglia <span style={mono}>τ</span> contro la golden evidence
+              <span style={mono}> e*</span> di un qualsiasi nugget. Un solo confronto: span
+              estratto ↔ golden evidence, nessun match claim↔nugget.
             </div>
           </div>
           <div style={row}>
-            <div style={name}>Peso match e score evidenza</div>
-            <span style={formula}>w_i = 0.2·lex(c, g) + 0.8·cos(c, g)</span>
-            <div style={note}>Quanto il claim <span style={mono}>c_i</span> parla del nugget <span style={mono}>g</span> (testo↔testo).</div>
-            <div style={{ marginTop: 6 }}>
-              <span style={formula}>e_i = 0.2·lex(ê_i, e*) + 0.8·cos(ê_i, e*)</span>
-              <div style={note}>
-                Quanto l'evidenza del claim (media sui suoi span <span style={mono}>ê_i</span>)
-                somiglia alla golden evidence <span style={mono}>e*</span>. Claim con e_i = 0
-                non contribuiscono.
-              </div>
-            </div>
+            <div style={name}>Citation Precision</div>
+            <span style={formula}>P = #coppie corrette / #coppie totali</span>
+            <div style={note}>Delle citazioni prodotte, quante hanno un'evidenza che matcha la golden.</div>
           </div>
           <div style={row}>
-            <div style={name}>Precision continua per nugget</div>
-            <span style={formula}>precision(g) = Σ_i (w_i · e_i) / Σ_i w_i  ∈ [0, 1]</span>
+            <div style={name}>Citation Recall</div>
+            <span style={formula}>R = #nugget coperti / #nugget totali</span>
             <div style={note}>
-              Media degli score di evidenza pesata per quanto ogni claim parla del nugget. Non è
-              più un rapporto binario cited/covered: è continua.
+              Un nugget e' coperto se almeno una coppia prodotta lo matcha sopra <span style={mono}>τ</span>.
+              I nugget senza golden evidence sono esclusi dal totale.
             </div>
           </div>
-          <div>
-            <div style={name}>Aggregati per esempio</div>
-            <span style={formula}>nugget_precision = Σ_g precision(g) / n_covered</span>
-            <div style={note}>Media delle precision sui soli nugget coperti (con evidenza reale).</div>
-            <div style={{ marginTop: 6 }}>
-              <span style={formula}>nugget_recall = Σ_g precision(g) / n_total</span>
-              <div style={note}>Stessa somma, ma sul totale dei nugget (inclusi i non coperti).</div>
-            </div>
-            <div style={{ marginTop: 6 }}>
-              <span style={formula}>nugget_coverage = n_covered / n_total</span>
-              <div style={note}>Quota di nugget toccati da almeno un claim con evidenza.</div>
-            </div>
-            <div style={{ ...note, marginTop: 8 }}>
-              <b>Macro Citation</b> (dataset): <span style={mono}>Σ n_cited / Σ n_covered</span>,
-              dove <span style={mono}>cited(g)</span> = esiste almeno uno span estratto per il
-              nugget (indipendente dall'evidence_score). Misura grezza, distinta dalla precision
-              continua. Tutte le metriche sono calcolate anche separatamente su
-              <span style={mono}> required</span> e <span style={mono}>optional</span>.
-            </div>
+          <div style={{ ...note, marginTop: 4 }}>
+            Aggregazione: <b>Avg</b> = media di P/R per esempio; <b>Macro</b> = conteggi pooled
+            sul dataset. Recall calcolato anche separatamente su <span style={mono}>required</span>
+            e <span style={mono}>optional</span>. La precision e' globale sulle coppie, non e'
+            tipata per nugget.
           </div>
         </div>
 
@@ -700,25 +673,16 @@ function DeepSeekView({ gm }) {
         LLM-as-judge (DeepSeek)
       </div>
       <div style={grid}>
-        <MetricCard label="Avg Citation Precision" value={gm.avg_citation_precision} desc="Media precision (pesata: partial=0.5) per esempio." />
-        <MetricCard label="Avg Citation Recall" value={gm.avg_citation_recall} desc="Media recall per esempio (claim con ≥1 full o partial)." />
-        <MetricCard label="Macro Citation Precision" value={gm.macro_citation_precision} desc="(full + 0.5·partial) / coppie totali, su tutto il dataset." />
-        <MetricCard label="Macro Citation Recall" value={gm.macro_citation_recall} desc="Claim supportati / claim totali, su tutto il dataset." />
-      </div>
-
-      <div style={sectionLabel('var(--text-2)')}>Distribuzione verdetti</div>
-      <div style={grid}>
-        <MetricCard label="Full support" value={gm.macro_pct_full} desc="% di coppie giudicate 'supported' (piena)." />
-        <MetricCard label="Partial support" value={gm.macro_pct_partial} desc="% di coppie giudicate 'partial'." />
-        <MetricCard label="Not supported" value={gm.macro_pct_none} desc="% di coppie giudicate 'not_supported'." />
+        <MetricCard label="Avg Citation Precision" value={gm.avg_citation_precision} desc="Media della precision per esempio (coppie supported / coppie)." />
+        <MetricCard label="Avg Citation Recall" value={gm.avg_citation_recall} desc="Media della recall per esempio (claim con ≥1 evidenza supported)." />
+        <MetricCard label="Macro Citation Precision" value={gm.macro_citation_precision} desc="coppie supported / coppie totali, sul dataset." />
+        <MetricCard label="Macro Citation Recall" value={gm.macro_citation_recall} desc="claim supportati / claim totali, sul dataset." />
       </div>
 
       <div style={gridSm}>
         <MetricCard label="Claim Totali" value={gm.total_claims} isCount />
         <MetricCard label="Coppie Totali" value={gm.total_pairs} isCount />
-        <MetricCard label="Full" value={gm.total_full} isCount />
-        <MetricCard label="Partial" value={gm.total_partial} isCount />
-        <MetricCard label="Not supported" value={gm.total_none} isCount />
+        <MetricCard label="Supported" value={gm.total_supported} isCount />
       </div>
     </div>
   )
@@ -730,34 +694,35 @@ function DeepSeekView({ gm }) {
 function NuggetView({ gm, perExample, metricKey = 'nugget_metrics' }) {
   return (
     <div>
-      {/* Required */}
+      <div style={sectionLabel('var(--text-2)')}>Citation — precision sulle coppie, recall sui claim</div>
+      <div style={grid}>
+        <MetricCard label="Avg Precision" value={gm.avg_nugget_precision} desc="Media precision per esempio (coppie corrette / coppie)." />
+        <MetricCard label="Avg Recall" value={gm.avg_nugget_recall} desc="Media recall per esempio (claim fondati / claim)." />
+        <MetricCard label="Macro Precision" value={gm.macro_nugget_precision} desc="coppie corrette / coppie totali, sul dataset." />
+        <MetricCard label="Macro Recall" value={gm.macro_nugget_recall} desc="claim fondati / claim totali, sul dataset." />
+      </div>
+
       <div style={sectionLabel('#92400E')}>
         <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: 'linear-gradient(135deg, #F59E0B, #D97706)' }} />
-        Required Nuggets
+        Nugget coverage (diagnostica)
       </div>
       <div style={grid}>
-        <MetricCard label="Avg Precision (Req)" value={gm.avg_required_precision} desc="Media precisioni continue per esempio, solo required." />
-        <MetricCard label="Avg Recall (Req)" value={gm.avg_required_recall} desc="Media recall per esempio, solo required." />
-        <MetricCard label="Macro Coverage (Req)" value={gm.macro_required_coverage} desc="covered_req / total_req su tutto il dataset." />
+        <MetricCard label="Avg Coverage" value={gm.avg_nugget_coverage} desc="Media copertura per esempio (coperti / totali)." />
+        <MetricCard label="Avg Coverage (Req)" value={gm.avg_required_coverage} desc="Media copertura per esempio, solo required." />
+        <MetricCard label="Avg Coverage (Opt)" value={gm.avg_optional_coverage} desc="Media copertura per esempio, solo optional." />
+        <MetricCard label="Macro Coverage" value={gm.macro_nugget_coverage} desc="coperti / totali, sul dataset." />
+        <MetricCard label="Macro Coverage (Req)" value={gm.macro_required_coverage} desc="required coperti / required totali." />
+        <MetricCard label="Macro Coverage (Opt)" value={gm.macro_optional_coverage} desc="optional coperti / optional totali." />
       </div>
 
-      {/* All */}
-      <div style={sectionLabel('var(--text-2)')}>All Nuggets (Total)</div>
-      <div style={grid}>
-        <MetricCard label="Avg Precision" value={gm.avg_nugget_precision} desc="Media precisioni continue per esempio." />
-        <MetricCard label="Avg Recall" value={gm.avg_nugget_recall} desc="Media recall per esempio." />
-        <MetricCard label="Avg Coverage" value={gm.avg_nugget_coverage} desc="Media copertura per esempio." />
-        <MetricCard label="Macro Citation" value={gm.macro_nugget_citation} desc="cited / covered su tutto il dataset (presenza di span)." />
-        <MetricCard label="Macro Recall" value={gm.macro_nugget_recall} desc="cited / total su tutto il dataset." />
-        <MetricCard label="Macro Coverage" value={gm.macro_nugget_coverage} desc="covered / total su tutto il dataset." />
-      </div>
-
-      {/* Counts */}
       <div style={sectionLabel('var(--text-2)')}>Conteggi</div>
       <div style={gridSm}>
+        <MetricCard label="Claim Totali" value={gm.total_claims} isCount />
+        <MetricCard label="Claim Fondati" value={gm.total_claims_covered} isCount />
+        <MetricCard label="Coppie Totali" value={gm.total_pairs} isCount />
+        <MetricCard label="Coppie Corrette" value={gm.total_pairs_correct} isCount />
         <MetricCard label="Nuggets Totali" value={gm.total_nuggets} isCount />
         <MetricCard label="Coperti" value={gm.total_covered} isCount />
-        <MetricCard label="Citati" value={gm.total_cited} isCount />
         <MetricCard label="Required" value={gm.total_required} isCount />
         <MetricCard label="Req. Coperti" value={gm.total_required_covered} isCount />
         <MetricCard label="Optional" value={gm.total_optional} isCount />
@@ -765,6 +730,8 @@ function NuggetView({ gm, perExample, metricKey = 'nugget_metrics' }) {
         <MetricCard label="⚠ Noise Usati" value={gm.total_noise_passages_used} isCount />
         <MetricCard label="⚠ Claims con Noise" value={gm.total_claims_citing_noise} isCount />
         <MetricCard label="⚠ Nuggets da Noise" value={gm.total_nuggets_cited_from_noise} isCount />
+        <MetricCard label="⚠ Evidenze da Noise" value={gm.total_pairs_from_noise} isCount />
+        <MetricCard label="⚠ Da Noise corrette" value={gm.total_pairs_correct_from_noise} isCount />
       </div>
 
       <NuggetAssociationTable perExample={perExample} metricKey={metricKey} />
@@ -865,9 +832,8 @@ function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSav
                       <span style={{ fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>
                         {Math.round((dm.citation_precision ?? 0) * 100)}% P · {Math.round((dm.citation_recall ?? 0) * 100)}% R
                         {dm.n_pairs > 0 && (
-                          <> · <span style={{ color: '#166534' }}>{dm.n_full ?? 0}F</span>
-                             /<span style={{ color: '#92400E' }}>{dm.n_partial ?? 0}P</span>
-                             /<span style={{ color: '#991B1B' }}>{dm.n_none ?? 0}N</span></>
+                          <> · <span style={{ color: '#166534' }}>{dm.n_supported ?? 0} sup</span>
+                             <span style={{ color: 'var(--text-3)' }}> / {dm.n_pairs} coppie</span></>
                         )}
                       </span>
                     )}
@@ -882,12 +848,8 @@ function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSav
                   <div style={{ marginTop: 4, marginBottom: 8, padding: '12px 14px', background: 'white', border: '1px solid #BAE6FD', borderRadius: 8 }}>
                     {dm.per_claim.map((c, ci) => {
                       const ok = c.any_supported
-                      const nFull    = c.n_full    ?? c.n_supported ?? 0
-                      const nPartial = c.n_partial ?? 0
-                      // Pill sintetica del claim: mostra full e partial separati
-                      const pillLabel = ok
-                        ? `${nFull} full${nPartial > 0 ? ` + ${nPartial} partial` : ''} / ${c.n_passages}`
-                        : 'nessun supporto'
+                      const nSupC = c.n_supported ?? c.n_full ?? 0
+                      const pillLabel = ok ? `${nSupC} supported / ${c.n_passages}` : 'nessun supporto'
 
                       return (
                         <div key={ci} style={{

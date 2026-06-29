@@ -28,30 +28,20 @@ from core.llm_client import call_llm
 # ──────────────────────────────────────────────
 
 # Instruction block shared by the RAG (grounded) generation path.
-# NOTE on formatting: each implicitly-concatenated string MUST end with a
-# trailing space, otherwise adjacent instructions fuse into a single
-# unreadable token (e.g. "beginningthen") and the model silently ignores
-# them. Keep the trailing spaces.
 RAG_INSTRUCTIONS = (
-    "Do NOT restate or echo the question, and do NOT add a title or heading. "
-    "Begin straight with the answer. "
     "Answer the question directly and naturally, in plain prose. "
+    "Do NOT restate or echo the question; begin straight with the answer. "
     "Start with what the user needs to know, "
     "then add a few additional facts from the passages that are relevant and useful. "
-    "Use the same words from the passages when possible. "
     "Do not write meta-commentary like 'the passage says' or 'according to the text'. "
     "Do not add citation markers like [1] or [2]. "
-    "Do not use any markdown: no headings (#), no bold, no bullet points, no lists. "
-    "Write a single block of plain prose."
+    "No markdown, no bullet points."
 )
 
 # Instruction block for the closed-book (no passages) path.
 NO_RAG_INSTRUCTIONS = (
-    "Do NOT restate or echo the question, and do NOT add a title or heading. "
-    "Begin straight with the answer. "
     "Answer the question directly, then add a few useful related facts. "
-    "Do not use any markdown, headings, bullet points, or citations. "
-    "Write a single block of plain prose."
+    "No markdown, bullet points, or citations."
 )
 
 
@@ -70,10 +60,6 @@ def build_prompt(query: str, passages: list[dict] | None = None) -> str:
 
     If `passages` are provided, builds the RAG (grounded) prompt; otherwise
     builds the closed-book prompt.
-
-    The instructions are placed AFTER the question and the final cue is a
-    bare "Answer:" with no echoed question, to discourage the model from
-    repeating the prompt or opening with a markdown title.
     """
     if passages:
         passages_text = _format_passages(passages)
