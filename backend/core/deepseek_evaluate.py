@@ -171,11 +171,6 @@ async def _evaluate_matched_async(
     def _claim_is_covered(verdicts_c: list[dict]) -> bool:
         return any(v["verdict"] == "supported" for v in verdicts_c)
 
-    if matched_claims:
-        recall = sum(1 for vs in per_claim if _claim_is_covered(vs)) / len(matched_claims)
-    else:
-        recall = 0.0
-
     # ── Dettaglio per claim ──
     per_claim_detail = []
     for mc, verdicts_c in zip(matched_claims, per_claim):
@@ -201,7 +196,6 @@ async def _evaluate_matched_async(
 
     return {
         "citation_precision": precision,
-        "citation_recall":    recall,
         "n_claims":           len(matched_claims),
         "n_pairs":            n_pairs,
         "n_pairs_supported":  n_supported,

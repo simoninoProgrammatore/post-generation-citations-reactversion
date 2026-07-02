@@ -37,7 +37,7 @@ const METRIC_INFO_NUGGET = {
   },
   nugget_recall: {
     label: 'Nugget Recall',
-    desc: 'Dei nugget totali (required), quanti sono menzionati da almeno un claim generato con citazione?',
+    desc: 'Dei nugget totali, quanti sono coperti da almeno una coppia con evidenza corretta?',
     icon: 'refreshCw',
   },
   nugget_coverage: {
@@ -823,20 +823,40 @@ function MatchedView({ matched, passages, retrieveMethod, nuggets }) {
   const claimIdxCovered = new Set()
 
   if (hasNuggets) {
-    nuggets.forEach(nug => {
-      const covering = []
-      matched.forEach((m, i) => {
+    // Prima passa: per ogni claim, trova il nugget migliore
+    const claimBestNugget = {}
+    matched.forEach((m, i) => {
+      let bestScore = -1
+      let bestNugId = null
+      nuggets.forEach(nug => {
         if (claimCoversNugget(m, nug)) {
           const score = m.matched_nugget?.match_score || 0
-          // Soglia allineata al backend (coverage_threshold = 0.6)
-          if (score >= 0.6) {
-            covering.push({ m, i, score })
+          if (score >= 0.6 && score > bestScore) {
+            bestScore = score
+            bestNugId = nug.nugget_id
           }
         }
       })
-      covering.sort((a, b) => b.score - a.score)
-      nuggetToClaims[nug.nugget_id] = covering
-      covering.forEach(({ i }) => claimIdxCovered.add(i))
+      if (bestNugId !== null) {
+        claimBestNugget[i] = { nugget_id: bestNugId, score: bestScore }
+      }
+    })
+
+    // Seconda passa: raggruppa per nugget
+    nuggets.forEach(nug => {
+      nuggetToClaims[nug.nugget_id] = []
+    })
+    matched.forEach((m, i) => {
+      const best = claimBestNugget[i]
+      if (best) {
+        nuggetToClaims[best.nugget_id].push({ m, i, score: best.score })
+        claimIdxCovered.add(i)
+      }
+    })
+
+    // Ordina per score desc dentro ogni nugget
+    nuggets.forEach(nug => {
+      nuggetToClaims[nug.nugget_id].sort((a, b) => b.score - a.score)
     })
   }
 

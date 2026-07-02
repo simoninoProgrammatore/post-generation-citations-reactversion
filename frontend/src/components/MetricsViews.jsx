@@ -18,11 +18,7 @@ export const METRIC_INFO_DEEPSEEK = {
   citation_precision: {
     label: 'Citation Precision',
     desc: 'Delle coppie (claim, evidenza), quante il giudice ritiene supportate.',
-  },
-  citation_recall: {
-    label: 'Citation Recall',
-    desc: 'Dei claim, quanti hanno almeno un\'evidenza giudicata supportata.',
-  },
+  }
 }
 
 export function metricColor(key, v) {
@@ -40,8 +36,8 @@ export function NuggetMetricsView({ metrics, onSave, onDownload }) {
   const [expanded, setExpanded] = useState({})
 
   const {
-    nugget_precision, nugget_recall, nugget_coverage,
-    n_claims, n_claims_covered, n_pairs, n_pairs_correct,
+    nugget_precision, nugget_recall, nugget_coverage, nugget_precision_all,
+    n_claims, n_claims_covered, n_pairs, n_pairs_correct,  n_pairs_total,
     n_nuggets, n_covered,
     n_required, n_required_covered, required_coverage,
     n_optional, n_optional_covered, optional_coverage,
@@ -79,13 +75,17 @@ export function NuggetMetricsView({ metrics, onSave, onDownload }) {
   return (
     <div>
       {/* Precision (coppie) + Recall (claim) */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 12 }}>
-        <BigCard title="Citation Precision" value={nugget_precision} color={mc(nugget_precision)}
-          lines={[`${n_pairs_correct ?? 0} coppie corrette su ${n_pairs ?? 0} prodotte`,
-                  'Delle citazioni prodotte, quante hanno evidenza che matcha la golden.']} />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 12 }}>
+        <BigCard title="Citation Precision (Matched)" value={nugget_precision} color={mc(nugget_precision)}
+          lines={[`${n_pairs_correct ?? 0} coppie corrette su ${n_pairs ?? 0} dei claim matched`,
+                  'Precision sui soli claim che coprono almeno un nugget.']} />
+        <BigCard title="Citation Precision (All)" value={nugget_precision_all} color={mc(nugget_precision_all)}
+          lines={[`${n_pairs_correct ?? 0} coppie corrette su ${n_pairs_total ?? 0} prodotte`,
+                  'Precision su tutte le coppie prodotte, inclusi i claim non coperti.']} />
         <BigCard title="Citation Recall" value={nugget_recall} color={mc(nugget_recall)}
-          lines={[`${n_claims_covered ?? 0} claim fondati su ${n_claims ?? 0}`,
-                  'Dei claim prodotti, quanti hanno almeno un\'evidenza valida.']} />
+          lines={[`${n_covered ?? 0} nugget coperti su ${n_nuggets ?? 0} totali`,
+                  'Dei nugget del gold, quanti sono coperti da almeno una citazione corretta.']} />
+                  
       </div>
 
       {/* Coverage dei nugget (diagnostica), totale + required/optional */}
@@ -267,7 +267,6 @@ export function DeepSeekMetricsView({ metrics, onSave, onDownload }) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 20 }}>
         {[
           { key: 'citation_precision', value: citation_precision, sub: `${nSup} coppie supported / ${n_pairs} coppie` },
-          { key: 'citation_recall',    value: citation_recall,    sub: `claim con ≥1 evidenza supported su ${n_claims} totali` },
         ].map(({ key, value, sub }) => {
           const color = metricColor(key, value)
           return (

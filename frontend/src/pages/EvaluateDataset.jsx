@@ -26,14 +26,16 @@ function computeNuggetGlobal(perExample, metricKey = 'nugget_metrics') {
   const gm = {}
   let totalNuggets = 0, totalCovered = 0
   let totalReq = 0, totalReqCovered = 0, totalOpt = 0, totalOptCovered = 0
-  let totalPairs = 0, totalPairsCorrect = 0, totalClaims = 0, totalClaimsCovered = 0
+  let totalPairs = 0, totalPairsCorrect = 0, totalClaims = 0, totalClaimsCovered = 0, totalPairsAll = 0
   let totalPairsFromNoise = 0, totalPairsCorrectFromNoise = 0
-  const precs = [], recalls = [], covs = [], reqCovs = [], optCovs = []
+  
+  const precs = [], recalls = [], covs = [], reqCovs = [], optCovs = [], precsAll = [] 
 
   for (const ex of perExample) {
     const nm = ex[metricKey]
     if (!nm) continue
     precs.push(nm.nugget_precision ?? 0)
+    precsAll.push(nm.nugget_precision_all ?? 0)
     recalls.push(nm.nugget_recall ?? 0)
     covs.push(nm.nugget_coverage ?? 0)
     reqCovs.push(nm.required_coverage ?? 0)
@@ -45,6 +47,7 @@ function computeNuggetGlobal(perExample, metricKey = 'nugget_metrics') {
     totalOpt        += nm.n_optional ?? 0
     totalOptCovered += nm.n_optional_covered ?? 0
     totalPairs         += nm.n_pairs ?? 0
+    totalPairsAll      += nm.n_pairs_total ?? 0
     totalPairsCorrect  += nm.n_pairs_correct ?? 0
     totalClaims        += nm.n_claims ?? 0
     totalClaimsCovered += nm.n_claims_covered ?? 0
@@ -56,12 +59,14 @@ function computeNuggetGlobal(perExample, metricKey = 'nugget_metrics') {
   if (precs.length) {
     const mean = a => a.reduce((x, y) => x + y, 0) / a.length
     gm.avg_nugget_precision  = mean(precs)
+    gm.avg_nugget_precision_all = mean(precsAll)
     gm.avg_nugget_recall     = mean(recalls)
     gm.avg_nugget_coverage   = mean(covs)
     gm.avg_required_coverage = mean(reqCovs)
     gm.avg_optional_coverage = mean(optCovs)
   }
   if (totalPairs > 0)   gm.macro_nugget_precision  = totalPairsCorrect / totalPairs
+  if (totalPairsAll > 0) gm.macro_nugget_precision_all = totalPairsCorrect / totalPairsAll
   if (totalClaims > 0)  gm.macro_nugget_recall     = totalClaimsCovered / totalClaims
   if (totalNuggets > 0) gm.macro_nugget_coverage   = totalCovered / totalNuggets
   if (totalReq > 0)     gm.macro_required_coverage = totalReqCovered / totalReq
@@ -74,6 +79,7 @@ function computeNuggetGlobal(perExample, metricKey = 'nugget_metrics') {
   gm.total_optional         = totalOpt
   gm.total_optional_covered = totalOptCovered
   gm.total_pairs            = totalPairs
+  gm.total_pairs_all        = totalPairsAll
   gm.total_pairs_correct    = totalPairsCorrect
   gm.total_claims           = totalClaims
   gm.total_claims_covered   = totalClaimsCovered
@@ -105,7 +111,6 @@ function computeDeepseekGlobal(perExample, metricKey = 'deepseek_metrics') {
     const dm = ex[metricKey]
     if (!dm) continue
     precs.push(dm.citation_precision ?? 0)
-    recalls.push(dm.citation_recall ?? 0)
     totalPairs           += dm.n_pairs ?? 0
     totalSupported       += dm.n_supported ?? dm.n_pairs_supported ?? 0
     totalClaims          += dm.n_claims ?? 0
@@ -114,10 +119,8 @@ function computeDeepseekGlobal(perExample, metricKey = 'deepseek_metrics') {
   if (precs.length) {
     const mean = a => a.reduce((x, y) => x + y, 0) / a.length
     gm.avg_citation_precision = mean(precs)
-    gm.avg_citation_recall    = mean(recalls)
   }
   if (totalPairs > 0)  gm.macro_citation_precision = totalSupported / totalPairs
-  if (totalClaims > 0) gm.macro_citation_recall    = totalSupportedClaims / totalClaims
   gm.total_pairs     = totalPairs
   gm.total_supported = totalSupported
   gm.total_claims    = totalClaims
@@ -312,13 +315,13 @@ function MetricsLegend() {
           </div>
           <div style={row}>
             <div style={name}>Citation Precision</div>
-            <span style={formula}>P = Σ j(c, ê) / |coppie|</span>
-            <div style={note}>Delle coppie valutate, quante DeepSeek giudica valide.</div>
+            <span style={formula}>P = #coppie corrette / #coppie di TUTTI i claim</span>
+            <div style={note}>Di tutte le citazioni prodotte, quante hanno evidenza che matcha la golden.</div>
           </div>
-          <div>
-            <div style={name}>Citation Recall</div>
-            <span style={formula}>R = |claim con ≥1 coppia valida| / |claim|</span>
-            <div style={note}>Dei claim, quanti hanno almeno uno span giudicato valido.</div>
+          <div style={row}>
+            <div style={name}>Matched Precision</div>
+            <span style={formula}>P_m = #coppie corrette / #coppie dei soli claim matched</span>
+            <div style={note}>Come sopra, ma limitata ai claim che coprono almeno un nugget.</div>
           </div>
         </div>
 
@@ -674,9 +677,7 @@ function DeepSeekView({ gm }) {
       </div>
       <div style={grid}>
         <MetricCard label="Avg Citation Precision" value={gm.avg_citation_precision} desc="Media della precision per esempio (coppie supported / coppie)." />
-        <MetricCard label="Avg Citation Recall" value={gm.avg_citation_recall} desc="Media della recall per esempio (claim con ≥1 evidenza supported)." />
         <MetricCard label="Macro Citation Precision" value={gm.macro_citation_precision} desc="coppie supported / coppie totali, sul dataset." />
-        <MetricCard label="Macro Citation Recall" value={gm.macro_citation_recall} desc="claim supportati / claim totali, sul dataset." />
       </div>
 
       <div style={gridSm}>
@@ -694,12 +695,14 @@ function DeepSeekView({ gm }) {
 function NuggetView({ gm, perExample, metricKey = 'nugget_metrics' }) {
   return (
     <div>
-      <div style={sectionLabel('var(--text-2)')}>Citation — precision sulle coppie, recall sui claim</div>
+      <div style={sectionLabel('var(--text-2)')}>Citation — precision (tutte le coppie), matched precision (coppie dei claim matched), recall sui nugget</div>
       <div style={grid}>
-        <MetricCard label="Avg Precision" value={gm.avg_nugget_precision} desc="Media precision per esempio (coppie corrette / coppie)." />
-        <MetricCard label="Avg Recall" value={gm.avg_nugget_recall} desc="Media recall per esempio (claim fondati / claim)." />
-        <MetricCard label="Macro Precision" value={gm.macro_nugget_precision} desc="coppie corrette / coppie totali, sul dataset." />
-        <MetricCard label="Macro Recall" value={gm.macro_nugget_recall} desc="claim fondati / claim totali, sul dataset." />
+        <MetricCard label="Avg Precision"         value={gm.avg_nugget_precision_all} desc="Media per esempio: coppie corrette / TUTTE le coppie prodotte." />
+        <MetricCard label="Avg Matched Precision" value={gm.avg_nugget_precision}     desc="Media per esempio: coppie corrette / coppie dei soli claim matched." />
+        <MetricCard label="Avg Recall"            value={gm.avg_nugget_recall}        desc="Media recall per esempio (nugget coperti / nugget totali)." />
+        <MetricCard label="Macro Precision"         value={gm.macro_nugget_precision_all} desc="coppie corrette / TUTTE le coppie, sul dataset." />
+        <MetricCard label="Macro Matched Precision" value={gm.macro_nugget_precision}     desc="coppie corrette / coppie dei claim matched, sul dataset." />
+        <MetricCard label="Macro Recall"            value={gm.macro_nugget_recall}        desc="nugget coperti / nugget totali, sul dataset." />
       </div>
 
       <div style={sectionLabel('#92400E')}>
@@ -719,8 +722,9 @@ function NuggetView({ gm, perExample, metricKey = 'nugget_metrics' }) {
       <div style={gridSm}>
         <MetricCard label="Claim Totali" value={gm.total_claims} isCount />
         <MetricCard label="Claim Fondati" value={gm.total_claims_covered} isCount />
-        <MetricCard label="Coppie Totali" value={gm.total_pairs} isCount />
-        <MetricCard label="Coppie Corrette" value={gm.total_pairs_correct} isCount />
+        <MetricCard label="Coppie (tutte)"   value={gm.total_pairs_all} isCount />
+        <MetricCard label="Coppie (matched)" value={gm.total_pairs}     isCount />
+        <MetricCard label="Coppie Corrette"  value={gm.total_pairs_correct} isCount />
         <MetricCard label="Nuggets Totali" value={gm.total_nuggets} isCount />
         <MetricCard label="Coperti" value={gm.total_covered} isCount />
         <MetricCard label="Required" value={gm.total_required} isCount />
@@ -830,7 +834,7 @@ function DatasetEvalResultsView({ results, view, onViewChange, hasNuggets, onSav
                     </span>
                     {dm && (
                       <span style={{ fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>
-                        {Math.round((dm.citation_precision ?? 0) * 100)}% P · {Math.round((dm.citation_recall ?? 0) * 100)}% R
+                        {Math.round((dm.citation_precision ?? 0) * 100)}% P 
                         {dm.n_pairs > 0 && (
                           <> · <span style={{ color: '#166534' }}>{dm.n_supported ?? 0} sup</span>
                              <span style={{ color: 'var(--text-3)' }}> / {dm.n_pairs} coppie</span></>
@@ -1116,6 +1120,8 @@ export default function EvaluateDataset() {
     const noisePool = noiseEnabled
       ? dataset.flatMap((ex, i) => (ex.docs || []).map(doc => ({ ...doc, _source_idx: i })))
       : []
+  
+    const startTime = Date.now()   
 
     const perExample = []
 
@@ -1148,6 +1154,8 @@ export default function EvaluateDataset() {
 
       // Update incrementale: ricalcola ENTRAMBE le aggregazioni.
       const isLast = idx + 1 === dataset.length
+      const elapsedSeconds = Math.round((Date.now() - startTime) / 1000)
+
       setResults({
       nugget_global:      computeNuggetGlobal(perExample, 'nugget_metrics'),
       deepseek_global:    computeDeepseekGlobal(perExample, 'deepseek_metrics'),
@@ -1156,7 +1164,7 @@ export default function EvaluateDataset() {
       per_example: [...perExample],
       num_examples: dataset.length,
       num_successful: perExample.filter(e => !e.error).length,
-      runtime_seconds: null,
+      runtime_seconds: elapsedSeconds,   // ← popola qui (aggiornato a ogni esempio)
       partial: !isLast,
     })
     }

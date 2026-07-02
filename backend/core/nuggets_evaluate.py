@@ -58,7 +58,7 @@ COVERAGE_THRESHOLD = 0.6
 MATCH_THRESHOLD = 0.5
 
 # Score ibrido per il match evidenza: 0.2 lessicale / 0.8 semantico.
-EVIDENCE_LEXICAL_WEIGHT = 0.5
+EVIDENCE_LEXICAL_WEIGHT = 0.2
 
 
 # ──────────────────────────────────────────────
@@ -179,29 +179,28 @@ def _claim_covers_nugget(mc: dict, nugget: dict) -> bool:
 
 
 def _group_like_frontend(nuggets: list[dict], matched_claims: list[dict]) -> dict:
-    """nugget_id -> [matched_claims coprenti], con la STESSA regola di MatchedView:
-    _claim_covers_nugget AND match_score >= COVERAGE_THRESHOLD.
-    Lo score e' SOLO matched_nugget.match_score (come nel frontend: `|| 0`),
-    NON viene ricalcolato. I claim restano gli oggetti ORIGINALI, cosi' i
-    supporting_passages (con entailment_score/best_sentence) sono intatti."""
-    out: dict[str, list[dict]] = {}
-    for nug in nuggets:
-        nid = nug.get("nugget_id", "?")
-        covering = []
-        for mc in matched_claims:
+    out: dict[str, list[dict]] = {n.get("nugget_id", "?"): [] for n in nuggets}
+
+    for mc in matched_claims:
+        best_nid = None
+        best_score = -1.0
+        for nug in nuggets:
             if not _claim_covers_nugget(mc, nug):
                 continue
             score = (mc.get("matched_nugget") or {}).get("match_score", 0.0) or 0.0
-            if score >= COVERAGE_THRESHOLD:
-                covering.append(mc)
-        # MatchedView ordina per score desc; replichiamo.
-        covering.sort(
+            if score >= COVERAGE_THRESHOLD and score > best_score:
+                best_score = score
+                best_nid = nug.get("nugget_id", "?")
+        if best_nid is not None:
+            out[best_nid].append(mc)
+
+    # Ordina per score desc (come prima)
+    for nid in out:
+        out[nid].sort(
             key=lambda m: (m.get("matched_nugget") or {}).get("match_score", 0.0) or 0.0,
             reverse=True,
         )
-        out[nid] = covering
     return out
-
 
 # ──────────────────────────────────────────────
 # Noise / emb cache
@@ -288,9 +287,10 @@ def _build_per_nugget(nuggets_g: list[dict],
 
 def _empty_result(matched_claims: list[dict]) -> dict:
     return {
-        "nugget_precision": 0.0, "nugget_recall": 0.0, "nugget_coverage": 0.0,
+        "nugget_precision": 0.0, "nugget_precision_all": 0.0,
+        "nugget_recall": 0.0, "nugget_coverage": 0.0,
         "n_claims": len(matched_claims), "n_matched_claims": 0, "n_claims_covered": 0,
-        "n_pairs": 0, "n_pairs_correct": 0,
+        "n_pairs": 0, "n_pairs_total": 0, "n_pairs_correct": 0,
         "n_nuggets": 0, "n_covered": 0, "n_cited": 0,
         "per_nugget": [],
         "noise_usage": _count_noise_usage(matched_claims),
@@ -344,14 +344,18 @@ def compute_nugget_metrics(
     matched_claims_list: list[dict] = []
     seen_claim_ids: set[int] = set()
     covered_nuggets_by_claim: dict[int, list[dict]] = {}
+
     for nid, claims in nugget_to_claims.items():
         nug = nugget_by_id[nid]
         for mc in claims:
             cid = id(mc)
-            covered_nuggets_by_claim.setdefault(cid, []).append(nug)
+            # Con la nuova _group_like_frontend ogni claim appare in UN solo nid,
+            # quindi questa guardia è ridondante ma resta per sicurezza.
             if cid not in seen_claim_ids:
                 seen_claim_ids.add(cid)
                 matched_claims_list.append(mc)
+                covered_nuggets_by_claim[cid] = [nug]
+            # Se per qualsiasi motivo comparisse in due nid, ignora il secondo.
 
     matches_by_nugget: dict[str, list[dict]] = {nid: [] for nid in nugget_by_id}
     covered_nugget_ids: set[str] = set()
@@ -404,13 +408,30 @@ def compute_nugget_metrics(
             n_claims_with_correct += 1
 
     # ── Metriche principali (denominatori = SOLO claim matched) ──
-    precision = round(correct_pairs / total_pairs, 4) if total_pairs else 0.0
-    recall = round(n_claims_with_correct / n_matched_claims, 4) if n_matched_claims else 0.0
-
-    # ── Coverage (diagnostica), totale + split required/optional ──
+    # ── Metriche principali ──
     n_total = len(nuggets_g)
     n_covered = len(covered_nugget_ids)
-    coverage = round(n_covered / n_total, 4) if n_total else 0.0
+
+    # Coppie su TUTTI i claim prodotti (non solo i matched). Stesso filtro
+    # span non-vuoto del loop di correttezza. I claim che non coprono alcun
+    # nugget contribuiscono coppie al denominatore ma non possono mai essere
+    # corretti (non hanno un nugget contro cui matchare la golden).
+    total_pairs_all = sum(
+        1
+        for mc in matched_claims
+        for p in mc.get("supporting_passages", [])
+        if _extracted_span(p)
+    )
+    print("[DEBUG] total_pairs_all =", total_pairs_all)
+
+    # Due precision, stesso numeratore (correct_pairs):
+    #   matched precision = corrette / coppie dei soli claim matched
+    #   precision (piena) = corrette / coppie di TUTTI i claim prodotti
+    matched_precision = round(correct_pairs / total_pairs, 4) if total_pairs else 0.0
+    precision_all     = round(correct_pairs / total_pairs_all, 4) if total_pairs_all else 0.0
+
+    recall = round(n_covered / n_total, 4) if n_total else 0.0
+    coverage = recall  # stessa metrica
 
     req = [n for n in nuggets_g if n.get("required", True)]
     opt = [n for n in nuggets_g if not n.get("required", True)]
@@ -424,13 +445,15 @@ def compute_nugget_metrics(
     per_nugget = _build_per_nugget(nuggets_g, nugget_to_claims, matches_by_nugget)
 
     return {
-        "nugget_precision": precision,        # sulle coppie dei claim matched
-        "nugget_recall": recall,              # sui claim matched
-        "nugget_coverage": coverage,          # sui nugget (diagnostica)
+        "nugget_precision": matched_precision,     # retrocompat: invariata (= matched)
+        "nugget_precision_all": precision_all,     # NUOVA: su TUTTE le coppie prodotte
+        "nugget_recall": recall,                   # sui nugget gold (coverage)
+        "nugget_coverage": recall,                 # == recall
         "n_claims": len(matched_claims),      # claim totali in input
         "n_matched_claims": n_matched_claims, # claim che coprono >= 1 nugget
         "n_claims_covered": n_claims_with_correct,  # claim matched con >=1 coppia corretta
         "n_pairs": total_pairs,               # coppie dei soli claim matched
+        "n_pairs_total": total_pairs_all,     # NUOVA: coppie di TUTTI i claim prodotti
         "n_pairs_correct": correct_pairs,
         "n_nuggets": n_total,
         "n_covered": n_covered,

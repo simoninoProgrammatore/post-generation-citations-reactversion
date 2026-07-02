@@ -70,11 +70,14 @@ class EvaluateNuggetsRequest(BaseModel):
 
 class EvaluateNuggetsResponse(BaseModel):
     nugget_precision: float
+    nugget_precision_all: float = 0.0     
     nugget_recall: float
     nugget_coverage: float
     n_claims: int = 0
     n_claims_covered: int = 0
+    n_matched_claims: int = 0
     n_pairs: int = 0
+    n_pairs_total: int = 0                
     n_pairs_correct: int = 0
     n_nuggets: int
     n_covered: int
@@ -312,25 +315,19 @@ async def evaluate(req: EvaluateRequest):
 
 @router.post("/evaluate-nuggets", response_model=EvaluateNuggetsResponse)
 async def evaluate_nuggets(req: EvaluateNuggetsRequest):
-    """
-    Calcola Nugget Precision, Nugget Recall e Nugget Coverage.
-
-    Verifica se i nuggets del dataset sono:
-      - coperti da almeno un claim generato (coverage)
-      - citati con un passaggio di supporto che contiene evidenza (precision/recall)
-    """
     try:
         nuggets_dict = [n.model_dump() for n in req.nuggets]
-        
         result = core_nuggets.compute_nugget_metrics(
             nuggets=nuggets_dict,
             matched_claims=req.matched_claims,
-            nugget_covering=req.nugget_covering,  # ← aggiungi
+            nugget_covering=req.nugget_covering,
             use_nli=req.use_nli,
             required_only=req.required_only,
         )
         return EvaluateNuggetsResponse(**result)
     except Exception as e:
+        import logging, traceback
+        logging.getLogger(__name__).error(traceback.format_exc())
         raise HTTPException(status_code=500, detail=str(e))
 
 class EvaluateDeepseekRequest(BaseModel):
